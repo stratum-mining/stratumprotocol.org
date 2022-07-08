@@ -65,6 +65,57 @@
         }"
       ></div>
     </div>
+
+    <div class="features-section flex-col">
+      <div class="introduction flex-col">
+        <h1>{{ data.introductionTitle }}</h1>
+        <p>{{ data.introductionText }}</p>
+        <a
+          >{{ data.introductionCtaTitle
+          }}<svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="arrow-right"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M14 5l7 7m0 0l-7 7m7-7H3"
+            /></svg
+        ></a>
+      </div>
+
+      <div
+        v-for="(feature, index) of data.features"
+        :key="feature.value"
+        class="feature flex-row"
+        v-bind:style="{
+          flexDirection: index % 2 === 0 ? 'row' : 'row-reverse',
+        }"
+      >
+        <div class="feature-text flex-col">
+          <h2>{{ feature.title }}</h2>
+          <p>{{ feature.text }}</p>
+        </div>
+        <div class="feature-image flex-col">
+          <img :src="feature.image" />
+          <img
+            :src="feature.imageOverlay"
+            class="image-overlay"
+            v-bind:style="{ [index % 2 === 0 ? 'right' : 'left']: '-100px' }"
+          />
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      {{ data.footer }}
+    </footer>
+
+    <img class="bottom-scene" src="/assets/home-bottom.svg" />
   </div>
 </template>
 
@@ -181,21 +232,7 @@ export default {
 }
 
 .hero-use-case-ctas button {
-  border: #fff solid 1px;
-  border-radius: 8px;
-  background: unset;
-  color: #fff;
-  padding: 16px 32px;
-  cursor: pointer;
-  font-size: 20px;
-  margin: 0 12px;
-
   width: 224px;
-}
-
-.hero-use-case-ctas button:hover {
-  border: #22c55e solid 1px;
-  color: #22c55e;
 }
 
 .sub-action {
@@ -205,6 +242,7 @@ export default {
 
 .external-link {
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .footer {
@@ -212,6 +250,7 @@ export default {
   margin-bottom: 24px;
   color: #c1ddf9;
   transition: opacity 0.2s;
+  z-index: 30
 }
 
 .bg-gradient {
@@ -222,5 +261,88 @@ export default {
   width: 100%;
   transition: opacity 0.3s;
   background: linear-gradient(#01142600 0%, #011426 60%);
+}
+
+.features-section {
+  padding-top: 150px;
+  margin-bottom: 340px;
+  z-index: 20;
+}
+
+.introduction {
+  margin-bottom: 86px;
+}
+
+.introduction > h1 {
+  margin-bottom: 32px;
+}
+
+.introduction > p {
+  width: 1040px;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 48px;
+}
+
+.introduction > a {
+  font-size: 20px;
+  color: #22c55e;
+}
+
+.arrow-right {
+  width: 20px;
+  height: 19px;
+  margin-left: 10px;
+}
+
+.feature {
+  width: 1140px;
+  justify-content: space-between;
+  margin-bottom: 144px;
+}
+
+.feature-text {
+  width: 460px;
+  align-items: flex-start !important;
+}
+
+.feature-text > h2 {
+  border-bottom: none;
+  margin-bottom: 24px;
+  margin-top: 0;
+}
+
+.feature-text > p {
+  margin: 0;
+  text-align: left;
+}
+
+.feature-image {
+  position: relative;
+  width: 550px;
+  height: 340px;
+  border-radius: 24px;
+}
+
+.feature-image > img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 24px;
+  z-index: 20;
+}
+
+.feature-image > .image-overlay {
+  position: absolute;
+  bottom: 200px;
+  z-index: 15;
+}
+
+.bottom-scene {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  height: auto;
+  z-index: 10;
 }
 </style>

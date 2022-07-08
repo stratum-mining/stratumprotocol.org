@@ -4,9 +4,6 @@
  * ref：https://v1.vuepress.vuejs.org/config/#index-styl
  */
 
-.home .hero img
-  max-width 450px!important
-
 @font-face {
     font-family: SpaceGrotesk;
     src: url(/fonts/SpaceGrotesk-Regular.otf) format("truetype");
@@ -17,6 +14,93 @@
     src: url(/fonts/Rubik-Regular.ttf) format("truetype");
 }
 
-html, body {
-    font-family: Rubik
+h1, h2, h3, h4 {
+    font-family: 'SpaceGrotesk';
+    font-style: normal;
+    font-weight: 700;
+    color: #FFFFFF;
+}
+
+h1 {
+    font-size: 48px;
+    line-height: 61px;
+}
+
+h2 {
+    font-size: 36px;
+    line-height: 46px;
+}
+
+h3 {
+    font-size: 30px;
+    line-height: 36px;
+}
+
+h4 {
+    font-size: 24px;
+    line-height: 32px;
+}
+
+p {
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+
+    color: #99B5D0;
+}
+
+p.bodyText {
+    font-size: 18px;
+}
+
+p.bodyText2 {
+    font-size: 20px;
+}
+
+p.bodyText3 {
+    font-size: 30px;
+    line-height: 36px;
+}
+
+button {
+  color: #fff;
+  font-size: 20px;
+
+  border: #fff solid 1px;
+  background: unset;
+  border-radius: 8px;
+
+
+  margin: 0 12px;
+  padding: 16px 32px;
+
+  cursor: pointer;
+
+  transition: 0.1s
+}
+
+button:hover {
+  border: #22c55e solid 1px;
+  color: #22c55e;
+}
+
+a {
+    cursor: pointer;
+}
+
+
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
