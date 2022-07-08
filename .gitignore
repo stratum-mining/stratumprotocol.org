@@ -1,2 +1,15 @@
-**/.DS_Store
+# Dependencies
 node_modules
+
+# Production
+/docs/.vuepress/dist
+
+
+# Misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
