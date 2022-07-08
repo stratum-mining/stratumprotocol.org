@@ -1,0 +1,19 @@
+{
+  "name": "stratumV2-doc",
+  "version": "0.0.1",
+  "description": "Stratum V2 documentation",
+  "main": "index.js",
+  "authors": {
+    "name": "SeraBocca",
+    "email": ""
+  },
+  "repository": "/stratumV2-doc",
+  "scripts": {
+    "dev": "vuepress dev src",
+    "build": "vuepress build src"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "vuepress": "^1.5.3"
+  }
+}
