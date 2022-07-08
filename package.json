@@ -1,5 +1,5 @@
 {
-  "name": "stratumV2-doc",
+  "name": "stratumprotocol.org",
   "version": "0.0.1",
   "description": "Stratum V2 documentation",
   "main": "index.js",
@@ -7,7 +7,7 @@
     "name": "SeraBocca",
     "email": ""
   },
-  "repository": "/stratumV2-doc",
+  "repository": "/stratumprotocol.org",
   "scripts": {
     "dev": "vuepress dev src",
     "build": "vuepress build src"
