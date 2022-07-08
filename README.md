@@ -11,5 +11,5 @@ The setup is straight forward:
 yarn install
 
 # Serve locally (by default on port 8080)
-yarn start
+yarn dev
 ```
