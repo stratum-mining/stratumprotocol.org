@@ -2,7 +2,7 @@
 node_modules
 
 # Production
-/docs/.vuepress/dist
+/src/.vuepress/dist
 
 
 # Misc
