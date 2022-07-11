@@ -40,7 +40,7 @@
           Or check out our
           <a
             class="external-link"
-            href="https://github.com/lightningnetwork/lnd"
+            href="https://github.com/stratum-mining"
             target="_blank"
             rel="noopener noreferrer"
             >documentation</a
@@ -48,7 +48,7 @@
           and
           <a
             class="external-link"
-            href="https://github.com/lightningnetwork/lnd"
+            href="https://github.com/stratum-mining"
             target="_blank"
             rel="noopener noreferrer"
             >contribute</a
@@ -150,7 +150,7 @@ export default {
       return this.$page.frontmatter;
     },
   },
-  created() {
+  mounted() {
     window.addEventListener("scroll", this.handleScroll);
   },
   destroyed() {
