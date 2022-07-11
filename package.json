@@ -8,12 +8,24 @@
     "email": ""
   },
   "repository": "/stratumprotocol.org",
+  "config": {
+    "dist": "src/.vuepress/dist",
+    "port": "8080",
+    "linkcheck": "blc -ro --filter-level 2 --requests 1"
+  },
   "scripts": {
     "dev": "vuepress dev src",
-    "build": "vuepress build src"
+    "build": "vuepress build src",
+    "linkcheck": "start-server-and-test linkcheck:serve $npm_package_config_port linkcheck:local",
+    "linkcheck:serve": "serve -p $npm_package_config_port $npm_package_config_dist",
+    "linkcheck:local": "$npm_package_config_linkcheck http://localhost:$npm_package_config_port",
+    "linkcheck:prod": "$npm_package_config_linkcheck https://stratumprotocol.org"
   },
   "license": "MIT",
   "devDependencies": {
-    "vuepress": "1.9.7"
+    "serve": "^13.0.4",
+    "start-server-and-test": "^1.14.0",
+    "vuepress": "1.9.7",
+    "broken-link-checker": "^0.7.8"
   }
 }
