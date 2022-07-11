@@ -1,13 +1,13 @@
 name: CI
 
 on:
-  # Run the build for pushes and pull requests targeting master
+  # Run the build for pushes and pull requests targeting main
   push:
     branches:
-      - master
+      - main
   pull_request:
     branches:
-      - master
+      - main
 
 jobs:
   build:
