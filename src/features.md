@@ -1,6 +1,6 @@
 ---
 layout: DocumentationLayout
-pageHeading: Reference Implementation
+pageHeading: Features
 nav:
   - text: Features
     link: /features/
