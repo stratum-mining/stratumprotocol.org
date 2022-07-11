@@ -14,11 +14,17 @@
     src: url(/fonts/Rubik-Regular.ttf) format("truetype");
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 h1, h2, h3, h4 {
     font-family: 'SpaceGrotesk';
     font-style: normal;
     font-weight: 700;
     color: #FFFFFF;
+
+    border-bottom: none;
 }
 
 h1 {
@@ -50,15 +56,17 @@ p {
     color: #99B5D0;
 }
 
-p.bodyText {
+.body-text {
     font-size: 18px;
+    line-height: 28px;
 }
 
-p.bodyText2 {
+.body-text2 {
     font-size: 20px;
+    line-height: 28px;
 }
 
-p.bodyText3 {
+.body-text3 {
     font-size: 30px;
     line-height: 36px;
 }
@@ -89,7 +97,37 @@ a {
     cursor: pointer;
 }
 
+ul, ol {
+  list-style: none;
+  padding-left: 0;
+}
 
+.page-heading {
+    position: relative;
+    
+    font-family: SpaceGrotesk;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 31px;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+
+    margin-bottom: 76px;
+
+    color: #FFFFFF;
+}
+
+.page-heading::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -16px;
+
+    width: 48px;
+    height: 4px;
+    background: #E83F42;
+}
 
 .flex-col {
     display: flex;

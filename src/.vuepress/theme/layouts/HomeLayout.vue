@@ -25,9 +25,14 @@
         <div class="hero-use-case">
           <div class="hero-use-case-text">{{ data.actionText }}</div>
           <div class="hero-use-case-ctas">
-            <button v-for="feature of data.features" :key="feature.value">
-              {{ feature.title }}
-            </button>
+            <a
+              v-for="feature of data.features"
+              :key="feature.value"
+              :href="`#${feature.value}`"
+              @click="scrollTo($event, feature.value)"
+            >
+              <button>{{ feature.title }}</button>
+            </a>
           </div>
         </div>
 
@@ -70,9 +75,15 @@
       <div class="introduction flex-col">
         <h1>{{ data.introductionTitle }}</h1>
         <p>{{ data.introductionText }}</p>
-        <a
-          >{{ data.introductionCtaTitle
-          }}<svg
+        <NavLink
+          :item="{
+            link: data.introductionCtaLink,
+            text: data.introductionCtaTitle,
+          }"
+        >
+        </NavLink>
+
+        <!-- <svg
             xmlns="http://www.w3.org/2000/svg"
             class="arrow-right"
             fill="none"
@@ -84,8 +95,8 @@
               stroke-linecap="round"
               stroke-linejoin="round"
               d="M14 5l7 7m0 0l-7 7m7-7H3"
-            /></svg
-        ></a>
+            />
+          </svg> -->
       </div>
 
       <div
@@ -95,6 +106,7 @@
         v-bind:style="{
           flexDirection: index % 2 === 0 ? 'row' : 'row-reverse',
         }"
+        :id="feature.value"
       >
         <div class="feature-text flex-col">
           <h2>{{ feature.title }}</h2>
@@ -147,7 +159,10 @@ export default {
   methods: {
     handleScroll() {
       this.showGradientBg = window.scrollY > 0;
-      console.log(this);
+    },
+    scrollTo(event, anchor) {
+      event.preventDefault();
+      document.getElementById(anchor)?.scrollIntoView({ behavior: "smooth" });
     },
   },
 };
@@ -241,8 +256,10 @@ export default {
 }
 
 .external-link {
+  position: relative;
   text-decoration: underline;
   cursor: pointer;
+  z-index: 15;
 }
 
 .footer {
@@ -250,11 +267,12 @@ export default {
   margin-bottom: 24px;
   color: #c1ddf9;
   transition: opacity 0.2s;
-  z-index: 30
+  z-index: 30;
 }
 
 .bg-gradient {
   position: absolute;
+  z-index: 10;
   left: 0;
   bottom: -150px;
   height: 400px;
@@ -299,6 +317,7 @@ export default {
   width: 1140px;
   justify-content: space-between;
   margin-bottom: 144px;
+  scroll-margin-top: 200px;
 }
 
 .feature-text {
