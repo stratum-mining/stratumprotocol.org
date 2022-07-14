@@ -23,10 +23,20 @@ module.exports = {
       "/implementation/": "auto",
       "/": "auto",
     },
+    nav: [
+      { text: "Features", link: "/features/" },
+      { text: "How To", link: "/how-to/" },
+      { text: "Implementation", link: "/implementation/" },
+      { text: "Specifications", link: "/specifications/" },
+    ],
   },
 
   /**
    * Apply plugins，ref：https://v1.vuepress.vuejs.org/zh/plugin/
    */
   plugins: ["@vuepress/plugin-back-to-top", "@vuepress/plugin-medium-zoom"],
+
+  postcss: {
+    plugins: [require("tailwindcss")(), require("autoprefixer")],
+  },
 };
