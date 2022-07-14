@@ -67,8 +67,8 @@ function renderLink(h, to, text, active, level) {
       exactActiveClass: "",
     },
     class: {
-      active,
-      "sidebar-link": true,
+      "text-links": active,
+      "text-md text-bold inline-block w-full hover:text-links w-full": true,
     },
   };
   if (level > 2) {
@@ -112,36 +112,6 @@ function renderExternal(h, to, text) {
 }
 </script>
 
-<style lang="css">
-.sidebar .sidebar-sub-headers {
-  padding-left: 1rem;
-  font-size: 0.95em;
-}
-
-a.sidebar-link {
-  font-size: 1em;
-  font-weight: 400;
-  display: inline-block;
-  color: #ffffff;
-  border-left: 0.25rem solid transparent;
-  padding: 0.35rem 1rem 0.35rem 1.25rem;
-  line-height: 1.4;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-a.sidebar-link:hover {
-  color: #22c55e;
-}
-
-a.sidebar-link.active {
-  font-weight: 600;
-  color: #22c55e;
-}
-
-.sidebar-sub-headers {
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-  border-left: none;
-}
+<style lang="styl">
+@import "../../styles/theme.styl";
 </style>

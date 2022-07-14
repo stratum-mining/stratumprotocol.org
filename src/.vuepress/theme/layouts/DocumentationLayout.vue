@@ -1,46 +1,57 @@
 <template>
   <div
-    class="container"
+    class="absolute t-0 w-screen bg-levelOne"
     :class="pageClasses"
     @touchstart="onTouchStart"
     @touchend="onTouchEnd"
   >
-    <div class="top-scene flex-col">
-      <img class="top-scene-blur" src="/assets/transparent-blur.svg" />
+    <div
+      class="absolute w-screen h-screen bg-cover bg-no-repeat bg-top flex flex-col"
+      :style="{
+        backgroundImage: `radial-gradient(41.01% 41.01% at 50% 50%, rgba(1, 20, 38, 0) 0%, rgba(1, 20, 38, 0.8) 100%), url(/assets/documentation-scene.svg)`,
+      }"
+    >
+      <img
+        class="w-max-content h-full max-w-full max-h-full m-auto"
+        src="/assets/transparent-blur.svg"
+      />
+      <div
+        class="absolute z-[10] left-0 -bottom-14 h-52 w-full"
+        :style="{
+          backgroundImage: 'linear-gradient(#01142600 0%, #011426 80%)',
+        }"
+      />
     </div>
 
-    <header class="documentation-header flex-row">
-      <img class="logo" src="/assets/stratum-v2-logo-with-text.svg" />
-      <nav class="flex-row">
-        <NavLink
-          v-for="link of data.nav"
-          :key="link.link"
-          class="nav-link body-text"
-          :item="{ link: link.link, text: link.text }"
-        />
-      </nav>
-    </header>
+    <Navbar @toggle-sidebar="toggleSidebar" />
 
-    <SideBar class="sidebar" :items="sidebarItems" />
+    <div class="relative w-[1280px] mx-auto">
+      <SideBar
+        class="ml-[calc(50vw-640px)] z-[30] bg-transparent border-none w-max-content mt-32 pl-8 max-h-[600px]"
+        :items="sidebarItems"
+      />
 
-    <div class="content-container">
-      <div v-if="data.pageHeading" class="page-heading">
-        {{ data.pageHeading }}
+      <div
+        class="relative bg-levelTwo z-[10] mx-8 py-8 px-12 my-14 lg:ml-[315px] lg:py-14 lg:px-24"
+      >
+        <div v-if="data.pageHeading" class="page-heading">
+          {{ data.pageHeading }}
+        </div>
+
+        <Content />
       </div>
-
-      <Content />
     </div>
   </div>
 </template>
 
 <script>
-import NavLink from "@theme/components/NavLink.vue";
+import Navbar from "@theme/components/Navbar.vue";
 import { resolveSidebarItems } from "../../utils";
 import SideBar from "@theme/components/Sidebar.vue";
 
 export default {
   name: "Home",
-  components: { NavLink, SideBar },
+  components: { Navbar, SideBar },
 
   mounted() {
     this.$router.afterEach(() => {
@@ -117,86 +128,6 @@ export default {
 };
 </script>
 
-<style scoped lang="css">
-.container {
-  position: absolute;
-  top: 0;
-  width: 100vw;
-  background: #011426;
-}
-
-.documentation-header {
-  position: relative;
-  z-index: 10;
-  justify-content: space-between;
-  margin-top: 32px;
-  padding: 0 56px;
-}
-
-.documentation-header > logo {
-  height: 52px;
-}
-
-.documentation-header .nav-link {
-  margin-left: 48px;
-  font-family: Rubik;
-  cursor: pointer;
-}
-
-.documentation-header .nav-link:hover {
-  color: #22c55e;
-}
-
-.content-container {
-  position: relative;
-  z-index: 10;
-  width: 810px;
-  min-height: 1765px;
-  background: #031c34;
-  margin: 54px auto;
-  padding: 56px 80px;
-}
-
-.top-scene {
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-
-  background-image: radial-gradient(
-      41.01% 41.01% at 50% 50%,
-      rgba(1, 20, 38, 0) 0%,
-      rgba(1, 20, 38, 0.8) 100%
-    ),
-    url(/assets/documentation-scene.svg);
-  background-size: 100% auto;
-  background-repeat: no-repeat;
-  background-position: top;
-}
-
-.top-scene::after {
-  position: absolute;
-  content: "";
-  z-index: 10;
-  left: 0;
-  bottom: -50px;
-  height: 200px;
-  width: 100%;
-  transition: opacity 0.3s;
-  background: linear-gradient(#01142600 0%, #011426 80%);
-}
-
-.top-scene-blur {
-  width: max-content;
-  height: 100%;
-  margin: auto;
-}
-
-.sidebar {
-  background: transparent;
-  border: none;
-  width: 300px;
-  height: 844px;
-  margin-left: 54px;
-  margin-top: 68px;
-}
+<style scoped lang="styl">
+@import "../../styles/theme.styl";
 </style>

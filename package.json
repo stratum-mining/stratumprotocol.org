@@ -23,9 +23,13 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "autoprefixer": "^9.0.0",
+    "broken-link-checker": "^0.7.8",
+    "postcss-import": "^14.1.0",
+    "postcss-loader": "^7.0.1",
     "serve": "^13.0.4",
     "start-server-and-test": "^1.14.0",
-    "vuepress": "1.9.7",
-    "broken-link-checker": "^0.7.8"
+    "tailwindcss": "^3.1.5",
+    "vuepress": "1.9.7"
   }
 }
