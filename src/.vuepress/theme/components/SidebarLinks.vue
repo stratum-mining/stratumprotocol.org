@@ -1,8 +1,9 @@
-// Forked from https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/theme-default/components/SidebarLinks.vue
+// Forked from
+https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/theme-default/components/SidebarLinks.vue
 
 <template>
-  <ul v-if="items.length" class="sidebar-links">
-    <li class="sidebar-link-item body-text" v-for="(item, i) in items" :key="i">
+  <ul v-if="items.length">
+    <li class="mb-8 w-52" v-for="(item, i) in items" :key="i">
       <SidebarGroup
         v-if="item.type === 'group'"
         :item="item"
@@ -10,14 +11,8 @@
         :collapsable="item.collapsable || item.collapsible"
         :depth="depth"
         @toggle="toggleGroup(i)"
-        v-bind:class="{ active: isActive(item) }"
       />
-      <SidebarLink
-        v-else
-        :sidebar-depth="sidebarDepth"
-        :item="item"
-        v-bind:class="{ active: isActive(item) }"
-      />
+      <SidebarLink v-else :sidebar-depth="sidebarDepth" :item="item" />
     </li>
   </ul>
 </template>
@@ -25,7 +20,6 @@
 <script>
 import SidebarGroup from "@theme/components/SidebarGroup.vue";
 import SidebarLink from "@theme/components/SidebarLink.vue";
-import { isActive } from "../../utils";
 export default {
   name: "SidebarLinks",
   components: { SidebarGroup, SidebarLink },
@@ -58,11 +52,6 @@ export default {
     toggleGroup(index) {
       this.openGroupIndex = index === this.openGroupIndex ? -1 : index;
     },
-    isActive(page) {
-      console.log(this.$route, page);
-      if (!page.path) return false;
-      return isActive(this.$route, page.path);
-    },
   },
 };
 function resolveOpenGroupIndex(route, items) {
@@ -90,20 +79,5 @@ function descendantIsActive(route, item) {
 }
 </script>
 
-<style scoped>
-.sidebar-link-item {
-  margin-bottom: 24px;
-
-  font-family: "Rubik";
-  font-style: normal;
-  font-weight: 400;
-}
-
-.sidebar-link-item a:hover {
-  color: #22c55e;
-}
-
-.active a {
-  color: #22c55e;
-}
-</style>
+<style scoped lang="styl">
+@import "../../styles/theme.styl";</style>
