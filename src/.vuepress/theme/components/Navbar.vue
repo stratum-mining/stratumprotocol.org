@@ -1,8 +1,15 @@
 <template>
-  <header class="relative z-[20] bg-transparent border-b-none flex flex-row justify-between h-12 mt-8 px-10 lg:h-20 lg:mt-12 lg:px-14">
+  <header
+    :class="
+      classNames(
+        'fixed top-0 left-0 z-[20] bg-transparent border-b-none flex flex-row justify-between h-12 lg:h-20 mt-3 md:mt-8 lg:mt-12 px-4 md:px-10 lg:px-14',
+        'w-[calc(100vw-32px)] md:w-[calc(100vw-80px)] lg:w-[calc(100vw-112px)]'
+      )
+    "
+  >
     <SidebarButton @toggle-sidebar="$emit('toggle-sidebar')" />
 
-    <RouterLink :to="$localePath" class="h-full">
+    <RouterLink :to="$localePath" class="ml-12 md:ml-0 h-full">
       <img
         v-if="$site.themeConfig.logo"
         class="h-full"
@@ -11,10 +18,18 @@
       />
     </RouterLink>
 
-    <div
-      class="hidden lg:block"
-    >
-      <NavLink v-for="item of nav" :key="item.link" :item="item" class="hover:text-links mr-8 text-sm lg:text-lg lg:mr-12" />
+    <div class="hidden lg:block">
+      <NavLink
+        v-for="item of nav"
+        :key="item.link"
+        :item="item"
+        :class="
+          classNames(
+            'hover:text-links mr-8 text-sm lg:text-lg lg:mr-12',
+            isActive($route, item.link) && 'text-links'
+          )
+        "
+      />
     </div>
   </header>
 </template>
@@ -23,6 +38,7 @@
 import SearchBox from "@SearchBox";
 import SidebarButton from "@theme/components/SidebarButton.vue";
 import NavLink from "@theme/components/NavLink.vue";
+import { classNames, isActive } from "../../utils";
 
 export default {
   name: "Navbar",
@@ -41,6 +57,7 @@ export default {
       return this.$themeLocaleConfig.nav || this.$site.themeConfig.nav || [];
     },
   },
+  methods: { classNames, isActive },
   mounted() {
     const MOBILE_DESKTOP_BREAKPOINT = 719; // refer to config.styl
     const NAVBAR_VERTICAL_PADDING =

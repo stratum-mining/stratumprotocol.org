@@ -2,8 +2,8 @@
 https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/theme-default/components/SidebarLinks.vue
 
 <template>
-  <ul v-if="items.length">
-    <li class="mb-8 w-52" v-for="(item, i) in items" :key="i">
+  <ul v-if="items.length" class="mt-6 md:mt-0">
+    <li class="mb-4 md:mb-8 w-52" v-for="(item, i) in items" :key="i">
       <SidebarGroup
         v-if="item.type === 'group'"
         :item="item"
@@ -80,4 +80,5 @@ function descendantIsActive(route, item) {
 </script>
 
 <style scoped lang="styl">
-@import "../../styles/theme.styl";</style>
+@import "../../styles/theme.styl";
+</style>

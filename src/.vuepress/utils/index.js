@@ -41,6 +41,7 @@ export function ensureExt(path) {
 }
 
 export function isActive(route, path) {
+  console.log(route, path);
   const routeHash = decodeURIComponent(route.hash);
   const linkHash = getHash(path);
   if (linkHash && routeHash !== linkHash) {
@@ -244,3 +245,5 @@ function resolveItem(item, pages, base, groupDepth = 1) {
     };
   }
 }
+
+export const classNames = (...classes) => classes.filter(Boolean).join(" ");
