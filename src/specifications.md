@@ -1,15 +1,6 @@
 ---
 layout: DocumentationLayout
 pageHeading: Specifications
-nav:
-  - text: Features
-    link: /features/
-  - text: How To
-    link: /how-to/
-  - text: Implementation
-    link: /implementation/
-  - text: Specifications
-    link: /specifications/
 ---
 
 # Introduction

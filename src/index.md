@@ -12,6 +12,7 @@ links:
     url: /milestones/
   - title: Github
     url: https://github.com/stratum-mining
+    icon: /assets/github-icon.svg
 introductionTitle: What is Stratum 2?
 introductionText: Stratum V2 is the next generation protocol for pooled mining. It focuses on making data transfers more efficient, reducing physical infrastructure requirements for mining operations, and increasing security. Additionally, Stratum V2 introduces three new sub-protocols that allow miners to select their own transaction sets through a negotiation process with pools, improving decentralization.
 introductionCtaTitle: Explore Documentation
