@@ -1,20 +1,24 @@
 <template>
   <div
-    class="absolute t-0 w-screen bg-levelOne"
-    :class="pageClasses"
+    :class="classNames('absolute top-0 w-screen bg-levelOne pt-8 md:pt-32')"
     @touchstart="onTouchStart"
     @touchend="onTouchEnd"
   >
+    <Navbar @toggle-sidebar="toggleSidebar" />
+
+    <!-- Top Section background -->
     <div
-      class="absolute w-screen h-screen bg-cover bg-no-repeat bg-top flex flex-col"
+      class="absolute top-0 w-screen h-screen bg-cover bg-no-repeat bg-top flex flex-col"
       :style="{
         backgroundImage: `radial-gradient(41.01% 41.01% at 50% 50%, rgba(1, 20, 38, 0) 0%, rgba(1, 20, 38, 0.8) 100%), url(/assets/documentation-scene.svg)`,
       }"
     >
+      <!-- Background Highlights -->
       <img
         class="w-max-content h-full max-w-full max-h-full m-auto"
         src="/assets/transparent-blur.svg"
       />
+      <!-- Gradient filter on background image -->
       <div
         class="absolute z-[10] left-0 -bottom-14 h-52 w-full"
         :style="{
@@ -23,16 +27,21 @@
       />
     </div>
 
-    <Navbar @toggle-sidebar="toggleSidebar" />
-
-    <div class="relative w-[1280px] mx-auto">
+    <!-- Content & Sidebar -->
+    <div class="relative w-screen lg:w-[1280px] mx-auto">
       <SideBar
-        class="ml-[calc(50vw-640px)] z-[30] bg-transparent border-none w-max-content mt-32 pl-8 max-h-[600px]"
+        :class="
+          classNames(
+            'z-[30] l-0 pl-8 max-h-[600px] border-none lg:ml-[calc(50vw-640px)] bg-levelOne md:bg-transparent mt-16 md:mt-32 w-[300px] md:w-max-content',
+            isSidebarOpen && 'translate-x-0'
+          )
+        "
         :items="sidebarItems"
       />
 
+      <!-- Main content -->
       <div
-        class="relative bg-levelTwo z-[10] mx-8 py-8 px-12 my-14 lg:ml-[315px] lg:py-14 lg:px-24"
+        class="relative bg-levelTwo z-[10] mx-3 lg:mx-8 py-6 px-6 md:py-8 md:px-12 my-14 lg:ml-[315px] lg:py-14 lg:px-24"
       >
         <div v-if="data.pageHeading" class="page-heading">
           {{ data.pageHeading }}
@@ -46,7 +55,7 @@
 
 <script>
 import Navbar from "@theme/components/Navbar.vue";
-import { resolveSidebarItems } from "../../utils";
+import { classNames, resolveSidebarItems } from "../../utils";
 import SideBar from "@theme/components/Sidebar.vue";
 
 export default {
@@ -86,21 +95,10 @@ export default {
         this.$localePath
       );
     },
-
-    pageClasses() {
-      const userPageClass = this.$page.frontmatter.pageClass;
-      return [
-        {
-          "no-navbar": !this.shouldShowNavbar,
-          "sidebar-open": this.isSidebarOpen,
-          "no-sidebar": !this.shouldShowSidebar,
-        },
-        userPageClass,
-      ];
-    },
   },
 
   methods: {
+    classNames: classNames,
     toggleSidebar(to) {
       this.isSidebarOpen = typeof to === "boolean" ? to : !this.isSidebarOpen;
       this.$emit("toggle-sidebar", this.isSidebarOpen);
