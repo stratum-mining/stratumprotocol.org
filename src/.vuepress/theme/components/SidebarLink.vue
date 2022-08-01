@@ -1,4 +1,5 @@
-// Forked from https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/theme-default/components/SidebarLink.vue
+// Forked from
+https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/theme-default/components/SidebarLink.vue
 
 <script>
 import { isActive, hashRE, groupHeaders } from "../../utils";
