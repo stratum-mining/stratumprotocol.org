@@ -32,11 +32,12 @@
       <SideBar
         :class="
           classNames(
-            'z-[30] l-0 pl-8 max-h-[600px] border-none lg:ml-[calc(50vw-640px)] bg-levelOne md:bg-transparent mt-16 md:mt-32 w-[300px] md:w-max-content',
+            'z-[30] l-0 pl-8 max-h-[600px] border-none lg:ml-[calc(50vw-640px)] bg-levelOne md:bg-transparent/25 mt-16 md:mt-32 w-[300px] md:w-max-content',
             isSidebarOpen && 'translate-x-0'
           )
         "
         :items="sidebarItems"
+id='hide-sidebar'
       />
 
       <!-- Main content -->
