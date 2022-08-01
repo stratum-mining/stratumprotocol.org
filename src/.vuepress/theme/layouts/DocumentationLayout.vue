@@ -37,7 +37,7 @@
           )
         "
         :items="sidebarItems"
-id='hide-sidebar'
+        id="hide-sidebar"
       />
 
       <!-- Main content -->

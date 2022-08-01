@@ -4,7 +4,7 @@ layout: HomeLayout
 background: /assets/home-background.svg
 heroImage: /assets/v2-logo.svg
 tagline: The next gen bitcoin mining protocol.
-actionText: 'Choose your use case:'
+actionText: "Choose your use case:"
 links:
   - title: Blog
     url: /blog/
