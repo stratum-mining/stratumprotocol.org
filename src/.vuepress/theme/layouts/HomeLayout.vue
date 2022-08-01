@@ -29,7 +29,7 @@
 
       <div class="flex flex-col items-center w-screen">
         <img
-          class="relative w-max-content max-w-[90%] m-auto"
+          class="relative w-11/12 md:w-[600px] lg:w-[700px] m-auto"
           :src="data.heroImage"
         />
         <div class="mt-8 w-max-content text-center text-lg lg:text-2xl">
@@ -46,7 +46,7 @@
               @click="scrollTo($event, feature.value)"
             >
               <button
-                class="relative z-[30] w-44 lg:w-56 mb-6 lg:mb-8 rounded-lg text-sm lg:text-lg mx-3 py-2 lg:px-8 lg:py-4 bg-transparent cursor-pointer text-white border-solid border-[1.5px] border-white hover:border-links hover:text-links"
+                class="relative z-[30] w-44 lg:w-56 mb-6 lg:mb-8 rounded-lg text-sm lg:text-lg mx-3 py-2 lg:px-8 lg:py-4 bg-transparent cursor-pointer text-white border-solid border-[1.5px] border-white hover:border-links hover:text-links font-bold"
               >
                 {{ feature.title }}
               </button>
@@ -92,8 +92,8 @@
       ></div>
     </div>
 
-    <div class="flex flex-col pt-36 mb-80 z-[20]">
-      <div class="flex flex-col mb-44 lg:mb-80">
+    <div class="flex flex-col pt-36 mb-10 md:mb-44 z-[20]">
+      <div class="flex flex-col mb-44">
         <h1 class="mb-8 text-3xl lg:text-5xl">{{ data.introductionTitle }}</h1>
         <p
           class="w-[1040px] max-w-[90vw] text-center mt-O mb-12 mx-auto text-base lg:text-lg"
@@ -104,7 +104,7 @@
           {{ data.introductionCtaTitle }}
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="w-[20px] h-[19px] ml-2"
+            class="w-[20px] h-[19px] ml-2 align-middle"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
