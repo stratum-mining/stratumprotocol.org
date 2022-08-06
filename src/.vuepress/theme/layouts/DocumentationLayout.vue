@@ -28,11 +28,11 @@
     </div>
 
     <!-- Content & Sidebar -->
-    <div class="relative w-screen lg:w-[1280px] mx-auto">
+    <div class="relative w-screen max-w-7xl mx-auto">
       <SideBar
         :class="
           classNames(
-            'z-[30] l-0 pl-8 max-h-[600px] border-none lg:ml-[calc(50vw-640px)] bg-levelOne md:bg-transparent/25 mt-16 md:mt-32 w-[300px] md:w-max-content',
+            'z-[30] l-0 pl-8 max-h-[600px] border-none lg:ml-[calc(50vw-640px)] bg-levelOne md:bg-transparent/25 mt-[95px] md:mt-32 w-[300px] md:w-max-content',
             isSidebarOpen && 'translate-x-0'
           )
         "
