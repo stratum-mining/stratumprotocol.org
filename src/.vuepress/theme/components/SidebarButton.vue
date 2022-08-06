@@ -1,6 +1,6 @@
 <template>
   <div
-    class="cursor-pointer block lg:hidden w-5 h-5 absolute p-2.5 t-2.5 l-4"
+    class="cursor-pointer block lg:hidden w-5 h-5 p-2.5"
     @click="$emit('toggle-sidebar')"
   >
     <svg

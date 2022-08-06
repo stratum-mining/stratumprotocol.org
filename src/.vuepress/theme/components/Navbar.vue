@@ -2,7 +2,7 @@
   <header
     :class="
       classNames(
-        'fixed top-0 left-0 z-[20] bg-transparent border-b-none flex flex-row justify-between h-12 lg:h-20 mt-3 md:mt-8 lg:mt-12 px-4 md:px-10 lg:px-14',
+        'fixed top-0 left-0 z-[20] bg-levelOne/90 border-b-none flex flex-row justify-between py-2 px-4 md:px-10 lg:px-14',
         'w-[calc(100vw-32px)] md:w-[calc(100vw-80px)] lg:w-[calc(100vw-112px)]'
       )
     "
@@ -19,17 +19,19 @@
     </RouterLink>
 
     <div class="hidden lg:block">
-      <NavLink
-        v-for="item of nav"
-        :key="item.link"
-        :item="item"
-        :class="
-          classNames(
-            'hover:text-links mr-8 text-sm lg:text-lg lg:mr-12',
-            isActive($route, item.link) && 'text-links'
-          )
-        "
-      />
+      <div class="flex space-x-16">
+        <NavLink
+          v-for="item of nav"
+          :key="item.link"
+          :item="item"
+          :class="
+            classNames(
+              'hover:text-links text-sm lg:text-lg',
+              isActive($route, item.link) && 'text-links'
+            )
+          "
+        />
+      </div>
     </div>
   </header>
 </template>

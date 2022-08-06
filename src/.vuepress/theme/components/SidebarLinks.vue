@@ -2,7 +2,7 @@
 https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/theme-default/components/SidebarLinks.vue
 
 <template>
-  <ul v-if="items.length" class="mt-6 md:mt-0">
+  <ul v-if="items.length" class="mt-1 md:mt-0">
     <li class="space-y-4 md:space-y-8 w-52" v-for="(item, i) in items" :key="i">
       <SidebarGroup
         v-if="item.type === 'group'"

@@ -17,7 +17,7 @@ nav:
 An open-source project was formed to create a reference implementation of the Stratum V2 specifications in Rust.
 
 - [Discord](https://discord.com/)
-- [Github](https://github.com/)
+- [GitHub](https://github.com/)
 - [Contribute](https://github.com/)
 
 ## Technical Description

@@ -2,7 +2,7 @@
 home: true
 layout: HomeLayout
 background: /assets/home-background.svg
-heroImage: /assets/v2-logo.svg
+heroImage: /assets/stratum-v2-logo-with-text.svg
 tagline: The next gen bitcoin mining protocol.
 actionText: "Choose your use case:"
 links:
@@ -10,7 +10,7 @@ links:
     url: /blog/
   - title: Milestones
     url: /milestones/
-  - title: Github
+  - title: GitHub
     url: https://github.com/stratum-mining
     icon: /assets/github-icon.svg
 footerLinks:
