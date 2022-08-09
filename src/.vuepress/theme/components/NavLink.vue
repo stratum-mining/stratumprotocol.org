@@ -1,7 +1,7 @@
 <template>
   <RouterLink
     v-if="isInternal"
-    class="hover:text-links flex flew-row align-center"
+    class="hover:text-links flex flew-row align-center mb-4"
     :to="link"
     :exact="exact"
     @focusout.native="focusoutAction"
