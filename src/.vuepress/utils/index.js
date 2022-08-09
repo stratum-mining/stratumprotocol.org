@@ -41,7 +41,6 @@ export function ensureExt(path) {
 }
 
 export function isActive(route, path) {
-  console.log(route, path);
   const routeHash = decodeURIComponent(route.hash);
   const linkHash = getHash(path);
   if (linkHash && routeHash !== linkHash) {

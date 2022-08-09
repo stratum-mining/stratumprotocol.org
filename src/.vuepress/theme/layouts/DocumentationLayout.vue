@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="classNames('absolute top-0 w-screen bg-levelOne pt-8 md:pt-32')"
+    :class="classNames('absolute top-0 w-screen bg-levelOne pt-8 lg:pt-32')"
     @touchstart="onTouchStart"
     @touchend="onTouchEnd"
   >
@@ -27,17 +27,19 @@
       />
     </div>
 
+    <!-- Sidebar Overlay -->
+    <div
+    @click="toggleSidebar(false)"
+      class="fixed top-0 left-0 h-screen bg-gray-800/25 z-30"
+      v-bind:class="{ [isSidebarOpen ? 'w-screen' : 'w-0']: true }"
+    />
+
     <!-- Content & Sidebar -->
     <div class="relative w-screen max-w-7xl mx-auto">
       <SideBar
-        :class="
-          classNames(
-            'z-[30] l-0 pl-8 max-h-[600px] border-none lg:ml-[calc(50vw-640px)] bg-levelOne md:bg-transparent/25 mt-[95px] md:mt-32 w-[300px] md:w-max-content',
-            isSidebarOpen && 'translate-x-0'
-          )
-        "
+        class="nav-sidebar"
+        v-bind:class="{ open: isSidebarOpen }"
         :items="sidebarItems"
-        id="hide-sidebar"
       />
 
       <!-- Main content -->
@@ -129,4 +131,17 @@ export default {
 
 <style scoped lang="styl">
 @import "../../styles/theme.styl";
+
+.nav-sidebar {
+  transform: translateX(-100%);
+  transition: transform .2s ease;
+
+  @media (min-width: 1024px){
+    transform: translateX(0);
+  }
+}
+
+.open {
+  transform: translateX(0)
+}
 </style>

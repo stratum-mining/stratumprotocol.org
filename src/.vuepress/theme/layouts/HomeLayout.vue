@@ -93,7 +93,7 @@
       <div class="flex flex-col mb-44">
         <h1 class="mb-8 text-3xl lg:text-5xl">{{ data.introductionTitle }}</h1>
         <p
-          class="w-[1040px] max-w-[90vw] text-center mt-O mb-12 mx-auto text-base lg:text-lg"
+          class="w-[1040px] max-w-[90vw] text-center mt-O mb-12 mx-auto text-base lg:text-2xl"
         >
           {{ data.introductionText }}
         </p>
