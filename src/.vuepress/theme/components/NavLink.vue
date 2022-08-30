@@ -1,23 +1,23 @@
 <template>
   <RouterLink
     v-if="isInternal"
-    class="hover:text-links flex flew-row align-center mb-4"
+    class="flex mb-4 hover:text-links flew-row align-center"
     :to="link"
     :exact="exact"
     @focusout.native="focusoutAction"
   >
-    <img class="mr-3" v-if="iconUrl" :src="iconUrl" />
+    <img class="mr-3 w-6 h-6" v-if="iconUrl" :src="iconUrl" />
     <span class="leading-6">{{ item.text }}</span>
   </RouterLink>
   <a
     v-else
     :href="link"
-    class="hover:text-links flex flew-row align-center"
+    class="flex hover:text-links flew-row align-center"
     :target="target"
     :rel="rel"
     @focusout="focusoutAction"
   >
-    <img class="mr-3" v-if="iconUrl" :src="iconUrl" />
+    <img class="mr-3 w-6 h-6" v-if="iconUrl" :src="iconUrl" />
     <span class="leading-6">{{ item.text }}</span>
   </a>
 </template>
