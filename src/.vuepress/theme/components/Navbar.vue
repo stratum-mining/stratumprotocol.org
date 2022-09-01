@@ -2,18 +2,18 @@
   <header
     :class="
       classNames(
-        'fixed top-0 left-0 z-[50] bg-levelOne/90 border-b-none flex flex-row justify-between py-2 px-4 md:px-10 lg:px-14',
+        'fixed top-0 left-0 z-[50] bg-levelOne/90 border-b-none flex flex-row justify-between py-2 px-4 md:px-10 lg:px-14 h-14',
         'w-[calc(100vw-32px)] md:w-[calc(100vw-80px)] lg:w-[calc(100vw-112px)]'
       )
     "
   >
     <SidebarButton @toggle-sidebar="$emit('toggle-sidebar')" />
 
-    <RouterLink :to="$localePath" class="ml-12 md:ml-0 h-full">
+    <RouterLink :to="$localePath" class="ml-12 h-full md:ml-0">
       <img
         v-if="$site.themeConfig.logo"
         class="h-full"
-        src="/assets/stratum-v2-logo-with-text.svg"
+        src="/assets/stratum-v2-icon-with-text.svg"
         :alt="$siteTitle"
       />
     </RouterLink>

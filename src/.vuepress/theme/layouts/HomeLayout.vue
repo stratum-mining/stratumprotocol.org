@@ -9,7 +9,10 @@
         backgroundImage: `radial-gradient(#01142600 0%,#011426 100%), url(${data.background})`,
       }"
     >
-      <nav class="absolute top-0 right-0 justify-end mt-8 w-full md:flex" v-if="data.links">
+      <nav
+        class="absolute top-0 right-0 justify-end mt-8 w-full md:flex"
+        v-if="data.links"
+      >
         <div class="flex flex-wrap justify-around md:block md:mr-8 lg:mr-16">
           <div
             class="justify-end mb-4 md:flex align-center lg:mb-8 md:text-right md:ml-auto"
@@ -25,11 +28,8 @@
       </nav>
 
       <div class="flex flex-col items-center w-screen">
-        <img
-          class="relative w-11/12 md:w-[220px] m-auto"
-          :src="data.heroImage"
-        />
-        <div class="mt-8 text-lg text-center w-[680px] lg:text-2xl ">
+        <img class="relative w-3/5 md:w-[220px] m-auto" :src="data.heroImage" />
+        <div class="mt-8 text-lg text-center max-w-full w-[680px] lg:text-2xl">
           {{ data.tagline }}
         </div>
       </div>
@@ -47,7 +47,7 @@
           <button
             class="flex flex-row items-center px-8 h-16 text-white rounded-lg border-none cursor-pointer group bg-links"
           >
-            <span class="text-lg font-semibold">
+            <span class="text-sm font-semibold sm:text-lg">
               {{ data.introductionCtaTitle }}
             </span>
             <svg
