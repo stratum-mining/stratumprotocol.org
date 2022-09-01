@@ -145,42 +145,26 @@
       </div>
     </div>
 
-<div class='z-20 flex flex-col mb-24 md:mb-36 px-6'>
-        <h1 class="mb-8 text-3xl lg:text-5xl">{{ data.supportersTitle }}</h1>
-        <p
-          class="w-full md:w-[500px] lg:w-[800px] text-center mb-12 text-2xl"
+    <div class="z-20 flex flex-col mb-24 md:mb-36 px-6">
+      <h1 class="mb-8 text-3xl lg:text-5xl">{{ data.supportersTitle }}</h1>
+      <p class="w-full md:w-[500px] lg:w-[800px] text-center mb-12 text-2xl">
+        {{ data.supportersText }}
+      </p>
+
+      <div class="flex flex-wrap justify-center items-center mb-10">
+        <a
+          v-for="(supporter, index) of data.supporters"
+          :key="supporter.value"
+          class="my-10"
+          :id="supporter.value"
+          :href="supporter.link"
         >
-          {{ data.supportersText }}
-        </p>
+          <img :src="supporter.image" />
+        </a>
+      </div>
+      <PrimaryLink title="Support Developers" url="" />
+    </div>
 
-
-
-<div class="flex flex-wrap justify-center items-center mb-10">
-
-
-<a         v-for="(supporter, index) of data.supporters"
-        :key="supporter.value"
-class='my-10'
-        :id="supporter.value"
-  :href="supporter.link"
-
->
-    <img
-
-      :src="supporter.image"
-    />
-
-</a>
-
-
-
-
-
-
-
-</div>
-   <PrimaryLink title="Support Developers" url="" />
-</div>
     <footer
       class="text-2xl text-center mb-6 text-bodyText transition-opacity z-[20] flex flex-wrap justify-center items-center"
     >
@@ -213,7 +197,7 @@ export default {
 
   components: {
     NavLink,
-PrimaryLink,
+    PrimaryLink,
   },
 
   data() {

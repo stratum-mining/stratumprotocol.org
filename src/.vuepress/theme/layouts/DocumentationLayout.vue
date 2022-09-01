@@ -29,7 +29,7 @@
 
     <!-- Sidebar Overlay -->
     <div
-    @click="toggleSidebar(false)"
+      @click="toggleSidebar(false)"
       class="fixed top-0 left-0 h-screen bg-gray-800/25 z-30"
       v-bind:class="{ [isSidebarOpen ? 'w-screen' : 'w-0']: true }"
     />
