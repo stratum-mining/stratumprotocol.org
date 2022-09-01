@@ -16,25 +16,22 @@ footerLinks:
     icon: /assets/twitter.svg
   - url: https://discord.gg/TsuT3YJWKN
     icon: /assets/discord.svg
-introductionTitle: What is Stratum V2?
-introductionText: Stratum V2 (SV2) is the next generation protocol for pooled mining. It makes data transfers more efficient, reduces miners' infrastructure requirements, and secures miners' network communications. Stratum V2's subprotocols allow miners to build their own block templates and mine their selected transactions to further decentralize the Bitcoin mining network.
-introductionCtaTitle: Explore the Documentation
-introductionCtaLink: implementation/
-features:
-  - title: Miners
-    value: miners
-    text: SV2's reference implementation mining proxy lets SV1 mining farms proxy to SV2 with 0 downtime, offering immediate improvements to miners' network security. Full integration of the SV2 implementation also improves data transfer efficiency and reduces the miner's infrastructure requirements.
-    image: https://media.istockphoto.com/photos/man-mining-for-bitcoin-picture-id939519232?s=612x612
-    imageOverlay: /assets/orange-particles.svg
-  - title: Manufacturers
-    value: manufacturers
-    text: SV2 enables header-only mining for end-mining devices, completely eliminating the need for extranonce, Merkle path handling, and any coinbase modification on downstream machines. This simplified mode streamlines miners' computation and lightens server-side validation.
-    image: https://media.istockphoto.com/photos/senior-worker-working-with-welding-tool-picture-id1266644220?s=612x612
-    imageOverlay: /assets/blue-particles.svg
-  - title: Pool Operators
-    value: pool-operators
-    text: SV2's reference implementation provides a set of FFI bindings for mining pools to integrate SV2 into their existing software stack. This allows pools to use SV2 without any additional configuration, in conjunction with the mining-proxy allowing mining pools' workers to operate on either Sv1 or Sv2 protocol implementations.
-    image: https://media.istockphoto.com/vectors/summer-swimming-pool-background-illustration-with-inflatable-ring-vector-id1304928779?s=612x612
-    imageOverlay: /assets/purple-planet.svg
+whyTitle: Why Stratum V2?
+why:
+- title: Security
+  text: V2 introduces by-default encryption and authentication using the NOISE protocol, hardening the Stratum protocol against v1’s known man-in-the-middle attack vectors.
+  image: /assets/padlock.svg
+- title: Performance
+  text: V2 optimizes data transfer size and frequency between miners, proxies, & pool operators. Faster, more efficient communication means higher submission rates and reduced variance in hash rate (in turn, miner payouts).
+  image: /assets/speedometer.svg
+- title: Flexibility
+  text: V2 is an update to V1, not a separate protocol. It improves on the logic and framework of V1, allowing for incremental and modular improvements by miners and mining pools currently using stratum V1. Critically, v1 implementations can efficiently communicate with v2 implementations with minimal tradeoffs via either pool or client side proxy translations.
+  image: /assets/blockchain.svg
+- title: Censorship Resistance
+  text: V2 integrates distributed transaction selection into the protocol itself. End-miners can build and select their own transactions sets and block templates, further decentralizing the Bitcoin Network.
+  image: /assets/speaker.svg
+- title: Standardization
+  text: V1's failure to precisely define its specifications led to multiple semicompatible implementations with varying dialects. Stratum V2 precisely defines its protocol parameters to ensure cross-compatibility between and among pools and end-mining devices.
+  image: /assets/compare.svg
 footer: © 2022 Powered by the glorious passion and dedication of the open-source bitcoin community.
 ---
