@@ -97,22 +97,28 @@
         >
           {{ data.introductionText }}
         </p>
-        <RouterLink class="text-xl text-links" :to="data.introductionCtaLink">
-          {{ data.introductionCtaTitle }}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="w-[20px] h-[19px] ml-2 align-middle"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            stroke-width="2"
+        <RouterLink :to="data.introductionCtaLink">
+          <button
+            class="flex flex-row items-center px-8 h-16 text-white rounded-lg border-none cursor-pointer group bg-links"
           >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M14 5l7 7m0 0l-7 7m7-7H3"
-            />
-          </svg>
+            <span class="text-lg font-semibold">
+              {{ data.introductionCtaTitle }}
+            </span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="relative left-0 ml-4 w-6 h-6 duration-200 group-hover:left-1"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M14 5l7 7m0 0l-7 7m7-7H3"
+              />
+            </svg>
+          </button>
         </RouterLink>
       </div>
 
