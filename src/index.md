@@ -6,8 +6,6 @@ heroImage: /assets/stratum-v2-logo-with-text.svg
 tagline: The next gen bitcoin mining protocol.
 actionText: "Choose your use case:"
 links:
-  - title: Blog
-    url: /blog/
   - title: Milestones
     url: /milestones/
   - title: GitHub
