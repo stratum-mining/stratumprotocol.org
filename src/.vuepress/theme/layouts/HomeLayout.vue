@@ -98,18 +98,19 @@
           :key="why.value"
           class="w-full md:w-[700px] md:flex md:space-x-8 mb-10"
           :id="why.value"
-
         >
-          <img class='mb-5 md:mb-0 h-10 w-10 bg-icon rounded-2xl p-5' :src="why.image" />
-<div>
-<h2 class='m-0 text-2xl'>{{ why.title }}</h2>
-      <p class="text-2xl">
-        {{ why.text }}
-      </p>
-</div>
+          <img
+            class="mb-5 md:mb-0 h-10 w-10 bg-icon rounded-2xl p-5"
+            :src="why.image"
+          />
+          <div>
+            <h2 class="m-0 text-2xl">{{ why.title }}</h2>
+            <p class="text-2xl">
+              {{ why.text }}
+            </p>
+          </div>
         </div>
       </div>
-
     </div>
 
     <footer
