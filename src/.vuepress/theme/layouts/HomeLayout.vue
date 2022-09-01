@@ -89,11 +89,11 @@
       ></div>
     </div>
 
-    <div class="flex flex-col pt-36 mb-10 z-[20]">
+    <div class="flex flex-col pt-36 z-[20]">
       <div class="flex flex-col mb-44">
         <h1 class="mb-8 text-3xl lg:text-5xl">{{ data.introductionTitle }}</h1>
         <p
-          class="w-[1040px] max-w-[90vw] text-center mt-O mb-12 mx-auto text-base lg:text-2xl"
+          class="w-[1040px] max-w-[90vw] text-center mt-O mb-12 mx-auto text-2xl"
         >
           {{ data.introductionText }}
         </p>
@@ -145,6 +145,42 @@
       </div>
     </div>
 
+<div class='z-20 flex flex-col mb-24 md:mb-36 px-6'>
+        <h1 class="mb-8 text-3xl lg:text-5xl">{{ data.supportersTitle }}</h1>
+        <p
+          class="w-full md:w-[500px] lg:w-[800px] text-center mb-12 text-2xl"
+        >
+          {{ data.supportersText }}
+        </p>
+
+
+
+<div class="flex flex-wrap justify-center items-center mb-10">
+
+
+<a         v-for="(supporter, index) of data.supporters"
+        :key="supporter.value"
+class='my-10'
+        :id="supporter.value"
+  :href="supporter.link"
+
+>
+    <img
+
+      :src="supporter.image"
+    />
+
+</a>
+
+
+
+
+
+
+
+</div>
+   <PrimaryLink title="Support Developers" url="" />
+</div>
     <footer
       class="text-2xl text-center mb-6 text-bodyText transition-opacity z-[20] flex flex-wrap justify-center items-center"
     >
@@ -170,12 +206,14 @@
 
 <script>
 import NavLink from "@theme/components/NavLink.vue";
+import PrimaryLink from "@theme/components/PrimaryLink.vue";
 
 export default {
   name: "Home",
 
   components: {
     NavLink,
+PrimaryLink,
   },
 
   data() {

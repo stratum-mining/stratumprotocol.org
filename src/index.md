@@ -6,8 +6,6 @@ heroImage: /assets/stratum-v2-logo-with-text.svg
 tagline: The next gen bitcoin mining protocol.
 actionText: "Choose your use case:"
 links:
-  - title: Blog
-    url: /blog/
   - title: Milestones
     url: /milestones/
   - title: GitHub
@@ -38,5 +36,22 @@ features:
     text: SV2's reference implementation provides a set of FFI bindings for mining pools to integrate SV2 into their existing software stack. This allows pools to use SV2 without any additional configuration, in conjunction with the mining-proxy allowing mining pools' workers to operate on either Sv1 or Sv2 protocol implementations.
     image: https://media.istockphoto.com/vectors/summer-swimming-pool-background-illustration-with-inflatable-ring-vector-id1304928779?s=612x612
     imageOverlay: /assets/purple-planet.svg
+supportersTitle: Current Supporters of Stratum V2
+supportersText: Companies and individuals who are supporting developers working on Stratum V2 community implementation.
+supporters:
+- value: foundry
+  image: /assets/foundry-logo.svg
+  link: https://foundrydigital.com/
+- value: spiral
+  image: /assets/spiral-logo.svg
+  link: https://spiral.xyz/
+- value: sob
+  image: /assets/summer-of-bitcoin.svg
+  link: https://www.summerofbitcoin.org/
+- value: galaxy
+  image: /assets/galaxy-logo.svg
+  link: https://www.galaxy.com/
+
+
 footer: © 2022 Powered by the glorious passion and dedication of the open-source bitcoin community.
 ---
