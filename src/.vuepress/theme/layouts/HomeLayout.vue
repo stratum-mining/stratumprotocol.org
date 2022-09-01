@@ -155,7 +155,7 @@
         <a
           v-for="(supporter, index) of data.supporters"
           :key="supporter.value"
-          class="my-10"
+          class="my-10 mx-5"
           :id="supporter.value"
           :href="supporter.link"
         >

@@ -51,6 +51,9 @@ supporters:
   - value: galaxy
     image: /assets/galaxy-logo.svg
     link: https://www.galaxy.com/
+  - value: bitmex
+    image: /assets/bitmex-logo.svg
+    link: https://www.bitmex.com/
 
 footer: © 2022 Powered by the glorious passion and dedication of the open-source bitcoin community.
 ---
