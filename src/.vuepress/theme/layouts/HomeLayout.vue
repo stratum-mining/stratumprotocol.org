@@ -98,16 +98,16 @@
     </div>
 
     <footer
-      class="text-2xl text-center mb-6 text-bodyText transition-opacity z-[20] flex flex-wrap justify-center items-center"
+      class="text-base text-center mb-6 text-bodyText transition-opacity z-[20] flex flex-wrap justify-center items-center"
     >
-      <span class="mx-3 pb-3">
+      <span class="pb-3 mx-3">
         {{ data.footer }}
       </span>
 
       <span
         v-for="link of data.footerLinks"
         :key="link.url"
-        class="ml-3 md:ml-0 pb-3"
+        class="pb-3 ml-3 md:ml-0"
       >
         <NavLink :iconUrl="link.icon" :item="{ link: link.url }" class="w-9" />
       </span>
