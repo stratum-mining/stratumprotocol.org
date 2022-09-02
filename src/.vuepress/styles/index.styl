@@ -129,3 +129,20 @@ ul, ol {
     justify-content: center;
     align-items: center;
 }
+
+.float {
+
+animation: float 10s infinite;
+
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(-10%);
+    animation-timing-function: linear;
+  }
+  50% {
+    transform: translateY(0);
+    animation-timing-function: linear;
+  }
+}
