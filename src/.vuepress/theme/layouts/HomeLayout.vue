@@ -4,7 +4,7 @@
     @scroll="handleScroll"
   >
     <div
-      class="flex relative flex-col justify-center items-center w-full h-screen bg-no-repeat bg-cover"
+      class="flex relative flex-col justify-center items-center w-full min-h-screen bg-no-repeat bg-cover"
       :style="{
         backgroundImage: `radial-gradient(#01142600 0%,#011426 100%), url(${data.background})`,
       }"
@@ -29,10 +29,20 @@
 
       <div class="flex flex-col items-center w-screen">
         <img class="relative w-3/5 md:w-[220px] m-auto" :src="data.heroImage" />
-        <div class="mt-8 text-lg text-center max-w-full w-[680px] lg:text-2xl">
+        <div class="mt-8 text-lg text-center max-w-full w-[750px] lg:text-2xl">
           {{ data.tagline }}
         </div>
+
+
+
+     <h1 class="mt-12 mb-0 text-3xl lg:text-5xl">{{ data.heroTitle }}</h1>
+     <p class="w-full max-w-[90vw] xl:w-[1200px] text-center mb-12 text-xl lg:text-2xl">
+       {{ data.heroText }}
+     </p>
+   <PrimaryLink title="Explore Documentation" url="" icon='/assets/arrow-right.svg' />
       </div>
+
+
     </div>
 
     <div class="z-20 flex flex-col mb-24 md:mb-36 px-12">

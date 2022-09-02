@@ -2,7 +2,7 @@
   <a
     :href="url"
     class="bg-links rounded-lg py-4 px-8 font-bold text-lg text-center"
-    >{{ title }}</a
+    >{{ title }} <img v-if="icon" :src='icon'/></a
   >
 </template>
 
@@ -13,6 +13,7 @@ export default {
   props: {
     title: String,
     url: String,
+    icon: String,
   },
 };
 </script>
