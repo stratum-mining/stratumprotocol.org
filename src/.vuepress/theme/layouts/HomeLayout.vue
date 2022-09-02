@@ -148,7 +148,6 @@
     <footer
       class="text-2xl text-center mb-6 text-bodyText transition-opacity z-[20] flex flex-wrap justify-center items-center"
     >
-
       <span class="mx-3 pb-3">
         {{ data.footer }}
       </span>
@@ -161,7 +160,11 @@
         <NavLink :iconUrl="link.icon" :item="{ link: link.url }" class="w-9" />
       </span>
     </footer>
-<img src='/assets/shard.png' alt='shard' class='float absolute w-36 md:w-48 xl:w-auto left-10 bottom-10 xl:left-20 xl:bottom-20 z-[11]'/>
+    <img
+      src="/assets/shard.png"
+      alt="shard"
+      class="float absolute w-36 md:w-48 xl:w-auto left-10 bottom-10 xl:left-20 xl:bottom-20 z-[11]"
+    />
     <img
       class="absolute left-0 bottom-0 w-screen h-auto z-[10]"
       src="/assets/home-bottom.svg"
