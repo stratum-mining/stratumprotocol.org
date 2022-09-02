@@ -34,7 +34,7 @@
         </div>
       </div>
     </div>
-    
+
     <div class="z-20 flex flex-col mb-24 md:mb-36 px-12">
       <h1 class="mb-16 text-3xl lg:text-5xl">{{ data.whyTitle }}</h1>
       <div class="2xl:grid grid-cols-2 gap-10">
@@ -76,6 +76,26 @@
         </a>
       </div>
       <PrimaryLink title="Support Developers" url="" />
+    </div>
+
+    <div class="z-20 flex flex-col mb-24 md:mb-36 px-6">
+      <h1 class="mb-8 text-3xl lg:text-5xl">{{ data.endorsementsTitle }}</h1>
+      <p class="w-full md:w-[500px] lg:w-[800px] text-center mb-12 text-2xl">
+        {{ data.endorsementsText }}
+      </p>
+
+      <div class="flex flex-wrap justify-center items-center mb-10">
+        <a
+          v-for="(endorsement, index) of data.endorsements"
+          :key="endorsement.value"
+          class="my-10 mx-5"
+          :id="endorsement.value"
+          :href="endorsement.link"
+        >
+          <img :src="endorsement.image" />
+        </a>
+      </div>
+      <PrimaryLink title="Show support for SV2" url="" />
     </div>
 
     <footer
