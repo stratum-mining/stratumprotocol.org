@@ -34,6 +34,18 @@ supporters:
   - value: bitmex
     image: /assets/bitmex-logo.svg
     link: https://www.bitmex.com/
+endorsementsTitle: Who feels SV2 is the right direction?
+endorsementsText: List of companies and individuals who have indicated SV2 is the right direction for the industry.
+endorsements:
+  - value: braiins
+    image: /assets/braiins-logo.svg
+    link: https://braiins.com/
+  - value: blockstream
+    image: /assets/blockstream-logo.svg
+    link: https://www.blockstream.com/
+  - value: block
+    image: /assets/block-logo.svg
+    link: https://block.xyz/
 whyTitle: Why Stratum V2?
 why:
   - title: Security
