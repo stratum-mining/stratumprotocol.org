@@ -2,8 +2,8 @@
 home: true
 layout: HomeLayout
 background: /assets/home-background.svg
-heroImage: /assets/stratum-v2-logo-with-text.svg
-tagline: The next gen bitcoin mining protocol.
+heroImage: /assets/stratum-v2-icon-with-text.svg
+tagline: The next gen bitcoin mining protocol. Open source, community-ran, complete implementation of Stratum V2.
 actionText: "Choose your use case:"
 links:
   - title: Milestones
