@@ -116,19 +116,24 @@
       </div>
     </div>
     <footer
-      class="text-base text-center mb-6 text-bodyText transition-opacity z-[20] flex flex-wrap justify-center items-center"
+      class="text-base text-center mb-6 text-bodyText transition-opacity z-[20]"
     >
-      <span class="pb-3 mx-3">
-        {{ data.footer }}
-      </span>
+      <p class="text-white">
+        {{ data.footerTitle }}
+      </p>
 
-      <span
-        v-for="link of data.footerLinks"
-        :key="link.url"
-        class="pb-3 ml-3 md:ml-0"
-      >
-        <NavLink :iconUrl="link.icon" :item="{ link: link.url }" class="w-9" />
-      </span>
+      <div class="mb-10 flex justify-center items-center space-x-8">
+        <a v-for="link of data.footerLinks" :key="link.url" :href="link.url">
+          <img
+            :src="link.icon"
+            class="w-8 h-8 bg-levelThree p-3 rounded-full"
+          />
+        </a>
+      </div>
+      <SecondaryLink title="Read documentation" url="" />
+      <p class="text-sm mt-40">
+        {{ data.footerBottom }}
+      </p>
     </footer>
 
     <img
@@ -141,6 +146,7 @@
 <script>
 import NavLink from "@theme/components/NavLink.vue";
 import PrimaryLink from "@theme/components/PrimaryLink.vue";
+import SecondaryLink from "@theme/components/SecondaryLink.vue";
 
 export default {
   name: "Home",
@@ -148,6 +154,7 @@ export default {
   components: {
     NavLink,
     PrimaryLink,
+    SecondaryLink,
   },
 
   data() {

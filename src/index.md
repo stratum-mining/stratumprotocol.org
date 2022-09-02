@@ -16,8 +16,10 @@ links:
 footerLinks:
   - url: https://twitter.com/StratumV2
     icon: /assets/twitter.svg
-  - url: https://discord.gg/TsuT3YJWKN
+  - url: https://discord.gg/fsEW23wFYs
     icon: /assets/discord.svg
+  - url: https://github.com/stratum-mining/stratum
+    icon: /assets/github-icon.svg
 supportersTitle: Current Supporters of Stratum V2
 supportersText: Companies and individuals who are supporting developers working on Stratum V2 community implementation.
 supporters:
@@ -65,5 +67,6 @@ why:
   - title: Standardization
     text: V1's failure to precisely define its specifications led to multiple semicompatible implementations with varying dialects. Stratum V2 precisely defines its protocol parameters to ensure cross-compatibility between and among pools and end-mining devices.
     image: /assets/compare.svg
-footer: © 2022 Powered by the glorious passion and dedication of the open-source bitcoin community.
+footerTitle: Join us on
+footerBottom: Made by the open-source Bitcoin community.
 ---
