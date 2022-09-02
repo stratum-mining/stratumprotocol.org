@@ -16,6 +16,24 @@ footerLinks:
     icon: /assets/twitter.svg
   - url: https://discord.gg/TsuT3YJWKN
     icon: /assets/discord.svg
+supportersTitle: Current Supporters of Stratum V2
+supportersText: Companies and individuals who are supporting developers working on Stratum V2 community implementation.
+supporters:
+  - value: foundry
+    image: /assets/foundry-logo.svg
+    link: https://foundrydigital.com/
+  - value: spiral
+    image: /assets/spiral-logo.svg
+    link: https://spiral.xyz/
+  - value: sob
+    image: /assets/summer-of-bitcoin.svg
+    link: https://www.summerofbitcoin.org/
+  - value: galaxy
+    image: /assets/galaxy-logo.svg
+    link: https://www.galaxy.com/
+  - value: bitmex
+    image: /assets/bitmex-logo.svg
+    link: https://www.bitmex.com/
 whyTitle: Why Stratum V2?
 why:
   - title: Security
