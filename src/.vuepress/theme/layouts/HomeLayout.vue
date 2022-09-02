@@ -138,7 +138,7 @@
 
     <img
       class="absolute left-0 bottom-0 w-screen h-auto z-[10]"
-      src="/assets/home-bottom.svg"
+      src="/assets/home-bottom.png"
     />
   </div>
 </template>
