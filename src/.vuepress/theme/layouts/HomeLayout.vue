@@ -34,65 +34,26 @@
         </div>
       </div>
     </div>
-
-    <div class="flex flex-col pt-36 mb-10 z-[20]">
-      <div class="flex flex-col mb-44">
-        <h1 class="mb-8 text-3xl lg:text-5xl">{{ data.introductionTitle }}</h1>
-        <p
-          class="w-[1040px] max-w-[90vw] text-center mt-O mb-12 mx-auto text-base lg:text-2xl"
-        >
-          {{ data.introductionText }}
-        </p>
-        <RouterLink :to="data.introductionCtaLink">
-          <button
-            class="flex flex-row items-center px-8 h-16 text-white rounded-lg border-none cursor-pointer group bg-links"
-          >
-            <span class="text-sm font-semibold sm:text-lg">
-              {{ data.introductionCtaTitle }}
-            </span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="relative left-0 ml-4 w-6 h-6 duration-200 group-hover:left-1"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M14 5l7 7m0 0l-7 7m7-7H3"
-              />
-            </svg>
-          </button>
-        </RouterLink>
-      </div>
-
-      <div
-        v-for="(feature, index) of data.features"
-        :key="feature.value"
-        class="flex flex-row flex-wrap max-w-[1140px] w-[90vw] justify-between mb-24 md:mb-36 scroll-mt-52 px-12"
-        v-bind:style="{
-          flexDirection: index % 2 === 0 ? 'row' : 'row-reverse',
-        }"
-        :id="feature.value"
-      >
-        <div class="flex flex-col w-[460px] items-start mx-auto mb-8 md:mb-12">
-          <h2 class="mt-0 mb-6 border-b-none">{{ feature.title }}</h2>
-          <p class="m-0 text-left">{{ feature.text }}</p>
-        </div>
+    
+    <div class="z-20 flex flex-col mb-24 md:mb-36 px-12">
+      <h1 class="mb-16 text-3xl lg:text-5xl">{{ data.whyTitle }}</h1>
+      <div class="2xl:grid grid-cols-2 gap-10">
         <div
-          class="flex flex-col items-center justify-center relative max-w-[550px] max-h-[340px] rounded-3xl mx-auto"
+          v-for="(why, index) of data.why"
+          :key="why.value"
+          class="w-full md:w-[700px] md:flex md:space-x-8 mb-10"
+          :id="why.value"
         >
           <img
-            class="z-[20] max-w-full max-h-full rounded-3xl"
-            :src="feature.image"
+            class="mb-5 md:mb-0 h-10 w-10 bg-icon rounded-2xl p-5"
+            :src="why.image"
           />
-          <img
-            :src="feature.imageOverlay"
-            class="absolute b-[200px] z-[15]"
-            v-bind:style="{ [index % 2 === 0 ? 'right' : 'left']: '-100px' }"
-          />
+          <div>
+            <h2 class="m-0 text-2xl">{{ why.title }}</h2>
+            <p class="text-2xl">
+              {{ why.text }}
+            </p>
+          </div>
         </div>
       </div>
     </div>

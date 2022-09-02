@@ -11,6 +11,7 @@ module.exports = {
         links: "#22C55E",
         accent: "#FAF0E6",
         white: "#ffffff",
+        icon: "#031E38",
       },
     },
   },
