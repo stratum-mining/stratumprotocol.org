@@ -45,7 +45,8 @@
 
     </div>
 
-    <div class="z-20 flex flex-col mb-24 md:mb-36 px-12">
+<div class='py-24 md:py-36 space-y-24 md:space-y-36 px-6'>
+    <div class="z-20 flex flex-col">
       <h1 class="mb-16 text-3xl lg:text-5xl">{{ data.whyTitle }}</h1>
       <div class="2xl:grid grid-cols-2 gap-10">
         <div
@@ -60,7 +61,7 @@
           />
           <div>
             <h2 class="m-0 text-2xl">{{ why.title }}</h2>
-            <p class="text-2xl">
+            <p class="text-xl lg:text-2xl">
               {{ why.text }}
             </p>
           </div>
@@ -68,9 +69,9 @@
       </div>
     </div>
 
-    <div class="z-20 flex flex-col mb-24 md:mb-36 px-6">
+    <div class="z-20 flex flex-col">
       <h1 class="mb-8 text-3xl lg:text-5xl">{{ data.supportersTitle }}</h1>
-      <p class="w-full md:w-[500px] lg:w-[800px] text-center mb-12 text-2xl">
+      <p class="w-full md:w-[500px] lg:w-[800px] text-center mb-12 text-xl lg:text-2xl">
         {{ data.supportersText }}
       </p>
 
@@ -88,9 +89,9 @@
       <PrimaryLink title="Support Developers" url="" />
     </div>
 
-    <div class="z-20 flex flex-col mb-24 md:mb-36 px-6">
+    <div class="z-20 flex flex-col">
       <h1 class="mb-8 text-3xl lg:text-5xl">{{ data.endorsementsTitle }}</h1>
-      <p class="w-full md:w-[500px] lg:w-[800px] text-center mb-12 text-2xl">
+      <p class="w-full md:w-[500px] lg:w-[800px] text-center mb-12 text-xl lg:text-2xl">
         {{ data.endorsementsText }}
       </p>
 
@@ -98,7 +99,7 @@
         <a
           v-for="(endorsement, index) of data.endorsements"
           :key="endorsement.value"
-          class="my-10 mx-5"
+          class="my-10 mx-5 z-[20]"
           :id="endorsement.value"
           :href="endorsement.link"
         >
@@ -107,7 +108,7 @@
       </div>
       <PrimaryLink title="Show support for SV2" url="" />
     </div>
-
+</div>
     <footer
       class="text-base text-center mb-6 text-bodyText transition-opacity z-[20] flex flex-wrap justify-center items-center"
     >

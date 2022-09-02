@@ -8,11 +8,11 @@ heroText: Stratum V2 is the next generation protocol for pooled mining. It focus
 tagline: The next gen bitcoin mining protocol. Open source, community-ran, complete implementation of Stratum V2.
 actionText: "Choose your use case:"
 links:
-  - title: Milestones
-    url: /milestones/
   - title: GitHub
     url: https://github.com/stratum-mining
     icon: /assets/github-icon.svg
+  - title: Documentation
+    url: /milestones/
 footerLinks:
   - url: https://twitter.com/StratumV2
     icon: /assets/twitter.svg
