@@ -92,7 +92,7 @@
     <div class="z-20 flex flex-col mb-24 md:mb-36 px-12">
       <h1 class="mb-16 text-3xl lg:text-5xl">{{ data.whyTitle }}</h1>
 
-      <div class="flex flex-wrap justify-around">
+      <div class="2xl:grid grid-cols-2 gap-10">
         <div
           v-for="(why, index) of data.why"
           :key="why.value"
