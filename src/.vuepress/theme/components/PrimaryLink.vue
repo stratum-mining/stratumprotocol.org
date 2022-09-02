@@ -1,7 +1,7 @@
 <template>
   <a
     :href="url"
-    class="bg-links rounded-lg py-4 px-8 font-bold text-lg text-center"
+    class="bg-links rounded-lg py-4 px-8 font-bold text-lg text-center z-[20]"
     >{{ title }} <img v-if="icon" :src="icon"
   /></a>
 </template>

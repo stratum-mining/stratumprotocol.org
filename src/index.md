@@ -4,7 +4,8 @@ layout: HomeLayout
 background: /assets/home-background.svg
 heroImage: /assets/stratum-v2-icon-with-text.svg
 heroTitle: What is Stratum V2?
-heroText: Stratum V2 is the next generation protocol for pooled mining. It focuses on making data transfers more efficient, reducing physical infrastructure requirements for mining operations, and increasing security. Additionally, Stratum V2 introduces three new sub-protocols that allow miners to select their own transaction sets through a negotiation process with pools, improving decentralization.
+heroText: Stratum V2 is the next generation protocol for pooled mining. It focuses on making data transfers more efficient, reducing physical infrastructure requirements for mining operations, and increasing security. Additionally, Stratum V2 introduces three new sub-protocols that allow miners to select their own transaction sets through a negotiation process with pools,
+heroTextHighlight: improving decentralization
 tagline: The next gen bitcoin mining protocol. Open source, community-ran, complete implementation of Stratum V2.
 actionText: "Choose your use case:"
 links:
