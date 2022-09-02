@@ -105,18 +105,18 @@
         {{ data.footerTitle }}
       </p>
 
-<div class='mb-10 flex justify-center items-center space-x-8'>
-
-        <a   v-for="link of data.footerLinks"
-          :key="link.url" :href="link.url">
-<img :src="link.icon" class='w-8 h-8 bg-levelThree p-3 rounded-full'/>
-</a>
-
-</div>
- <SecondaryLink title="Read documentation" url="" />
-    <p class="text-sm mt-40">
-      {{ data.footerBottom }}
-    </p>
+      <div class="mb-10 flex justify-center items-center space-x-8">
+        <a v-for="link of data.footerLinks" :key="link.url" :href="link.url">
+          <img
+            :src="link.icon"
+            class="w-8 h-8 bg-levelThree p-3 rounded-full"
+          />
+        </a>
+      </div>
+      <SecondaryLink title="Read documentation" url="" />
+      <p class="text-sm mt-40">
+        {{ data.footerBottom }}
+      </p>
     </footer>
 
     <img
@@ -137,7 +137,7 @@ export default {
   components: {
     NavLink,
     PrimaryLink,
-SecondaryLink,
+    SecondaryLink,
   },
 
   data() {
