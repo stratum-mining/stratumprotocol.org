@@ -33,82 +33,88 @@
           {{ data.tagline }}
         </div>
 
-
-
-     <h1 class="mt-12 mb-0 text-3xl lg:text-5xl">{{ data.heroTitle }}</h1>
-     <p class="w-full max-w-[90vw] xl:w-[1200px] text-center mb-12 text-xl lg:text-2xl">
-       {{ data.heroText }}
-     </p>
-   <PrimaryLink title="Explore Documentation" url="" icon='/assets/arrow-right.svg' />
+        <h1 class="mt-12 mb-0 text-3xl lg:text-5xl">{{ data.heroTitle }}</h1>
+        <p
+          class="w-full max-w-[90vw] xl:w-[1200px] text-center mb-12 text-xl lg:text-2xl"
+        >
+          {{ data.heroText }}
+        </p>
+        <PrimaryLink
+          title="Explore Documentation"
+          url=""
+          icon="/assets/arrow-right.svg"
+        />
       </div>
-
-
     </div>
 
-<div class='py-24 md:py-36 space-y-24 md:space-y-36 px-6'>
-    <div class="z-20 flex flex-col">
-      <h1 class="mb-16 text-3xl lg:text-5xl">{{ data.whyTitle }}</h1>
-      <div class="2xl:grid grid-cols-2 gap-10">
-        <div
-          v-for="(why, index) of data.why"
-          :key="why.value"
-          class="w-full md:w-[700px] md:flex md:space-x-8 mb-10"
-          :id="why.value"
-        >
-          <img
-            class="mb-5 md:mb-0 h-10 w-10 bg-icon rounded-2xl p-5"
-            :src="why.image"
-          />
-          <div>
-            <h2 class="m-0 text-2xl">{{ why.title }}</h2>
-            <p class="text-xl lg:text-2xl">
-              {{ why.text }}
-            </p>
+    <div class="py-24 md:py-36 space-y-24 md:space-y-36 px-6">
+      <div class="z-20 flex flex-col">
+        <h1 class="mb-16 text-3xl lg:text-5xl">{{ data.whyTitle }}</h1>
+        <div class="2xl:grid grid-cols-2 gap-10">
+          <div
+            v-for="(why, index) of data.why"
+            :key="why.value"
+            class="w-full md:w-[700px] md:flex md:space-x-8 mb-10"
+            :id="why.value"
+          >
+            <img
+              class="mb-5 md:mb-0 h-10 w-10 bg-icon rounded-2xl p-5"
+              :src="why.image"
+            />
+            <div>
+              <h2 class="m-0 text-2xl">{{ why.title }}</h2>
+              <p class="text-xl lg:text-2xl">
+                {{ why.text }}
+              </p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="z-20 flex flex-col">
-      <h1 class="mb-8 text-3xl lg:text-5xl">{{ data.supportersTitle }}</h1>
-      <p class="w-full md:w-[500px] lg:w-[800px] text-center mb-12 text-xl lg:text-2xl">
-        {{ data.supportersText }}
-      </p>
-
-      <div class="flex flex-wrap justify-center items-center mb-10">
-        <a
-          v-for="(supporter, index) of data.supporters"
-          :key="supporter.value"
-          class="my-10 mx-5"
-          :id="supporter.value"
-          :href="supporter.link"
+      <div class="z-20 flex flex-col">
+        <h1 class="mb-8 text-3xl lg:text-5xl">{{ data.supportersTitle }}</h1>
+        <p
+          class="w-full md:w-[500px] lg:w-[800px] text-center mb-12 text-xl lg:text-2xl"
         >
-          <img :src="supporter.image" />
-        </a>
+          {{ data.supportersText }}
+        </p>
+
+        <div class="flex flex-wrap justify-center items-center mb-10">
+          <a
+            v-for="(supporter, index) of data.supporters"
+            :key="supporter.value"
+            class="my-10 mx-5"
+            :id="supporter.value"
+            :href="supporter.link"
+          >
+            <img :src="supporter.image" />
+          </a>
+        </div>
+        <PrimaryLink title="Support Developers" url="" />
       </div>
-      <PrimaryLink title="Support Developers" url="" />
-    </div>
 
-    <div class="z-20 flex flex-col">
-      <h1 class="mb-8 text-3xl lg:text-5xl">{{ data.endorsementsTitle }}</h1>
-      <p class="w-full md:w-[500px] lg:w-[800px] text-center mb-12 text-xl lg:text-2xl">
-        {{ data.endorsementsText }}
-      </p>
-
-      <div class="flex flex-wrap justify-center items-center mb-10">
-        <a
-          v-for="(endorsement, index) of data.endorsements"
-          :key="endorsement.value"
-          class="my-10 mx-5 z-[20]"
-          :id="endorsement.value"
-          :href="endorsement.link"
+      <div class="z-20 flex flex-col">
+        <h1 class="mb-8 text-3xl lg:text-5xl">{{ data.endorsementsTitle }}</h1>
+        <p
+          class="w-full md:w-[500px] lg:w-[800px] text-center mb-12 text-xl lg:text-2xl"
         >
-          <img :src="endorsement.image" />
-        </a>
+          {{ data.endorsementsText }}
+        </p>
+
+        <div class="flex flex-wrap justify-center items-center mb-10">
+          <a
+            v-for="(endorsement, index) of data.endorsements"
+            :key="endorsement.value"
+            class="my-10 mx-5 z-[20]"
+            :id="endorsement.value"
+            :href="endorsement.link"
+          >
+            <img :src="endorsement.image" />
+          </a>
+        </div>
+        <PrimaryLink title="Show support for SV2" url="" />
       </div>
-      <PrimaryLink title="Show support for SV2" url="" />
     </div>
-</div>
     <footer
       class="text-base text-center mb-6 text-bodyText transition-opacity z-[20] flex flex-wrap justify-center items-center"
     >
