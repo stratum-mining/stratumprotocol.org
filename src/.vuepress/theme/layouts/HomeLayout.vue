@@ -10,7 +10,7 @@
       }"
     >
       <nav
-        class="absolute top-0 right-0 justify-end mt-8 w-full md:flex"
+        class="md:absolute top-0 right-0 justify-end mt-8 w-full md:flex"
         v-if="data.links"
       >
         <div class="flex flex-wrap justify-around md:block md:mr-8 lg:mr-16">
@@ -38,6 +38,8 @@
           class="w-full max-w-[90vw] xl:w-[1200px] text-center mb-12 text-xl lg:text-2xl"
         >
           {{ data.heroText }}
+          <span class="text-accent">{{ data.heroTextHighlight }}</span
+          >.
         </p>
         <PrimaryLink
           title="Explore Documentation"
