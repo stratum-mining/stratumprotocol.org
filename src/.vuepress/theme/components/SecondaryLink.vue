@@ -1,18 +1,26 @@
 <template>
-  <a
-    :href="url"
-    class="bg-levelThree rounded-lg py-4 px-8 font-bold text-lg text-center"
-    >{{ title }}</a
-  >
+  <Link :item="item">
+    <div
+      :href="url"
+      class="px-8 py-4 text-lg font-bold text-center rounded-lg bg-levelThree"
+    >
+      {{ item.text }}
+    </div>
+  </Link>
 </template>
 
 <script>
+import Link from "@theme/components/Link.vue";
+
 export default {
   name: "SecondaryLink",
-
+  components: { Link },
   props: {
-    title: String,
-    url: String,
+    item: { required: true },
   },
 };
 </script>
+
+<style scoped lang="styl">
+@import "../../styles/theme.styl";
+</style>
