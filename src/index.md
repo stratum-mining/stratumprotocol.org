@@ -7,7 +7,8 @@ heroTitle: What is Stratum V2?
 heroText: Stratum V2 is the next generation protocol for pooled mining. It focuses on making data transfers more efficient, reducing physical infrastructure requirements for mining operations, and increasing security. Additionally, Stratum V2 introduces three new sub-protocols that allow miners to select their own transaction sets through a negotiation process with pools,
 heroTextHighlight: improving decentralization
 tagline: The next gen bitcoin mining protocol. Open source, community-ran, complete implementation of Stratum V2.
-actionText: "Choose your use case:"
+documentationCtaText: Explore Documentation
+documentationCtaLink: /implementation
 links:
   - title: GitHub
     url: https://github.com/stratum-mining
@@ -39,6 +40,8 @@ supporters:
   - value: bitmex
     image: /assets/bitmex-logo.svg
     link: https://www.bitmex.com/
+supportDevelopersText: Support Developers
+supportDevelopersLink: "mailto:test@stratumprotocol.org"
 endorsementsTitle: Who feels SV2 is the right direction?
 endorsementsText: List of companies and individuals who have indicated SV2 is the right direction for the industry.
 endorsements:
@@ -51,6 +54,8 @@ endorsements:
   - value: block
     image: /assets/block-logo.svg
     link: https://block.xyz/
+showSupportText: Show support for SV2
+showSupportLink: "mailto:test@stratumprotocol.org"
 whyTitle: Why Stratum V2?
 why:
   - title: Security
@@ -68,6 +73,8 @@ why:
   - title: Standardization
     text: V1's failure to precisely define its specifications led to multiple semicompatible implementations with varying dialects. Stratum V2 precisely defines its protocol parameters to ensure cross-compatibility between and among pools and end-mining devices.
     image: /assets/compare.svg
+readDocumentationText: Read Documentation
+readDocumentationLink: /implementation/
 footerTitle: Join us on
 footerBottom: Made by the open-source Bitcoin community.
 ---
