@@ -8,24 +8,6 @@
         backgroundImage: `radial-gradient(#01142600 0%,#011426 100%), url(${data.background})`,
       }"
     >
-      <nav
-        class="top-0 right-0 justify-end mt-8 w-full md:absolute md:flex"
-        v-if="data.links"
-      >
-        <div class="flex flex-wrap justify-around md:block md:mr-8 lg:mr-16">
-          <div
-            class="justify-end mb-4 md:flex align-center lg:mb-8 md:text-right md:ml-auto"
-            v-for="link of data.links"
-            :key="link.url"
-          >
-            <NavLink
-              :iconUrl="link.icon"
-              :item="{ link: link.url, text: link.title }"
-            ></NavLink>
-          </div>
-        </div>
-      </nav>
-
       <div class="flex flex-col items-center w-screen">
         <!-- StratumV2 Logo -->
         <img class="relative w-3/5 md:w-[220px] m-auto" :src="data.heroImage" />
