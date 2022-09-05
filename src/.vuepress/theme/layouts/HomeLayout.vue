@@ -47,7 +47,7 @@
     <!-- Main Content -->
     <div class="px-6 py-24 space-y-24 w-screen md:py-36 md:space-y-36">
       <!-- Features section -->
-      <div class="flex z-20 flex-col">
+      <div class="flex z-20 flex-col px-8">
         <h2 class="mb-16 text-3xl font-bold text-center lg:text-4xl">
           {{ data.whyTitle }}
         </h2>
@@ -63,7 +63,9 @@
               :src="why.image"
             />
             <div class="max-w-sm md:max-w-md">
-              <h3 class="m-0 text-base font-bold md:text-lg">{{ why.title }}</h3>
+              <h3 class="m-0 text-base font-bold md:text-lg">
+                {{ why.title }}
+              </h3>
               <p class="text-base md:text-lg text-bodyText">
                 {{ why.text }}
               </p>
