@@ -35,6 +35,6 @@
     "vuepress": "1.9.7"
   },
   "dependencies": {
-    "markdown-it-vue": "^1.1.7"
+    "markdown-it": "^13.0.1"
   }
 }

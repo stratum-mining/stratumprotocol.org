@@ -22,9 +22,9 @@
             )
           "
         >
-          <markdown-it-vue
+          <div
             class="text-sm md:text-tiny text-bodyText"
-            :content="step"
+            v-html="md.render(step)"
           />
         </div>
 
@@ -57,7 +57,7 @@
 
 <script>
 import { classNames } from "../../utils";
-import MarkdownItVue from "markdown-it-vue";
+import MarkdownIt from "markdown-it";
 
 const graphicalSteps = [
   "/assets/progress-1.svg",
@@ -74,17 +74,16 @@ const graphicalStepSeparatorGradients = [
 ];
 export default {
   name: "RoadMapSteps",
-  components: { MarkdownItVue },
   props: {
     steps: { required: true },
   },
   data() {
-    // const md = new MarkdownIt();
+    const md = new MarkdownIt();
 
     return {
       graphicalSteps,
       graphicalStepSeparatorGradients,
-      // md,
+      md,
     };
   },
   methods: {
