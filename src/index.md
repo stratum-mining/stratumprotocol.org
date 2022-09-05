@@ -22,6 +22,13 @@ footerLinks:
     icon: /assets/discord.svg
   - url: https://github.com/stratum-mining/stratum
     icon: /assets/github-icon.svg
+roadmapTitle: Progress and Roadmap
+roadmapTagline: This is where things currently stand with the Stratum V2 protocol.
+roadmapSteps: 
+  - Once completed in __September__, the __MVP1__  allows you to use SV2 in the simplest form. A miner running  existing SV1 firmware with a proxy that __translates__ the messages into SV2. In this configuration the pool does the transaction selection.
+  - In __September__, a pull request that implements a __block template provider__ will be submitted to the Bitcoin Core repository for a review.
+  - In October, our plan is to implement the __Job Negotiator__, which can be used by a miner(s) to negotiate a block template with a pool.
+  - With translator, template provider and a job negotiator, we will be ready to launch an __MVP2__. In this configuration, a miner does transaction selection from the __mempool__, and the pool accepts it. 
 supportersTitle: Current Supporters of Stratum V2
 supportersText: Companies and individuals who are supporting developers working on Stratum V2 community implementation.
 supporters:

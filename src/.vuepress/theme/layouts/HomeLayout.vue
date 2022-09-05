@@ -20,11 +20,13 @@
         </div>
 
         <!-- Website main heading -->
-        <h1 class="mt-12 mb-0 text-3xl lg:text-5xl">{{ data.heroTitle }}</h1>
+        <h1 class="mt-12 mb-4 text-4xl font-bold md:mb-8 lg:text-6xl">
+          {{ data.heroTitle }}
+        </h1>
 
         <!-- Introduction -->
         <p
-          class="w-full max-w-[90vw] xl:w-[960px] text-center mb-12 text-base sm:text-xl box-border px-4"
+          class="w-full max-w-[90vw] xl:w-[960px] text-center mb-12 text-base sm:text-xl box-border px-4 text-bodyText"
         >
           {{ data.heroText }}
           <span class="text-accent">{{ data.heroTextHighlight }}</span
@@ -42,10 +44,13 @@
       </div>
     </div>
 
-    <!-- Features section -->
-    <div class="px-6 py-24 space-y-24 md:py-36 md:space-y-36">
+    <!-- Main Content -->
+    <div class="px-6 py-24 space-y-24 w-screen md:py-36 md:space-y-36">
+      <!-- Features section -->
       <div class="flex z-20 flex-col">
-        <h1 class="mb-16 text-3xl md:text-4xl">{{ data.whyTitle }}</h1>
+        <h2 class="mb-16 text-3xl font-bold text-center lg:text-4xl">
+          {{ data.whyTitle }}
+        </h2>
         <div class="grid gap-10 md:grid-cols-2">
           <div
             v-for="why of data.why"
@@ -54,12 +59,12 @@
             :id="why.value"
           >
             <img
-              class="p-5 mb-5 w-10 h-10 rounded-2xl md:mb-0 bg-icon"
+              class="box-content p-5 mb-5 w-10 h-10 rounded-2xl md:mb-0 bg-icon"
               :src="why.image"
             />
             <div class="max-w-sm md:max-w-md">
-              <h2 class="m-0 text-base md:text-lg">{{ why.title }}</h2>
-              <p class="text-base md:text-lg">
+              <h3 class="m-0 text-base font-bold md:text-lg">{{ why.title }}</h3>
+              <p class="text-base md:text-lg text-bodyText">
                 {{ why.text }}
               </p>
             </div>
@@ -67,11 +72,26 @@
         </div>
       </div>
 
-      <!-- Section highlighting entities supporting StratumV2 development -->
-      <div class="flex z-20 flex-col">
-        <h1 class="mb-8 text-3xl lg:text-5xl">{{ data.supportersTitle }}</h1>
+      <!-- Road map -->
+      <div class="flex relative z-20 flex-col items-center">
+        <h2 class="mb-8 text-2xl font-bold text-center lg:text-4xl">
+          {{ data.roadmapTitle }}
+        </h2>
         <p
-          class="w-full md:w-[500px] lg:w-[800px] text-center mb-12 text-xl lg:text-2xl"
+          class="w-full md:w-[500px] lg:w-[800px] text-center mb-20 md:mb-6 text-base md:text-lg text-bodyText"
+        >
+          {{ data.roadmapTagline }}
+        </p>
+        <RoadMapSteps :steps="data.roadmapSteps" />
+      </div>
+
+      <!-- Section highlighting entities supporting StratumV2 development -->
+      <div class="flex relative z-20 flex-col">
+        <h2 class="mb-8 text-2xl font-bold text-center lg:text-4xl">
+          {{ data.supportersTitle }}
+        </h2>
+        <p
+          class="w-full md:w-[500px] lg:w-[800px] text-center mb-20 md:mb-6 text-base md:text-lg text-bodyText"
         >
           {{ data.supportersText }}
         </p>
@@ -96,10 +116,12 @@
       </div>
 
       <!-- Section highlighting entities approving StratumV2 development -->
-      <div class="flex z-20 flex-col">
-        <h1 class="mb-8 text-3xl lg:text-5xl">{{ data.endorsementsTitle }}</h1>
+      <div class="flex relative z-20 flex-col">
+        <h2 class="mb-8 text-2xl font-bold text-center lg:text-4xl">
+          {{ data.endorsementsTitle }}
+        </h2>
         <p
-          class="w-full md:w-[500px] lg:w-[800px] text-center mb-12 text-xl lg:text-2xl"
+          class="w-full md:w-[500px] lg:w-[800px] text-center mb-20 md:mb-6 text-base md:text-lg text-bodyText"
         >
           {{ data.endorsementsText }}
         </p>
@@ -166,6 +188,7 @@
 import NavLink from "@theme/components/NavLink.vue";
 import PrimaryLink from "@theme/components/PrimaryLink.vue";
 import SecondaryLink from "@theme/components/SecondaryLink.vue";
+import RoadMapSteps from "@theme/components/RoadMapSteps.vue";
 
 export default {
   name: "Home",
@@ -174,6 +197,7 @@ export default {
     NavLink,
     PrimaryLink,
     SecondaryLink,
+    RoadMapSteps,
   },
 
   computed: {
