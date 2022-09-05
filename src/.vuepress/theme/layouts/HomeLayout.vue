@@ -13,7 +13,9 @@
         <img class="relative w-3/5 md:w-[220px] m-auto" :src="data.heroImage" />
 
         <!-- Logo tagline -->
-        <div class="mt-8 text-lg text-center max-w-full w-[750px] lg:text-2xl">
+        <div
+          class="mt-8 text-base text-center max-w-full px-4 w-[750px] lg:text-xl box-border"
+        >
           {{ data.tagline }}
         </div>
 
@@ -22,7 +24,7 @@
 
         <!-- Introduction -->
         <p
-          class="w-full max-w-[90vw] xl:w-[1200px] text-center mb-12 text-xl lg:text-2xl"
+          class="w-full max-w-[90vw] xl:w-[960px] text-center mb-12 text-base sm:text-xl box-border px-4"
         >
           {{ data.heroText }}
           <span class="text-accent">{{ data.heroTextHighlight }}</span
@@ -43,21 +45,21 @@
     <!-- Features section -->
     <div class="px-6 py-24 space-y-24 md:py-36 md:space-y-36">
       <div class="flex z-20 flex-col">
-        <h1 class="mb-16 text-3xl lg:text-5xl">{{ data.whyTitle }}</h1>
-        <div class="grid-cols-2 gap-10 2xl:grid">
+        <h1 class="mb-16 text-3xl md:text-4xl">{{ data.whyTitle }}</h1>
+        <div class="grid gap-10 md:grid-cols-2">
           <div
             v-for="why of data.why"
             :key="why.value"
-            class="w-full md:w-[700px] md:flex md:space-x-8 mb-10"
+            class="mb-10 md:flex md:space-x-8"
             :id="why.value"
           >
             <img
               class="p-5 mb-5 w-10 h-10 rounded-2xl md:mb-0 bg-icon"
               :src="why.image"
             />
-            <div>
-              <h2 class="m-0 text-2xl">{{ why.title }}</h2>
-              <p class="text-xl lg:text-2xl">
+            <div class="max-w-sm md:max-w-md">
+              <h2 class="m-0 text-base md:text-lg">{{ why.title }}</h2>
+              <p class="text-base md:text-lg">
                 {{ why.text }}
               </p>
             </div>
@@ -66,7 +68,7 @@
       </div>
 
       <!-- Section highlighting entities supporting StratumV2 development -->
-      <div class="flex relative z-20 flex-col">
+      <div class="flex z-20 flex-col">
         <h1 class="mb-8 text-3xl lg:text-5xl">{{ data.supportersTitle }}</h1>
         <p
           class="w-full md:w-[500px] lg:w-[800px] text-center mb-12 text-xl lg:text-2xl"
@@ -94,7 +96,7 @@
       </div>
 
       <!-- Section highlighting entities approving StratumV2 development -->
-      <div class="flex relative z-20 flex-col">
+      <div class="flex z-20 flex-col">
         <h1 class="mb-8 text-3xl lg:text-5xl">{{ data.endorsementsTitle }}</h1>
         <p
           class="w-full md:w-[500px] lg:w-[800px] text-center mb-12 text-xl lg:text-2xl"
@@ -147,6 +149,7 @@
           link: data.readDocumentationLink,
         }"
       />
+
       <p class="mt-40 text-sm">
         {{ data.footerBottom }}
       </p>
