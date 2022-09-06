@@ -42,7 +42,7 @@ supporters:
     image: /assets/galaxy-logo.svg
     link: https://www.galaxy.com/
   - value: spiral
-    image: /assets/spiral-xyz.svg
+    image: /assets/spiral-logo.svg
     link: https://www.spiral.xyz/
   - value: sob
     image: /assets/summer-of-bitcoin.svg
