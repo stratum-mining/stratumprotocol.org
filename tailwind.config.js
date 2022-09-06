@@ -13,7 +13,24 @@ module.exports = {
         white: "#ffffff",
         icon: "#031E38",
         accent: "#5BEBF3",
+
+        firstStep: "#53F6AE",
+        secondStep: "#FF8337",
+        thirdStep: "#FFCC00",
+        fourthStep: "#5BEBF3",
       },
+      spacing: {
+        18: "72px",
+      },
+      maxWidth: {
+        screen: "100vw",
+      },
+      fontFamily: {
+        sans: ["Rubik"],
+      },
+      fontSize: {
+        tiny: ["15px", "22px"]
+      }
     },
   },
   plugins: [],
