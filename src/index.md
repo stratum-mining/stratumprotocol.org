@@ -57,10 +57,10 @@ endorsements:
     link: https://block.xyz/
   - value: blockstream
     image: /assets/blockstream-logo.svg
-    link: https://www.blockstream.com/   
+    link: https://www.blockstream.com/
   - value: braiins
     image: /assets/braiins-logo.svg
-    link: https://braiins.com/     
+    link: https://braiins.com/
 showSupportText: Show support for SV2
 showSupportLink: "mailto:test@stratumprotocol.org"
 whyTitle: Why Stratum V2?
@@ -84,4 +84,35 @@ readDocumentationText: Read Documentation
 readDocumentationLink: /implementation/
 footerTitle: Join us on
 footerBottom: Made by the open-source Bitcoin community.
+meta:
+  # We can reuse & customize those tags on other pages of the website
+  # Primary Meta Tags
+  - name: title
+    content: StratumV2
+  - name: description
+    content: The next gen bitcoin mining protocol. Open source, community-ran, complete implementation of Stratum V2.
+
+  # Open Graph / Facebook
+  - name: og:type
+    content: website
+  - name: og:url    
+    content: https://stratumprotocol.org/
+  - name: og:title
+    content: StratumV2
+  - name: og:description
+    content: The next gen bitcoin mining protocol. Open source, community-ran, complete implementation of Stratum V2.
+  - name: og:image
+    content: /assets/landing-social-media-share-image.png
+
+  # Twitter
+  - name: twitter:card
+    content: summary_large_image
+  - name: twitter:url
+    content: https://stratumprotocol.org/
+  - name: twitter:title
+    content: StratumV2
+  - name: twitter:description
+    content: The next gen bitcoin mining protocol. Open source, community-ran, complete implementation of Stratum V2.
+  - name: twitter:image
+    content: /assets/landing-social-media-share-image.png
 ---
