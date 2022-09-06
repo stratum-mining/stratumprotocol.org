@@ -29,8 +29,8 @@ module.exports = {
         sans: ["Rubik"],
       },
       fontSize: {
-        tiny: ["15px", "22px"]
-      }
+        tiny: ["15px", "22px"],
+      },
     },
   },
   plugins: [],

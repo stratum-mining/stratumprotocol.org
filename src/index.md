@@ -95,7 +95,7 @@ meta:
   # Open Graph / Facebook
   - name: og:type
     content: website
-  - name: og:url    
+  - name: og:url
     content: https://stratumprotocol.org/
   - name: og:title
     content: StratumV2
