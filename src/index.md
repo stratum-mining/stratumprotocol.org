@@ -24,43 +24,43 @@ footerLinks:
     icon: /assets/github-icon.svg
 roadmapTitle: Progress and Roadmap
 roadmapTagline: This is where things currently stand with the Stratum V2 protocol.
-roadmapSteps: 
+roadmapSteps:
   - Once completed in __September__, the __MVP1__  allows you to use SV2 in the simplest form. A miner running  existing SV1 firmware with a proxy that __translates__ the messages into SV2. In this configuration the pool does the transaction selection.
   - In __September__, a pull request that implements a __block template provider__ will be submitted to the Bitcoin Core repository for a review.
   - In October, our plan is to implement the __Job Negotiator__, which can be used by a miner(s) to negotiate a block template with a pool.
-  - With translator, template provider and a job negotiator, we will be ready to launch an __MVP2__. In this configuration, a miner does transaction selection from the __mempool__, and the pool accepts it. 
+  - With translator, template provider and a job negotiator, we will be ready to launch an __MVP2__. In this configuration, a miner does transaction selection from the __mempool__, and the pool accepts it.
 supportersTitle: Current Supporters of Stratum V2
 supportersText: Companies and individuals who are supporting developers working on Stratum V2 community implementation.
 supporters:
+  - value: bitmex
+    image: /assets/bitmex-logo.svg
+    link: https://bitmex.com/
   - value: foundry
     image: /assets/foundry-logo.svg
     link: https://foundrydigital.com/
-  - value: spiral
-    image: /assets/spiral-logo.svg
-    link: https://spiral.xyz/
-  - value: sob
-    image: /assets/summer-of-bitcoin.svg
-    link: https://www.summerofbitcoin.org/
   - value: galaxy
     image: /assets/galaxy-logo.svg
     link: https://www.galaxy.com/
-  - value: bitmex
-    image: /assets/bitmex-logo.svg
-    link: https://www.bitmex.com/
+  - value: spiral
+    image: /assets/spiral-logo.svg
+    link: https://www.spiral.xyz/
+  - value: sob
+    image: /assets/summer-of-bitcoin.svg
+    link: https://www.summerofbitcoin.org/
 supportDevelopersText: Support Developers
 supportDevelopersLink: "mailto:test@stratumprotocol.org"
 endorsementsTitle: Who feels SV2 is the right direction?
 endorsementsText: List of companies and individuals who have indicated SV2 is the right direction for the industry.
 endorsements:
-  - value: braiins
-    image: /assets/braiins-logo.svg
-    link: https://braiins.com/
-  - value: blockstream
-    image: /assets/blockstream-logo.svg
-    link: https://www.blockstream.com/
   - value: block
     image: /assets/block-logo.svg
     link: https://block.xyz/
+  - value: blockstream
+    image: /assets/blockstream-logo.svg
+    link: https://www.blockstream.com/   
+  - value: braiins
+    image: /assets/braiins-logo.svg
+    link: https://braiins.com/     
 showSupportText: Show support for SV2
 showSupportLink: "mailto:test@stratumprotocol.org"
 whyTitle: Why Stratum V2?
