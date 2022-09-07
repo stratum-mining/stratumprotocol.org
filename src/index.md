@@ -81,7 +81,7 @@ why:
     text: V1's failure to precisely define its specifications led to multiple semicompatible implementations with varying dialects. Stratum V2 precisely defines its protocol parameters to ensure cross-compatibility between and among pools and end-mining devices.
     image: /assets/compare.svg
 readDocumentationText: Read Documentation
-readDocumentationLink: /implementation/
+readDocumentationLink: /implementation
 footerTitle: Join us on
 footerBottom: Made by the open-source Bitcoin community.
 meta:
@@ -95,7 +95,7 @@ meta:
   # Open Graph / Facebook
   - name: og:type
     content: website
-  - name: og:url    
+  - name: og:url
     content: https://stratumprotocol.org/
   - name: og:title
     content: StratumV2

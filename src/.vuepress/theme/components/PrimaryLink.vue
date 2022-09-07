@@ -1,9 +1,9 @@
 <template>
   <Link :item="item">
     <div
-      class="group bg-links rounded-lg py-4 px-8 font-bold text-lg text-center z-[20] flex flex-row items-center"
+      class="group bg-links text-black rounded-lg py-4 px-8 font-bold text-lg text-center z-[20] flex flex-row items-center relative"
     >
-      <span> {{ item.text }}</span>
+      <span>{{ item.text }}</span>
       <img
         v-if="icon"
         :src="icon"
