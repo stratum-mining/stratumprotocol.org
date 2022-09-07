@@ -4,10 +4,10 @@ layout: HomeLayout
 background: /assets/hero-bg.jpg
 heroImage: /assets/stratum-v2-icon-with-text.svg
 heroText: A complete, open-source and community-managed implementation of the Stratum V2 protocol. Stratum V2 increases security, makes data transfers more efficient, and reduces mining infrastructure requirements. It also introduces three new sub-protocols that let miners select transaction sets and improve decentralization by negotiating with pools.
-tagline: One giant leap for bitcoin mining.
+tagline: One giant leap for bitcoin mining
 documentationCtaText: Explore GitHub
 documentationCtaLink: https://github.com/stratum-mining/stratum
-diagramText: Perviously, pools selected the transaction set, whereas in Stratum V2, the individual miner can decide which set to select, making the network more censorship-resistant.
+diagramText: Before Stratum V2, transaction sets were selected by pools. Now they’re selected by individual miners, making the network more censorship-resistant.
 links:
   - title: GitHub
     url: https://github.com/stratum-mining
