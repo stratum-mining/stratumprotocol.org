@@ -57,6 +57,11 @@
       <!-- Diagram section -->
       <div class="flex z-20 flex-col px-8 relative">
         <img src="/assets/diagram.png" alt="diagram" class="w-full xl:w-auto" />
+        <p
+          class="text-base md:text-lg text-bodyText w-full lg:w-[775px] text-center mt-10"
+        >
+          {{ data.diagramText }}
+        </p>
       </div>
 
       <!-- Features section -->

@@ -9,6 +9,7 @@ heroTextHighlight: improving decentralization
 tagline: The next gen bitcoin mining protocol. Open source, community-ran, complete implementation of Stratum V2.
 documentationCtaText: Explore Documentation
 documentationCtaLink: /implementation
+diagramText: Perviously, pools selected the transaction set, whereas in Stratum V2, the individual miner can decide which set to select, making the network more censorship-resistant.
 links:
   - title: GitHub
     url: https://github.com/stratum-mining
