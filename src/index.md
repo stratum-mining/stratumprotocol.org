@@ -7,7 +7,7 @@ heroText: A complete, open-source and community-managed implementation of the St
 tagline: One giant leap for bitcoin mining
 documentationCtaText: Explore GitHub
 documentationCtaLink: https://github.com/stratum-mining/stratum
-diagramText: Before Stratum V2, transaction sets were selected by pools. Now they’re selected by individual miners, making the network more censorship-resistant.
+diagramText: Before Stratum V2, transaction sets were selected by pools. With a complete SV2 configuration they’re selected by individual miners, making the network more censorship-resistant.
 links:
   - title: GitHub
     url: https://github.com/stratum-mining
