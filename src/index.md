@@ -24,11 +24,11 @@ footerLinks:
 roadmapTitle: Progress and Roadmap
 roadmapTagline: This is where the Stratum V2 protocol’s progress currently stands.
 roadmapSteps:
-  - Launch **MVP1** will allow users to run SV2 in its simplest form - a miner running existing SV1 firmware with a proxy that translates messages into SV2. In this configuration, the pool selects transactions.
-  - A pull request that implements a **block template provider** will be submitted to the Bitcoin Core repository for review.
+  - **MVP1** will allow users to run SV2 in its simplest form - a miner running existing SV1 firmware with a proxy that translates messages into SV2. In this configuration, the pool selects transactions.
+  - A pull request that implements a **block template provider** will be submitted to the Bitcoin Core repository for review which will make MVP1 complete.
   - Implement the **job negotiator**, which a miner or miners can use to negotiate a block template with a pool.
   - Once a translator, template provider, and job negotiator are running, we will launch an MVP2. In this configuration, a miner handles mempool transaction selection, and the pool accepts it.
-  - Get MVP1 and MVP2 from beta to production-ready based on the feedback of early adopters and tailor configurations to their needs,
+  - Apply early adopter feedback and tailor configurations that will move MVP1 and MVP2 from beta to production-ready.
 supportersTitle: Current Supporters of Stratum V2
 supportersText: Companies who financially support developers working on Stratum V2.
 supporters:
@@ -50,7 +50,7 @@ supporters:
 supportDevelopersText: Support Developers
 supportDevelopersLink: "mailto:test@stratumprotocol.org"
 endorsementsTitle: Who feels SV2 is the right direction?
-endorsementsText: Companies who believe that SV2 is right for bitcoin.
+endorsementsText: Companies who believe that SV2 is right direction.
 endorsements:
   - value: block
     image: /assets/block-logo.svg
