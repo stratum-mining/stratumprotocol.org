@@ -3,12 +3,10 @@ home: true
 layout: HomeLayout
 background: /assets/hero-bg.jpg
 heroImage: /assets/stratum-v2-icon-with-text.svg
-heroTitle: What is Stratum V2?
-heroText: Stratum V2 is the next generation protocol for pooled mining. It focuses on making data transfers more efficient, reducing physical infrastructure requirements for mining operations, and increasing security. Additionally, Stratum V2 introduces three new sub-protocols that allow miners to select their own transaction sets through a negotiation process with pools,
-heroTextHighlight: improving decentralization
-tagline: The next gen bitcoin mining protocol. Open source, community-ran, complete implementation of Stratum V2.
-documentationCtaText: Explore Documentation
-documentationCtaLink: /implementation
+heroText: A complete, open-source and community-managed implementation of the Stratum V2 protocol. Stratum V2 increases security, makes data transfers more efficient, and reduces mining infrastructure requirements. It also introduces three new sub-protocols that let miners select transaction sets and improve decentralization by negotiating with pools.
+tagline: One giant leap for bitcoin mining.
+documentationCtaText: Explore GitHub
+documentationCtaLink: https://github.com/stratum-mining/stratum
 links:
   - title: GitHub
     url: https://github.com/stratum-mining
@@ -23,15 +21,15 @@ footerLinks:
   - url: https://github.com/stratum-mining/stratum
     icon: /assets/github-icon.svg
 roadmapTitle: Progress and Roadmap
-roadmapTagline: This is where things currently stand with the Stratum V2 protocol.
+roadmapTagline: This is where the Stratum V2 protocol’s progress currently stands.
 roadmapSteps:
-  - Once completed __MVP1__  allows you to use SV2 in the simplest form. A miner running  existing SV1 firmware with a proxy that __translates__ the messages into SV2. In this configuration the pool does the transaction selection.
-  - A pull request that implements a __block template provider__ will be submitted to the Bitcoin Core repository for a review.
-  - Implement the __Job Negotiator__, which can be used by a miner(s) to negotiate a block template with a pool.
-  - With translator, template provider and a job negotiator, we will be ready to launch an __MVP2__. In this configuration, a miner does transaction selection from the __mempool__, and the pool accepts it.
+  - Launch **MVP1** will allow users to run SV2 in its simplest form - a miner running existing SV1 firmware with a proxy that translates messages into SV2. In this configuration, the pool selects transactions.
+  - A pull request that implements a **block template provider** will be submitted to the Bitcoin Core repository for review.
+  - Implement the **job negotiator**, which a miner or miners can use to negotiate a block template with a pool.
+  - Once a translator, template provider, and job negotiator are running, we will launch an MVP2. In this configuration, a miner handles mempool transaction selection, and the pool accepts it.
   - Get MVP1 and MVP2 from beta to production-ready based on the feedback of early adopters and tailor configurations to their needs,
 supportersTitle: Current Supporters of Stratum V2
-supportersText: Companies and individuals who are supporting developers working on Stratum V2 community implementation.
+supportersText: Companies who financially support developers working on Stratum V2.
 supporters:
   - value: bitmex
     image: /assets/bitmex-logo.svg
@@ -51,7 +49,7 @@ supporters:
 supportDevelopersText: Support Developers
 supportDevelopersLink: "mailto:test@stratumprotocol.org"
 endorsementsTitle: Who feels SV2 is the right direction?
-endorsementsText: List of companies and individuals who have indicated SV2 is the right direction for the industry.
+endorsementsText: Companies who believe that SV2 is right for bitcoin.
 endorsements:
   - value: block
     image: /assets/block-logo.svg
@@ -64,27 +62,27 @@ endorsements:
     link: https://braiins.com/
 showSupportText: Show support for SV2
 showSupportLink: "mailto:test@stratumprotocol.org"
-whyTitle: Why Stratum V2?
+whyTitle: Layers of Upgrades
 why:
   - title: Security
-    text: V2 introduces by-default encryption and authentication using the NOISE protocol, hardening the Stratum protocol against v1’s known man-in-the-middle attack vectors.
+    text: V2 introduces by-default encryption and NOISE protocol authentication, hardening the protocol against man-in-the-middle attacks.
     image: /assets/padlock.svg
   - title: Performance
-    text: V2 optimizes data transfer size and frequency between miners, proxies, & pool operators. Faster, more efficient communication means higher submission rates and reduced variance in hash rate (in turn, miner payouts).
+    text: The new Stratum optimizes data transfer size and frequency between miners, proxies, and pool operators, creating higher submission rates while reducing hash rate variance (miner payouts).
     image: /assets/speedometer.svg
   - title: Flexibility
-    text: V2 is an update to V1, not a separate protocol. It improves on the logic and framework of V1, allowing for incremental and modular improvements by miners and mining pools currently using stratum V1. Critically, v1 implementations can efficiently communicate with v2 implementations with minimal tradeoffs via either pool or client side proxy translations.
+    text: V2 improves logic and framework by letting miners and mining pools running V1 make incremental and modular improvements. These implementations can communicate via pool and client-side proxy translations with minimal tradeoffs.
     image: /assets/blockchain.svg
   - title: Censorship Resistance
-    text: V2 integrates distributed transaction selection into the protocol itself. End-miners can build and select their own transactions sets and block templates, further decentralizing the Bitcoin Network.
+    text: New features further decentralize bitcoin by integrating distributed transaction selections into the protocol, letting end-miners build and select transaction sets and block templates.
     image: /assets/speaker.svg
   - title: Standardization
-    text: V1's failure to precisely define its specifications led to multiple semicompatible implementations with varying dialects. Stratum V2 precisely defines its protocol parameters to ensure cross-compatibility between and among pools and end-mining devices.
+    text: By failing to precisely define Stratum V1’s specifications, we inadvertently created multiple implementations with varying semi-compatible dialects. Stratum V2 fixes this by defining its protocol parameters to ensure cross-compatibility between and pools and end-mining devices.
     image: /assets/compare.svg
 readDocumentationText: Read Documentation
 readDocumentationLink: /implementation
 footerTitle: Join us on
-footerBottom: Made by the open-source Bitcoin community.
+footerBottom: Made by the open-source bitcoin community.
 meta:
   # We can reuse & customize those tags on other pages of the website
   # Primary Meta Tags
