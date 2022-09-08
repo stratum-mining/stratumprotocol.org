@@ -56,7 +56,16 @@
 
       <!-- Diagram section -->
       <div class="flex z-20 flex-col px-8 relative">
-        <img src="/assets/diagram.png" alt="diagram" class="w-full xl:w-auto" />
+        <img
+          src="/assets/diagram.png"
+          alt="diagram"
+          class="w-full xl:w-auto hidden md:block"
+        />
+        <img
+          src="/assets/mobile-graphic.png"
+          alt="diagram"
+          class="w-full max-w-96 block md:hidden"
+        />
         <p
           class="text-base md:text-lg text-bodyText w-full lg:w-[775px] text-center mt-10"
         >
