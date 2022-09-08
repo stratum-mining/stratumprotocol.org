@@ -13,11 +13,11 @@ We define 5 Roles for entities in the StratumV2 Protocol Suite:
 
 ### Mining Devices or Miners
 
-The actual mining machines which compute SHA256d hashes. Miners may refer to a wide variety of hashrate producers; from large-scale corporate mining farms to wildcat mobile mining operations capturing flare gas on a temporory shale drilling site. Miners are most usefully referred to at the scale they communicate upstream to a pool: a 10PH mining farm colocated with a hydro dam that communicates as a single unit to the pool and splits its work internally may be thought of as a single 'miner', separate from the 'miner' operating a single S19 in his garage down the street. Miners "point" their hashrate at a Pool, defined below.
+The actual mining machines which compute hashes. Miners may refer to a wide variety of hashrate producers; from large-scale corporate mining farms to wildcat mobile mining operations capturing flare gas on a temporory shale drilling site. Miners are most usefully referred to at the scale they communicate upstream to a pool: a 10PH mining farm colocated with a hydro dam that communicates as a single unit to the pool and splits its work internally may be thought of as a single 'miner', separate from the 'miner' operating a single S19 in his garage down the street. Miners "point" their hashrate at a Pool, defined below.
 
 ### Pools (Hashrate Consumers)
 
-Pools operate as communication nodes to coordinate hashrate and distribute mining rewards. They create jobs for end-mining devices, validate blocks and shares, and propagate found blocks to the the Bitcoin Network. Pools do not custody or control hashrate. End-mining devices compatible with the Stratum protocol can switch between pools in minutes. Pools therefore compete for hashrate based on latency, ease-of-use, payout reliability, and associated networking services, all of which StratumV2 can significantly improve.
+Pools operate as communication nodes to coordinate hashrate and distribute mining rewards. They create jobs for end-mining devices, validate blocks and shares, and propagate found blocks to the Bitcoin Network. Pools do not custody or control hashrate. End-mining devices compatible with the Stratum protocol can switch between pools in minutes. Pools therefore compete for hashrate based on latency, ease-of-use, payout reliability, and associated networking services, all of which StratumV2 can significantly improve.
 
 ### Proxies
 
@@ -26,7 +26,7 @@ Proxies are intermediaries between Miners and Pools that aggregate connections a
 ### Job Negotiators
 
 Job Negotiators (JNs) are Pool-side Proxies that receive and validate custom block templates from Template Providers. They negotiate template use with the pool per the Job Negotiation Protocol.
-They can further distribute jobs to a Mining Proxy (or Proxies) via the Job Distribution Protocol.=
+They can further distribute jobs to a Mining Proxy (or Proxies) via the Job Distribution Protocol.
 
 ### Template Providers
 
