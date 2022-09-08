@@ -28,9 +28,9 @@
         <p
           class="w-full max-w-[90vw] xl:w-[960px] text-center mb-12 text-base sm:text-xl box-border px-4 text-bodyText"
         >
-          {{ data.heroText }}
-          <span class="text-accent">{{ data.heroTextHighlight }}</span
-          >.
+          {{ data.heroText1 }}
+          <span class="text-accent">{{ data.heroTextHighlight }}</span>
+          {{ data.heroText2 }}
         </p>
 
         <!-- CTA to Documentation -->
