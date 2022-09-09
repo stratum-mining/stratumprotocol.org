@@ -1,15 +1,11 @@
 ---
 layout: DocumentationLayout
-pageHeading: Reference Implementation
+pageHeading: SV2 in Detail
 ---
 
-# Features Overview
+# Features
 
 StratumV2 offers superior security, flexibility, and performance. This section details the motivations and technical descriptions behind V2's protocol design decisions.
-
-- [Discord](https://discord.gg/TsuT3YJWKN)
-- [GitHub](https://github.com/stratum-mining)
-- [Contribute](https://github.com/stratum-mining/stratum/issues)
 
 ## Bandwidth Consumption
 
@@ -21,7 +17,7 @@ Stratum V1's JSON-RPC, human readable test protocol, makes messages 2-3x heavier
 
 Stratum V2 removes redundant and unnecessary network pings including mining.subscribe, further reducing bandwidth consumption.
 
-SV2 reduces the average network message from ~100 bytes (unencrypted) to 48 bytes (encrypted).
+SV2 reduces the average network message size from ~100 bytes (unencrypted) to 48 bytes (encrypted).
 
 #### Motivation & Impact
 
