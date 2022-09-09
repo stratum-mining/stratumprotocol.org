@@ -107,7 +107,7 @@
       <!-- Road map -->
       <div class="flex relative z-20 flex-col items-center px-8">
         <img
-          src="/assets/deco-cyan.png"
+          src="/assets/deco-cyan.svg"
           alt="sparkles"
           class="absolute top-0 right-12 w-56 opacity-50 md:opacity-100 lg:w-72"
         />
