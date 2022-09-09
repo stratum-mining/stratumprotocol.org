@@ -71,9 +71,9 @@
       <!-- Features section -->
       <div class="flex relative z-20 flex-col px-8">
         <img
-          src="/assets/deco-magenta.svg"
+          src="/assets/deco-orange.svg"
           alt="sparkles"
-          class="absolute left-12 -bottom-24 w-96 opacity-50 md:opacity-100 lg:w-128"
+          class="absolute left-12 -top-24 w-96 opacity-50 md:opacity-100 lg:w-128"
         />
         <h2 class="z-20 mb-16 text-3xl font-bold text-center lg:text-4xl">
           {{ data.whyTitle }}
@@ -86,7 +86,7 @@
             :id="why.value"
           >
             <img
-              class="box-content p-3 mb-3 w-6 h-6 rounded-2xl md:mb-0 bg-icon"
+              class="box-content p-3 mb-3 w-6 h-6 rounded-xl md:mb-0 bg-icon"
               :src="why.image"
             />
             <div class="max-w-sm md:max-w-md">
@@ -103,11 +103,16 @@
 
       <!-- Road map -->
       <div class="flex relative z-20 flex-col items-center px-8">
+        <img
+          src="/assets/deco-cyan.svg"
+          alt="sparkles"
+          class="absolute top-0 right-12 w-56 opacity-50 md:opacity-100 lg:w-72"
+        />
         <h2 class="mb-4 text-3xl font-bold text-center lg:text-4xl">
           {{ data.roadmapTitle }}
         </h2>
         <p
-          class="w-full md:w-[500px] lg:w-[800px] text-center my-2 md:mb-6 text-base md:text-lg text-bodyText"
+          class="w-full md:w-[500px] lg:w-[800px] text-center my-2 text-base md:text-lg text-bodyText"
         >
           {{ data.roadmapTagline }}
         </p>
@@ -117,26 +122,35 @@
       <!-- Section highlighting entities supporting StratumV2 development -->
       <div class="flex relative z-20 flex-col px-8">
         <img
-          src="/assets/deco-cyan.svg"
+          src="/assets/planet.png"
+          alt="planet"
+          class="absolute right-0 bottom-0 w-56 lg:w-80"
+        />
+        <img
+          src="/assets/deco-magenta.svg"
           alt="sparkles"
-          class="absolute top-0 right-12 w-56 opacity-50 md:opacity-100 lg:w-72"
+          class="absolute left-12 -top-24 w-96 opacity-50 md:opacity-100 lg:w-128"
         />
         <h2 class="mb-4 text-2xl font-bold text-center lg:text-4xl">
           {{ data.supportersTitle }}
         </h2>
         <p
-          class="w-full md:w-[500px] lg:w-[800px] text-center mb-2 md:mb-6 text-base md:text-lg text-bodyText z-20"
+          class="w-full md:w-[500px] lg:w-[800px] text-center mb-4 md:mb-8 text-base md:text-lg text-bodyText z-20"
         >
-          {{ data.supportersText }}
+          {{ data.supportersText1 }}
         </p>
-
+        <p
+          class="w-full md:w-[500px] lg:w-[800px] text-center text-base md:text-lg text-white z-20"
+        >
+          {{ data.supportersText2 }}
+        </p>
         <div
-          class="flex z-20 flex-wrap justify-center items-center mx-auto mb-10 max-w-7xl"
+          class="z-20 mx-auto mb-12 max-w-7xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
         >
           <a
             v-for="supporter of data.supporters"
             :key="supporter.value"
-            class="mx-5 my-10"
+            class="bg-icon rounded-lg p-5 flex justify-center items-center h-32"
             :id="supporter.value"
             :href="supporter.link"
           >
@@ -147,43 +161,6 @@
           :item="{
             text: data.supportDevelopersText,
             link: data.supportDevelopersLink,
-          }"
-        />
-      </div>
-
-      <!-- Section highlighting entities approving StratumV2 development -->
-      <div class="flex relative z-20 flex-col">
-        <img
-          src="/assets/planet.png"
-          alt="planet"
-          class="absolute right-0 bottom-0 w-56 lg:w-80"
-        />
-        <h2 class="mb-4 text-2xl font-bold text-center lg:text-4xl">
-          {{ data.endorsementsTitle }}
-        </h2>
-        <p
-          class="w-full md:w-[500px] lg:w-[800px] text-center mb-2 md:mb-6 text-base md:text-lg text-bodyText z-20"
-        >
-          {{ data.endorsementsText }}
-        </p>
-
-        <div
-          class="flex flex-wrap justify-center items-center mx-auto mb-10 max-w-7xl"
-        >
-          <a
-            v-for="endorsement of data.endorsements"
-            :key="endorsement.value"
-            class="my-10 mx-5 z-[20]"
-            :id="endorsement.value"
-            :href="endorsement.link"
-          >
-            <img :src="endorsement.image" />
-          </a>
-        </div>
-        <PrimaryLink
-          :item="{
-            text: data.showSupportText,
-            link: data.showSupportLink,
           }"
         />
       </div>
