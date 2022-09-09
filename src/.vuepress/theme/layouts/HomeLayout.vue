@@ -115,7 +115,7 @@
           {{ data.roadmapTitle }}
         </h2>
         <p
-          class="w-full md:w-[500px] lg:w-[800px] text-center my-2 md:mb-6 text-base md:text-lg text-bodyText"
+          class="w-full md:w-[500px] lg:w-[800px] text-center my-2 text-base md:text-lg text-bodyText"
         >
           {{ data.roadmapTagline }}
         </p>
