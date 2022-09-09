@@ -36,6 +36,9 @@ supporters:
   - value: bitmex
     image: /assets/bitmex-logo.svg
     link: https://bitmex.com/
+  - value: braiins
+    image: /assets/braiins-logo.svg
+    link: https://braiins.com/
   - value: foundry
     image: /assets/foundry-logo.svg
     link: https://foundrydigital.com/
@@ -48,9 +51,6 @@ supporters:
   - value: sob
     image: /assets/summer-of-bitcoin.svg
     link: https://www.summerofbitcoin.org/
-  - value: braiins
-    image: /assets/braiins-logo.svg
-    link: https://braiins.com/
 supportDevelopersText: Support Developers
 supportDevelopersLink: "mailto:test@stratumprotocol.org"
 whyTitle: Layers of Upgrades
