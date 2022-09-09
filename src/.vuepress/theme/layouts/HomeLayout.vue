@@ -10,23 +10,18 @@
     >
       <div class="flex flex-col items-center w-screen">
         <!-- StratumV2 Logo -->
-        <img class="relative w-3/5 md:w-[220px] m-auto" :src="data.heroImage" />
+        <img class="relative w-3/5 max-w-[220px] m-auto" :src="data.heroImage" />
 
         <!-- Logo tagline -->
-        <div
-          class="mt-8 text-base text-center max-w-full px-4 w-[750px] lg:text-xl box-border"
+        <h1
+          class="box-border px-4 mt-16 mb-0 max-w-full text-xl text-center sm:text-3xl font-title md:text-4xl lg:text-5xl"
         >
           {{ data.tagline }}
-        </div>
-
-        <!-- Website main heading -->
-        <h1 class="mt-12 mb-4 text-4xl font-bold md:mb-8 lg:text-6xl">
-          {{ data.heroTitle }}
         </h1>
 
         <!-- Introduction -->
         <p
-          class="w-full max-w-[90vw] xl:w-[960px] text-center mb-12 text-base sm:text-xl box-border px-4 text-bodyText"
+          class="w-full max-w-[90vw] xl:w-[960px] text-center my-12 text-base sm:text-xl box-border px-4 text-bodyText"
         >
           {{ data.heroText }}
           <span class="text-accent">{{ data.heroTextHighlight }}</span
