@@ -10,7 +10,10 @@
     >
       <div class="flex flex-col items-center w-screen">
         <!-- StratumV2 Logo -->
-        <img class="relative w-3/5 max-w-[220px] m-auto" :src="data.heroImage" />
+        <img
+          class="relative w-3/5 max-w-[220px] m-auto"
+          :src="data.heroImage"
+        />
 
         <!-- Logo tagline -->
         <h1
@@ -102,7 +105,7 @@
       </div>
 
       <!-- Road map -->
-      <div class="flex relative z-20 flex-col items-center">
+      <div class="flex relative z-20 flex-col items-center px-8">
         <h2 class="mb-4 text-3xl font-bold text-center lg:text-4xl">
           {{ data.roadmapTitle }}
         </h2>
@@ -115,7 +118,7 @@
       </div>
 
       <!-- Section highlighting entities supporting StratumV2 development -->
-      <div class="flex relative z-20 flex-col">
+      <div class="flex relative z-20 flex-col px-8">
         <img
           src="/assets/deco-cyan.svg"
           alt="sparkles"
@@ -191,7 +194,7 @@
 
     <!-- Page Footer -->
     <footer
-      class="text-base text-center mb-6 text-bodyText transition-opacity z-[20]"
+      class="text-base text-center mb-6 text-bodyText transition-opacity z-[20] px-8"
     >
       <p class="text-white">
         {{ data.footerTitle }}
