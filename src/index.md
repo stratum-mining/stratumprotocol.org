@@ -29,8 +29,9 @@ roadmapSteps:
   - Implement the **job negotiator**, which a miner or miners can use to negotiate a block template with a pool.
   - Once a translator, template provider, and job negotiator are running, we will launch an MVP2. In this configuration, a miner handles mempool transaction selection, and the pool accepts it.
   - Apply early adopter feedback and tailor configurations that will move MVP1 and MVP2 from beta to production-ready.
-supportersTitle: Current Supporters of Stratum V2
-supportersText: Companies who financially support developers working on Stratum V2.
+supportersTitle: Support for Stratum V2
+supportersText1: Let’s make Stratum V2 the new standard. Show material support or indicate your approval of the protocol direction.
+supportersText2: Financial support for developers and initial protocol development (A-Z)
 supporters:
   - value: bitmex
     image: /assets/bitmex-logo.svg
@@ -47,22 +48,11 @@ supporters:
   - value: sob
     image: /assets/summer-of-bitcoin.svg
     link: https://www.summerofbitcoin.org/
-supportDevelopersText: Support Developers
-supportDevelopersLink: "mailto:test@stratumprotocol.org"
-endorsementsTitle: Who feels SV2 is the right direction?
-endorsementsText: Companies who believe that SV2 is right direction.
-endorsements:
-  - value: block
-    image: /assets/block-logo.svg
-    link: https://block.xyz/
-  - value: blockstream
-    image: /assets/blockstream-logo.svg
-    link: https://www.blockstream.com/
   - value: braiins
     image: /assets/braiins-logo.svg
     link: https://braiins.com/
-showSupportText: Show support for SV2
-showSupportLink: "mailto:test@stratumprotocol.org"
+supportDevelopersText: Support Developers
+supportDevelopersLink: "mailto:test@stratumprotocol.org"
 whyTitle: Layers of Upgrades
 why:
   - title: Security

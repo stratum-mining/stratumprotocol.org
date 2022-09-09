@@ -1,6 +1,6 @@
 <template>
   <!-- Container -->
-  <div class="overflow-scroll px-2 py-4 md:px-8 max-w-screen">
+  <div class="z-20 overflow-scroll px-2 py-4 md:px-8 max-w-screen">
     <!-- Scrolling Container -->
     <div class="flex flex-col w-max md:w-max md:flex-row">
       <div
