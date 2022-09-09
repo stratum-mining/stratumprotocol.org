@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        levelOne: "#011426",
+        levelOne: "#051426",
         levelTwo: "#031C34",
         levelThree: "#0E3A64",
         bodyText: "#C1DDF8",

@@ -1,7 +1,7 @@
 ---
 home: true
 layout: HomeLayout
-background: /assets/hero-bg.jpg
+background: /assets/hero-background.jpg
 heroImage: /assets/stratum-v2-icon-with-text.svg
 heroText: An open-source and community-managed reference implementation of the Stratum V2 protocol. Stratum V2 increases security, makes data transfers more efficient, and reduces mining infrastructure requirements. It also introduces three new sub-protocols that let miners select transaction sets and improve decentralization by negotiating with pools.
 tagline: One giant leap for bitcoin mining

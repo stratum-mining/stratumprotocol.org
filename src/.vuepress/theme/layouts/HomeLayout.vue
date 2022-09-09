@@ -5,12 +5,15 @@
     <div
       class="flex relative flex-col justify-center items-center py-20 w-full min-h-screen bg-no-repeat bg-cover md:py-0"
       :style="{
-        backgroundImage: `radial-gradient(#01142600 0%,#011426 100%), url(${data.background})`,
+        backgroundImage: `url(${data.background})`,
       }"
     >
       <div class="flex flex-col items-center w-screen">
         <!-- StratumV2 Logo -->
-        <img class="relative w-3/5 max-w-[220px] m-auto" :src="data.heroImage" />
+        <img
+          class="relative w-3/5 max-w-[220px] m-auto"
+          :src="data.heroImage"
+        />
 
         <!-- Logo tagline -->
         <h1
@@ -40,13 +43,11 @@
     </div>
 
     <!-- Main Content -->
-    <div
-      class="relative px-6 pb-24 space-y-24 w-screen top-shadow md:pb-36 md:space-y-36"
-    >
+    <div class="relative px-6 pb-24 space-y-24 w-screen md:pb-36 md:space-y-36">
       <img
         src="/assets/deco-yellow.png"
         alt="sparkles"
-        class="absolute top-0 right-0 w-56 lg:w-96"
+        class="absolute right-0 top-3 w-56 lg:w-96"
       />
 
       <!-- Diagram section -->
