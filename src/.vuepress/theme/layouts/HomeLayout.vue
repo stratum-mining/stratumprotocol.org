@@ -49,9 +49,9 @@
       class="relative px-6 pb-24 space-y-24 w-screen top-shadow md:pb-36 md:space-y-36"
     >
       <img
-        src="/assets/deco-yellow.png"
+        src="/assets/deco-yellow.svg"
         alt="sparkles"
-        class="absolute top-0 right-0 w-56 lg:w-96"
+        class="absolute right-6 top-12 w-56 opacity-50 md:opacity-100 lg:w-72"
       />
 
       <!-- Diagram section -->
@@ -76,9 +76,9 @@
       <!-- Features section -->
       <div class="flex relative z-20 flex-col px-8">
         <img
-          src="/assets/deco-magenta.png"
+          src="/assets/deco-magenta.svg"
           alt="sparkles"
-          class="absolute bottom-0 left-0 w-96 lg:w-auto"
+          class="absolute left-12 -bottom-24 w-96 opacity-50 md:opacity-100 lg:w-128"
         />
         <h2 class="z-20 mb-16 text-3xl font-bold text-center lg:text-4xl">
           {{ data.whyTitle }}
@@ -122,9 +122,9 @@
       <!-- Section highlighting entities supporting StratumV2 development -->
       <div class="flex relative z-20 flex-col">
         <img
-          src="/assets/deco-cyan.png"
+          src="/assets/deco-cyan.svg"
           alt="sparkles"
-          class="absolute top-0 right-0 w-56 lg:w-auto"
+          class="absolute top-0 right-12 w-56 opacity-50 md:opacity-100 lg:w-72"
         />
         <h2 class="mb-4 text-2xl font-bold text-center lg:text-4xl">
           {{ data.supportersTitle }}
