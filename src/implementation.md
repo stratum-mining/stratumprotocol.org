@@ -5,7 +5,7 @@ pageHeading: Reference Implementation
 
 # The Stratum Mining Reference Implementation
 
-The [SV2 Reference Implementation](https://www.github.com/stratum-mining/stratum) Provides:
+The [SV2 Reference Implementation](https://www.github.com/stratum-mining/stratum) provides:
 
 A robust set of Stratum V2 (Sv2) primitives as Rust library crates for anyone to expand the protocol or implement a role.
 For example:
