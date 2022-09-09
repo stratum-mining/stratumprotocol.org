@@ -10,23 +10,18 @@
     >
       <div class="flex flex-col items-center w-screen">
         <!-- StratumV2 Logo -->
-        <img class="relative w-3/5 md:w-[220px] m-auto" :src="data.heroImage" />
+        <img class="relative w-3/5 max-w-[220px] m-auto" :src="data.heroImage" />
 
         <!-- Logo tagline -->
-        <div
-          class="mt-8 text-base text-center max-w-full px-4 w-[750px] lg:text-xl box-border"
+        <h1
+          class="box-border px-4 mt-16 mb-0 max-w-full text-xl text-center sm:text-3xl font-title md:text-4xl lg:text-5xl"
         >
           {{ data.tagline }}
-        </div>
-
-        <!-- Website main heading -->
-        <h1 class="mt-12 mb-4 text-4xl font-bold md:mb-8 lg:text-6xl">
-          {{ data.heroTitle }}
         </h1>
 
         <!-- Introduction -->
         <p
-          class="w-full max-w-[90vw] xl:w-[960px] text-center mb-12 text-base sm:text-xl box-border px-4 text-bodyText"
+          class="w-full max-w-[90vw] xl:w-[960px] text-center my-12 text-base sm:text-xl box-border px-4 text-bodyText"
         >
           {{ data.heroText }}
           <span class="text-accent">{{ data.heroTextHighlight }}</span
@@ -49,20 +44,20 @@
       class="relative px-6 pb-24 space-y-24 w-screen top-shadow md:pb-36 md:space-y-36"
     >
       <img
-        src="/assets/deco-yellow.png"
+        src="/assets/deco-yellow.svg"
         alt="sparkles"
-        class="absolute top-0 right-0 w-56 lg:w-96"
+        class="absolute right-6 top-12 w-56 opacity-50 md:opacity-100 lg:w-72"
       />
 
       <!-- Diagram section -->
       <div class="flex relative z-20 flex-col px-8">
         <img
-          src="/assets/diagram.png"
+          src="/assets/diagram.svg"
           alt="diagram"
           class="hidden w-full xl:w-auto md:block"
         />
         <img
-          src="/assets/mobile-graphic.png"
+          src="/assets/mobile-diagram.svg"
           alt="diagram"
           class="block w-full max-w-96 md:hidden"
         />
@@ -76,9 +71,9 @@
       <!-- Features section -->
       <div class="flex relative z-20 flex-col px-8">
         <img
-          src="/assets/deco-magenta.png"
+          src="/assets/deco-magenta.svg"
           alt="sparkles"
-          class="absolute bottom-0 left-0 w-96 lg:w-auto"
+          class="absolute left-12 -bottom-24 w-96 opacity-50 md:opacity-100 lg:w-128"
         />
         <h2 class="z-20 mb-16 text-3xl font-bold text-center lg:text-4xl">
           {{ data.whyTitle }}
@@ -91,7 +86,7 @@
             :id="why.value"
           >
             <img
-              class="box-content p-5 mb-5 w-10 h-10 rounded-2xl md:mb-0 bg-icon"
+              class="box-content p-3 mb-3 w-6 h-6 rounded-2xl md:mb-0 bg-icon"
               :src="why.image"
             />
             <div class="max-w-sm md:max-w-md">
@@ -111,7 +106,7 @@
         <img
           src="/assets/deco-cyan.png"
           alt="sparkles"
-          class="absolute top-0 right-0 w-56 lg:w-auto"
+          class="absolute top-0 right-12 w-56 opacity-50 md:opacity-100 lg:w-72"
         />
         <h2 class="mb-4 text-3xl font-bold text-center lg:text-4xl">
           {{ data.roadmapTitle }}
