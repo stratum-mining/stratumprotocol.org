@@ -57,12 +57,12 @@
       <!-- Diagram section -->
       <div class="flex relative z-20 flex-col px-8">
         <img
-          src="/assets/diagram.png"
+          src="/assets/diagram.svg"
           alt="diagram"
           class="hidden w-full xl:w-auto md:block"
         />
         <img
-          src="/assets/mobile-graphic.png"
+          src="/assets/mobile-diagram.svg"
           alt="diagram"
           class="block w-full max-w-96 md:hidden"
         />
