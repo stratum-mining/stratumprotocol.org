@@ -5,7 +5,7 @@
     <div
       class="flex relative flex-col justify-center items-center py-20 w-full min-h-screen bg-no-repeat bg-cover md:py-0"
       :style="{
-        backgroundImage: `radial-gradient(#01142600 0%,#011426 100%), url(${data.background})`,
+        backgroundImage: `url(${data.background})`,
       }"
     >
       <div class="flex flex-col items-center w-screen">
@@ -14,7 +14,6 @@
           class="relative w-3/5 max-w-[220px] m-auto"
           :src="data.heroImage"
         />
-
         <!-- Logo tagline -->
         <h1
           class="box-border px-4 mt-16 mb-0 max-w-full text-xl text-center sm:text-3xl font-title md:text-4xl lg:text-5xl"
@@ -43,13 +42,11 @@
     </div>
 
     <!-- Main Content -->
-    <div
-      class="relative px-6 pb-24 space-y-24 w-screen top-shadow md:pb-36 md:space-y-36"
-    >
+    <div class="relative px-6 pb-24 space-y-24 w-screen md:pb-36 md:space-y-36">
       <img
         src="/assets/deco-yellow.svg"
         alt="sparkles"
-        class="absolute right-6 top-12 w-56 opacity-50 md:opacity-100 lg:w-72"
+        class="absolute top-3 right-6 top-12 w-56 opacity-50 md:opacity-100 lg:w-72"
       />
 
       <!-- Diagram section -->
