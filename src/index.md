@@ -72,8 +72,8 @@ why:
   - title: Standardization
     text: By failing to precisely define Stratum V1’s specifications, we inadvertently created multiple implementations with varying semi-compatible dialects. Stratum V2 fixes this by defining its protocol parameters to ensure cross-compatibility between and pools and end-mining devices.
     image: /assets/compare.svg
-readDocumentationText: Read Documentation
-readDocumentationLink: /implementation
+readDocumentationText: Read the Docs
+readDocumentationLink: /overview
 footerTitle: Join us on
 footerBottom: Made by the open-source bitcoin community. <a href="https://www.freepik.com/free-vector/space-illustration-night-alien-fantasy-landscape_5603523.htm" rel="nofollow noindex">Image by vectorpouch</a> on Freepik.
 meta:

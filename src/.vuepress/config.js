@@ -24,10 +24,10 @@ module.exports = {
       "/": "auto",
     },
     nav: [
+      { text: "Overview", link: "/overview" },
       { text: "Features", link: "/features" },
-      { text: "How To", link: "/how-to" },
       { text: "Implementation", link: "/implementation" },
-      { text: "Specifications", link: "/specifications" },
+      { text: "Specification", link: "/specification" },
     ],
   },
 
