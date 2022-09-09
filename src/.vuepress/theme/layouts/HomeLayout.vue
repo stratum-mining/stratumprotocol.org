@@ -74,9 +74,9 @@
       <!-- Features section -->
       <div class="flex relative z-20 flex-col px-8">
         <img
-          src="/assets/deco-magenta.svg"
+          src="/assets/deco-orange.svg"
           alt="sparkles"
-          class="absolute left-12 -bottom-24 w-96 opacity-50 md:opacity-100 lg:w-128"
+          class="absolute left-12 -top-24 w-96 opacity-50 md:opacity-100 lg:w-128"
         />
         <h2 class="z-20 mb-16 text-3xl font-bold text-center lg:text-4xl">
           {{ data.whyTitle }}
@@ -128,6 +128,11 @@
           src="/assets/planet.png"
           alt="planet"
           class="absolute right-0 bottom-0 w-56 lg:w-80"
+        />
+        <img
+          src="/assets/deco-magenta.svg"
+          alt="sparkles"
+          class="absolute left-12 -top-24 w-96 opacity-50 md:opacity-100 lg:w-128"
         />
         <h2 class="mb-4 text-2xl font-bold text-center lg:text-4xl">
           {{ data.supportersTitle }}
