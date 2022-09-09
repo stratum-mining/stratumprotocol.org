@@ -6,10 +6,10 @@ heroImage: /assets/stratum-v2-icon-with-text.svg
 heroText1: A complete, open-source and community-managed implementation of the Stratum V2 protocol. Stratum V2 increases security, makes data transfers more efficient, and reduces mining infrastructure requirements. It also introduces three new sub-protocols that let miners select transaction sets and
 heroTextHighlight: improve decentralization
 heroText2: by negotiating with pools.
-tagline: One giant leap for bitcoin mining.
+tagline: One giant leap for bitcoin mining
 documentationCtaText: Explore GitHub
 documentationCtaLink: https://github.com/stratum-mining/stratum
-diagramText: Perviously, pools selected the transaction set, whereas in Stratum V2, the individual miner can decide which set to select, making the network more censorship-resistant.
+diagramText: Before Stratum V2, transaction sets were selected by pools. With a complete SV2 configuration they’re selected by individual miners, making the network more censorship-resistant.
 links:
   - title: GitHub
     url: https://github.com/stratum-mining
@@ -26,11 +26,11 @@ footerLinks:
 roadmapTitle: Progress and Roadmap
 roadmapTagline: This is where the Stratum V2 protocol’s progress currently stands.
 roadmapSteps:
-  - Launch **MVP1** will allow users to run SV2 in its simplest form - a miner running existing SV1 firmware with a proxy that translates messages into SV2. In this configuration, the pool selects transactions.
-  - A pull request that implements a **block template provider** will be submitted to the Bitcoin Core repository for review.
+  - __MVP1__ will allow users to run SV2 in its simplest form - a miner running existing SV1 firmware with a proxy that translates messages into SV2. In this configuration, the pool selects transactions.
+  - A pull request that implements a **block template provider** will be submitted to the Bitcoin Core repository for review which will make MVP1 complete.
   - Implement the **job negotiator**, which a miner or miners can use to negotiate a block template with a pool.
   - Once a translator, template provider, and job negotiator are running, we will launch an MVP2. In this configuration, a miner handles mempool transaction selection, and the pool accepts it.
-  - Get MVP1 and MVP2 from beta to production-ready based on the feedback of early adopters and tailor configurations to their needs,
+  - Apply early adopter feedback and tailor configurations that will move MVP1 and MVP2 from beta to production-ready.
 supportersTitle: Current Supporters of Stratum V2
 supportersText: Companies who financially support developers working on Stratum V2.
 supporters:
@@ -52,7 +52,7 @@ supporters:
 supportDevelopersText: Support Developers
 supportDevelopersLink: "mailto:test@stratumprotocol.org"
 endorsementsTitle: Who feels SV2 is the right direction?
-endorsementsText: Companies who believe that SV2 is right for bitcoin.
+endorsementsText: Companies who believe that SV2 is right direction.
 endorsements:
   - value: block
     image: /assets/block-logo.svg
@@ -85,7 +85,7 @@ why:
 readDocumentationText: Read Documentation
 readDocumentationLink: /implementation
 footerTitle: Join us on
-footerBottom: Made by the open-source bitcoin community.
+footerBottom: Made by the open-source bitcoin community. <a href="https://www.freepik.com/free-vector/space-illustration-night-alien-fantasy-landscape_5603523.htm" rel="nofollow noindex">Image by vectorpouch</a> on Freepik.
 meta:
   # We can reuse & customize those tags on other pages of the website
   # Primary Meta Tags

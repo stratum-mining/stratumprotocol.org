@@ -26,6 +26,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ["Rubik"],
+        title: ["SpaceGrotesk"],
       },
       fontSize: {
         tiny: ["15px", "22px"],

@@ -3,30 +3,25 @@
     class="flex overflow-hidden relative flex-col items-center w-screen min-h-screen bg-levelOne"
   >
     <div
-      class="py-20 md:py-0 flex relative flex-col justify-center items-center w-full min-h-screen bg-no-repeat bg-cover"
+      class="flex relative flex-col justify-center items-center py-20 w-full min-h-screen bg-no-repeat bg-cover md:py-0"
       :style="{
         backgroundImage: `radial-gradient(#01142600 0%,#011426 100%), url(${data.background})`,
       }"
     >
       <div class="flex flex-col items-center w-screen">
         <!-- StratumV2 Logo -->
-        <img class="relative w-3/5 md:w-[220px] m-auto" :src="data.heroImage" />
+        <img class="relative w-3/5 max-w-[220px] m-auto" :src="data.heroImage" />
 
         <!-- Logo tagline -->
-        <div
-          class="mt-8 text-base text-center max-w-full px-4 w-[750px] lg:text-xl box-border"
+        <h1
+          class="box-border px-4 mt-16 mb-0 max-w-full text-xl text-center sm:text-3xl font-title md:text-4xl lg:text-5xl"
         >
           {{ data.tagline }}
-        </div>
-
-        <!-- Website main heading -->
-        <h1 class="mt-12 mb-4 text-4xl font-bold md:mb-8 lg:text-6xl">
-          {{ data.heroTitle }}
         </h1>
 
         <!-- Introduction -->
         <p
-          class="w-full max-w-[90vw] xl:w-[960px] text-center mb-12 text-base sm:text-xl box-border px-4 text-bodyText"
+          class="w-full max-w-[90vw] xl:w-[960px] text-center my-12 text-base sm:text-xl box-border px-4 text-bodyText"
         >
           {{ data.heroText1 }}
           <span class="text-accent">{{ data.heroTextHighlight }}</span>
@@ -46,17 +41,26 @@
 
     <!-- Main Content -->
     <div
-      class="top-shadow px-6 pb-24 space-y-24 w-screen md:pb-36 md:space-y-36 relative"
+      class="relative px-6 pb-24 space-y-24 w-screen top-shadow md:pb-36 md:space-y-36"
     >
       <img
-        src="/assets/deco-yellow.png"
+        src="/assets/deco-yellow.svg"
         alt="sparkles"
-        class="absolute right-0 top-0 w-56 lg:w-96"
+        class="absolute right-6 top-12 w-56 opacity-50 md:opacity-100 lg:w-72"
       />
 
       <!-- Diagram section -->
-      <div class="flex z-20 flex-col px-8 relative">
-        <img src="/assets/diagram.png" alt="diagram" class="w-full xl:w-auto" />
+      <div class="flex relative z-20 flex-col px-8">
+        <img
+          src="/assets/diagram.svg"
+          alt="diagram"
+          class="hidden w-full xl:w-auto md:block"
+        />
+        <img
+          src="/assets/mobile-diagram.svg"
+          alt="diagram"
+          class="block w-full max-w-96 md:hidden"
+        />
         <p
           class="text-base md:text-lg text-bodyText w-full lg:w-[775px] text-center mt-10"
         >
@@ -65,16 +69,16 @@
       </div>
 
       <!-- Features section -->
-      <div class="flex z-20 flex-col px-8 relative">
+      <div class="flex relative z-20 flex-col px-8">
         <img
-          src="/assets/deco-magenta.png"
+          src="/assets/deco-magenta.svg"
           alt="sparkles"
-          class="absolute left-0 bottom-0 w-96 lg:w-auto"
+          class="absolute left-12 -bottom-24 w-96 opacity-50 md:opacity-100 lg:w-128"
         />
         <h2 class="z-20 mb-16 text-3xl font-bold text-center lg:text-4xl">
           {{ data.whyTitle }}
         </h2>
-        <div class="z-20 grid gap-10 md:grid-cols-2">
+        <div class="grid z-20 gap-10 md:grid-cols-2">
           <div
             v-for="why of data.why"
             :key="why.value"
@@ -82,7 +86,7 @@
             :id="why.value"
           >
             <img
-              class="box-content p-5 mb-5 w-10 h-10 rounded-2xl md:mb-0 bg-icon"
+              class="box-content p-3 mb-3 w-6 h-6 rounded-2xl md:mb-0 bg-icon"
               :src="why.image"
             />
             <div class="max-w-sm md:max-w-md">
@@ -99,11 +103,11 @@
 
       <!-- Road map -->
       <div class="flex relative z-20 flex-col items-center">
-        <h2 class="mb-8 text-3xl font-bold text-center lg:text-4xl">
+        <h2 class="mb-4 text-3xl font-bold text-center lg:text-4xl">
           {{ data.roadmapTitle }}
         </h2>
         <p
-          class="w-full md:w-[500px] lg:w-[800px] text-center mb-20 md:mb-6 text-base md:text-lg text-bodyText"
+          class="w-full md:w-[500px] lg:w-[800px] text-center my-2 md:mb-6 text-base md:text-lg text-bodyText"
         >
           {{ data.roadmapTagline }}
         </p>
@@ -111,23 +115,23 @@
       </div>
 
       <!-- Section highlighting entities supporting StratumV2 development -->
-      <div class="flex relative z-20 flex-col relative">
+      <div class="flex relative z-20 flex-col">
         <img
-          src="/assets/deco-cyan.png"
+          src="/assets/deco-cyan.svg"
           alt="sparkles"
-          class="absolute right-0 top-0 w-56 lg:w-auto"
+          class="absolute top-0 right-12 w-56 opacity-50 md:opacity-100 lg:w-72"
         />
-        <h2 class="mb-8 text-2xl font-bold text-center lg:text-4xl">
+        <h2 class="mb-4 text-2xl font-bold text-center lg:text-4xl">
           {{ data.supportersTitle }}
         </h2>
         <p
-          class="w-full md:w-[500px] lg:w-[800px] text-center mb-20 md:mb-6 text-base md:text-lg text-bodyText z-20"
+          class="w-full md:w-[500px] lg:w-[800px] text-center mb-2 md:mb-6 text-base md:text-lg text-bodyText z-20"
         >
           {{ data.supportersText }}
         </p>
 
         <div
-          class="max-w-7xl mx-auto z-20 flex flex-wrap justify-center items-center mb-10"
+          class="flex z-20 flex-wrap justify-center items-center mx-auto mb-10 max-w-7xl"
         >
           <a
             v-for="supporter of data.supporters"
@@ -148,23 +152,23 @@
       </div>
 
       <!-- Section highlighting entities approving StratumV2 development -->
-      <div class="flex relative z-20 flex-col relative">
+      <div class="flex relative z-20 flex-col">
         <img
           src="/assets/planet.png"
           alt="planet"
           class="absolute right-0 bottom-0 w-56 lg:w-80"
         />
-        <h2 class="mb-8 text-2xl font-bold text-center lg:text-4xl">
+        <h2 class="mb-4 text-2xl font-bold text-center lg:text-4xl">
           {{ data.endorsementsTitle }}
         </h2>
         <p
-          class="w-full md:w-[500px] lg:w-[800px] text-center mb-20 md:mb-6 text-base md:text-lg text-bodyText z-20"
+          class="w-full md:w-[500px] lg:w-[800px] text-center mb-2 md:mb-6 text-base md:text-lg text-bodyText z-20"
         >
           {{ data.endorsementsText }}
         </p>
 
         <div
-          class="max-w-7xl mx-auto flex flex-wrap justify-center items-center mb-10"
+          class="flex flex-wrap justify-center items-center mx-auto mb-10 max-w-7xl"
         >
           <a
             v-for="endorsement of data.endorsements"
@@ -211,9 +215,7 @@
         }"
       />
 
-      <p class="mt-40 text-sm">
-        {{ data.footerBottom }}
-      </p>
+      <p class="mt-40 text-sm" v-html="data.footerBottom" />
     </footer>
 
     <img
