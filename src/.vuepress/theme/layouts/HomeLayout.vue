@@ -220,9 +220,7 @@
         }"
       />
 
-      <p class="mt-40 text-sm">
-        {{ data.footerBottom }}
-      </p>
+      <p class="mt-40 text-sm" v-html="data.footerBottom" />
     </footer>
 
     <img

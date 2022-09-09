@@ -83,7 +83,7 @@ why:
 readDocumentationText: Read Documentation
 readDocumentationLink: /implementation
 footerTitle: Join us on
-footerBottom: Made by the open-source bitcoin community.
+footerBottom: Made by the open-source bitcoin community. <a href="https://www.freepik.com/free-vector/space-illustration-night-alien-fantasy-landscape_5603523.htm" rel="nofollow noindex">Image by vectorpouch</a> on Freepik.
 meta:
   # We can reuse & customize those tags on other pages of the website
   # Primary Meta Tags
