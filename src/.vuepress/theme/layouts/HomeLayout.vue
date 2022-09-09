@@ -89,7 +89,7 @@
             :id="why.value"
           >
             <img
-              class="box-content p-3 mb-3 w-6 h-6 rounded-2xl md:mb-0 bg-icon"
+              class="box-content p-3 mb-3 w-6 h-6 rounded-xl md:mb-0 bg-icon"
               :src="why.image"
             />
             <div class="max-w-sm md:max-w-md">
