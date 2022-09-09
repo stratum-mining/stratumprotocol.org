@@ -135,7 +135,7 @@
           {{ data.supportersTitle }}
         </h2>
         <p
-          class="w-full md:w-[500px] lg:w-[800px] text-center mb-2 md:mb-6 text-base md:text-lg text-bodyText z-20"
+          class="w-full md:w-[500px] lg:w-[800px] text-center mb-4 md:mb-8 text-base md:text-lg text-bodyText z-20"
         >
           {{ data.supportersText1 }}
         </p>
@@ -145,7 +145,7 @@
           {{ data.supportersText2 }}
         </p>
         <div
-          class="z-20 mx-auto mb-10 max-w-7xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
+          class="z-20 mx-auto mb-12 max-w-7xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
         >
           <a
             v-for="supporter of data.supporters"
