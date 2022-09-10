@@ -3,7 +3,7 @@ home: true
 layout: HomeLayout
 background: /assets/hero-background.jpg
 heroImage: /assets/stratum-v2-icon-with-text.svg
-heroText1: A complete, open-source and community-managed implementation of the Stratum V2 protocol. Stratum V2 increases security, makes data transfers more efficient, and reduces mining infrastructure requirements. It also introduces three new sub-protocols that let miners select transaction sets and
+heroText1: A community-managed, open-source reference implementation of the Stratum V2 protocol. Stratum V2 increases security, makes data transfers more efficient, and reduces mining infrastructure requirements. It also introduces three new sub-protocols that let miners select transaction sets and
 heroTextHighlight: improve decentralization
 heroText2: by negotiating with pools.
 tagline: One giant leap for bitcoin mining
@@ -54,7 +54,7 @@ supporters:
     image: /assets/summer-of-bitcoin.svg
     link: https://www.summerofbitcoin.org/
 supportDevelopersText: Support Developers
-supportDevelopersLink: "mailto:test@stratumprotocol.org"
+supportDevelopersLink: "mailto:stratumv2@gmail.com"
 whyTitle: Layers of Upgrades
 why:
   - title: Security
