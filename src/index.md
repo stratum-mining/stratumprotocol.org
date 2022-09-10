@@ -3,7 +3,7 @@ home: true
 layout: HomeLayout
 background: /assets/hero-background.jpg
 heroImage: /assets/stratum-v2-icon-with-text.svg
-heroText1: A complete, open-source and community-managed implementation of the Stratum V2 protocol. Stratum V2 increases security, makes data transfers more efficient, and reduces mining infrastructure requirements. It also introduces three new sub-protocols that let miners select transaction sets and
+heroText1: A community-managed, open-source reference implementation of the Stratum V2 protocol. Stratum V2 increases security, makes data transfers more efficient, and reduces mining infrastructure requirements. It also introduces three new sub-protocols that let miners select transaction sets and
 heroTextHighlight: improve decentralization
 heroText2: by negotiating with pools.
 tagline: One giant leap for bitcoin mining
@@ -26,7 +26,7 @@ footerLinks:
 roadmapTitle: Progress and Roadmap
 roadmapTagline: This is where the Stratum V2 protocol’s progress currently stands.
 roadmapSteps:
-  - __MVP1__ will allow users to run SV2 in its simplest form - a miner running existing SV1 firmware with a proxy that translates messages into SV2. In this configuration, the pool selects transactions.
+  - __MVP1__ will allow users to run SV2 where a miner runs existing SV1 firmware with a proxy that translates messages into SV2. In this configuration, the pool selects transactions.
   - A pull request that implements a **block template provider** will be submitted to the Bitcoin Core repository for review which will make MVP1 complete.
   - Implement the **job negotiator**, which a miner or miners can use to negotiate a block template with a pool.
   - Once a translator, template provider, and job negotiator are running, we will launch an MVP2. In this configuration, a miner handles mempool transaction selection, and the pool accepts it.
@@ -54,7 +54,7 @@ supporters:
     image: /assets/summer-of-bitcoin.svg
     link: https://www.summerofbitcoin.org/
 supportDevelopersText: Support Developers
-supportDevelopersLink: "mailto:test@stratumprotocol.org"
+supportDevelopersLink: "mailto:stratumv2@gmail.com"
 whyTitle: Layers of Upgrades
 why:
   - title: Security
