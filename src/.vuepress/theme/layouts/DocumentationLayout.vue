@@ -1,41 +1,33 @@
 <template>
   <div
-    :class="classNames('absolute top-0 w-screen bg-levelOne pt-8 lg:pt-32')"
+    :class="classNames('absolute top-0 w-screen bg-dark-100 pt-8 lg:pt-32')"
     @touchstart="onTouchStart"
     @touchend="onTouchEnd"
   >
-    <Navbar @toggle-sidebar="toggleSidebar" />
+    <!-- Background Image -->
+    <img
+      class="fixed top-0 left-0 z-10 h-2/3 lg:h-auto lg:w-screen"
+      src="/assets/dark-bg.svg"
+    />
 
-    <!-- Top Section background -->
-    <div
-      class="absolute top-0 w-screen h-screen bg-cover bg-no-repeat bg-top flex flex-col"
-      :style="{
-        backgroundImage: `radial-gradient(41.01% 41.01% at 50% 50%, rgba(1, 20, 38, 0) 0%, rgba(1, 20, 38, 0.8) 100%), url(/assets/documentation-scene.svg)`,
-      }"
-    >
-      <!-- Background Highlights -->
-      <img
-        class="w-max-content h-full max-w-full max-h-full m-auto"
-        src="/assets/transparent-blur.svg"
-      />
-      <!-- Gradient filter on background image -->
-      <div
-        class="absolute z-[10] left-0 -bottom-14 h-52 w-full"
-        :style="{
-          backgroundImage: 'linear-gradient(#01142600 0%, #011426 80%)',
-        }"
-      />
-    </div>
+    <!-- Background Lights -->
+    <img
+      class="fixed left-1/2 z-10 m-auto w-2/3 md:w-1/2"
+      :style="{ transform: 'translateX(-50%) translateY(-70%)' }"
+      src="/assets/transparent-blur.svg"
+    />
+
+    <Navbar @toggle-sidebar="toggleSidebar" />
 
     <!-- Sidebar Overlay -->
     <div
       @click="toggleSidebar(false)"
-      class="fixed top-0 left-0 h-screen bg-gray-800/25 z-30"
+      class="fixed top-0 left-0 z-30 h-screen bg-gray-800/25"
       v-bind:class="{ [isSidebarOpen ? 'w-screen' : 'w-0']: true }"
     />
 
     <!-- Content & Sidebar -->
-    <div class="relative w-screen max-w-7xl mx-auto">
+    <div class="relative mx-auto mt-20 w-screen max-w-7xl">
       <SideBar
         class="nav-sidebar"
         v-bind:class="{ open: isSidebarOpen }"
@@ -44,7 +36,7 @@
 
       <!-- Main content -->
       <div
-        class="relative bg-levelTwo z-[10] mx-3 lg:mx-8 py-6 px-6 md:py-8 md:px-12 my-14 lg:ml-[315px] lg:py-14 lg:px-24"
+        class="relative z-[10] mx-3 pt-4 lg:mx-8 mb-28 lg:ml-[315px] px-6 md:px-12 lg:px-24"
       >
         <div v-if="data.pageHeading" class="page-heading">
           {{ data.pageHeading }}

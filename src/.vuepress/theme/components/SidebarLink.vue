@@ -69,7 +69,7 @@ function renderLink(h, to, text, active, level) {
     },
     class: {
       "text-links": active,
-      "text-md text-bold inline-block w-full hover:text-links w-full": true,
+      "text-md text-bold inline-block w-full hover:text-links w-full mt-3.5 leading-4": true,
     },
   };
   if (level > 2) {
