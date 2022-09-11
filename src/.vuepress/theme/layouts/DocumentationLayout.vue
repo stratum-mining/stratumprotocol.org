@@ -5,12 +5,15 @@
     @touchend="onTouchEnd"
   >
     <!-- Background Image -->
-    <img class="fixed top-0 left-0 z-10 w-screen" src="/assets/dark-bg.svg" />
+    <img
+      class="fixed top-0 left-0 z-10 h-2/3 lg:h-auto lg:w-screen"
+      src="/assets/dark-bg.svg"
+    />
 
     <!-- Background Lights -->
     <img
-      class="fixed -top-[700px] z-10 m-auto left-1/2"
-      :style="{ transform: 'translateX(-50%)' }"
+      class="fixed left-1/2 z-10 m-auto w-2/3 md:w-1/2"
+      :style="{ transform: 'translateX(-50%) translateY(-70%)' }"
       src="/assets/transparent-blur.svg"
     />
 
