@@ -27,7 +27,7 @@
     />
 
     <!-- Content & Sidebar -->
-    <div class="relative mx-auto w-screen max-w-7xl">
+    <div class="relative mx-auto mt-20 w-screen max-w-7xl">
       <SideBar
         class="nav-sidebar"
         v-bind:class="{ open: isSidebarOpen }"
@@ -36,7 +36,7 @@
 
       <!-- Main content -->
       <div
-        class="relative z-[10] mx-3 lg:mx-8 mt-14 mb-28 lg:ml-[315px] px-6 md:px-12 lg:px-24 py-6 md:py-8 lg:py-14"
+        class="relative z-[10] mx-3 pt-4 lg:mx-8 mb-28 lg:ml-[315px] px-6 md:px-12 lg:px-24"
       >
         <div v-if="data.pageHeading" class="page-heading">
           {{ data.pageHeading }}

@@ -1,7 +1,7 @@
 <template>
   <nav
     v-if="userLinks.length || repoLink"
-    class="px-2 pb-4 mt-5 mr-8 space-y-3 border-t-0 border-b border-white border-solid border-x-0"
+    class="px-2 py-6 mr-8 space-y-4 border-t-0 border-b border-white border-solid border-x-0"
   >
     <!-- user links -->
     <div v-for="item in userLinks" :key="item.link">

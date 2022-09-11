@@ -5,7 +5,7 @@
         'fixed box-border overflow-scroll z-[30] border-none',
         'bg-dark-300 lg:bg-transparent',
         'w-screen max-w-sm text-lg h-screen md:h-[600px]',
-        'top-0 left-0 lg:top-24 pt-28 lg:pt-12 pl-12 xl:ml-[calc(50vw-640px)]'
+        'left-0 top-0 lg:top-auto pt-16 lg:pt-0 pl-12 xl:ml-[calc(50vw-640px)]'
       )
     "
   >
