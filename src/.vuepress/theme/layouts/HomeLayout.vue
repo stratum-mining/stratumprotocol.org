@@ -179,7 +179,7 @@
         <a v-for="link of data.footerLinks" :key="link.url" :href="link.url">
           <img
             :src="link.icon"
-            class="p-3 w-8 h-8 rounded-full bg-levelThree"
+            class="p-3 w-8 h-8 rounded-full bg-levelThree hover:bg-levelThreeHover"
           />
         </a>
       </div>
