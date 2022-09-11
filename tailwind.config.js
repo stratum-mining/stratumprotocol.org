@@ -17,6 +17,7 @@ module.exports = {
         accent: "#FAF0E6",
         white: "#ffffff",
         icon: "#031E38",
+        iconHover: "#042849",
         accent: "#5BEBF3",
         firstStep: "#53F6AE",
         secondStep: "#FF8337",
