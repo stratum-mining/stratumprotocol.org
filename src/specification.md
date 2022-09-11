@@ -5,13 +5,13 @@ pageHeading: The Spec
 
 The complete documentation for the Stratum v2 Protocol Specification are located on [Github](https://www.github.com/stratum-mining/stratum).
 
-#### Authors
+## Authors
 
 Pavel Moravec <pavel@braiins.com>  
 Jan Čapek <jan@braiins.com>  
 Matt Corallo <bipstratum@bluematt.me>
 
-# The Stratum V2 Protocol
+## The Stratum V2 Protocol
 
 - [0. Abstract](https://www.github.com/stratum-mining/sv2-spec/blob/main/00-Abstract.md#0-abstract)
 - [1. Motivation](https://www.github.com/stratum-mining/sv2-spec/blob/main/01-Motivation.md#1-motivation)
