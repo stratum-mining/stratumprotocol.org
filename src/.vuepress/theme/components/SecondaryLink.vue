@@ -1,7 +1,7 @@
 <template>
   <Link :item="item">
     <div
-      class="px-8 py-4 text-lg font-bold text-center rounded-lg bg-levelThree"
+      class="px-8 py-4 text-lg font-bold text-center rounded-lg bg-levelThree hover:bg-levelThreeHover"
     >
       {{ item.text }}
     </div>
