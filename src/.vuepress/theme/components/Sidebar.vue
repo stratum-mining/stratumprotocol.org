@@ -2,16 +2,21 @@
   <aside
     :class="
       classNames(
-        'fixed box-border overflow-scroll z-[30] left-0 pl-8 max-h-[600px] border-none xl:ml-[calc(50vw-640px)] bg-levelOne md:bg-transparent/25 w-[300px] md:w-max-content'
+        'fixed box-border overflow-scroll z-[30] border-none',
+        'bg-dark-300 lg:bg-transparent',
+        'w-screen max-w-sm text-lg h-screen md:h-[600px]',
+        'top-0 left-0 lg:top-24 pt-28 lg:pt-12 pl-12 xl:ml-[calc(50vw-640px)]'
       )
     "
   >
-    <NavLinks class="block lg:hidden" />
+    <div class="overflow-scroll w-full h-full">
+      <NavLinks class="block lg:hidden" />
 
-    <slot name="top" />
+      <slot name="top" />
 
-    <SidebarLinks :depth="0" :items="items" />
-    <slot name="bottom" />
+      <SidebarLinks :depth="0" :items="items" />
+      <slot name="bottom" />
+    </div>
   </aside>
 </template>
 
