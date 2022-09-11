@@ -1,7 +1,7 @@
 <template>
   <Link :item="item">
     <div
-      class="group bg-links text-black rounded-lg py-4 px-8 font-bold text-lg text-center z-[20] flex flex-row items-center relative"
+      class="group bg-links hover:bg-linksHover text-black rounded-lg py-4 px-8 font-bold text-lg text-center z-[20] flex flex-row items-center relative"
     >
       <span>{{ item.text }}</span>
       <img
