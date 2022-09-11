@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex overflow-hidden relative flex-col items-center w-screen min-h-screen bg-levelOne"
+    class="flex overflow-hidden relative flex-col items-center w-screen min-h-screen bg-dark-200"
   >
     <div
       class="flex relative flex-col justify-center items-center py-20 w-full min-h-screen bg-no-repeat bg-cover md:py-0"
@@ -145,7 +145,7 @@
           {{ data.supportersText2 }}
         </p>
         <div
-          class="z-20 mx-auto mb-12 max-w-7xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
+          class="grid z-20 grid-cols-1 gap-5 mx-auto mb-12 max-w-7xl md:grid-cols-2 lg:grid-cols-3"
         >
           <a
             v-for="supporter of data.supporters"
@@ -179,7 +179,7 @@
         <a v-for="link of data.footerLinks" :key="link.url" :href="link.url">
           <img
             :src="link.icon"
-            class="p-3 w-8 h-8 rounded-full bg-levelThree hover:bg-levelThreeHover"
+            class="p-3 w-8 h-8 rounded-full bg-dark-400 hover:bg-dark-500"
           />
         </a>
       </div>

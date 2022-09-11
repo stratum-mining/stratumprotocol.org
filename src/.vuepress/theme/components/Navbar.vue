@@ -2,8 +2,9 @@
   <header
     :class="
       classNames(
-        'fixed top-0 left-0 z-[50] bg-levelOne/90 border-b-none flex flex-row justify-between py-2 px-4 md:px-10 lg:px-14 h-14',
-        'w-[calc(100vw-32px)] md:w-[calc(100vw-80px)] lg:w-[calc(100vw-112px)]'
+        'fixed top-0 left-0 z-[50] border-b-none flex flex-row justify-between duration-200',
+        'px-4 py-4 md:px-10 md:py-6 lg:py-9 lg:px-14 w-screen box-border',
+        hasScrolled ? 'bg-dark-200/90' : 'bg-none '
       )
     "
   >
@@ -12,7 +13,7 @@
     <RouterLink :to="$localePath" class="ml-12 h-full md:ml-0">
       <img
         v-if="$site.themeConfig.logo"
-        class="h-full"
+        class="h-10 md:h-12 lg:h-16"
         src="/assets/stratum-v2-icon-with-text.svg"
         :alt="$siteTitle"
       />
@@ -52,6 +53,7 @@ export default {
   data() {
     return {
       linksWrapMaxWidth: null,
+      hasScrolled: false,
     };
   },
   computed: {
@@ -59,7 +61,13 @@ export default {
       return this.$themeLocaleConfig.nav || this.$site.themeConfig.nav || [];
     },
   },
-  methods: { classNames, isActive },
+  methods: {
+    classNames,
+    isActive,
+    handleScroll: function () {
+      this.hasScrolled = window.scrollY > 0;
+    },
+  },
   mounted() {
     const MOBILE_DESKTOP_BREAKPOINT = 719; // refer to config.styl
     const NAVBAR_VERTICAL_PADDING =
@@ -77,6 +85,10 @@ export default {
     };
     handleLinksWrapWidth();
     window.addEventListener("resize", handleLinksWrapWidth, false);
+    window.addEventListener("scroll", this.handleScroll);
+  },
+  destroyed: function () {
+    window.removeEventListener("scroll", this.handleScroll);
   },
 };
 function css(el, property) {

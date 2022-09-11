@@ -2,8 +2,8 @@
 https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/theme-default/components/SidebarLinks.vue
 
 <template>
-  <ul v-if="items.length" class="mt-1 md:mt-0">
-    <li class="space-y-4 md:space-y-8 w-52" v-for="(item, i) in items" :key="i">
+  <ul v-if="items.length" class="mt-1 space-y-4 md:mt-0">
+    <li class="space-y-4 w-52" v-for="(item, i) in items" :key="i">
       <SidebarGroup
         v-if="item.type === 'group'"
         :item="item"
@@ -20,6 +20,8 @@ https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/theme-default
 <script>
 import SidebarGroup from "@theme/components/SidebarGroup.vue";
 import SidebarLink from "@theme/components/SidebarLink.vue";
+import { classNames } from "../../utils";
+
 export default {
   name: "SidebarLinks",
   components: { SidebarGroup, SidebarLink },
@@ -52,6 +54,7 @@ export default {
     toggleGroup(index) {
       this.openGroupIndex = index === this.openGroupIndex ? -1 : index;
     },
+    classNames,
   },
 };
 function resolveOpenGroupIndex(route, items) {

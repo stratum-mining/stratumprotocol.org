@@ -4,10 +4,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        levelOne: "#051426",
-        levelTwo: "#031C34",
-        levelThree: "#0E3A64",
-        levelThreeHover: "#154D83",
+        dark: {
+          100: "#081b30",
+          200: "#051426",
+          300: "#031C34",
+          400: "#0E3A64",
+          500: "#154D83",
+        },
         bodyText: "#C1DDF8",
         links: "#5BEBF3",
         linksHover: "#ACFBFF",
