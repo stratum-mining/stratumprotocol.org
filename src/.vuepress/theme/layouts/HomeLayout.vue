@@ -150,7 +150,7 @@
           <a
             v-for="supporter of data.supporters"
             :key="supporter.value"
-            class="bg-icon rounded-lg p-5 flex justify-center items-center h-32"
+            class="bg-icon hover:bg-iconHover rounded-lg p-5 flex justify-center items-center h-32"
             :id="supporter.value"
             :href="supporter.link"
           >
