@@ -42,7 +42,9 @@
           {{ data.pageHeading }}
         </div>
 
-        <Content />
+        <div class="text-docsText">
+          <Content />
+        </div>
       </div>
     </div>
   </div>
