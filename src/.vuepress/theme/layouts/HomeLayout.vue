@@ -3,7 +3,7 @@
     class="flex overflow-hidden relative flex-col items-center w-screen min-h-screen bg-dark-200"
   >
     <div
-      class="flex relative flex-col justify-center items-center py-20 w-full min-h-screen bg-no-repeat bg-cover md:py-0"
+      class="flex relative flex-col justify-center items-center w-full min-h-screen bg-no-repeat bg-cover"
       :style="{
         backgroundImage: `url(${data.background})`,
       }"
