@@ -3,7 +3,7 @@
     :class="
       classNames(
         'fixed top-0 left-0 z-[50] border-b-none flex flex-row justify-between duration-200',
-        'px-4 py-4 md:px-10 md:py-6 lg:py-9 lg:px-14 w-screen box-border',
+        'px-4 py-2 md:px-10 lg:px-14 w-screen box-border',
         hasScrolled ? 'bg-dark-200/90' : 'bg-none '
       )
     "
