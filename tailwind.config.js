@@ -12,6 +12,7 @@ module.exports = {
           500: "#154D83",
         },
         bodyText: "#C1DDF8",
+        docsText: "#9BB6D1",
         links: "#5BEBF3",
         linksHover: "#ACFBFF",
         accent: "#FAF0E6",
