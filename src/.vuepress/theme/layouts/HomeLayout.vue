@@ -101,23 +101,12 @@
         </div>
       </div>
 
-      <!-- Road map -->
-      <div class="flex relative z-20 flex-col items-center px-8">
-        <img
-          src="/assets/deco-cyan.svg"
-          alt="sparkles"
-          class="absolute top-0 right-12 w-56 opacity-50 md:opacity-100 lg:w-72"
-        />
-        <h2 class="mb-4 text-3xl font-bold text-center lg:text-4xl">
-          {{ data.roadmapTitle }}
-        </h2>
-        <p
-          class="w-full md:w-[500px] lg:w-[800px] text-center my-2 text-base md:text-lg text-bodyText"
-        >
-          {{ data.roadmapTagline }}
-        </p>
-        <RoadMapSteps :steps="data.roadmapSteps" />
-      </div>
+      <!-- Road map (hidden for now) -->
+      <!-- <RoadMapSection
+        :steps="data.roadmapSteps"
+        :title="data.roadmapTitle"
+        :text="data.roadmapTagline"
+      /> -->
 
       <!-- Section highlighting entities supporting StratumV2 development -->
       <div class="flex relative z-20 flex-col px-8">
@@ -206,7 +195,7 @@
 import NavLink from "@theme/components/NavLink.vue";
 import PrimaryLink from "@theme/components/PrimaryLink.vue";
 import SecondaryLink from "@theme/components/SecondaryLink.vue";
-import RoadMapSteps from "@theme/components/RoadMapSteps.vue";
+import RoadMapSection from "@theme/components/RoadMapSection.vue";
 
 export default {
   name: "Home",
@@ -215,7 +204,7 @@ export default {
     NavLink,
     PrimaryLink,
     SecondaryLink,
-    RoadMapSteps,
+    RoadMapSection,
   },
 
   computed: {
