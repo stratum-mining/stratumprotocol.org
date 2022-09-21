@@ -3,7 +3,7 @@
     class="flex overflow-hidden relative flex-col items-center w-screen min-h-screen bg-dark-200"
   >
     <div
-      class="flex relative flex-col justify-center items-center py-20 w-full min-h-screen bg-no-repeat bg-cover md:py-0"
+      class="box-border flex relative flex-col justify-center items-center py-0 w-full h-screen bg-no-repeat bg-cover md:pt-20"
       :style="{
         backgroundImage: `url(${data.background})`,
       }"
@@ -23,7 +23,7 @@
 
         <!-- Introduction -->
         <p
-          class="w-full max-w-[90vw] xl:w-[960px] text-center my-12 text-base sm:text-xl box-border px-4 text-bodyText"
+          class="w-full max-w-[90vw] xl:w-[960px] text-center my-14 text-base sm:text-xl box-border px-4 text-bodyText"
         >
           {{ data.heroText1 }}
           <span class="text-accent">{{ data.heroTextHighlight }}</span>
@@ -43,29 +43,30 @@
 
     <!-- Main Content -->
     <div class="relative px-6 pb-24 space-y-24 w-screen md:pb-36 md:space-y-36">
-      <img
-        src="/assets/deco-yellow.svg"
-        alt="sparkles"
-        class="absolute top-3 right-6 top-12 w-56 opacity-50 md:opacity-100 lg:w-72"
-      />
+      <!-- Configurations section -->
+      <div class="flex relative z-20 flex-col px-8 mt-10">
+        <Tabs
+          :tabs="data.configurationTabs"
+          :selected="selectedConfigurationTab"
+          @tab-selected="selectedConfigurationTab = $event"
+        />
 
-      <!-- Diagram section -->
-      <div class="flex relative z-20 flex-col px-8">
+        <p
+          class="text-base md:text-lg text-bodyText w-full lg:w-[775px] text-center my-10"
+        >
+          {{ selectedConfigurationTab.textContent }}
+        </p>
+
         <img
-          src="/assets/diagram.svg"
+          :src="selectedConfigurationTab.visualSrc"
           alt="diagram"
           class="hidden w-full xl:w-auto md:block"
         />
         <img
-          src="/assets/mobile-diagram.svg"
+          :src="selectedConfigurationTab.mobileVisualSrc"
           alt="diagram"
           class="block w-full max-w-96 md:hidden"
         />
-        <p
-          class="text-base md:text-lg text-bodyText w-full lg:w-[775px] text-center mt-10"
-        >
-          {{ data.diagramText }}
-        </p>
       </div>
 
       <!-- Features section -->
@@ -139,7 +140,7 @@
           <a
             v-for="supporter of data.supporters"
             :key="supporter.value"
-            class="bg-icon hover:bg-iconHover rounded-lg p-5 flex justify-center items-center h-32"
+            class="flex justify-center items-center p-5 h-32 rounded-lg bg-icon hover:bg-dark-500"
             :id="supporter.value"
             :href="supporter.link"
           >
@@ -153,6 +154,12 @@
           }"
         />
       </div>
+
+      <img
+        src="/assets/deco-yellow.svg"
+        alt="sparkles"
+        class="absolute top-3 right-6 top-12 w-56 opacity-50 md:opacity-100 lg:w-72"
+      />
     </div>
 
     <!-- Page Footer -->
@@ -196,6 +203,7 @@ import NavLink from "@theme/components/NavLink.vue";
 import PrimaryLink from "@theme/components/PrimaryLink.vue";
 import SecondaryLink from "@theme/components/SecondaryLink.vue";
 import RoadMapSection from "@theme/components/RoadMapSection.vue";
+import Tabs from "@theme/components/Tabs.vue";
 
 export default {
   name: "Home",
@@ -205,6 +213,15 @@ export default {
     PrimaryLink,
     SecondaryLink,
     RoadMapSection,
+    Tabs,
+  },
+
+  data() {
+    return { selectedConfigurationTab: {} };
+  },
+
+  created() {
+    this.selectedConfigurationTab = this.data.configurationTabs[0];
   },
 
   computed: {

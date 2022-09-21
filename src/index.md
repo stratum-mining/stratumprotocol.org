@@ -9,7 +9,6 @@ heroText2: by negotiating with pools.
 tagline: One giant leap for bitcoin mining
 documentationCtaText: Explore GitHub
 documentationCtaLink: https://github.com/stratum-mining/stratum
-diagramText: Before Stratum V2, transaction sets were selected by pools. With a complete SV2 configuration they’re selected by individual miners, making the network more censorship-resistant.
 links:
   - title: GitHub
     url: https://github.com/stratum-mining
@@ -23,6 +22,29 @@ footerLinks:
     icon: /assets/discord.svg
   - url: https://github.com/stratum-mining/stratum
     icon: /assets/github-icon.svg
+# Configurations Section
+configurationTabs: 
+  - name: Config 1
+    value: config_1
+    visualSrc: /assets/diagram.svg
+    mobileVisualSrc: /assets/mobile-diagram.svg
+    textContent: Before Stratum V2, transaction sets were selected by pools. With a complete SV2 configuration they’re selected by individual miners, making the network more censorship-resistant.
+  - name: Config 2
+    value: config_2
+    visualSrc: /assets/diagram.svg
+    mobileVisualSrc: /assets/mobile-diagram.svg
+    textContent: Before Stratum V2, transaction sets were selected by pools. With a complete SV2 configuration they’re selected by individual miners, making the network more censorship-resistant.
+  - name: Config 3
+    value: config_3
+    visualSrc: /assets/diagram.svg
+    mobileVisualSrc: /assets/mobile-diagram.svg
+    textContent: Before Stratum V2, transaction sets were selected by pools. With a complete SV2 configuration they’re selected by individual miners, making the network more censorship-resistant.
+  - name: Config 4
+    value: config_4
+    visualSrc: /assets/diagram.svg
+    mobileVisualSrc: /assets/mobile-diagram.svg
+    textContent: Before Stratum V2, transaction sets were selected by pools. With a complete SV2 configuration they’re selected by individual miners, making the network more censorship-resistant.
+# Roadmap Section
 roadmapTitle: Progress and Roadmap
 roadmapTagline: This is where the Stratum V2 protocol’s progress currently stands.
 roadmapSteps:
