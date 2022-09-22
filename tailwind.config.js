@@ -10,6 +10,7 @@ module.exports = {
           300: "#031C34",
           400: "#0E3A64",
           500: "#154D83",
+          600: "#183559",
         },
         bodyText: "#C1DDF8",
         docsText: "#9BB6D1",
