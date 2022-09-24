@@ -67,14 +67,20 @@
           alt="diagram"
           class="block w-full max-w-96 md:hidden"
         />
+
+        <img
+          src="/assets/deco-orange.svg"
+          alt="sparkles"
+          class="absolute left-20 -bottom-44 w-96 opacity-50 md:opacity-100 lg:w-128"
+        />
       </div>
 
       <!-- Features section -->
       <div class="flex relative z-20 flex-col px-8">
         <img
-          src="/assets/deco-orange.svg"
+          src="/assets/deco-cyan.svg"
           alt="sparkles"
-          class="absolute left-12 -top-24 w-96 opacity-50 md:opacity-100 lg:w-128"
+          class="absolute right-24 -bottom-32 w-56 opacity-50 md:opacity-100 lg:w-72"
         />
         <h2 class="z-20 mb-16 text-3xl font-bold text-center lg:text-4xl">
           {{ data.whyTitle }}
@@ -117,9 +123,9 @@
           class="absolute right-0 bottom-0 w-56 lg:w-80"
         />
         <img
-          src="/assets/deco-magenta.svg"
+          src="/assets/deco-yellow.svg"
           alt="sparkles"
-          class="absolute left-12 -top-24 w-96 opacity-50 md:opacity-100 lg:w-128"
+          class="absolute left-16 -top-72 w-56 opacity-50 xl:-top-44 md:opacity-100 lg:w-72"
         />
         <h2 class="mb-4 text-2xl font-bold text-center lg:text-4xl">
           {{ data.supportersTitle }}
