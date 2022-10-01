@@ -85,6 +85,7 @@
         <h2 class="z-20 mb-16 text-3xl font-bold text-center lg:text-4xl">
           {{ data.whyTitle }}
         </h2>
+
         <div class="grid z-20 gap-10 md:grid-cols-2">
           <div
             v-for="why of data.why"
@@ -117,6 +118,7 @@
 
       <!-- Section highlighting entities supporting StratumV2 development -->
       <div class="flex relative z-20 flex-col px-8">
+        <!-- Decoration -->
         <img
           src="/assets/planet.png"
           alt="planet"
@@ -127,32 +129,36 @@
           alt="sparkles"
           class="absolute left-16 -top-72 w-56 opacity-50 xl:-top-44 md:opacity-100 lg:w-72"
         />
+
+        <!-- Section title -->
         <h2 class="mb-4 text-2xl font-bold text-center lg:text-4xl">
           {{ data.supportersTitle }}
         </h2>
         <p
-          class="w-full md:w-[500px] lg:w-[800px] text-center mb-4 md:mb-8 text-base md:text-lg text-bodyText z-20"
+          class="w-full md:w-[500px] lg:w-[800px] text-center mb-10 md:mb-12 text-base md:text-lg text-bodyText z-20"
         >
           {{ data.supportersText1 }}
         </p>
-        <p
-          class="w-full md:w-[500px] lg:w-[800px] text-center text-base md:text-lg text-white z-20"
-        >
-          {{ data.supportersText2 }}
-        </p>
-        <div
-          class="grid z-20 grid-cols-1 gap-5 mx-auto mb-12 max-w-7xl md:grid-cols-2 lg:grid-cols-3"
-        >
+
+        <!-- Supporters category selection -->
+        <Tabs
+          :tabs="data.supportersTabs"
+          :selected="selectedSupportersTab"
+          @tab-selected="selectedSupportersTab = $event"
+        />
+
+        <div class="flex z-20 flex-row flex-wrap mx-auto mt-8 mb-12 max-w-5xl">
           <a
-            v-for="supporter of data.supporters"
+            v-for="supporter of displayedSupporters"
             :key="supporter.value"
-            class="flex justify-center items-center p-5 h-32 rounded-lg bg-icon hover:bg-dark-500"
+            class="flex justify-center items-center p-5 m-4 w-60 h-32 rounded-lg bg-icon hover:bg-dark-500"
             :id="supporter.value"
             :href="supporter.link"
           >
             <img :src="supporter.image" />
           </a>
         </div>
+
         <PrimaryLink
           :item="{
             text: data.supportDevelopersText,
@@ -223,16 +229,27 @@ export default {
   },
 
   data() {
-    return { selectedConfigurationTab: {} };
+    return {
+      selectedConfigurationTab: {},
+      selectedSupportersTab: {},
+    };
   },
 
   created() {
     this.selectedConfigurationTab = this.data.configurationTabs[0];
+    this.selectedSupportersTab = this.data.supportersTabs[0];
   },
 
   computed: {
     data() {
       return this.$page.frontmatter;
+    },
+    displayedSupporters() {
+      if (!this.selectedSupportersTab?.supporters) return this.data.supporters;
+
+      return this.data.supporters.filter(({ value }) =>
+        this.selectedSupportersTab.supporters.includes(value)
+      );
     },
   },
 };
