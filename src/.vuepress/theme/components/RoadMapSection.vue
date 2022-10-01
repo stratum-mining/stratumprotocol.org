@@ -110,7 +110,7 @@ export default {
     };
   },
   methods: {
-    classNames: classNames,
+    classNames,
   },
 };
 </script>

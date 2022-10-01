@@ -54,6 +54,26 @@ roadmapSteps:
   - Implement the **job negotiator**, which a miner or miners can use to negotiate a block template with a pool.
   - Once a translator, template provider, and job negotiator are running, we will launch an MVP2. In this configuration, a miner handles mempool transaction selection, and the pool accepts it.
   - Apply early adopter feedback and tailor configurations that will move MVP1 and MVP2 from beta to production-ready.
+# Specification authors section
+specificationAuthorsTitle: Stratum v2 specification authors
+specificationAuthorsText: Some brief intro text here
+authors:
+  - name: Scrat
+    image: https://www.animationsource.org/sites_content/age_de_glace/upload/fanchars/pic_head4edb577aa9875_100.png
+  - name: Manfred
+    image: https://www.animationsource.org/sites_content/age_de_glace/upload/fanchars/pic_head4ee0a9bcae633_100.png
+  - name: Sid
+    image: https://www.animationsource.org/sites_content/age_de_glace/upload/fanchars/pic_head4eee60084e4bb_100.png
+  - name: Diego
+    image: https://www.animationsource.org/sites_content/age_de_glace/upload/fanchars/pic_head4eee77b79454a_100.png
+specificationAuthorsContent:
+  - title: Improvements to  SV1
+    content: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce volutpat sit pharetra, amet. Elementum, molestie sit eget fames ac magna amet in. Nibh sed nullam vitae odio malesuada hendrerit. Eu mollis id amet egestas egestas quam ut dictumst cras. Nisi, ullamcorper enim, eu urna, enim. Etiam tempor ut urna lacus. Tincidunt suscipit sollicitudin odio scelerisque velit in.
+  - title: The team behind Stratum
+    content: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget adipiscing turpis justo eget facilisis nisi. Felis mauris, turpis tellus praesent amet nunc. Semper lorem quam maecenas nisl, duis sollicitudin urna neque quisque. Purus nunc, ac hendrerit nibh turpis nam turpis nisl cum. Congue aliquam lorem dolor nisl, adipiscing id suspendisse. Turpis cras volutpat quam et eget morbi vel vestibulum ornare.
+  - content: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quam fusce urna fermentum sed nibh cras habitant tempus. Senectus vitae nunc morbi risus ultrices eget tortor, magna. Magna pellentesque lacus neque in.
+
+# Supporters section
 supportersTitle: Support for Stratum V2
 supportersText1: Let’s make Stratum V2 the new standard. Show material support or indicate your approval of the protocol direction.
 supportersTabs:
