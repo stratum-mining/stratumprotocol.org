@@ -45,6 +45,10 @@
     <div class="relative px-6 pb-24 space-y-24 w-screen md:pb-36 md:space-y-36">
       <!-- Configurations section -->
       <div class="flex relative z-20 flex-col px-8 mt-10">
+        <h2 class="mb-12 text-2xl font-bold text-center lg:text-4xl">
+          {{ data.configurationTitle }}
+        </h2>
+
         <Tabs
           :tabs="data.configurationTabs"
           :selected="selectedConfigurationTab"
