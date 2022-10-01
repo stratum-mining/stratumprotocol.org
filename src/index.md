@@ -7,8 +7,8 @@ heroText1: A community-managed, open-source reference implementation of the Stra
 heroTextHighlight: improve decentralization
 heroText2: by negotiating with pools.
 tagline: One giant leap for bitcoin mining
-documentationCtaText: Explore GitHub
-documentationCtaLink: https://github.com/stratum-mining/stratum
+documentationCtaText: Explore Documentation
+documentationCtaLink: /overview
 links:
   - title: GitHub
     url: https://github.com/stratum-mining
