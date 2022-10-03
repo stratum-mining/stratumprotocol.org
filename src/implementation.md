@@ -30,7 +30,7 @@ The Reference Implementation's modular design supports use in 3rd party software
 
 - Sv1 Miners can use the proxy (roles/sv2/mining-proxy) to connect with a Sv2-compatible pool.
 
-- Sv1 mining farms mining to a Sv2-compatible pool gain some of the security and efficiency improvements Sv2 offers over Stratum V1 (Sv1). The Sv1<->Sv2 miner proxy does not support all the features of Sv2, but works as a temporary measure before upgrading completely to Sv2-compatible firmware. (The Sv1<->Sv2 translation proxy implementation is a work in progress.)
+- Sv1 mining farms mining to a Sv2-compatible pool gain some of the security and efficiency improvements Sv2 offers over Stratum V1 (Sv1). The Sv1<->Sv2 miner proxy does not support all the features of Sv2, but works as a temporary measure before upgrading completely to Sv2-compatible firmware. (The Sv1&lt;->Sv2 translation proxy implementation is a work in progress.)
 
 ### Pool Use-Cases
 

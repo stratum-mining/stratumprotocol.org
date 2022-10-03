@@ -29,6 +29,7 @@ module.exports = {
       { text: "Implementation", link: "/implementation" },
       { text: "FAQ", link: "/faq" },
       { text: "Specification", link: "/specification" },
+      { text: "Terminology", link: "/terminology" },
     ],
   },
 
