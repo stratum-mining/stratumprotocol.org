@@ -41,3 +41,35 @@ The Reference Implementation's modular design supports use in 3rd party software
 - The C library provides a set of FFI bindings to the Rust helper library for miners to integrate Sv2 into their existing firmware stack.
 
 For further detailed documentation on how to deploy the reference implementation for one of the above use-cases or integrate, see the README on [Github](https://www.github.com/stratum-mining/stratum) or join our developer community on [Discord](https://discord.gg/fsEW23wFYs).
+
+## Protocol Design Goals
+
+### Security
+
+#### Man-in-the-Middle Attack Prevention
+
+Data transfers can be encrypted to ensure their integrity and confidentiality. This hardens the protocol against man-in-the-middle attack vectors, namely hashrate hijacking in which an attacker intercepts a miner’s shares and submits them as their own in order to steal the payouts.
+
+### Efficiency
+
+#### Going binary to optimize data transmission.
+
+V2 has a fully binary format and eliminates unnecessary data transfers. This saves “a bit” of network bandwidth (about 2-3x times in comparison with Stratum V1) and decreases latencies.
+
+Besides lowering infrastructure costs, Improved efficiency reduces hashrate variance by allowing higher submission rates, resulting in fewer stale share submissions.
+
+### Flexibility
+
+#### Built to fit the needs of any sized mining operation.
+
+Whether you operate a huge mining farm or just a couple of ASICs in your garage, Stratum V2 will make your life easier. Features like simplified header-only mining, zero-time backend switching, and many more allow for all sorts of unique setups
+
+At the same time, Stratum V2 is designed to be easily extensible so that it can evolve to meet the needs of the mining industry for years and maybe even decades to come.
+
+### Decentralization
+
+#### Censorship resistance on par with the era of solo-mining.
+
+We were inspired by the BetterHash proposal to give users the option of freely selecting their own transaction set. By providing a custom job selection mechanism, we’ve integrated the idea into Stratum V2.
+
+At the same time, the protocol gives mining pools the ability to reject externally negotiated mining jobs that are invalid, all while ensuring that mining rewards will be fair and that security is not sacrificed.
