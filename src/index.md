@@ -55,7 +55,26 @@ roadmapSteps:
   - Apply early adopter feedback and tailor configurations that will move MVP1 and MVP2 from beta to production-ready.
 supportersTitle: Support for Stratum V2
 supportersText1: Let’s make Stratum V2 the new standard. Show material support or indicate your approval of the protocol direction.
-supportersText2: Financial support for developers and initial protocol development (A-Z)
+supportersTabs:
+  - name: All contributors
+    value: all-contributors
+  - name: Builders
+    value: builders
+    supporters: 
+      - braiins
+  - name: Adopters
+    value: adopters
+    supporters: 
+      - foundry
+      - galaxy
+  - name: Funders
+    value: funders
+    supporters: 
+      - bitmex
+      - foundry
+      - galaxy
+      - spiral
+      - sob
 supporters:
   - value: bitmex
     image: /assets/bitmex-logo.svg
