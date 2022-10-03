@@ -180,3 +180,15 @@ Multiplexing in Stratum V2 uses a single physical connection to transmit data ab
 #### Motivation & Impact
 
 As stated above in the Multiplexing section, the primary motivation for enabling data about different jobs to be transmitted on a single connection is to reduce physical infrastructure complexity and overhead costs.
+
+## Extensions
+
+The Bitcoin mining industry evolves quickly and it is expected that participants in the industry will wish to add functionality to this protocol over time as extensions. We’ve left extensions largely undefined in the Stratum V2 BIP, but we have outlined some basic requirements which all extensions must comply with/be aware of. These can be found in the Protocol Extensions section.
+
+#### Technical Description
+
+Protocol extensions in Stratum V2 may be defined by using a non-zero extension_type field in the message header. Extensions in the range 0x4000 - 0x7fff are considered “experimental” and aren’t present in production equipment. Extensions that have been allocated for the specific purpose they address will be present in the ‘Currently Available Extensions’ section of this site.
+
+One of our design goals with Stratum V2 is to enable simple support for vendor-specific extensions without polluting the mining protocol or complicating pool implementation. Thus, it is possible to request extension_type allocations for vendor-specific proprietary extensions to be used in production hardware. To do so, a brief description of the extension’s intended use case should be sent to the Bitcoin Protocol Development List and [here](https://help.slushpool.com/en/support/tickets/new).
+
+For a complete description of requirements for extensions, see the Protocol Extensions section of the Stratum V2 BIP.
