@@ -23,6 +23,7 @@ footerLinks:
   - url: https://github.com/stratum-mining/stratum
     icon: /assets/github-icon.svg
 # Configurations Section
+configurationTitle: Configurations
 configurationTabs: 
   - name: Config 1
     value: config_1
