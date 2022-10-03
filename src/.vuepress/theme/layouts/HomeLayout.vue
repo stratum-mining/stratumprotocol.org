@@ -120,6 +120,55 @@
         :text="data.roadmapTagline"
       /> -->
 
+      <!-- Specification Authors section -->
+      <div class="flex relative z-20 z-30 flex-col px-16">
+        <h2 class="z-20 mb-4 text-3xl font-bold text-center lg:text-4xl">
+          {{ data.specificationAuthorsTitle }}
+        </h2>
+        <p
+          class="w-full md:w-[500px] lg:w-[800px] text-center mb-4 md:mb-8 text-base md:text-lg text-bodyText z-20"
+        >
+          {{ data.specificationAuthorsText }}
+        </p>
+        <div class="flex flex-col items-center mt-8 md:items-start md:flex-row">
+          <div class="flex flex-col space-y-8">
+            <div
+              v-for="author of data.authors"
+              :key="author.name"
+              :class="
+                classNames(
+                  'relative w-64 h-48 bg-center bg-cover rounded-xl flex flex-col-reverse items-center'
+                )
+              "
+              :style="{ backgroundImage: `url(${author.image})` }"
+            >
+              <div
+                class="bottom-4 py-1 mb-2 w-32 text-xs text-center bg-white rounded-full text-dark-300"
+              >
+                {{ author.name }}
+              </div>
+            </div>
+          </div>
+          <div
+            class="flex flex-col max-w-[500px] text-sm md:ml-16 mt-8 md:mt-0"
+          >
+            <div
+              v-for="(block, index) of data.specificationAuthorsContent"
+              :key="`specificationAuthorsContent-content-${index}`"
+              class="mb-8"
+            >
+              <h4 v-if="block.title" class="m-0 text-xl">{{ block.title }}</h4>
+              <p
+                v-if="block.content"
+                class="m-0 mt-4 text-base text-justify text-bodyText"
+              >
+                {{ block.content }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Section highlighting entities supporting StratumV2 development -->
       <div class="flex relative z-20 flex-col px-8">
         <!-- Decoration -->
@@ -221,8 +270,14 @@ import SecondaryLink from "@theme/components/SecondaryLink.vue";
 import RoadMapSection from "@theme/components/RoadMapSection.vue";
 import Tabs from "@theme/components/Tabs.vue";
 
+import { classNames } from "../../utils";
+
 export default {
   name: "Home",
+
+  methods: {
+    classNames,
+  },
 
   components: {
     NavLink,
