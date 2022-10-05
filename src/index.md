@@ -23,14 +23,14 @@ footerLinks:
   - url: https://github.com/stratum-mining/stratum
     icon: /assets/github-icon.svg
 # Configurations Section
-configurationTitle: Configurations
+configurationTitle: Flexible configurations
 configurationTabs:
-  - name: Config 1
+  - name: Complete
     value: config_1
     visualSrc: /assets/diagram.svg
     mobileVisualSrc: /assets/mobile-diagram.svg
-    textContent: Before Stratum V2, transaction sets were selected by pools. With a complete SV2 configuration they’re selected by individual miners, making the network more censorship-resistant.
-  - name: Config 2
+    textContent: This configuration depicts how a complete Stratum V2 implementation would loook like.
+  - name: Translation proxy
     value: config_2
     visualSrc: /assets/diagram.svg
     mobileVisualSrc: /assets/mobile-diagram.svg
