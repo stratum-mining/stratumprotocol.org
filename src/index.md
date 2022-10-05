@@ -3,8 +3,8 @@ home: true
 layout: HomeLayout
 background: /assets/hero-background.jpg
 heroImage: /assets/stratum-v2-icon-with-text.svg
-heroText1: A community-managed, open-source reference implementation of the Stratum V2 protocol. Stratum V2 increases security, makes data transfers more efficient, and reduces mining infrastructure requirements. It also introduces three new sub-protocols that let miners select transaction sets and
-heroTextHighlight: improve decentralization
+heroText1: Stratum V2 is the next generation protocol for pooled mining. It increases security, makes data transfers more efficient, and reduces mining infrastructure requirements. It also introduces three new sub-protocols that let miners select transaction sets and
+heroTextHighlight: improves decentralization
 heroText2: by negotiating with pools.
 tagline: One giant leap for bitcoin mining
 documentationCtaText: Explore Documentation
@@ -24,7 +24,7 @@ footerLinks:
     icon: /assets/github-icon.svg
 # Configurations Section
 configurationTitle: Configurations
-configurationTabs: 
+configurationTabs:
   - name: Config 1
     value: config_1
     visualSrc: /assets/diagram.svg
@@ -81,16 +81,16 @@ supportersTabs:
     value: all-contributors
   - name: Builders
     value: builders
-    supporters: 
+    supporters:
       - braiins
   - name: Adopters
     value: adopters
-    supporters: 
+    supporters:
       - foundry
       - galaxy
   - name: Funders
     value: funders
-    supporters: 
+    supporters:
       - bitmex
       - foundry
       - galaxy
