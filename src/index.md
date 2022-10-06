@@ -29,10 +29,10 @@ configurationTabs:
     value: config_1
     visualSrc: /assets/diagram.svg
     mobileVisualSrc: /assets/mobile-diagram.svg
-    textContent: This configuration depicts how a complete Stratum V2 implementation would loook like.
+    textContent: This configuration depicts a complete implementation of the protocol.
   - name: Translation proxy
     value: config_2
-    visualSrc: /assets/diagram.svgy
+    visualSrc: /assets/diagram.svg
     mobileVisualSrc: /assets/mobile-diagram.svg
     textContent: Before Stratum V2, transaction sets were selected by pools. With a complete SV2 configuration they’re selected by individual miners, making the network more censorship-resistant.
   - name: Config 3
