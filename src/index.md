@@ -25,29 +25,29 @@ footerLinks:
 # Configurations Section
 configurationTitle: Flexible configurations
 configurationTabs:
-  - name: Config 1
+  - name: Config A
     value: config_1
-    visualSrc: /assets/diagram.svg
+    visualSrc: /assets/config-a.svg
     mobileVisualSrc: /assets/mobile-diagram.svg
     textContent: This configuration depicts a complete implementation of the protocol.
-  - name: Config 2
+  - name: Config B
     value: config_2
-    visualSrc: /assets/diagram.svg
+    visualSrc: /assets/config-a1.svg
     mobileVisualSrc: /assets/mobile-diagram.svg
     textContent: Before Stratum V2, transaction sets were selected by pools. With a complete SV2 configuration they’re selected by individual miners, making the network more censorship-resistant.
-  - name: Config 3
+  - name: Config C
     value: config_3
-    visualSrc: /assets/diagram.svg
+    visualSrc: /assets/config-b.svg
     mobileVisualSrc: /assets/mobile-diagram.svg
     textContent: Before Stratum V2, transaction sets were selected by pools. With a complete SV2 configuration they’re selected by individual miners, making the network more censorship-resistant.
-  - name: Config 4
+  - name: Config D
     value: config_4
-    visualSrc: /assets/diagram.svg
+    visualSrc: /assets/config-c.svg
     mobileVisualSrc: /assets/mobile-diagram.svg
     textContent: Before Stratum V2, transaction sets were selected by pools. With a complete SV2 configuration they’re selected by individual miners, making the network more censorship-resistant.
-  - name: Config 5
+  - name: Config E
     value: config_5
-    visualSrc: /assets/diagram.svg
+    visualSrc: /assets/config-d.svg
     mobileVisualSrc: /assets/mobile-diagram.svg
     textContent: Before Stratum V2, transaction sets were selected by pools. With a complete SV2 configuration they’re selected by individual miners, making the network more censorship-resistant.
 # Roadmap Section
