@@ -68,14 +68,14 @@ supportersText1: Let’s make Stratum V2 the new standard. Show material support
 supportersTabs:
   - name: All contributors
     value: all-contributors
-  - name: Builders
-    value: builders
+  - name: Implementers
+    value: implementers
     supporters:
       - braiins
   - name: Adopters
     value: adopters
     supporters:
-      - foundry
+      - braiins
       - galaxy
   - name: Funders
     value: funders
@@ -104,8 +104,6 @@ supporters:
   - value: sob
     image: /assets/summer-of-bitcoin.svg
     link: https://www.summerofbitcoin.org/
-supportDevelopersText: Support Developers
-supportDevelopersLink: "mailto:stratumv2@gmail.com"
 whyTitle: Layers of Upgrades
 why:
   - title: Security
