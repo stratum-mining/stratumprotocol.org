@@ -17,20 +17,13 @@
       src="/assets/transparent-blur.svg"
     />
 
-    <Navbar @toggle-sidebar="toggleSidebar" />
-
-    <!-- Sidebar Overlay -->
-    <div
-      @click="toggleSidebar(false)"
-      class="fixed top-0 left-0 z-30 h-screen bg-gray-800/25"
-      v-bind:class="{ [isSidebarOpen ? 'w-screen' : 'w-0']: true }"
-    />
+    <Navbar withLogo @toggle-sidebar="toggleSidebar" />
 
     <!-- Content & Sidebar -->
     <div class="relative mx-auto mt-20 w-screen max-w-7xl">
       <SideBar
-        class="nav-sidebar"
-        v-bind:class="{ open: isSidebarOpen }"
+        @close="isSidebarOpen = false"
+        :isOpen="isSidebarOpen"
         :items="sidebarItems"
       />
 
@@ -75,15 +68,6 @@ export default {
     data() {
       return this.$page.frontmatter;
     },
-
-    shouldShowSidebar() {
-      const { frontmatter } = this.$page;
-      return (
-        !frontmatter.home &&
-        frontmatter.sidebar !== false &&
-        this.sidebarItems.length
-      );
-    },
     sidebarItems() {
       return resolveSidebarItems(
         this.$page,
@@ -98,7 +82,6 @@ export default {
     classNames: classNames,
     toggleSidebar(to) {
       this.isSidebarOpen = typeof to === "boolean" ? to : !this.isSidebarOpen;
-      this.$emit("toggle-sidebar", this.isSidebarOpen);
     },
 
     // side swipe
@@ -125,17 +108,4 @@ export default {
 
 <style scoped lang="styl">
 @import "../../styles/theme.styl";
-
-.nav-sidebar {
-  transform: translateX(-100%);
-  transition: transform .2s ease;
-
-  @media (min-width: 1024px){
-    transform: translateX(0);
-  }
-}
-
-.open {
-  transform: translateX(0)
-}
 </style>
