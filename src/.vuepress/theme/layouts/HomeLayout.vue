@@ -8,6 +8,10 @@
         backgroundImage: `url(${data.background})`,
       }"
     >
+      <Navbar @toggle-sidebar="toggleSidebar" />
+
+      <Sidebar @close="isSidebarOpen = false" :isOpen="isSidebarOpen" />
+
       <div class="flex flex-col items-center w-screen">
         <!-- StratumV2 Logo -->
         <img
@@ -121,7 +125,7 @@
       /> -->
 
       <!-- Specification Authors section -->
-      <div class="flex relative z-20 z-30 flex-col px-16">
+      <div class="flex relative z-30 flex-col px-16">
         <h2 class="z-20 mb-4 text-3xl font-bold text-center lg:text-4xl">
           {{ data.specificationAuthorsTitle }}
         </h2>
@@ -223,7 +227,7 @@
       <img
         src="/assets/deco-yellow.svg"
         alt="sparkles"
-        class="absolute top-3 right-6 top-12 w-56 opacity-50 md:opacity-100 lg:w-72"
+        class="absolute right-6 top-12 w-56 opacity-50 md:opacity-100 lg:w-72"
       />
     </div>
 
@@ -269,15 +273,13 @@ import PrimaryLink from "@theme/components/PrimaryLink.vue";
 import SecondaryLink from "@theme/components/SecondaryLink.vue";
 import RoadMapSection from "@theme/components/RoadMapSection.vue";
 import Tabs from "@theme/components/Tabs.vue";
+import Navbar from "@theme/components/Navbar.vue";
+import Sidebar from "@theme/components/Sidebar.vue";
 
 import { classNames } from "../../utils";
 
 export default {
   name: "Home",
-
-  methods: {
-    classNames,
-  },
 
   components: {
     NavLink,
@@ -285,12 +287,21 @@ export default {
     SecondaryLink,
     RoadMapSection,
     Tabs,
+    Navbar,
+    Sidebar,
+  },
+
+  mounted() {
+    this.$router.afterEach(() => {
+      this.isSidebarOpen = false;
+    });
   },
 
   data() {
     return {
       selectedConfigurationTab: {},
       selectedSupportersTab: {},
+      isSidebarOpen: false,
     };
   },
 
@@ -309,6 +320,13 @@ export default {
       return this.data.supporters.filter(({ value }) =>
         this.selectedSupportersTab.supporters.includes(value)
       );
+    },
+  },
+
+  methods: {
+    classNames,
+    toggleSidebar(to) {
+      this.isSidebarOpen = typeof to === "boolean" ? to : !this.isSidebarOpen;
     },
   },
 };

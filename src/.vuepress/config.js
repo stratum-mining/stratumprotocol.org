@@ -24,10 +24,10 @@ module.exports = {
       "/": "auto",
     },
     nav: [
-      { text: "Overview", link: "/overview" },
-      { text: "Features", link: "/features" },
-      { text: "Implementation", link: "/implementation" },
-      { text: "Specification", link: "/specification" },
+      { text: "Home", link: "/" },
+      { text: "Reference Implementation", link: "https://github.com/stratum-mining/stratum" },
+      { text: "Documentation", link: "/overview.html" },
+      { text: "Specification", link: "/specification.html" },
     ],
   },
 
