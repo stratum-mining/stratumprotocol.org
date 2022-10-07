@@ -29,12 +29,12 @@ configurationTabs:
     value: config_1
     visualSrc: /assets/config-a.svg
     mobileVisualSrc: /assets/mobile-diagram.svg
-    textContent: Before Stratum V2, transaction sets were selected by pools. With a complete SV2 configuration they’re selected by individual miners, making the network more censorship-resistant. In this configuration, miners run SV2 firmware, connecting to the SV2 proxy server through standard channels where connections are aggregated through a group channel. Miners can pick their transactions locally and negotiate them with an SV2 pool.
+    textContent: Before Stratum V2, transaction sets were selected by pools. With this SV2 configuration they’re selected by individual miners, making the network more censorship-resistant. Miners run SV2 firmware, connecting to the SV2 proxy server through standard channels where connections are aggregated through a group channel. Miners can pick their transactions locally and negotiate them with an SV2 pool.
   - name: Config A-1
     value: config_2
     visualSrc: /assets/config-a1.svg
     mobileVisualSrc: /assets/mobile-diagram.svg
-    textContent: In this configuration, miners run SV2 firmware, connecting to the SV2 proxy server where connections are aggregated through an extended channel. Miners can pick their transactions locally and negotiate them with an SV2 pool.
+    textContent: In this configuration, miners run SV2 firmware, connecting to the SV2 proxy server where connections are aggregated into an extended channel. Miners pick their transactions locally and negotiate them with an SV2 pool.
   - name: Config B
     value: config_3
     visualSrc: /assets/config-b.svg
@@ -44,12 +44,12 @@ configurationTabs:
     value: config_4
     visualSrc: /assets/config-c.svg
     mobileVisualSrc: /assets/mobile-diagram.svg
-    textContent: Miners can use SV2 even if they run SV1 firmware. The translation proxy allows SV1 connections, translating them to SV2 and sending them to the SV2 pool where the transactions are selected by the pool.
+    textContent: Miners can use SV2 even if they run SV1 firmware. The translation proxy translates SV1 to SV2 messages and sends them to the SV2 pool. Transactions are selected by the pool.
   - name: Config D
     value: config_5
     visualSrc: /assets/config-d.svg
     mobileVisualSrc: /assets/mobile-diagram.svg
-    textContent: In this configuration the miners run the SV1 firmware and connect to the translation proxy which translates the messages to SV2 and sends them to the SV2 pool. Transaction selection is done by the miners locally and then sent to the pool for negotiation.
+    textContent: In this configuration miners run mining devices with SV1 firmware and connect to the translation proxy which translates the SV1 to SV2 messages and sends them to the SV2 pool. Transaction selection is done by the miners locally and then negoatiated with the pool.
 roadmapTitle: Progress and Roadmap
 roadmapTagline: This is where the Stratum V2 protocol’s progress currently stands.
 roadmapSteps:
