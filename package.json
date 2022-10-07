@@ -1,7 +1,7 @@
 {
   "name": "stratumprotocol.org",
   "version": "0.0.1",
-  "description": "Stratum V2 documentation",
+  "description": "Stratum V2 The next-gen protocol for pooled mining",
   "main": "index.js",
   "authors": {
     "name": "SeraBocca",

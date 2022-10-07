@@ -1,7 +1,7 @@
 const { description } = require("../../package");
 
 module.exports = {
-  title: "Stratum V2 Documentation",
+  title: "Stratum V2 The next-gen protocol for pooled mining",
   description: description,
   base: "/",
   head: [
