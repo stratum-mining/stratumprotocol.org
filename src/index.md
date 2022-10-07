@@ -56,22 +56,11 @@ roadmapSteps:
   - Apply early adopter feedback and tailor configurations that will move MVP1 and MVP2 from beta to production-ready.
 # Specification authors section
 specificationAuthorsTitle: Stratum v2 specification authors
-specificationAuthorsText: Some brief intro text here
+specificationAuthorsText: Stratum v2 specs authors are Pavel Moravec and Jan Čapek, in collaboration with Matt Corallo and other industry experts.
 authors:
-  - name: Scrat
-    image: https://www.animationsource.org/sites_content/age_de_glace/upload/fanchars/pic_head4edb577aa9875_100.png
-  - name: Manfred
-    image: https://www.animationsource.org/sites_content/age_de_glace/upload/fanchars/pic_head4ee0a9bcae633_100.png
-  - name: Sid
-    image: https://www.animationsource.org/sites_content/age_de_glace/upload/fanchars/pic_head4eee60084e4bb_100.png
-  - name: Diego
-    image: https://www.animationsource.org/sites_content/age_de_glace/upload/fanchars/pic_head4eee77b79454a_100.png
-specificationAuthorsContent:
-  - title: Improvements to  SV1
-    content: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce volutpat sit pharetra, amet. Elementum, molestie sit eget fames ac magna amet in. Nibh sed nullam vitae odio malesuada hendrerit. Eu mollis id amet egestas egestas quam ut dictumst cras. Nisi, ullamcorper enim, eu urna, enim. Etiam tempor ut urna lacus. Tincidunt suscipit sollicitudin odio scelerisque velit in.
-  - title: The team behind Stratum
-    content: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget adipiscing turpis justo eget facilisis nisi. Felis mauris, turpis tellus praesent amet nunc. Semper lorem quam maecenas nisl, duis sollicitudin urna neque quisque. Purus nunc, ac hendrerit nibh turpis nam turpis nisl cum. Congue aliquam lorem dolor nisl, adipiscing id suspendisse. Turpis cras volutpat quam et eget morbi vel vestibulum ornare.
-  - content: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quam fusce urna fermentum sed nibh cras habitant tempus. Senectus vitae nunc morbi risus ultrices eget tortor, magna. Magna pellentesque lacus neque in.
+  - image: /assets/author-1.png
+  - image: /assets/author-2.png
+  - image: /assets/author-3.png
 
 # Supporters section
 supportersTitle: Support for Stratum V2

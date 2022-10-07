@@ -3,35 +3,32 @@
     :class="
       classNames(
         'fixed top-0 left-0 z-[50] border-b-none flex flex-row justify-between duration-200',
-        'px-4 py-2 md:px-10 lg:px-14 w-screen box-border',
+        'px-4 py-6 md:px-10 lg:px-14 w-screen box-border',
+        'h-24 lg:h-28',
         hasScrolled ? 'bg-dark-200/90' : 'bg-none '
       )
     "
   >
-    <SidebarButton @toggle-sidebar="$emit('toggle-sidebar')" />
+    <div class="flex flex-row items-center h-full">
+      <SidebarButton class="-mt-2" @toggle-sidebar="$emit('toggle-sidebar')" />
 
-    <RouterLink :to="$localePath" class="ml-12 h-full md:ml-0">
-      <img
-        v-if="$site.themeConfig.logo"
-        class="h-10 md:h-12 lg:h-16"
-        src="/assets/stratum-v2-icon-with-text.svg"
-        :alt="$siteTitle"
-      />
-    </RouterLink>
+      <RouterLink
+        v-show="withLogo"
+        :to="$localePath"
+        class="ml-6 h-full lg:ml-0"
+      >
+        <img
+          v-if="$site.themeConfig.logo"
+          class="h-full"
+          src="/assets/stratum-v2-icon-with-text.svg"
+          :alt="$siteTitle"
+        />
+      </RouterLink>
+    </div>
 
     <div class="hidden lg:block">
-      <div class="flex space-x-16">
-        <NavLink
-          v-for="item of nav"
-          :key="item.link"
-          :item="item"
-          :class="
-            classNames(
-              'hover:text-links text-sm lg:text-lg',
-              isActive($route, item.link) && 'text-links'
-            )
-          "
-        />
+      <div class="flex space-x-8">
+        <NavLink v-for="item of nav" :key="item.link" :item="item" />
       </div>
     </div>
   </header>
@@ -52,13 +49,20 @@ export default {
   },
   data() {
     return {
-      linksWrapMaxWidth: null,
       hasScrolled: false,
     };
   },
+  props: {
+    links: {
+      required: false,
+    },
+    withLogo: {
+      default: false,
+    },
+  },
   computed: {
     nav() {
-      return this.$themeLocaleConfig.nav || this.$site.themeConfig.nav || [];
+      return this.links || this.$site.themeConfig.nav || [];
     },
   },
   methods: {
@@ -69,34 +73,12 @@ export default {
     },
   },
   mounted() {
-    const MOBILE_DESKTOP_BREAKPOINT = 719; // refer to config.styl
-    const NAVBAR_VERTICAL_PADDING =
-      parseInt(css(this.$el, "paddingLeft")) +
-      parseInt(css(this.$el, "paddingRight"));
-    const handleLinksWrapWidth = () => {
-      if (document.documentElement.clientWidth < MOBILE_DESKTOP_BREAKPOINT) {
-        this.linksWrapMaxWidth = null;
-      } else {
-        this.linksWrapMaxWidth =
-          this.$el.offsetWidth -
-          NAVBAR_VERTICAL_PADDING -
-          ((this.$refs.siteName && this.$refs.siteName.offsetWidth) || 0);
-      }
-    };
-    handleLinksWrapWidth();
-    window.addEventListener("resize", handleLinksWrapWidth, false);
     window.addEventListener("scroll", this.handleScroll);
   },
   destroyed: function () {
     window.removeEventListener("scroll", this.handleScroll);
   },
 };
-function css(el, property) {
-  // NOTE: Known bug, will return 'auto' if style value is 'auto'
-  const win = el.ownerDocument.defaultView;
-  // null means not to return pseudo styles
-  return win.getComputedStyle(el, null)[property];
-}
 </script>
 
 <style lang="stylus">
