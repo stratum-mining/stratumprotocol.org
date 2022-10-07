@@ -25,12 +25,12 @@ footerLinks:
 # Configurations Section
 configurationTitle: Flexible configurations
 configurationTabs:
-  - name: Complete
+  - name: Config 1
     value: config_1
     visualSrc: /assets/diagram.svg
     mobileVisualSrc: /assets/mobile-diagram.svg
     textContent: This configuration depicts a complete implementation of the protocol.
-  - name: Translation proxy
+  - name: Config 2
     value: config_2
     visualSrc: /assets/diagram.svg
     mobileVisualSrc: /assets/mobile-diagram.svg
@@ -45,6 +45,11 @@ configurationTabs:
     visualSrc: /assets/diagram.svg
     mobileVisualSrc: /assets/mobile-diagram.svg
     textContent: Before Stratum V2, transaction sets were selected by pools. With a complete SV2 configuration they’re selected by individual miners, making the network more censorship-resistant.
+  - name: Config 5
+    value: config_5
+    visualSrc: /assets/diagram.svg
+    mobileVisualSrc: /assets/mobile-diagram.svg
+    textContent: Before Stratum V2, transaction sets were selected by pools. With a complete SV2 configuration they’re selected by individual miners, making the network more censorship-resistant.
 # Roadmap Section
 roadmapTitle: Progress and Roadmap
 roadmapTagline: This is where the Stratum V2 protocol’s progress currently stands.
@@ -55,8 +60,8 @@ roadmapSteps:
   - Once a translator, template provider, and job negotiator are running, we will launch an MVP2. In this configuration, a miner handles mempool transaction selection, and the pool accepts it.
   - Apply early adopter feedback and tailor configurations that will move MVP1 and MVP2 from beta to production-ready.
 # Specification authors section
-specificationAuthorsTitle: Stratum v2 specification authors
-specificationAuthorsText: Stratum v2 specs authors are Pavel Moravec and Jan Čapek, in collaboration with Matt Corallo and other industry experts.
+specificationAuthorsTitle: Stratum V2 specification authors
+specificationAuthorsText: Stratum V2 specs authors are Pavel Moravec and Jan Čapek, in collaboration with Matt Corallo and other industry experts.
 authors:
   - image: /assets/author-1.png
   - image: /assets/author-2.png
