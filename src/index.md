@@ -49,7 +49,7 @@ configurationTabs:
     value: config_5
     visualSrc: /assets/config-d.svg
     mobileVisualSrc: /assets/mobile-diagram.svg
-    textContent: In this configuration miners run mining devices with SV1 firmware and connect to the translation proxy which translates the SV1 to SV2 messages and sends them to the SV2 pool. Transaction selection is done by the miners locally and then negoatiated with the pool.
+    textContent: In this configuration miners run mining devices with SV1 firmware and connect to the translation proxy which translates the SV1 to SV2 messages and sends them to the SV2 pool. Transaction selection is done by the miners locally and then negotiated with the pool.
 roadmapTitle: Progress and Roadmap
 roadmapTagline: This is where the Stratum V2 protocol’s progress currently stands.
 roadmapSteps:
