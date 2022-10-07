@@ -105,6 +105,8 @@ supporters:
     image: /assets/summer-of-bitcoin.svg
     link: https://www.summerofbitcoin.org/
 whyTitle: Layers of Upgrades
+supportDevelopersText: Support Developers
+supportDevelopersLink: "mailto:stratumv2@gmail.com"
 why:
   - title: Security
     text: V2 introduces by-default encryption and NOISE protocol authentication, hardening the protocol against man-in-the-middle attacks.
