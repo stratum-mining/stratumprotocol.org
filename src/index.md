@@ -44,7 +44,7 @@ configurationTabs:
     value: config_4
     visualSrc: /assets/config-c.svg
     mobileVisualSrc: /assets/config-c-mobile.svg
-    textContent: Miners can use SV2 even if they run SV1 firmware. The translation proxy translates SV1 to SV2 messages and sends them to the SV2 pool. Transactions are selected by the pool.
+    textContent: Miners can use SV2 even if they run SV1 firmware. The translation proxy translates SV1 to SV2 messages and sends them to the SV2 pool. Transactions selection, in this configuration is done by the pool.
   - name: Config D
     value: config_5
     visualSrc: /assets/config-d.svg
