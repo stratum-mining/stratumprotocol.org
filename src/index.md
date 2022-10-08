@@ -25,27 +25,31 @@ footerLinks:
 # Configurations Section
 configurationTitle: Flexible configurations
 configurationTabs:
-  - name: Complete
+  - name: Config A
     value: config_1
-    visualSrc: /assets/diagram.svg
-    mobileVisualSrc: /assets/mobile-diagram.svg
-    textContent: This configuration depicts a complete implementation of the protocol.
-  - name: Translation proxy
+    visualSrc: /assets/config-a.svg
+    mobileVisualSrc: /assets/config-a-mobile.svg
+    textContent: Before Stratum V2, transaction sets were selected by pools. With this SV2 configuration they’re selected by individual miners, making the network more censorship-resistant. Miners run SV2 firmware, connecting to the SV2 proxy server through standard channels where connections are aggregated through a group channel. Miners can pick their transactions locally and negotiate them with an SV2 pool.
+  - name: Config A-1
     value: config_2
-    visualSrc: /assets/diagram.svg
-    mobileVisualSrc: /assets/mobile-diagram.svg
-    textContent: Before Stratum V2, transaction sets were selected by pools. With a complete SV2 configuration they’re selected by individual miners, making the network more censorship-resistant.
-  - name: Config 3
+    visualSrc: /assets/config-a1.svg
+    mobileVisualSrc: /assets/config-a1-mobile.svg
+    textContent: In this configuration, miners run SV2 firmware, connecting to the SV2 proxy server where connections are aggregated into an extended channel. Miners pick their transactions locally and negotiate them with an SV2 pool.
+  - name: Config B
     value: config_3
-    visualSrc: /assets/diagram.svg
-    mobileVisualSrc: /assets/mobile-diagram.svg
-    textContent: Before Stratum V2, transaction sets were selected by pools. With a complete SV2 configuration they’re selected by individual miners, making the network more censorship-resistant.
-  - name: Config 4
+    visualSrc: /assets/config-b.svg
+    mobileVisualSrc: /assets/config-b-mobile.svg
+    textContent: In this configurations, mining pool select transactions, but it uses all the security and performance features of the protocol.
+  - name: Config C
     value: config_4
-    visualSrc: /assets/diagram.svg
-    mobileVisualSrc: /assets/mobile-diagram.svg
-    textContent: Before Stratum V2, transaction sets were selected by pools. With a complete SV2 configuration they’re selected by individual miners, making the network more censorship-resistant.
-# Roadmap Section
+    visualSrc: /assets/config-c.svg
+    mobileVisualSrc: /assets/config-c-mobile.svg
+    textContent: Miners can use SV2 even if they run SV1 firmware. The translation proxy translates SV1 to SV2 messages and sends them to the SV2 pool. Transactions selection, in this configuration is done by the pool.
+  - name: Config D
+    value: config_5
+    visualSrc: /assets/config-d.svg
+    mobileVisualSrc: /assets/config-d-mobile.svg
+    textContent: In this configuration miners run mining devices with SV1 firmware and connect to the translation proxy which translates the SV1 to SV2 messages and sends them to the SV2 pool. Transaction selection is done by the miners locally and then negotiated with the pool.
 roadmapTitle: Progress and Roadmap
 roadmapTagline: This is where the Stratum V2 protocol’s progress currently stands.
 roadmapSteps:
@@ -55,8 +59,8 @@ roadmapSteps:
   - Once a translator, template provider, and job negotiator are running, we will launch an MVP2. In this configuration, a miner handles mempool transaction selection, and the pool accepts it.
   - Apply early adopter feedback and tailor configurations that will move MVP1 and MVP2 from beta to production-ready.
 # Specification authors section
-specificationAuthorsTitle: Stratum v2 specification authors
-specificationAuthorsText: Stratum v2 specs authors are Pavel Moravec and Jan Čapek, in collaboration with Matt Corallo and other industry experts.
+specificationAuthorsTitle: Stratum V2 specification authors
+specificationAuthorsText: Stratum V2 specs authors are Pavel Moravec and Jan Čapek, in collaboration with Matt Corallo and other industry experts.
 authors:
   - image: /assets/author-1.png
   - image: /assets/author-2.png
