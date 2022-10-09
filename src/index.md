@@ -141,7 +141,7 @@ meta:
   - name: title
     content: StratumV2
   - name: description
-    content: The next gen bitcoin mining protocol. Open source, community-ran, complete implementation of Stratum V2.
+    content: The next gen bitcoin mining protocol.
 
   # Open Graph / Facebook
   - name: og:type
@@ -151,7 +151,7 @@ meta:
   - name: og:title
     content: StratumV2
   - name: og:description
-    content: The next gen bitcoin mining protocol. Open source, community-ran, complete implementation of Stratum V2.
+    content: The next gen bitcoin mining protocol.
   - name: og:image
     content: /assets/landing-social-media-share-image.png
 
@@ -163,7 +163,7 @@ meta:
   - name: twitter:title
     content: StratumV2
   - name: twitter:description
-    content: The next gen bitcoin mining protocol. Open source, community-ran, complete implementation of Stratum V2.
+    content: The next gen bitcoin mining protocol.
   - name: twitter:image
     content: /assets/landing-social-media-share-image.png
 ---
