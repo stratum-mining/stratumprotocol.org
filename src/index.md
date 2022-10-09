@@ -76,6 +76,7 @@ supportersTabs:
     value: implementers
     supporters:
       - braiins
+      - sri
   - name: Adopters
     value: adopters
     supporters:
@@ -105,6 +106,9 @@ supporters:
   - value: spiral
     image: /assets/spiral-logo.svg
     link: https://www.spiral.xyz/
+  - value: sri
+    image: /assets/stratum-v2-icon.svg
+    link: https://github.com/stratum-mining/stratum    
   - value: sob
     image: /assets/summer-of-bitcoin.svg
     link: https://www.summerofbitcoin.org/
