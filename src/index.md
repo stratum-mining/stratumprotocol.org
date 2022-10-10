@@ -30,11 +30,6 @@ configurationTabs:
     visualSrc: /assets/config-a.svg
     mobileVisualSrc: /assets/config-a-mobile.svg
     textContent: Before Stratum V2, transaction sets were selected by pools. With this SV2 configuration they’re selected by individual miners, making the network more censorship-resistant. Miners run SV2 firmware, connecting to the SV2 proxy server through standard channels where connections are aggregated through a group channel. Miners can pick their transactions locally and negotiate them with an SV2 pool.
-  - name: Config A-1
-    value: config_2
-    visualSrc: /assets/config-a1.svg
-    mobileVisualSrc: /assets/config-a1-mobile.svg
-    textContent: In this configuration, miners run SV2 firmware, connecting to the SV2 proxy server where connections are aggregated into an extended channel. Miners pick their transactions locally and negotiate them with an SV2 pool.
   - name: Config B
     value: config_3
     visualSrc: /assets/config-b.svg
