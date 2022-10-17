@@ -4,7 +4,7 @@
       v-bind:class="{
         [classNames(
           'sidebar-transform',
-          'fixed box-border overflow-scroll z-40',
+          'fixed box-border overflow-auto z-40',
           'bg-dark-300 lg:bg-transparent',
           'border-white border-t-0 border-l-0 border-r-2 border-b-2 border-solid rounded-br-3xl lg:border-none',
           'w-screen max-w-sm text-lg max-h-screen md:max-h-[600px] h-fit',
@@ -13,7 +13,7 @@
         open: isOpen,
       }"
     >
-      <div class="overflow-scroll w-full">
+      <div class="overflow-auto w-full">
         <NavLinks class="block pb-6 lg:hidden" />
 
         <template v-if="items">

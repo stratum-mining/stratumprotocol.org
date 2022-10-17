@@ -20,7 +20,7 @@
     </p>
 
     <!-- Roadmap Steps -->
-    <div class="overflow-scroll z-20 px-2 py-4 md:px-8 max-w-screen">
+    <div class="overflow-auto z-20 px-2 py-4 md:px-8 max-w-screen">
       <!-- Scrolling Container -->
       <div class="flex flex-col w-max md:w-max md:flex-row">
         <div
