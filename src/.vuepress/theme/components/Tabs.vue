@@ -5,7 +5,7 @@
       class="rounded-xl border-2 border-solid sm:block border-dark-600"
       >
         <!-- Use an "onChange" listener to redirect the user to the selected tab URL. -->
-        <nav class="flex" aria-label="Tabs">
+        <nav class="flex items-stretch" aria-label="Tabs">
           <a
             v-for="tab in tabs"
             :key="tab.name"
@@ -15,7 +15,7 @@
               tab.value === selected.value
                 ? 'border-links text-links'
                 : 'border-transparent text-bodyText',
-              'px-1 py-2 font-medium text-sm rounded-xl bg-transparent border-1 border-solid',
+              'px-1 py-2 font-medium text-sm rounded-xl bg-transparent border-1 border-solid text-center inline-flex items-center',
             ]"
             :aria-current="tab.current ? 'page' : undefined"
             >{{ tab.name }}</a
