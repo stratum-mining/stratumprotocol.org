@@ -5,10 +5,27 @@
  */
 
 export default ({
-  Vue, // the version of Vue being used in the VuePress app
-  options, // the options for the root Vue instance
-  router, // the router instance for the app
-  siteData, // site metadata
+  Vue, 
+  options, 
+  router, 
+  siteData, 
 }) => {
-  // ...apply enhancements for the site.
+  router.options.scrollBehavior = async (to, from, savedPosition) => {
+    if (to.hash){
+      const elem = document.querySelector(to.hash)
+      // vue-router does not incorporate scroll-margin-top on its own.
+      if (elem) {
+        const offset = parseFloat(getComputedStyle(elem).scrollMarginTop)
+        return {
+          selector: to.hash,
+          offset: { y: offset }
+        }
+      }
+
+      if (savedPosition) return savedPosition
+      return { x: 0, y: 0 }
+    } else {
+        return { x: 0, y: 0 }
+    }
+  }
 };
