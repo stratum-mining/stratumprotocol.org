@@ -64,8 +64,19 @@ Target: 0000000dfff20000000000000000000000000000000000000000000000000000
 [2023-02-17 17:56:51] accepted: 1/1 (100.00%), 15886 khash/s (yay!!!)
 ```
 
-Now that everything is started you will see in the Translation Proxy log output
+Now that everything is started you will see in the Translation Proxy log output:
 
+```
+2023-02-17T18:32:16.093603Z  INFO translator: Connected to Upstream!
+2023-02-17T18:32:16.265612Z  INFO translator::upstream_sv2::upstream: Up: Successfully Opened Extended Mining Channel
+[roles/translator/src/upstream_sv2/upstream.rs:304] m.extranonce_prefix.len() = 7
+2023-02-17T18:32:16.273222Z  INFO translator::upstream_sv2::upstream: Is future job: true
+
+2023-02-17T18:32:16.273327Z  INFO translator::upstream_sv2::upstream: Up: New Extended Mining Job
+2023-02-17T18:32:16.273590Z  INFO translator::upstream_sv2::upstream: Up: Set New Prev Hash
+```
+
+And eventually: 
 ```
 2023-02-17T18:12:39.296514Z  INFO translator::proxy::bridge: SHARE MEETS DOWNSTREAM TARGET
 ```
