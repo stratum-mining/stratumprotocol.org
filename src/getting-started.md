@@ -13,6 +13,8 @@ Below are the most commonly used configurations you can run to get started.
 
 This configuration allows mining devices running SV1 firmware to connect to an SV2 Pool through a Translation Proxy (tProxy). The proxy is designed to sit in between a SV1 downstream role (most typically Mining Device(s) running SV1 firmware) and a SV2 upstream role (most typically a SV2 Pool Server).
 
+![Config1](/assets/config-c.svg)
+
 ### 1. Start Pool
 
 The Pool role should be configured to point to the hosted Template Provider. In the `pool-config.toml` file you should see this: `tp_address = "75.119.150.111:8442"` The default `pool-config.toml` should have appropriate defaults set up for everything else.
@@ -76,7 +78,7 @@ Now that everything is started you will see in the Translation Proxy log output:
 2023-02-17T18:32:16.273590Z  INFO translator::upstream_sv2::upstream: Up: Set New Prev Hash
 ```
 
-And eventually: 
+And eventually:
 ```
 2023-02-17T18:12:39.296514Z  INFO translator::proxy::bridge: SHARE MEETS DOWNSTREAM TARGET
 ```
