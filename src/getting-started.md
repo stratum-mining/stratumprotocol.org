@@ -19,7 +19,7 @@ This configuration allows mining devices running SV1 firmware to connect to an S
 
 The Pool role should be configured to point to the hosted Template Provider. In the `pool-config.toml` file you should see this: `tp_address = "75.119.150.111:8442"` The default `pool-config.toml` should have appropriate defaults set up for everything else.
 
-1. `cd roles/v2/pool` directory located in `Stratum > Roles > V2 > Pool`
+1. `cd roles/v2/pool`
 2. Then `cargo run -p pool`
 
 If the pool properly starts you should see the following log lines:
@@ -37,9 +37,7 @@ If the pool properly starts you should see the following log lines:
 
 Once the pool is running, let's run the tProxy that will facilitate communication between the pool and a CPU miner.
 
-Within the `proxy-config.toml` you will be able to specify which pool should a translation proxy connect to. By default, the tProxy will connect to a locally hosted pool (which you deployed in the first step, or default to a hosted Braiins pool. Feel free to switch the pools while testing things out.
-
-The `proxy-config.toml` is modified by the party running the Translator Proxy (typically the mining farm/miner hobbyist).
+Within the `proxy-config.toml` you will be able to specify which pool should a translation proxy connect to. By default, the tProxy will connect to a locally hosted pool (which you deployed in the first step, or default to a hosted Braiins pool in case you didn't). Feel free to switch the pools while testing things out.
 
 If you're interested in learning about information in the configuration file, check [this document](https://github.com/stratum-mining/stratum/tree/main/roles/translator#configuration-file).
 
@@ -62,9 +60,10 @@ If the translator starts properly, you should see the following log lines:
 ### 3. Start SV1 CPU Miner
 
 After starting a pool, and a translation proxy, let’s start a CPU miner. We’ve done tests with CPUMiner.
+
 1. Download CPUMiner for your OS.
 2. Cd into directory of the downloaded CPUMiner, for example `cd Downloads`
-3. run: `./minerd -a sha256d -o stratum+tcp://localhost:34255 -q -D -P`. This will connect to the translator proxy and speak sv1. If this is successful you should see the following output:
+3. Then run: `./minerd -a sha256d -o stratum+tcp://localhost:34255 -q -D -P`. This will connect to the translator proxy and speak sv1. If this is successful you should see the following output:
 
 ```
 [2023-02-17 17:56:48] DEBUG: job_id='1' extranonce2=000000000000 ntime=63efb1c9
