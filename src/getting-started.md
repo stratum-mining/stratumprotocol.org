@@ -64,4 +64,8 @@ Target: 0000000dfff20000000000000000000000000000000000000000000000000000
 [2023-02-17 17:56:51] accepted: 1/1 (100.00%), 15886 khash/s (yay!!!)
 ```
 
-Now that everything is started you will see in the Translation Proxy log output.`2023-02-17T18:12:39.296514Z  INFO translator::proxy::bridge: SHARE MEETS DOWNSTREAM TARGET`
+Now that everything is started you will see in the Translation Proxy log output
+
+```
+2023-02-17T18:12:39.296514Z  INFO translator::proxy::bridge: SHARE MEETS DOWNSTREAM TARGET
+```
