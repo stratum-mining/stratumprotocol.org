@@ -7,7 +7,7 @@ heroText1: Stratum V2 is the next generation protocol for pooled mining. It incr
 heroTextHighlight: improve decentralization
 heroText2: by negotiating with pools.
 tagline: One giant leap for bitcoin mining
-documentationCtaText: Explore Documentation
+documentationCtaText: Get Started
 documentationCtaLink: /overview
 links:
   - title: GitHub
