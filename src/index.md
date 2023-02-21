@@ -83,6 +83,7 @@ supportersTabs:
       - bitmex
       - foundry
       - galaxy
+      - hrf
       - spiral
       - sob
 supporters:
@@ -98,6 +99,9 @@ supporters:
   - value: galaxy
     image: /assets/galaxy-logo.svg
     link: https://www.galaxy.com/
+  - value: hrf
+    image: /assets/hrf-logo.svg
+    link: https://www.hrf.org/    
   - value: spiral
     image: /assets/spiral-logo.svg
     link: https://www.spiral.xyz/
