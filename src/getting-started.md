@@ -47,7 +47,7 @@ If you're interested in learning about information in the configuration file, ch
 
 If the translator starts properly, you should see the following log lines:
 
-```
+```log
 2023-02-17T18:32:16.093603Z  INFO translator: Connected to Upstream!
 2023-02-17T18:32:16.265612Z  INFO translator::upstream_sv2::upstream: Up: Successfully Opened Extended Mining Channel
 [roles/translator/src/upstream_sv2/upstream.rs:304] m.extranonce_prefix.len() = 7
@@ -65,7 +65,7 @@ After starting a pool, and a translation proxy, let’s start a CPU miner. We’
 2. Cd into directory of the downloaded CPUMiner, for example `cd Downloads`
 3. Then run: `./minerd -a sha256d -o stratum+tcp://localhost:34255 -q -D -P`. This will connect to the translator proxy and speak sv1. If this is successful you should see the following output:
 
-```
+```log
 [2023-02-17 17:56:48] DEBUG: job_id='1' extranonce2=000000000000 ntime=63efb1c9
 [2023-02-17 17:56:48] Stratum requested work restart
 [2023-02-17 17:56:51] DEBUG: hash <= target
@@ -78,6 +78,6 @@ Target: 0000000dfff20000000000000000000000000000000000000000000000000000
 
 Eventually, the Translation Proxy log output will show sucessful share, which means you've run the configuration successfully!
 
-```
+```log
 2023-02-17T18:12:39.296514Z  INFO translator::proxy::bridge: SHARE MEETS DOWNSTREAM TARGET
 ```
