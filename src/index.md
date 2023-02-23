@@ -152,7 +152,7 @@ meta:
   - name: og:description
     content: The next generation bitcoin mining protocol. Better security, performance, flexibility and censorship resistance, by allowing miners to select transactions.
   - name: og:image
-    content: https://stratumprotocol.org/assets/stratum-v2-icon-with-text.svg
+    content: https://stratumprotocol.org/assets/stratum-v2-open-graph-preview.png
 
   # Twitter
   - name: twitter:card
@@ -164,5 +164,5 @@ meta:
   - name: twitter:description
     content: The next generation bitcoin mining protocol. Better security, performance, flexibility and censorship resistance, by allowing miners to select transactions.
   - name: twitter:image
-    content: https://stratumprotocol.org/assets/stratum-v2-icon-with-text.svg
+    content: https://stratumprotocol.org/assets/stratum-v2-open-graph-preview.png
 ---
