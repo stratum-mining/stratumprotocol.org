@@ -83,6 +83,7 @@ supportersTabs:
       - bitmex
       - foundry
       - galaxy
+      - hrf
       - spiral
       - sob
 supporters:
@@ -98,6 +99,9 @@ supporters:
   - value: galaxy
     image: /assets/galaxy-logo.svg
     link: https://www.galaxy.com/
+  - value: hrf
+    image: /assets/hrf-logo.svg
+    link: https://www.hrf.org/    
   - value: spiral
     image: /assets/spiral-logo.svg
     link: https://www.spiral.xyz/
@@ -136,7 +140,7 @@ meta:
   - name: title
     content: StratumV2
   - name: description
-    content: The next generation bitcoin mining protocol. Better security, performance, flexibility and censorship resistance, by allowing miners to select transactions.
+    content: The next gen bitcoin mining protocol.
 
   # Open Graph / Facebook
   - name: og:type
@@ -146,9 +150,9 @@ meta:
   - name: og:title
     content: StratumV2
   - name: og:description
-    content: The next generation bitcoin mining protocol. Better security, performance, flexibility and censorship resistance, by allowing miners to select transactions.
+    content: The next gen bitcoin mining protocol.
   - name: og:image
-    content: https://stratumprotocol.org/assets/stratum-v2-icon-with-text.svg
+    content: /assets/landing-social-media-share-image.png
 
   # Twitter
   - name: twitter:card
@@ -158,7 +162,7 @@ meta:
   - name: twitter:title
     content: StratumV2
   - name: twitter:description
-    content: The next generation bitcoin mining protocol. Better security, performance, flexibility and censorship resistance, by allowing miners to select transactions.
+    content: The next gen bitcoin mining protocol.
   - name: twitter:image
-    content: https://stratumprotocol.org/assets/stratum-v2-icon-with-text.svg
+    content: /assets/landing-social-media-share-image.png
 ---
