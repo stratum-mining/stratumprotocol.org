@@ -25,9 +25,9 @@ module.exports = {
     },
     nav: [
       { text: "Home", link: "/" },
-      { text: "Reference Implementation", link: "https://github.com/stratum-mining/stratum" },
       { text: "Documentation", link: "/overview.html" },
       { text: "Getting Started", link: "/getting-started.html" },
+      { text: "Reference Implementation", link: "https://github.com/stratum-mining/stratum" },
       { text: "Specification", link: "/specification.html" },
     ],
   },
