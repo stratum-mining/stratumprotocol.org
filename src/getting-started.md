@@ -20,7 +20,7 @@ This configuration allows mining devices running SV1 firmware to connect to an S
 The Pool role should be configured to point to the hosted Template Provider. In the `pool-config.toml` file you should see this: `tp_address = "75.119.150.111:8442"` The default `pool-config.toml` should have appropriate defaults set up for everything else.
 
 1. `cd roles/v2/pool`
-2. Then `cargo run -p pool`
+2. Then `cargo run -p pool_sv2`
 
 If the pool properly starts you should see the following log lines:
 
