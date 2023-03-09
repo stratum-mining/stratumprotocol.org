@@ -101,13 +101,13 @@ supporters:
     link: https://www.galaxy.com/
   - value: hrf
     image: /assets/hrf-logo.svg
-    link: https://www.hrf.org/    
+    link: https://www.hrf.org/
   - value: spiral
     image: /assets/spiral-logo.svg
     link: https://www.spiral.xyz/
   - value: sri
     image: /assets/stratum-v2-icon.svg
-    link: https://github.com/stratum-mining/stratum    
+    link: https://github.com/stratum-mining/stratum
   - value: sob
     image: /assets/summer-of-bitcoin.svg
     link: https://www.summerofbitcoin.org/
@@ -131,7 +131,7 @@ why:
     text: By failing to precisely define Stratum V1’s specifications, we inadvertently created multiple implementations with varying semi-compatible dialects. Stratum V2 fixes this by defining its protocol parameters to ensure cross-compatibility between and pools and end-mining devices.
     image: /assets/compare.svg
 readDocumentationText: Read the Docs
-readDocumentationLink: /overview
+readDocumentationLink: /docs/
 footerTitle: Join us on
 footerBottom: Made by the open-source bitcoin community. <a href="https://www.freepik.com/free-vector/space-illustration-night-alien-fantasy-landscape_5603523.htm" rel="nofollow noindex">Image by vectorpouch</a> on Freepik.
 meta:
