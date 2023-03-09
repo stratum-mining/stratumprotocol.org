@@ -50,7 +50,6 @@ export default {
   components: { PrimaryLink },
   methods: { classNames },
   data() {
-    console.log(contents[Math.floor(Math.random() * contents.length)]);
     return {
       content: contents[Math.floor(Math.random() * contents.length)],
     };
