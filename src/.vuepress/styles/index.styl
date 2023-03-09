@@ -152,13 +152,16 @@ code {
   border-radius: .5em;
 }
 
+.sidebar-sub-headers {
+  margin-top: 0 !important;
+}
+
 /* Targets all elements that have an id attribute */
-[id] { /* e.g documention anchors */
-    scroll-margin-top: 7rem;
-    margin-bottom: 0.75rem;
+#app [id] { /* e.g documention anchors */
+  scroll-margin-top: 7rem;
+  margin-bottom: 0.75rem;
 
-    @media (min-width: 640px) {
-        scroll-margin-top: 8rem;
-    }
-
+  @media (min-width: 640px) {
+    scroll-margin-top: 8rem;
+  }
 }
