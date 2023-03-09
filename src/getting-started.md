@@ -24,7 +24,7 @@ The Pool role should be configured to point to the hosted Template Provider. In 
 
 If the pool properly starts you should see the following log lines:
 
-``` log
+```log
 2023-02-17T17:58:38.526172Z  INFO pool: Pool INITIALIZING with config: "pool-config.toml"
 2023-02-17T17:58:38.560038Z  INFO pool::lib::template_receiver: Connected to template distribution server at 75.119.150.111:8442
 2023-02-17T17:58:38.646853Z  INFO pool::lib::template_receiver::setup_connection: Setup template provider connection success!

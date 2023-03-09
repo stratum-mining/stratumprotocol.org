@@ -101,13 +101,13 @@ supporters:
     link: https://www.galaxy.com/
   - value: hrf
     image: /assets/hrf-logo.svg
-    link: https://www.hrf.org/    
+    link: https://www.hrf.org/
   - value: spiral
     image: /assets/spiral-logo.svg
     link: https://www.spiral.xyz/
   - value: sri
     image: /assets/stratum-v2-icon.svg
-    link: https://github.com/stratum-mining/stratum    
+    link: https://github.com/stratum-mining/stratum
   - value: sob
     image: /assets/summer-of-bitcoin.svg
     link: https://www.summerofbitcoin.org/
