@@ -52,6 +52,14 @@ module.exports = {
         notFoundPath: "/404.html",
       },
     ],
+    [
+      "code-copy",
+      {
+        color: "#8F979E",
+        backgroundTransition: false,
+        staticIcon: true,
+      },
+    ],
   ],
 
   postcss,
