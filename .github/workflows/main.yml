@@ -13,7 +13,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-
       # Checkout and setup
       - name: Checkout
         uses: actions/checkout@v3

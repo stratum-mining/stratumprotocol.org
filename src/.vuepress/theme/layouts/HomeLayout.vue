@@ -141,7 +141,9 @@
               }"
             />
           </div>
-          <p class="mt-8 ml-12 max-w-md lg:mt-0 text-bodyText">{{ data.specificationAuthorsText }}</p>
+          <p class="mt-8 ml-12 max-w-md lg:mt-0 text-bodyText">
+            {{ data.specificationAuthorsText }}
+          </p>
         </div>
       </div>
 
