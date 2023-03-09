@@ -69,7 +69,7 @@ function renderLink(h, to, text, active, level) {
     },
     class: {
       "text-links": active,
-      "text-md text-bold inline-block w-full hover:text-links w-full mt-3.5 leading-4": true,
+      "text-md text-bold inline-block w-full hover:text-links w-full mt-3.5 leading-6": true,
     },
   };
   if (level > 2) {
@@ -84,7 +84,7 @@ function renderChildren(h, children, path, route, maxDepth, depth = 1) {
   if (!children || depth > maxDepth) return null;
   return h(
     "ul",
-    { class: "sidebar-sub-headers" },
+    { class: "sidebar-sub-headers ml-4" },
     children.map((c) => {
       const active = isActive(route, path + "#" + c.slug);
       return h("li", { class: "sidebar-sub-header" }, [
