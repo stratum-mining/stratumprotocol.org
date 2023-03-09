@@ -132,7 +132,7 @@
         <div class="flex flex-col items-center mt-8 lg:items-start lg:flex-row">
           <div class="flex flex-row -space-x-2">
             <img
-              v-for="(author, index) of data.authors"
+              v-for="(author, index) of data.specificationAuthorsImages"
               class="h-[130px] sm:h-[220px] pl-4 pt-2 bg-dark-300 rounded-2xl shadow-[-16px_0_24px_0px_#00000040]"
               :key="`author-${author.image}`"
               :src="author.image"
