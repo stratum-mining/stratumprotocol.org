@@ -4,15 +4,16 @@
  * ref：https://v1.vuepress.vuejs.org/config/#index-styl
  */
 
-
 @font-face {
-    font-family: SpaceGrotesk;
-    src: url(/fonts/SpaceGrotesk-VariableFont_wght.ttf);
+  font-family: SpaceGrotesk;
+  font-style: normal;
+  font-weight: 700;
+  src: url('/fonts/space-grotesk-700.woff2') format('woff2'), url('/fonts/space-grotesk-700.woff') format('woff'); /* Legacy iOS */
 }
 
 @font-face {
     font-family: Rubik;
-    src: url(/fonts/Rubik-Regular.ttf) format("truetype");
+    src: url('/fonts/rubik-regular.woff2') format('woff2'), url('/fonts/rubik-regular.woff') format('woff');
 }
 
 html {
@@ -33,7 +34,7 @@ html {
 }
 
 h1, h2, h3, h4 {
-    font-family: 'SpaceGrotesk';
+    font-family: SpaceGrotesk;
     font-style: normal;
     font-weight: 700;
     color: #FFFFFF;

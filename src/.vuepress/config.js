@@ -15,6 +15,24 @@ module.exports = {
       { name: "apple-mobile-web-app-status-bar-style", content: "black" },
     ],
     ["link", { rel: "icon", href: logo }],
+    [
+      "link",
+      {
+        rel: "preload",
+        href: "/fonts/rubik-regular.woff2",
+        as: "font",
+        crossorigin: true,
+      },
+    ],
+    [
+      "link",
+      {
+        rel: "preload",
+        href: "/fonts/space-grotesk-700.woff2",
+        as: "font",
+        crossorigin: true,
+      },
+    ],
   ],
 
   themeConfig: {
