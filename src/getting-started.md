@@ -103,5 +103,10 @@ Target: 0000000dfff20000000000000000000000000000000000000000000000000000
 Eventually, the Translation Proxy log output will show sucessful share, which means you've run the configuration successfully!
 
 ```log
-2023-02-17T18:12:39.296514Z  INFO translator::proxy::bridge: SHARE MEETS DOWNSTREAM TARGET
+2023-03-13T11:59:43.396190Z  INFO translator_sv2::downstream_sv1::downstream: PROXY SERVER - ACCEPTING FROM DOWNSTREAM: 127.0.0.1:53260
+2023-03-13T11:59:43.396700Z  INFO translator_sv2::downstream_sv1::downstream: Down: Subscribing
+2023-03-13T11:59:43.397221Z  INFO translator_sv2::downstream_sv1::downstream: Down: Authorizing
+2023-03-13T11:59:49.118285Z  INFO translator_sv2::upstream_sv2::upstream: Up: Sending: Sv2Frame { header: Header { extension_type: 32768, msg_type: 27, msg_length: U24(41) }, payload: Some(Mining(SubmitSharesExtended(SubmitSharesExtended { channel_id: 2, sequence_number: 0, job_id: 0, nonce: 4031057692, ntime: 1678701333, version: 536870912, extranonce: Owned([0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]) }))), serialized: None }
+2023-03-13T11:59:49.119795Z  INFO translator_sv2::upstream_sv2::upstream: Up: Successfully Submitted Share
+
 ```
