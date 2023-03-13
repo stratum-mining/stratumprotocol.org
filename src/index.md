@@ -7,8 +7,8 @@ heroText1: Stratum V2 is the next generation protocol for pooled mining. It incr
 heroTextHighlight: improve decentralization
 heroText2: by negotiating with pools.
 tagline: One giant leap for bitcoin mining
-documentationCtaText: Explore Documentation
-documentationCtaLink: /overview
+documentationCtaText: Get started
+documentationCtaLink: /getting-started
 links:
   - title: GitHub
     url: https://github.com/stratum-mining
@@ -83,6 +83,7 @@ supportersTabs:
       - bitmex
       - foundry
       - galaxy
+      - hrf
       - spiral
       - sob
 supporters:
@@ -98,12 +99,15 @@ supporters:
   - value: galaxy
     image: /assets/galaxy-logo.svg
     link: https://www.galaxy.com/
+  - value: hrf
+    image: /assets/hrf-logo.svg
+    link: https://www.hrf.org/
   - value: spiral
     image: /assets/spiral-logo.svg
     link: https://www.spiral.xyz/
   - value: sri
     image: /assets/stratum-v2-icon.svg
-    link: https://github.com/stratum-mining/stratum    
+    link: https://github.com/stratum-mining/stratum
   - value: sob
     image: /assets/summer-of-bitcoin.svg
     link: https://www.summerofbitcoin.org/
@@ -127,7 +131,7 @@ why:
     text: By failing to precisely define Stratum V1’s specifications, we inadvertently created multiple implementations with varying semi-compatible dialects. Stratum V2 fixes this by defining its protocol parameters to ensure cross-compatibility between and pools and end-mining devices.
     image: /assets/compare.svg
 readDocumentationText: Read the Docs
-readDocumentationLink: /overview
+readDocumentationLink: /docs/
 footerTitle: Join us on
 footerBottom: Made by the open-source bitcoin community. <a href="https://www.freepik.com/free-vector/space-illustration-night-alien-fantasy-landscape_5603523.htm" rel="nofollow noindex">Image by vectorpouch</a> on Freepik.
 meta:
@@ -136,7 +140,7 @@ meta:
   - name: title
     content: StratumV2
   - name: description
-    content: The next gen bitcoin mining protocol.
+    content: The next generation bitcoin mining protocol. Better security, performance, flexibility and censorship resistance, by allowing miners to select transactions.
 
   # Open Graph / Facebook
   - name: og:type
@@ -146,9 +150,9 @@ meta:
   - name: og:title
     content: StratumV2
   - name: og:description
-    content: The next gen bitcoin mining protocol.
+    content: The next generation bitcoin mining protocol. Better security, performance, flexibility and censorship resistance, by allowing miners to select transactions.
   - name: og:image
-    content: /assets/landing-social-media-share-image.png
+    content: https://stratumprotocol.org/assets/stratum-v2-open-graph-preview.png
 
   # Twitter
   - name: twitter:card
@@ -158,7 +162,7 @@ meta:
   - name: twitter:title
     content: StratumV2
   - name: twitter:description
-    content: The next gen bitcoin mining protocol.
+    content: The next generation bitcoin mining protocol. Better security, performance, flexibility and censorship resistance, by allowing miners to select transactions.
   - name: twitter:image
-    content: /assets/landing-social-media-share-image.png
+    content: https://stratumprotocol.org/assets/stratum-v2-open-graph-preview.png
 ---

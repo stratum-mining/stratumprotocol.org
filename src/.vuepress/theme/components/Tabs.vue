@@ -1,9 +1,7 @@
 <template>
   <div>
     <div class="sm:hidden">
-      <div
-      class="rounded-xl border-2 border-solid sm:block border-dark-600"
-      >
+      <div class="rounded-xl border-2 border-solid sm:block border-dark-600">
         <!-- Use an "onChange" listener to redirect the user to the selected tab URL. -->
         <nav class="flex items-stretch" aria-label="Tabs">
           <a
