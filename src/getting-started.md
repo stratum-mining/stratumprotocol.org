@@ -14,13 +14,24 @@ Below are the most commonly used configurations you can run to get started.
 This configuration allows mining devices running SV1 firmware to connect to an SV2 Pool through a Translation Proxy (tProxy). The proxy is designed to sit in between a SV1 downstream role (most typically Mining Device(s) running SV1 firmware) and a SV2 upstream role (most typically a SV2 Pool Server).
 
 ![Config1](/assets/config-c.svg)
+### 0. Clone Stratum repository locally
+```
+git clone https://github.com/stratum-mining/stratum.git 
+```
+```
+cd stratum/ 
+```
 
 ### 1. Start Pool
 
 The Pool role should be configured to point to the hosted Template Provider. In the `pool-config.toml` file you should see this: `tp_address = "75.119.150.111:8442"` The default `pool-config.toml` should have appropriate defaults set up for everything else.
 
-1. `cd roles/v2/pool`
-2. Then `cargo run -p pool_sv2`
+```
+cd roles/v2/pool/
+```
+```
+cargo run -p pool_sv2
+```
 
 If the pool properly starts you should see the following log lines:
 
@@ -41,9 +52,13 @@ Within the `proxy-config.toml` you will be able to specify which pool should a t
 
 If you're interested in learning about information in the configuration file, check [this document](https://github.com/stratum-mining/stratum/tree/main/roles/translator#configuration-file).
 
-1. Modify `proxy.config.toml (optional)`
-2. `cd roles/translator`
-3. `cargo run -p translator`
+Modify `proxy.config.toml (optional)`
+```
+cd roles/translator/
+```
+```
+cargo run -p translator_sv2
+```
 
 If the translator starts properly, you should see the following log lines:
 
@@ -61,9 +76,18 @@ If the translator starts properly, you should see the following log lines:
 
 After starting a pool, and a translation proxy, let’s start a CPU miner. We’ve done tests with CPUMiner.
 
-1. Download CPUMiner for your OS.
-2. Cd into directory of the downloaded CPUMiner, for example `cd Downloads`
-3. Then run: `./minerd -a sha256d -o stratum+tcp://localhost:34255 -q -D -P`. This will connect to the translator proxy and speak sv1. If this is successful you should see the following output:
+1. Setup the correct CPUMiner for your OS:
+   1. You can download the binary directly from [here](https://sourceforge.net/projects/cpuminer/files/);
+   2. Or compile it from https://github.com/pooler/cpuminer 
+2. Go into directory of the downloaded CPUMiner, for example: 
+   ```
+   cd Downloads/
+   ```
+3. Then run: 
+   ```
+   ./minerd -a sha256d -o stratum+tcp://localhost:34255 -q -D -P
+   ```
+This will connect to the translator proxy and speak sv1. If this is successful you should see the following output:
 
 ```log
 [2023-02-17 17:56:48] DEBUG: job_id='1' extranonce2=000000000000 ntime=63efb1c9
