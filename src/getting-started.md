@@ -115,9 +115,10 @@ Eventually, the Translation Proxy log output will show sucessful share, which me
 ```
 
 
-## Config 2: SV1 firmware > Translation Proxy + JN (Job Negotiator) > SV2 Pool
+## Config 2: SV1 firmware > Translation Proxy JN (Job Negotiator) > SV2 Pool
 
 This configuration allows mining devices running SV1 firmware to connect to an SV2 Pool through a Translation Proxy (tProxy). In this case the proxy is designed also to implement the **Job Negotiator (JN)** features: it's able to negotiate the block templates to mine on with the **Pool-side JN**. In this configuration, **transaction selection** is done by the miners locally (through the tProxy JN) and then negotiated with the pool.
+In the following guide a Template Provider is installed locally on the same machine, to provide block templates to the JN.
 
 Job Negotiator follow the specification on this page: https://github.com/stratum-mining/sv2-spec/blob/main/06-Job-Negotiation-Protocol.md 
 
@@ -135,7 +136,7 @@ For the **MVP2 release** the high level description is as follows:
 7. **Pool** answers ***CommitMiningJob.Success*** always [read the note];
 8. Proxy sends to its miners SetCustomMiningJob and let the miners start mining and sending shares to the pool
 
-> **Note:** All other messages that are needed to identify the template and the transactions by the pool are left to be done in MVP3 release, in MVP2 the pool accepts everything that the Proxy JN has chosen.
+> **Note:** All other messages that are needed to identify the template and the transactions by the pool are left to be done in MVP3 release. In MVP2 the pool accepts everything that the Proxy JN has chosen.
 
 ### Prerequisites
 
@@ -149,7 +150,7 @@ Locally clone the Stratum repository:
 git clone https://github.com/stratum-mining/stratum.git 
 ```
 
-### 1. Install, setup and run regtest **Template Provider**
+### 1. Install, setup and run local regtest **Template Provider**
 Clone custom bitcoin repository which works as a Template Provider:
 ```
 git clone https://github.com/Fi3/bitcoin
@@ -208,7 +209,7 @@ If the pool properly starts you should see the following log lines:
 2023-03-13T15:59:41.916142Z  INFO pool_sv2::lib::mining_pool: Listening for encrypted connection on: 0.0.0.0:34254
 ```
 
-### 3. Start **Translator (tProxy) + JN**
+### 3. Start **Translator (tProxy) JN**
 
 Once the pool is running, let's run the tProxy that will facilitate communication between the pool and a CPU miner.
 Differently from the Config 1, in this case the **tProxy** will be acting as a **Job Negotiator (JN)**, so it will negotiate the block templates to mine on with the Pool-side JN.
