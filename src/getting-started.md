@@ -123,7 +123,7 @@ In the following guide a Template Provider is installed locally on the same mach
 Job Negotiator follow the specification on this page: https://github.com/stratum-mining/sv2-spec/blob/main/06-Job-Negotiation-Protocol.md 
 
 
-![Config1](/assets/config-d.svg)
+![Config2](/assets/config-d.svg)
 
 For the **MVP2 release** the high level description is as follows:
 
