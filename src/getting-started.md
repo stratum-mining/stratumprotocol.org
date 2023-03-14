@@ -9,11 +9,11 @@ SRI stack is flexible. It allows you to run a few different configurations. The 
 
 Below are the most commonly used configurations you can run to get started.
 
-## Config 1: SV1 firmware > Translation Proxy > SV2 Pool
+## Config C: SV1 firmware > Translation Proxy > SV2 Pool
 
 This configuration allows mining devices running SV1 firmware to connect to an SV2 Pool through a Translation Proxy (tProxy). The proxy is designed to sit in between a SV1 downstream role (most typically Mining Device(s) running SV1 firmware) and a SV2 upstream role (most typically a SV2 Pool Server).
 
-![Config1](/assets/config-c.svg)
+![Config C](/assets/config-c.svg)
 
 ### Prerequisites
 
@@ -115,7 +115,7 @@ Eventually, the Translation Proxy log output will show sucessful share, which me
 ```
 
 
-## Config 2: SV1 firmware > Translation Proxy JN (Job Negotiator) > SV2 Pool
+## Config D: SV1 firmware > Translation Proxy JN (Job Negotiator) > SV2 Pool
 
 This configuration allows mining devices running SV1 firmware to connect to an SV2 Pool through a Translation Proxy (tProxy). In this case the proxy is designed also to implement the **Job Negotiator (JN)** features: it's able to negotiate the block templates to mine on with the **Pool-side JN**. In this configuration, **transaction selection** is done by the miners locally (through the tProxy JN) and then negotiated with the pool.
 In the following guide a Template Provider is installed locally on the same machine, to provide block templates to the JN.
@@ -123,7 +123,7 @@ In the following guide a Template Provider is installed locally on the same mach
 Job Negotiator follow the specification on this page: https://github.com/stratum-mining/sv2-spec/blob/main/06-Job-Negotiation-Protocol.md 
 
 
-![Config2](/assets/config-d.svg)
+![Config D](/assets/config-d.svg)
 
 For the **MVP2 release** the high level description is as follows:
 
