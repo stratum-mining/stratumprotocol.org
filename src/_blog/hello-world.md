@@ -13,6 +13,8 @@ tags:
 
 The StratumV2 Protocol Suite consists of 4 Protocols (the main Mining Protocol and 3 sub-protocols) which specify the communication standards among 5 Roles for Bitcoin Mining entities. This section defines the roles and provides a summary of each sub-protocol's implementation. For technical specifications, please refer to the full documentation on [Github](https://www.github.com/stratum-mining/sv2-spec).
 
+[![Test Video](https://img.youtube.com/vi/WqRz3dJPRLw/mqdefault.jpg)](https://www.youtube.com/watch?v=WqRz3dJPRLw "Test Video")
+
 ## Roles
 
 We define 5 Roles for entities in the StratumV2 Protocol Suite:
