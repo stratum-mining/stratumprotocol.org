@@ -1,6 +1,8 @@
 const postcss = require("../../postcss.config");
 const { description } = require("../../package");
+const { resolve } = require("path");
 
+const preprocessMarkdown = resolve(__dirname, "preprocessMarkdown");
 const baseUrl = "https://stratumprotocol.org";
 const pageSuffix = "/";
 const logo = "/assets/stratum-v2-icon.svg";
@@ -45,6 +47,15 @@ module.exports = {
       },
     ],
   ],
+
+  chainWebpack(config) {
+    config.module
+      .rule("md")
+      .test(/\.md$/)
+      .use(preprocessMarkdown)
+      .loader(preprocessMarkdown)
+      .end();
+  },
 
   themeConfig: {
     logo,
