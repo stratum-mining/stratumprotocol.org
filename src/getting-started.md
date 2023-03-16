@@ -121,23 +121,7 @@ Eventually, the Translation Proxy log output will show sucessful share, which me
 This configuration allows mining devices running SV1 firmware to connect to an SV2 Pool through a Translation Proxy (tProxy). In this case the proxy is designed also to implement the **Job Negotiator (JN)** features: it's able to negotiate the block templates to mine on with the **Pool-side JN**. In this configuration, **transaction selection** is done by the miners locally (through the tProxy JN) and then negotiated with the pool.
 In the following guide a Template Provider is installed locally on the same machine, to provide block templates to the JN.
 
-Job Negotiator follow the specification on this page: [https://github.com/stratum-mining/sv2-spec/blob/main/06-Job-Negotiation-Protocol.md](https://github.com/stratum-mining/sv2-spec/blob/main/06-Job-Negotiation-Protocol.md) 
-
-
 ![Config2](/assets/config-d.svg)
-
-For the **MVP2 release** the high level description is as follows:
-
-1. **Proxy JN** connects with the **Pool JN**;
-2. **Proxy JN** sends ***AllocateMiningJobToken*** message to the **Pool JN**;
-3. **Pool JN** answers with a ***AllocateMiningJobToken.Success*** which contains an unique token to identify the job;
-4. **Proxy JN** connects with its chosen **Template Provider**; 
-5. **Template Provider** sends ***News Template*** and ***New PrevHash*** to the **Proxy**;
-6. **Proxy JN** sends ***CommitMiningJob*** message to the **Pool** which contains data of the Template;
-7. **Pool** answers ***CommitMiningJob.Success*** always [read the note];
-8. Proxy sends to its miners SetCustomMiningJob and let the miners start mining and sending shares to the pool
-
-> **Note:** All other messages that are needed to identify the template and the transactions by the pool are left to be done in MVP3 release. In MVP2 the pool accepts everything that the Proxy JN has chosen.
 
 ### 1. Install, setup and run local regtest **Template Provider**
 Clone custom bitcoin repository which works as a Template Provider:
