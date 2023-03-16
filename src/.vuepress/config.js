@@ -1,6 +1,7 @@
 const postcss = require("../../postcss.config");
 const { description } = require("../../package");
 const { resolve } = require("path");
+const slugify = require("./slugify");
 
 const preprocessMarkdown = resolve(__dirname, "preprocessMarkdown");
 const baseUrl = "https://stratumprotocol.org";
@@ -158,6 +159,7 @@ module.exports = {
 
   markdown: {
     pageSuffix,
+    slugify,
   },
 
   postcss,
