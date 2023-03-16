@@ -9,12 +9,6 @@ SRI stack is flexible. It allows you to run a few different configurations. The 
 
 Below are the most commonly used configurations you can run to get started.
 
-## Config 1: SV1 firmware > Translation Proxy > SV2 Pool
-
-This configuration allows mining devices running SV1 firmware to connect to an SV2 Pool through a Translation Proxy (tProxy). The proxy is designed to sit in between a SV1 downstream role (most typically Mining Device(s) running SV1 firmware) and a SV2 upstream role (most typically a SV2 Pool Server).
-
-![Config1](/assets/config-c.svg)
-
 ### Prerequisites
 
 Rust installed on your machine. 
@@ -26,6 +20,12 @@ Locally clone the Stratum repository:
 ```
 git clone https://github.com/stratum-mining/stratum.git 
 ```
+
+## Config C: SV1 firmware > Translation Proxy > SV2 Pool
+
+This configuration allows mining devices running SV1 firmware to connect to an SV2 Pool through a Translation Proxy (tProxy). The proxy is designed to sit in between a SV1 downstream role (most typically Mining Device(s) running SV1 firmware) and a SV2 upstream role (most typically a SV2 Pool Server).
+
+![Config1](/assets/config-c.svg)
 
 ### 1. Start **Pool**
 
@@ -116,7 +116,7 @@ Eventually, the Translation Proxy log output will show sucessful share, which me
 ```
 
 
-## Config 2: SV1 firmware > Translation Proxy JN (Job Negotiator) > SV2 Pool
+## Config D: SV1 firmware > Translation Proxy JN (Job Negotiator) > SV2 Pool
 
 This configuration allows mining devices running SV1 firmware to connect to an SV2 Pool through a Translation Proxy (tProxy). In this case the proxy is designed also to implement the **Job Negotiator (JN)** features: it's able to negotiate the block templates to mine on with the **Pool-side JN**. In this configuration, **transaction selection** is done by the miners locally (through the tProxy JN) and then negotiated with the pool.
 In the following guide a Template Provider is installed locally on the same machine, to provide block templates to the JN.
@@ -138,18 +138,6 @@ For the **MVP2 release** the high level description is as follows:
 8. Proxy sends to its miners SetCustomMiningJob and let the miners start mining and sending shares to the pool
 
 > **Note:** All other messages that are needed to identify the template and the transactions by the pool are left to be done in MVP3 release. In MVP2 the pool accepts everything that the Proxy JN has chosen.
-
-### Prerequisites
-
-Rust installed on your machine. 
-If it's not:
-```
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-```
-Locally clone the Stratum repository:
-```
-git clone https://github.com/stratum-mining/stratum.git 
-```
 
 ### 1. Install, setup and run local regtest **Template Provider**
 Clone custom bitcoin repository which works as a Template Provider:
