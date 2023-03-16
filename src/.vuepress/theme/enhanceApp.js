@@ -23,7 +23,8 @@ const handleClick = (e) => {
 export default ({ Vue, options, router, siteData }) => {
   router.options.scrollBehavior = async (to, from, savedPosition) => {
     if (to.hash) {
-      const elem = document.querySelector(to.hash);
+      const id = to.hash.substring(1);
+      const elem = document.getElementById(id);
       // vue-router does not incorporate scroll-margin-top on its own.
       if (elem) {
         const offset = parseFloat(getComputedStyle(elem).scrollMarginTop);
