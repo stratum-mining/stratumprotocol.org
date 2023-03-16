@@ -74,8 +74,8 @@ module.exports = {
       "code-copy",
       {
         color: "#8F979E",
-        backgroundTransition: false,
-        staticIcon: true,
+        backgroundTransition: true,
+        staticIcon: false,
       },
     ],
   ],

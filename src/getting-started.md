@@ -79,14 +79,15 @@ If the translator starts properly, you should see the following log lines:
 
 After starting a pool, and a translation proxy, let’s start a CPU miner. We’ve done tests with CPUMiner.
 
-1. Setup the correct CPUMiner for your OS:
-   1. You can download the binary directly from [here](https://sourceforge.net/projects/cpuminer/files/);
-   2. Or compile it from https://github.com/pooler/cpuminer 
-2. Go into directory of the downloaded CPUMiner, for example: 
+Setup the correct CPUMiner for your OS:
+- You can download the binary directly from [here](https://sourceforge.net/projects/cpuminer/files/);
+- Or compile it from [https://github.com/pooler/cpuminer](https://github.com/pooler/cpuminer)
+   
+Go into directory of the downloaded CPUMiner, for example: 
    ```
    cd Downloads/
    ```
-3. Then run it with: 
+Then run: 
    ```
    ./minerd -a sha256d -o stratum+tcp://localhost:34255 -q -D -P
    ```
@@ -250,14 +251,15 @@ If the translator starts properly, you should see the following log lines:
 
 After starting a pool, and a translation proxy, let’s start a CPU miner. We’ve done tests with CPUMiner.
 
-1. Setup the correct CPUMiner for your OS:
-   1. You can download the binary directly from [here](https://sourceforge.net/projects/cpuminer/files/);
-   2. Or compile it from https://github.com/pooler/cpuminer 
-2. Go into directory of the downloaded CPUMiner, for example: 
+Setup the correct CPUMiner for your OS:
+- You can download the binary directly from [here](https://sourceforge.net/projects/cpuminer/files/);
+- Or compile it from [https://github.com/pooler/cpuminer](https://github.com/pooler/cpuminer)
+   
+Go into directory of the downloaded CPUMiner, for example: 
    ```
    cd Downloads/
    ```
-3. Then run: 
+Then run: 
    ```
    ./minerd -a sha256d -o stratum+tcp://localhost:34255 -q -D -P
    ```
