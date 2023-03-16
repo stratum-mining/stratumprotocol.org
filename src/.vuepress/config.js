@@ -77,7 +77,7 @@ module.exports = {
         link: "https://github.com/stratum-mining/stratum",
       },
       { text: "Specification", link: "/specification/" },
-      { text: "Blog", link: "/blog/" },
+      // { text: "Blog", link: "/blog/" },
     ],
   },
 
