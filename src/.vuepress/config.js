@@ -1,8 +1,21 @@
 const postcss = require("../../postcss.config");
 const { description } = require("../../package");
+const { resolve } = require("path");
 
+const preprocessMarkdown = resolve(__dirname, "preprocessMarkdown");
+const baseUrl = "https://stratumprotocol.org";
 const pageSuffix = "/";
 const logo = "/assets/stratum-v2-icon.svg";
+const sitemap = {
+  hostname: baseUrl,
+  exclude: ["/404.html"],
+};
+
+const blogSidebar = [
+  ["/blog/", "Articles"],
+  ["/blog/tags/", "Tags"],
+  ["/blog/author/", "Authors"],
+];
 
 module.exports = {
   title: "Stratum V2 The next-gen protocol for pooled mining",
@@ -35,12 +48,23 @@ module.exports = {
     ],
   ],
 
+  chainWebpack(config) {
+    config.module
+      .rule("md")
+      .test(/\.md$/)
+      .use(preprocessMarkdown)
+      .loader(preprocessMarkdown)
+      .end();
+  },
+
   themeConfig: {
     logo,
     editLinks: false,
     lastUpdated: false,
     sidebarDepth: 2,
     sidebar: {
+      "/_blog/": blogSidebar,
+      "/blog/": blogSidebar,
       "/implementation/": "auto",
       "/": "auto",
     },
@@ -53,6 +77,7 @@ module.exports = {
         link: "https://github.com/stratum-mining/stratum",
       },
       { text: "Specification", link: "/specification/" },
+      { text: "Blog", link: "/blog/" },
     ],
   },
 
@@ -78,7 +103,62 @@ module.exports = {
         staticIcon: true,
       },
     ],
+    ["sitemap", sitemap],
+    [
+      "@vuepress/blog",
+      {
+        sitemap,
+        directories: [
+          {
+            id: "blog",
+            dirname: "_blog",
+            path: "/blog/",
+            itemPermalink: "/blog/:slug",
+            pagination: {
+              lengthPerPage: 10,
+              getPaginationPageTitle(pageNumber) {
+                return `Page ${pageNumber}`;
+              },
+            },
+          },
+        ],
+        frontmatters: [
+          {
+            id: "tags",
+            keys: ["tags"],
+            path: "/blog/tags/",
+            title: "",
+            frontmatter: {
+              title: "Tags",
+            },
+            pagination: {
+              getPaginationPageTitle(pageNumber, key) {
+                return `${capitalize(key)} - Page ${pageNumber}`;
+              },
+            },
+          },
+          {
+            id: "author",
+            keys: ["author", "authors"],
+            path: "/blog/author/",
+            title: "",
+            frontmatter: {
+              title: "Authors",
+            },
+            pagination: {
+              getPaginationPageTitle(pageNumber, key) {
+                return `${key} - Page ${pageNumber}`;
+              },
+            },
+          },
+        ],
+      },
+    ],
   ],
+
+  markdown: {
+    pageSuffix,
+  },
 
   postcss,
 };

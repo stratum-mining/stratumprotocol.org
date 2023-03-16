@@ -20,7 +20,7 @@ https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/theme-default
 <script>
 import SidebarGroup from "@theme/components/SidebarGroup.vue";
 import SidebarLink from "@theme/components/SidebarLink.vue";
-import { classNames } from "../../utils";
+import { classNames, isActive } from "../../utils";
 
 export default {
   name: "SidebarLinks",

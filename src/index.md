@@ -56,7 +56,7 @@ roadmapSteps:
 # Specification authors section
 specificationAuthorsTitle: Stratum V2 specification authors
 specificationAuthorsText: Stratum V2 specs authors are Pavel Moravec and Jan Čapek, in collaboration with Matt Corallo and other industry experts.
-authors:
+specificationAuthorsImages:
   - image: /assets/author-1.png
   - image: /assets/author-2.png
   - image: /assets/author-3.png
