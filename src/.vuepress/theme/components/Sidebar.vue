@@ -4,11 +4,11 @@
       v-bind:class="{
         [classNames(
           'sidebar-transform',
-          'fixed box-border overflow-auto lg:overflow-visible z-40',
+          'fixed box-border overflow-auto z-40',
           'bg-dark-300 lg:bg-transparent',
           'border-white border-t-0 border-l-0 border-r-2 border-b-2 border-solid rounded-br-3xl lg:border-none',
           'w-screen max-w-sm text-lg max-h-screen h-fit',
-          'left-0 top-0 lg:top-auto pt-20 pb-6 lg:pt-0 pl-6 xl:ml-[calc(50vw-640px)]'
+          'left-0 top-0 pt-20 pb-6 lg:pt-0 pl-6 xl:ml-[calc(50vw-640px)]'
         )]: true,
         open: isOpen,
       }"
@@ -55,10 +55,12 @@ export default {
 
   @media (min-width: 1024px){
     transform: translateX(0);
+    top: 7rem;
+    padding-bottom: 12rem;
   }
 }
 
 .open {
-  transform: translateX(0)
+  transform: translateX(0);
 }
 </style>
