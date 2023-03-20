@@ -1,0 +1,4 @@
+[submodule "src/specification"]
+	path = src/specification
+	url = https://github.com/stratum-mining/sv2-spec.git
+	branch = main

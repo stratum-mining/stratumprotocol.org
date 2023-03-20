@@ -100,6 +100,15 @@ ul, ol {
   padding-left: 0;
 }
 
+tr:nth-child(2n) {
+  color: unset;
+  background-color: unset;
+}
+
+th, td {
+  border-color: #282c34;
+}
+
 .page-heading {
     position: relative;
 
@@ -160,6 +169,10 @@ pre code {
 
 .sidebar-sub-headers {
   margin-top: 0 !important;
+}
+
+li a[href="/specification/00-Abstract/"] {
+  padding-top: .75rem;
 }
 
 /* Targets all elements that have an id attribute */

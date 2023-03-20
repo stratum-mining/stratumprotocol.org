@@ -1,6 +1,6 @@
 ---
 home: true
-layout: HomeLayout
+layout: Home
 background: /assets/hero-background.jpg
 heroImage: /assets/stratum-v2-icon-with-text.svg
 heroText1: Stratum V2 is the next generation protocol for pooled mining. It increases security, makes data transfers more efficient, and reduces mining infrastructure requirements. It also introduces three new sub-protocols that let miners select transaction sets and

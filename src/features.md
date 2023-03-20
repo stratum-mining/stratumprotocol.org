@@ -1,5 +1,4 @@
 ---
-layout: DocumentationLayout
 pageHeading: SV2 in Detail
 ---
 

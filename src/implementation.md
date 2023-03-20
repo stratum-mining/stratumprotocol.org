@@ -1,5 +1,4 @@
 ---
-layout: DocumentationLayout
 pageHeading: Reference Implementation
 ---
 

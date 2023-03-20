@@ -30,7 +30,7 @@
     "autoprefixer": "9.0.0",
     "broken-link-checker": "0.7.8",
     "postcss-import": "15.1.0",
-    "postcss-loader": "7.0.2",
+    "postcss-loader": "7.1.0",
     "prettier": "2.8.4",
     "serve": "14.2.0",
     "start-server-and-test": "2.0.0",

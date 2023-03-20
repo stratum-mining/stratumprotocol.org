@@ -1,6 +1,7 @@
 const postcss = require("../../postcss.config");
 const { description } = require("../../package");
 const { resolve } = require("path");
+const slugify = require("./slugify");
 
 const preprocessMarkdown = resolve(__dirname, "preprocessMarkdown");
 const baseUrl = "https://stratumprotocol.org";
@@ -15,6 +16,23 @@ const blogSidebar = [
   ["/blog/", "Articles"],
   ["/blog/tags/", "Tags"],
   ["/blog/author/", "Authors"],
+];
+
+const specificationSidebar = [
+  ["/specification/00-Abstract", "0. Abstract"],
+  ["/specification/01-Motivation", "1. Motivation"],
+  ["/specification/02-Design-Goals", "2. Design Goals"],
+  ["/specification/03-Protocol-Overview", "3. Protocol Overview"],
+  ["/specification/04-Protocol-Security", "4. Protocol Security"],
+  ["/specification/05-Mining-Protocol", "5. Mining Protocol"],
+  ["/specification/06-Job-Negotiation-Protocol", "6. Job Negotiation Protocol"],
+  [
+    "/specification/07-Template-Distribution-Protocol",
+    "7. Template Distribution Protocol",
+  ],
+  ["/specification/08-Message-Types", "8. Message Types"],
+  ["/specification/09-Extensions", "9. Extensions"],
+  ["/specification/10-Discussion.md", "10. Discussion"],
 ];
 
 module.exports = {
@@ -65,6 +83,7 @@ module.exports = {
     sidebar: {
       "/_blog/": blogSidebar,
       "/blog/": blogSidebar,
+      "/specification/": specificationSidebar,
       "/implementation/": "auto",
       "/": "auto",
     },
@@ -158,6 +177,7 @@ module.exports = {
 
   markdown: {
     pageSuffix,
+    slugify,
   },
 
   postcss,
