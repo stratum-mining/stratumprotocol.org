@@ -41,13 +41,13 @@ cargo run -p pool_sv2 -- -c conf/pool-config-regnet-hosted.toml
 If the pool properly starts you should see the following log lines:
 
 ```log
-2023-03-20T11:18:54.543957Z  INFO pool_sv2: Pool INITIALIZING with config: "conf/pool-config-regnet-hosted.toml"
-2023-03-20T11:18:54.588715Z  INFO pool_sv2::lib::template_receiver: Connected to template distribution server at 75.119.150.111:8442
-2023-03-20T11:18:54.732579Z  INFO pool_sv2::lib::template_receiver::setup_connection: Setup template provider connection success!
-2023-03-20T11:18:54.733089Z  INFO pool_sv2::lib::job_negotiator: JN INITIALIZED
-2023-03-20T11:18:54.733448Z  INFO pool_sv2::lib::mining_pool: PUB KEY: [TxOut { value: 5000000000, script_pubkey: Script(OP_PUSHBYTES_65 04466d7fcae563e5cb09a0d1870bb580344804617879a14949cf22285f1bae3f276728176c3c6431f8eeda4538dc37c865e2784f3a9e77d044f33e407797e1278a OP_CHECKSIG) }]
-2023-03-20T11:18:54.734327Z  INFO pool_sv2::lib::mining_pool: Starting up pool listener
-2023-03-20T11:18:54.734518Z  INFO pool_sv2::lib::mining_pool: Listening for encrypted connection on: 0.0.0.0:34254
+2023-03-21T17:49:21.128335Z  INFO pool_sv2: Pool INITIALIZING with config: "conf/pool-config-regnet-hosted.toml"
+2023-03-21T17:49:21.244466Z  INFO pool_sv2::lib::template_receiver: Connected to template distribution server at 75.119.150.111:8442
+2023-03-21T17:49:21.342819Z  INFO pool_sv2::lib::template_receiver::setup_connection: Setup template provider connection success!
+2023-03-21T17:49:21.343061Z  INFO pool_sv2::lib::mining_pool: PUB KEY: [TxOut { value: 5000000000, script_pubkey: Script(OP_PUSHBYTES_65 04466d7fcae563e5cb09a0d1870bb580344804617879a14949cf22285f1bae3f276728176c3c6431f8eeda4538dc37c865e2784f3a9e77d044f33e407797e1278a OP_CHECKSIG) }]
+2023-03-21T17:49:21.343312Z  INFO pool_sv2::lib::job_negotiator: JN INITIALIZED
+2023-03-21T17:49:21.343329Z  INFO pool_sv2::lib::mining_pool: Starting up pool listener
+2023-03-21T17:49:21.343721Z  INFO pool_sv2::lib::mining_pool: Listening for encrypted connection on: 0.0.0.0:34254
 ```
 
 ### 2. Start **Translator (tProxy)**
@@ -62,18 +62,23 @@ Within the `proxy-config.toml` you will be able to specify which pool should a t
 If you're interested in learning about information present in the configuration file, check [this document](https://github.com/stratum-mining/stratum/tree/main/roles/translator#configuration-file).
 
 ```
-cargo run -p translator_sv2 -- -c conf/tproxy-config-local
+cargo run -p translator_sv2 -- -c conf/tproxy-config-local.toml
 ```
 
 If the translator starts properly, you should see the following log lines:
 
 ```log
-2023-03-20T11:30:28.221385Z  INFO translator_sv2: Connected to Upstream!
-2023-03-20T11:30:28.226300Z  INFO translator_sv2::upstream_sv2::upstream: Up: Successfully Opened Extended Mining Channel
-2023-03-20T11:30:28.227840Z  INFO translator_sv2::upstream_sv2::upstream: Is future job: true
-
-2023-03-20T11:30:28.227877Z  INFO translator_sv2::upstream_sv2::upstream: Up: New Extended Mining Job
-2023-03-20T11:30:28.227949Z  INFO translator_sv2::upstream_sv2::upstream: Up: Set New Prev Hash
+2023-03-21T17:50:50.364920Z  INFO translator_sv2::upstream_sv2::upstream: PROXY SERVER - ACCEPTING FROM UPSTREAM: 127.0.0.1:34254
+2023-03-21T17:50:50.374639Z  INFO translator_sv2::upstream_sv2::upstream: Up: Sending: SetupConnection { protocol: MiningProtocol, min_version: 2, max_version: 2, flags: 4, endpoint_host: Owned([48, 46, 48, 46, 48, 46, 48]), endpoint_port: 50, vendor: Owned([]), hardware_version: Owned([]), firmware: Owned([]), device_id: Owned([]) }
+2023-03-21T17:50:50.376488Z  INFO translator_sv2::upstream_sv2::upstream: Up: Receiving: Sv2Frame { header: Header { extension_type: 0, msg_type: 1, msg_length: U24(6) }, payload: None, serialized: Some(Slice { offset: 0x7f8b352ba010, len: 12, index: 1, shared_state: SharedState(128), owned: None }) }
+2023-03-21T17:50:50.376663Z  INFO translator_sv2::upstream_sv2::upstream: Up: Sending: OpenExtendedMiningChannel(OpenExtendedMiningChannel { request_id: 0, user_identity: Owned([65, 66, 67]), nominal_hash_rate: 5000000.0, max_target: Owned([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 255, 255, 255, 255]), min_extranonce_size: 16 })
+2023-03-21T17:50:50.376748Z  INFO translator_sv2: Connected to Upstream!
+2023-03-21T17:50:50.378399Z  INFO translator_sv2::upstream_sv2::upstream: Up: Successfully Opened Extended Mining Channel
+2023-03-21T17:50:50.419344Z  INFO translator_sv2::upstream_sv2::upstream: Is future job: true
+2023-03-21T17:50:50.419409Z  INFO translator_sv2::upstream_sv2::upstream: Up: New Extended Mining Job
+2023-03-21T17:50:50.419575Z  INFO translator_sv2::upstream_sv2::upstream: Up: Set New Prev Hash
+[roles/translator/src/proxy/bridge.rs:584] job.job_id = 1
+[roles/translator/src/proxy/bridge.rs:584] sv2_set_new_prev_hash.job_id = 1
 ```
 
 ### 3. Start **SV1 CPU Miner**
@@ -108,13 +113,20 @@ Target: 0000000dfff20000000000000000000000000000000000000000000000000000
 Eventually, the Translation Proxy log output will show sucessful share, which means you've run the configuration successfully!
 
 ```log
-2023-03-20T11:32:05.811394Z  INFO translator_sv2::downstream_sv1::downstream: PROXY SERVER - ACCEPTING FROM DOWNSTREAM: 127.0.0.1:50606
-2023-03-20T11:32:05.812592Z  INFO translator_sv2::downstream_sv1::downstream: Down: Subscribing
-2023-03-20T11:32:05.813526Z  INFO translator_sv2::downstream_sv1::downstream: Down: Authorizing
+2023-03-21T17:54:24.665389Z  INFO translator_sv2::downstream_sv1::downstream: PROXY SERVER - ACCEPTING FROM DOWNSTREAM: 127.0.0.1:36298
+2023-03-21T17:54:24.665855Z  INFO translator_sv2::downstream_sv1::downstream: Down: Subscribing
+2023-03-21T17:54:24.666843Z  INFO translator_sv2::downstream_sv1::downstream: Down: Authorizing
 BITCOIN TARGET: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-2023-03-20T11:32:12.877920Z  INFO translator_sv2::proxy::bridge: SHARE MEETS TARGET
-2023-03-20T11:32:12.877985Z  INFO translator_sv2::upstream_sv2::upstream: Up: Sending: Sv2Frame { header: Header { extension_type: 32768, msg_type: 27, msg_length: U24(41) }, payload: Some(Mining(SubmitSharesExtended(SubmitSharesExtended { channel_id: 1, sequence_number: 0, job_id: 1, nonce: 2906635745, ntime: 1679276570, version: 536870912, extranonce: Owned([0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]) }))), serialized: None }
-2023-03-20T11:32:12.887188Z  INFO translator_sv2::upstream_sv2::upstream: Up: Successfully Submitted Share
+2023-03-21T17:54:28.721866Z  INFO translator_sv2::proxy::bridge: SHARE MEETS TARGET
+2023-03-21T17:54:28.722207Z  INFO translator_sv2::upstream_sv2::upstream: Up: Sending: Sv2Frame { header: Header { extension_type: 32768, msg_type: 27, msg_length: U24(41) }, payload: Some(Mining(SubmitSharesExtended(SubmitSharesExtended { channel_id: 1, sequence_number: 0, job_id: 1, nonce: 2784102488, ntime: 1679417936, version: 536870912, extranonce: Owned([0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]) }))), serialized: None }
+2023-03-21T17:54:29.584107Z  INFO translator_sv2::upstream_sv2::upstream: Is future job: true
+
+2023-03-21T17:54:29.584210Z  INFO translator_sv2::upstream_sv2::upstream: Up: New Extended Mining Job
+2023-03-21T17:54:29.584363Z  INFO translator_sv2::upstream_sv2::upstream: Up: Set New Prev Hash
+[roles/translator/src/proxy/bridge.rs:584] job.job_id = 2
+[roles/translator/src/proxy/bridge.rs:584] sv2_set_new_prev_hash.job_id = 2
+BITCOIN TARGET: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2023-03-21T17:54:33.437332Z  INFO translator_sv2::proxy::bridge: SHARE MEETS TARGET
 ```
 
 
@@ -178,13 +190,13 @@ cargo run -p pool_sv2 -- -c conf/pool-config-local.toml
 If the pool properly starts you should see the following log lines:
 
 ```log
-2023-03-21T17:12:38.675702Z  INFO pool_sv2: Pool INITIALIZING with config: "conf/pool-config-local.toml"
-2023-03-21T17:12:38.676216Z  INFO pool_sv2::lib::template_receiver: Connected to template distribution server at 127.0.0.1:8442
-2023-03-21T17:12:38.728114Z  INFO pool_sv2::lib::template_receiver::setup_connection: Setup template provider connection success!
-2023-03-21T17:12:38.729470Z  INFO pool_sv2::lib::job_negotiator: JN INITIALIZED
-2023-03-21T17:12:38.729337Z  INFO pool_sv2::lib::mining_pool: PUB KEY: [TxOut { value: 5000000000, script_pubkey: Script(OP_PUSHBYTES_65 04466d7fcae563e5cb09a0d1870bb580344804617879a14949cf22285f1bae3f276728176c3c6431f8eeda4538dc37c865e2784f3a9e77d044f33e407797e1278a OP_CHECKSIG) }]
-2023-03-21T17:12:38.730024Z  INFO pool_sv2::lib::mining_pool: Starting up pool listener
-2023-03-21T17:12:38.730605Z  INFO pool_sv2::lib::mining_pool: Listening for encrypted connection on: 0.0.0.0:34254
+2023-03-21T17:59:36.345358Z  INFO pool_sv2: Pool INITIALIZING with config: "conf/pool-config-local.toml"
+2023-03-21T17:59:36.345811Z  INFO pool_sv2::lib::template_receiver: Connected to template distribution server at 127.0.0.1:8442
+2023-03-21T17:59:36.396456Z  INFO pool_sv2::lib::template_receiver::setup_connection: Setup template provider connection success!
+2023-03-21T17:59:36.397098Z  INFO pool_sv2::lib::mining_pool: PUB KEY: [TxOut { value: 5000000000, script_pubkey: Script(OP_PUSHBYTES_65 04466d7fcae563e5cb09a0d1870bb580344804617879a14949cf22285f1bae3f276728176c3c6431f8eeda4538dc37c865e2784f3a9e77d044f33e407797e1278a OP_CHECKSIG) }]
+2023-03-21T17:59:36.397138Z  INFO pool_sv2::lib::job_negotiator: JN INITIALIZED
+2023-03-21T17:59:36.397288Z  INFO pool_sv2::lib::mining_pool: Starting up pool listener
+2023-03-21T17:59:36.397489Z  INFO pool_sv2::lib::mining_pool: Listening for encrypted connection on: 0.0.0.0:34254
 ```
 
 ### 3. Start **Translator (tProxy) JN**
@@ -206,22 +218,22 @@ cargo run -p translator_sv2 -- -c conf/tproxy-config-JN.toml
 If the translator starts properly, you should see the following log lines:
 
 ```log
-2023-03-21T17:13:48.999895Z  INFO translator_sv2::upstream_sv2::upstream: PROXY SERVER - ACCEPTING FROM UPSTREAM: 127.0.0.1:34254
-2023-03-21T17:13:49.009447Z  INFO translator_sv2::upstream_sv2::upstream: Up: Sending: SetupConnection { protocol: MiningProtocol, min_version: 2, max_version: 2, flags: 6, endpoint_host: Owned([48, 46, 48, 46, 48, 46, 48]), endpoint_port: 50, vendor: Owned([]), hardware_version: Owned([]), firmware: Owned([]), device_id: Owned([]) }
-2023-03-21T17:13:49.012163Z  INFO translator_sv2::upstream_sv2::upstream: Up: Receiving: Sv2Frame { header: Header { extension_type: 0, msg_type: 1, msg_length: U24(6) }, payload: None, serialized: Some(Slice { offset: 0x7f3615ea3010, len: 12, index: 1, shared_state: SharedState(128), owned: None }) }
-2023-03-21T17:13:49.012745Z  INFO translator_sv2::upstream_sv2::upstream: Up: Sending: OpenExtendedMiningChannel(OpenExtendedMiningChannel { request_id: 0, user_identity: Owned([65, 66, 67]), nominal_hash_rate: 5000000.0, max_target: Owned([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 255, 255, 255, 255]), min_extranonce_size: 16 })
-2023-03-21T17:13:49.013158Z  INFO translator_sv2: Connected to Upstream!
-2023-03-21T17:13:49.015182Z  INFO translator_sv2::template_receiver: Template Receiver try to set up connection
-2023-03-21T17:13:49.021130Z  INFO translator_sv2::job_negotiator: JN proxy: setupconnection Proxy address: 0.0.0.0:34255
-2023-03-21T17:13:49.024019Z  INFO translator_sv2::job_negotiator: JN CONNECTED
-2023-03-21T17:13:49.066274Z  INFO translator_sv2::template_receiver: Template Receiver connection set up
-2023-03-21T17:13:49.067199Z  INFO translator_sv2::upstream_sv2::upstream: Up: Successfully Opened Extended Mining Channel
-2023-03-21T17:13:49.067701Z  INFO translator_sv2::upstream_sv2::upstream: Is future job: true
+2023-03-21T18:00:21.933035Z  INFO translator_sv2::upstream_sv2::upstream: PROXY SERVER - ACCEPTING FROM UPSTREAM: 127.0.0.1:34254
+2023-03-21T18:00:21.943083Z  INFO translator_sv2::upstream_sv2::upstream: Up: Sending: SetupConnection { protocol: MiningProtocol, min_version: 2, max_version: 2, flags: 6, endpoint_host: Owned([48, 46, 48, 46, 48, 46, 48]), endpoint_port: 50, vendor: Owned([]), hardware_version: Owned([]), firmware: Owned([]), device_id: Owned([]) }
+2023-03-21T18:00:21.944976Z  INFO translator_sv2::upstream_sv2::upstream: Up: Receiving: Sv2Frame { header: Header { extension_type: 0, msg_type: 1, msg_length: U24(6) }, payload: None, serialized: Some(Slice { offset: 0x7f1209a40010, len: 12, index: 1, shared_state: SharedState(128), owned: None }) }
+2023-03-21T18:00:21.945252Z  INFO translator_sv2::upstream_sv2::upstream: Up: Sending: OpenExtendedMiningChannel(OpenExtendedMiningChannel { request_id: 0, user_identity: Owned([65, 66, 67]), nominal_hash_rate: 5000000.0, max_target: Owned([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 255, 255, 255, 255]), min_extranonce_size: 16 })
+2023-03-21T18:00:21.945448Z  INFO translator_sv2: Connected to Upstream!
+2023-03-21T18:00:21.947995Z  INFO translator_sv2::template_receiver: Template Receiver try to set up connection
+2023-03-21T18:00:21.960164Z  INFO translator_sv2::job_negotiator: JN proxy: setupconnection Proxy address: 0.0.0.0:34255
+2023-03-21T18:00:21.961975Z  INFO translator_sv2::job_negotiator: JN CONNECTED
+2023-03-21T18:00:22.001951Z  INFO translator_sv2::template_receiver: Template Receiver connection set up
+2023-03-21T18:00:22.002936Z  INFO translator_sv2::upstream_sv2::upstream: Up: Successfully Opened Extended Mining Channel
+2023-03-21T18:00:22.003367Z  INFO translator_sv2::upstream_sv2::upstream: Is future job: true
 
-2023-03-21T17:13:49.067860Z  INFO translator_sv2::upstream_sv2::upstream: Up: Set New Prev Hash
-2023-03-21T17:13:49.117013Z  INFO translator_sv2::template_receiver: Received SetNewPrevHash, waiting for IS_NEW_TEMPLATE_HANDLED
-2023-03-21T17:13:49.117103Z  INFO translator_sv2::template_receiver: IS_NEW_TEMPLATE_HANDLED ok
-2023-03-21T17:13:49.118153Z  INFO translator_sv2::upstream_sv2::upstream: Send custom job to upstream
+2023-03-21T18:00:22.003788Z  INFO translator_sv2::upstream_sv2::upstream: Up: Set New Prev Hash
+2023-03-21T18:00:22.047521Z  INFO translator_sv2::template_receiver: Received SetNewPrevHash, waiting for IS_NEW_TEMPLATE_HANDLED
+2023-03-21T18:00:22.047587Z  INFO translator_sv2::template_receiver: IS_NEW_TEMPLATE_HANDLED ok
+2023-03-21T18:00:22.047985Z  INFO translator_sv2::upstream_sv2::upstream: Send custom job to upstream
 ```
 
 ### 4. Start SV1 CPU Miner
@@ -243,29 +255,24 @@ Then run:
 This will connect to the translator proxy and speak sv1. If this is successful you should see the following output:
 
 ```log
-[2023-03-21 18:24:53] DEBUG: job_id='1' extranonce2=0000000000000000000000000000 ntime=6419e578
-[2023-03-21 18:24:53] Stratum requested work restart
-[2023-03-21 18:24:55] DEBUG: hash <= target
-Hash:   000000490f9020265234c2454c00ab897d5b5df46fa50b53ac94671979a275c7
+[2023-03-21 19:00:55] DEBUG: job_id='1' extranonce2=0000000000000000000000000000 ntime=6419f077
+[2023-03-21 19:00:55] Stratum requested work restart
+[2023-03-21 19:00:56] DEBUG: hash <= target
+Hash:   0000002e2ac168af2b3b0d4fdbfa3c47741534bd09e812fe696513c2126935ac
 Target: 00000054ffab0000000000000000000000000000000000000000000000000000
-[2023-03-21 18:24:55] > {"method": "mining.submit", "params": ["", "1", "0000000000000000000000000000", "6419e578", "21740716"], "id":4}
-[2023-03-21 18:24:55] < {"id":4,"error":null,"result":true}
-[2023-03-21 18:24:55] accepted: 1/1 (100.00%), 417.26 khash/s (yay!!!)
+[2023-03-21 19:00:56] > {"method": "mining.submit", "params": ["", "1", "0000000000000000000000000000", "6419f077", "dfeb0506"], "id":4}
+[2023-03-21 19:00:56] < {"id":4,"error":null,"result":true}
+[2023-03-21 19:00:56] accepted: 1/1 (100.00%), 482.27 khash/s (yay!!!)
 ```
 
 Eventually, the Translation Proxy log output will show sucessful share, which means you've run the configuration successfully!
 
 ```log
-2023-03-21T17:34:51.027072Z  INFO translator_sv2::downstream_sv1::downstream: PROXY SERVER - ACCEPTING FROM DOWNSTREAM: 127.0.0.1:39266
-2023-03-21T17:34:51.027347Z  INFO translator_sv2::downstream_sv1::downstream: Down: Subscribing
-2023-03-21T17:34:51.027949Z  INFO translator_sv2::downstream_sv1::downstream: Down: Authorizing
+2023-03-21T18:00:54.184601Z  INFO translator_sv2::downstream_sv1::downstream: PROXY SERVER - ACCEPTING FROM DOWNSTREAM: 127.0.0.1:60826
+2023-03-21T18:00:54.184922Z  INFO translator_sv2::downstream_sv1::downstream: Down: Subscribing
+2023-03-21T18:00:54.185661Z  INFO translator_sv2::downstream_sv1::downstream: Down: Authorizing
 BITCOIN TARGET: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 127]
-2023-03-21T17:34:53.345490Z  INFO translator_sv2::upstream_sv2::upstream: Up: Sending: Sv2Frame { header: Header { extension_type: 32768, msg_type: 27, msg_length: U24(41) }, payload: Some(Mining(SubmitSharesExtended(SubmitSharesExtended { channel_id: 1, sequence_number: 0, job_id: 0, nonce: 2697660902, ntime: 1679419499, version: 536870912, extranonce: Owned([0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]) }))), serialized: None }
-2023-03-21T17:34:53.399139Z  INFO translator_sv2::template_receiver: Received SetNewPrevHash, waiting for IS_NEW_TEMPLATE_HANDLED
-2023-03-21T17:34:53.408447Z  INFO translator_sv2::upstream_sv2::upstream: Is future job: true
-2023-03-21T17:34:53.408517Z  INFO translator_sv2::upstream_sv2::upstream: Up: Set New Prev Hash
-2023-03-21T17:34:53.408604Z  INFO translator_sv2::template_receiver: IS_NEW_TEMPLATE_HANDLED ok
-[roles/translator/src/proxy/bridge.rs:584] job.job_id = 5
-[roles/translator/src/proxy/bridge.rs:584] sv2_set_new_prev_hash.job_id = 5
-2023-03-21T17:34:53.408927Z  INFO translator_sv2::upstream_sv2::upstream: Send custom job to upstream
+2023-03-21T18:00:56.991006Z  INFO translator_sv2::upstream_sv2::upstream: Up: Sending: Sv2Frame { header: Header { extension_type: 32768, msg_type: 27, msg_length: U24(41) }, payload: Some(Mining(SubmitSharesExtended(SubmitSharesExtended { channel_id: 1, sequence_number: 0, job_id: 0, nonce: 3756721414, ntime: 1679421559, version: 805306368, extranonce: Owned([0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]) }))), serialized: None }
+2023-03-21T18:00:57.045007Z  INFO translator_sv2::template_receiver: Received SetNewPrevHash, waiting for IS_NEW_TEMPLATE_HANDLED
+2023-03-21T18:00:57.049079Z  INFO translator_sv2::template_receiver: IS_NEW_TEMPLATE_HANDLED ok
 ```
