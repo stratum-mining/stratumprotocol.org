@@ -132,7 +132,7 @@ BITCOIN TARGET: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 
 ## Config D: SV1 firmware > Translation Proxy JN (Job Negotiator) > SV2 Pool
 
-This configuration allows mining devices running SV1 firmware to connect to an SV2 Pool through a Translation Proxy (tProxy). In this case the proxy is designed also to implement the **Job Negotiator (JN)** features: it's able to negotiate the block templates to mine on with the **Pool-side JN**. In this configuration, **transaction selection** is done by the miners locally (through the tProxy JN) and then negotiated with the pool.
+This configuration allows mining devices running SV1 firmware to connect to an SV2 Pool through a Translation Proxy (tProxy). In this case the tProxy is designed also to implement the **Job Negotiator (JN)** sub-protocol: allowing miners to select transaction locally and send them the **Pool-side JN**. 
 In the following guide a Template Provider is installed locally on the same machine, to provide block templates to the JN.
 
 ![Config2](/assets/config-d.svg)
