@@ -69,6 +69,25 @@ tp_address = "89.116.25.191:8442"
 # SRI Pool JN config
 listen_jn_address = "127.0.0.1:34264"
 ```
+> <ins>**Warning**</ins><br>
+> If you want to mine spendable bitcoin on regtest, you can do it with bitcoin-cli:
+> 1. Get a legacy Bitcoin address:
+>   ```
+>   bitcoin-cli -regtest -rpcwallet="<PUT YOUR WALLET NAME HERE>" getnewaddress "test" "legacy"
+>   ```
+> 2. Retrieve its corresponding public key:
+>   ```
+>   bitcoin-cli -regtest getaddressinfo <PUT THE ADDRESS GENERATED HERE>
+>   ```
+> 3. Copy the pubkey showed in the output;
+> 4. Paste it in the `coinbase_outputs` of `pool-config.toml`, after deleting the one which is already present;
+> 5. Mine a block;
+> 6. Generate 100 blocks: 
+>   ```
+>   bitcoin-cli -regtest generatetoaddress 100 bcrt1qc5xss0cma0zldxfzzdpjxsayut7yy86e2lr6km
+>   ```
+> Now the mined bitcoin are spendable!
+   
 Once your preferred config is set, you can run the SV2 Pool:
 ```
 cargo run -p pool_sv2 
@@ -322,6 +341,25 @@ tp_address = "127.0.0.1:8442"
 # SRI Pool JN config
 listen_jn_address = "127.0.0.1:34264"
 ```
+> <ins>**Warning**</ins><br>
+> If you want to mine spendable bitcoin on regtest, you can do it with bitcoin-cli:
+> 1. Get a legacy Bitcoin address:
+>   ```
+>   bitcoin-cli -regtest -rpcwallet="<PUT YOUR WALLET NAME HERE>" getnewaddress "test" "legacy"
+>   ```
+> 2. Retrieve its corresponding public key:
+>   ```
+>   bitcoin-cli -regtest getaddressinfo <PUT THE ADDRESS GENERATED HERE>
+>   ```
+> 3. Copy the pubkey showed in the output;
+> 4. Paste it in the `coinbase_outputs` of `pool-config.toml`, after deleting the one which is already present;
+> 5. Mine a block;
+> 6. Generate 100 blocks: 
+>   ```
+>   bitcoin-cli -regtest generatetoaddress 100 bcrt1qc5xss0cma0zldxfzzdpjxsayut7yy86e2lr6km
+>   ```
+> Now the mined bitcoin are spendable!
+
 Once your preferred config is set, you can run the SV2 Pool:
 ```
 cargo run -p pool_sv2 
