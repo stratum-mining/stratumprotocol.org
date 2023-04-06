@@ -273,22 +273,27 @@ In the following guide a Template Provider is installed locally on the same mach
 
 Clone custom bitcoin repository which works as a Template Provider:
 ```
-git clone https://github.com/Fi3/bitcoin
+git clone https://github.com/stratum-mining/bitcoin.git 
 ``` 
+```
+git checkout last-tested-tp 
+```
 ```
 cd bitcoin/
 ```
 ```
-./autogen.sh && ./configure
+./autogen.sh && ./configure --enable-template-provider
 ```
 ```
 make check
 ```
-
-Once it's installed in bitcoin/ directory:
+> <ins>**Warning**</ins> <br>
+> This is a very important command, don't forget to run it!
+> You would have to do it <ins>every time you'll restart your local Template Provider.</ins>
 ```
-git checkout AddHandleCoinbaseWitnessCommitmentHash
+rm -r ~/.bitcoin/regtest
 ```
+Once installed, in bitcoin/ directory:
 ```
 ./src/bitcoind -regtest
 ```
