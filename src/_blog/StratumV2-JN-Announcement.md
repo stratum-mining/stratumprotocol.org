@@ -7,19 +7,19 @@ authors:
 tags:
   - StratumV2
   - JobNegotiator
-  - New-release
+
 ---
 
-We dig dig dig dig dig dig dig in our mine 
+*We dig dig dig dig dig dig dig in our mine 
 The whole day through
 To dig dig dig dig dig dig dig is what we really like to do
 It ain't no trick to get rich quick
 If you dig dig dig with a shovel or a pick
 In a mine! In a mine! In a mine! In a mine!
-Where a million sats shine!
+Where a million sats shine!*
 
-Heigh-ho, Heigh-ho
-Heigh-ho, Heigh-ho
+*Heigh-ho, Heigh-ho
+Heigh-ho, Heigh-ho*
 
 ---
 
@@ -34,11 +34,7 @@ The new update allows miners to select transactions via a new sub-protocol and t
 
 SRI’s flexible stack offers various components when setting up a configuration that suits your needs. As an early adopter, we recommend testing the SV1 mining device ( Antminer S9, S19+, or Whatsminer), connecting to an SV2 pool via Translation Proxy. Miners will run their own template provider (bitcoind) with the max fee policy. Within the translation proxy sits a Job Negotiator that runs a sub-protocol responsible for distributing miner’s templates to the pool. 
 
-
-<figure>
-  <img src='../../guides/contribute/images/typora-tela1.png'>
-  <figcaption>Configuration allows mining devices running SV1 firmware to connect to an SV2 pool, and select their transactions locally via the Template Provider, further sending them to the pool via the Job Negotiator.</figcaption>
-</figure>
+![Config D](/assets/config-d.svg)
 
 While there are various configurations to explore, testing the configuration, which includes Translation Proxy and Job Negotiator will provide valuable feedback to the development team.
 
@@ -54,18 +50,18 @@ Below is a high-level overview of how a **Job Negotiator (JN)** works.
 
 We call it the JN dance.  💃 Let’s dance!
 
-1. Downstream (Mining farm, miners) runs a JN. On startup, downstream’s JN connects to a JN run by the Pool
-2. Downstream’s JN sends the AllocateMiningJobToken message to Pool’s JN requesting to get a unique identifier for mining jobs
-3. Pool JN sends back a unique token that helps identify miner's job via the AllocateMiningJobToken.Sucess message
-4. Downstream’s JN then connects to a Template Provider. Template Provider is usually run locally by the downstream or by an independent third-party
-5. In SV2, miners run their own nodes. The template provider is bitcoind node in our case.  Upon established connection, the Template Provider sends New Template and SetNewPrevHash to downstream’s JN. New template contains the merkle path of the transactions that were selected by the bitcoind. SetNewPrevHash is the last valid block header in the blockchain
-6. With SetNewPrevHash, a new template, and the token. a new job can be constructed, so downstream’s JN sends a CommitMiningJob message containing a proposed set of transactions (template data) to Pool’s JN.
-7. The next step is critical in understanding how we implemented JN in the reference implementation. It differs from the specs. In the current iteration, the pool always answers with a CommitMiningJob.Success message accepting the miner's proposal. The pool must accept what’s been suggested by the miner(s). The pool must accept what the miner(s) suggest. Currently, the pool cannot decline what miners are proposing and needs to be made aware of the blocks being mined. 
-8. In CommitMiningJobSucess, the pool sends coinbase output used for payouts. Miners must build jobs that have a coinbase with that output. 
+-  Downstream (Mining farm, miners) runs a JN. On startup, downstream’s JN connects to a JN run by the Pool
+-  Downstream’s JN sends the AllocateMiningJobToken message to Pool’s JN requesting to get a unique identifier for mining jobs
+-  Pool JN sends back a unique token that helps identify miner's job via the AllocateMiningJobToken.Sucess message
+-  Downstream’s JN then connects to a Template Provider. Template Provider is usually run locally by the downstream or by an independent third-party
+-  In SV2, miners run their own nodes. The template provider is bitcoind node in our case.  Upon established connection, the Template Provider sends New Template and SetNewPrevHash to downstream’s JN. New template contains the merkle path of the transactions that were selected by the bitcoind. SetNewPrevHash is the last valid block header in the blockchain
+-  With SetNewPrevHash, a new template, and the token. a new job can be constructed, so downstream’s JN sends a CommitMiningJob message containing a proposed set of transactions (template data) to Pool’s JN.
+-  The next step is critical in understanding how we implemented JN in the reference implementation. It differs from the specs. In the current iteration, the pool always answers with a CommitMiningJob.Success message accepting the miner's proposal. The pool must accept what’s been suggested by the miner(s). The pool must accept what the miner(s) suggest. Currently, the pool cannot decline what miners are proposing and needs to be made aware of the blocks being mined. 
+-  In CommitMiningJobSucess, the pool sends coinbase output used for payouts. Miners must build jobs that have a coinbase with that output. 
 In our next release, we’re adding the ability for miners to fall back to a different pool or solo mine if the pool fails to accept transactions selected by downstream’s Template Provider. We will also add sanity checks so pools can verify the validity of blocks.
-9. Next, the Translation proxy sends a SetCustomMiningJob message to the Pool. The pool sends the job_id that the proxy needs to add to the share and sends it back to the pool to prove that work has been done. Upon verifying the pool replies with SetCustomMiningJobSucess.
-10. Translation Proxy then translates the SV2 message and sends the mining.notify (sv1 message) to mining devices.
-11. Mining devices would then start mining and send mining.submit to the Pool through the Translation Proxy, submitting the shares to the pool.
+- Next, the Translation proxy sends a SetCustomMiningJob message to the Pool. The pool sends the job_id that the proxy needs to add to the share and sends it back to the pool to prove that work has been done. Upon verifying the pool replies with SetCustomMiningJobSucess.
+- Translation Proxy then translates the SV2 message and sends the mining.notify (sv1 message) to mining devices.
+-  Mining devices would then start mining and send mining.submit to the Pool through the Translation Proxy, submitting the shares to the pool.
 
 This is our engineer's way of dancing, a bunch of bullet points. Below is an actual dance with some music. Volume up.
 
@@ -91,7 +87,7 @@ In addition, we will add ways for pools to spot-check the validity of blocks and
 
 We'd like to thank Stratum v2 supporters, implementers, and all contributors, without whom SRI wouldn't be possible. Please donate to our [crowdfunding page](https://opensats.org/projects/stratumv2) hosted by OpenSats Foundation and Swan to support our development efforts. 
 
-![Supporters](Dragster.jpg)
+![Supporters](/assets/stratum-v2-supporters.png)
 
 If you’re a company willing to directly support the work of developers by providing a direct grant and being featured on our website, please [get in touch](mailto:stratumv2@gmail.com).We will connect you with our contributors in need of funding.
 
