@@ -27,7 +27,7 @@ After months of coding in our dusty mines, we’re ready to ship a new Stratum v
 
 The new update allows miners to select transactions via a new sub-protocol and their node. This is a major milestone in democratizing transaction selections in pooled mining and decentralizing bitcoin!
 
-**We’re inviting miners, pools, firmware makers, and the community to check out our [getting started guide](https://stratumprotocol.org/getting-started/) and pilot test the software locally, with CPU or actual mining devices. Your feedback will have a high impact on the development direction.**
+**We’re inviting miners, pools, firmware makers, and the community to check out our [getting started guide](https://stratumprotocol.org/getting-started/#config-d-sv1-firmware--translation-proxy-jn-job-negotiator--sv2-pool) and pilot test the software locally, with CPU or actual mining devices. Your feedback will have a high impact on the development direction.**
 
 **Please submit your feedback after testing [via this form](https://docs.google.com/forms/d/1is27h37PtsXtXC9zSbweNfxcyEtHzATjdJphIy8hArw/).**
 
@@ -65,19 +65,19 @@ In our next release, we’re adding the ability for miners to fall back to a dif
 
 This is our engineer's way of dancing, a bunch of bullet points. Below is an actual dance with some music. Volume up.
 
-[![ Video](https://img.youtube.com/vi/qM6FM9nDvlE/mqdefault.jpg)](https://www.youtube.com/watch?v=qM6FM9nDvlE "Test Video")
+[![ How Job Negotiator works](https://img.youtube.com/vi/nOIAhRVCThs/mqdefault.jpg)](https://www.youtube.com/watch?v=nOIAhRVCThs "How JN works video Video")
 
 ## How to get started?
 
-To get started, follow the instructions on [this page](https://stratumprotocol.org/getting-started/). You can set up everything locally, use a CPU or an ASIC miner, connect to ours, or deploy a pool on your own.
+To get started, follow the instructions on [this page](https://stratumprotocol.org/getting-started/#config-d-sv1-firmware--translation-proxy-jn-job-negotiator--sv2-pool). You can set up everything locally, use a CPU or an ASIC miner, connect to ours, or deploy a pool on your own.
 
 So far, our community has tested on the following devices/firmware. If you’ve tested the SRI stack on a different device or a firmware version, please [fill this form out](https://docs.google.com/forms/d/1is27h37PtsXtXC9zSbweNfxcyEtHzATjdJphIy8hArw/), and we will update the table.
 
 | Device            | Firmware | Firmware version |
 | ----------------- | -------- | ---------------- |
-| Antminer s9       | OEM      | 1.0.0            |
-| Antminer S19j Pro | OEM      | 2.0.0            |
-|                   |          |                  |
+| Antminer s9       | OEM      | XXX           |
+| Antminer S19j Pro | OEM      | XXX           |
+
 
 ## What’s next?
 
