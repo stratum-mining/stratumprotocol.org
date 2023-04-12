@@ -33,7 +33,7 @@ This configuration allows mining devices running SV1 firmware to connect to an S
 cd stratum/roles/v2/pool/
 ```
 The `pool-config-example.toml` is a configuration example which can be copy/paste into `/conf` directory by the party that is running the SV2 Pool (most typically the pool service provider) to address the most preferred customization.
-To better understand and learn about information present in the configuration file, check [this README](https://github.com/stratum-mining/stratum/blob/main/roles/pool/README.md).
+To better understand and learn about information present in the configuration file, check [this README](https://github.com/stratum-mining/stratum/blob/main/roles/v2/pool/README.md).
 ```
 cp pool-config-example.toml ./conf/pool-config.toml
 ```
@@ -306,7 +306,7 @@ cd bitcoin/
 cd stratum/roles/v2/pool/
 ```
 The `pool-config-example.toml` is a configuration example which can be copy/paste into `/conf` directory by the party that is running the SV2 Pool (most typically the pool service provider) to address the most preferred customization.
-To better understand and learn about information present in the configuration file, check [this README](https://github.com/stratum-mining/stratum/blob/main/roles/pool/README.md).
+To better understand and learn about information present in the configuration file, check [this README](https://github.com/stratum-mining/stratum/blob/main/roles/v2/pool/README.md).
 ```
 cp pool-config-example.toml ./conf/pool-config.toml
 ```
