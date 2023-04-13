@@ -32,7 +32,7 @@ The new update allows miners to select transactions via a new sub-protocol and t
 **Please submit your feedback after testing [via this form](https://docs.google.com/forms/d/1is27h37PtsXtXC9zSbweNfxcyEtHzATjdJphIy8hArw/).**
 
 
-SRI’s flexible stack offers various components when setting up a configuration that suits your needs. As an early adopter, we recommend testing the SV1 mining device ( Antminer S9, S19+, or Whatsminer), connecting to an SV2 pool via Translation Proxy. Miners will run their own template provider (bitcoind) with the max fee policy. Within the translation proxy sits a Job Negotiator that runs a sub-protocol responsible for distributing miner’s templates to the pool. 
+SRI’s flexible stack offers various components when setting up a configuration that suits your needs. As an early adopter, we recommend testing the mining device with Stratum v1 firmware, connecting to an SV2 pool via Translation Proxy. Miners will run their own template provider (bitcoind) with the max fee policy. Within the translation proxy sits a Job Negotiator that runs a sub-protocol responsible for distributing miner’s templates to the pool. 
 
 ![Config D](/assets/config-d.svg)
 
@@ -50,7 +50,7 @@ Below is a high-level overview of how a **Job Negotiator (JN)** works.
 
 We call it the JN dance.  💃 Let’s dance!
 
-1.  Downstream (Mining farm, miners) runs a JN. On startup, downstream’s JN connects to a JN run by the Pool
+1. Downstream (Mining farm, miners) runs a JN. On startup, downstream’s JN connects to a JN run by the Pool
 2. Downstream’s JN sends the AllocateMiningJobToken message to Pool’s JN requesting to get a unique identifier for mining jobs
 3. Pool JN sends back a unique token that helps identify miner's job via the AllocateMiningJobToken.Sucess message. The pool also sends coinbase output used for payouts. Miners must build jobs that have a coinbase with that output.
 4. Downstream’s JN then connects to a Template Provider. Template Provider is usually run locally by the downstream or by an independent third-party
@@ -59,8 +59,7 @@ We call it the JN dance.  💃 Let’s dance!
 7. The next step is critical in understanding how we implemented JN in the reference implementation. It differs from the specs. In the current iteration, the pool always answers with a CommitMiningJob.Success message accepting the miner's proposal. The pool must accept what’s been suggested by the miner(s). The pool must accept what the miner(s) suggest. Currently, the pool cannot decline what miners are proposing and needs to be made aware of the blocks being mined. 
 8. In our next release, we’re adding the ability for miners to fall back to a different pool or solo mine if the pool fails to accept transactions selected by downstream’s Template Provider. We will also add sanity checks so pools can verify the validity of blocks.
 9. Next, the Translation proxy sends a SetCustomMiningJob message to the Pool. The pool sends the job_id that the proxy needs to add to the share and sends it back to the pool to prove that work has been done. Upon verifying the pool replies with SetCustomMiningJobSucess.
-10. Translation Proxy then translates the SV2 message and sends the mining.notify (sv1 message) to mining devices.
-*  Mining devices would then start mining and send mining.submit to the Pool through the Translation Proxy, submitting the shares to the pool.
+10. Translation Proxy then translates the SV2 message and sends the mining.notify (sv1 message) to mining devices. Mining devices would then start mining and send mining.submit to the Pool through the Translation Proxy, submitting the shares to the pool.
 
 This is our engineer's way of dancing, a bunch of bullet points. Below is an actual dance with some music. Volume up.
 
@@ -72,11 +71,12 @@ To get started, follow the instructions on [this page](https://stratumprotocol.o
 
 So far, our community has tested on the following devices/firmware. If you’ve tested the SRI stack on a different device or a firmware version, please [fill this form out](https://docs.google.com/forms/d/1is27h37PtsXtXC9zSbweNfxcyEtHzATjdJphIy8hArw/), and we will update the table.
 
-| Device            | Firmware | Firmware version |
-| ----------------- | -------- | ---------------- |
-| Antminer s9       | OEM      | XXX           |
-| Antminer S19j Pro | OEM      | XXX           |
-
+| Mining Device | Firmware version        | Tested by                                    |
+| ------------- | ----------------------- | -------------------------------------------- |
+| S9            | Bitmain stock 5/25/2022 | Foundry, Galaxy Mining, 21 Hub Belgrade, Fi3 |
+| S9            | BraiinsOS               | Foundry                                      |
+| S19 Pro - A   | Bitmain stock 5/25/2022 | Galaxy Mining,                               |
+| Whatsminer    | xxx                     | Foundry                                      |
 
 ## What’s next?
 
