@@ -71,12 +71,14 @@ To get started, follow the instructions on [this page](https://stratumprotocol.o
 
 So far, our community has tested on the following devices/firmware. If you’ve tested the SRI stack on a different device or a firmware version, please [fill this form out](https://docs.google.com/forms/d/1is27h37PtsXtXC9zSbweNfxcyEtHzATjdJphIy8hArw/), and we will update the table.
 
-| Mining Device | Firmware version        | Tested by                                    |
-| ------------- | ----------------------- | -------------------------------------------- |
-| S9            | Bitmain stock 5/25/2022 | Foundry, Galaxy Mining, 21 Hub Belgrade, Fi3 |
-| S9            | BraiinsOS               | Foundry                                      |
-| S19 Pro - A   | Bitmain stock 5/25/2022 | Galaxy Mining,                               |
-| WhatsMiner  M30S  | VE10                     | Foundry                                      |
+| Mining Device   | Firmware version        | Tested by                                    |
+| --------------- | ----------------------- | -------------------------------------------- |
+| S9              | Bitmain stock 5/25/2022 | Foundry, Galaxy Mining, 21 Hub Belgrade, Fi3 |
+| S9              | BraiinsOS               | Foundry                                      |
+| S19 Pro - A     | Bitmain stock 5/25/2022 | Galaxy Mining,                               |
+| WhatsMiner M30S | VE10                    | Foundry                                      |
+
+
 
 ## What’s next?
 
