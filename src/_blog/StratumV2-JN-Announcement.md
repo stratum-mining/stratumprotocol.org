@@ -76,7 +76,7 @@ So far, our community has tested on the following devices/firmware. If you’ve 
 | S9            | Bitmain stock 5/25/2022 | Foundry, Galaxy Mining, 21 Hub Belgrade, Fi3 |
 | S9            | BraiinsOS               | Foundry                                      |
 | S19 Pro - A   | Bitmain stock 5/25/2022 | Galaxy Mining,                               |
-| Whatsminer    | xxx                     | Foundry                                      |
+| WhatsMiner  M30S  | VE10                     | Foundry                                      |
 
 ## What’s next?
 
