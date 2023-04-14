@@ -63,7 +63,7 @@ We call it the JN dance.  💃 Let’s dance!
 
 This is our engineer's way of dancing, a bunch of bullet points. Below is an actual dance with some music. Volume up.
 
-[![ How Job Negotiator works](https://img.youtube.com/vi/nOIAhRVCThs/mqdefault.jpg)](https://www.youtube.com/watch?v=nOIAhRVCThs "How JN works video Video")
+[![How Job Negotiator works](https://img.youtube.com/vi/nOIAhRVCThs/mqdefault.jpg)](https://www.youtube.com/watch?v=nOIAhRVCThs)
 
 ## How to get started?
 
