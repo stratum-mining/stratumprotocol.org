@@ -28,7 +28,7 @@ configurationTabs:
     value: config_A
     visualSrc: /assets/config-a.svg
     mobileVisualSrc: /assets/config-a-mobile.svg
-    textContent: Before Stratum V2, transaction sets were selected by pools. With this SV2 configuration they’re selected by individual miners, making the network more censorship-resistant. Miners run SV2 firmware, connecting to the SV2 proxy server. Miners can pick their transactions locally and negotiate them with an SV2 pool.
+    textContent: Before Stratum V2, transaction sets were selected by pools. With this SV2 configuration they’re selected by individual miners, making the network more censorship-resistant. Miners run SV2 firmware, connecting to the SV2 proxy server. Miners can pick their transactions locally and declare them to an SV2 pool.
   - name: Config B
     value: config_B
     visualSrc: /assets/config-b.svg
@@ -43,13 +43,13 @@ configurationTabs:
     value: config_D
     visualSrc: /assets/config-d.svg
     mobileVisualSrc: /assets/config-d-mobile.svg
-    textContent: In this configuration miners run mining devices with SV1 firmware and connect to the translation proxy which translates the SV1 to SV2 messages and sends them to the SV2 pool. Transaction selection is done by the miners locally and then negotiated with the pool.
+    textContent: In this configuration miners run mining devices with SV1 firmware and connect to the translation proxy which translates the SV1 to SV2 messages and sends them to the SV2 pool. Transaction selection is done by the miners locally and then declared to the pool.
 roadmapTitle: Progress and Roadmap
 roadmapTagline: This is where the Stratum V2 protocol’s progress currently stands.
 roadmapSteps:
   - __MVP1__ will allow users to run SV2 where a miner runs existing SV1 firmware with a proxy that translates messages into SV2. In this configuration, the pool selects transactions.
   - A pull request that implements a **block template provider** will be submitted to the Bitcoin Core repository for review which will make MVP1 complete.
-  - Implement the **job negotiator**, which a miner or miners can use to negotiate a block template with a pool.
+  - Implement the **job negotiator**, which a miner or miners can use to declare a block template to a pool.
   - Once a translator, template provider, and job negotiator are running, we will launch an MVP2. In this configuration, a miner handles mempool transaction selection, and the pool accepts it.
   - Apply early adopter feedback and tailor configurations that will move MVP1 and MVP2 from beta to production-ready.
 # Specification authors section
