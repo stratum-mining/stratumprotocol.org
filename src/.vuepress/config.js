@@ -25,7 +25,7 @@ const specificationSidebar = [
   ["/specification/03-Protocol-Overview", "3. Protocol Overview"],
   ["/specification/04-Protocol-Security", "4. Protocol Security"],
   ["/specification/05-Mining-Protocol", "5. Mining Protocol"],
-  ["/specification/06-Job-Negotiation-Protocol", "6. Job Negotiation Protocol"],
+  ["/specification/06-Job-Declaration-Protocol", "6. Job Declaration Protocol"],
   [
     "/specification/07-Template-Distribution-Protocol",
     "7. Template Distribution Protocol",
