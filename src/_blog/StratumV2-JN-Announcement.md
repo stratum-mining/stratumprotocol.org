@@ -1,7 +1,7 @@
 ---
 title: " New SRI update with Job Negotiator - allowing miners to select transactions "
 description: "A new update of Stratum v2 is available.The new update allows miners to select transactions via a new sub-protocol and their node. We’re inviting miners, pools, firmware makers, and the community to check out our getting started guide and pilot test the software!"
-date: "2023-04-14"
+date: "2023-08-04"
 authors:
   - Pavlenex
 tags:

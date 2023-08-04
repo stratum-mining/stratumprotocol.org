@@ -1,7 +1,7 @@
 ---
 title: " Stratum v2 (SRI) Roadmap - To infinity and beyond "
 description: "Today, we’re sharing the  (Stratum Reference Implementation) roadmap providing insights into our ongoing work and the project's direction. Additionally, we are publishing the latest progress on Stratum v2 protocol specifications, further emphasizing our commitment to openness and building in public."
-date: "2023-08-3"
+date: "2023-08-03"
 authors:
   - Pavlenex
 tags:
@@ -29,11 +29,11 @@ The table below summarizes the changelog of notable specs updates.
 
 |Notable update|Link to a pull request|
 |:----|:----|
-|Noise handshake improvement|#2|
-|Using Bitcoin core cryptographic primitives|#10|
-|Replace future_job with min_ntime|#12|
-|Message framework improvement|#40|
-|Rename Job Negotiator to Job Declarator|#43|
+|Noise handshake improvement|[#2](https://github.com/stratum-mining/sv2-spec/pull/2)|
+|Using Bitcoin core cryptographic primitives|[#10](https://github.com/stratum-mining/sv2-spec/pull/10)|
+|Replace future_job with min_ntime|[#12](https://github.com/stratum-mining/sv2-spec/pull/12/)|
+|Message framework improvement|[#40](https://github.com/stratum-mining/sv2-spec/pull/40)|
+|Rename Job Negotiator to Job Declarator|[#43](https://github.com/stratum-mining/sv2-spec/pull/43)|
 
 ### Noise handshake improvement
 
