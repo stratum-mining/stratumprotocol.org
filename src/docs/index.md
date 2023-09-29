@@ -20,16 +20,16 @@ Pools operate as communication nodes to coordinate hashrate and distribute minin
 
 ### Proxies
 
-Proxies are intermediaries between Miners and Pools that aggregate connections and translate mining communications from v1->v2 or v2->v1. Proxies may optionally provide additional functionality including monitoring services or job negotiation optimizations. Both Miners and Pools can run Proxies, and will do so for various reasons depending on the use-case. e.g. A StratumV2 pool might run a proxy as its initial connection service to accept both V1 and V2 connections, establishing direct standard channels with the V2 miners and using the proxy to translate messages with the v1 miners.
+Proxies are intermediaries between Miners and Pools that aggregate connections and translate mining communications from v1->v2 or v2->v1. Proxies may optionally provide additional functionality including monitoring services or job declaration optimizations. Both Miners and Pools can run Proxies, and will do so for various reasons depending on the use-case. e.g. A StratumV2 pool might run a proxy as its initial connection service to accept both V1 and V2 connections, establishing direct standard channels with the V2 miners and using the proxy to translate messages with the v1 miners.
 
-### Job Negotiators
+### job declarators
 
-Job Negotiators (JNs) are Pool-side Proxies that receive and validate custom block templates from Template Providers. They negotiate template use with the pool per the Job Negotiation Protocol.
+job declarators (JNs) are Pool-side Proxies that receive and validate custom block templates from Template Providers. They negotiate template use with the pool per the Job declaration Protocol.
 They can further distribute jobs to a Mining Proxy (or Proxies) via the Job Distribution Protocol.
 
 ### Template Providers
 
-Template Providers (TPs) are Miner-side Proxies that create custom block templates and negotiate their use with the Job Negotiator via the Job Negotiation Protocol. Template Providers are usually a Bitcoin Core full node, but can also work with a different node implementation.
+Template Providers (TPs) are Miner-side Proxies that create custom block templates and negotiate their use with the job declarator via the Job declaration Protocol. Template Providers are usually a Bitcoin Core full node, but can also work with a different node implementation.
 
 ## Sub-Protocols
 
@@ -44,11 +44,11 @@ The protocol defines three types of communication channels:
 
 - Group channels are simply collections of standard channels that are opened within a particular connection so that they are addressable through a common communication channel.
 
-### Job Negotiation Protocol
+### Job declaration Protocol
 
-A Miner's Template Provider negotiates a block template (which includes the transaction set) with a Pool's Job Negotiator. The Pool can reuse negotiation outcomes across all end-miner connections to reduce computational intensity. A single negotiation can multicast to multiple farms with hundreds of thousands of devices. This protocol is a separate, optional piece of infrastructure from the Mining Protocol and can be provided as a 3rd party service for mining farms.
-Separating job negotiation as a sub-protocol lets pools terminate negotiation connections independently of mining protocol connections (i.e. share submissions).
-Work negotiation likely requires, at minimum, validity spot-checks and (potentially) rate-limiting.
+A Miner's Template Provider negotiates a block template (which includes the transaction set) with a Pool's job declarator. The Pool can reuse declaration outcomes across all end-miner connections to reduce computational intensity. A single declaration can multicast to multiple farms with hundreds of thousands of devices. This protocol is a separate, optional piece of infrastructure from the Mining Protocol and can be provided as a 3rd party service for mining farms.
+Separating job declaration as a sub-protocol lets pools terminate declaration connections independently of mining protocol connections (i.e. share submissions).
+Work declaration likely requires, at minimum, validity spot-checks and (potentially) rate-limiting.
 
 ### Template Distribution Protocol
 
@@ -56,4 +56,4 @@ Used to get information about the next block out of Bitcoin Core. This protocol 
 
 ### Job Distribution Protocol
 
-Used to pass newly-negotiated work to interested nodes, which can either be proxies or actual mining devices. This protocol is complementary to the Job Negotiation protocol. In the case that miners aren’t negotiating their own work (i.e. choosing their own transaction sets), jobs will be distributed directly from pools to proxies and end devices, similarly to in the original stratum protocol. Additionally, it’s possible that the Job Negotiation role will be part of a larger Mining Protocol proxy that also distributes jobs, making this sub-protocol unnecessary even when miners do choose their own transaction sets.
+Used to pass newly-negotiated work to interested nodes, which can either be proxies or actual mining devices. This protocol is complementary to the Job declaration protocol. In the case that miners aren’t negotiating their own work (i.e. choosing their own transaction sets), jobs will be distributed directly from pools to proxies and end devices, similarly to in the original stratum protocol. Additionally, it’s possible that the Job declaration role will be part of a larger Mining Protocol proxy that also distributes jobs, making this sub-protocol unnecessary even when miners do choose their own transaction sets.
