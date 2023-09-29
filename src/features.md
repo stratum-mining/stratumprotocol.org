@@ -4,7 +4,7 @@ pageHeading: SV2 in Detail
 
 # Features
 
-StratumV2 offers superior security, flexibility, and performance. This section details the motivations and technical descriptions behind V2's protocol design decisions.
+Stratum v2 offers superior security, flexibility, and performance. This section details the motivations and technical descriptions behind V2's protocol design decisions.
 
 ## Bandwidth Consumption
 

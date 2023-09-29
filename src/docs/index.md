@@ -2,13 +2,13 @@
 pageHeading: Roles and Protocols
 ---
 
-# StratumV2 Overview
+# Stratum v2 Overview
 
-The StratumV2 Protocol Suite consists of 4 Protocols (the main Mining Protocol and 3 sub-protocols) which specify the communication standards among 5 Roles for Bitcoin Mining entities. This section defines the roles and provides a summary of each sub-protocol's implementation. For technical specifications, please refer to the full documentation on [Github](https://www.github.com/stratum-mining/sv2-spec).
+The Stratum v2 Protocol Suite consists of 4 Protocols (the main Mining Protocol and 3 sub-protocols) which specify the communication standards among 5 Roles for Bitcoin Mining entities. This section defines the roles and provides a summary of each sub-protocol's implementation. For technical specifications, please refer to the full documentation on [Github](https://www.github.com/stratum-mining/sv2-spec).
 
 ## Roles
 
-We define 5 Roles for entities in the StratumV2 Protocol Suite:
+We define 5 Roles for entities in the Stratum v2 Protocol Suite:
 
 ### Mining Devices or Miners
 
@@ -16,15 +16,15 @@ The actual mining machines which compute hashes. Miners may refer to a wide vari
 
 ### Pools (Hashrate Consumers)
 
-Pools operate as communication nodes to coordinate hashrate and distribute mining rewards. They create jobs for end-mining devices, validate blocks and shares, and propagate found blocks to the Bitcoin Network. Pools do not custody or control hashrate. End-mining devices compatible with the Stratum protocol can switch between pools in minutes. Pools therefore compete for hashrate based on latency, ease-of-use, payout reliability, and associated networking services, all of which StratumV2 can significantly improve.
+Pools operate as communication nodes to coordinate hashrate and distribute mining rewards. They create jobs for end-mining devices, validate blocks and shares, and propagate found blocks to the Bitcoin Network. Pools do not custody or control hashrate. End-mining devices compatible with the Stratum protocol can switch between pools in minutes. Pools therefore compete for hashrate based on latency, ease-of-use, payout reliability, and associated networking services, all of which Stratum v2 can significantly improve.
 
 ### Proxies
 
-Proxies are intermediaries between Miners and Pools that aggregate connections and translate mining communications from v1->v2 or v2->v1. Proxies may optionally provide additional functionality including monitoring services or job declaration optimizations. Both Miners and Pools can run Proxies, and will do so for various reasons depending on the use-case. e.g. A StratumV2 pool might run a proxy as its initial connection service to accept both V1 and V2 connections, establishing direct standard channels with the V2 miners and using the proxy to translate messages with the v1 miners.
+Proxies are intermediaries between Miners and Pools that aggregate connections and translate mining communications from v1->v2 or v2->v1. Proxies may optionally provide additional functionality including monitoring services or job declaration optimizations. Both Miners and Pools can run Proxies, and will do so for various reasons depending on the use-case. e.g. A Stratum v2 pool might run a proxy as its initial connection service to accept both V1 and V2 connections, establishing direct standard channels with the V2 miners and using the proxy to translate messages with the v1 miners.
 
-### job declarators
+### Job Declarators
 
-job declarators (JNs) are Pool-side Proxies that receive and validate custom block templates from Template Providers. They negotiate template use with the pool per the Job declaration Protocol.
+Job Declarators (JDs) are Pool-side Proxies that receive and validate custom block templates from Template Providers. They declare the template to the pool per the Job Declaration Protocol.
 They can further distribute jobs to a Mining Proxy (or Proxies) via the Job Distribution Protocol.
 
 ### Template Providers
@@ -44,9 +44,9 @@ The protocol defines three types of communication channels:
 
 - Group channels are simply collections of standard channels that are opened within a particular connection so that they are addressable through a common communication channel.
 
-### Job declaration Protocol
+### Job Declaration Protocol
 
-A Miner's Template Provider negotiates a block template (which includes the transaction set) with a Pool's job declarator. The Pool can reuse declaration outcomes across all end-miner connections to reduce computational intensity. A single declaration can multicast to multiple farms with hundreds of thousands of devices. This protocol is a separate, optional piece of infrastructure from the Mining Protocol and can be provided as a 3rd party service for mining farms.
+A Miner's Template Provider negotiates a block template (which includes the transaction set) with a Pool's Job Declarator. The Pool can reuse declaration outcomes across all end-miner connections to reduce computational intensity. A single declaration can multicast to multiple farms with hundreds of thousands of devices. This protocol is a separate, optional piece of infrastructure from the Mining Protocol and can be provided as a 3rd party service for mining farms.
 Separating job declaration as a sub-protocol lets pools terminate declaration connections independently of mining protocol connections (i.e. share submissions).
 Work declaration likely requires, at minimum, validity spot-checks and (potentially) rate-limiting.
 
