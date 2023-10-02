@@ -98,11 +98,11 @@ Miners can choose their own work and mine their chosen transaction set in Sv2, f
 
 Job Selection by end-miners is an optional component of Stratum V2, separate from the main mining protocol. In fact, this is actually done by three sub-protocols:
 
-1. Job declaration Protocol
+1. Job Declaration Protocol
 2. Job Distribution Protocol
 3. Template Distribution Protocol.
 
-Job selection is a declaration process between miner and pool. The miner proposes a block template; the pool accepts or rejects it. Once a negotiated template is accepted, the template can be multicast to other mining devices and farms. Implementing Job Selection Protocols separately allows pools to terminate connections on seperate infrastructure from the main mining protocol, preventing impact on the efficiency of share submissions.
+Job selection is a declaration process between miner and pool. The miner proposes a block template; the pool accepts or rejects it. Once a declared template is accepted, the template can be multicast to other mining devices and farms. Implementing Job Selection Protocols separately allows pools to terminate connections on seperate infrastructure from the main mining protocol, preventing impact on the efficiency of share submissions.
 
 #### Motivation & Impact
 

@@ -29,7 +29,7 @@ They can further distribute jobs to a Mining Proxy (or Proxies) via the Job Dist
 
 ### Template Providers
 
-Template Providers (TPs) are Miner-side Proxies that create custom block templates and negotiate their use with the job declarator via the Job declaration Protocol. Template Providers are usually a Bitcoin Core full node, but can also work with a different node implementation.
+Template Providers (TPs) are Miner-side Proxies that create custom block templates and negotiate their use with the job declarator via the Job Declaration Protocol. Template Providers are usually a Bitcoin Core full node, but can also work with a different node implementation.
 
 ## Sub-Protocols
 
@@ -56,4 +56,4 @@ Used to get information about the next block out of Bitcoin Core. This protocol 
 
 ### Job Distribution Protocol
 
-Used to pass newly-negotiated work to interested nodes, which can either be proxies or actual mining devices. This protocol is complementary to the Job declaration protocol. In the case that miners aren’t negotiating their own work (i.e. choosing their own transaction sets), jobs will be distributed directly from pools to proxies and end devices, similarly to in the original stratum protocol. Additionally, it’s possible that the Job declaration role will be part of a larger Mining Protocol proxy that also distributes jobs, making this sub-protocol unnecessary even when miners do choose their own transaction sets.
+Used to pass newly-negotiated work to interested nodes, which can either be proxies or actual mining devices. This protocol is complementary to the Job Declaration Protocol. In the case that miners aren’t negotiating their own work (i.e. choosing their own transaction sets), jobs will be distributed directly from pools to proxies and end devices, similarly to in the original stratum protocol. Additionally, it’s possible that the Job declaration role will be part of a larger Mining Protocol proxy that also distributes jobs, making this sub-protocol unnecessary even when miners do choose their own transaction sets.
