@@ -83,6 +83,7 @@ supportersTabs:
       - foundry
       - galaxy
       - hrf
+      - opensats
       - spiral
       - sob
 supporters:
@@ -101,6 +102,9 @@ supporters:
   - value: hrf
     image: /assets/hrf-logo.svg
     link: https://www.hrf.org/
+  - value: opensats
+    image: /assets/opensats-logo.svg
+    link: https://opensats.org/    
   - value: spiral
     image: /assets/spiral-logo.svg
     link: https://www.spiral.xyz/
