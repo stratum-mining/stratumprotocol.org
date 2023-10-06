@@ -27,7 +27,7 @@ Proxies are intermediaries between Miners and Pools that aggregate connections a
 
 The Sv2 Mining Proxy acts as an intermediary between the mining devices and the Sv2 Pool. It receives mining requests from multiple devices, aggregates them, and forwards them to the Sv2 Pool. It can open group/extended channels with upstream (the Sv2 Pool) and standard channels with downstream (Sv2 Mining Devices).
 
-#### Translator Proxy
+#### Translation Proxy
 
 Translator Proxy is responsible for translating the communication between Sv1 actual Mining Devices and an Sv2 Pool or Mining Proxy. It enables Sv1 devices to interact with Sv2-based mining infrastructure, bridging the gap between the older Sv1 protocol and Sv2. It can open extended channels with upstream (the Sv2 Pool or Mining Proxy).
 For example, a Pool might run a Translator Proxy as its initial connection service to accept both Sv1 and Sv2 connections, establishing direct standard channels with the Sv2 miners and using the proxy to translate messages with the Sv1 miners.
