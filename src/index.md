@@ -33,7 +33,7 @@ configurationTabs:
     value: config_B
     visualSrc: /assets/config-b.svg
     mobileVisualSrc: /assets/config-b-mobile.svg
-    textContent: In this configurations, mining pool select transactions, but it uses all the security and performance features of the SV2 protocol.
+    textContent: Before Stratum V2, transaction sets were selected by pools. With this SV2 configuration they’re selected by individual miners, making the network more censorship-resistant. Miners run SV2 firmware, connecting to the SV2 proxy server. Miners can pick their transactions locally and declare them to an SV2 pool.
   - name: Config C
     value: config_C
     visualSrc: /assets/config-c.svg
@@ -43,7 +43,7 @@ configurationTabs:
     value: config_D
     visualSrc: /assets/config-d.svg
     mobileVisualSrc: /assets/config-d-mobile.svg
-    textContent: Before Stratum V2, transaction sets were selected by pools. With this SV2 configuration they’re selected by individual miners, making the network more censorship-resistant. Miners run SV2 firmware, connecting to the SV2 proxy server. Miners can pick their transactions locally and declare them to an SV2 pool.
+    textContent: In this configurations, mining pool select transactions, but it uses all the security and performance features of the SV2 protocol.
 roadmapTitle: Progress and Roadmap
 roadmapTagline: This is where the Stratum V2 protocol’s progress currently stands.
 roadmapSteps:
