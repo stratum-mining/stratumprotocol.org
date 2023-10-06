@@ -259,10 +259,10 @@ Eventually, the Translation Proxy log output will show sucessful share, which me
 ```
 
 
-## Config D: SV1 firmware > Translation Proxy JN (Job Negotiator) > SV2 Pool
+## Config D: SV1 firmware > Translation Proxy JD (Job Declarator) > SV2 Pool
 
-This configuration allows mining devices running SV1 firmware to connect to an SV2 Pool through a Translation Proxy (tProxy). In this case the tProxy is designed also to implement the **Job Negotiator (JN)** sub-protocol: allowing miners to select transactions locally and send them to the **Pool-side JN**. 
-In the following guide a Template Provider is installed locally on the same machine, to provide block templates to the JN.
+This configuration allows mining devices running SV1 firmware to connect to an SV2 Pool through a Translation Proxy (tProxy). In this case the tProxy is designed also to implement the **Job Declarator (JD)** sub-protocol: allowing miners to select transactions locally and send them to the **Pool-side JDS (Job Declarator Server)**. 
+In the following guide a Template Provider is installed locally on the same machine, to provide block templates to the JD.
 
 ![Config2](/assets/config-d.svg)
 
@@ -389,10 +389,10 @@ If the pool properly starts you should see the following log lines:
 > cargo run -p pool_sv2 -- -c [your-custom-config.toml]
 > ```
 
-### 3. Start **Translator (tProxy) JN**
+### 3. Start **Translator (tProxy) JD**
 
 Once the SV2 pool is running, let's run the tProxy that will facilitate communication between the pool and a SV1 miner.
-Differently from the Config C, in this case the **tProxy** will be acting as a **Job Negotiator (JN)**, so it will select transactions locally and send them to the **Pool-side JN**
+Differently from the Config C, in this case the **tProxy** will be acting as a **Job Declarator (JD)**, so it will select transactions locally and send them to the **Pool-side JDS**
 ```
 cd stratum/roles/translator/
 ```
