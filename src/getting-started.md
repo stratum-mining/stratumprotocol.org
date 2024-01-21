@@ -29,84 +29,53 @@ This configuration allows mining devices running SV1 firmware to connect to an S
 ### 1. Start **SV2 Pool**
 
 ```
-cd stratum/roles/v2/pool/
+cd roles/pool/
 ```
-The `pool-config-example.toml` is a configuration example which can be copy/paste into `/conf` directory by the party that is running the SV2 Pool (most typically the pool service provider) to address the most preferred customization.
-To better understand and learn about information present in the configuration file, check [this README](https://github.com/stratum-mining/stratum/blob/main/roles/v2/pool/README.md).
-```
-cp pool-config-example.toml ./conf/pool-config.toml
-```
-```
-cd conf/
-```
+The `config-examples` directory contains configuration examples to be used by the party running the SV2 Pool (most typically the pool service provider) to address the most preferred customization.
+To better understand and learn about information present in the SV2 Pool configuration files, check [this README](https://github.com/stratum-mining/stratum/blob/main/roles/v2/pool/README.md).
+
 To run this configuration, for simplicity, you can point the SV2 Pool to our hosted Template Provider (testnet or regtest), commenting/uncommenting the corresponding lines in your `pool-config.toml`.
 For example, if you want to use our **hosted testnet TP**, your config file should be like this:
 ```
+cp config-examples/pool-config-hosted-tp-example.toml pool-config.toml
+cat pool-config.toml
 # SRI Pool config
-authority_public_key = "2di19GHYQnAZJmEpoUeP7C3Eg9TCcksHr23rZCC83dvUiZgiDL"
-authority_secret_key = "2Z1FZug7mZNyM63ggkm37r4oKQ29khLjAvEx43rGkFN47RcJ2t"
+authority_public_key = "3VANfft6ei6jQq1At7d8nmiZzVhBFS4CiQujdgim1ign"
+authority_secret_key = "7qbpUjScc865jyX2kiB4NVJANoC7GA7TAJupdzXWkc62"
 cert_validity_sec = 3600
 test_only_listen_adress_plain =  "0.0.0.0:34250"
 listen_address = "0.0.0.0:34254"
+
 # list of compressed or uncompressed pubkeys for coinbase payout (only supports 1 item in the array at this point)
 coinbase_outputs = [
-    "04466d7fcae563e5cb09a0d1870bb580344804617879a14949cf22285f1bae3f276728176c3c6431f8eeda4538dc37c865e2784f3a9e77d044f33e407797e1278a",
+    { output_script_type = "P2WPKH", output_script_value = "036adc3bdf21e6f9a0f0fb0066bf517e5b7909ed1563d6958a10993849a7554075" },
 ]
 
-# Template Provider config
-# local TP (this is pointing to localhost so you must run a TP locally for this configuration to work)
-# tp_address = "127.0.0.1:8442"
-# hosted testnet TP 
-tp_address = "89.116.25.191:8442"
-# hosted regnet TP 
-# tp_address = "75.119.150.111:8442"
-# hosted testnet TP 
-# tp_address = "89.116.25.191:8442"
-# hosted regnet TP 
-# tp_address = "75.119.150.111:8442"
+# Pool signature (string to be included in coinbase tx)
+pool_signature = "Stratum v2 SRI Pool"
 
-# SRI Pool JN config
-listen_jn_address = "127.0.0.1:34264"
+# Template Provider config
+# Local TP (this is pointing to localhost so you must run a TP locally for this configuration to work)
+#tp_address = "127.0.0.1:8442"
+# Hosted testnet TP 
+tp_address = "75.119.150.111:8442"
 ```
-> <ins>**Warning**</ins><br>
-> If you want to mine spendable bitcoin on regtest, you can do it with bitcoin-cli:
-> 1. Get a legacy Bitcoin address:
->   ```
->   bitcoin-cli -regtest -rpcwallet="<PUT YOUR WALLET NAME HERE>" getnewaddress "test" "legacy"
->   ```
-> 2. Retrieve its corresponding public key:
->   ```
->   bitcoin-cli -regtest getaddressinfo <PUT THE ADDRESS GENERATED HERE>
->   ```
-> 3. Copy the pubkey showed in the output;
-> 4. Paste it in the `coinbase_outputs` of `pool-config.toml`, after deleting the one which is already present;
-> 5. Mine a block;
-> 6. Generate 100 blocks: 
->   ```
->   bitcoin-cli -regtest generatetoaddress 100 bcrt1qc5xss0cma0zldxfzzdpjxsayut7yy86e2lr6km
->   ```
-> Now the mined bitcoin are spendable!
    
 Once your preferred config is set, you can run the SV2 Pool:
 ```
-cargo run -p pool_sv2 
+cargo run -- -c pool-config.toml
 ```
 If the pool properly starts you should see the following log lines:
 ```log
-2023-03-28T10:34:24.205288Z  INFO pool_sv2: Pool INITIALIZING with config: "pool-config.toml"
-2023-03-28T10:34:24.279421Z  INFO pool_sv2::lib::template_receiver: Connected to template distribution server at 89.116.25.191:8442
-2023-03-28T10:34:24.437363Z  INFO pool_sv2::lib::template_receiver::setup_connection: Setup template provider connection success!
-2023-03-28T10:34:24.437865Z  INFO pool_sv2::lib::mining_pool: PUB KEY: [TxOut { value: 5000000000, script_pubkey: Script(OP_PUSHBYTES_65 04466d7fcae563e5cb09a0d1870bb580344804617879a14949cf22285f1bae3f276728176c3c6431f8eeda4538dc37c865e2784f3a9e77d044f33e407797e1278a OP_CHECKSIG) }]
-2023-03-28T10:34:24.438053Z  INFO pool_sv2::lib::mining_pool: Starting up pool listener
-2023-03-28T10:34:24.438115Z  INFO pool_sv2::lib::job_negotiator: JN INITIALIZED
-2023-03-28T10:34:24.438623Z  INFO pool_sv2::lib::mining_pool: Listening for encrypted connection on: 0.0.0.0:34254
+2024-01-21T23:40:49.598914Z  INFO pool_sv2: Pool INITIALIZING with config: "pool-config.toml"
+2024-01-21T23:40:49.942310Z  INFO pool_sv2::lib::template_receiver: Connected to template distribution server at 75.119.150.111:8442
+2024-01-21T23:40:50.713814Z  INFO roles_logic_sv2::handlers::common: Received SetupConnectionSuccess: version=2, flags=0
+2024-01-21T23:40:50.714082Z  INFO pool_sv2::lib::mining_pool: PUB KEY: Ok([TxOut { value: 0, script_pubkey: Script(OP_0 OP_PUSHBYTES_20 ebe1b7dcc293ccaa0ee743a86f89df8258c208fc) }])
+2024-01-21T23:40:50.714247Z  INFO pool_sv2::lib::mining_pool: Starting up pool listener
+2024-01-21T23:40:50.714537Z  INFO pool_sv2::lib::mining_pool: Listening for encrypted connection on: 0.0.0.0:34254
+2024-01-21T23:40:51.076184Z  INFO roles_logic_sv2::handlers::template_distribution: Received NewTemplate with id: 28, is future: true
+2024-01-21T23:40:51.076493Z  INFO roles_logic_sv2::handlers::template_distribution: Received SetNewPrevHash for template: 28
 ```
-> <ins>**Warning**</ins> <br>
-> If you want to create more custom configs, you can save them in the same `conf/` directory.
-> To run the specific custom config, you can do it by running:
-> ```
-> cargo run -p pool_sv2 -- -c [your-custom-config.toml]
-> ```
 
 ### 2. Start **Translator (tProxy)**
 
@@ -115,17 +84,14 @@ In a new terminal:
 ```
 cd stratum/roles/translator/
 ```
-The `proxy-config-example.toml` is a configuration example which can be copy/paste into `/conf` directory by the party that is running the Translator Proxy (most typically the mining farm/miner hobbyist) to address the most preferred customization.
+Just like in the `stratum/roles/pool` directory, the `config-examples` directory contains configuration examples to be used by the party running the SV2 Translator Proxy (most typically the mining farm/miner hobbyist) to address the most preferred customization.
 To better understand and learn about information present in the configuration file, check [this README](https://github.com/stratum-mining/stratum/blob/main/roles/translator/README.md).
+
+Within the `tproxy-config.toml` you will be able to specify which pool should a translation proxy connect to. For this specific configuration, the tProxy will connect to a locally hosted pool (which you deployed in the first step). Feel free to switch the pools while testing things out.
+To run a Translator Proxy with the local Pool you just launched, for example, your config file should be like this:
 ```
-cp proxy-config-example.toml ./conf/proxy-config.toml
-```
-```
-cd conf/
-```
-Within the `proxy-config.toml` you will be able to specify which pool should a translation proxy connect to. For this specific configuration, the tProxy will connect to a locally hosted pool (which you deployed in the first step). Feel free to switch the pools while testing things out.
-To run this configuration, for example, your config file should be like this:
-```
+cp config-examples/tproxy-config-local-pool-example.toml tproxy-config.toml
+cat tproxy-config.toml 
 # Braiins Pool Upstream Connection
 # upstream_authority_pubkey = "u95GEReVMjK6k5YqiSFNqqTnKU4ypU2Wm8awa6tmbmDmk1bWt"
 # upstream_address = "18.196.32.109"
@@ -134,7 +100,7 @@ To run this configuration, for example, your config file should be like this:
 # Local SRI Pool Upstream Connection
 upstream_address = "127.0.0.1"
 upstream_port = 34254
-upstream_authority_pubkey = "2di19GHYQnAZJmEpoUeP7C3Eg9TCcksHr23rZCC83dvUiZgiDL"
+upstream_authority_pubkey = "3VANfft6ei6jQq1At7d8nmiZzVhBFS4CiQujdgim1ign"
 
 # Local Mining Device Downstream Connection
 downstream_address = "0.0.0.0"
@@ -151,23 +117,10 @@ min_supported_version = 2
 min_extranonce2_size = 8
 coinbase_reward_sat = 5_000_000_000
 
-# JN config (optional), if set (uncommented) the tProxy starts on JN mode
-# [jn_config]
-# local pool JN (local pool must be run before tProxy to work)
-jn_address = "127.0.0.1:34264"
-# local TP (this is pointing to localhost so you must run a TP locally for this configuration to work)
-tp_address = "127.0.0.1:8442"
-# hosted testnet TP 
-# tp_address = "89.116.25.191:8442"
-# hosted regnet TP 
-# tp_address = "75.119.150.111:8442"
-
 # Difficulty params
 [downstream_difficulty_config]
 # hashes/s of the weakest miner that will be connecting
 min_individual_miner_hashrate=5_000_000.0
-# minimum number of shares needed before a mining.set_difficulty is sent for updating targets
-miner_num_submits_before_update=5
 # target number of shares per minute the miner should be sending
 shares_per_minute = 6.0
 
@@ -179,28 +132,21 @@ channel_nominal_hashrate = 5_000_000.0
 ```
 Once your preferred config is set, you can run the tProxy:
 ```
-cargo run -p translator_sv2 
+cargo run -- -c proxy-config.toml
 ```
 If the translator starts properly, you should see the following log lines:
 
 ```log
-2023-03-28T10:57:06.624837Z  INFO translator_sv2::upstream_sv2::upstream: PROXY SERVER - ACCEPTING FROM UPSTREAM: 127.0.0.1:34254
-2023-03-28T10:57:06.650990Z  INFO translator_sv2::upstream_sv2::upstream: Up: Sending: SetupConnection { protocol: MiningProtocol, min_version: 2, max_version: 2, flags: 4, endpoint_host: Owned([48, 46, 48, 46, 48, 46, 48]), endpoint_port: 50, vendor: Owned([]), hardware_version: Owned([]), firmware: Owned([]), device_id: Owned([]) }
-2023-03-28T10:57:06.663001Z  INFO translator_sv2::upstream_sv2::upstream: Up: Receiving: Sv2Frame { header: Header { extension_type: 0, msg_type: 1, msg_length: U24(6) }, payload: None, serialized: Some(Slice { offset: 0x7f7b0c95b000, len: 12, index: 1, shared_state: SharedState(128), owned: None }) }
-2023-03-28T10:57:06.663187Z  INFO translator_sv2::upstream_sv2::upstream: Up: Sending: OpenExtendedMiningChannel(OpenExtendedMiningChannel { request_id: 0, user_identity: Owned([65, 66, 67]), nominal_hash_rate: 5000000.0, max_target: Owned([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 255, 255, 255, 255]), min_extranonce_size: 8 })
-2023-03-28T10:57:06.663286Z  INFO translator_sv2: Connected to Upstream!
-2023-03-28T10:57:06.665887Z  INFO translator_sv2::upstream_sv2::upstream: Up: Successfully Opened Extended Mining Channel
-2023-03-28T10:57:06.666147Z  INFO translator_sv2::upstream_sv2::upstream: Is future job: true
-
-2023-03-28T10:57:06.666208Z  INFO translator_sv2::upstream_sv2::upstream: Up: New Extended Mining Job
-2023-03-28T10:57:06.666353Z  INFO translator_sv2::upstream_sv2::upstream: Up: Set New Prev Hash
+2024-01-21T23:47:16.653365Z  INFO translator_sv2: PC: ProxyConfig { upstream_address: "127.0.0.1", upstream_port: 34254, upstream_authority_pubkey: Secp256k1PublicKey(XOnlyPublicKey(e76c2b09eed7baa394dbb794896e913c86a5f719ea803bc0a4aaa104383cee24ac5b32268edbcc58d105534c281f112f5e7a5c1ff0e2d113bd938dc7698e2cce)), downstream_address: "0.0.0.0", downstream_port: 34255, max_supported_version: 2, min_supported_version: 2, min_extranonce2_size: 8, downstream_difficulty_config: DownstreamDifficultyConfig { min_individual_miner_hashrate: 5000000.0, shares_per_minute: 6.0, submits_since_last_update: 0, timestamp_of_last_update: 0 }, upstream_difficulty_config: UpstreamDifficultyConfig { channel_diff_update_interval: 60, channel_nominal_hashrate: 5000000.0, timestamp_of_last_update: 0, should_aggregate: false } }
+2024-01-21T23:47:16.655204Z  INFO translator_sv2::upstream_sv2::upstream: PROXY SERVER - ACCEPTING FROM UPSTREAM: 127.0.0.1:34254
+2024-01-21T23:47:16.658890Z  INFO roles_logic_sv2::handlers::common: Received SetupConnectionSuccess: version=2, flags=100
+2024-01-21T23:47:16.659007Z  INFO translator_sv2: Connected to Upstream!
+2024-01-21T23:47:16.659499Z  INFO roles_logic_sv2::handlers::mining: Received OpenExtendedMiningChannelSuccess with request id: 0 and channel id: 2
+2024-01-21T23:47:16.659523Z  INFO translator_sv2::upstream_sv2::upstream: Up: Successfully Opened Extended Mining Channel
+2024-01-21T23:47:16.659714Z  INFO roles_logic_sv2::handlers::mining: Received new extended mining job for channel id: 0 with job id: 112 is_future: true
+2024-01-21T23:47:16.659750Z  INFO roles_logic_sv2::handlers::mining: Received SetNewPrevHash channel id: 2, job id: 112
+2024-01-21T23:47:17.523726Z  INFO roles_logic_sv2::handlers::mining: Received new extended mining job for channel id: 2 with job id: 113 is_future: false
 ```
-> <ins>**Warning**</ins> <br>
-> If you want to create more custom configs, you can save them in the same `conf/` directory.
-> To run the specific custom config, you can do it by running:
-> ```
-> cargo run -p translator_sv2 -- -c [your-custom-config.toml]
-> ```
 
 ### 3. Start **SV1 Miner**
 After starting a pool, and a translation proxy, let’s start a SV1 miner.
@@ -219,13 +165,13 @@ Setup the correct CPUMiner for your OS:
 - Or compile it from [https://github.com/pooler/cpuminer](https://github.com/pooler/cpuminer)
    
 Go into directory of the downloaded CPUMiner, for example: 
-   ```
-   cd Downloads/
-   ```
-Then run: 
-   ```
-   ./minerd -a sha256d -o stratum+tcp://localhost:34255 -q -D -P
-   ```
+```
+cd Downloads/
+```
+Then run:
+```
+./minerd -a sha256d -o stratum+tcp://localhost:34255 -q -D -P
+```
 This will connect to the translator proxy and speak sv1. If this is successful you should see the following output:
 
 ```log
@@ -248,7 +194,7 @@ Target: 0000001bffe40000000000000000000000000000000000000000000000000000
 [2023-03-28 13:08:54] < {"id":4,"error":null,"result":true}
 [2023-03-28 13:08:54] accepted: 1/1 (100.00%), 33963 khash/s (yay!!!)
 ```
-Eventually, the Translation Proxy log output will show sucessful share, which means you've run the configuration successfully!
+Eventually, the Translation Proxy log output will show successful share, which means you've run the configuration successfully!
 
 ```log
 2023-03-28T11:08:51.052292Z  INFO translator_sv2::downstream_sv1::downstream: PROXY SERVER - ACCEPTING FROM DOWNSTREAM: 127.0.0.1:50225
@@ -272,153 +218,289 @@ In the following guide a Template Provider is installed locally on the same mach
 
 Clone custom bitcoin repository which works as a Template Provider:
 ```
-git clone https://github.com/stratum-mining/bitcoin.git 
-``` 
-```
-git checkout last-tested-tp 
-```
-```
-cd bitcoin/
-```
-```
-./autogen.sh && ./configure --enable-template-provider
-```
-```
-make check
-```
-> <ins>**Warning**</ins> <br>
-> This is a very important command, don't forget to run it!
-> You would have to do it <ins>every time you'll restart your local Template Provider.</ins>
-```
-rm -r ~/.bitcoin/regtest
-```
-Once installed, in bitcoin/ directory:
-```
-./src/bitcoind -regtest
+git clone https://github.com/Sjors/bitcoin.git
 ```
 
-Open another terminal without closing the previous one:
+Check out the SV2 branch:
 ```
 cd bitcoin/
+git checkout 2023/11/sv2-poll
 ```
+
+Build `bitcoind`:
 ```
-./src/bitcoin-cli -regtest generatetoaddress 16 bcrt1qttuwhmpa7a0ls5kr3ye6pjc24ng685jvdrksxx
+make clean
+./autogen.sh && ./configure 
+make -j 10
+```
+
+Edit `bitcoin.conf` file by adding:
+```
+testnet=1
+server=1
+rpcuser=username
+rpcpassword=password
+```
+
+Run the TP:
+```
+./src/bitcoind -sv2 -sv2port=8442 -debug=sv2 
+```
+
+Hint:  there are optional parameters which can be used to better manage TP:
+- `sv2interval` which sets how often a new template is built (default is 30s)
+- `sv2feedelta` which defines the delta fees to reach before sending new templates to downstreams (default is 1000 sats)
+- `loglevel=sv2:trace` to get more detailed debugging
+
+For example:
+```
+./src/bitcoind -sv2 -sv2port=8442 -sv2interval=2 -sv2feedelta=1000 -debug=sv2 -loglevel=sv2:trace
 ```
 
 ### 2. Start **SV2 Pool**
+
+In a new terminal:
 ```
 cd stratum/roles/v2/pool/
 ```
-The `pool-config-example.toml` is a configuration example which can be copy/paste into `/conf` directory by the party that is running the SV2 Pool (most typically the pool service provider) to address the most preferred customization.
-To better understand and learn about information present in the configuration file, check [this README](https://github.com/stratum-mining/stratum/blob/main/roles/v2/pool/README.md).
-```
-cp pool-config-example.toml ./conf/pool-config.toml
-```
-```
-cd conf/
-```
+
+The `config-examples` directory contains configuration examples to be used by the party running the SV2 Pool (most typically the pool service provider) to address the most preferred customization.
+To better understand and learn about information present in the SV2 Pool configuration files, check [this README](https://github.com/stratum-mining/stratum/blob/main/roles/v2/pool/README.md).
+
 The **Pool** role in this configuration should be configured to point to the **local Template Provider** which you deployed in the first step of this guide. In the `pool-config.toml` file you should see the `tp_address = "127.0.0.1:8442"` line uncommented. The correct config file to exploit the local TP should be like this:
 ```
+cp config-examples/pool-config-local-tp-example.toml pool-config.toml
+cat pool-config.toml 
 # SRI Pool config
-authority_public_key = "2di19GHYQnAZJmEpoUeP7C3Eg9TCcksHr23rZCC83dvUiZgiDL"
-authority_secret_key = "2Z1FZug7mZNyM63ggkm37r4oKQ29khLjAvEx43rGkFN47RcJ2t"
+authority_public_key = "3VANfft6ei6jQq1At7d8nmiZzVhBFS4CiQujdgim1ign"
+authority_secret_key = "7qbpUjScc865jyX2kiB4NVJANoC7GA7TAJupdzXWkc62"
 cert_validity_sec = 3600
 test_only_listen_adress_plain =  "0.0.0.0:34250"
 listen_address = "0.0.0.0:34254"
-# list of compressed or uncompressed pubkeys for coinbase payout (only supports 1 item in the array at this point)
+
+# List of coinbase outputs used to build the coinbase tx
+# ! Right now only one output is supported, so comment all the ones you don't need !
+# For P2PK, P2PKH, P2WPKH, P2TR a public key is needed. For P2SH and P2WSH, a redeem script is needed.  
 coinbase_outputs = [
-    "04466d7fcae563e5cb09a0d1870bb580344804617879a14949cf22285f1bae3f276728176c3c6431f8eeda4538dc37c865e2784f3a9e77d044f33e407797e1278a",
+    #{ output_script_type = "P2PK", output_script_value = "0372c47307e5b75ce365daf835f226d246c5a7a92fe24395018d5552123354f086" },
+    #{ output_script_type = "P2PKH", output_script_value = "0372c47307e5b75ce365daf835f226d246c5a7a92fe24395018d5552123354f086" },
+    #{ output_script_type = "P2SH", output_script_value = "00142ef89234bc95136eb9e6fee9d32722ebd8c1f0ab" },
+    #{ output_script_type = "P2WSH", output_script_value = "00142ef89234bc95136eb9e6fee9d32722ebd8c1f0ab" },
+    { output_script_type = "P2WPKH", output_script_value = "036adc3bdf21e6f9a0f0fb0066bf517e5b7909ed1563d6958a10993849a7554075" },
+    #{ output_script_type = "P2TR", output_script_value = "036adc3bdf21e6f9a0f0fb0066bf517e5b7909ed1563d6958a10993849a7554075" },
 ]
 
-# Template Provider config
-# local TP (this is pointing to localhost so you must run a TP locally for this configuration to work)
-tp_address = "127.0.0.1:8442"
-# hosted testnet TP 
-# tp_address = "89.116.25.191:8442"
-# hosted regnet TP 
-# tp_address = "75.119.150.111:8442"
-# hosted testnet TP 
-# tp_address = "89.116.25.191:8442"
-# hosted regnet TP 
-# tp_address = "75.119.150.111:8442"
+# Pool signature (string to be included in coinbase tx)
+pool_signature = "Stratum v2 SRI Pool"
 
-# SRI Pool JN config
-listen_jn_address = "127.0.0.1:34264"
+# Template Provider config
+# Local TP (this is pointing to localhost so you must run a TP locally for this configuration to work)
+tp_address = "127.0.0.1:8442"
+# Hosted testnet TP 
+# tp_address = "75.119.150.111:8442"
 ```
-> <ins>**Warning**</ins><br>
-> If you want to mine spendable bitcoin on regtest, you can do it with bitcoin-cli:
-> 1. Get a legacy Bitcoin address:
->   ```
->   bitcoin-cli -regtest -rpcwallet="<PUT YOUR WALLET NAME HERE>" getnewaddress "test" "legacy"
->   ```
-> 2. Retrieve its corresponding public key:
->   ```
->   bitcoin-cli -regtest getaddressinfo <PUT THE ADDRESS GENERATED HERE>
->   ```
-> 3. Copy the pubkey showed in the output;
-> 4. Paste it in the `coinbase_outputs` of `pool-config.toml`, after deleting the one which is already present;
-> 5. Mine a block;
-> 6. Generate 100 blocks: 
->   ```
->   bitcoin-cli -regtest generatetoaddress 100 bcrt1qc5xss0cma0zldxfzzdpjxsayut7yy86e2lr6km
->   ```
-> Now the mined bitcoin are spendable!
 
 Once your preferred config is set, you can run the SV2 Pool:
 ```
-cargo run -p pool_sv2 
+cargo run -- -c pool-config.toml
 ```
-> <ins>**Warning**</ins><br>
-> If you couldn't get to run the local Template Provider from a **linux** machine, you can use our hosted TP (testnet or regtest), commenting/uncommenting the corresponding lines in your `pool-config.toml`.
 
 If the pool properly starts you should see the following log lines:
 
 ```log
-2023-03-28T11:59:40.951579Z  INFO pool_sv2: Pool INITIALIZING with config: "pool-config.toml"
-2023-03-28T11:59:40.952304Z  INFO pool_sv2::lib::template_receiver: Connected to template distribution server at 127.0.0.1:8442
-2023-03-28T11:59:41.024149Z  INFO pool_sv2::lib::template_receiver::setup_connection: Setup template provider connection success!
-2023-03-28T11:59:41.024398Z  INFO pool_sv2::lib::mining_pool: PUB KEY: [TxOut { value: 5000000000, script_pubkey: Script(OP_PUSHBYTES_65 04466d7fcae563e5cb09a0d1870bb580344804617879a14949cf22285f1bae3f276728176c3c6431f8eeda4538dc37c865e2784f3a9e77d044f33e407797e1278a OP_CHECKSIG) }]
-2023-03-28T11:59:41.025534Z  INFO pool_sv2::lib::mining_pool: Starting up pool listener
-2023-03-28T11:59:41.026100Z  INFO pool_sv2::lib::job_negotiator: JN INITIALIZED
-2023-03-28T11:59:41.026343Z  INFO pool_sv2::lib::mining_pool: Listening for encrypted connection on: 0.0.0.0:34254
+2024-01-21T23:55:49.701624Z  INFO pool_sv2: Pool INITIALIZING with config: "pool-config.toml"
+2024-01-21T23:55:49.702476Z  INFO pool_sv2::lib::template_receiver: Connected to template distribution server at 127.0.0.1:8442
+2024-01-21T23:55:50.032056Z  INFO roles_logic_sv2::handlers::common: Received SetupConnectionSuccess: version=2, flags=0
+2024-01-21T23:55:50.032336Z  INFO pool_sv2::lib::mining_pool: PUB KEY: Ok([TxOut { value: 0, script_pubkey: Script(OP_0 OP_PUSHBYTES_20 ebe1b7dcc293ccaa0ee743a86f89df8258c208fc) }])
+2024-01-21T23:55:50.032568Z  INFO pool_sv2::lib::mining_pool: Starting up pool listener
+2024-01-21T23:55:50.032958Z  INFO pool_sv2::lib::mining_pool: Listening for encrypted connection on: 0.0.0.0:34254
+2024-01-21T23:55:50.195377Z  INFO roles_logic_sv2::handlers::template_distribution: Received NewTemplate with id: 12140, is future: true
+2024-01-21T23:55:50.195584Z  INFO roles_logic_sv2::handlers::template_distribution: Received SetNewPrevHash for template: 12140
+2024-01-21T23:56:05.957257Z  INFO roles_logic_sv2::handlers::template_distribution: Received NewTemplate with id: 12141, is future: false
 ```
-> <ins>**Warning**</ins> <br>
-> If you want to create more custom configs, you can save them in the same `conf/` directory.
-> To run the specific custom config, you can do it by running:
-> ```
-> cargo run -p pool_sv2 -- -c [your-custom-config.toml]
-> ```
 
-### 3. Start **Translator (tProxy) JD**
+### 3. Start **Job Declarator Server**
 
-Once the SV2 pool is running, let's run the tProxy that will facilitate communication between the pool and a SV1 miner.
-Differently from the Config C, in this case the **tProxy** will be acting as a **Job Declarator (JD)**, so it will select transactions locally and send them to the **Pool-side JDS**
+Differently from the Config C, in this case the miner has the ability to choose their own Block Template. The pool service provider runs a Job Declarator Server (JDS), which negotiates templates on behalf of the pool.
+
+Let's start JDS. In a new terminal::
+
+```
+cd stratum/roles/v2/jd-server
+```
+
+Just like in the other roles, the `config-examples` directory contains configuration examples to be used by the pool service provider running JDS.
+
+The JDS in this case should be configured to point to the **local Template Provider** and the **local Pool** that you deployed in the previous steps. The correct `jds-config.toml` config file should look like this:
+```
+cp config-examples/jds-config-local-example.toml jds-config.toml
+cat jds-config.toml 
+# SRI Pool config
+authority_public_key = "3VANfft6ei6jQq1At7d8nmiZzVhBFS4CiQujdgim1ign"
+authority_secret_key = "7qbpUjScc865jyX2kiB4NVJANoC7GA7TAJupdzXWkc62"
+cert_validity_sec = 3600
+
+# List of coinbase outputs used to build the coinbase tx
+# ! Right now only one output is supported, so comment all the ones you don't need !
+# For P2PK, P2PKH, P2WPKH, P2TR a public key is needed. For P2SH and P2WSH, a redeem script is needed.  
+coinbase_outputs = [
+    #{ output_script_type = "P2PK", output_script_value = "0372c47307e5b75ce365daf835f226d246c5a7a92fe24395018d5552123354f086" },
+    #{ output_script_type = "P2PKH", output_script_value = "0372c47307e5b75ce365daf835f226d246c5a7a92fe24395018d5552123354f086" },
+    #{ output_script_type = "P2SH", output_script_value = "00142ef89234bc95136eb9e6fee9d32722ebd8c1f0ab" },
+    #{ output_script_type = "P2WSH", output_script_value = "00142ef89234bc95136eb9e6fee9d32722ebd8c1f0ab" },
+    { output_script_type = "P2WPKH", output_script_value = "036adc3bdf21e6f9a0f0fb0066bf517e5b7909ed1563d6958a10993849a7554075" },
+    #{ output_script_type = "P2TR", output_script_value = "036adc3bdf21e6f9a0f0fb0066bf517e5b7909ed1563d6958a10993849a7554075" },
+]
+
+# SRI Pool JD config
+listen_jd_address = "127.0.0.1:34264"
+# RPC config for mempool (it can be also the same TP if correctly configured)
+core_rpc_url =  "http://127.0.0.1"
+core_rpc_port = 18332
+core_rpc_user =  "username"
+core_rpc_pass =  "password"
+```
+
+Once your preferred config is set, you can run the JDS:
+
+```
+cargo run -- -c jds-config.toml
+```
+
+If the JDS properly starts you should see the following log lines:
+
+```log
+2024-01-22T13:40:07.833458Z  INFO jd_server: Jds INITIALIZING with config: "jds-config.toml"
+2024-01-22T13:40:07.833604Z  INFO jd_server::lib::job_declarator: JD INITIALIZED
+```
+
+### 4. Start **Job Declarator Client**
+
+In order for the miner to be able to negotiate Block Templates, the miner also needs to run the Job Declarator Client (JDC).
+
+Let's start JDC. In a new terminal:
+
+```
+cd stratum/roles/jd-client
+```
+
+Just like in the other roles, the `config-examples` directory contains configuration examples to be used by the miner running JDC.
+
+The JDC in this case should be configured to point to the **local JDS** that you deployed in the previous steps. The correct `jdc-config.toml` config file should look like this:
+```
+cp config-examples/jdc-config-local-example.toml jdc-config.toml 
+cat jdc-config.toml 
+# SRI JDC config
+downstream_address = "127.0.0.1"
+downstream_port = 34265
+
+# Version support
+max_supported_version = 2
+min_supported_version = 2
+
+# Minimum extranonce2 size for downstream
+# Max value: 16 (leaves 0 bytes for search space splitting of downstreams)
+# Max value for CGminer: 8
+# Min value: 2
+min_extranonce2_size = 8
+
+# Withhold
+withhold = false
+
+# Auth keys for open encrypted connection downstream
+authority_public_key = "3VANfft6ei6jQq1At7d8nmiZzVhBFS4CiQujdgim1ign"
+authority_secret_key = "7qbpUjScc865jyX2kiB4NVJANoC7GA7TAJupdzXWkc62"
+cert_validity_sec = 3600
+
+# How many time the JDC try to reinitialize itself after a failure 
+retry = 10
+
+# Template Provider config
+# Local TP (this is pointing to localhost so you must run a TP locally for this configuration to work)
+tp_address = "127.0.0.1:8442"
+# Hosted testnet TP 
+# tp_address = "75.119.150.111:8442"
+tp_authority_pub_key = "3VANfft6ei6jQq1At7d8nmiZzVhBFS4CiQujdgim1ign"
+
+# Solo Mining config
+# List of coinbase outputs used to build the coinbase tx in case of Solo Mining (as last-resort solution of the pools fallback system)
+# ! Put your Extended Public Key or Script as output_script_value !
+# ! Right now only one output is supported, so comment all the ones you don't need !
+# For P2PK, P2PKH, P2WPKH, P2TR a public key is needed. For P2SH and P2WSH, a redeem script is needed.  
+coinbase_outputs = [
+    #{ output_script_type = "P2PK", output_script_value = "0372c47307e5b75ce365daf835f226d246c5a7a92fe24395018d5552123354f086" },
+    #{ output_script_type = "P2PKH", output_script_value = "0372c47307e5b75ce365daf835f226d246c5a7a92fe24395018d5552123354f086" },
+    #{ output_script_type = "P2SH", output_script_value = "00142ef89234bc95136eb9e6fee9d32722ebd8c1f0ab" },
+    #{ output_script_type = "P2WSH", output_script_value = "00142ef89234bc95136eb9e6fee9d32722ebd8c1f0ab" },
+    { output_script_type = "P2WPKH", output_script_value = "036adc3bdf21e6f9a0f0fb0066bf517e5b7909ed1563d6958a10993849a7554075" },
+    #{ output_script_type = "P2TR", output_script_value = "036adc3bdf21e6f9a0f0fb0066bf517e5b7909ed1563d6958a10993849a7554075" },
+]
+
+[timeout]
+unit = "secs"
+value = 1
+
+# List of upstreams (JDS) used as backup endpoints
+# In case of shares refused by the JDS, the fallback system will propose the same job to the next upstream in this list
+[[upstreams]]
+authority_pubkey = "3VANfft6ei6jQq1At7d8nmiZzVhBFS4CiQujdgim1ign"
+pool_address = "127.0.0.1:34254"
+jd_address = "127.0.0.1:34264"
+# Pool signature (string to be included in coinbase tx)
+pool_signature = "Stratum v2 SRI Pool"
+ 
+# [[upstreams]]
+# authority_pubkey = "2di19GHYQnAZJmEpoUeP7C3Eg9TCcksHr23rZCC83dvUiZgiDL"
+# pool_address = "127.0.0.1:34254"
+# jd_address = "127.0.0.1:34264"
+# Pool signature (string to be included in coinbase tx)
+# pool_signature = "Stratum v2 SRI Pool"
+```
+
+Once your preferred config is set, you can run the JDS:
+
+```
+cargo run -- -c jdc-config.toml
+```
+
+If the JDS properly starts you should see the following log lines:
+
+```log
+2024-01-22T13:59:21.834169Z  INFO jd_client::upstream_sv2::upstream: PROXY SERVER - ACCEPTING FROM UPSTREAM: 127.0.0.1:34254
+2024-01-22T13:59:21.835277Z  INFO roles_logic_sv2::handlers::common: Received SetupConnectionSuccess: version=2, flags=110
+2024-01-22T13:59:21.835305Z  INFO jd_client: Connected to Upstream!
+2024-01-22T13:59:21.836175Z  INFO jd_client::job_declarator: JD proxy: setupconnection Proxy address: 127.0.0.1:34265
+2024-01-22T13:59:21.836343Z  INFO roles_logic_sv2::handlers::common: Received SetupConnectionSuccess: version=2, flags=1
+2024-01-22T13:59:21.836347Z  INFO jd_client::job_declarator: JD CONNECTED
+2024-01-22T13:59:21.836354Z  INFO jd_client::downstream: Listening for downstream mining connections on 127.0.0.1:34265
+2024-01-22T13:59:35.222702Z  INFO roles_logic_sv2::handlers::mining: Received SetNewPrevHash channel id: 3, job id: 3
+```
+
+### 3. Start **Translator (tProxy)**
+
+Now, let's run the tProxy that will facilitate communication between the pool and a SV1 miner.
+
+In a new terminal:
 ```
 cd stratum/roles/translator/
 ```
-The `proxy-config-example.toml` is a configuration example which can be copy/paste into `/conf` directory by the party that is running the Translator Proxy (most typically the mining farm/miner hobbyist) to address the most preferred customization.
+Just like in other roles, the `config-examples` directory contains configuration examples to be used by the party running the SV2 Translator Proxy (most typically the mining farm/miner hobbyist) to address the most preferred customization.
 To better understand and learn about information present in the configuration file, check [this README](https://github.com/stratum-mining/stratum/blob/main/roles/translator/README.md).
-```
-cp proxy-config-example.toml ./conf/proxy-config.toml
-```
-```
-cd conf/
-```
-Within the `proxy-config.toml` you will be able to specify which pool should a translation proxy connect to. For this specific configuration, the tProxy will connect to a locally hosted pool (which you deployed in the first step). 
-> <ins>**Warning**</ins><br>
-> To enable the JN sub-protocol, make sure that the `[jn_config]` line in `proxy-config.toml` is uncommented. If you couldn't get to run the local Template Provider from a **linux** machine, you can use our hosted TP (testnet or regtest), commenting/uncommenting the corresponding lines in your `proxy-config.toml`.
 
-To run this configuration, your config file should be like this:
+Within the `tproxy-config.toml` you will be able to specify which pool should a translation proxy connect to. For this specific configuration, the tProxy will connect to a locally hosted pool (which you deployed in the first step). Feel free to switch the pools while testing things out.
+To connect a Translator Proxy with the local JDC you just launched, for example, your config file should be like this:
 ```
+cp config-examples/tproxy-config-local-jdc-example.toml tproxy-config.toml
+cat tproxy-config.toml 
 # Braiins Pool Upstream Connection
 # upstream_authority_pubkey = "u95GEReVMjK6k5YqiSFNqqTnKU4ypU2Wm8awa6tmbmDmk1bWt"
 # upstream_address = "18.196.32.109"
 # upstream_port = 3336
 
-# Local SRI Pool Upstream Connection
+# Local SRI JDC Upstream Connection
 upstream_address = "127.0.0.1"
-upstream_port = 34254
-upstream_authority_pubkey = "2di19GHYQnAZJmEpoUeP7C3Eg9TCcksHr23rZCC83dvUiZgiDL"
+upstream_port = 34265
+upstream_authority_pubkey = "3VANfft6ei6jQq1At7d8nmiZzVhBFS4CiQujdgim1ign"
 
 # Local Mining Device Downstream Connection
 downstream_address = "0.0.0.0"
@@ -435,23 +517,10 @@ min_supported_version = 2
 min_extranonce2_size = 8
 coinbase_reward_sat = 5_000_000_000
 
-# JN config (optional), if set (uncommented) the tProxy starts on JN mode
-[jn_config]
-# local pool JN (local pool must be run before tProxy to work)
-jn_address = "127.0.0.1:34264"
-# local TP (this is pointing to localhost so you must run a TP locally for this configuration to work)
-tp_address = "127.0.0.1:8442"
-# hosted testnet TP 
-# tp_address = "89.116.25.191:8442"
-# hosted regnet TP 
-# tp_address = "75.119.150.111:8442"
-
 # Difficulty params
 [downstream_difficulty_config]
 # hashes/s of the weakest miner that will be connecting
-min_individual_miner_hashrate=5_000_000.0
-# minimum number of shares needed before a mining.set_difficulty is sent for updating targets
-miner_num_submits_before_update=5
+min_individual_miner_hashrate=10_000_000_000_000.0
 # target number of shares per minute the miner should be sending
 shares_per_minute = 6.0
 
@@ -459,41 +528,32 @@ shares_per_minute = 6.0
 # interval in seconds to elapse before updating channel hashrate with the pool
 channel_diff_update_interval = 60
 # estimated accumulated hashrate of all downstream miners
-channel_nominal_hashrate = 5_000_000.0
-```
-At this point, run the tProxy with:
-```
-cargo run -p translator_sv2
+channel_nominal_hashrate = 10_000_000_000_000.0
 ```
 
-If the translator starts properly, you should see the following log lines:
+Once your preferred config is set, you can run the Translator Proxy:
+
+```
+cargo run -- -c tproxy-config.toml
+```
+
+If the Translator properly starts you should see the following log lines:
 
 ```log
-2023-03-28T12:16:03.130356Z  INFO translator_sv2::upstream_sv2::upstream: PROXY SERVER - ACCEPTING FROM UPSTREAM: 127.0.0.1:34254
-2023-03-28T12:16:03.175910Z  INFO translator_sv2::upstream_sv2::upstream: Up: Sending: SetupConnection { protocol: MiningProtocol, min_version: 2, max_version: 2, flags: 6, endpoint_host: Owned([48, 46, 48, 46, 48, 46, 48]), endpoint_port: 50, vendor: Owned([]), hardware_version: Owned([]), firmware: Owned([]), device_id: Owned([]) }
-2023-03-28T12:16:03.177935Z  INFO translator_sv2::upstream_sv2::upstream: Up: Receiving: Sv2Frame { header: Header { extension_type: 0, msg_type: 1, msg_length: U24(6) }, payload: None, serialized: Some(Slice { offset: 0x7f50fe42a010, len: 12, index: 1, shared_state: SharedState(128), owned: None }) }
-2023-03-28T12:16:03.178368Z  INFO translator_sv2::upstream_sv2::upstream: Up: Sending: OpenExtendedMiningChannel(OpenExtendedMiningChannel { request_id: 0, user_identity: Owned([65, 66, 67]), nominal_hash_rate: 5000000.0, max_target: Owned([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 255, 255, 255, 255]), min_extranonce_size: 8 })
-2023-03-28T12:16:03.179222Z  INFO translator_sv2: Connected to Upstream!
-2023-03-28T12:16:03.182523Z  INFO translator_sv2::template_receiver: Template Receiver try to set up connection
-2023-03-28T12:16:03.190738Z  INFO translator_sv2::job_negotiator: JN proxy: setupconnection Proxy address: 0.0.0.0:34255
-2023-03-28T12:16:03.192886Z  INFO translator_sv2::job_negotiator: JN CONNECTED
-2023-03-28T12:16:03.232878Z  INFO translator_sv2::template_receiver: Template Receiver connection set up
-2023-03-28T12:16:03.233755Z  INFO translator_sv2::upstream_sv2::upstream: Up: Successfully Opened Extended Mining Channel
-2023-03-28T12:16:03.234006Z  INFO translator_sv2::upstream_sv2::upstream: Is future job: true
-
-2023-03-28T12:16:03.234211Z  INFO translator_sv2::upstream_sv2::upstream: Up: Set New Prev Hash
-2023-03-28T12:16:03.284539Z  INFO translator_sv2::template_receiver: Received SetNewPrevHash, waiting for IS_NEW_TEMPLATE_HANDLED
-2023-03-28T12:16:03.285990Z  INFO translator_sv2::template_receiver: IS_NEW_TEMPLATE_HANDLED ok
-2023-03-28T12:16:03.287963Z  INFO translator_sv2::upstream_sv2::upstream: Send custom job to upstream
+2024-01-22T14:00:43.370226Z  INFO translator_sv2: PC: ProxyConfig { upstream_address: "127.0.0.1", upstream_port: 34265, upstream_authority_pubkey: Secp256k1PublicKey(XOnlyPublicKey(e76c2b09eed7baa394dbb794896e913c86a5f719ea803bc0a4aaa104383cee24ac5b32268edbcc58d105534c281f112f5e7a5c1ff0e2d113bd938dc7698e2cce)), downstream_address: "0.0.0.0", downstream_port: 34255, max_supported_version: 2, min_supported_version: 2, min_extranonce2_size: 8, downstream_difficulty_config: DownstreamDifficultyConfig { min_individual_miner_hashrate: 5000000.0, shares_per_minute: 6.0, submits_since_last_update: 0, timestamp_of_last_update: 0 }, upstream_difficulty_config: UpstreamDifficultyConfig { channel_diff_update_interval: 60, channel_nominal_hashrate: 5000000.0, timestamp_of_last_update: 0, should_aggregate: false } }
+2024-01-22T14:00:43.371656Z  INFO translator_sv2::upstream_sv2::upstream: PROXY SERVER - ACCEPTING FROM UPSTREAM: 127.0.0.1:34265
+2024-01-22T14:00:43.374506Z  INFO roles_logic_sv2::handlers::common: Received SetupConnectionSuccess: version=2, flags=10
+2024-01-22T14:00:43.374563Z  INFO translator_sv2: Connected to Upstream!
+2024-01-22T14:00:43.375370Z  INFO roles_logic_sv2::handlers::mining: Received OpenExtendedMiningChannelSuccess with request id: 0 and channel id: 1
+2024-01-22T14:00:43.375381Z  INFO translator_sv2::upstream_sv2::upstream: Up: Successfully Opened Extended Mining Channel
+2024-01-22T14:00:43.895656Z  INFO roles_logic_sv2::handlers::mining: Received new extended mining job for channel id: 1 with job id: 1 is_future: true
+2024-01-22T14:00:43.895743Z  INFO roles_logic_sv2::handlers::mining: Received SetNewPrevHash channel id: 1, job id: 1
+2024-01-22T14:00:49.574430Z  INFO roles_logic_sv2::handlers::mining: Received new extended mining job for channel id: 1 with job id: 2 is_future: false
+2024-01-22T14:00:53.376930Z  INFO roles_logic_sv2::handlers::mining: Received SetTarget for channel id: 1
+2024-01-22T14:00:53.376962Z  INFO translator_sv2::upstream_sv2::upstream: SetTarget: SetTarget { channel_id: 1, maximum_target: Ref([255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255]) }
 ```
-> <ins>**Warning**</ins> <br>
-> If you want to create more custom configs, you can save them in the same `conf/` directory.
-> To run the specific custom config, you can do it by running:
-> ```
-> cargo run -p translator_sv2 -- -c [your-custom-config.toml]
-> ```
 
-### 4. Start **SV1 Miner**
+### 5. Start **SV1 Miner**
 After starting a pool, and a translation proxy, let’s start a SV1 miner.
 #### Physical ASIC miner
 If you have a physical miner, setup is very easy since you just have to point your ASIC miner to the local tProxy which you deployed in the last step of this guide.
