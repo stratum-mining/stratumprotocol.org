@@ -38,7 +38,7 @@ git checkout main
 #### Run Job Declarator Client (JDC)
 ```bash
 cd roles/jd-client/config-examples/
-cargo run -- -c proxy-config-hosted-example.toml
+cargo run -- -c jdc-config-hosted-example.toml
 ```
 #### Run Translator Proxy
 
