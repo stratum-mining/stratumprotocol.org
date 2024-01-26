@@ -44,7 +44,7 @@ cargo run -- -c proxy-config-hosted-example.toml
 
 ```bash
 cd roles/translator/config-examples/
-cargo run -- -c proxy-config-local-jdc-example.toml
+cargo run -- -c tproxy-config-local-jdc-example.toml
 ```
 #### Connect mining devices
 
