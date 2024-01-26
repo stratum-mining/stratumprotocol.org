@@ -54,7 +54,7 @@ Connect mining device - Translator Proxy will be running on port `34255`, so you
 
 #### Adjust proxy-config (optional)
 
-Depending on mining device you do run, you may have to adjust proxy-config file in order to adjust the min_individual_miner_hashrate and channel_nominal_hashrate parameters accordingly
+Depending on mining device you do run, you may have to adjust `tproxy-config-local-jdc-example.toml` file in order to adjust the `min_individual_miner_hashrate` and `channel_nominal_hashrate` parameters accordingly
 
 You’re all set up, proceed to the `Final Step` section.
 
@@ -78,7 +78,7 @@ make clean
 ./autogen.sh && ./configure 
 make -j 10
 ```
-Edit the `bitcoin.conf`` file by adding:
+Edit the `bitcoin.conf` file by adding:
 ```bash
 testnet=1
 server=1
@@ -126,7 +126,7 @@ cargo run -- -c jds-config-local-example.toml
 
 ```bash
 cd roles/jd-client/config-examples/
-cargo run -- -c proxy-config-local-example.toml
+cargo run -- -c jdc-config-local-example.toml
 ```
 #### Run Translator Proxy
 
