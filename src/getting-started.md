@@ -33,7 +33,7 @@ There are two primary ways to use all roles:
 
 ```bash
 git clone https://github.com/stratum-mining/stratum.git
-git checkout master
+git checkout main
 ```
 #### Run Job Declarator Client (JDC)
 ```bash
