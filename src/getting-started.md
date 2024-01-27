@@ -52,11 +52,21 @@ Connect mining device - Translator Proxy will be running on port `34255`, so you
 
 `stratum+tcp://<tProxy ip>:34255`
 
+#### CPU Miner
+If you don't have a physical miner, you can do tests with CPUMiner.
+
+Setup the correct CPUMiner for your OS:
+- You can download the binary directly from [here](https://sourceforge.net/projects/cpuminer/files/);
+- Or compile it from [https://github.com/pooler/cpuminer](https://github.com/pooler/cpuminer)
+
+On the CPUMiner directory:
+ 
+`./minerd -a sha256d -o stratum+tcp://localhost:34255 -q -D -P`
+
 #### Adjust proxy-config (optional)
 
 Depending on mining device you do run, you may have to adjust `tproxy-config-local-jdc-example.toml` file in order to adjust the `min_individual_miner_hashrate` and `channel_nominal_hashrate` parameters accordingly
 
-You’re all set up, proceed to the `Final Step` section.
 
 ## II Getting Started - Running all roles 
 
@@ -70,6 +80,8 @@ Clone template provider repository:
 
 ```bash
 git clone https://github.com/Sjors/bitcoin.git
+cd bitcoin
+git checkout 2023/11/sv2-poll
 ```
 Next, compile the template provider:
 
@@ -132,14 +144,23 @@ cargo run -- -c jdc-config-local-example.toml
 
 ```bash
 cd roles/translator/config-examples/
-cargo run -- -c proxy-config-local-jdc-example.toml
+cargo run -- -c tproxy-config-local-jdc-example.toml
 ```
 #### Connect mining devices
 
 Connect mining device - Translator Proxy will be running on port `34255`, so you will need just to edit your mining device(s) configuration, adding the line:
 
 `stratum+tcp://<tProxy ip>:34255`
+#### CPU Miner
+If you don't have a physical miner, you can do tests with CPUMiner.
 
+Setup the correct CPUMiner for your OS:
+- You can download the binary directly from [here](https://sourceforge.net/projects/cpuminer/files/);
+- Or compile it from [https://github.com/pooler/cpuminer](https://github.com/pooler/cpuminer)
+
+On the CPUMiner directory:
+ 
+`./minerd -a sha256d -o stratum+tcp://localhost:34255 -q -D -P`
 ## III Final Step: monitoring for blocks
 
 Once set up, monitor the machines and role logs for any valid blocks found.
