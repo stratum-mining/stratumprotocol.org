@@ -146,7 +146,7 @@ cargo run -- -c jdc-config-local-example.toml
 cd roles/translator/config-examples/
 cargo run -- -c tproxy-config-local-jdc-example.toml
 ```
-#### Connect mining devices
+#### Connect Mining Devices
 
 Connect mining device - Translator Proxy will be running on port `34255`, so you will need just to edit your mining device(s) configuration, adding the line:
 
@@ -185,26 +185,26 @@ If you didn’t change anything in the configuration files present in every role
 
 A way to look for it is to check the address `tb1qa0sm0hxzj0x25rh8gw5xlzwlsfvvyz8u96w3p8` since the default coinbase output is configured to be a P2WPKH built with a public key = `036adc3bdf21e6f9a0f0fb0066bf517e5b7909ed1563d6958a10993849a7554075`
 
-You can performa search on one of the following block explorers:
-- https://mempool.space/testnet 
-- https://blockstream.info/testnet/ 
+You can perform a search on one of the following block explorers:
+- [mempool.space/testnet](https://mempool.space/testnet)
+- [blockstream.info/testnet](https://blockstream.info/testnet/)
 
 ## IV Customizing configuration
 
 ### Customize the “pool_signature” string
-To customize the string which is inserted into the `scriptSig` of the coinbase tx input, you can change it by editing the `pool_signature` field present in:
-- roles/pool/pool-config.toml
+To customize the string which is inserted into the `scriptSig` of the coinbase tx input, you need to run every role locally. To make changes, edit the `pool_signature` field present in:
+- roles/pool/config-examples/pool-config-local-tp-example.toml
 - roles/jd-client/jd-client-config.toml
 
 Double check that the strings are equal and that you save your changes in both configuration files!
 
 ### Customize the coinbase tx output script
-To customize the coinbase tx output script, edit the `coinbase_output` field present in:
-- roles/pool/pool-config.toml
+To customize the coinbase tx output script, you need to run every role locally. To make changes, edit the `coinbase_output` field present in:
+- roles/jd-client/config-examples/jdc-config-local-example.toml
 - roles/jd-server/jd-server-config.toml
 
 You can use any of the following script types:  P2PK,P2PKH, P2WPKH, P2SH, P2WSH, P2TR. 
-In case a public key is required, as explained in the config files, you can start by creating a testnet wallet on mobile, using Green wallet, or a desktop one, using Electrum wallet, and extract the extended public key they provide. At this point, you can derive the child public key to use in the configuration files, using the script we developed as SRI. Please have a look at https://github.com/stratum-mining/stratum/tree/dev/utils/bip32-key-derivation.
+In case a public key is required, as explained in the config files, you can start by creating a testnet wallet on mobile, using Green wallet, or a desktop one, using Electrum wallet, and extract the extended public key they provide. At this point, you can derive the child public key to use in the configuration files, [using this script](https://github.com/stratum-mining/stratum/tree/dev/utils/bip32-key-derivation).
 
 ## Community support
 
