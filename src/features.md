@@ -122,7 +122,7 @@ Stratum V1's 2012 pooled mining extension predates ASIC mining farms. Considerin
 
 ## Multiplexing
 
-Allows a single connection (e.g. TCP) for independent communication channels between any number of devices, reducing the total connections anh costs necessary for pools and proxies.
+Allows a single connection (e.g. TCP) for independent communication channels between any number of devices, reducing the total connections and costs necessary for pools and proxies.
 
 #### Technical Description
 
