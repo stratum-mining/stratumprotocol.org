@@ -33,7 +33,6 @@ There are two primary ways to use all roles:
 
 ```bash
 git clone https://github.com/stratum-mining/stratum.git
-git checkout main
 ```
 #### Run Job Declarator Client (JDC)
 ```bash
@@ -81,7 +80,7 @@ Clone template provider repository:
 ```bash
 git clone https://github.com/Sjors/bitcoin.git
 cd bitcoin
-git checkout 2023/11/sv2-poll
+git checkout sv2
 ```
 Next, compile the template provider:
 
@@ -120,7 +119,6 @@ This way new templates are constructed every 2 seconds (taking the most profitab
 
 ```bash
 git clone https://github.com/stratum-mining/stratum.git
-git checkout master
 ```
 #### Run the SV2 Pool
 
