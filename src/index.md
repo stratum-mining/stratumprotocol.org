@@ -28,7 +28,7 @@ configurationTabs:
     value: config_A
     visualSrc: /assets/config-a.svg
     mobileVisualSrc: /assets/config-a-mobile.svg
-    textContent: Miners can utilize Stratum v2 without updating to SV2 firmware. Connect your SV1 firmware devices through Translation Proxy which facilitates the conversion of SV1 messages to SV2 for communication with an SV2 pool. Miners handle transaction selection locally via their own Template Provider, and declare them to a pool. If a pool rejects the proposed transactions, miners automatically switch to an alternative pool. Should all configured pools decline the proposal, miners fallback to solo mining.
+    textContent: Miners can utilize Stratum V2 without updating to SV2 firmware. Connect your SV1 firmware devices through Translation Proxy which facilitates the conversion of SV1 messages to SV2 for communication with an SV2 pool. Miners handle transaction selection locally via their own Template Provider, and declare them to a pool. If a pool rejects the proposed transactions, miners automatically switch to an alternative pool. Should all configured pools decline the proposal, miners fallback to solo mining.
   - name: Config B
     value: config_B
     visualSrc: /assets/config-b.svg
@@ -43,7 +43,7 @@ configurationTabs:
     value: config_D
     visualSrc: /assets/config-d.svg
     mobileVisualSrc: /assets/config-d-mobile.svg
-    textContent: In this configurations, mining pool select transactions, but it uses all the security and performance features of the SV2 protocol.
+    textContent: In this configuration, mining pool selects transactions, but it uses all the security and performance features of the SV2 protocol.
 roadmapTitle: Progress and Roadmap
 roadmapTagline: This is where the Stratum V2 protocol’s progress currently stands.
 roadmapSteps:
