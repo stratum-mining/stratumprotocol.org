@@ -28,12 +28,12 @@ configurationTabs:
     value: config_A
     visualSrc: /assets/config-a.svg
     mobileVisualSrc: /assets/config-a-mobile.svg
-    textContent: Before Stratum V2, transaction sets were selected by pools. With this SV2 configuration they’re selected by individual miners, making the network more censorship-resistant. Miners run SV2 firmware, connecting to the SV2 proxy server. Miners can pick their transactions locally and declare them to an SV2 pool.
+    textContent: Miners can utilize Stratum V2 without updating to SV2 firmware. Connect your SV1 firmware devices through Translation Proxy which facilitates the conversion of SV1 messages to SV2 for communication with an SV2 pool. Miners handle transaction selection locally via their own Template Provider, and declare them to a pool. If a pool rejects the proposed transactions, miners automatically switch to an alternative pool. Should all configured pools decline the proposal, miners fallback to solo mining.
   - name: Config B
     value: config_B
     visualSrc: /assets/config-b.svg
     mobileVisualSrc: /assets/config-b-mobile.svg
-    textContent: In this configurations, mining pool select transactions, but it uses all the security and performance features of the protocol.
+    textContent: Before Stratum V2, transaction sets were selected by pools. With this SV2 configuration they’re selected by individual miners, making the network more censorship-resistant. Miners run SV2 firmware, connecting to the SV2 proxy server. Miners can pick their transactions locally and declare them to an SV2 pool.
   - name: Config C
     value: config_C
     visualSrc: /assets/config-c.svg
@@ -43,7 +43,7 @@ configurationTabs:
     value: config_D
     visualSrc: /assets/config-d.svg
     mobileVisualSrc: /assets/config-d-mobile.svg
-    textContent: In this configuration miners run mining devices with SV1 firmware and connect to the translation proxy which translates the SV1 to SV2 messages and sends them to the SV2 pool. Transaction selection is done by the miners locally and then declared to the pool.
+    textContent: In this configuration, mining pool selects transactions, but it uses all the security and performance features of the SV2 protocol.
 roadmapTitle: Progress and Roadmap
 roadmapTagline: This is where the Stratum V2 protocol’s progress currently stands.
 roadmapSteps:
