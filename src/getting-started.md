@@ -111,9 +111,9 @@ There are optional parameters which can be used to better manage the Template Pr
 For example: 
 
 ```bash
-./src/bitcoind -sv2 -sv2port=8442 -sv2interval=2 -sv2feedelta=1000 -debug=sv2 -loglevel=sv2:trace
+./src/bitcoind -sv2 -sv2port=8442 -sv2interval=20 -sv2feedelta=1000 -debug=sv2 -loglevel=sv2:trace
 ```
-This way new templates are constructed every 2 seconds (taking the most profitable txs from the mempool) and they are sent downstream if new fees collected are more than 1000 sats. 
+This way new templates are constructed every 20 seconds (taking the most profitable txs from the mempool) and they are sent downstream if new fees collected are more than 1000 sats. 
 
 #### Clone the repository
 
