@@ -72,6 +72,7 @@ supportersTabs:
       - hrf
       - opensats
       - spiral
+      - hut
   - name: Implementers
     value: implementers
     supporters:
