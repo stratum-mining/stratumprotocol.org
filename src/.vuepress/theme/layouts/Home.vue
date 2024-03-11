@@ -178,6 +178,12 @@
           @tab-selected="selectedSupportersTab = $event"
         />
 
+        <Tabs
+          :tabs="data.pastSupportersTabs"
+          :selected="selectedSupportersTab"
+          @tab-selected="selectedSupportersTab = $event"
+        />
+
         <div class="flex z-20 flex-row flex-wrap mx-auto mt-8 mb-12 max-w-5xl">
           <a
             v-for="supporter of displayedSupporters"

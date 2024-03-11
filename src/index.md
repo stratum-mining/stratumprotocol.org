@@ -66,6 +66,13 @@ supportersText1: Let’s make Stratum V2 the new standard. Show material support
 supportersTabs:
   - name: All contributors
     value: all-contributors
+    supporters:
+      - braiins
+      - sri
+      - hrf
+      - opensats
+      - spiral
+      - hut
   - name: Implementers
     value: implementers
     supporters:
@@ -75,45 +82,53 @@ supportersTabs:
     value: adopters
     supporters:
       - braiins
-      - galaxy
+      - hut
   - name: Funders
     value: funders
     supporters:
-      - bitmex
-      - foundry
-      - galaxy
       - hrf
       - opensats
       - spiral
+pastSupportersTabs:
+  - name: Past Supporters
+    value: past-supporters
+    supporters:
+      - bitmex
       - sob
+      - foundry
+      - galaxy
 supporters:
-  - value: bitmex
-    image: /assets/bitmex-logo.svg
-    link: https://bitmex.com/
   - value: braiins
     image: /assets/braiins-logo.svg
     link: https://braiins.com/
-  - value: foundry
-    image: /assets/foundry-logo.svg
-    link: https://foundrydigital.com/
-  - value: galaxy
-    image: /assets/galaxy-logo.svg
-    link: https://www.galaxy.com/
   - value: hrf
     image: /assets/hrf-logo.svg
     link: https://www.hrf.org/
   - value: opensats
     image: /assets/opensats-logo.svg
-    link: https://opensats.org/    
+    link: https://opensats.org/
   - value: spiral
     image: /assets/spiral-logo.svg
     link: https://www.spiral.xyz/
   - value: sri
     image: /assets/stratum-v2-icon.svg
     link: https://github.com/stratum-mining/stratum
+  - value: bitmex
+    image: /assets/bitmex-logo.svg
+    link: https://bitmex.com/
+  - value: foundry
+    image: /assets/foundry-logo.svg
+    link: https://foundrydigital.com/
+  - value: galaxy
+    image: /assets/galaxy-logo.svg
+    link: https://www.galaxy.com/
   - value: sob
     image: /assets/summer-of-bitcoin.svg
     link: https://www.summerofbitcoin.org/
+  - value: hut
+    image: /assets/hut-8.svg
+    link: https://hut8.io/
+
 whyTitle: Layers of Upgrades
 supportDevelopersText: Support Developers
 supportDevelopersLink: "mailto:stratumv2@gmail.com"
