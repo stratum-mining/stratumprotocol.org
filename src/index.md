@@ -126,7 +126,7 @@ supporters:
     image: /assets/summer-of-bitcoin.svg
     link: https://www.summerofbitcoin.org/
   - value: hut
-    image: /assets/hut-8.svg
+    image: /assets/hut8.svg
     link: https://hut8.io/
 
 whyTitle: Layers of Upgrades
