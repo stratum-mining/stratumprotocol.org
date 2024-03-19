@@ -1,7 +1,7 @@
 ---
 title: "Introducing SRI 1.0.0 - the most important milestone in our Stratum V2 journey!"
 description: "We are thrilled to announce the launch of SRI 1.0.0! This marks an important milestone in our mission to decentralize and enhance bitcoin mining and stands ready for immediate testing and integration."
-date: "2024-20-04"
+date: "2024-04-21"
 authors:
   - Pavlenex
 tags:
@@ -16,6 +16,8 @@ We are thrilled to announce the launch of SRI [1.0.0](https://github.com/stratum
 Start your SV2 journey with our [getting started guide](https://stratumprotocol.org/getting-started/).  
 
 ## 🛎️ Key highlights
+
+[![SRI 1.0.0 Announcement](https://img.youtube.com/vi/cyduxNB5R7E/mqdefault.jpg)](https://www.youtube.com/watch?v=cyduxNB5R7E)
 
 ### 👷 Miners  
 - Connect to a SV2 pool without upgrading existing SV1 firmware through Translation Proxy or
@@ -57,7 +59,7 @@ Special thanks to [Santacroce](https://santacroce.xyz/), [Hut8](http://hut8.io),
 ## 🎁 Support us
 
 - Individuals can support the development and maintenance of the SRI by [donating through OpenSats](https://opensats.org/projects/stratumv2), a 501(c)(3) public charity dedicated to supporting open-source Bitcoin projects.
-- Corporate entities interested in providing grants to SRI contributors, please get in touch with us directly. Your support can make a significant difference in accelerating development, research, and innovation. Email us at: stratumv2 at gmail.com
+- Corporate entities interested in providing grants to SRI contributors, please get in touch with us directly. Your support can make a significant difference in accelerating development, research, and innovation. Please [get in touch](mailto:stratumv2@gmail.com)
 - Contribute - We’re inviting developers interested in contributing to SRI to look into our codebase, study the specs and join our regular weekly developer meetings on Discord to get up to speed and get proper onboarding.
 
 ## 🏁 Dive in
