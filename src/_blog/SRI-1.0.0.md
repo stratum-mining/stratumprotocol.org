@@ -1,7 +1,7 @@
 ---
 title: "Introducing SRI 1.0.0 - the most important milestone in our Stratum V2 journey!"
 description: "We are thrilled to announce the launch of SRI 1.0.0! This marks an important milestone in our mission to decentralize and enhance bitcoin mining and stands ready for immediate testing and integration."
-date: "2024-04-21"
+date: "2024-03-21"
 authors:
   - Pavlenex
 tags:
