@@ -82,13 +82,15 @@ git clone https://github.com/Sjors/bitcoin.git
 cd bitcoin
 git checkout sv2
 ```
-Next, compile the template provider:
+Next, compile the template provider. You can accelerate the process by using multiple cores.
 
 ```bash
 make clean
-./autogen.sh && ./configure 
-make -j 10
+./autogen.sh && ./configure
+nproc # find out how many cores are available on your CPU
+make -j <nproc> # replace the result of nproc here
 ```
+
 Edit the `bitcoin.conf` file by adding:
 ```bash
 testnet=1
