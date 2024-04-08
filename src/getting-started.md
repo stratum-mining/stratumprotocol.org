@@ -101,6 +101,9 @@ Run the Template provider:
 ```bash
 ./src/bitcoind -sv2 -sv2port=8442 -debug=sv2 
 ```
+
+⚠️ Note: you need to wait until `bitcoind` is fully synced with the testnet before you proceed.
+
 Optional paremeters:
 
 There are optional parameters which can be used to better manage the Template Provider:
