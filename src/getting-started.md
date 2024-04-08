@@ -87,8 +87,9 @@ Next, compile the template provider. You can accelerate the process by using mul
 ```bash
 make clean
 ./autogen.sh && ./configure
-nproc # find out how many cores are available on your CPU
-make -j <nproc> # replace the result of nproc here
+make -j "$(nproc)" # on linux
+# or
+make -j "$(sysctl -n hw.physicalcpu)" # on macOS
 ```
 
 Edit the `bitcoin.conf` file by adding:
