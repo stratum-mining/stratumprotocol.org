@@ -102,7 +102,7 @@ rpcpassword=password
 Run the Template provider:
 
 ```bash
-./src/bitcoind -sv2 -sv2port=8442 -debug=sv2 
+./bitcoin-sv2-tp-0.1.2/bin/bitcoind -sv2 -sv2port=8442 -debug=sv2 
 ```
 Optional paremeters:
 
