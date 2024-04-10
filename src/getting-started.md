@@ -82,7 +82,7 @@ git clone https://github.com/Sjors/bitcoin.git
 cd bitcoin
 git checkout sv2
 ```
-Next, compile the template provider. You can accelerate the process by using multiple cores.
+Next, compile the template provider. You can accelerate the process by using multiple cores with the `-j` option.
 
 ```bash
 make clean
