@@ -75,20 +75,8 @@ Depending on mining device you do run, you may have to adjust `tproxy-config-loc
 
 #### Run Template Provider
 
-Clone template provider repository:
+Download a release from Sjors' fork of Bitcoin Core from https://github.com/Sjors/bitcoin/releases
 
-```bash
-git clone https://github.com/Sjors/bitcoin.git
-cd bitcoin
-git checkout sv2
-```
-Next, compile the template provider:
-
-```bash
-make clean
-./autogen.sh && ./configure 
-make -j 10
-```
 Edit the `bitcoin.conf` file by adding:
 ```bash
 testnet=1
@@ -99,7 +87,7 @@ rpcpassword=password
 Run the Template provider:
 
 ```bash
-./src/bitcoind -sv2 -sv2port=8442 -debug=sv2 
+./bitcoin-sv2-tp-0.1.2/bin/bitcoind -sv2 -sv2port=8442 -debug=sv2 
 ```
 
 ⚠️ Note: you need to wait until `bitcoind` is fully synced with the testnet before you proceed.
@@ -114,7 +102,7 @@ There are optional parameters which can be used to better manage the Template Pr
 For example: 
 
 ```bash
-./src/bitcoind -sv2 -sv2port=8442 -sv2interval=20 -sv2feedelta=1000 -debug=sv2 -loglevel=sv2:trace
+./bitcoin-sv2-tp-0.1.2/bin/bitcoind -sv2 -sv2port=8442 -sv2interval=20 -sv2feedelta=1000 -debug=sv2 -loglevel=sv2:trace
 ```
 This way new templates are constructed every 20 seconds (taking the most profitable txs from the mempool) and they are sent downstream if new fees collected are more than 1000 sats. 
 
