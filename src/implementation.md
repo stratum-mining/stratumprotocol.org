@@ -6,20 +6,20 @@ pageHeading: Reference Implementation
 
 The [SV2 Reference Implementation](https://www.github.com/stratum-mining/stratum) provides:
 
-A robust set of Stratum V2 (Sv2) primitives as Rust library crates for anyone to expand the protocol or implement a role.
+A robust set of Stratum V2 (SV2) primitives as Rust library crates for anyone to expand the protocol or implement a role.
 For example:
 
-- Pools supporting Sv2
-- Mining-device/hashrate producers integrating Sv2 into their firmware
+- Pools supporting SV2
+- Mining-device/hashrate producers integrating SV2 into their firmware
 - Bitcoin nodes implementing Template Provider to build the blocktemplate
 
 The above Rust primitives as a C library available for use in other languages via FFI.
 
-A set of helpers built on top of the above primitives and the external Bitcoin-related Rust crates for flexible implementations of the Sv2 roles.
+A set of helpers built on top of the above primitives and the external Bitcoin-related Rust crates for flexible implementations of the SV2 roles.
 
-An open-source implementation of a Sv2 proxy for miners.
+An open-source implementation of a SV2 proxy for miners.
 
-An open-source implementation of a Sv2 pool for mining pool operators.
+An open-source implementation of a SV2 pool for mining pool operators.
 
 ## Native Support
 
@@ -27,16 +27,16 @@ The Reference Implementation's modular design supports use in 3rd party software
 
 ### Miner Use-Cases
 
-- Sv1 Miners can use the proxy (roles/sv2/mining-proxy) to connect with a Sv2-compatible pool.
+- SV1 Miners can use the proxy (roles/sv2/mining-proxy) to connect with a SV2-compatible pool.
 
-- Sv1 mining farms mining to a Sv2-compatible pool gain some of the security and efficiency improvements Sv2 offers over Stratum V1 (Sv1). The Sv1<->Sv2 miner proxy does not support all the features of Sv2, but works as a temporary measure before upgrading completely to Sv2-compatible firmware. (The Sv1<->Sv2 translation proxy implementation is a work in progress.)
+- SV1 mining farms mining to a SV2-compatible pool gain some of the security and efficiency improvements SV2 offers over Stratum V1 (SV1). The SV1<->SV2 miner proxy does not support all the features of SV2, but works as a temporary measure before upgrading completely to SV2-compatible firmware. (The SV1<->SV2 translation proxy implementation is a work in progress.)
 
 ### Pool Use-Cases
 
-- Pools supporting Sv2 can deploy the open source binary crate (roles/pool) to offer their clients (miners participating in said pool) an Sv2-compatible pool.
+- Pools supporting SV2 can deploy the open source binary crate (roles/pool) to offer their clients (miners participating in said pool) an SV2-compatible pool.
 
-- The Rust helper library provides a suite of tools for mining pools to build custom Sv2 compatible pool implementations.
+- The Rust helper library provides a suite of tools for mining pools to build custom SV2 compatible pool implementations.
 
-- The C library provides a set of FFI bindings to the Rust helper library for miners to integrate Sv2 into their existing firmware stack.
+- The C library provides a set of FFI bindings to the Rust helper library for miners to integrate SV2 into their existing firmware stack.
 
 For further detailed documentation on how to deploy the reference implementation for one of the above use-cases or integrate, see the README on [Github](https://www.github.com/stratum-mining/stratum) or join our developer community on [Discord](https://discord.gg/fsEW23wFYs).

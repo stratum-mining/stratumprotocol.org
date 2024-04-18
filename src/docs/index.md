@@ -2,35 +2,35 @@
 pageHeading: Roles and Protocols
 ---
 
-# Stratum v2 Overview
+# Stratum V2 Overview
 
-The Stratum v2 Protocol Suite consists of [4 protocols](#sub-protocols) (the main Mining Protocol and 3 sub-protocols) which specify the communication standards among [5 roles](#roles) for Bitcoin Mining entities, through the use of 3 types of communication [channels](#channels). This section defines the roles, channels, and provides a summary of each sub-protocol's implementation. For technical specifications, please refer to the full documentation on [Github](https://www.github.com/stratum-mining/sv2-spec).
+The Stratum V2 Protocol Suite consists of [4 protocols](#sub-protocols) (the main Mining Protocol and 3 sub-protocols) which specify the communication standards among [5 roles](#roles) for Bitcoin Mining entities, through the use of 3 types of communication [channels](#channels). This section defines the roles, channels, and provides a summary of each sub-protocol's implementation. For technical specifications, please refer to the full documentation on [Github](https://www.github.com/stratum-mining/sv2-spec).
 
 ## Roles
 
-We define 5 roles for entities in the Stratum v2 Protocol Suite, which can be classified as either downstream or upstream in relation to each other.
+We define 5 roles for entities in the Stratum V2 Protocol Suite, which can be classified as either downstream or upstream in relation to each other.
 
 ### Mining Devices or Miners
 
-The actual mining machines which compute hashes. Miners may refer to a wide variety of hashrate producers; from large-scale corporate mining farms to wildcat mobile mining operations capturing flare gas on a temporory shale drilling site. Miners are most usefully referred to at the scale they communicate upstream to a pool: a 10PH mining farm colocated with a hydro dam that communicates as a single unit to the pool and splits its work internally may be thought of as a single 'miner', separate from the 'miner' operating a single S19 in his garage down the street. Miners "point" their hashrate at a Pool, defined below. From a Stratum v2 perspective, they are considered the most downstream roles.
+The actual mining machines which compute hashes. Miners may refer to a wide variety of hashrate producers; from large-scale corporate mining farms to wildcat mobile mining operations capturing flare gas on a temporory shale drilling site. Miners are most usefully referred to at the scale they communicate upstream to a pool: a 10PH mining farm colocated with a hydro dam that communicates as a single unit to the pool and splits its work internally may be thought of as a single 'miner', separate from the 'miner' operating a single S19 in his garage down the street. Miners "point" their hashrate at a Pool, defined below. From a Stratum V2 perspective, they are considered the most downstream roles.
 
 ### Pools 
 
-Pools operate as communication nodes to coordinate hashrate and distribute mining rewards. They create jobs for end-mining devices, validate blocks and shares, and propagate found blocks to the Bitcoin Network. Pools do not custody or control hashrate. End-mining devices compatible with the Stratum protocol can switch between pools in minutes. Pools therefore compete for hashrate based on latency, ease-of-use, payout reliability, and associated networking services, all of which Stratum v2 can significantly improve. They are considered the most upstream roles. Pools can open any kind of communication channels (as defined below) with downstream roles (Proxies or Mining Devices).
+Pools operate as communication nodes to coordinate hashrate and distribute mining rewards. They create jobs for end-mining devices, validate blocks and shares, and propagate found blocks to the Bitcoin Network. Pools do not custody or control hashrate. End-mining devices compatible with the Stratum protocol can switch between pools in minutes. Pools therefore compete for hashrate based on latency, ease-of-use, payout reliability, and associated networking services, all of which Stratum V2 can significantly improve. They are considered the most upstream roles. Pools can open any kind of communication channels (as defined below) with downstream roles (Proxies or Mining Devices).
 
 
 ### Proxies
 
-Proxies are intermediaries between Miners and Pools that aggregate connections and translate mining communications from Sv1->Sv2 or Sv2->Sv1. Proxies may optionally provide additional functionality including monitoring services or job declaration optimizations. Both Miners and Pools can run Proxies, and they will do so for various reasons depending on the use-case.
+Proxies are intermediaries between Miners and Pools that aggregate connections and translate mining communications from SV1->SV2 or SV2->SV1. Proxies may optionally provide additional functionality including monitoring services or job declaration optimizations. Both Miners and Pools can run Proxies, and they will do so for various reasons depending on the use-case.
 
 #### Mining Proxy
 
-The Sv2 Mining Proxy acts as an intermediary between the mining devices and the Sv2 Pool. It receives mining requests from multiple devices, aggregates them, and forwards them to the Sv2 Pool. It can open group/extended channels with upstream (the Sv2 Pool) and standard channels with downstream (Sv2 Mining Devices).
+The SV2 Mining Proxy acts as an intermediary between the mining devices and the SV2 Pool. It receives mining requests from multiple devices, aggregates them, and forwards them to the SV2 Pool. It can open group/extended channels with upstream (the SV2 Pool) and standard channels with downstream (SV2 Mining Devices).
 
 #### Translation Proxy
 
-Translator Proxy is responsible for translating the communication between Sv1 actual Mining Devices and an Sv2 Pool or Mining Proxy. It enables Sv1 devices to interact with Sv2-based mining infrastructure, bridging the gap between the older Sv1 protocol and Sv2. It can open extended channels with upstream (the Sv2 Pool or Mining Proxy).
-For example, a Pool might run a Translator Proxy as its initial connection service to accept both Sv1 and Sv2 connections, establishing direct standard channels with the Sv2 miners and using the proxy to translate messages with the Sv1 miners.
+Translator Proxy is responsible for translating the communication between SV1 actual Mining Devices and an SV2 Pool or Mining Proxy. It enables SV1 devices to interact with SV2-based mining infrastructure, bridging the gap between the older SV1 protocol and SV2. It can open extended channels with upstream (the SV2 Pool or Mining Proxy).
+For example, a Pool might run a Translator Proxy as its initial connection service to accept both SV1 and SV2 connections, establishing direct standard channels with the SV2 miners and using the proxy to translate messages with the SV1 miners.
 
 ### Job Declarators
 
@@ -53,7 +53,7 @@ Template Providers (TPs) are roles which can be Pool-side and Miner-side, but th
 
 ### Mining Protocol
 
-Also known as the "Main Protocol", this is the direct successor to Stratum v1. The main protocol is used for mining and the only part of the full protocol stack that needs to be implemented in all scenarios. It is used for communication between Mining Devices, Proxies, and Pool Services. If a miner/pool does not support transaction selection and declared mining jobs, this is the only required protocol.
+Also known as the "Main Protocol", this is the direct successor to Stratum V1. The main protocol is used for mining and the only part of the full protocol stack that needs to be implemented in all scenarios. It is used for communication between Mining Devices, Proxies, and Pool Services. If a miner/pool does not support transaction selection and declared mining jobs, this is the only required protocol.
 #### Channels
 The protocol defines three types of communication channels:
 
@@ -69,7 +69,7 @@ The Job Declaration Protocol is used by a miner, typically a mining farm, to dec
 
 ### Template Distribution Protocol
 
-The Template Distribution Protocol is used to facilitate the extraction of the information about the next block from Bitcoin Core. It is designed to replace getblocktemplate (BIPs 22 and 23) with a more efficient and easier-to-implement solution for those incorporating other aspects of Stratum v2 into their systems.
+The Template Distribution Protocol is used to facilitate the extraction of the information about the next block from Bitcoin Core. It is designed to replace getblocktemplate (BIPs 22 and 23) with a more efficient and easier-to-implement solution for those incorporating other aspects of Stratum V2 into their systems.
 
 ### Job Distribution Protocol
 
