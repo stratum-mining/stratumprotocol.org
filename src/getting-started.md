@@ -195,14 +195,14 @@ You can perform a search on one of the following block explorers:
 ### Customize the “pool_signature” string
 To customize the string which is inserted into the `scriptSig` of the coinbase tx input, you need to run every role locally. To make changes, edit the `pool_signature` field present in:
 - roles/pool/config-examples/pool-config-local-tp-example.toml
-- roles/jd-client/jd-client-config.toml
+- roles/jd-client/config-examples/jdc-config-local-example.toml
 
 Double check that the strings are equal and that you save your changes in both configuration files!
 
 ### Customize the coinbase tx output script
 To customize the coinbase tx output script, you need to run every role locally. To make changes, edit the `coinbase_output` field present in:
 - roles/jd-client/config-examples/jdc-config-local-example.toml
-- roles/jd-server/jd-server-config.toml
+- roles/jd-server/config-examples/jd-server-config-local-example.toml
 
 You can use any of the following script types:  P2PK,P2PKH, P2WPKH, P2SH, P2WSH, P2TR. 
 In case a public key is required, as explained in the config files, you can start by creating a testnet wallet on mobile, using Green wallet, or a desktop one, using Electrum wallet, and extract the extended public key they provide. At this point, you can derive the child public key to use in the configuration files, [using this script](https://github.com/stratum-mining/stratum/tree/dev/utils/bip32-key-derivation).
