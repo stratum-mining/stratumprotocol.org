@@ -1,6 +1,6 @@
 ---
 title: " New SRI update with Job Negotiator - allowing miners to select transactions "
-description: "A new update of Stratum v2 is available.The new update allows miners to select transactions via a new sub-protocol and their node. We’re inviting miners, pools, firmware makers, and the community to check out our getting started guide and pilot test the software!"
+description: "A new update of Stratum V2 is available.The new update allows miners to select transactions via a new sub-protocol and their node. We’re inviting miners, pools, firmware makers, and the community to check out our getting started guide and pilot test the software!"
 date: "2023-04-14"
 authors:
   - Pavlenex
@@ -23,7 +23,7 @@ Heigh-ho, Heigh-ho*
 
 ---
 
-After months of coding in our dusty mines, we’re ready to ship a new Stratum v2 reference implementation (SRI) update! 
+After months of coding in our dusty mines, we’re ready to ship a new Stratum V2 reference implementation (SRI) update! 
 
 The new update allows miners to select transactions via a new sub-protocol and their node. This is a major milestone in democratizing transaction selections in pooled mining and decentralizing bitcoin!
 
@@ -32,7 +32,7 @@ The new update allows miners to select transactions via a new sub-protocol and t
 **Please submit your feedback after testing [via this form](https://docs.google.com/forms/d/1is27h37PtsXtXC9zSbweNfxcyEtHzATjdJphIy8hArw/).**
 
 
-SRI’s flexible stack offers various components when setting up a configuration that suits your needs. As an early adopter, we recommend testing the mining device with Stratum v1 firmware, connecting to an SV2 pool via Translation Proxy. Miners will run their own template provider (bitcoind) with the max fee policy. Within the translation proxy sits a Job Negotiator that runs a sub-protocol responsible for distributing miner’s templates to the pool. 
+SRI’s flexible stack offers various components when setting up a configuration that suits your needs. As an early adopter, we recommend testing the mining device with Stratum V1 firmware, connecting to an SV2 pool via Translation Proxy. Miners will run their own template provider (bitcoind) with the max fee policy. Within the translation proxy sits a Job Negotiator that runs a sub-protocol responsible for distributing miner’s templates to the pool. 
 
 ![Config D](/assets/config-d.svg)
 
@@ -40,7 +40,7 @@ While there are various configurations to explore, testing the configuration, wh
 
 ## What is a Job Negotiator?
 
-With the current mining protocol - Stratum v1, the pools use their template providers to dispatch work to the miners. As a result, mining pools are the central point of failure and potential weak spot when it comes to censoring certain transactions by excluding them from the template.
+With the current mining protocol - Stratum V1, the pools use their template providers to dispatch work to the miners. As a result, mining pools are the central point of failure and potential weak spot when it comes to censoring certain transactions by excluding them from the template.
 
 A Job Negotiator, in combination with a template provider, gives the responsibility back to miners or an independent third party to provide a new template (select transactions), thereby making bitcoin pool infrastructure more decentralized.
 
@@ -86,13 +86,13 @@ With the next update, we will add a fallback functionality that would allow mine
 
 In addition, we will add ways for pools to spot-check the validity of blocks and a few other improvements, like enhancing the encryption and ensuring we're following the latest changes in the spec. Most importantly, we hope to open a pull request for template provider in Bitcoin Core.
 
-We'd like to thank Stratum v2 supporters, implementers, and all contributors, without whom SRI wouldn't be possible. Please donate to our [crowdfunding page](https://opensats.org/projects/stratumv2) hosted by OpenSats Foundation and Swan to support our development efforts. 
+We'd like to thank Stratum V2 supporters, implementers, and all contributors, without whom SRI wouldn't be possible. Please donate to our [crowdfunding page](https://opensats.org/projects/stratumv2) hosted by OpenSats Foundation and Swan to support our development efforts. 
 
 ![Supporters](/assets/stratum-v2-supporters.png)
 
 If you’re a company willing to directly support the work of developers by providing a direct grant and being featured on our website, please [get in touch](mailto:stratumv2@gmail.com). We will connect you with our contributors in need of funding.
 
-[Join our Discord](https://discord.gg/UHckbC7x58) to engage with the Stratum v2 community.
+[Join our Discord](https://discord.gg/UHckbC7x58) to engage with the Stratum V2 community.
 
 We’re excited to [hear your feedback](https://docs.google.com/forms/d/1is27h37PtsXtXC9zSbweNfxcyEtHzATjdJphIy8hArw/prefill).
 

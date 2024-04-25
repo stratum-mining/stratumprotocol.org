@@ -2,9 +2,9 @@
 pageHeading: Getting Started
 ---
 
-# Getting Started with running SRI - Stratum v2 reference implementation
+# Getting Started with running SRI - Stratum V2 reference implementation
 
-This document aims to assist users in deploying the SRI software stack efficiently. Stratum v2 as a protocol is flexible, and allows users to run multiple configurations. In the getting started guide, we’re focusing on running [roles](https://stratumprotocol.org/docs/#roles) which allow miners to construct their own block templates. 
+This document aims to assist users in deploying the SRI software stack efficiently. Stratum V2 as a protocol is flexible, and allows users to run multiple configurations. In the getting started guide, we’re focusing on running [roles](https://stratumprotocol.org/docs/#roles) which allow miners to construct their own block templates. 
 
 ![SRI ](/assets/Sri-AllRoles.png)
 
@@ -22,7 +22,7 @@ There are two primary ways to use all roles:
 
 ## I Getting Started - The easiest way
 
-**Objective**: Give Stratum v2 a try, mine blocks on the testnet with minimal setup.
+**Objective**: Give Stratum V2 a try, mine blocks on the testnet with minimal setup.
 
 - Community-hosted roles used: SV2 Pool, testnet Template Provider, and Job Declarator Server.
 - Self-hosted roles to run: Job Declarator Client (JDC) and Translator Proxy.
@@ -170,7 +170,7 @@ Translation Proxy tProxy logs
 
 ### Monitor for mined blocks on Testnet
 
-If you didn’t change anything in the configuration files present in every role subdirectory, the valid block mined will be recognized by the string `Stratum v2 SRI Pool (0x5374726174756d2076322053524920506f6f6c)` inserted into the scriptSig of the coinbase tx input. 
+If you didn’t change anything in the configuration files present in every role subdirectory, the valid block mined will be recognized by the string `Stratum V2 SRI Pool (0x5374726174756d2076322053524920506f6f6c)` inserted into the scriptSig of the coinbase tx input. 
 
 A way to look for it is to check the address `tb1qa0sm0hxzj0x25rh8gw5xlzwlsfvvyz8u96w3p8` since the default coinbase output is configured to be a P2WPKH built with a public key = `036adc3bdf21e6f9a0f0fb0066bf517e5b7909ed1563d6958a10993849a7554075`
 

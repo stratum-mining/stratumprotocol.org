@@ -4,7 +4,7 @@ pageHeading: SV2 in Detail
 
 # Features
 
-Stratum v2 offers superior security, flexibility, and performance. This section details the motivations and technical descriptions behind V2's protocol design decisions.
+Stratum V2 offers superior security, flexibility, and performance. This section details the motivations and technical descriptions behind V2's protocol design decisions.
 
 ## Bandwidth Consumption
 
@@ -36,13 +36,13 @@ Any pool can (and should) take advantage of this benefit to reduce inefficiency 
 
 ## Job Distribution Latency
 
-Sv2 separates mining prevhash and future job, vs the combined message in Sv1 which forces pools to send empty blocks to communicate a prevhash. Sv2 pools can send jobs to workers ahead of time for future blocks, even before the prior block has been found. Pools send the latest prevhash in a space opitimized message, starting the end-device mining on the next block in a single 32-byte message.
+SV2 separates mining prevhash and future job, vs the combined message in SV1 which forces pools to send empty blocks to communicate a prevhash. SV2 pools can send jobs to workers ahead of time for future blocks, even before the prior block has been found. Pools send the latest prevhash in a space opitimized message, starting the end-device mining on the next block in a single 32-byte message.
 
 #### Technical Description
 
-Pools distribute jobs to miners with predefined data blocks and variable data for end-device miner handling. In Stratum V1, the predefined data includes the prevhash (i.e. hash of the most recently found valid block) and the Merkle root for the transaction set to be included in the current block. These two data fields aren’t seperable in Sv1, forcing a heavy (slow) data transfer necessary to distribute new jobs on new block (with a new prevhash) propagation.
+Pools distribute jobs to miners with predefined data blocks and variable data for end-device miner handling. In Stratum V1, the predefined data includes the prevhash (i.e. hash of the most recently found valid block) and the Merkle root for the transaction set to be included in the current block. These two data fields aren’t seperable in SV1, forcing a heavy (slow) data transfer necessary to distribute new jobs on new block (with a new prevhash) propagation.
 
-Stratum V2 segregates the prevhash from the rest of the predefined block data, allowing independent sends of block data prior to finding a new prevhash. The new prevhash message is sent on its own on finding a valid block; the transmission occurs much faster because the message doesn’t include the heavier data. Stratum v2 miners begin work on new blocks faster than Stratum v1 miners.
+Stratum V2 segregates the prevhash from the rest of the predefined block data, allowing independent sends of block data prior to finding a new prevhash. The new prevhash message is sent on its own on finding a valid block; the transmission occurs much faster because the message doesn’t include the heavier data. Stratum V2 miners begin work on new blocks faster than Stratum V1 miners.
 
 #### Motivation & Impact
 
@@ -54,7 +54,7 @@ SV2 uses a binary encoding for messages, eliminating redundant and unnecessary n
 
 #### Technical Description
 
-The Sv2 Protocol has fixed message framing and is precisely defined, eliminating Sv1's interpretation errors. See 'Framing' for details.
+The SV2 Protocol has fixed message framing and is precisely defined, eliminating SV1's interpretation errors. See 'Framing' for details.
 
 #### Motivation & Impact
 
@@ -80,11 +80,11 @@ Attackers can implement the above attacks undetected. Stratum V2 uses authentica
 
 ## Eliminate Empty Block Mining
 
-Stratum v1 incentivizes 'blind mining', where end-devices temporarily mine on an empty block, without any transactions, while calculating the next block candidate's block template. Sv2 eliminates the blind bining incentive by making full-block propagation equally efficient to empty block propagation.
+Stratum V1 incentivizes 'blind mining', where end-devices temporarily mine on an empty block, without any transactions, while calculating the next block candidate's block template. SV2 eliminates the blind bining incentive by making full-block propagation equally efficient to empty block propagation.
 
 #### Technical Description
 
-Stratum v1 incentivizes pools to send empty blocks containing the new prevhash, as these messages will arrive faster than a message containing a full block. Separating these two messages in Stratum V2 lets pools send full blocks to miners before the new prevhash message. The miners' end-devices are prepared to start working on a new (full) block before the previous block has been found, and only require the next prevhash message to begin mining. Since this prevhash message is the same size (i.e. takes the same amount of time to arrive) regardless of whether or not the pool has sent an empty block or a full block, there is no longer an incentive to mine on empty blocks.
+Stratum V1 incentivizes pools to send empty blocks containing the new prevhash, as these messages will arrive faster than a message containing a full block. Separating these two messages in Stratum V2 lets pools send full blocks to miners before the new prevhash message. The miners' end-devices are prepared to start working on a new (full) block before the previous block has been found, and only require the next prevhash message to begin mining. Since this prevhash message is the same size (i.e. takes the same amount of time to arrive) regardless of whether or not the pool has sent an empty block or a full block, there is no longer an incentive to mine on empty blocks.
 
 #### Motivation & Impact
 
@@ -92,7 +92,7 @@ As long as the incentive to mine on empty blocks exists, there is a nonzero chan
 
 ## Job Selection
 
-Miners can choose their own work and mine their chosen transaction set in Sv2, further decentralizing mining. Decentralized block template construction is implemented separately from the main mining protocol and is optional for pools and miners.
+Miners can choose their own work and mine their chosen transaction set in SV2, further decentralizing mining. Decentralized block template construction is implemented separately from the main mining protocol and is optional for pools and miners.
 
 #### Technical Description
 

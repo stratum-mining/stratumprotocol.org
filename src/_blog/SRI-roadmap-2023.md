@@ -1,6 +1,6 @@
 ---
-title: " Stratum v2 (SRI) Roadmap - To infinity and beyond "
-description: "Today, we’re sharing the  (Stratum Reference Implementation) roadmap providing insights into our ongoing work and the project's direction. Additionally, we are publishing the latest progress on Stratum v2 protocol specifications, further emphasizing our commitment to openness and building in public."
+title: " Stratum V2 (SRI) Roadmap - To infinity and beyond "
+description: "Today, we’re sharing the  (Stratum Reference Implementation) roadmap providing insights into our ongoing work and the project's direction. Additionally, we are publishing the latest progress on Stratum V2 protocol specifications, further emphasizing our commitment to openness and building in public."
 date: "2023-08-03"
 authors:
   - Pavlenex
@@ -11,7 +11,7 @@ tags:
 
 ---
 
-Today, we’re sharing the  (Stratum Reference Implementation) **roadmap** providing insights into our ongoing work and the project's direction. Additionally, we are publishing the latest progress on Stratum v2 protocol **specifications**, further emphasizing our commitment to openness and building in public.
+Today, we’re sharing the  (Stratum Reference Implementation) **roadmap** providing insights into our ongoing work and the project's direction. Additionally, we are publishing the latest progress on Stratum V2 protocol **specifications**, further emphasizing our commitment to openness and building in public.
 
 We believe fostering collaboration and transparency in the development process accelerates community involvement and brings us one step closer to our mission - better, more robust, and more decentralized bitcoin mining.
 
@@ -19,11 +19,11 @@ At its core, SRI is a community-driven, open-source project. Our roadmap reflect
 
 We welcome you to join us in our mission, start contributing, testing and help us shape the future of  bitcoin mining.
 
-## 📖 Stratum v2 specification
+## 📖 Stratum V2 specification
 
-The specification is the heart of any protocol. The Stratum v2 specification, meticulously maintained by an independent open-source working group [formed](https://www.cnbc.com/2022/10/11/bitcoin-mining-software-overhaul-stratum-v2-promoted-by-block-braiins.html) in October 2022, is pivotal in defining the functionality. Since its inception, the specs have undergone several updates to enhance security, performance, flexibility, and simplicity.
+The specification is the heart of any protocol. The Stratum V2 specification, meticulously maintained by an independent open-source working group [formed](https://www.cnbc.com/2022/10/11/bitcoin-mining-software-overhaul-stratum-v2-promoted-by-block-braiins.html) in October 2022, is pivotal in defining the functionality. Since its inception, the specs have undergone several updates to enhance security, performance, flexibility, and simplicity.
 
-The main goal is to **stabilize** the specification, **formalize** the proposal procedures, and make them **accessible** to anyone interested in improving the Stratum v2. 
+The main goal is to **stabilize** the specification, **formalize** the proposal procedures, and make them **accessible** to anyone interested in improving the Stratum V2. 
 
 The table below summarizes the changelog of notable specs updates.
 
@@ -37,7 +37,7 @@ The table below summarizes the changelog of notable specs updates.
 
 ### Noise handshake improvement
 
-One of our first updates is improving the noise handshake. The Stratum v2 protocol updates refine the authenticated key agreement through a three-step process, **enhancing security and communication efficiency**. This includes, an exchange of keys, followed by an Elliptic Curve Diffie-Hellman (ECDH) operation, encryption algorithm negotiation and server authentication through a signature noise message.
+One of our first updates is improving the noise handshake. The Stratum V2 protocol updates refine the authenticated key agreement through a three-step process, **enhancing security and communication efficiency**. This includes, an exchange of keys, followed by an Elliptic Curve Diffie-Hellman (ECDH) operation, encryption algorithm negotiation and server authentication through a signature noise message.
 
 ### Using Bitcoin Core cryptographic primitives
 
@@ -51,13 +51,13 @@ Previously, 'future_job' indicated whether a job related to a future or the last
 
 This update enhances the message framework by incorporating the security layer into the stratum framing itself, thus eliminating the need for redundant frame-length information and improving protocol efficiency. In the previous framework, individual frame lengths were revealed in the TCP traffic, creating potential vulnerabilities.
 
-The new framework encrypts the Stratum v2 payload in byte chunks of maximum 65519 bytes and v2 header in 22 bytes forming  AEAD ciphertexts, effectively concealing and protecting the frame length field and facilitating implementation of large-message encoding. This change **streamlines the parsing process**, making the TCP-transcript fully uniform and random looking.
+The new framework encrypts the Stratum V2 payload in byte chunks of maximum 65519 bytes and v2 header in 22 bytes forming  AEAD ciphertexts, effectively concealing and protecting the frame length field and facilitating implementation of large-message encoding. This change **streamlines the parsing process**, making the TCP-transcript fully uniform and random looking.
 
 ### Renaming Job Negotiator to Job Declarator
 
 In response to community feedback regarding a protocol formerly known as **"Job Negotiator"**, we are announcing a naming update to clarify its purpose and functionality.
 
-This protocol is one of the most critical features of Stratum v2. In combination with a template provider, it allows miners or an independent third party to select transactions, decentralizing bitcoin pool infrastructure.
+This protocol is one of the most critical features of Stratum V2. In combination with a template provider, it allows miners or an independent third party to select transactions, decentralizing bitcoin pool infrastructure.
 
 Over time, we've observed confusion surrounding the term "negotiation," as it may imply a back-and-forth process between miners and pools to determine block content. We want to stress that this is not the case. Instead, the miner declares transactions to the pool, which can then choose to accept or decline them. There is no ongoing communication concerning block content between parties.
 
@@ -67,39 +67,39 @@ Provided that all miners run standardized software this could mean that the **en
 
 With this in mind, we’re **renaming the Job Netogiation to Job Declaration protocol**.
 
-## 👷‍♂️ Stratum v2 implementations
+## 👷‍♂️ Stratum V2 implementations
 
-Thus far, there have been two adoption paths for the Stratum v2 protocol:
+Thus far, there have been two adoption paths for the Stratum V2 protocol:
 
-- Stratum v2 implementation by Braiins
-- SRI (Stratum v2 Reference implementation)
+- Stratum V2 implementation by Braiins
+- SRI (Stratum V2 Reference implementation)
 
-Both implementers, Braiins, and SRI, are part of the SV2 working group and share the goal of fostering a collaborative environment to support and encourage the broader adoption of Stratum v2. The remaining of the article will focus on the reference implementation, SRI, exploring its current status and future direction.
+Both implementers, Braiins, and SRI, are part of the SV2 working group and share the goal of fostering a collaborative environment to support and encourage the broader adoption of Stratum V2. The remaining of the article will focus on the reference implementation, SRI, exploring its current status and future direction.
 
 ### 🛣️ Stratum Reference Implementation Roadmap
 
-In October 2022, we launched our SRI’s [first update](https://twitter.com/StratumV2/status/1579805619351326722?s=20), which allowed miners to run Stratum v1 firmware and connect to an SV2 compatible pool. Few months afterwards, [a new update](https://twitter.com/StratumV2/status/1646542195233640454?s=20) allowed miners to select transactions, democratizing block selection. 
+In October 2022, we launched our SRI’s [first update](https://twitter.com/StratumV2/status/1579805619351326722?s=20), which allowed miners to run Stratum V1 firmware and connect to an SV2 compatible pool. Few months afterwards, [a new update](https://twitter.com/StratumV2/status/1646542195233640454?s=20) allowed miners to select transactions, democratizing block selection. 
 
 Currently we’re working on our **third major update**, below is an overview on what to expect in the future. 
 
 ![SRI Roadmap](/assets/SRI-roadmap-2023.png)
 
-The third update represents our **“Now”** column on our roadmap, and aims to be completed in the next few months. It builds  on all previous updates with more features, enhanced security performance and better flexibility. Most importantly the new update, should set the milestone for easier Stratum v2 integrations into existing pools. Miners and mining pools are encouraged to test out our [previous update](https://stratumprotocol.org/blog/stratumv2-jn-announcement/) and provide feedback in the meanwhile.
+The third update represents our **“Now”** column on our roadmap, and aims to be completed in the next few months. It builds  on all previous updates with more features, enhanced security performance and better flexibility. Most importantly the new update, should set the milestone for easier Stratum V2 integrations into existing pools. Miners and mining pools are encouraged to test out our [previous update](https://stratumprotocol.org/blog/stratumv2-jn-announcement/) and provide feedback in the meanwhile.
 
 **Our always evolving roadmap is available on [Miro](https://miro.com/app/board/uXjVM8FOwSE=/?share_link_id=902364718672), and also on [GitHub](https://github.com/orgs/stratum-mining/projects/5) for anyone to review and provide feedback. If you’re interested in joining our contributors team, hop on to [Discord](https://discord.gg/fsEW23wFYs).**
 
 ### Message Generator - interoperability suite 
 
-As the Stratum v2 protocol gains popularity, we anticipate the emergence of various adoption paths. However, it is imperative that these implementations adhere closely to the specified standards. Deviation from the protocol specifications could yield catastrophic consequences, potentially resulting in significant profit loss.
+As the Stratum V2 protocol gains popularity, we anticipate the emergence of various adoption paths. However, it is imperative that these implementations adhere closely to the specified standards. Deviation from the protocol specifications could yield catastrophic consequences, potentially resulting in significant profit loss.
 
-Because of this, we developed an interoperability  suite called **Message Generator** (or MG), which is essential in ensuring that all implementations are following the specs, and are able to test against each other. The tool allows anyone developing Stratum v2 based software to run a series of predefined tests in different configurations to ensure compatibility.
+Because of this, we developed an interoperability  suite called **Message Generator** (or MG), which is essential in ensuring that all implementations are following the specs, and are able to test against each other. The tool allows anyone developing Stratum V2 based software to run a series of predefined tests in different configurations to ensure compatibility.
 
-MG is stateful, meaning it can save a value of an Sv2 message received by the tested software to be sent later in another message. The logic of the stateful MG makes it easier to implement arbitrary actions on MG, allowing the MG to send Sv2 messages where the fields' values are randomly chosen by the software, rather than the user. This represents a form of property-based testing. Currently, the implementation of arbitrary for MG is still a work in progress.
+MG is stateful, meaning it can save a value of an SV2 message received by the tested software to be sent later in another message. The logic of the stateful MG makes it easier to implement arbitrary actions on MG, allowing the MG to send SV2 messages where the fields' values are randomly chosen by the software, rather than the user. This represents a form of property-based testing. Currently, the implementation of arbitrary for MG is still a work in progress.
 
 The following are the next steps for MG:
 - Implement arbitrary functionality
 - Write additional MG tests
-- Extend MG support to Sv1 messages
+- Extend MG support to SV1 messages
 
 ### 👩‍💻SRI Stack 
 
@@ -108,11 +108,11 @@ Thus far, SRI’s architecture bundled some of the roles together. We’ve reali
 We’re now working on refactoring those roles, that would allow us to have:
 - **SV2 pool** that doesn’t have built in job-declaration
 - **SV2 mining-proxy** that does downstream aggregation/load balancing.
-- **Translator-proxy** that does Sv1 to Sv2 translation
+- **Translator-proxy** that does SV1 to SV2 translation
 - **Job-declarator-client** that does job declaration
 - **Job-declarator-server** that accepts or declines jobs and does block propagation
 
-#### Stratum v2 Pool
+#### Stratum V2 Pool
 
 The ability for **existing pools** to easily **integrate SV2** is our highest priority. This requires that we develop an HTTP API. Certain mining pools aim to monitor their clients' mining devices in order to display a malfunctioning device, or generally showcase additional data on their web app. This can be easily achieved by tracking the shares submitted by each device. We’re working on adding this in the form of an extension to the SRI, as a **monitoring-extension**.
 
@@ -143,7 +143,7 @@ Next, we’ll be adding **noise handshake encryption**, and **framing** improvem
 
 We would like to thank everyone who has reviewed the PR thus far, and would like to invite more developers to take a look at it and provide feedback. 
 
-After those updates are added, we will be **converting PR from draft to ready to review**. Hopefully after enough reviews and community consensus, the PR gets merged into the bitcoin core codebase. Meanwhile, miners wanting to help test and use the sv2 template provider can use our patched version.
+After those updates are added, we will be **converting PR from draft to ready to review**. Hopefully after enough reviews and community consensus, the PR gets merged into the bitcoin core codebase. Meanwhile, miners wanting to help test and use the SV2 template provider can use our patched version.
 
 #### Proxies
 
@@ -152,16 +152,16 @@ All miners use proxies to aggregate connections and save on bandwidth. In SRI we
 - Translation Proxy
 - SV2 Proxy
 
-**Translation proxy** is something we worked on and deployed in October 2022. It allows miners running sv1 firmware to connect to an SV2 pool, by converting messages from SV1 to SV2 and vice versa. This means that miners don’t have to update firmware to use Stratum v2. Translation proxy has been tested and stabilized.
+**Translation proxy** is something we worked on and deployed in October 2022. It allows miners running sv1 firmware to connect to an SV2 pool, by converting messages from SV1 to SV2 and vice versa. This means that miners don’t have to update firmware to use Stratum V2. Translation proxy has been tested and stabilized.
 
 One of our goals in the future is to develop a **pure SV2 proxy**, that would aggregate connections from mining devices running SV2 firmware. Further improving mining-proxy means that we would be adding **web-ui** for easier management of devices by the miners at some point in the future.
 
 #### Benchmarking
 
-It’s not an unknown fact that miners by nature are very rational actors in the ecosystem. With that in mind, their actions are usually profit-driven. To ensure Stratum v2 adoption, we’ve started developing a testing & benchmarking suite which would allow industry to easily compare Stratum v2 performance against Stratum v1 in different mining scenarios. Such tool should provide data that will help miners evaluate profitability and performance and make an informed decision. We will be documenting benchmarking results in the form of a report/case-study and sharing it with the industry.
+It’s not an unknown fact that miners by nature are very rational actors in the ecosystem. With that in mind, their actions are usually profit-driven. To ensure Stratum V2 adoption, we’ve started developing a testing & benchmarking suite which would allow industry to easily compare Stratum V2 performance against Stratum V1 in different mining scenarios. Such tool should provide data that will help miners evaluate profitability and performance and make an informed decision. We will be documenting benchmarking results in the form of a report/case-study and sharing it with the industry.
 
 The benchmarking suite will include:
-- Dockerized roles for both Stratum v1 and Stratum v2;
+- Dockerized roles for both Stratum V1 and Stratum V2;
 - Possibility to benchmark protocols in regtest, testnet and possibly mainnet; 
 - Possibility to easily benchmark different configurations permitted by SRI stack;
 - Web UI to easily interact with the benchmarking suite;
@@ -173,6 +173,6 @@ In the future, as our contributors base grows, we’re hoping to kick-start the 
 
 #### Contributors
 
-As you may have noticed, Stratum v2 and SRI will aim to have a lot of new features, improvements and big plans. We could never develop software without our community who has been actively helping us by testing the software and providing feedback. Thank you for your efforts.
+As you may have noticed, Stratum V2 and SRI will aim to have a lot of new features, improvements and big plans. We could never develop software without our community who has been actively helping us by testing the software and providing feedback. Thank you for your efforts.
 
 We’re a small team of contributors with big dreams, to make that happen, **we need more people to join us in our mission** of decentralizing and improving bitcoin mining and we’re welcoming anyone interested in contributing to join us on [Discord](https://discord.gg/fsEW23wFYs).
