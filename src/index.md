@@ -68,6 +68,7 @@ supportersTabs:
     value: all-contributors
     supporters:
       - braiins
+      - demand
       - sri
       - hrf
       - opensats
@@ -82,6 +83,7 @@ supportersTabs:
     value: adopters
     supporters:
       - braiins
+      - demand
       - hut
   - name: Funders
     value: funders
@@ -101,6 +103,9 @@ supporters:
   - value: braiins
     image: /assets/braiins-logo.svg
     link: https://braiins.com/
+  - value: demand
+    image: /assets/demand-logo.svg
+    link: https://www.dmnd.work  
   - value: hrf
     image: /assets/hrf-logo.svg
     link: https://www.hrf.org/
@@ -126,7 +131,7 @@ supporters:
     image: /assets/summer-of-bitcoin.svg
     link: https://www.summerofbitcoin.org/
   - value: hut
-    image: /assets/hut8.svg
+    image: /assets/hut-logo.svg
     link: https://hut8.io/
 
 whyTitle: Layers of Upgrades
