@@ -5,7 +5,7 @@
         'fixed top-0 left-0 z-[50] border-b-none flex flex-row justify-between duration-200',
         'px-4 py-6 md:px-10 lg:px-14 w-screen box-border',
         'h-24 lg:h-28',
-        hasScrolled ? 'hidden'
+        hasScrolled ? 'bg-dark-200/90 hidden' : 'bg-none '
       )
     "
   >
