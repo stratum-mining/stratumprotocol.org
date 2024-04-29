@@ -112,6 +112,8 @@ Choose one of the following:
 - Local:
   - Translator Proxy
 
+![Hosted Config D](/assets/hosted_config_d.png)
+
 #### Run Translator Proxy
 
 ```bash
@@ -127,6 +129,8 @@ You're ready to start mining. Skip to the [Connect Mining Devices](#connect-mini
   - SV2 Pool
   - Template Provider (`bitcoind` synced to `testnet3`)
   - Translator Proxy
+
+![Local Config C](/assets/local_config_c.png)
 
 #### Run Template Provider
 
@@ -158,6 +162,8 @@ You're ready to start mining. Skip to the [Connect Mining Devices](#connect-mini
    - Job Declarator Client
    - Translator Proxy
 
+![Hosted Config D](/assets/hosted_config_d.png)
+
 #### Run Job Declarator Client (JDC)
 ```bash
 cd roles/jd-client/config-examples/
@@ -180,6 +186,8 @@ You're ready to start mining. Skip to the [Connect Mining Devices](#connect-mini
    - Job Declarator Server
    - Job Declarator Client
    - Translator Proxy
+
+![Local Config D](/assets/local_config_d.png)
 
 #### Run Template Provider
 
