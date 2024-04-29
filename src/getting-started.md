@@ -99,10 +99,12 @@ This way new templates are constructed every 20 seconds (taking the most profita
 ## Choose your Setup
 
 Choose one of the following:
-- [Hosted Config C](#hosted-config-c)
-- [Local Config C](#local-config-c)
-- [Hosted Config D](#hosted-config-d)
-- [Local Config D](#local-config-d)
+| Setup Name| SV2 Pool | JDS | JDC | tProxy | Use-case | Network |
+|---|----------|-----|-----|--------|---|---|
+| [Hosted Config C](#hosted-config-c) |  Hosted ☁️ | - | -   | Local 🧑‍💻| Miner-side testing. <br><br> **NO** Job Declaration Protocol. | `testnet3` |
+| [Local Config C](#local-config-c) | Local 🧑‍💻 | - | - | Local 🧑‍💻 | Developers who wish to deploy their own pool. <br><br> **NO** Job Declaration Protocol. | `testnet3` |
+| [Hosted Config D](#hosted-config-d) | Hosted ☁️ | Hosted ☁️ | Local 🧑‍💻 | Local 🧑‍💻 | Miner-side testing.<br><br> **WITH** Job Declaration Protocol. | `testnet3` |
+| [Local Config D](#local-config-d) | Local 🧑‍💻 | Local 🧑‍💻 | Local 🧑‍💻 | Local 🧑‍💻 | Developers who wish to deploy their own pool. <br><br> **WITH** Job Declaration Protocol. | `testnet3` |
 
 ### Hosted Config C
 
