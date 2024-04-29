@@ -114,7 +114,7 @@ Choose one of the following:
 - Local:
   - Translator Proxy
 
-![Hosted Config D](/assets/hosted_config_d.png)
+![Hosted Config C](/assets/hosted_config_c.png)
 
 #### Run Translator Proxy
 
