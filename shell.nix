@@ -23,7 +23,7 @@ pkgs.mkShell {
     nvm install 16
 
     # install yarn
-    npm install -g yarn
+    npm install yarn
 
     # update yarn
     npm update
@@ -33,9 +33,9 @@ pkgs.mkShell {
 'Now you have a Nix environment with NodeJS v16 plus Yarn.' \
 'You can run the following for your development setup:' \
 '$ # Install dependencies' \
-'$ yarn install' \
+'$ ./node_modules/yarn/bin/yarn install' \
 '$ # Serve locally (by default on port 8080)' \
-'$ yarn dev'
+'$ ./node_modules/yarn/bin/yarn dev'
 
   '';
 }
