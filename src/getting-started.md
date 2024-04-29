@@ -174,11 +174,10 @@ You're ready to start mining. Skip to the [Connect Mining Devices](#connect-mini
 
 ### Local Config D
 
-- Hosted:
+- Local:
    - SV2 Pool
    - Template Provider (`bitcoind` synced to `testnet3`)
    - Job Declarator Server
-- Local:
    - Job Declarator Client
    - Translator Proxy
 
