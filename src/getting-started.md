@@ -43,7 +43,7 @@ Alternatively, you can also deploy your own Pool, TP and JDS to get the full inf
 
 ### Install Rust
 
-You'll needRust installed on your machine. If it's not:
+You'll need Rust installed on your machine. If it's not:
 
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
