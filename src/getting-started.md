@@ -251,7 +251,6 @@ On the CPUMiner directory:
 
 Depending on mining device you do run, you may have to adjust `tproxy-config*.toml` file in order to adjust the `min_individual_miner_hashrate` and `channel_nominal_hashrate` parameters to have an optimal difficulty target for the channel.
 
-
 ## Monitoring for blocks
 
 Once set up, monitor the machines and role logs for any valid blocks found.
