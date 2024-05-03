@@ -247,7 +247,7 @@ On the CPUMiner directory:
 ./minerd -a sha256d -o stratum+tcp://localhost:34255 -q -D -P
 ```
 
-## Adjust `tproxy-config` (optional)
+### Adjust `tproxy-config` (optional)
 
 Depending on mining device you do run, you may have to adjust `tproxy-config*.toml` file in order to adjust the `min_individual_miner_hashrate` and `channel_nominal_hashrate` parameters to have an optimal difficulty target for the channel.
 
