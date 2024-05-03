@@ -16,7 +16,7 @@ The Job Declaration Protocol allows miners to construct their own block template
 
 We are going to focus on Configs C and D, because most of the mining industry today still uses SV1 firmware.
 
-The SRI team is hosting a Pool, Template Provider (TP) and Job Declarator Server (JDS) to aid testing on the miner side.
+The SRI community is hosting a Pool, Template Provider (TP) and Job Declarator Server (JDS) to aid testing on the miner side.
 
 Alternatively, you can also deploy your own Pool, TP and JDS to get the full infrastructure experience.
 
