@@ -64,7 +64,7 @@ git clone https://github.com/stratum-mining/stratum
 
 You can skip this step if you're running Hosted Config C.
 
-Download a release from Sjors' fork of Bitcoin Core from https://github.com/Sjors/bitcoin/releases
+Download a release from Sjors' fork of Bitcoin Core from [https://github.com/Sjors/bitcoin/releases](https://github.com/Sjors/bitcoin/releases)
 
 Edit your `bitcoin.conf` file by adding:
 ```bash
