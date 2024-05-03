@@ -37,7 +37,7 @@ Alternatively, you can also deploy your own Pool, TP and JDS to get the full inf
 - [Customizing configuration](#customizing-configuration)
   - [Customize the `pool_signature` string](#customize-the-pool_signature-string)
   - [Customize the `coinbase_output` script](#customize-the-coinbase_output-script)
-- [Community Support](#xxx)
+- [Community Support](#community-support)
 
 ## Prerequisites
 
