@@ -234,7 +234,7 @@ If you don't have an ASIC, skip to the [CPU miner step](#cpu-miner) below.
 
 ---
 
-## CPU Miner
+### CPU Miner
 If you don't have a physical miner, you can do tests with CPU Miner.
 
 Setup the correct CPUMiner for your OS:
