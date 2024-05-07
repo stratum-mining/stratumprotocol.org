@@ -54,6 +54,7 @@
         </h2>
 
         <Tabs
+          class="configTabs"
           :tabs="data.configurationTabs"
           :selected="selectedConfigurationTab"
           @tab-selected="selectedConfigurationTab = $event"
@@ -173,13 +174,8 @@
 
         <!-- Supporters category selection -->
         <Tabs
-          :tabs="data.supportersTabs"
-          :selected="selectedSupportersTab"
-          @tab-selected="selectedSupportersTab = $event"
-        />
-
-        <Tabs
-          :tabs="data.pastSupportersTabs"
+          class="supportersTabs"
+          :tabs="combinedSupportersTabs"
           :selected="selectedSupportersTab"
           @tab-selected="selectedSupportersTab = $event"
         />
@@ -292,6 +288,7 @@ export default {
 
   computed: {
     data() {
+      console.log(this.$page.frontmatter)
       return this.$page.frontmatter;
     },
     displayedSupporters() {
@@ -300,6 +297,18 @@ export default {
       return this.data.supporters.filter(({ value }) =>
         this.selectedSupportersTab.supporters.includes(value)
       );
+    },
+    combinedSupportersTabs() {
+      const combinedTabs = [
+        ...this.data.supportersTabs,
+        ...this.data.pastSupportersTabs.map(tab => {
+          return {
+            ...tab,
+            name: tab.name
+          };
+        })
+      ];
+      return combinedTabs;
     },
   },
 
