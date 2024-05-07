@@ -54,6 +54,7 @@
         </h2>
 
         <Tabs
+          class="configTabs"
           :tabs="data.configurationTabs"
           :selected="selectedConfigurationTab"
           @tab-selected="selectedConfigurationTab = $event"
