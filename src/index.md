@@ -64,7 +64,7 @@ specificationAuthorsImages:
 supportersTitle: Support for Stratum V2
 supportersText1: Let’s make Stratum V2 the new standard. Show material support or indicate your approval of the protocol direction.
 supportersTabs:
-  - name: All contributors
+  - name: All Contributors
     value: all-contributors
     supporters:
       - braiins
