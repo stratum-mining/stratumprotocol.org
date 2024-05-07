@@ -173,6 +173,7 @@
 
         <!-- Supporters category selection -->
         <Tabs
+          class="supportersTabs"
           :tabs="combinedSupportersTabs"
           :selected="selectedSupportersTab"
           @tab-selected="selectedSupportersTab = $event"
