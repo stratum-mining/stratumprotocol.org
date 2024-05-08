@@ -7,14 +7,14 @@ pageHeading: Getting Started
 This document aims to assist users in deploying the SRI software stack efficiently. Stratum v2 as a protocol is flexible, and allows users to run multiple different configurations.
 
 There are 4 possible configurations for SV2 deployments:
-- **Config A**: SV2 firmware with Job Declaration Protocol
-- **Config B**: SV2 firmware without Job Declaration Protocol
+- **Config A**: SV1 firmware with Job Declaration Protocol
+- **Config B**: SV2 firmware with Job Declaration Protocol
 - **Config C**: SV1 firmware without Job Declaration Protocol
-- **Config D**: SV1 firmware with Job Declaration Protocol
+- **Config D**: SV2 firmware without Job Declaration Protocol
 
 The Job Declaration Protocol allows miners to construct their own block templates.
 
-We are going to focus on Configs C and D, because most of the mining industry today still uses SV1 firmware.
+We are going to focus on Configs A and C, because most of the mining industry today still uses SV1 firmware.
 
 The SRI community is hosting a Pool, Template Provider (TP) and Job Declarator Server (JDS) to aid testing on the miner side.
 
@@ -26,10 +26,10 @@ Alternatively, you can also deploy your own Pool, TP and JDS to get the full inf
   - [Clone SRI repository](#clone-sri-repository)
   - [Run Template Provider](#run-template-provider)
 - [Choose your Setup](#choose-your-setup)
+  - [Hosted Config A](#hosted-config-a)
+  - [Local Config A](#local-config-a)
   - [Hosted Config C](#hosted-config-c)
   - [Local Config C](#local-config-c)
-  - [Hosted Config D](#hosted-config-d)
-  - [Local Config D](#local-config-d)
 - [Connect Mining Devices](#connect-mining-devices)
 - [CPU miner](#cpu-miner)
 - [Adjust tproxy-config (optional)](#adjust-tproxy-config-optional)
@@ -59,8 +59,8 @@ git clone https://github.com/stratum-mining/stratum
 
 ⚠️ Note: This is only necessary if you're going to be running either:
 - Local Config C
-- Hosted Config D
-- Local Config D
+- Hosted Config A
+- Local Config A
 
 You can skip this step if you're running Hosted Config C.
 
@@ -101,10 +101,78 @@ This way new templates are constructed every 20 seconds (taking the most profita
 Choose one of the following:
 | Setup Name| SV2 Pool | JDS | JDC | tProxy | Use-case | Job Declarator Protocol| Network |
 |---|----------|-----|-----|--------|---|---|---|
+| [Hosted Config A](#hosted-config-a) | Hosted ☁️ | Hosted ☁️ | Local 🧑‍💻 | Local 🧑‍💻 | Miner-side testing. | YES | `testnet3` |
+| [Local Config A](#local-config-a) | Local 🧑‍💻 | Local 🧑‍💻 | Local 🧑‍💻 | Local 🧑‍💻 | Developers who wish to deploy their own pool. | YES | `testnet3` |
 | [Hosted Config C](#hosted-config-c) |  Hosted ☁️ | - | -   | Local 🧑‍💻| Miner-side testing. | NO | `testnet3` |
 | [Local Config C](#local-config-c) | Local 🧑‍💻 | - | - | Local 🧑‍💻 | Developers who wish to deploy their own pool. | NO | `testnet3` |
-| [Hosted Config D](#hosted-config-d) | Hosted ☁️ | Hosted ☁️ | Local 🧑‍💻 | Local 🧑‍💻 | Miner-side testing. | YES | `testnet3` |
-| [Local Config D](#local-config-d) | Local 🧑‍💻 | Local 🧑‍💻 | Local 🧑‍💻 | Local 🧑‍💻 | Developers who wish to deploy their own pool. | YES | `testnet3` |
+
+### Hosted Config A
+
+- Hosted:
+   - SV2 Pool
+   - Template Provider (`bitcoind` synced to `testnet3`)
+   - Job Declarator Server
+- Local:
+   - Job Declarator Client
+   - Translator Proxy
+
+![Hosted Config A](/assets/hosted_config_d.png)
+
+#### Run Job Declarator Client (JDC)
+```bash
+cd roles/jd-client/config-examples/
+cargo run -- -c jdc-config-hosted-example.toml
+```
+#### Run Translator Proxy
+
+```bash
+cd roles/translator/config-examples/
+cargo run -- -c tproxy-config-local-jdc-example.toml
+```
+
+You're ready to start mining. Skip to the [Connect Mining Devices](#connect-mining-devices) step.
+
+### Local Config A
+
+- Local:
+   - SV2 Pool
+   - Template Provider (`bitcoind` synced to `testnet3`)
+   - Job Declarator Server
+   - Job Declarator Client
+   - Translator Proxy
+
+![Local Config A](/assets/local_config_d.png)
+
+#### Run Template Provider
+
+Make sure you followed the [Run Template Provider Prerequisite](#run-template-provider).
+
+#### Run the SV2 Pool
+
+```bash
+cd roles/pool/config-examples
+cargo run -- -c pool-config-local-tp-example.toml
+```
+#### Run the Job Declarator Server (JDS)
+
+```bash
+cd roles/jd-server/config-examples
+cargo run -- -c jds-config-local-example.toml
+```
+#### Run Job Declarator Client (JDC)
+
+```bash
+cd roles/jd-client/config-examples/
+cargo run -- -c jdc-config-local-example.toml
+```
+#### Run Translator Proxy
+
+```bash
+cd roles/translator/config-examples/
+cargo run -- -c tproxy-config-local-jdc-example.toml
+```
+
+You're ready to start mining. Skip to the [Connect Mining Devices](#connect-mining-devices) step.
 
 ### Hosted Config C
 
@@ -150,74 +218,6 @@ cargo run -- -c pool-config-local-tp-example.toml
 ```bash
 cd roles/translator/config-examples/
 cargo run -- -c tproxy-config-local-pool-example.toml
-```
-
-You're ready to start mining. Skip to the [Connect Mining Devices](#connect-mining-devices) step.
-
-### Hosted Config D
-
-- Hosted:
-   - SV2 Pool
-   - Template Provider (`bitcoind` synced to `testnet3`)
-   - Job Declarator Server
-- Local:
-   - Job Declarator Client
-   - Translator Proxy
-
-![Hosted Config D](/assets/hosted_config_d.png)
-
-#### Run Job Declarator Client (JDC)
-```bash
-cd roles/jd-client/config-examples/
-cargo run -- -c jdc-config-hosted-example.toml
-```
-#### Run Translator Proxy
-
-```bash
-cd roles/translator/config-examples/
-cargo run -- -c tproxy-config-local-jdc-example.toml
-```
-
-You're ready to start mining. Skip to the [Connect Mining Devices](#connect-mining-devices) step.
-
-### Local Config D
-
-- Local:
-   - SV2 Pool
-   - Template Provider (`bitcoind` synced to `testnet3`)
-   - Job Declarator Server
-   - Job Declarator Client
-   - Translator Proxy
-
-![Local Config D](/assets/local_config_d.png)
-
-#### Run Template Provider
-
-Make sure you followed the [Run Template Provider Prerequisite](#run-template-provider).
-
-#### Run the SV2 Pool
-
-```bash
-cd roles/pool/config-examples
-cargo run -- -c pool-config-local-tp-example.toml
-```
-#### Run the Job Declarator Server (JDS)
-
-```bash
-cd roles/jd-server/config-examples
-cargo run -- -c jds-config-local-example.toml
-```
-#### Run Job Declarator Client (JDC)
-
-```bash
-cd roles/jd-client/config-examples/
-cargo run -- -c jdc-config-local-example.toml
-```
-#### Run Translator Proxy
-
-```bash
-cd roles/translator/config-examples/
-cargo run -- -c tproxy-config-local-jdc-example.toml
 ```
 
 You're ready to start mining. Skip to the [Connect Mining Devices](#connect-mining-devices) step.
@@ -284,16 +284,16 @@ To customize the string which is inserted into the `scriptSig` of the coinbase t
 
 - **Hosted Config C**: no changes needed, the hosted pool is imposing the `pool_signature`
 - **Local Config C**: `roles/pool/config-examples/pool-config-local-tp-example.toml`
-- **Hosted Config D**: `roles/jd-client/config-examples/jdc-config-hosted-example.toml`
-- **Local Config D**: `roles/jd-server/config-examples/jds-config-local-example.toml` + `roles/jd-client/config-examples/jdc-config-local-example.toml` (make sure that the strings are equal on both files, otherwise templates will be rejected by JDS)
+- **Hosted Config A**: `roles/jd-client/config-examples/jdc-config-hosted-example.toml`
+- **Local Config A**: `roles/jd-server/config-examples/jds-config-local-example.toml` + `roles/jd-client/config-examples/jdc-config-local-example.toml` (make sure that the strings are equal on both files, otherwise templates will be rejected by JDS)
 
 ### Customize the `coinbase_output` script
 To customize the coinbase tx output script, you need to run every role locally. To make changes, edit the `coinbase_output` field in the config files:
 
 - **Hosted Config C**: no changes needed, the hosted pool is imposing the `coinbase_output`
 - **Local Config C**: no changes needed, the hosted pool is imposing the `coinbase_output`
-- **Hosted Config D**: `roles/jd-client/config-examples/jdc-config-hosted-example.toml`
-- **Local Config D**: `roles/jd-client/config-examples/jdc-config-local-example.toml` + `roles/jd-server/config-examples/jds-config-local-example.toml` (make sure that the `coinbase_output` field is identical on both files, otherwise templates will be rejected by JDS)
+- **Hosted Config A**: `roles/jd-client/config-examples/jdc-config-hosted-example.toml`
+- **Local Config A**: `roles/jd-client/config-examples/jdc-config-local-example.toml` + `roles/jd-server/config-examples/jds-config-local-example.toml` (make sure that the `coinbase_output` field is identical on both files, otherwise templates will be rejected by JDS)
 
 You can use any of the following script types:  P2PK,P2PKH, P2WPKH, P2SH, P2WSH, P2TR. 
 In case a public key is required, as explained in the config files, you can start by creating a testnet wallet on mobile, using Green wallet, or a desktop one, using Electrum wallet, and extract the extended public key they provide. At this point, you can derive the child public key to use in the configuration files, [using this tool](https://github.com/stratum-mining/stratum/tree/dev/utils/bip32-key-derivation).
