@@ -116,7 +116,7 @@ Choose one of the following:
    - Job Declarator Client
    - Translator Proxy
 
-![Hosted Config A](/assets/hosted_config_d.png)
+![Hosted Config A](/assets/hosted_config_a.png)
 
 #### Run Job Declarator Client (JDC)
 ```bash
@@ -141,7 +141,7 @@ You're ready to start mining. Skip to the [Connect Mining Devices](#connect-mini
    - Job Declarator Client
    - Translator Proxy
 
-![Local Config A](/assets/local_config_d.png)
+![Local Config A](/assets/local_config_a.png)
 
 #### Run Template Provider
 
