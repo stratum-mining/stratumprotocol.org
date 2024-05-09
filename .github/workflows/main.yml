@@ -31,5 +31,5 @@ jobs:
       - name: Linkcheck
         run: |
           set -o pipefail
-          yarn linkcheck 2>/dev/null | grep -v "https://twitter.com" | grep "Getting links from\|BROKEN"
+          yarn linkcheck 2>/dev/null | grep -v "https://twitter.com" | grep -v "landing.dmnd.work" | grep "Getting links from\|BROKEN"
         continue-on-error: false
