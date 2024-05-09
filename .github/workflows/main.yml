@@ -27,9 +27,13 @@ jobs:
         run: yarn install --frozen-lockfile
       - name: Build
         run: yarn build
+        - name: Debug Linkcheck
+          run: |
+            set -o pipefail
+            yarn linkcheck
       # Run linkcheck, propagate linkcheck failure through grep pipe
       - name: Linkcheck
         run: |
           set -o pipefail
-          yarn linkcheck 2>/dev/null | grep -v "https://twitter.com" | grep "Getting links from\|BROKEN"
+          yarn linkcheck | grep -v "https://twitter.com" | grep "Getting links from\|BROKEN"
         continue-on-error: false
