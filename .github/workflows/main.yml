@@ -30,7 +30,7 @@ jobs:
       - name: Debug Linkcheck
         run: |
           set -o pipefail
-          yarn linkcheck
+          yarn linkcheck | grep -v "https://twitter.com" | grep "Getting links from\|BROKEN"
       # Run linkcheck, propagate linkcheck failure through grep pipe
       - name: Linkcheck
         run: |
