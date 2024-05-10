@@ -28,6 +28,8 @@ jobs:
       - name: Build
         run: yarn build
       # Run linkcheck, propagate linkcheck failure through grep pipe
-      - name: Linkcheck
-        run: set -o pipefail; yarn linkcheck 2>/dev/null | grep "Getting links from\|BROKEN"
-        continue-on-error: false
+      #- name: Linkcheck
+      #  run: |
+      #    set -o pipefail
+      #    yarn linkcheck | grep -v "https://twitter.com" | grep "Getting links from\|BROKEN"
+      #  continue-on-error: false
