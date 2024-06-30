@@ -79,7 +79,6 @@ Download a release from Sjors' fork of Bitcoin Core from https://github.com/Sjor
 
 Edit the `bitcoin.conf` file by adding:
 ```bash
-testnet=1
 server=1
 rpcuser=username
 rpcpassword=password
@@ -87,7 +86,7 @@ rpcpassword=password
 Run the Template provider:
 
 ```bash
-./bitcoin-sv2-tp-0.1.2/bin/bitcoind -sv2 -sv2port=8442 -debug=sv2 
+./bitcoin-sv2-tp-0.1.2/bin/bitcoind -testnet4 -sv2 -sv2port=8442 -debug=sv2 
 ```
 
 ⚠️ Note: you need to wait until `bitcoind` is fully synced with the testnet before you proceed.
