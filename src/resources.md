@@ -9,11 +9,6 @@ This resource page is designed to provide users with access to various media rel
 ## READ
 
 <div class="read-link-container">
-  <h2 class="read-link">The Bullish Case for StratumV2</h2>
-   <a href="https://www.swanbitcoin.com/industry/the-bullish-case-for-stratum/" target="_blank" class="external-link">View the article</a>
-</div>
-
-<div class="read-link-container">
   <h2 class="read-link">Master Thesis on StratumV2</h2>
    <a href="https://webthesis.biblio.polito.it/27678/" target="_blank" class="external-link">View the thesis</a>
 </div>
@@ -21,6 +16,11 @@ This resource page is designed to provide users with access to various media rel
 <div class="read-link-container">
   <h2 class="read-link">Satsie's Pocket Guide to StratumV2</h2>
    <a href="https://satsie.dev/zines/sv2.html" target="_blank" class="external-link">View the magazine</a>
+</div>
+
+<div class="read-link-container">
+  <h2 class="read-link">The Bullish Case for StratumV2</h2>
+   <a href="https://www.swanbitcoin.com/industry/the-bullish-case-for-stratum/" target="_blank" class="external-link">View the article</a>
 </div>
 
 ## WATCH
