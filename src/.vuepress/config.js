@@ -96,6 +96,7 @@ module.exports = {
         link: "https://github.com/stratum-mining/stratum",
       },
       { text: "Blog", link: "/blog/" },
+      { text: "Resources", link: "/resources/" },
       { text: "Specification", link: "/specification/" },
     ],
   },
