@@ -26,6 +26,10 @@ This resource page is designed to provide users with access to various media rel
 ## WATCH
 
 <div class="video-container series">
+<iframe width="740" height="385" src="https://www.youtube.com/embed/XDXQuEJHa8Q" frameborder="0" allowfullscreen></iframe>
+</div>
+
+<div class="video-container series">
 <iframe width="740" height="385" src="https://www.youtube.com/embed/xrdhtQPHg2o" frameborder="0" allowfullscreen></iframe>
 </div>
 
