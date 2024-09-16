@@ -15,6 +15,13 @@ Rust installed on your machine. If it's not:
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
+
+GCC installed on your machine.
+```bash
+sudo yum install gcc #or similar
+```
+
+
 There are two primary ways to use all roles:  
 
 - Run certain roles and connecting to our community-hosted roles. (The easiest way to test SRI)
