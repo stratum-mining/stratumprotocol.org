@@ -26,7 +26,7 @@ Our secondary development goal centers around **close collaboration with early a
 
 Currently, a few early adopters, despite being aware of the alpha state of  the application-level roles, have begun building on these roles. Several adopters are using them with the goal of launching a beta or **production-ready SV2 Pool** in 2025. For this reason, we’re proposing to shift from our original plan to focus solely on APIs.
 
-![Roadmap Meme](sri-roadmap-meme.jpg)
+![Roadmap Meme](/assets/sri-roadmap-meme.jpg)
 
 Getting real user feedback during development is something we’ve been waiting for a long time, and now that early adopters are engaging with SRI, it’s crucial to adapt to this reality. If we remain solely focused on refining low-level protocols while early adopters are actively building on the high-level roles, we risk creating a bottleneck that could leave early adopters waiting for months while we finalize the necessary refactoring. 
 
@@ -38,7 +38,7 @@ Below, is a high-level look at our roadmap for the next few months. This plan fo
 
 Higher-resolution image available [here](https://drive.google.com/file/d/1CWFt9o7NOFYfdJrgashLlsAagz7PBZxO/view?usp=sharing) | [Figma File](https://www.figma.com/design/JOgHHrAeRYLHjn6Hc2Hfle/SRI-Roadmap-2024%2F25?node-id=0-1&t=woeUq9LRsGTiT3Ly-1)
 
-![Roadmap ](SRI-Roadmap-2024.png)
+![Roadmap ](/assets//SRI-Roadmap-2024.png)
 
 ## October 
 - SRI **1.1.0 launch.** This release includes the base for comprehensive protocol documentation, and addition of the integration tests framework.
