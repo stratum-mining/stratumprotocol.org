@@ -53,7 +53,7 @@ Higher-resolution image available [here](https://drive.google.com/file/d/1CWFt9o
 - Begin estimation on refactoring and improvements for protocols
 - Continue our Auditor Role research alongside the development efforts. 
 - Benchmarking Case Study launched by an adopter, showcasing the advantages of SV2 in a real-world scenario. This case study will serve as a proof point to illustrate SV2’s benefits to other potential adopters.
--Encouraging early adopters to contribute back to SRI to avoid code fragmentation and ensure easier maintenance long-term (these contributions will most likely be in roles)
+- Encouraging early adopters to contribute back to SRI to avoid code fragmentation and ensure easier maintenance long-term (these contributions will most likely be in roles)
  
 ## January
 - During this period, we are also focusing on **migrating the Message Generator** (MG) to a separate repository to better modularize the codebase.
