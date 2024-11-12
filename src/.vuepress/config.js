@@ -12,12 +12,6 @@ const sitemap = {
   exclude: ["/404.html"],
 };
 
-const blogSidebar = [
-  ["/blog/", "Articles"],
-  ["/blog/tags/", "Tags"],
-  ["/blog/author/", "Authors"],
-];
-
 const specificationSidebar = [
   ["/specification/00-Abstract", "0. Abstract"],
   ["/specification/01-Motivation", "1. Motivation"],
@@ -81,8 +75,8 @@ module.exports = {
     lastUpdated: false,
     sidebarDepth: 2,
     sidebar: {
-      "/_blog/": blogSidebar,
-      "/blog/": blogSidebar,
+      "/_blog/": false,
+      "/blog/": false,
       "/specification/": specificationSidebar,
       "/implementation/": "auto",
       "/": "auto",
