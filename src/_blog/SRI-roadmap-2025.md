@@ -24,7 +24,7 @@ Our primary development objective is to **refine our APIs** through comprehensiv
 
 Our secondary development goal centers around **close collaboration with early adopters**. This interaction helps us achieve two things: a better understanding of market requirements and valuable contributions from early adopters, which will accelerate the **refactoring** and **production-readiness** of the most used **roles** (applications).
 
-Currently, a few early adopters, despite being aware of the alpha state of  the application-level roles, have begun building on these roles. Several adopters are using them with the goal of launching a beta or **production-ready SV2 Pool** in 2025. For this reason, we’re proposing to shift from our original plan to focus solely on APIs.
+Currently, a few early adopters, despite being aware of the alpha state of  the application-level roles, have begun building on these roles. Several adopters are using them with the goal of launching a beta or **production-ready SV2 Pool** in 2025. For this reason, we’re proposing to shift from our original plan to focus solely on low-level APIs.
 
 ![Roadmap Meme](/assets/sri-roadmap-meme.jpg)
 
