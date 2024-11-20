@@ -77,7 +77,7 @@ Depending on mining device you do run, you may have to adjust `tproxy-config-loc
 
 Download a release from Sjors' fork of Bitcoin Core from https://github.com/Sjors/bitcoin/releases
 
-Edit the `bitcoin.conf` file by adding:
+Edit the `bitcoin.conf` file stored in `~/.bitcoin/` by adding:
 ```bash
 server=1
 rpcuser=username
