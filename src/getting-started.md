@@ -79,6 +79,7 @@ Download a release from Sjors' fork of Bitcoin Core from https://github.com/Sjor
 
 Edit the `bitcoin.conf` file stored in `~/.bitcoin/` by adding:
 ```bash
+[testnet4]
 server=1
 rpcuser=username
 rpcpassword=password
