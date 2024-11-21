@@ -77,8 +77,9 @@ Depending on mining device you do run, you may have to adjust `tproxy-config-loc
 
 Download a release from Sjors' fork of Bitcoin Core from https://github.com/Sjors/bitcoin/releases
 
-Edit the `bitcoin.conf` file by adding:
+Edit the `bitcoin.conf` file stored in `~/.bitcoin/` by adding:
 ```bash
+[testnet4]
 server=1
 rpcuser=username
 rpcpassword=password
@@ -86,7 +87,7 @@ rpcpassword=password
 Run the Template provider:
 
 ```bash
-./bitcoin-sv2-tp-0.1.2/bin/bitcoind -testnet4 -sv2 -sv2port=8442 -debug=sv2 
+./bitcoin-sv2-tp-0.1.*/bin/bitcoind -testnet4 -sv2 -sv2port=8442 -debug=sv2 
 ```
 
 ⚠️ Note: you need to wait until `bitcoind` is fully synced with the testnet before you proceed.
