@@ -84,10 +84,20 @@ server=1
 rpcuser=username
 rpcpassword=password
 ```
-Run the Template provider:
+
+Unpack the Template Provider. For example, assuming you downloaded `bitcoin-sv2-tp-0.1.12-x86_64-linux-gnu.tar.gz`:
 
 ```bash
-./bitcoin-sv2-tp-0.1.*/bin/bitcoind -testnet4 -sv2 -sv2port=8442 -debug=sv2 
+tar xvf bitcoin-sv2-tp-0.1.12-x86_64-linux-gnu.tar.gz
+cd sv2-tp-0.1.12
+```
+
+⚠️ Note: macOS binaries are not code signed. Read release notes for instructions on how to proceed.
+
+Start the Template Provider.
+
+```bash
+./bitcoind -testnet4 -sv2 -sv2port=8442 -debug=sv2 
 ```
 
 ⚠️ Note: you need to wait until `bitcoind` is fully synced with the testnet before you proceed.
