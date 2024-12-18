@@ -97,7 +97,7 @@ cd sv2-tp-0.1.12
 Start the Template Provider.
 
 ```bash
-./bitcoind -testnet4 -sv2 -sv2port=8442 -debug=sv2 
+./bitcoin-sv2-tp-0.1.2/bin/bitcoind -testnet4 -sv2 -sv2port=8442 -debug=sv2 
 ```
 
 ⚠️ Note: you need to wait until `bitcoind` is fully synced with the testnet before you proceed.
