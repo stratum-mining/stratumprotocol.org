@@ -89,7 +89,6 @@ Unpack the Template Provider. For example, assuming you downloaded `bitcoin-sv2-
 
 ```bash
 tar xvf bitcoin-sv2-tp-0.1.12-x86_64-linux-gnu.tar.gz
-cd sv2-tp-0.1.12
 ```
 
 ⚠️ Note: macOS binaries are not code signed. Read release notes for instructions on how to proceed.
