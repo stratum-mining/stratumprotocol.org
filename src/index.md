@@ -91,6 +91,7 @@ supportersTabs:
       - hrf
       - opensats
       - spiral
+      - vinteum
 pastSupportersTabs:
   - name: Past Supporters
     value: past-supporters
@@ -133,6 +134,10 @@ supporters:
   - value: hut
     image: /assets/hut-logo.svg
     link: https://hut8.io/
+  - value: vinteum
+    image: /assets/vinteum-logo.svg
+    link: https://vinteum.org/
+
 
 whyTitle: Layers of Upgrades
 supportDevelopersText: Support Developers
