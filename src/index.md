@@ -136,7 +136,7 @@ supporters:
     image: /assets/hut-logo.svg
     link: https://hut8.io/
   - value: vinteum
-    image: /assets/vinteum-logo.svg
+    image: /assets/vinteum-logo.png
     link: https://vinteum.org/
 
 
