@@ -74,6 +74,7 @@ supportersTabs:
       - opensats
       - spiral
       - hut
+      - vinteum
   - name: Implementers
     value: implementers
     supporters:
