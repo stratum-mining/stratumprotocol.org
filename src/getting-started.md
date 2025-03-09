@@ -101,7 +101,7 @@ Start the Template Provider.
 
 ⚠️ Note: you need to wait until `bitcoind` is fully synced with the testnet before you proceed.
 
-Optional paremeters:
+Optional parameters:
 
 There are optional parameters which can be used to better manage the Template Provider:
 - `sv2interval` - sets how often a new template is built (default is 30s)

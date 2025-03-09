@@ -32,7 +32,7 @@ Stratum V2 enables header-only mining, eliminating Merkle root recalculation. Th
 
 #### Motivation & Impact
 
-Any pool can (and should) take advantage of this benefit to reduce inefficiency on the network. The SV2 mining proxy can be used as an upstream node for immediate perfomance improvement of an SV1 pool.
+Any pool can (and should) take advantage of this benefit to reduce inefficiency on the network. The SV2 mining proxy can be used as an upstream node for immediate performance improvement of an SV1 pool.
 
 ## Job Distribution Latency
 
@@ -40,7 +40,7 @@ SV2 separates mining prevhash and future job, vs the combined message in SV1 whi
 
 #### Technical Description
 
-Pools distribute jobs to miners with predefined data blocks and variable data for end-device miner handling. In Stratum V1, the predefined data includes the prevhash (i.e. hash of the most recently found valid block) and the Merkle root for the transaction set to be included in the current block. These two data fields aren’t seperable in SV1, forcing a heavy (slow) data transfer necessary to distribute new jobs on new block (with a new prevhash) propagation.
+Pools distribute jobs to miners with predefined data blocks and variable data for end-device miner handling. In Stratum V1, the predefined data includes the prevhash (i.e. hash of the most recently found valid block) and the Merkle root for the transaction set to be included in the current block. These two data fields aren’t separable in SV1, forcing a heavy (slow) data transfer necessary to distribute new jobs on new block (with a new prevhash) propagation.
 
 Stratum V2 segregates the prevhash from the rest of the predefined block data, allowing independent sends of block data prior to finding a new prevhash. The new prevhash message is sent on its own on finding a valid block; the transmission occurs much faster because the message doesn’t include the heavier data. Stratum V2 miners begin work on new blocks faster than Stratum V1 miners.
 
@@ -102,7 +102,7 @@ Job Selection by end-miners is an optional component of Stratum V2, separate fro
 2. Job Distribution Protocol
 3. Template Distribution Protocol.
 
-Job selection is a declaration process between miner and pool. The miner proposes a block template; the pool accepts or rejects it. Once a declared template is accepted, the template can be multicast to other mining devices and farms. Implementing Job Selection Protocols separately allows pools to terminate connections on seperate infrastructure from the main mining protocol, preventing impact on the efficiency of share submissions.
+Job selection is a declaration process between miner and pool. The miner proposes a block template; the pool accepts or rejects it. Once a declared template is accepted, the template can be multicast to other mining devices and farms. Implementing Job Selection Protocols separately allows pools to terminate connections on separate infrastructure from the main mining protocol, preventing impact on the efficiency of share submissions.
 
 #### Motivation & Impact
 

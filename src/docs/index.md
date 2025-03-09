@@ -12,7 +12,7 @@ We define 5 roles for entities in the Stratum V2 Protocol Suite, which can be cl
 
 ### Mining Devices or Miners
 
-The actual mining machines which compute hashes. Miners may refer to a wide variety of hashrate producers; from large-scale corporate mining farms to wildcat mobile mining operations capturing flare gas on a temporory shale drilling site. Miners are most usefully referred to at the scale they communicate upstream to a pool: a 10PH mining farm colocated with a hydro dam that communicates as a single unit to the pool and splits its work internally may be thought of as a single 'miner', separate from the 'miner' operating a single S19 in his garage down the street. Miners "point" their hashrate at a Pool, defined below. From a Stratum V2 perspective, they are considered the most downstream roles.
+The actual mining machines which compute hashes. Miners may refer to a wide variety of hashrate producers; from large-scale corporate mining farms to wildcat mobile mining operations capturing flare gas on a temporary shale drilling site. Miners are most usefully referred to at the scale they communicate upstream to a pool: a 10PH mining farm colocated with a hydro dam that communicates as a single unit to the pool and splits its work internally may be thought of as a single 'miner', separate from the 'miner' operating a single S19 in his garage down the street. Miners "point" their hashrate at a Pool, defined below. From a Stratum V2 perspective, they are considered the most downstream roles.
 
 ### Pools 
 
