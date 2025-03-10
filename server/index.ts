@@ -1,4 +1,3 @@
-
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
@@ -23,16 +22,28 @@ app.use((req, res, next) => {
 
   res.on("finish", () => {
     if (!path.startsWith("/api")) return;
-    
+
     const duration = Date.now() - start;
-    const logMessage = formatLogMessage(req.method, path, res.statusCode, duration, responseData);
+    const logMessage = formatLogMessage(
+      req.method,
+      path,
+      res.statusCode,
+      duration,
+      responseData
+    );
     log(logMessage);
   });
 
   next();
 });
 
-function formatLogMessage(method: string, path: string, status: number, duration: number, data?: any): string {
+function formatLogMessage(
+  method: string,
+  path: string,
+  status: number,
+  duration: number,
+  data?: any
+): string {
   let message = `${method} ${path} ${status} in ${duration}ms`;
   if (data) {
     message += ` :: ${JSON.stringify(data)}`;
@@ -58,12 +69,15 @@ app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
     serveStatic(app);
   }
 
-  const port = 5000;
-  server.listen({
-    port,
-    host: "0.0.0.0",
-    reusePort: true,
-  }, () => {
-    log(`Server running on port ${port}`);
-  });
+  const port = 8080;
+  server.listen(
+    {
+      port,
+      host: "0.0.0.0",
+      reusePort: true,
+    },
+    () => {
+      log(`Server running on port ${port}`);
+    }
+  );
 })();
