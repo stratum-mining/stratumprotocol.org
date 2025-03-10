@@ -1,0 +1,145 @@
+[vite] connecting...
+[vite] connected.
+Warning: validateDOMNesting(...): <a> cannot appear as a descendant of &lt;a&gt;.
+a
+a
+@https://92ae1a82-e106-497f-a7b8-1acf0e96eb76-00-ibr1s1sbphgm.spock.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js:337:27
+div
+div
+nav
+Navigation@https://92ae1a82-e106-497f-a7b8-1acf0e96eb76-00-ibr1s1sbphgm.spock.replit.dev/src/components/Navigation.tsx:36:47
+main
+Home
+Route@https://92ae1a82-e106-497f-a7b8-1acf0e96eb76-00-ibr1s1sbphgm.spock.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js:323:14
+Switch@https://92ae1a82-e106-497f-a7b8-1acf0e96eb76-00-ibr1s1sbphgm.spock.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js:380:27
+Router
+QueryClientProvider@https://92ae1a82-e106-497f-a7b8-1acf0e96eb76-00-ibr1s1sbphgm.spock.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@tanstack_react-query.js:2805:9
+App
+t@https://92ae1a82-e106-497f-a7b8-1acf0e96eb76-00-ibr1s1sbphgm.spock.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:12639
+value@https://92ae1a82-e106-497f-a7b8-1acf0e96eb76-00-ibr1s1sbphgm.spock.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:32772
+@https://92ae1a82-e106-497f-a7b8-1acf0e96eb76-00-ibr1s1sbphgm.spock.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:34410
+
+ Stratum V2 Logo
+Miners
+Pools
+Developers
+Language
+Get started
+One giant leap
+for bitcoin mining
+Stratum V2 is the next generation protocol for pooled mining.
+It increases security, makes data transfers more efficient, and reduces mining infrastructure requirements.
+Get started with Stratum v2
+Read the Docs
+Mining Power Distribution
+Currently, just 5 mining pools control over 83% of Bitcoin's total hashrate
+
+Why This Matters
+This high concentration of mining power in a few pools creates significant risks:
+•
+Pools can potentially censor transactions by choosing which ones to include in blocks
+•
+A small group of entities could collude to enforce transaction filtering
+•
+This undermines Bitcoin's fundamental promise of censorship resistance
+Control Your Revenue
+Take charge of your mining operation. Don't let pools decide which transactions make it into blocks or trust them to share all fee revenue.
+Current Reality
+Pools control transaction selection, potentially hiding high-fee transactions and making out-of-band deals
+Fee Rate
+30 sat/vB
+0.00060000 BTC
+Fee Rate
+25 sat/vB
+0.00055000 BTC
+Fee Rate
+20 sat/vB
+0.00035000 BTC
+Fee Rate
+15 sat/vB
+0.00045000 BTC
+Fee Rate
+10 sat/vB
+0.00025000 BTC
+Hidden
+Fee Rate
+10 sat/vB
+0.00015000 BTC
+Hidden
+Total Fees
+0.00135000 BTC
+• Hidden fee payments reduce your revenue
+• No control over consensus rules
+• Constant monitoring required
+With Stratum V2
+Select your transactions, maximize your revenue, and maintain full control
+Fee Rate
+30 sat/vB
+0.00060000 BTC
+Fee Rate
+25 sat/vB
+0.00055000 BTC
+Fee Rate
+20 sat/vB
+0.00035000 BTC
+Fee Rate
+15 sat/vB
+0.00045000 BTC
+Fee Rate
+10 sat/vB
+0.00025000 BTC
+Fee Rate
+10 sat/vB
+0.00015000 BTC
+Total Fees
+0.00000000 BTC
+• Maximize revenue with full transaction visibility
+• Control your own consensus rules
+• No need to monitor pool behavior
+Enhanced Security
+Stratum V2 encrypts all communication, protecting your credentials and mining data from attacks
+PLAIN DATA
+***ENCRYPTED***
+Before: Vulnerable
+
+•
+Credentials and mining data sent as plaintext
+•
+Susceptible to man-in-the-middle attacks
+•
+Vulnerable to hashrate hijacking
+After: Protected
+
+•
+End-to-end encryption for all data
+•
+Secure authentication protocol
+•
+Perfect forward secrecy
+Faster & Lighter
+Binary protocol reduces bandwidth usage by 75% and slashes latency from hundreds to just a few milliseconds
+Ultra-Low Latency
+Stratum V1
+~165-194ms
+Stratum V2
+~1.5-3ms
+0s
+1s
+2s
+3s
+4s
+0
+45
+90
+135
+180
+milliseconds
+•
+98% reduction in job retrieval time
+•
+Fewer stale shares in poor network conditions
+Reduced Bandwidth
+Stratum V1
+~200 bytes
+Stratum V2
+~50 bytes
