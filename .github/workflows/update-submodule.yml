@@ -1,9 +1,9 @@
 name: Update submodule
-
 on:
   repository_dispatch:
     types:
       - update-submodule
+  workflow_dispatch:  # Allow manual triggering for testing
 
 jobs:
   update:
@@ -13,11 +13,33 @@ jobs:
         with:
           token: ${{ secrets.PAT }}
           submodules: recursive
+          fetch-depth: 0  # Get full history for better merging
+          
       - name: Update module
         run: |
-          git submodule update --init --recursive --checkout -f --remote -- "${{github.event.client_payload.module}}"
+          # Setup git configuration first
           git config --global user.name "GitHub Action"
           git config --global user.email "noreply@github.com"
-          git pull --rebase
-          git commit -am "deploy: ${{github.event.client_payload.module}} - ${{github.event.client_payload.sha}}"
-          git push
+          
+          # Fetch the latest changes from the remote
+          git fetch origin
+          
+          # First pull with rebase to get latest changes from the base repository
+          git pull --rebase origin
+          
+          # Update the submodule
+          git submodule update --init --recursive --checkout -f --remote -- "${{github.event.client_payload.module}}"
+          
+          # Check if there are changes to commit
+          if [ -n "$(git status --porcelain)" ]; then
+            # Add the changes
+            git add "${{github.event.client_payload.module}}"
+            
+            # Commit the changes
+            git commit -m "deploy: ${{github.event.client_payload.module}} - ${{github.event.client_payload.sha}}"
+            
+            # Push the changes
+            git push
+          else
+            echo "No changes detected in the submodule. Nothing to commit."
+          fi
