@@ -3,43 +3,48 @@ on:
   repository_dispatch:
     types:
       - update-submodule
-  workflow_dispatch:  # Allow manual triggering for testing
+  workflow_dispatch:
 
 jobs:
   update:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
         with:
           token: ${{ secrets.PAT }}
           submodules: recursive
-          fetch-depth: 0  # Get full history for better merging
-          
-      - name: Update module
+          fetch-depth: 0
+      
+      - name: Configure Git
         run: |
-          # Setup git configuration first
           git config --global user.name "GitHub Action"
           git config --global user.email "noreply@github.com"
-          
-          # Fetch the latest changes from the remote
-          git fetch origin
-          
-          # First pull with rebase to get latest changes from the base repository
-          git pull --rebase origin
-          
-          # Update the submodule
+      
+      - name: Fetch and rebase
+        run: |
+          git fetch
+          git pull --rebase
+      
+      - name: Update submodule
+        run: |
           git submodule update --init --recursive --checkout -f --remote -- "${{github.event.client_payload.module}}"
-          
-          # Check if there are changes to commit
+      
+      - name: Commit changes if needed
+        run: |
           if [ -n "$(git status --porcelain)" ]; then
-            # Add the changes
-            git add "${{github.event.client_payload.module}}"
-            
-            # Commit the changes
+            git add .
             git commit -m "deploy: ${{github.event.client_payload.module}} - ${{github.event.client_payload.sha}}"
-            
-            # Push the changes
-            git push
+            echo "CHANGES_MADE=true" >> $GITHUB_ENV
           else
-            echo "No changes detected in the submodule. Nothing to commit."
+            echo "No changes to commit"
+            echo "CHANGES_MADE=false" >> $GITHUB_ENV
           fi
+      
+      - name: Pull again before push
+        if: env.CHANGES_MADE == 'true'
+        run: git pull --rebase
+      
+      - name: Push changes
+        if: env.CHANGES_MADE == 'true'
+        run: git push
