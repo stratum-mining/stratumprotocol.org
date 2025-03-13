@@ -1,21 +1,33 @@
 name: Update submodule
 
 on:
-  repository_dispatch:
-    types:
-      - update-submodule
+  push:
+    branches:
+      - main
+
 jobs:
-  update:
+  update-submodule:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.PAT }}
-          submodules: recursive
-      - name: Update module
-        run: |
-          git submodule update --init --recursive --checkout -f --remote -- "${{github.event.client_payload.module}}"
-          git config --global user.name "GitHub Action"
-          git config --global user.email "noreply@github.com"
-          git commit -am "deploy: ${{github.event.client_payload.module}} - ${{github.event.client_payload.sha}}"
-          git push
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Update submodule
+      run: |
+        git submodule update --remote
+
+    - name: Commit changes
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git add .
+        git commit -m "deploy: src/specification - $(date +'%Y-%m-%d %H:%M:%S')"
+
+    - name: Pull latest changes
+      run: git pull --rebase
+
+    - name: Push changes
+      run: git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
