@@ -15,36 +15,36 @@ jobs:
           token: ${{ secrets.PAT }}
           submodules: recursive
           fetch-depth: 0
-      
-      - name: Configure Git
-        run: |
-          git config --global user.name "GitHub Action"
-          git config --global user.email "noreply@github.com"
-      
-      - name: Fetch and rebase
-        run: |
-          git fetch
-          git pull --rebase
-      
+
       - name: Update submodule
         run: |
+          # Configure Git
+          git config --global user.name "GitHub Action"
+          git config --global user.email "noreply@github.com"
+          
+          # Pull latest changes FIRST - critical step!
+          echo "Fetching and pulling latest changes..."
+          git fetch
+          git pull --rebase
+          
+          # Update the submodule
+          echo "Updating submodule..."
           git submodule update --init --recursive --checkout -f --remote -- "${{github.event.client_payload.module}}"
-      
-      - name: Commit changes if needed
-        run: |
+          
+          # Check if there are changes to commit
           if [ -n "$(git status --porcelain)" ]; then
+            echo "Changes detected, committing..."
             git add .
             git commit -m "deploy: ${{github.event.client_payload.module}} - ${{github.event.client_payload.sha}}"
-            echo "CHANGES_MADE=true" >> $GITHUB_ENV
+            
+            # Pull again right before pushing
+            echo "Pulling latest changes before pushing..."
+            git pull --rebase
+            
+            # Push changes
+            echo "Pushing changes..."
+            git push
+            echo "Push completed successfully."
           else
-            echo "No changes to commit"
-            echo "CHANGES_MADE=false" >> $GITHUB_ENV
+            echo "No changes detected. Nothing to commit."
           fi
-      
-      - name: Pull again before push
-        if: env.CHANGES_MADE == 'true'
-        run: git pull --rebase
-      
-      - name: Push changes
-        if: env.CHANGES_MADE == 'true'
-        run: git push
