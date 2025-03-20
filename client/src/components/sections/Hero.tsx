@@ -3,17 +3,22 @@ import { PoolSelector } from "@/components/PoolSelector";
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-32 bg-background">
-      <div className="container relative mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
-          <motion.h1 
-            className="text-6xl md:text-7xl font-mono mb-8 tracking-tight"
+    <section className='relative min-h-screen flex items-center justify-center overflow-hidden py-32 bg-background'>
+      <div className='absolute top-0 left-0 right-0 bottom-0'>
+        <div className='relative h-full w-full'>
+          <img src='/assets/svgs/background-lines.svg' alt='background lines' className=' object-cover w-full h-full' />
+        </div>
+      </div>
+      <div className='container relative mx-auto px-4'>
+        <div className='max-w- mx-auto'>
+          <motion.h1
+            className='text-6xl md:text-[6.75rem] leading-[7.5rem] font-dm-mono mb-8 tracking-tight'
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
             One giant leap
-            <br /> 
+            <br />
             for bitcoin mining
           </motion.h1>
 
