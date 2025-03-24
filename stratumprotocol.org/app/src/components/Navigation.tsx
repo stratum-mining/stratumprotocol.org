@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useLocation } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { Menu, X, Globe } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
@@ -10,7 +9,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { NavLink } from 'react-router';
+import { NavLink, useLocation } from 'react-router';
 
 const languages = [
   { code: 'en', name: 'English' },
@@ -21,7 +20,7 @@ const languages = [
 export function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { t, i18n } = useTranslation();
-  const [location] = useLocation();
+  const location = useLocation();
 
   const navLinks = [
     { to: '/miners', label: t('navigation.miners') },
@@ -63,11 +62,10 @@ export function Navigation() {
               <NavLink key={to} to={to}>
                 <span
                   className={`text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-500 rounded-lg px-2 py-1 ${
-                    location === to
+                    location
                       ? 'text-foreground font-medium'
                       : 'text-muted-foreground hover:text-foreground'
                   }`}
-                  aria-current={location === to ? 'page' : undefined}
                 >
                   {label}
                 </span>
@@ -138,20 +136,17 @@ export function Navigation() {
               className="md:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-sm border-t border-border"
             >
               <div className="flex flex-col gap-4 p-4">
-                {navLinks.map(({ href, label }) => (
-                  <Link key={href} href={href}>
-                    <a
-                      className={`text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-500 rounded-lg px-2 py-1 ${
-                        location === href
-                          ? 'text-foreground font-medium'
-                          : 'text-muted-foreground hover:text-foreground'
-                      }`}
-                      onClick={() => setIsMenuOpen(false)}
-                      aria-current={location === href ? 'page' : undefined}
-                    >
-                      {label}
-                    </a>
-                  </Link>
+                {navLinks.map(({ to, label }) => (
+                  <NavLink
+                    className={`text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-500 rounded-lg px-2 py-1 ${
+                      location
+                        ? 'text-foreground font-medium'
+                        : 'text-muted-foreground hover:text-foreground'
+                    }`}
+                    to={to}
+                  >
+                    <span onClick={() => setIsMenuOpen(false)}>{label}</span>
+                  </NavLink>
                 ))}
 
                 {/* Mobile Language Selector */}

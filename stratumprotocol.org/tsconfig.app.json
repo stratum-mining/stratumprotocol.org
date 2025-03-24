@@ -30,7 +30,6 @@
     }
     // "outDir": "dist",
   },
-  // "include": ["src", "app"]
   "include": [
     "**/*",
     "**/.server/**/*",
