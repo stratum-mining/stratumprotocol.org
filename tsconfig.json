@@ -1,5 +1,10 @@
 {
-  "include": ["client/src/**/*", "shared/**/*", "server/**/*"],
+  "include": [
+    "client/src/**/*",
+    "shared/**/*",
+    "server/**/*",
+    "stratumprotocol.org/app/src/hooks"
+  ],
   "exclude": ["node_modules", "build", "dist", "**/*.test.ts"],
   "compilerOptions": {
     "incremental": true,
