@@ -33,4 +33,4 @@ To run the application in development mode:
 npm run dev
 ```
 
-- Frontend will be available at: http://localhost:8080
+- Frontend will be available at: http://localhost:5173/
