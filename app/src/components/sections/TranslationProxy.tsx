@@ -1,5 +1,5 @@
-import { motion } from "framer-motion";
-import { Server, Database } from "lucide-react";
+import { motion } from 'framer-motion';
+import { Server, Database } from 'lucide-react';
 
 // Miner component without internal decorations
 const Miner = ({ delay }: { delay: number }) => (
@@ -17,8 +17,8 @@ const Miner = ({ delay }: { delay: number }) => (
 const ConnectionDots = ({ color, delay }: { color: string; delay: number }) => (
   <motion.div
     className={`absolute w-1.5 md:w-2 h-1.5 md:h-2 rounded-full ${color}`}
-    initial={{ opacity: 0, left: "0%" }}
-    animate={{ opacity: [0, 1, 0], left: ["0%", "100%"] }}
+    initial={{ opacity: 0, left: '0%' }}
+    animate={{ opacity: [0, 1, 0], left: ['0%', '100%'] }}
     transition={{ duration: 1.5, delay, repeat: Infinity }}
   />
 );
@@ -33,9 +33,13 @@ export function TranslationProxy() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl font-mono mb-4">Firmware upgrade not necessary</h2>
+          <h2 className="text-4xl font-mono mb-4">
+            Firmware upgrade not necessary
+          </h2>
           <p className="text-muted-foreground">
-            Connect your SV1 firmware devices through Translation Proxy which facilitates the conversion of SV1 messages to SV2 for communication with an SV2 pool.
+            Connect your SV1 firmware devices through Translation Proxy which
+            facilitates the conversion of SV1 messages to SV2 for communication
+            with an SV2 pool.
           </p>
         </motion.div>
 
@@ -47,7 +51,7 @@ export function TranslationProxy() {
                 <div key={i} className="relative">
                   <Miner delay={i * 0.3} />
                   {/* Single centered connection line with animated dots */}
-                  <div className="absolute top-1/2 -translate-y-1/2 right-0 w-12 md:w-20">
+                  <div className="absolute top-1/2 -translate-y-1/2 -right-12 md:-right-20 w-12 md:w-20">
                     <div className="h-[1px] w-full bg-red-500/40" />
                     {[0, 0.3, 0.6].map((dotDelay) => (
                       <ConnectionDots
@@ -63,7 +67,7 @@ export function TranslationProxy() {
 
             {/* Translation Proxy */}
             <div className="relative">
-              <div className="w-28 md:w-40 h-48 md:h-96 border border-cyan-500/20 rounded bg-black/20 flex flex-col items-center justify-center p-4">
+              <div className="w-28 md:w-54 h-48 md:h-96 border border-cyan-500/20 rounded bg-black/20 flex flex-col items-center justify-center p-4 ml-8">
                 <Server className="w-8 h-8 md:w-12 md:h-12 text-cyan-500 mb-4" />
                 <p className="text-[10px] md:text-sm font-mono text-center text-cyan-500">
                   SV1→SV2 Translation Proxy
@@ -85,7 +89,7 @@ export function TranslationProxy() {
 
             {/* SV2 Mining Pool */}
             <motion.div
-              className="w-28 md:w-40 h-48 md:h-96 border border-cyan-500/20 rounded bg-black/20 flex flex-col items-center justify-center p-4"
+              className="w-28 md:w-54 h-48 md:h-96 border border-cyan-500/20 rounded bg-black/20 flex flex-col items-center justify-center p-4 ml-8"
               initial={{ opacity: 0.5 }}
               animate={{ opacity: [0.5, 1, 0.5] }}
               transition={{ duration: 2, repeat: Infinity }}
