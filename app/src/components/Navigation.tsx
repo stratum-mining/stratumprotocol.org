@@ -1,15 +1,27 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Menu, X, Globe } from 'lucide-react';
+import {
+  Menu,
+  X,
+  Globe,
+  ChevronRight,
+  Pickaxe,
+  Share2,
+  Code,
+  Eye
+} from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { NavLink, useLocation } from 'react-router';
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger
+} from '@/components/ui/navigation-menu';
 
 const languages = [
   { code: 'en', name: 'English' },
@@ -23,10 +35,19 @@ export function Navigation() {
   const location = useLocation();
 
   const navLinks = [
-    { to: '/miners', label: t('navigation.miners') },
-    { to: '/pools', label: t('navigation.pools') },
-    { to: '/developers', label: t('navigation.developers') },
-    { to: '/blog', label: 'Blog' },
+    { to: '/about', label: 'About' },
+    {
+      to: '/use-cases',
+      label: 'Use Cases',
+      children: [
+        { to: '/miners', label: 'For Miners', icon: Pickaxe },
+        { to: '/pools', label: 'For Pool Operators', icon: Share2 },
+        { to: '/developers', label: 'For Developers', icon: Code },
+        { to: '/observers', label: 'For Observers', icon: Eye },
+      ]
+    },
+    { to: '/resources', label: 'Resources' },
+    { to: '/specifications', label: 'Specifications' },
   ];
 
   const changeLanguage = (lng: string) => {
@@ -34,16 +55,16 @@ export function Navigation() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 py-4 backdrop-blur-sm bg-background/80 border-b border-border/40">
+    <header className="fixed top-0 left-0 right-0 z-50 py-4">
       <nav
-        className="container mx-auto px-4"
+        className="container mx-auto px-4 flex justify-center"
         role="navigation"
         aria-label="Main navigation"
       >
-        <div className="flex items-center justify-between">
+        <div className="w-full flex items-center justify-between">
           {/* Logo */}
           <NavLink
-            className="text-foreground focus:outline-none focus:ring-2 focus:ring-cyan-500 rounded-lg p-1"
+            className="text-foreground focus:outline-none focus:ring-2 focus:ring-cyan-500 p-1"
             aria-label="Go to homepage"
             to="/"
           >
@@ -56,22 +77,59 @@ export function Navigation() {
             />
           </NavLink>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
-            {navLinks.map(({ to, label }) => (
-              <NavLink key={to} to={to}>
-                <span
-                  className={`text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-500 rounded-lg px-2 py-1 ${
-                    location
-                      ? 'text-foreground font-medium'
-                      : 'text-muted-foreground hover:text-foreground'
-                  }`}
-                >
-                  {label}
-                </span>
-              </NavLink>
-            ))}
+          {/* Desktop Navigation - Centered */}
+          <div className="hidden md:block absolute left-1/2 -translate-x-1/2">
+            <div className="bg-[#2F2F2F] backdrop-blur-sm">
+              <NavigationMenu className='h-10'>
+                <NavigationMenuList className="space-x-0 p-4">
+                  {navLinks.map((link) => (
+                    <NavigationMenuItem key={link.to} className="data-[state=open]:bg-[#000]">
+                      {link.children ? (
+                        <>
+                          <NavigationMenuTrigger className="text-gray-300 hover:text-white hover:bg-[#000] data-[state=open]:bg-[#000] data-[active]:bg-[#000]">
+                            {link.label}
+                          </NavigationMenuTrigger>
+                          <NavigationMenuContent>
+                            <ul className="grid w-[500px] p-0">
+                              {link.children.map((child) => (
+                                <li key={child.to} className="w-full">
+                                  <NavLink to={child.to}>
+                                    <div className="text-gray-300 hover:text-white hover:bg-[#000] cursor-pointer px-4 py-4 flex items-center justify-between group border-b border-[#333333] last:border-none">
+                                      <div className="flex items-center gap-3">
+                                        {child.icon && <child.icon className="w-5 h-5" />}
+                                        <span className="text-sm font-normal">
+                                          {child.label}
+                                        </span>
+                                      </div>
+                                      <ChevronRight className="w-4 h-4 opacity-50 group-hover:opacity-100 transition-opacity" />
+                                    </div>
+                                  </NavLink>
+                                </li>
+                              ))}
+                            </ul>
+                          </NavigationMenuContent>
+                        </>
+                      ) : (
+                        <NavigationMenuLink 
+                          asChild 
+                          className="text-gray-300 hover:text-white hover:bg-[#000] px-4 py-2 text-sm font-medium transition-colors focus:bg-[#000] focus:text-white focus:outline-none data-[active]:bg-[#000] data-[state=open]:bg-[#000]"
+                        >
+                          <NavLink to={link.to}>
+                            <span>
+                              {link.label}
+                            </span>
+                          </NavLink>
+                        </NavigationMenuLink>
+                      )}
+                    </NavigationMenuItem>
+                  ))}
+                </NavigationMenuList>
+              </NavigationMenu>
+            </div>
+          </div>
 
+          {/* Right side buttons */}
+          <div className="hidden md:flex items-center gap-4">
             {/* Language Selector */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -85,12 +143,12 @@ export function Navigation() {
                   <span className="sr-only">{t('navigation.language')}</span>
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-32">
+              <DropdownMenuContent align="end" className="w-32 bg-[#222222] border-none">
                 {languages.map((lang) => (
                   <DropdownMenuItem
                     key={lang.code}
                     onClick={() => changeLanguage(lang.code)}
-                    className="cursor-pointer focus:text-cyan-500"
+                    className="cursor-pointer text-gray-300 hover:text-white hover:bg-[#000] focus:text-white focus:bg-[#000]"
                     role="menuitem"
                   >
                     {lang.name}
@@ -133,24 +191,42 @@ export function Navigation() {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.2 }}
-              className="md:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-sm border-t border-border"
+              className="md:hidden absolute top-full left-0 right-0 bg-[#222222]/95 backdrop-blur-sm border-t border-[#333333]"
             >
               <div className="flex flex-col gap-4 p-4">
-                {navLinks.map(({ to, label }) => (
-                  <NavLink
-                    className={`text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-500 rounded-lg px-2 py-1 ${
-                      location
-                        ? 'text-foreground font-medium'
-                        : 'text-muted-foreground hover:text-foreground'
-                    }`}
-                    to={to}
-                  >
-                    <span onClick={() => setIsMenuOpen(false)}>{label}</span>
-                  </NavLink>
+                {navLinks.map(({ to, label, children }) => (
+                  <div key={to}>
+                    <NavLink
+                      className={`text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-500  px-2 py-1 ${
+                        location
+                          ? 'text-foreground font-medium'
+                          : 'text-muted-foreground hover:text-foreground'
+                      }`}
+                      to={to}
+                    >
+                      <span onClick={() => setIsMenuOpen(false)}>{label}</span>
+                    </NavLink>
+                    
+                    {children && (
+                      <div className="pl-4 mt-2 space-y-2">
+                        {children.map((child) => (
+                          <NavLink
+                            key={child.to}
+                            to={child.to}
+                            className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground py-1"
+                            onClick={() => setIsMenuOpen(false)}
+                          >
+                            {child.icon && <child.icon className="w-4 h-4" />}
+                            {child.label}
+                          </NavLink>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 ))}
 
                 {/* Mobile Language Selector */}
-                <div className="border-t border-border pt-4">
+                <div className="border-t border-[#333333] pt-4">
                   <p
                     className="text-sm text-muted-foreground mb-2"
                     id="mobile-language-label"
