@@ -43,7 +43,6 @@ export function Navigation() {
         { to: '/miners', label: 'For Miners', icon: Pickaxe },
         { to: '/pools', label: 'For Pool Operators', icon: Share2 },
         { to: '/developers', label: 'For Developers', icon: Code },
-        { to: '/observers', label: 'For Observers', icon: Eye },
       ]
     },
     { to: '/resources', label: 'Resources' },
