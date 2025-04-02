@@ -80,7 +80,7 @@ export function Navigation() {
           <div className="hidden md:block absolute left-1/2 -translate-x-1/2">
             <div className="bg-[#2F2F2F] backdrop-blur-sm">
               <NavigationMenu className='h-10'>
-                <NavigationMenuList className="space-x-0 p-4">
+                <NavigationMenuList className="space-x-0 p-1">
                   {navLinks.map((link) => (
                     <NavigationMenuItem key={link.to} className="data-[state=open]:bg-[#000]">
                       {link.children ? (
@@ -89,7 +89,7 @@ export function Navigation() {
                             {link.label}
                           </NavigationMenuTrigger>
                           <NavigationMenuContent>
-                            <ul className="grid w-[500px] p-0">
+                            <ul className="grid w-[480px] p-0">
                               {link.children.map((child) => (
                                 <li key={child.to} className="w-full">
                                   <NavLink to={child.to}>
