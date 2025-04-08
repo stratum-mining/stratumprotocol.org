@@ -9,7 +9,7 @@ export function Hero() {
       highlight: "efficient",
       paragraph: (
         <>
-          Stratum V2 improves how miners, pools, and the Bitcoin network communicate. It strengthens security with encryption and <span className="text-primary">makes mining faster and more efficient</span> by reducing bandwidth use and latency.
+          <span className="text-primary text-white"> Stratum V2 </span> improves how miners, pools, and the Bitcoin network communicate.  <span className="text-primary text-white"> It strengthens security </span> with encryption and <span className="text-primary text-white">makes mining faster and more efficient</span> by reducing bandwidth use and latency.
         </>
       )
     },
@@ -17,7 +17,7 @@ export function Hero() {
       highlight: "decentralized",
       paragraph: (
         <>
-          Most importantly, Stratum V2 empowers miners to choose which transactions are included in blocks, protecting Bitcoin's fundamental properties - <span className="text-primary">decentralization and censorship resistance</span>.
+          <span className="text-primary text-white"> Most importantly, Stratum V2</span> empowers miners to choose which transactions are included in blocks, protecting Bitcoin's fundamental properties - <span className="text-primary text-white">decentralization</span> and <span className="text-white">censorship resistance</span>.
         </>
       )
     }
@@ -62,7 +62,7 @@ export function Hero() {
             mining
           </motion.h1>
 
-          <div className="h-32 md:h-24 mb-12 max-w-6xl">
+          <div className="h-32 md:h-24 mb-12 max-w-[70rem]">
             <motion.p
               key={activeText}
               className="text-lg md:text-xl text-muted-foreground"
