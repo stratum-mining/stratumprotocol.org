@@ -1,15 +1,16 @@
-import { motion } from "framer-motion";
-import { Card } from "@/components/ui/card";
-import { Boxes } from "lucide-react";
+import { motion } from 'framer-motion';
+import { Card } from '@/components/ui/card';
+import { Boxes } from 'lucide-react';
 
 // Create a single node component for reuse
 const Node = ({ delay, version }: { delay: number; version: 'v1' | 'v2' }) => (
   <motion.div
     className={`
       relative aspect-square rounded-lg border
-      ${version === 'v1' 
-        ? 'border-red-500/20 bg-red-500/5' 
-        : 'border-cyan-500/20 bg-cyan-500/5'
+      ${
+        version === 'v1'
+          ? 'border-red-500/20 bg-red-500/5'
+          : 'border-cyan-500/20 bg-cyan-500/5'
       }
     `}
     initial={{ opacity: 0.3 }}
@@ -27,7 +28,7 @@ const Node = ({ delay, version }: { delay: number; version: 'v1' | 'v2' }) => (
     <motion.div
       className={`
         absolute inset-0 border-b border-r
-        ${version === 'v1' ? 'border-red-500/20' : 'border-cyan-500/20'}
+        ${version === 'v1' ? 'border-red-500' : 'border-cyan-500'}
       `}
       initial={{ opacity: 0 }}
       animate={{ opacity: [0, 1, 0] }}
@@ -42,7 +43,7 @@ const Node = ({ delay, version }: { delay: number; version: 'v1' | 'v2' }) => (
     <motion.div
       className={`
         absolute inset-2 rounded
-        ${version === 'v1' ? 'bg-red-500/10' : 'bg-cyan-500/10'}
+        ${version === 'v1' ? 'bg-red-500/30' : 'bg-cyan-500/30'}
       `}
       initial={{ opacity: 0 }}
       animate={{ opacity: [0, 1, 0] }}
@@ -59,12 +60,12 @@ const Node = ({ delay, version }: { delay: number; version: 'v1' | 'v2' }) => (
 const NetworkGrid = ({ version }: { version: 'v1' | 'v2' }) => (
   <div className="grid grid-cols-4 gap-3 p-4">
     {[...Array(12)].map((_, i) => (
-      <Node 
+      <Node
         key={i}
         version={version}
         delay={
           // Calculate delays based on node position and maintain the 18x ratio
-          (Math.floor(i / 4) * 0.2 + (i % 4) * 0.1) * 
+          (Math.floor(i / 4) * 0.2 + (i % 4) * 0.1) *
           (version === 'v1' ? 1 : 0.056) // Scale factor for V2 (4ms vs 72ms)
         }
       />
@@ -76,15 +77,21 @@ export function BlockPropagation() {
   return (
     <section className="py-24 px-4 bg-muted/50">
       <div className="container mx-auto">
-        <motion.div 
+        <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h2 id="block-propagation-heading" className="text-4xl font-mono mb-4">Faster Block Propagation</h2>
+          <h2
+            id="block-propagation-heading"
+            className="text-4xl font-mono mb-4"
+          >
+            Faster Block Propagation
+          </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Experience significantly faster block propagation with Stratum V2's optimized protocol
+            Experience significantly faster block propagation with Stratum V2's
+            optimized protocol
           </p>
         </motion.div>
 
@@ -95,7 +102,9 @@ export function BlockPropagation() {
               <Boxes className="w-5 h-5 text-red-500" aria-hidden="true" />
               <div>
                 <h3 className="text-xl font-mono">Stratum V1</h3>
-                <p className="text-sm text-red-500 font-mono">~72ms propagation</p>
+                <p className="text-sm text-red-500 font-mono">
+                  ~72ms propagation
+                </p>
               </div>
             </div>
             <NetworkGrid version="v1" />
@@ -122,7 +131,9 @@ export function BlockPropagation() {
               <Boxes className="w-5 h-5 text-cyan-500" aria-hidden="true" />
               <div>
                 <h3 className="text-xl font-mono">Stratum V2</h3>
-                <p className="text-sm text-cyan-500 font-mono">~4ms propagation</p>
+                <p className="text-sm text-cyan-500 font-mono">
+                  ~4ms propagation
+                </p>
               </div>
             </div>
             <NetworkGrid version="v2" />
