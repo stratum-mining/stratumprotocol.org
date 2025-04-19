@@ -135,7 +135,7 @@ export function Navigation() {
             </DropdownMenu>
 
             <Button
-              size="sm"
+              size="lg"
               className="bg-cyan-500 hover:bg-cyan-600 text-background focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-background"
               aria-label={t("navigation.getStarted")}
             >
