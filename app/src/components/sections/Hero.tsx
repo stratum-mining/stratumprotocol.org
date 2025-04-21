@@ -1,7 +1,36 @@
 import { motion } from "framer-motion";
 import { PoolSelector } from "@/components/PoolSelector";
+import { useEffect, useState } from "react";
 
 export function Hero() {
+  const [activeText, setActiveText] = useState(0);
+  const texts = [
+    {
+      highlight: "efficient",
+      paragraph: (
+        <>
+          <span className="text-primary text-white"> Stratum V2 </span> improves how miners, pools, and the Bitcoin network communicate.  <span className="text-primary text-white"> It strengthens security </span> with encryption and <span className="text-primary text-white">makes mining faster and more efficient</span> by reducing bandwidth use and latency.
+        </>
+      )
+    },
+    {
+      highlight: "decentralized",
+      paragraph: (
+        <>
+          <span className="text-primary text-white"> Most importantly, Stratum V2</span> empowers miners to choose which transactions are included in blocks, protecting Bitcoin's fundamental properties - <span className="text-primary text-white">decentralization</span> and <span className="text-white">censorship resistance</span>.
+        </>
+      )
+    }
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveText((prev) => (prev === 0 ? 1 : 0));
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className='relative min-h-screen flex items-center justify-center overflow-hidden py-32 bg-background'>
       <div className='absolute top-0 left-0 right-0 bottom-0'>
@@ -10,32 +39,39 @@ export function Hero() {
         </div>
       </div>
       <div className='container relative mx-auto px-4'>
-        <div className='max-w- mx-auto'>
+        <div className='max-w-8xl mx-auto'>
           <motion.h1
-            className='text-6xl md:text-[6.75rem] leading-[7.5rem] font-dm-mono mb-8 tracking-tight'
+            className='text-4xl md:text-[6.75rem] leading-[7.5rem] font-dm-mono mb-8 tracking-tight'
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
             One giant leap
             <br />
-            for bitcoin mining
+            for{" "}
+            <motion.span
+              key={texts[activeText].highlight}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
+              className="text-primary"
+            >
+              {texts[activeText].highlight}
+            </motion.span>{" "}
+            mining
           </motion.h1>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-lg md:text-xl text-muted-foreground mb-12">
+          <div className="h-32 md:h-24 mb-12 max-w-[70rem]">
             <motion.p
+              key={activeText}
+              className="text-lg md:text-xl text-muted-foreground"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
             >
-              Stratum V2 improves how miners, pools, and the Bitcoin network communicate. It strengthens security with encryption and makes mining faster and more efficient by reducing bandwidth use and latency.
-            </motion.p>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-            >
-              Most importantly, Stratum V2 empowers miners to choose which transactions are included in blocks, protecting Bitcoin's fundamental properties - decentralization and censorship resistance.
+              {texts[activeText].paragraph}
             </motion.p>
           </div>
 

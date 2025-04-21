@@ -1,52 +1,52 @@
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Menu, X, Globe } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import { motion, AnimatePresence } from "framer-motion";
 import {
-  Menu,
-  X,
-  Globe,
-  ChevronRight,
-  Pickaxe,
-  Share2,
-  Code,
-  Eye
-} from 'lucide-react';
-import { useTranslation } from 'react-i18next';
-import { motion, AnimatePresence } from 'framer-motion';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
-import { NavLink, useLocation } from 'react-router';
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { NavLink, useLocation } from "react-router";
 import {
   NavigationMenu,
-  NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger
-} from '@/components/ui/navigation-menu';
+} from "@/components/ui/navigation-menu";
 
 const languages = [
-  { code: 'en', name: 'English' },
-  { code: 'ru', name: 'Русский' },
-  { code: 'zh', name: '中文' },
+  { code: "en", name: "English" },
+  { code: "ru", name: "Русский" },
+  { code: "zh", name: "中文" },
 ];
+
+interface NavLink {
+  to: string;
+  label: string;
+  icon?: React.ComponentType<{ className?: string }>;
+  children?: NavChild[];
+}
+
+interface NavChild {
+  to: string;
+  label: string;
+  icon?: React.ComponentType<{ className?: string }>;
+}
 
 export function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { t, i18n } = useTranslation();
   const location = useLocation();
 
-  const navLinks = [
-    { to: '/about', label: 'About' },
-    {
-      to: '/use-cases',
-      label: 'Use Cases',
-      children: [
-        { to: '/miners', label: 'For Miners', icon: Pickaxe },
-        { to: '/pools', label: 'For Pool Operators', icon: Share2 },
-        { to: '/developers', label: 'For Developers', icon: Code },
-      ]
-    },
-    { to: '/resources', label: 'Resources' },
-    { to: '/specifications', label: 'Specifications' },
+  const navLinks: NavLink[] = [
+    { to: "/miners", label: "Miners" },
+    { to: "/pools", label: "Pools" },
+    { to: "/developers", label: "Developers" },
+    { to: "/resources", label: "Resources" },
+    { to: "/specifications", label: "Specifications" },
   ];
 
   const changeLanguage = (lng: string) => {
@@ -79,47 +79,22 @@ export function Navigation() {
           {/* Desktop Navigation - Centered */}
           <div className="hidden md:block absolute left-1/2 -translate-x-1/2">
             <div className="bg-[#2F2F2F] backdrop-blur-sm">
-              <NavigationMenu className='h-10'>
+              <NavigationMenu className="h-10">
                 <NavigationMenuList className="space-x-0 p-1">
                   {navLinks.map((link) => (
-                    <NavigationMenuItem key={link.to} className="data-[state=open]:bg-[#000]">
-                      {link.children ? (
-                        <>
-                          <NavigationMenuTrigger className="text-gray-300 hover:text-white hover:bg-[#000] data-[state=open]:bg-[#000] data-[active]:bg-[#000]">
-                            {link.label}
-                          </NavigationMenuTrigger>
-                          <NavigationMenuContent>
-                            <ul className="grid w-[480px] p-0">
-                              {link.children.map((child) => (
-                                <li key={child.to} className="w-full">
-                                  <NavLink to={child.to}>
-                                    <div className="text-gray-300 hover:text-white hover:bg-[#000] cursor-pointer px-4 py-4 flex items-center justify-between group border-b border-[#333333] last:border-none">
-                                      <div className="flex items-center gap-3">
-                                        {child.icon && <child.icon className="w-5 h-5" />}
-                                        <span className="text-sm font-normal">
-                                          {child.label}
-                                        </span>
-                                      </div>
-                                      <ChevronRight className="w-4 h-4 opacity-50 group-hover:opacity-100 transition-opacity" />
-                                    </div>
-                                  </NavLink>
-                                </li>
-                              ))}
-                            </ul>
-                          </NavigationMenuContent>
-                        </>
-                      ) : (
-                        <NavigationMenuLink 
-                          asChild 
-                          className="text-gray-300 hover:text-white hover:bg-[#000] px-4 py-2 text-sm font-medium transition-colors focus:bg-[#000] focus:text-white focus:outline-none data-[active]:bg-[#000] data-[state=open]:bg-[#000]"
-                        >
-                          <NavLink to={link.to}>
-                            <span>
-                              {link.label}
-                            </span>
-                          </NavLink>
-                        </NavigationMenuLink>
-                      )}
+                    <NavigationMenuItem
+                      key={link.to}
+                      className="data-[state=open]:bg-[#000]"
+                    >
+                      <NavigationMenuLink
+                        asChild
+                        className="text-gray-300 hover:text-white px-4 py-2 text-sm font-medium transition-colors focus:outline-none relative group/item"
+                      >
+                        <NavLink to={link.to} className="relative block">
+                          <span className="relative z-10">{link.label}</span>
+                          <span className="absolute inset-0 border border-[#42B4C8] bg-[#0A2831] opacity-0 group-hover/item:opacity-100"></span>
+                        </NavLink>
+                      </NavigationMenuLink>
                     </NavigationMenuItem>
                   ))}
                 </NavigationMenuList>
@@ -136,13 +111,16 @@ export function Navigation() {
                   variant="ghost"
                   size="sm"
                   className="gap-2 focus:ring-2 focus:ring-cyan-500"
-                  aria-label={t('navigation.language')}
+                  aria-label={t("navigation.language")}
                 >
                   <Globe className="w-4 h-4" />
-                  <span className="sr-only">{t('navigation.language')}</span>
+                  <span className="sr-only">{t("navigation.language")}</span>
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-32 bg-[#222222] border-none">
+              <DropdownMenuContent
+                align="end"
+                className="w-32 bg-[#222222] border-none"
+              >
                 {languages.map((lang) => (
                   <DropdownMenuItem
                     key={lang.code}
@@ -157,11 +135,11 @@ export function Navigation() {
             </DropdownMenu>
 
             <Button
-              size="sm"
+              size="lg"
               className="bg-cyan-500 hover:bg-cyan-600 text-background focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-background"
-              aria-label={t('navigation.getStarted')}
+              aria-label={t("navigation.getStarted")}
             >
-              {t('navigation.getStarted')}
+              {t("navigation.getStarted")}
             </Button>
           </div>
 
@@ -169,7 +147,7 @@ export function Navigation() {
           <button
             className="md:hidden p-2 text-muted-foreground hover:text-foreground focus:outline-none focus:ring-2 focus:ring-cyan-500 rounded-lg"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={isMenuOpen}
             aria-controls="mobile-menu"
           >
@@ -187,40 +165,30 @@ export function Navigation() {
             <motion.div
               id="mobile-menu"
               initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
+              animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.2 }}
               className="md:hidden absolute top-full left-0 right-0 bg-[#222222]/95 backdrop-blur-sm border-t border-[#333333]"
             >
               <div className="flex flex-col gap-4 p-4">
-                {navLinks.map(({ to, label, children }) => (
-                  <div key={to}>
+                {navLinks.map((link) => (
+                  <div key={link.to}>
                     <NavLink
-                      className={`text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-500  px-2 py-1 ${
+                      className={`text-sm transition-colors focus:outline-none px-2 py-1 block relative group ${
                         location
-                          ? 'text-foreground font-medium'
-                          : 'text-muted-foreground hover:text-foreground'
+                          ? "text-foreground font-medium"
+                          : "text-muted-foreground hover:text-foreground"
                       }`}
-                      to={to}
+                      to={link.to}
                     >
-                      <span onClick={() => setIsMenuOpen(false)}>{label}</span>
+                      <span
+                        className="flex items-center gap-2 relative z-10"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        {link.label}
+                      </span>
+                      <span className="absolute inset-0 border border-[#42B4C8] bg-[#0A2831] opacity-0 group-hover:opacity-100"></span>
                     </NavLink>
-                    
-                    {children && (
-                      <div className="pl-4 mt-2 space-y-2">
-                        {children.map((child) => (
-                          <NavLink
-                            key={child.to}
-                            to={child.to}
-                            className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground py-1"
-                            onClick={() => setIsMenuOpen(false)}
-                          >
-                            {child.icon && <child.icon className="w-4 h-4" />}
-                            {child.label}
-                          </NavLink>
-                        ))}
-                      </div>
-                    )}
                   </div>
                 ))}
 
@@ -230,7 +198,7 @@ export function Navigation() {
                     className="text-sm text-muted-foreground mb-2"
                     id="mobile-language-label"
                   >
-                    {t('navigation.language')}
+                    {t("navigation.language")}
                   </p>
                   <div
                     className="grid grid-cols-3 gap-2"
@@ -260,9 +228,9 @@ export function Navigation() {
                   size="sm"
                   className="bg-cyan-500 hover:bg-cyan-600 text-background w-full focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-background"
                   onClick={() => setIsMenuOpen(false)}
-                  aria-label={t('navigation.getStarted')}
+                  aria-label={t("navigation.getStarted")}
                 >
-                  {t('navigation.getStarted')}
+                  {t("navigation.getStarted")}
                 </Button>
               </div>
             </motion.div>
