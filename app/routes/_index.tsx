@@ -9,6 +9,7 @@ import { BandwidthComparison } from '@/components/sections/BandwidthComparison';
 import { BlockPropagation } from '@/components/sections/BlockPropagation';
 import { TranslationProxy } from '@/components/sections/TranslationProxy';
 import { CommunitySection } from '@/components/sections/CommunitySection';
+import { Sponsorship } from '@/components/sections/Sponsorship';
 
 export function meta() {
   return [{ title: 'Stratum Protocol - Home' }];
@@ -47,6 +48,7 @@ export default function Home() {
       <BlockPropagation />
       <TranslationProxy />
       <CommunitySection />
+      <Sponsorship />
     </main>
   );
 }
