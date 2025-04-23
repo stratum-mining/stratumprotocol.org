@@ -131,7 +131,7 @@ export function Sponsorship() {
                 <img
                   src={supporter.logo}
                   alt={supporter.name}
-                  className="max-w-full h-12 object-contain"
+                  className="w-36 h-12 object-contain"
                 />
                 {supporter.categories.length > 1 && (
                   <div className="absolute bottom-2 right-2 flex gap-1">
