@@ -66,6 +66,10 @@ export default {
           border: 'hsl(var(--sidebar-border))',
           ring: 'hsl(var(--sidebar-ring))',
         },
+        cyan: {
+          'custom-100': '#70E3E9',
+          'custom-200': '#00C6D0',
+        },
       },
       keyframes: {
         'accordion-down': {
