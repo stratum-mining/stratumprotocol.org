@@ -1,6 +1,7 @@
 import { colors } from "@/utils";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from "recharts";
 
 type HashRateType = {
@@ -64,8 +65,10 @@ export function MiningCentralization() {
 
   const poolData = createPoolData();
 
+  const isMobile = useIsMobile();
+
   return (
-    <section className='relative py-24 px-4 overflow-hidden'>
+    <section className='relative py-16 pb-0 sm:py-24 px-4 overflow-hidden'>
       <div className='container mx-auto relative'>
         <motion.div className='text-center mb-16' initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
           <h2 className='text-4xl font-mono mb-4'>Mining Power Distribution</h2>
@@ -79,73 +82,82 @@ export function MiningCentralization() {
           </p>
         </motion.div>
 
-        <div className='grid md:grid-cols-2 gap-16 items-center'>
+        <div className='grid md:grid-cols-2 gap-12 lg:gap-16 items-center'>
           {/* Mining Pool Distribution Chart */}
-          <div className='relative h-[600px] w-full'>
-            {error ? (
-              <p className='text-red-500 text-center'>{error}</p>
-            ) : (
+          {error ? (
+            <p className='text-red-500 text-center'>{error}</p>
+          ) : (
+            <div className='relative w-full'>
               <>
-                <ResponsiveContainer width='100%' height='100%'>
-                  <PieChart>
-                    <Pie
-                      data={poolData}
-                      dataKey='value'
-                      nameKey='name'
-                      cx='50%'
-                      cy='50%'
-                      innerRadius={90}
-                      outerRadius={170}
-                      fill='#8884d8'
-                      paddingAngle={2}
-                    >
-                      {poolData.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={entry.color} className='transition-opacity duration-300 hover:opacity-80 cursor-pointer' />
-                      ))}
-                    </Pie>
-                    <Tooltip
-                      content={({ active, payload }) => {
-                        if (active && payload && payload.length) {
-                          const data = payload[0].payload;
-                          return (
-                            <div
-                              className='custom-tooltip'
-                              style={{
-                                backgroundColor: "#1a1a1a",
-                                padding: "8px 12px",
-                                border: `2px solid ${data.color}`,
-                                borderRadius: "4px",
-                              }}
-                            >
-                              <p className='font-medium text-[15px]' style={{ color: data.color }}>
-                                {data.name}
-                              </p>
-                              <p className='text-white text-[15px]'>{`Share: ${data.value.toFixed(2)}%`}</p>
-                            </div>
-                          );
-                        }
-                        return null;
-                      }}
-                    />
-                    <Legend
-                      layout='horizontal'
-                      verticalAlign='bottom'
-                      align='center'
-                      wrapperStyle={{
-                        display: "flex",
-                        flexDirection: "row",
-                        alignItems: "flex-start",
-                        flexWrap: "wrap",
-                        gap: "10px",
-                        fontSize: "13px",
-                      }}
-                    />
-                  </PieChart>
-                </ResponsiveContainer>
+                <div className='relative h-[400px] md:h-[600px] w-full'>
+                  <ResponsiveContainer width='100%' height='100%'>
+                    <PieChart>
+                      <Pie
+                        data={poolData}
+                        dataKey='value'
+                        nameKey='name'
+                        cx='50%'
+                        cy='50%'
+                        innerRadius={isMobile ? 60 : 90}
+                        outerRadius={isMobile ? 100 : 170}
+                        fill='#8884d8'
+                        paddingAngle={2}
+                      >
+                        {poolData.map((entry, index) => (
+                          <Cell
+                            key={`cell-${index}`}
+                            fill={entry.color}
+                            className='transition-opacity duration-300 hover:opacity-80 cursor-pointer'
+                          />
+                        ))}
+                      </Pie>
+                      <Tooltip
+                        content={({ active, payload }) => {
+                          if (active && payload && payload.length) {
+                            const data = payload[0].payload;
+                            return (
+                              <div
+                                className='custom-tooltip'
+                                style={{
+                                  backgroundColor: "#1a1a1a",
+                                  padding: "8px 12px",
+                                  border: `2px solid ${data.color}`,
+                                  borderRadius: "4px",
+                                }}
+                              >
+                                <p className='font-medium text-[15px]' style={{ color: data.color }}>
+                                  {data.name}
+                                </p>
+                                <p className='text-white text-[15px]'>{`Share: ${data.value.toFixed(2)}%`}</p>
+                              </div>
+                            );
+                          }
+                          return null;
+                        }}
+                      />
+
+                      <Legend
+                        layout='horizontal'
+                        verticalAlign='bottom'
+                        align='center'
+                        iconSize={isMobile ? 10 : 13}
+                        wrapperStyle={{
+                          display: "flex",
+                          flexDirection: "row",
+                          alignItems: "flex-start",
+                          flexWrap: "wrap",
+                          gap: "10px",
+                          fontSize: `${isMobile ? "10px" : "13px"}`,
+                        }}
+                      />
+                    </PieChart>
+                  </ResponsiveContainer>
+                </div>
+
                 <p className='text-base text-white text-center mt-4'>Mining data with hashrate found in the last 365 days</p>
               </>
-            )}
-          </div>
+            </div>
+          )}
 
           {/* Explanation Text */}
           <motion.div className='space-y-6' initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
