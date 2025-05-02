@@ -26,7 +26,7 @@ const ConnectionDots = ({ color, delay }: { color: string; delay: number }) => (
 export function TranslationProxy() {
   return (
     <section className="py-24 px-4 bg-muted/50">
-      <div className="container mx-auto flex flex-col items-center">
+      <div className="container mx-auto flex flex-col items-center overflow-x-auto">
         <motion.div
           className="text-center mb-16 max-w-2xl"
           initial={{ opacity: 0, y: 20 }}
@@ -43,8 +43,8 @@ export function TranslationProxy() {
           </p>
         </motion.div>
 
-        <div className="flex flex-col items-center">
-          <div className="flex items-center gap-4 md:gap-12 mb-16">
+        <div className="flex flex-col items-center overflow-x-auto">
+          <div className="flex items-center gap-4 md:gap-12 mb-16 overflow-x-scroll">
             {/* SV1 Miners Column */}
             <div className="flex flex-col gap-2 md:gap-8">
               {[0, 1, 2].map((i) => (
