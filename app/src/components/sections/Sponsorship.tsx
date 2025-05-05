@@ -65,6 +65,30 @@ const supporters: Supporter[] = [
     link: 'https://braiins.com',
     categories: ['adopters', 'implementers'],
   },
+  {
+    name: 'Bitmex',
+    logo: '/assets/svgs/bitmex-logo.svg',
+    link: 'https://bitmex.com/',
+    categories: ['past'],
+  },
+  {
+    name: 'Summer of Bitcoin',
+    logo: '/assets/svgs/summer-of-bitcoin.svg',
+    link: 'https://summerofbitcoin.org/',
+    categories: ['past'],
+  },
+  {
+    name: 'Galaxy',
+    logo: '/assets/svgs/galaxy-logo.svg',
+    link: 'https://www.galaxy.com/',
+    categories: ['past'],
+  },
+  {
+    name: 'Foundry',
+    logo: '/assets/svgs/foundry-logo.svg',
+    link: 'https://foundrydigital.com/',
+    categories: ['past'],
+  },
 ];
 
 type TabType = 'all' | 'implementers' | 'adopters' | 'funders' | 'past';
@@ -79,8 +103,8 @@ export function Sponsorship() {
 
   return (
     <section className="bg-black text-white py-20 border border-red-400 border-solid">
-      <div className="container mx-auto px-4 border border-blue-400 border-solid flex">
-        <div className="w-[550px] mx-auto border border-green-400 border-solid">
+      <div className="container mx-auto px-4 min-h-[550px] border border-blue-400 border-solid flex">
+        <div className="w-[550px]  mx-auto border border-green-400 border-solid">
           <h2 className="text-4xl mb-4">Support for</h2>
           <h1 className="text-6xl mb-8 text-cyan-400">Stratum v2</h1>
           <p className="text-xl mb-12">
@@ -93,7 +117,7 @@ export function Sponsorship() {
 
         <div className="w-[990px] border border-yellow-400 border-solid">
           {/* Tabs */}
-          <div className="flex p-4 bg-green-950 space-x-8 mb-12 border-b border-gray-800">
+          <div className="flex p-4 bg-[#0F2126] space-x-8 mb-12 border-b border-gray-800">
             {[
               'All Contributors',
               'Implementers',
@@ -106,9 +130,9 @@ export function Sponsorship() {
                 <button
                   key={index}
                   onClick={() => setActiveTab(tabValue)}
-                  className={`p-2 hover:cursor-pointer ${
+                  className={`p-2 hover:cursor-pointer text-lg ${
                     activeTab === tabValue
-                      ? 'text-cyan-400 border-2 border-solid flex items-center justify-center border-cyan-400'
+                      ? 'text-cyan-300 bg-emerald-900 border-2 border-solid flex items-center justify-center border-cyan-300 font-medium '
                       : 'text-gray-400'
                   }`}
                 >
@@ -126,24 +150,13 @@ export function Sponsorship() {
                 href={supporter.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative min-h-[200px] border border-white flex items-center justify-center hover:bg-gray-800 transition-colors"
+                className="group relative min-h-[200px] border border-white/25 flex items-center justify-center hover:bg-gray-800 transition-colors"
               >
                 <img
                   src={supporter.logo}
                   alt={supporter.name}
                   className="w-36 h-12 object-contain"
                 />
-                {supporter.categories.length > 1 && (
-                  <div className="absolute bottom-2 right-2 flex gap-1">
-                    {supporter.categories.map((category, i) => (
-                      <span
-                        key={i}
-                        className="w-2 h-2 rounded-full bg-cyan-400"
-                        title={category}
-                      />
-                    ))}
-                  </div>
-                )}
               </a>
             ))}
           </div>
