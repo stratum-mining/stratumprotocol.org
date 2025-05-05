@@ -1,88 +1,6 @@
 import { useMemo, useState } from 'react';
 
-interface Supporter {
-  name: string;
-  logo: string;
-  link: string;
-  categories: ('implementers' | 'adopters' | 'funders' | 'past')[];
-}
-
-const SUPPORTERS: Supporter[] = [
-  {
-    name: 'Demand',
-    logo: '/assets/svgs/demand-logo.svg',
-    link: 'https://demand.org',
-    categories: ['adopters'],
-  },
-  {
-    name: 'Human Rights Foundation',
-    logo: '/assets/svgs/hrf-logo.svg',
-    link: 'https://hrf.org',
-    categories: ['funders'],
-  },
-  {
-    name: 'OpenSats',
-    logo: '/assets/svgs/opensats-logo.svg',
-    link: 'https://opensats.org',
-    categories: ['funders'],
-  },
-  {
-    name: 'Spiral',
-    logo: '/assets/svgs/spiral-logo.svg',
-    link: 'https://spiral.com',
-    categories: ['funders', 'past'],
-  },
-  {
-    name: 'HUT8',
-    logo: '/assets/svgs/hut-logo.svg',
-    link: 'https://hut8.com',
-    categories: ['adopters'],
-  },
-  {
-    name: 'Stratum V2',
-    logo: '/assets/svgs/sv2-icon.svg',
-    link: 'https://stratum.org',
-    categories: ['implementers'],
-  },
-  {
-    name: 'Vinteum',
-    logo: '/assets/vinteum-logo.png',
-    link: 'https://vinteum.org',
-    categories: ['funders'],
-  },
-  {
-    name: 'Braiins',
-    logo: '/assets/svgs/braiins-logo.svg',
-    link: 'https://braiins.com',
-    categories: ['adopters', 'implementers'],
-  },
-  {
-    name: 'Bitmex',
-    logo: '/assets/svgs/bitmex-logo.svg',
-    link: 'https://bitmex.com/',
-    categories: ['past'],
-  },
-  {
-    name: 'Summer of Bitcoin',
-    logo: '/assets/svgs/summer-of-bitcoin.svg',
-    link: 'https://summerofbitcoin.org/',
-    categories: ['past'],
-  },
-  {
-    name: 'Galaxy',
-    logo: '/assets/svgs/galaxy-logo.svg',
-    link: 'https://www.galaxy.com/',
-    categories: ['past'],
-  },
-  {
-    name: 'Foundry',
-    logo: '/assets/svgs/foundry-logo.svg',
-    link: 'https://foundrydigital.com/',
-    categories: ['past'],
-  },
-];
-
-type TabType = 'all' | 'implementers' | 'adopters' | 'funders' | 'past';
+import { SUPPORTERS, TabType, Supporter } from '@/lib/constants';
 
 export function Sponsorship() {
   const [activeTab, setActiveTab] = useState<TabType>('all');
@@ -117,12 +35,14 @@ export function Sponsorship() {
   }, [activeTab]);
 
   return (
-    <section className="bg-black text-white py-20 border border-red-400 border-solid">
-      <div className="container mx-auto px-4 min-h-[550px] border border-blue-400 border-solid flex">
-        <div className="w-[550px]  mx-auto border border-green-400 border-solid">
-          <h2 className="text-4xl mb-4">Support for</h2>
-          <h1 className="text-6xl mb-8 text-cyan-400">Stratum v2</h1>
-          <p className="text-xl mb-12">
+    <section className="bg-black text-white py-20">
+      <div className="container mx-auto px-4 min-h-[550px]  flex">
+        <div className="w-4/12 p-6  mx-auto border">
+          <h2 className="text-2xl mb-4">Support for</h2>
+          <h1 className="text-5xl font-medium mb-8 text-cyan-300">
+            Stratum v2
+          </h1>
+          <p className="text-lg mb-12">
             Let's make stratum V2 the new standard.
             <br />
             Show material support or indicate your approval of the protocol
@@ -130,7 +50,7 @@ export function Sponsorship() {
           </p>
         </div>
 
-        <div className="w-[990px] border border-yellow-400 border-solid">
+        <div className="w-8/12 border">
           {/* Tabs */}
           <div className="flex p-4 bg-[#0F2126] space-x-8 mb-12 border-b border-gray-800">
             {[
@@ -199,49 +119,53 @@ const SupporterGrid = ({
         isAnimated ? '' : 'flex flex-wrap'
       }`}
     >
-      <div
-        className={`flex ${
-          isAnimated
-            ? direction === 'left'
-              ? 'marquee-left'
-              : 'marquee-right'
-            : ''
-        }`}
-        style={{ gap: 0 }}
-      >
-        {/* First set of items */}
-        {filteredSupporters.map((supporter, index) => (
-          <LogoCard
-            key={`${supporter.name}-primary-${index}`}
-            name={supporter.name}
-            link={supporter.link}
-            logo={supporter.logo}
-          />
-        ))}
-        {/* Only include duplicate items when animation is active */}
-        {isAnimated && (
-          <>
-            {/* Second set of items (duplicate) */}
-            {filteredSupporters.map((supporter, index) => (
-              <LogoCard
-                key={`${supporter.name}-duplicate-1-${index}`}
-                name={supporter.name}
-                link={supporter.link}
-                logo={supporter.logo}
-              />
-            ))}
-            {/* Third set of items (duplicate) - ensures no gap even during animation */}
-            {filteredSupporters.map((supporter, index) => (
-              <LogoCard
-                key={`${supporter.name}-duplicate-2-${index}`}
-                name={supporter.name}
-                link={supporter.link}
-                logo={supporter.logo}
-              />
-            ))}
-          </>
-        )}
-      </div>
+      {isAnimated ? (
+        <div
+          className={`flex ${
+            direction === 'left' ? 'marquee-left' : 'marquee-right'
+          }`}
+          style={{ gap: 0 }}
+        >
+          {/* First set of items */}
+          {filteredSupporters.map((supporter, index) => (
+            <LogoCard
+              key={`${supporter.name}-primary-${index}`}
+              name={supporter.name}
+              link={supporter.link}
+              logo={supporter.logo}
+            />
+          ))}
+          {/* Only include duplicate items when animation is active */}
+          {isAnimated && (
+            <>
+              {/* Second set of items (duplicate) */}
+              {filteredSupporters.map((supporter, index) => (
+                <LogoCard
+                  key={`${supporter.name}-duplicate-1-${index}`}
+                  name={supporter.name}
+                  link={supporter.link}
+                  logo={supporter.logo}
+                />
+              ))}
+              {/* Third set of items (duplicate) - ensures no gap even during animation */}
+              {filteredSupporters.map((supporter, index) => (
+                <LogoCard
+                  key={`${supporter.name}-duplicate-2-${index}`}
+                  name={supporter.name}
+                  link={supporter.link}
+                  logo={supporter.logo}
+                />
+              ))}
+            </>
+          )}
+        </div>
+      ) : (
+        <div className="flex flex-wrap">
+          {filteredSupporters.map((supporter, index) => (
+            <LogoCard key={index} {...supporter} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
@@ -261,7 +185,7 @@ const LogoCard: React.FC<{
         margin: 0,
         padding: '24px',
         boxSizing: 'border-box',
-        width: '256px',
+        width: '250px',
         height: '160px',
       }}
     >

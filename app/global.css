@@ -127,9 +127,10 @@
 
 .logo-card {
   transition: all 0.3s ease;
-  width: 256px;
+  min-width: 249.9px;
+  max-width: 249.9px;
   min-height: 200px;
-  flex: 0 0 256px;
+  flex: 1 1 0;
 }
 
 .logo-card:hover {
