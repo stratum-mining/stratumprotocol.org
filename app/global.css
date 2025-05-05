@@ -90,3 +90,48 @@
 @utility container-padding {
   @apply px-4 md:px-6;
 }
+
+@keyframes marquee-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(
+      -33.33%
+    ); /* Only move by 1/3 since we have 3 sets of items */
+  }
+}
+
+@keyframes marquee-right {
+  0% {
+    transform: translateX(-33.33%); /* Start from -1/3 position */
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.marquee-left {
+  animation: marquee-left 15s linear infinite;
+  width: fit-content;
+  display: flex;
+  gap: 0;
+}
+
+.marquee-right {
+  animation: marquee-right 15s linear infinite;
+  width: fit-content;
+  display: flex;
+  gap: 0;
+}
+
+.logo-card {
+  transition: all 0.3s ease;
+  width: 256px;
+  min-height: 200px;
+  flex: 0 0 256px;
+}
+
+.logo-card:hover {
+  box-shadow: 0 0 15px rgba(45, 212, 191, 0.3);
+}

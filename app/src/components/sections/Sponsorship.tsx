@@ -1,13 +1,4 @@
-import { useState } from 'react';
-import {
-  motion,
-  useScroll,
-  useSpring,
-  useTransform,
-  useMotionValue,
-  useVelocity,
-  useAnimationFrame,
-} from 'framer-motion';
+import { useMemo, useState } from 'react';
 
 interface Supporter {
   name: string;
@@ -16,7 +7,7 @@ interface Supporter {
   categories: ('implementers' | 'adopters' | 'funders' | 'past')[];
 }
 
-const supporters: Supporter[] = [
+const SUPPORTERS: Supporter[] = [
   {
     name: 'Demand',
     logo: '/assets/svgs/demand-logo.svg',
@@ -39,7 +30,7 @@ const supporters: Supporter[] = [
     name: 'Spiral',
     logo: '/assets/svgs/spiral-logo.svg',
     link: 'https://spiral.com',
-    categories: ['funders'],
+    categories: ['funders', 'past'],
   },
   {
     name: 'HUT8',
@@ -96,10 +87,34 @@ type TabType = 'all' | 'implementers' | 'adopters' | 'funders' | 'past';
 export function Sponsorship() {
   const [activeTab, setActiveTab] = useState<TabType>('all');
 
-  const filteredSupporters = supporters.filter(
-    (supporter) =>
-      activeTab === 'all' || supporter.categories.includes(activeTab)
-  );
+  const supporterRows = useMemo(() => {
+    if (activeTab === 'all') {
+      const rows = [];
+      const chunkSize = 4;
+
+      // Create chunks of contributors, each with 4 items
+      for (let i = 0; i < SUPPORTERS.length; i += chunkSize) {
+        const rowItems = SUPPORTERS.slice(i, i + chunkSize);
+        // Alternate direction based on row index
+        const direction: 'left' | 'right' =
+          (i / chunkSize) % 2 === 0 ? 'left' : 'right';
+        rows.push({ items: rowItems, direction });
+      }
+
+      return rows;
+    } else {
+      const filteredSupporters = SUPPORTERS.filter((supporter) =>
+        supporter.categories.includes(activeTab)
+      );
+
+      return [
+        {
+          items: filteredSupporters,
+          direction: 'left' as 'left' | 'right',
+        },
+      ];
+    }
+  }, [activeTab]);
 
   return (
     <section className="bg-black text-white py-20 border border-red-400 border-solid">
@@ -142,26 +157,115 @@ export function Sponsorship() {
             })}
           </div>
 
-          {/* Grid of Supporters */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 border border-white">
-            {filteredSupporters.map((supporter, index) => (
-              <a
-                key={index}
-                href={supporter.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative min-h-[200px] border border-white/25 flex items-center justify-center hover:bg-gray-800 transition-colors"
-              >
-                <img
-                  src={supporter.logo}
-                  alt={supporter.name}
-                  className="w-36 h-12 object-contain"
-                />
-              </a>
-            ))}
-          </div>
+          {supporterRows.map((row, index) => (
+            <SupporterGrid
+              key={index}
+              supporters={row.items}
+              direction={row.direction}
+              filter={activeTab}
+            />
+          ))}
         </div>
       </div>
     </section>
   );
 }
+
+interface SupporterGridProps {
+  supporters: Supporter[];
+  direction: 'left' | 'right';
+  filter: TabType;
+}
+
+const SupporterGrid = ({
+  supporters,
+  direction,
+  filter,
+}: SupporterGridProps) => {
+  const filteredSupporters =
+    filter === 'all'
+      ? supporters
+      : supporters.filter((supporter) => supporter.categories.includes(filter));
+
+  if (filteredSupporters.length === 0) {
+    return null;
+  }
+
+  const isAnimated = filter === 'all';
+
+  return (
+    <div
+      className={`overflow-hidden border-l border-t border-border mx-auto ${
+        isAnimated ? '' : 'flex flex-wrap'
+      }`}
+    >
+      <div
+        className={`flex ${
+          isAnimated
+            ? direction === 'left'
+              ? 'marquee-left'
+              : 'marquee-right'
+            : ''
+        }`}
+        style={{ gap: 0 }}
+      >
+        {/* First set of items */}
+        {filteredSupporters.map((supporter, index) => (
+          <LogoCard
+            key={`${supporter.name}-primary-${index}`}
+            name={supporter.name}
+            link={supporter.link}
+            logo={supporter.logo}
+          />
+        ))}
+        {/* Only include duplicate items when animation is active */}
+        {isAnimated && (
+          <>
+            {/* Second set of items (duplicate) */}
+            {filteredSupporters.map((supporter, index) => (
+              <LogoCard
+                key={`${supporter.name}-duplicate-1-${index}`}
+                name={supporter.name}
+                link={supporter.link}
+                logo={supporter.logo}
+              />
+            ))}
+            {/* Third set of items (duplicate) - ensures no gap even during animation */}
+            {filteredSupporters.map((supporter, index) => (
+              <LogoCard
+                key={`${supporter.name}-duplicate-2-${index}`}
+                name={supporter.name}
+                link={supporter.link}
+                logo={supporter.logo}
+              />
+            ))}
+          </>
+        )}
+      </div>
+    </div>
+  );
+};
+
+const LogoCard: React.FC<{
+  name: string;
+  link: string;
+  logo: string;
+}> = ({ name, link, logo }) => {
+  return (
+    <a
+      href={link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="logo-card flex items-center justify-center border-r border-b border-border bg-card"
+      style={{
+        margin: 0,
+        padding: '24px',
+        boxSizing: 'border-box',
+        width: '256px',
+        height: '160px',
+      }}
+    >
+      <img src={logo} alt={name} className="w-36 h-12 object-contain" />
+    </a>
+  );
+};
