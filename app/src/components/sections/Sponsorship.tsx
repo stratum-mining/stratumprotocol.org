@@ -42,7 +42,7 @@ export function Sponsorship() {
           <h1 className="text-5xl font-medium mb-8 text-cyan-300">
             Stratum v2
           </h1>
-          <p className="text-lg lg:mb-12">
+          <p className="text-lg lg:mb-12 lg:mt-12">
             Let's make stratum V2 the new standard.
             <br />
             Show material support or indicate your approval of the protocol
