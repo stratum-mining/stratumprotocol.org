@@ -136,3 +136,22 @@
 .logo-card:hover {
   box-shadow: 0 0 15px rgba(45, 212, 191, 0.3);
 }
+
+@media (max-width: 768px) {
+  .marquee-left,
+  .marquee-right {
+    animation-duration: 10s;
+  }
+
+  .logo-card {
+    min-height: 120px;
+    min-width: 177px;
+    flex: 1 1 0;
+  }
+
+  .logo-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}

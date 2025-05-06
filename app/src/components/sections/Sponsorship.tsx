@@ -36,13 +36,13 @@ export function Sponsorship() {
 
   return (
     <section className="bg-black text-white py-20">
-      <div className="container mx-auto px-4 min-h-[550px]  flex">
-        <div className="w-4/12 p-6  mx-auto border">
+      <div className="container flex-col lg:flex-row mx-auto px-4 min-h-[550px] flex">
+        <div className="w-full lg:w-4/12 p-6  mx-auto border">
           <h2 className="text-2xl mb-4">Support for</h2>
           <h1 className="text-5xl font-medium mb-8 text-cyan-300">
             Stratum v2
           </h1>
-          <p className="text-lg mb-12">
+          <p className="text-lg lg:mb-12">
             Let's make stratum V2 the new standard.
             <br />
             Show material support or indicate your approval of the protocol
@@ -50,9 +50,9 @@ export function Sponsorship() {
           </p>
         </div>
 
-        <div className="w-8/12 border">
+        <div className="w-full lg:w-8/12 border">
           {/* Tabs */}
-          <div className="flex p-4 bg-[#0F2126] space-x-8 mb-12 border-b border-gray-800">
+          <div className="flex flex-col lg:flex-row p-4 bg-[#0F2126] space-x-8 lg:mb-12 border-b border-gray-800">
             {[
               'All Contributors',
               'Implementers',
@@ -115,7 +115,7 @@ const SupporterGrid = ({
 
   return (
     <div
-      className={`overflow-hidden border-l border-t border-border mx-auto ${
+      className={`overflow-hidden border-l border-t border-border mx-auto  ${
         isAnimated ? '' : 'flex flex-wrap'
       }`}
     >
@@ -185,8 +185,8 @@ const LogoCard: React.FC<{
         margin: 0,
         padding: '24px',
         boxSizing: 'border-box',
-        width: '250px',
-        height: '160px',
+        // width: '250px',
+        // height: '160px',
       }}
     >
       <img src={logo} alt={name} className="w-36 h-12 object-contain" />
