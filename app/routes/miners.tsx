@@ -88,7 +88,7 @@ export default function MinersPage() {
               <ul className="space-y-4 text-muted-foreground">
                 <li className="flex items-start gap-2">
                   <span aria-hidden="true">•</span>
-                  <span>75% less bandwidth usage</span>
+                  <span>~70% less bandwidth usage</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span aria-hidden="true">•</span>

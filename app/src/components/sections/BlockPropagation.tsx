@@ -87,11 +87,11 @@ export function BlockPropagation() {
             id="block-propagation-heading"
             className="text-4xl font-mono mb-4"
           >
-            Faster Block Propagation
+            Faster Block Change & Propagation
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Experience significantly faster block propagation with Stratum V2's
-            optimized protocol
+          Improves profitability by increasing the likelihood that a miner’s block is accepted first, especially during chain-split races. 
+          SV1 miners lose approximately 308.37 milliseconds per block due to block change latency. Over a year, this adds up to about 4.5 hours of completely unproductive mining time.
           </p>
         </motion.div>
 
@@ -103,23 +103,23 @@ export function BlockPropagation() {
               <div>
                 <h3 className="text-xl font-mono">Stratum V1</h3>
                 <p className="text-sm text-red-500 font-mono">
-                  ~72ms propagation
+                  ~96.3ms propagation
+                </p>
+                <p className="text-sm text-red-500 font-mono">
+                  ~344ms block change
                 </p>
               </div>
             </div>
             <NetworkGrid version="v1" />
             <div className="mt-6 space-y-2">
-              <p className="text-sm text-muted-foreground">
-                Slower block template distribution leads to:
-              </p>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li className="flex items-start gap-2">
                   <span className="text-red-500">•</span>
-                  <span>Higher network congestion</span>
+                  <span>Block propagated only by a pool</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-red-500">•</span>
-                  <span>Increased orphan block risk</span>
+                  <span>4.5 hours of wasted mining time per year</span>
                 </li>
               </ul>
             </div>
@@ -132,23 +132,23 @@ export function BlockPropagation() {
               <div>
                 <h3 className="text-xl font-mono">Stratum V2</h3>
                 <p className="text-sm text-cyan-500 font-mono">
-                  ~4ms propagation
+                  ~3.44ms propagation
+                </p>
+                <p className="text-sm text-cyan-500 font-mono">
+                  ~2.63ms block change
                 </p>
               </div>
             </div>
             <NetworkGrid version="v2" />
             <div className="mt-6 space-y-2">
-              <p className="text-sm text-muted-foreground">
-                Optimized protocol enables:
-              </p>
               <ul className="space-y-2 text-sm text-cyan-500">
                 <li className="flex items-start gap-2">
                   <span>•</span>
-                  <span>18x faster block propagation</span>
+                  <span>~28x quicker, dual block propagation (miner or pool)</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span>•</span>
-                  <span>Minimal network overhead</span>
+                  <span>~118x faster block change, increasing profits</span>
                 </li>
               </ul>
             </div>

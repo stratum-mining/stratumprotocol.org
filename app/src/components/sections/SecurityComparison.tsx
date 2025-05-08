@@ -68,12 +68,12 @@ const MessageTransition = () => {
       {/* Protocol descriptions */}
       <div className="absolute bottom-4 left-4 max-w-[40%]">
         <p className="text-xs text-muted-foreground">
-          Plaintext credentials vulnerable to interception
+          Plaintext - vulnerable to interception & hashrate stealing
         </p>
       </div>
       <div className="absolute bottom-4 right-4 max-w-[40%] text-right">
         <p className="text-xs text-muted-foreground">
-          End-to-end encryption protects sensitive data
+          End-to-end encryption protects sensitive data & profit
         </p>
       </div>
     </div>

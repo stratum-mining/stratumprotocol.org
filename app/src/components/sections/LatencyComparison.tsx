@@ -62,12 +62,12 @@ export function LatencyComparison() {
     <Card className="p-6 bg-black/20">
       <div className="flex items-center gap-3 mb-6">
         <Zap className="w-5 h-5 text-cyan-500" />
-        <h3 className="text-xl font-mono">Ultra-Low Latency</h3>
+        <h3 className="text-xl font-mono">Ultra-Low Job Latency</h3>
       </div>
 
       <div className="grid grid-cols-2 gap-8 mb-8">
-        <StatDisplay label="Stratum V1" value="~165-194ms" color="#ef4444" />
-        <StatDisplay label="Stratum V2" value="~1.5-3ms" color="#22d3ee" />
+        <StatDisplay label="Stratum V1" value="~320ms" color="#ef4444" />
+        <StatDisplay label="Stratum V2" value="~1.38" color="#22d3ee" />
       </div>
 
       <div className="h-48 mb-8">
@@ -114,11 +114,11 @@ export function LatencyComparison() {
       <ul className="space-y-2 text-sm text-muted-foreground">
         <li className="flex items-start gap-2">
           <span className="text-cyan-500">•</span>
-          <span>98% reduction in job retrieval time</span>
+          <span>SV1, miners are likely missing out on about 1.06% of transaction fees in every block due to mining on outdated job templates.</span>
         </li>
         <li className="flex items-start gap-2">
           <span className="text-cyan-500">•</span>
-          <span>Fewer stale shares in poor network conditions</span>
+          <span> Stratum V2 reduces stale share inefficiency</span>
         </li>
       </ul>
     </Card>
