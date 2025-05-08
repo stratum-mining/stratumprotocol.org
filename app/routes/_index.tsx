@@ -35,8 +35,7 @@ export default function Home() {
               Faster & Lighter
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-            Stratum V2 replaces the verbose JSON messages used by Stratum V1 with a compact binary protocol, leading to ~60% reductions in bandwidth usage.
-            Lower bandwidth plays a supporting role in maintaining stable operations, especially in environments with constrained or unreliable connectivity.
+            Stratum V2 replaces the verbose JSON messages used by Stratum V1 with a compact binary protocol, leading to ~70% reductions in bandwidth usage.
             </p>
           </motion.div>
           <div className="grid md:grid-cols-2 gap-8">

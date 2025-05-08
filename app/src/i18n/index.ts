@@ -28,7 +28,7 @@ const enUS = {
     },
     latency: {
       title: "Faster & Lighter",
-      subtitle: "Binary protocol reduces bandwidth usage by 75% and slashes latency from hundreds to just a few milliseconds",
+      subtitle: "Binary protocol reduces bandwidth usage by 75Lower bandwidth plays a supporting role in maintaining stable operations, especially in environments with constrained or unreliable connectivity.% and slashes latency from hundreds to just a few milliseconds",
       v1: "Stratum V1",
       v2: "Stratum V2"
     }
