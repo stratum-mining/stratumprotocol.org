@@ -30,43 +30,12 @@ export function CommunitySection() {
               <div>
                 <h3 className="text-xl font-mono mb-2">Open Source</h3>
                 <p className="text-muted-foreground">
-                  Fully open-source under the MIT license, allowing anyone to
-                  use, modify, and build upon the protocol freely
+                  Fully open-source under the permissive MIT license, allowing anyone to
+                  use, modify, and build upon the protocol freely.
                 </p>
               </div>
             </div>
           </Card>
-
-          <Card className="p-6 bg-black/20">
-            <div className="flex items-start gap-4">
-              <div className="p-3 rounded-lg bg-cyan-500/10">
-                <Globe className="w-6 h-6 text-cyan-500" />
-              </div>
-              <div>
-                <h3 className="text-xl font-mono mb-2">Global Contributors</h3>
-                <p className="text-muted-foreground">
-                  Built by developers worldwide, bringing diverse perspectives
-                  and expertise to the protocol
-                </p>
-              </div>
-            </div>
-          </Card>
-
-          <Card className="p-6 bg-black/20">
-            <div className="flex items-start gap-4">
-              <div className="p-3 rounded-lg bg-cyan-500/10">
-                <Lock className="w-6 h-6 text-cyan-500" />
-              </div>
-              <div>
-                <h3 className="text-xl font-mono mb-2">MIT Licensed</h3>
-                <p className="text-muted-foreground">
-                  Permissive licensing ensures the protocol remains free and
-                  accessible for all mining operations
-                </p>
-              </div>
-            </div>
-          </Card>
-
           <Card className="p-6 bg-black/20">
             <div className="flex items-start gap-4">
               <div className="p-3 rounded-lg bg-cyan-500/10">
@@ -75,8 +44,7 @@ export function CommunitySection() {
               <div>
                 <h3 className="text-xl font-mono mb-2">Community Driven</h3>
                 <p className="text-muted-foreground">
-                  Development roadmap and decisions are guided by the mining
-                  community's needs
+                Built by a global contributor network, free from single-entity control, with a roadmap shaped by the mining community’s needs.
                 </p>
               </div>
             </div>
@@ -96,8 +64,8 @@ export function CommunitySection() {
           >
             <h3 className="text-2xl font-mono mb-4">Join Our Community</h3>
             <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
-              Connect with developers, miners, and pool operators. Share ideas,
-              get support, and contribute to the future of Bitcoin mining.
+            Connect with miners, developers, and pool operators.
+            Share ideas, get support, and help shape the future of Bitcoin mining.
             </p>
             <Button
               size="lg"
