@@ -2,14 +2,14 @@ export interface Supporter {
   name: string;
   logo: string;
   link: string;
-  categories: ('implementers' | 'adopters' | 'funders' | 'past')[];
+  categories: ('implementations' | 'adopters' | 'funders' | 'past')[];
 }
 
 export const SUPPORTERS: Supporter[] = [
   {
     name: 'Demand',
     logo: '/assets/svgs/demand-logo.svg',
-    link: 'https://demand.org',
+    link: 'https://www.dmnd.work',
     categories: ['adopters'],
   },
   {
@@ -34,13 +34,13 @@ export const SUPPORTERS: Supporter[] = [
     name: 'HUT8',
     logo: '/assets/svgs/hut-logo.svg',
     link: 'https://hut8.com',
-    categories: ['adopters'],
+    categories: ['past'],
   },
   {
     name: 'Stratum V2',
     logo: '/assets/svgs/sv2-icon.svg',
     link: 'https://stratum.org',
-    categories: ['implementers'],
+    categories: ['implementations'],
   },
   {
     name: 'Vinteum',
@@ -52,7 +52,7 @@ export const SUPPORTERS: Supporter[] = [
     name: 'Braiins',
     logo: '/assets/svgs/braiins-logo.svg',
     link: 'https://braiins.com',
-    categories: ['adopters', 'implementers'],
+    categories: ['adopters', 'implementations'],
   },
   {
     name: 'Bitmex',
@@ -80,4 +80,4 @@ export const SUPPORTERS: Supporter[] = [
   },
 ];
 
-export type TabType = 'all' | 'implementers' | 'adopters' | 'funders' | 'past';
+export type TabType = 'all' | 'implementations' | 'adopters' | 'funders' | 'past';

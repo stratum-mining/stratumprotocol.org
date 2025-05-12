@@ -43,10 +43,7 @@ export function Sponsorship() {
             Stratum v2
           </h1>
           <p className="text-lg lg:mb-12 lg:mt-12">
-            Let's make stratum V2 the new standard.
-            <br />
-            Show material support or indicate your approval of the protocol
-            direction
+            Join the collective effort and help us accelerate Bitcoin mining!
           </p>
         </div>
 
@@ -55,10 +52,10 @@ export function Sponsorship() {
           <div className="flex flex-col lg:flex-row p-4 bg-[#0F2126] space-x-8 lg:mb-12 border-b border-gray-800">
             {[
               'All Contributors',
-              'Implementers',
+              'Implementations',
               'Adopters',
               'Funders',
-              'Past Supporters',
+              'Past Funders',
             ].map((tab, index) => {
               const tabValue = tab.toLowerCase().split(' ')[0] as TabType;
               return (
