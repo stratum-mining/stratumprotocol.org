@@ -6,27 +6,8 @@ export default function ResourcesPage() {
     <main className='min-h-screen bg-background text-foreground h-full'>
       <Navigation />
       <section className='pt-32 pb-16 px-4 container mx-auto h-full min-h-screen max-h-screen'>
-        <div className='grid grid-cols-1 lg:grid-cols-4 gap-9 h-full max-h-[calc(100vh-8rem)]'>
-          <div className='h-full col-span-1 lg:block hidden max-h-[calc(100vh-8rem)]'>
-            <section className='flex flex-col gap-4 items-start'>
-              {["Read", "Watch"].map((item) => (
-                <button
-                  key={item}
-                  className='capitalize text-xl font-medium'
-                  onClick={() => {
-                    const element = document.getElementById(item.toLowerCase());
-                    if (element) {
-                      element.scrollIntoView({ behavior: "smooth" });
-                    }
-                  }}
-                >
-                  {item}
-                </button>
-              ))}
-            </section>
-          </div>
-
-          <div className='h-full col-span-3 overflow-y-auto flex flex-col gap-14 pb-16 max-h-[calc(100vh-8rem)] hide-scrollbar'>
+        <div className='grid grid-cols-1 lg:grid-cols-4 gap-9 h-full max-w-4xl mx-auto'>
+          <div className='h-full col-span-4 overflow-y-auto flex flex-col gap-14 pb-16 hide-scrollbar'>
             <h1 className='text-5xl sm:text-6xl md:text-7xl font-dm-mono text-center'>Resources</h1>
             <section className='flex flex-col gap-7 items-start'>
               <h5 className='text-xl sm:text-2xl text-muted-foreground uppercase font-medium font-dm-mono' id='learn'>
@@ -49,7 +30,10 @@ export default function ResourcesPage() {
 
               <section className='flex flex-col gap-9 w-full'>
                 {READ_RESOURCES.map((resource) => (
-                  <button className='font-medium border border-border rounded-md w-full items-center justify-center p-8 px-0 sm:p-10  flex flex-col gap-6'>
+                  <button
+                    className='font-medium border border-border rounded-md w-full items-center justify-center p-8 px-0 sm:p-10  flex flex-col gap-6'
+                    key={resource.title}
+                  >
                     <p className='text-xl sm:text-2xl md:text-3xl font-semibold'>{resource.title}</p>
                     <Link
                       to={resource.href}
