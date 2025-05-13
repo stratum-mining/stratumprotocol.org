@@ -1,176 +1,159 @@
 import { useState } from 'react';
 import {
   Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
   DialogTitle,
   DialogTrigger,
+  DialogPortal,
+  DialogOverlay,
+  DialogClose,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowRight, Download } from "lucide-react";
+import { ArrowRight, X } from "lucide-react";
+import * as DialogPrimitive from "@radix-ui/react-dialog";
+import { cn } from "@/lib/utils";
+import React from "react";
 
-const softwareRequirements = [
-  {
-    name: "Translation Proxy",
-    description: "Converts SV1 messages to SV2 format",
-    downloadUrl: "https://github.com/stratum-mining/stratum/releases"
-  },
-  {
-    name: "Job Declarator Client",
-    description: "Handles local transaction selection",
-    downloadUrl: "https://github.com/stratum-mining/stratum/releases"
-  },
-  {
-    name: "Bitcoin Core",
-    description: "Required for transaction validation",
-    downloadUrl: "https://bitcoin.org/en/download"
-  }
-];
+// Custom DialogContent without close button
+const DialogContent = React.forwardRef<
+  React.ElementRef<typeof DialogPrimitive.Content>,
+  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>
+>(({ className, children, ...props }, ref) => (
+  <DialogPortal>
+    <DialogOverlay />
+    <DialogPrimitive.Content
+      ref={ref}
+      className={cn(
+        "fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-background p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg",
+        className
+      )}
+      {...props}
+    >
+      {children}
+    </DialogPrimitive.Content>
+  </DialogPortal>
+));
+DialogContent.displayName = DialogPrimitive.Content.displayName;
 
 const pools = [
   {
-    name: "Foundation Pool",
-    description: "Official Stratum V2 reference implementation pool",
-    instructions: "stratum+tcp://sv2.foundationpool.org:3333",
+    name: "DMND Pool",
+    logo: "/assets/svgs/demand-logo.svg",
+    description: "Increasing sovereignty, profitability, and security for miners worldwide",
+    website: "https://www.dmnd.work/",
   },
   {
     name: "Braiins Pool",
+    logo: "/assets/svgs/braiins-logo.svg",
     description: "Enterprise-grade mining pool with SV2 support",
-    instructions: "stratum+tcp://stratum-sv2.braiins.com:3333",
-  },
-  {
-    name: "F2Pool",
-    description: "One of the largest pools supporting Stratum V2",
-    instructions: "stratum+tcp://sv2.f2pool.com:3333",
+    website: "https://braiins.com/",
   },
 ];
 
-export function PoolSelector({ buttonClassName = "", buttonText = "Start Mining" }: { buttonClassName?: string; buttonText?: string }) {
-  const [currentStep, setCurrentStep] = useState(1);
-  const [selectedPool, setSelectedPool] = useState<string | null>(null);
-  const [completedSteps, setCompletedSteps] = useState<number[]>([]);
-  const [downloads, setDownloads] = useState<string[]>([]);
+type PoolSelectorProps = {
+  buttonClassName?: string;
+  buttonText?: string;
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
+}
 
-  const handleDownload = (software: string) => {
-    setDownloads((prev) => [...prev, software]);
+export function PoolSelector({ 
+  buttonClassName = "", 
+  buttonText = "Start Mining",
+  open,
+  onOpenChange
+}: PoolSelectorProps) {
+  const [selectedPool, setSelectedPool] = useState<string | null>(null);
+  const [internalOpen, setInternalOpen] = useState(false);
+  
+  const isControlled = open !== undefined && onOpenChange !== undefined;
+  const isOpen = isControlled ? open : internalOpen;
+  const setIsOpen = isControlled ? onOpenChange : setInternalOpen;
+
+  const handleBackClick = () => {
+    setIsOpen(false);
   };
 
-  const allDownloadsComplete = downloads.length === softwareRequirements.length;
-
   return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <button
-          className={
-            buttonClassName ||
-            "bg-cyan-custom-100 hover:bg-cyan-custom-200 text-background font-dm-mono text-base md:text-lg lg:text-xl leading-[100%] h-14 flex items-center justify-between min-w-[80vw] sm:min-w-[20.125rem] py-[17.5px] px-5"
-          }
-          aria-label={buttonText}
-        >
-          {buttonText}
-          <ArrowRight className='w-6 h-6' />
-        </button>
-      </DialogTrigger>
-      <DialogContent className='sm:max-w-[600px]'>
-        <DialogHeader>
-          <DialogTitle>{currentStep === 1 ? "Step 1: Download Required Software" : "Step 2: Choose a Mining Pool"}</DialogTitle>
-          <DialogDescription>
-            {currentStep === 1 ? "Install these components to start mining with Stratum V2" : "Select a Stratum V2 compatible pool to start mining"}
-          </DialogDescription>
-        </DialogHeader>
-
-        <div className='flex gap-2 mb-4' role='progressbar' aria-valuenow={currentStep} aria-valuemin={1} aria-valuemax={2}>
-          <div className={`h-1 flex-1 rounded ${currentStep >= 1 ? "bg-cyan-500" : "bg-muted"}`} />
-          <div className={`h-1 flex-1 rounded ${currentStep >= 2 ? "bg-cyan-500" : "bg-muted"}`} />
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
+      {!isControlled && (
+        <DialogTrigger asChild>
+          <button
+            className={
+              buttonClassName ||
+              "bg-cyan-custom-100 hover:bg-cyan-custom-200 text-background font-dm-mono text-base md:text-lg lg:text-xl leading-[100%] h-14 flex items-center justify-between min-w-[80vw] sm:min-w-[20.125rem] py-[17.5px] px-5"
+            }
+            aria-label={buttonText}
+          >
+            {buttonText}
+            <ArrowRight className='w-6 h-6' />
+          </button>
+        </DialogTrigger>
+      )}
+      <DialogContent className="sm:max-w-[500px] bg-black text-white border-gray-800 p-0 rounded-lg overflow-hidden">
+        <div className="flex justify-between items-center px-6 pt-5 pb-2">
+          <DialogTitle className="text-white text-xl font-mono">Choose a Mining Pool</DialogTitle>
+          <DialogClose asChild>
+            <button className="text-gray-400 hover:text-gray-200" aria-label="Close">
+              <X className="h-5 w-5" />
+            </button>
+          </DialogClose>
         </div>
+        
+        <p className="text-gray-400 text-sm px-6 font-normal pb-2">
+          Select a Stratum V2 Compatible Pool to start mining
+        </p>
 
-        <div className='grid gap-4 py-4'>
-          {currentStep === 1 ? (
-            <>
-              {softwareRequirements.map((software) => (
-                <Card key={software.name} className={`p-4 ${downloads.includes(software.name) ? "border-cyan-500/50" : ""}`}>
-                  <div className='flex items-start gap-4'>
-                    <Download className={`w-5 h-5 ${downloads.includes(software.name) ? "text-cyan-500" : "text-muted-foreground"} mt-1`} />
-                    <div className='flex-1'>
-                      <h3 className='font-mono mb-1'>{software.name}</h3>
-                      <p className='text-sm text-muted-foreground mb-2'>{software.description}</p>
-                      <Button
-                        variant={downloads.includes(software.name) ? "outline" : "default"}
-                        size='sm'
-                        asChild
-                        onClick={() => handleDownload(software.name)}
-                      >
-                        <a href={software.downloadUrl} target='_blank' rel='noopener noreferrer' aria-label={`Download ${software.name}`}>
-                          {downloads.includes(software.name) ? "Downloaded" : "Download"}
-                        </a>
-                      </Button>
-                    </div>
-                  </div>
-                </Card>
-              ))}
-              <Button
-                className='mt-4'
-                onClick={() => {
-                  setCurrentStep(2);
-                  setCompletedSteps((prev) => [...prev, 1]);
-                }}
-                disabled={!allDownloadsComplete}
-                aria-label='Proceed to pool selection'
+        <div className="flex flex-col gap-4 px-6 pb-6 pt-2">
+          {pools.map((pool) => (
+            <a 
+              key={pool.name}
+              href={pool.website}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="no-underline"
+              onClick={() => setSelectedPool(pool.name)}
+            >
+              <Card 
+                className={`p-5 cursor-pointer transition-colors bg-zinc-900 border-zinc-800 hover:border-zinc-700 rounded-lg ${
+                  selectedPool === pool.name ? 'border-gray-600' : ''
+                }`}
+                role="button"
+                aria-pressed={selectedPool === pool.name}
+                tabIndex={0}
               >
-                Next: Select Pool
-                <ArrowRight className='ml-2 w-4 h-4' />
-              </Button>
-            </>
-          ) : (
-            <>
-              {pools.map((pool) => (
-                <Card 
-                  key={pool.name} 
-                  className={`p-4 cursor-pointer transition-colors ${
-                    selectedPool === pool.name ? 'border-cyan-500' : ''
-                  }`}
-                  onClick={() => setSelectedPool(pool.name)}
-                  role="button"
-                  aria-pressed={selectedPool === pool.name}
-                  tabIndex={0}
-                  onKeyPress={(e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                      setSelectedPool(pool.name);
-                    }
-                  }}
-                >
-                  <h3 className="font-mono mb-2">{pool.name}</h3>
-                  <p className="text-sm text-muted-foreground mb-4">{pool.description}</p>
-                  {selectedPool === pool.name && (
-                    <div className="bg-muted p-2 rounded text-sm font-mono">
-                      {pool.instructions}
-                    </div>
-                  )}
-                </Card>
-              ))}
-              <div className="flex justify-between mt-4">
-                <Button 
-                  variant="outline"
-                  onClick={() => setCurrentStep(1)}
-                  aria-label="Return to software download step"
-                >
-                  Back to Software Requirements
-                </Button>
-                {selectedPool && (
-                  <Button 
-                    onClick={() => {
-                      setCompletedSteps(prev => [...prev, 2]);
-                    }}
-                    className='bg-cyan-500 hover:bg-cyan-600 text-background'
-                  >
-                    Connect to Pool
-                  </Button>
-                )}
-              </div>
-            </>
-          )}
+                <div className="flex items-start gap-4 px-2">
+                  <div className="flex-shrink-0 h-6 w-6 relative">
+                    {pool.name === "DMND Pool" ? (
+                      <img 
+                        src={pool.logo} 
+                        alt={pool.name} 
+                        className="h-7 w-7 object-contain" 
+                      />
+                    ) : (
+                      <img 
+                        src={pool.logo} 
+                        alt={pool.name} 
+                        className="h-7 w-7 object-contain" 
+                      />
+                    )}
+                  </div>
+                  <div className="flex-1">
+                    <h1 className="font-mono text-white text-base mb-1">{pool.name}</h1>
+                    <p className="text-sm text-gray-400 font-light leading-tight">{pool.description}</p>
+                  </div>
+                </div>
+              </Card>
+            </a>
+          ))}
+          
+          <Button 
+            variant="outline"
+            className="mt-1 w-full text-white border-zinc-800 hover:bg-zinc-800 rounded-lg h-[46px] font-normal"
+            onClick={handleBackClick}
+          >
+            Back
+          </Button>
         </div>
       </DialogContent>
     </Dialog>
