@@ -37,6 +37,7 @@ export function Navigation() {
     { to: "/miners", label: "Miners" },
     { to: "/pools", label: "Pools" },
     { to: "/developers", label: "Developers" },
+    { to: "/blog", label: "Blog" },
     { to: "/resources", label: "Resources" },
     { to: "/specifications", label: "Specifications" },
   ];
