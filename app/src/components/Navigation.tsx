@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { NavLink, useLocation } from "react-router";
 import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList } from "@/components/ui/navigation-menu";
+import { PoolSelector } from "./PoolSelector";
 
 const languages = [
   { code: "en", name: "English" },
@@ -28,6 +29,7 @@ interface NavChild {
 
 export function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isPoolSelectorOpen, setIsPoolSelectorOpen] = useState(false);
   const { t, i18n } = useTranslation();
   const location = useLocation();
 
@@ -104,6 +106,7 @@ export function Navigation() {
               size='lg'
               className='bg-cyan-custom-100 hover:bg-cyan-custom-200 text-background focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-background'
               aria-label={t("navigation.getStarted")}
+              onClick={() => setIsPoolSelectorOpen(true)}
             >
               {t("navigation.getStarted")}
             </Button>
@@ -177,7 +180,10 @@ export function Navigation() {
                 <Button
                   size='sm'
                   className='bg-cyan-500 hover:bg-cyan-600 text-background w-full focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-background'
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    setIsPoolSelectorOpen(true);
+                  }}
                   aria-label={t("navigation.getStarted")}
                 >
                   {t("navigation.getStarted")}
@@ -187,6 +193,12 @@ export function Navigation() {
           )}
         </AnimatePresence>
       </nav>
+      
+      {/* Pool Selector Modal */}
+      <PoolSelector 
+        open={isPoolSelectorOpen} 
+        onOpenChange={setIsPoolSelectorOpen}
+      />
     </header>
   );
 }
