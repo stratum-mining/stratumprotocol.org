@@ -71,17 +71,15 @@ export function MiningCentralization() {
     <section className='relative py-16 pb-0 sm:py-24 px-4 overflow-hidden'>
       <div className='container mx-auto relative'>
         <motion.div className='text-center mb-16' initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-          <h2 className='text-4xl font-mono mb-4'>Mining Power Distribution</h2>
-          <p className='text-muted-foreground max-w-2xl mx-auto'>
-            Bitcoin hashrate is currently controlled by a handful of mining pools who get to decide which transactions go into a block. It has also
-            been{" "}
-            <a href='https://b10c.me/observations/12-template-similarity/#stratum-jobs-and-merkle-branches' className='text-cyan-500 hover:underline'>
-              proven
-            </a>{" "}
-            that smaller pools act as a proxy for larger pools which increases the centralization risk even further.
-          </p>
+          <h2 className='text-4xl font-mono mb-4'>The Centralization Crisis in Bitcoin Mining</h2>
+            <p className='text-muted-foreground max-w-2xl mx-auto'>
+              A few mining pools now control most of Bitcoin's hashrate. Some smaller pools act as{" "}
+              <a href='https://b10c.me/observations/12-template-similarity/#stratum-jobs-and-merkle-branches' className='text-cyan-500 hover:underline'>
+              proxies
+              </a>{" "}
+              for larger pools. This concentration gives a very small group the power to decide which transactions are included in blocks, undermining Bitcoin's core properties.
+              </p>
         </motion.div>
-
         <div className='grid md:grid-cols-2 gap-12 lg:gap-16 items-center'>
           {/* Mining Pool Distribution Chart */}
           {error ? (
