@@ -29,6 +29,16 @@ export function Hero() {
         </>
       ),
     },
+    {
+      highlight: "profitable",
+      paragraph: (
+        <>
+          <span className='text-primary'>Stratum V2</span> increases<span className='text-primary'> miner profits</span> by minimizing stale shares, reducing block and job latency, 
+          improving propagation speed, and cutting bandwidth waste. These upgrades directly improve efficiency{" "}
+          <span className='text-primary'>turning savings </span> into <span className='text-primary'>more revenue</span>.
+        </>
+      ),
+    },
   ];
 
   // Track scroll progress for the text animation section only
@@ -61,7 +71,13 @@ export function Hero() {
   useEffect(() => {
     const unsubscribe = textScrollProgress.onChange(value => {
       // Change text based on scroll position - using the text section's scroll progress
-      setActiveText(value > 0.5 ? 1 : 0);
+      if (value < 0.5) {
+        setActiveText(0); // efficient
+      } else if (value < 0.6) {
+        setActiveText(1); // decentralized
+      } else if (value < 0.9 ) {
+        setActiveText(2); // profitable
+      }
     });
 
     return () => unsubscribe();
@@ -147,30 +163,74 @@ export function Hero() {
               for{" "}
               <span className="inline-flex items-center h-[1.2em] overflow-hidden">
                 <AnimatePresence mode="wait" initial={false}>
-                  <motion.span
-                    key={texts[activeText].highlight}
-                    custom={scrollDirection}
-                    variants={textVariants}
-                    initial="hidden"
-                    animate="visible"
-                    exit="exit"
-                    className={
-                      texts[activeText].highlight === 'decentralized'
-                        ? 'text-transparent font-dm-mono tracking-tight bg-clip-text'
-                        : 'text-primary'
-                    }
-                    style={{
-                      ...texts[activeText].highlight === 'decentralized'
-                        ? {
-                            WebkitTextStroke: '1px rgb(0, 255, 255)',
-                            textShadow: '#000'
-                          }
-                        : {},
-                      display: 'inline-block'
-                    }}
-                  >
-                    {texts[activeText].highlight}
-                  </motion.span>
+                  {activeText === 0 && (
+                    <motion.span
+                      key="efficient"
+                      custom={scrollDirection}
+                      variants={textVariants}
+                      initial="hidden"
+                      animate="visible"
+                      exit="exit"
+                      className="text-primary font-dm-mono tracking-tight"
+                      style={{ display: 'inline-block' }}
+                    >
+                      efficient
+                    </motion.span>
+                  )}
+                  
+                  {activeText === 1 && (
+                    <motion.span
+                      key="decentralized"
+                      custom={scrollDirection}
+                      variants={textVariants}
+                      initial="hidden"
+                      animate="visible"
+                      exit="exit"
+                      className="text-transparent font-dm-mono tracking-tight bg-clip-text"
+                      style={{
+                        WebkitTextStroke: '1px rgb(0, 255, 255)',
+                        textShadow: '#000',
+                        display: 'inline-block'
+                      }}
+                    >
+                      decentralized
+                    </motion.span>
+                  )}
+                  
+                  {activeText === 2 && (
+                    <motion.div
+                      key="profitable"
+                      custom={scrollDirection}
+                      variants={textVariants}
+                      initial="hidden"
+                      animate="visible"
+                      exit="exit"
+                      className="relative font-dm-mono tracking-tight"
+                      style={{ display: 'inline-block' }}
+                    >
+                      {/* Background stroked text */}
+                      <span
+                        className="absolute text-transparent"
+                        style={{
+                          WebkitTextStroke: '1px #6ADDDF',
+                          textShadow: '#000',
+                        }}
+                      >
+                        profitable
+                      </span>
+                      {/* Foreground filled text with increased offset for more pronounced 3D effect */}
+                      <span
+                        className="relative text-[#0C5E5C] font-dm-mono tracking-tight"
+                        style={{
+                          position: 'relative',
+                          left: '6px',
+                          WebkitTextStroke: '1px #6ADDDF'
+                        }}
+                      >
+                        profitable
+                      </span>
+                    </motion.div>
+                  )}
                 </AnimatePresence>
               </span>{" "}
               mining
@@ -200,7 +260,7 @@ export function Hero() {
       </motion.div>
       
       {/* Spacer to ensure we have enough scroll room for the animation */}
-      <div className="h-screen"></div>
+      <div className="h-[60vh]"></div>
     </section>
   );
 }
