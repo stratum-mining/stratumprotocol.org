@@ -90,7 +90,7 @@ export function PoolSelector({
           </button>
         </DialogTrigger>
       )}
-      <DialogContent className="sm:max-w-[500px] bg-black text-white border-gray-800 p-0 rounded-lg overflow-hidden">
+      <DialogContent className="sm:max-w-[490px] bg-black text-white border-gray-800 p-0 rounded-lg overflow-hidden">
         <div className="flex justify-between items-center px-6 pt-5 pb-2">
           <DialogTitle className="text-white text-xl font-mono">Choose a Mining Pool</DialogTitle>
           <DialogClose asChild>
@@ -104,7 +104,7 @@ export function PoolSelector({
           Select a Stratum V2 Compatible Pool to start mining
         </p>
 
-        <div className="flex flex-col gap-4 px-6 pb-6 pt-2">
+        <div className="flex flex-col gap-5 px-6 pb-6 ">
           {pools.map((pool) => (
             <a 
               key={pool.name}
@@ -122,7 +122,7 @@ export function PoolSelector({
                 aria-pressed={selectedPool === pool.name}
                 tabIndex={0}
               >
-                <div className="flex items-start gap-4 px-2">
+                <div className="flex items-start gap-4 px-4 py-3">
                   <div className="flex-shrink-0 h-6 w-6 relative">
                     {pool.name === "DMND Pool" ? (
                       <img 
