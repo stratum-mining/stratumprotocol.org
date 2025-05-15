@@ -54,7 +54,7 @@ export function Hero() {
   });
 
   // Create a transform to use for sticky behavior
-  const stickyProgress = useTransform(scrollYProgress, [0, 0.9, 1], [0, 0, 1]);
+  const stickyProgress = useTransform(scrollYProgress, [0.75, 0.85, 0.98, 1], [0, 0, 0, 0]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -75,7 +75,7 @@ export function Hero() {
         setActiveText(0); // efficient
       } else if (value < 0.6) {
         setActiveText(1); // decentralized
-      } else if (value < 0.9 ) {
+      } else if (value < 0.85 ) {
         setActiveText(2); // profitable
       }
     });
@@ -260,7 +260,7 @@ export function Hero() {
       </motion.div>
       
       {/* Spacer to ensure we have enough scroll room for the animation */}
-      <div className="h-[60vh]"></div>
+      <div className="h-[100vh]"></div>
     </section>
   );
 }
