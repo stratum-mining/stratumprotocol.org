@@ -21,7 +21,6 @@ export default function Home() {
       <Navigation />
       <Hero />
       <MiningCentralization />
-      <TransactionControl />
       <SecurityComparison />
       <section className="py-24 px-4" aria-labelledby="performance-heading">
         <div className="container mx-auto">
@@ -45,6 +44,7 @@ export default function Home() {
         </div>
       </section>
       <BlockPropagation />
+      <TransactionControl />      
       <TranslationProxy />
       <CommunitySection />
       <Sponsorship />

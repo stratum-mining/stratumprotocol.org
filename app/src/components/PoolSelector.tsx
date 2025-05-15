@@ -39,13 +39,11 @@ const pools = [
   {
     name: "DMND Pool",
     logo: "/assets/svgs/demand-logo.svg",
-    description: "Increasing sovereignty, profitability, and security for miners worldwide",
     website: "https://www.dmnd.work/",
   },
   {
     name: "Braiins Pool",
     logo: "/assets/svgs/braiins-logo.svg",
-    description: "Enterprise-grade mining pool with SV2 support",
     website: "https://braiins.com/",
   },
 ];
