@@ -6,9 +6,10 @@
   "scripts": {
     "dev": "react-router dev",
     "lint": "eslint .",
-    "build": "react-router build",
+    "build": "react-router build prebuild",
     "start": "react-router-serve ./build/server/index.js",
-    "typecheck": "react-router typegen && tsc"
+    "typecheck": "react-router typegen && tsc",
+    "prebuild": "ts-node app/src/hooks/generate-blog-data.js"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.6",
@@ -21,16 +22,20 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.5.0",
+    "gray-matter": "^4.0.3",
     "i18next": "^24.2.3",
     "i18next-browser-languagedetector": "^8.0.4",
     "isbot": "^5",
     "lucide-react": "^0.483.0",
+    "markdown-it": "^14.1.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-i18next": "^15.4.1",
     "react-icons": "^5.5.0",
+    "react-markdown": "^8.0.7",
     "react-router": "^7.4.0",
     "recharts": "^2.15.1",
+    "remark-gfm": "^3.0.1",
     "tailwind-merge": "^3.0.2"
   },
   "devDependencies": {
@@ -38,6 +43,8 @@
     "@react-router/dev": "^7.4.0",
     "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "^4.0.15",
+    "@types/markdown-it": "^14.1.2",
+    "@types/node": "^22.15.17",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "@vitejs/plugin-react": "^4.3.4",
