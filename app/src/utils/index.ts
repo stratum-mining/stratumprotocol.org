@@ -21,3 +21,21 @@ export const colors = [
   "#d946ef", // Fuchsia
   "#2dd4bf", // Teal
 ];
+
+export const replaceYouTubeLinks = (source: string) => {
+  return source.replace(/\[(!.*)\]\((.*(youtube\.com\/watch|youtu\.be).*?)(?:\s"(.*?)")?\)/gi, (all, preview, url) => {
+    const [, query] = url.match(/\?(.*)/) || url.match(/.*youtu\.be\/(.*)/);
+    const params = query.split("&").reduce((res: Record<string, string>, param: string) => {
+      let [key, val] = param.split("=");
+      if (param === key) {
+        key = "v";
+        val = param;
+      }
+      return Object.assign(res, { [key]: val });
+    }, {});
+    const { v, t } = params;
+    const path = t ? `${v}?start=${t}` : `${v}?`;
+
+    return `[youtube:${v}:${path}]`;
+  });
+};
