@@ -56,8 +56,7 @@ export function Navigation() {
           </NavLink>
 
           {/* Desktop Navigation - Centered */}
-          <div className='hidden lg:block absolute left-1/2 -translate-x-1/2'>
-            {/* <div className='hidden md:block absolute left-1/2 -translate-x-1/2'> */}
+          <div className='hidden lg:block xl:absolute xl:left-1/2 xl:-translate-x-1/2'>
             <div className='bg-[#2F2F2F] backdrop-blur-sm'>
               <NavigationMenu className='h-10'>
                 <NavigationMenuList className='space-x-0 p-1'>
