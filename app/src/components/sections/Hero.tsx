@@ -135,7 +135,7 @@ export function Hero() {
   return (
     <section 
       ref={sectionRef} 
-      className='relative min-h-screen py-32 bg-background'
+      className='relative min-h-screen py-40 bg-background'
     >
       {/* Background lines - kept outside the sticky container */}
       <div className='absolute top-0 left-0 right-0 bottom-0'>
@@ -259,8 +259,7 @@ export function Hero() {
         </div>
       </motion.div>
       
-      {/* Spacer to ensure we have enough scroll room for the animation */}
-      <div className="h-[100vh]"></div>
+    
     </section>
   );
 }
