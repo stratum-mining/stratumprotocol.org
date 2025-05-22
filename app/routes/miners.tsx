@@ -43,7 +43,9 @@ export default function MinersPage() {
             Join the next generation of Bitcoin mining with enhanced security,
             reduced costs, and complete control over your operation
           </p>
-          <PoolSelector />
+          <div className="flex justify-center w-full">
+            <PoolSelector />
+          </div>
         </div>
       </section>
 
