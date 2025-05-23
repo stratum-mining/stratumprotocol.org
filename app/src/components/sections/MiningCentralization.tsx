@@ -39,7 +39,7 @@ const DONUT_COLORS = [
 const API_URL = "https://mempool.space/api/v1/mining/hashrate/pools/1y";
 
 // Extracted sub-components
-const RiskCard = memo(({ number, title, description }: { number: number; title: string; description: string }) => (
+const SolutionCard = memo(({ number, title, description }: { number: number; title: string; description: string }) => (
   <div className="bg-[#060607] border border-[#4A4A4F] rounded-lg p-6 md:p-8 flex flex-col w-full border-[0.5px] h-full">
     {/* <div className="bg-black border border-[#232425] rounded w-8 h-8 md:w-10 md:h-10 flex items-center justify-center text-center mb-4">
       <span className="text-white font-dm-mono">{number}</span>
@@ -182,18 +182,35 @@ const MiningChart = memo(({
   );
 });
 
-// Explanation component - extracted for better organization
-const ExplanationText = memo(() => (
-  <motion.div 
+// Problem Statement component - extracted for better organization
+const ProblemStatement = memo(() => (
+  <motion.div
     className="w-full lg:w-2/5 p-6 md:p-8 bg-black border-t lg:border-t-0 lg:border-l border-[#232425]"
-    initial={{ opacity: 0, x: 20 }} 
-    whileInView={{ opacity: 1, x: 0 }} 
+    initial={{ opacity: 0, x: 20 }}
+    whileInView={{ opacity: 1, x: 0 }}
     viewport={{ once: true }}
   >
-    <h3 className="text-xl md:text-2xl py-4 mt-4 font-dm-mono text-white mb-6 md:mb-8">Why it matters</h3>
-    <p className="font-dm-mono font-normal text-md md:text-base leading-6 text-[#b5b5b5]">
-      A few mining pools now control most of Bitcoin's hashrate. Some smaller pools act as <span className="text-[#4ecdc4] underline">proxies</span> for larger pools. This concentration gives a very small group the power to decide which transactions are included in blocks, undermining Bitcoin's core properties.
+   <p className="font-dm-mono font-normal text-md md:text-base leading-6 text-[#b5b5b5] mb-4">
+      A few mining pools now dominate Bitcoin's block space, with some smaller pools <a href="https://b10c.me/blog/015-bitcoin-mining-centralization/" className="text-[#4ecdc4] underline" target="_blank" rel="noopener noreferrer">provenly acting</a> as their proxies. Pools have the ability to selectively include or exclude transactions, creating the risk of a permissioned system where some transactions could be blacklisted, undermining Bitcoin's core properties.
     </p>
+    <p className="font-dm-mono font-normal text-md md:text-base leading-6 text-[#b5b5b5] mb-4">
+      Proprietary mining software and hardware vendor lock-ins further worsen the issue, stifling innovation and trapping miners within closed, centralized ecosystems.
+    </p>
+  </motion.div>
+));
+
+
+// Solution Section Title component
+const SolutionSectionTitle = memo(() => (
+  <motion.div 
+    className="text-center mb-8 md:mb-12 mt-16 md:mt-20" 
+    initial={{ opacity: 0, y: 20 }} 
+    whileInView={{ opacity: 1, y: 0 }} 
+    viewport={{ once: true }}
+  >
+    <h2 className="text-2xl md:text-3xl font-dm-mono text-white mb-4">
+      Accelerating Mining with Stratum V2
+    </h2>
   </motion.div>
 ));
 
@@ -212,28 +229,30 @@ const PillarImages = memo(() => (
   </div>
 ));
 
-// RiskCards component - extracted for better organization
-const RiskCards = memo(() => (
+// SolutionCards component – extracted for better organization
+const SolutionCards = memo(() => (
   <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-4 md:mt-0">
-    <RiskCard 
+    <SolutionCard 
       number={1} 
-      title="Transaction Censorship" 
-      description="Dominant mining pools can selectively include or exclude transactions, creating a permissioned system where certain addresses or transaction types can be effectively blacklisted from the network."
+      title="Miners Select Transaction" 
+      description="Stratum V2 empowers miners to choose which transactions to include, shifting them from passive hashers to active participants in securing the network."
     />
     
-    <RiskCard 
+    <SolutionCard 
       number={2} 
-      title="Collusion Risk" 
-      description="With fewer independent actors, the barrier to harmful coordination drops dramatically. Just 3-4 pool operators could potentially collude to enforce transaction filtering or even execute 51% attacks."
+      title="Modular & Developer-Friendly" 
+      description="Stratum V2 offers a free, open-source, modular infrastracture and clearly defined specs that developers can build on."
     />
     
-    <RiskCard 
+    <SolutionCard 
       number={3} 
-      title="Regulatory Capture" 
-      description="Large, identifiable mining operations become vulnerable targets for regulatory pressure, potentially forcing compliance with governmental demands that undermine Bitcoin's censorship resistance."
+      title="Interoperable & Netural" 
+        description="Community-driven governance and clear specifications ensure interoperability, preventing vendor lock-ins and fragmentation."
+
     />
   </div>
 ));
+
 
 export function MiningCentralization() {
   const [miningData, setMiningData] = useState<HashRateType[]>([]);
@@ -336,12 +355,11 @@ export function MiningCentralization() {
           viewport={{ once: true }}
         >
           <h2 className="text-2xl md:text-4xl font-dm-mono text-white">
-            The Centralization Crisis
-            <br />in Bitcoin Mining
+            The Centralization Crisis in Bitcoin Mining
           </h2>
         </motion.div>
         
-        {/* Combined Card with Chart and Explanation */}
+        {/* Problem Statement Section - Combined Card with Chart and Explanation */}
         {error ? (
           <p className="text-red-500 text-center">{error}</p>
         ) : (
@@ -365,17 +383,20 @@ export function MiningCentralization() {
                 />
               </div>
               
-              {/* Explanation Text Section */}
-              <ExplanationText />
+              {/* Problem Statement Text Section */}
+              <ProblemStatement />
             </div>
           </div>
         )}
         
+        {/* Solution Section Title */}
+        <SolutionSectionTitle />
+        
         {/* Three Pillars SVG */}
         <PillarImages />
         
-        {/* Risk Cards */}
-        <RiskCards />
+        {/* Solution Cards */}
+        <SolutionCards />
       </div>
     </section>
   );

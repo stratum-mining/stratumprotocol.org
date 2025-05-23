@@ -92,7 +92,7 @@ export function SecurityComparison() {
         >
           <h2 className="text-4xl font-mono mb-4">Enhanced Security</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto mb-4">
-          The current SV1 protocol is unencrypted and transmits data in plaintext, exposing miners to man-in-the-middle attacks and hashrate hijacking. Stratum V2 uses end-to-end encryption by default, protecting miners from theft and securing their profits.
+          Legacy mining protocols, transmit data in plaintext, exposing miners to man-in-the-middle attacks and hashrate hijacking. Stratum V2 uses end-to-end encryption by default, protecting miners from theft and securing their profits.
           </p>
         </motion.div>
 
