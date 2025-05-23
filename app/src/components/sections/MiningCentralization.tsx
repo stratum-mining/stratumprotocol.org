@@ -1,7 +1,7 @@
 // import { colors } from "@/utils";
 import { motion } from "framer-motion";
 import { memo, useCallback, useEffect, useMemo, useState } from "react";
-import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend, TooltipProps } from "recharts";
+import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, TooltipProps } from "recharts";
 import PieChartBgLines from "/public/assets/svgs/PieChartBgLines.svg";
 import PillarSvg from "/public/assets/svgs/Pillar.svg";
 
@@ -41,9 +41,9 @@ const API_URL = "https://mempool.space/api/v1/mining/hashrate/pools/1y";
 // Extracted sub-components
 const RiskCard = memo(({ number, title, description }: { number: number; title: string; description: string }) => (
   <div className="bg-[#060607] border border-[#4A4A4F] rounded-lg p-6 md:p-8 flex flex-col w-full border-[0.5px] h-full">
-    <div className="bg-black border border-[#232425] rounded w-8 h-8 md:w-10 md:h-10 flex items-center justify-center text-center mb-4">
+    {/* <div className="bg-black border border-[#232425] rounded w-8 h-8 md:w-10 md:h-10 flex items-center justify-center text-center mb-4">
       <span className="text-white font-dm-mono">{number}</span>
-    </div>
+    </div> */}
     <div className="font-dm-mono text-base md:text-lg text-white mb-3">{title}</div>
     <div className="font-dm-mono font-normal text-sm md:text-base leading-5 md:leading-6 text-[#b5b5b5]">{description}</div>
   </div>
@@ -109,9 +109,9 @@ const getChartDimensions = (width: number): ChartDimensions => {
 const MiningChart = memo(({ 
   poolData, 
   chartDimensions,
-  legendPayload,
-  renderLegendText,
-  width
+  // legendPayload,
+  // renderLegendText,
+  // width
 }: { 
   poolData: PoolDataType[], 
   chartDimensions: ChartDimensions,
@@ -120,25 +120,25 @@ const MiningChart = memo(({
   width: number
 }) => {
   // Legend wrapper style - memoized to prevent recalculation
-  const legendWrapperStyle = useMemo(() => ({
-    display: "flex" as const,
-    flexDirection: "row" as const,
-    alignItems: "center" as const,
-    justifyContent: "center" as const,
-    flexWrap: "wrap" as const,
-    gap: width < 640 ? "4px" : "8px",
-    fontSize: chartDimensions.fontSize,
-    color: "#b5b5b5",
-    width: "100%",
-    marginTop: width < 640 ? "30px" : "40px",
-    marginBottom: width < 640 ? "20px" : "30px",
-    paddingLeft: "20px",
-    paddingRight: "20px",
-    lineHeight: "1.2",
-  }), [width, chartDimensions.fontSize]);
+  // const legendWrapperStyle = useMemo(() => ({
+  //   display: "flex" as const,
+  //   flexDirection: "row" as const,
+  //   alignItems: "center" as const,
+  //   justifyContent: "center" as const,
+  //   flexWrap: "wrap" as const,
+  //   gap: width < 640 ? "4px" : "8px",
+  //   fontSize: chartDimensions.fontSize,
+  //   color: "#b5b5b5",
+  //   width: "100%",
+  //   marginTop: width < 640 ? "30px" : "40px",
+  //   marginBottom: width < 640 ? "20px" : "30px",
+  //   paddingLeft: "20px",
+  //   paddingRight: "20px",
+  //   lineHeight: "1.2",
+  // }), [width, chartDimensions.fontSize]);
 
   return (
-    <div className="relative z-10 flex flex-col items-center justify-center pt-8 pb-16 md:pt-10 md:pb-20 px-4">
+    <div className="relative z-10 flex flex-col items-center justify-center pt-6 pb-6 md:pt-6 md:pb- px-4">
       <div className="h-[240px] sm:h-[280px] md:h-[300px] w-full">
         {poolData.length > 0 && (
           <ResponsiveContainer width="100%" height="100%">
@@ -166,7 +166,7 @@ const MiningChart = memo(({
           </ResponsiveContainer>
         )}
       </div>
-      <div className="mt-12 md:mt-16 w-full text-center">
+      {/* <div className="mt-12 md:mt-16 w-full text-center">
         {poolData.length > 0 && (
           <Legend
             payload={legendPayload}
@@ -177,7 +177,7 @@ const MiningChart = memo(({
             formatter={renderLegendText}
           />
         )}
-      </div>
+      </div> */}
     </div>
   );
 });
