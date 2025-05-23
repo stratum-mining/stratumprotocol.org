@@ -39,7 +39,7 @@ export function Navigation() {
     { to: "/developers", label: "Developers" },
     { to: "/blog", label: "Blog" },
     { to: "/resources", label: "Resources" },
-    { to: "/specifications", label: "Specifications" },
+    { to: "/specification", label: "Specification" },
   ];
 
   const changeLanguage = (lng: string) => {
@@ -193,12 +193,9 @@ export function Navigation() {
           )}
         </AnimatePresence>
       </nav>
-      
+
       {/* Pool Selector Modal */}
-      <PoolSelector 
-        open={isPoolSelectorOpen} 
-        onOpenChange={setIsPoolSelectorOpen}
-      />
+      <PoolSelector open={isPoolSelectorOpen} onOpenChange={setIsPoolSelectorOpen} />
     </header>
   );
 }
