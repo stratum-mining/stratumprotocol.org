@@ -6,10 +6,11 @@
   "scripts": {
     "dev": "react-router dev",
     "lint": "eslint .",
-    "build": "react-router build prebuild",
+    "build": "react-router build prebuild && npm run submodules:update",
     "start": "react-router-serve ./build/server/index.js",
     "typecheck": "react-router typegen && tsc",
-    "prebuild": "ts-node app/src/hooks/generate-blog-data.js"
+    "prebuild": "ts-node app/src/hooks/generate-blog-data.js",
+    "submodules:update": "git submodule update --init && git submodule update --remote"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.6",
