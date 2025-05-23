@@ -1,0 +1,50 @@
+name: Update submodule
+on:
+  repository_dispatch:
+    types:
+      - update-submodule
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PAT }}
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Update submodule
+        run: |
+          # Configure Git
+          git config --global user.name "GitHub Action"
+          git config --global user.email "noreply@github.com"
+
+          # Pull latest changes FIRST - critical step!
+          echo "Fetching and pulling latest changes..."
+          git fetch
+          git pull --rebase
+
+          # Update the submodule
+          echo "Updating submodule..."
+          git submodule update --init --recursive --checkout -f --remote -- "${{github.event.client_payload.module}}"
+
+          # Check if there are changes to commit
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "Changes detected, committing..."
+            git add .
+            git commit -m "deploy: ${{github.event.client_payload.module}} - ${{github.event.client_payload.sha}}"
+            
+            # Pull again right before pushing
+            echo "Pulling latest changes before pushing..."
+            git pull --rebase
+            
+            # Push changes
+            echo "Pushing changes..."
+            git push
+            echo "Push completed successfully."
+          else
+            echo "No changes detected. Nothing to commit."
+          fi
