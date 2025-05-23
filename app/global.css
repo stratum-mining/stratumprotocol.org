@@ -162,3 +162,58 @@
     align-items: center;
   }
 }
+
+.specification-readme {
+  ul {
+    list-style-type: square;
+  }
+
+  ul li::marker {
+    color: #2dd4bf;
+  }
+
+  ul ul {
+    list-style-type: disc;
+  }
+
+  ul ul li::marker {
+    color: white;
+  }
+
+  ul ul ul {
+    list-style-type: circle;
+  }
+
+  ul ul ul li::marker {
+    color: #2dd4bf;
+  }
+}
+
+.specification-content {
+  ul {
+    list-style-type: disc;
+  }
+
+  ul li::marker {
+    color: #2dd4bf;
+  }
+
+  ul ul {
+    list-style-type: circle;
+    font-size: 16px;
+  }
+
+  ul ul li::marker {
+    color: white;
+  }
+
+  ol li a {
+    color: #2dd4bf;
+    overflow-wrap: break-word;
+    display: none;
+  }
+
+  pre code {
+    background-color: transparent;
+  }
+}
