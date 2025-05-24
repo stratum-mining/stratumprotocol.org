@@ -15,10 +15,6 @@ export function CommunitySection() {
           viewport={{ once: true }}
         >
           <h2 className="text-4xl font-mono mb-4">Built by the Community</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Stratum V2 is an open-source protocol developed by the community,
-            for the community
-          </p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-8 mb-16">
