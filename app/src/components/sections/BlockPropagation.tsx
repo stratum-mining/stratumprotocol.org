@@ -111,18 +111,6 @@ export function BlockPropagation() {
               </div>
             </div>
             <NetworkGrid version="v1" />
-            <div className="mt-6 space-y-2">
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li className="flex items-start gap-2">
-                  <span className="text-red-500">•</span>
-                  <span>Block propagated only by a pool</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-red-500">•</span>
-                  <span>4.5 hours of wasted mining time per year</span>
-                </li>
-              </ul>
-            </div>
           </Card>
 
           {/* V2 Card */}
@@ -140,18 +128,6 @@ export function BlockPropagation() {
               </div>
             </div>
             <NetworkGrid version="v2" />
-            <div className="mt-6 space-y-2">
-              <ul className="space-y-2 text-sm text-cyan-500">
-                <li className="flex items-start gap-2">
-                  <span>•</span>
-                  <span>~28x quicker, dual block propagation (miner or pool)</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span>•</span>
-                  <span>~118x faster block change, increasing profits</span>
-                </li>
-              </ul>
-            </div>
           </Card>
         </div>
       </div>

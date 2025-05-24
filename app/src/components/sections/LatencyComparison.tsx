@@ -110,17 +110,6 @@ export function LatencyComparison() {
           </LineChart>
         </ResponsiveContainer>
       </div>
-
-      <ul className="space-y-2 text-sm text-muted-foreground">
-        <li className="flex items-start gap-2">
-          <span className="text-cyan-500">•</span>
-          <span>SV1, miners are likely missing out on about 1.06% of transaction fees in every block due to mining on outdated job templates.</span>
-        </li>
-        <li className="flex items-start gap-2">
-          <span className="text-cyan-500">•</span>
-          <span> Stratum V2 reduces stale share inefficiency</span>
-        </li>
-      </ul>
     </Card>
   );
 }

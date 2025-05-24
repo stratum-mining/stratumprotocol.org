@@ -241,12 +241,12 @@ const SolutionCards = memo(() => (
     <SolutionCard 
       number={2} 
       title="Modular & Developer-Friendly" 
-      description="Stratum V2 offers a free, open-source, modular infrastracture and clearly defined specs that developers can build on."
+      description="Stratum V2 offers a free, open-source, modular infrastructure with permissive license, empowering developers to build and innovate."
     />
     
     <SolutionCard 
       number={3} 
-      title="Interoperable & Netural" 
+      title="Interoperable & Neutral" 
         description="Community-driven governance and clear specifications ensure interoperability, preventing vendor lock-ins and fragmentation."
 
     />

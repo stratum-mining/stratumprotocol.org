@@ -110,17 +110,6 @@ export function BandwidthComparison() {
           </LineChart>
         </ResponsiveContainer>
       </div>
-
-      <ul className="space-y-2 text-sm text-muted-foreground">
-        <li className="flex items-start gap-2">
-          <span className="text-cyan-500">•</span>
-          <span>~70% reduction in bandwidth usage</span>
-        </li>
-        <li className="flex items-start gap-2">
-          <span className="text-cyan-500">•</span>
-          <span>Better performance on slow or unstable connections</span>
-        </li>
-      </ul>
     </Card>
   );
 }

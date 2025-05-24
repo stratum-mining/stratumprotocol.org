@@ -141,12 +141,6 @@ export function TransactionControl() {
               totalFees={calculateTotalFees(poolSelectedTxs)}
               isInteractive={false}
             />
-
-            <ul className="mt-6 space-y-2 text-sm text-muted-foreground">
-              <li>• Hidden fee payments reduce your revenue</li>
-              <li>• No control over consensus rules</li>
-              <li>• Constant monitoring required</li>
-            </ul>
           </Card>
 
           {/* Miner-Controlled */}
@@ -184,12 +178,6 @@ export function TransactionControl() {
               totalFees={calculateTotalFees(selectedTxs)}
               isInteractive={true}
             />
-
-            <ul className="mt-6 space-y-2 text-sm text-cyan-500">
-              <li>• Maximize revenue with full transaction visibility</li>
-              <li>• Control your own consensus rules</li>
-              <li>• No need to monitor pool behavior</li>
-            </ul>
           </Card>
         </div>
       </div>
