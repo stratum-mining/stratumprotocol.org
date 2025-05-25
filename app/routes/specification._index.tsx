@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import ReactMarkdown from "react-markdown";
 import { Navigation } from "@/components/Navigation";
-import specificationsReadme from "../src/specification/README.md?raw";
+import specificationsReadme from "@/specification/README.md?raw";
 import SpecificationSidebar from "@/components/specification-sidebar";
 
 export default function SpecificationsPage() {

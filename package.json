@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "react-router dev",
     "lint": "eslint .",
-    "build": "react-router build prebuild && npm run submodules:update",
+    "build": "react-router build prebuild",
     "start": "react-router-serve ./build/server/index.js",
     "typecheck": "react-router typegen && tsc",
     "prebuild": "ts-node app/src/hooks/generate-blog-data.js",
@@ -54,6 +54,7 @@
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^15.15.0",
     "tailwindcss": "^4.0.15",
+    "ts-node": "^10.9.2",
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.24.1",
     "vite": "^6.2.0",
