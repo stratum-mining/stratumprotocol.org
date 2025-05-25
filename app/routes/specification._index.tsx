@@ -1,10 +1,37 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import ReactMarkdown from "react-markdown";
+import { useEffect, useState } from "react";
 import { Navigation } from "@/components/Navigation";
-import specificationsReadme from "@/specification/README.md?raw";
 import SpecificationSidebar from "@/components/specification-sidebar";
 
 export default function SpecificationsPage() {
+  const [currentMarkdown, setCurrentMarkdown] = useState("");
+
+  useEffect(() => {
+    // Use import.meta.glob with the updated syntax
+    const markdownFiles = import.meta.glob("../src/specification/*.md", {
+      query: "?raw",
+      import: "default",
+    });
+
+    async function fetchMarkdown() {
+      try {
+        const filePath = `../src/specification/README.md`;
+
+        if (markdownFiles[filePath]) {
+          const content = await markdownFiles[filePath]();
+
+          setCurrentMarkdown(content as string);
+        }
+      } catch (error) {
+        console.error("Failed to load markdown:", error);
+        setCurrentMarkdown("## Error\n\nFailed to load the specification.");
+      }
+    }
+
+    fetchMarkdown();
+  }, []);
+
   return (
     <main className='min-h-screen bg-background text-foreground'>
       <Navigation />
@@ -50,7 +77,7 @@ export default function SpecificationsPage() {
                 }}
                 className='specification-readme'
               >
-                {specificationsReadme}
+                {currentMarkdown}
               </ReactMarkdown>
             </div>
           </div>

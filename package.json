@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "react-router dev",
     "lint": "eslint .",
-    "build": "react-router build prebuild",
+    "build": "react-router build prebuild submodules:update",
     "start": "react-router-serve ./build/server/index.js",
     "typecheck": "react-router typegen && tsc",
     "prebuild": "ts-node app/src/hooks/generate-blog-data.js",
