@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Globe } from "lucide-react";
 import { useTranslation } from "react-i18next";
@@ -30,8 +30,18 @@ interface NavChild {
 export function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isPoolSelectorOpen, setIsPoolSelectorOpen] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
   const { t, i18n } = useTranslation();
   const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const navLinks: NavLink[] = [
     { to: "/miners", label: "Miners" },
@@ -47,7 +57,13 @@ export function Navigation() {
   };
 
   return (
-    <header className='fixed top-0 left-0 right-0 z-50 py-4'>
+    <header 
+      className='fixed top-0 left-0 right-0 z-50 py-4 transition-all duration-200'
+      style={{
+        backgroundColor: `rgba(30, 30, 30, ${Math.min(scrollY * 0.002, 0.95)})`,
+        backdropFilter: `blur(${Math.min(scrollY * 0.1, 1)}px)`,
+      }}
+    >
       <nav className='container mx-auto px-4 flex justify-center' role='navigation' aria-label='Main navigation'>
         <div className='w-full flex items-center justify-between'>
           {/* Logo */}

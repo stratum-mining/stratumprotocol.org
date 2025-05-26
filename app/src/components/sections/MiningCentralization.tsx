@@ -44,8 +44,8 @@ const SolutionCard = memo(({ number, title, description }: { number: number; tit
     {/* <div className="bg-black border border-[#232425] rounded w-8 h-8 md:w-10 md:h-10 flex items-center justify-center text-center mb-4">
       <span className="text-white font-dm-mono">{number}</span>
     </div> */}
-    <div className="font-dm-mono text-base md:text-lg text-white mb-3">{title}</div>
-    <div className="font-dm-mono font-normal text-sm md:text-base leading-5 md:leading-6 text-[#b5b5b5]">{description}</div>
+    <div className="font-dm-mono py-4 text-base md:text-lg text-white mb-3">{title}</div>
+    <div className="font-dm-mono py-2 font-normal text-sm md:text-base leading-5 md:leading-6 text-[#b5b5b5]">{description}</div>
   </div>
 ));
 
@@ -203,14 +203,16 @@ const ProblemStatement = memo(() => (
 // Solution Section Title component
 const SolutionSectionTitle = memo(() => (
   <motion.div 
-    className="text-center mb-8 md:mb-12 mt-16 md:mt-20" 
+    className="flex justify-center mb-6 md:mb-0 mt-16 md:mt-20" 
     initial={{ opacity: 0, y: 20 }} 
     whileInView={{ opacity: 1, y: 0 }} 
     viewport={{ once: true }}
   >
-    <h2 className="text-2xl md:text-3xl font-dm-mono text-white mb-4">
-      Accelerating Mining with Stratum V2
-    </h2>
+    <div className="bg-black px-4 md:px-8 py-4 md:py-4 w-full shadow-lg border border-[#232425]">
+      <h2 className="text-2xl md:text-2xl font-dm-mono text-white mb-0 text-center">
+        Accelerating Mining with Stratum V2
+      </h2>
+    </div>
   </motion.div>
 ));
 
