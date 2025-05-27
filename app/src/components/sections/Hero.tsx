@@ -69,13 +69,13 @@ export function Hero() {
   }, []);
 
   useEffect(() => {
-    const unsubscribe = textScrollProgress.onChange(value => {
+    const unsubscribe = textScrollProgress.on('change', (value: number) => {
       // Change text based on scroll position - using the text section's scroll progress
       if (value < 0.5) {
         setActiveText(0); // efficient
       } else if (value < 0.6) {
         setActiveText(1); // decentralized
-      } else if (value < 0.85 ) {
+      } else if (value < 0.85) {
         setActiveText(2); // profitable
       }
     });
