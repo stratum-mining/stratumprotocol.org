@@ -216,4 +216,14 @@
   pre code {
     background-color: transparent;
   }
+
+  h3 code {
+    font-size: 30px;
+  }
+
+  @media (max-width: 640px) {
+    h3 code {
+      font-size: 20px;
+    }
+  }
 }

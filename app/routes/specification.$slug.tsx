@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import remarkGfm from "remark-gfm";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ExternalLink } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import { useEffect, useState } from "react";
 import { Navigation } from "@/components/Navigation";
@@ -160,6 +160,22 @@ export default function SpecificationPostPage() {
                         </div>
                       </div>
                     );
+                  },
+
+                  a: ({ ...props }) => {
+                    return (
+                      <a {...props} className='text-cyan-custom-100 font-dm-mono underline underline-offset-4 cursor-pointer' target='_blank'>
+                        <span className='gap-1 items-center w-fit inline-flex'>
+                          {props.children} <ExternalLink className='w-4 h-4' />
+                        </span>
+                      </a>
+                    );
+                  },
+
+                  img: ({ ...props }: React.ComponentPropsWithoutRef<"img">) => {
+                    const src = props.src?.replace(".", "");
+
+                    return <img {...props} className='w-full h-full object-center object-contain my-8' src={`/app/src/specification${src}`} />;
                   },
                 }}
                 className='specification-content'
