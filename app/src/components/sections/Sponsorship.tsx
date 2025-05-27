@@ -62,7 +62,7 @@ export function Sponsorship() {
                 <button
                   key={index}
                   onClick={() => setActiveTab(tabValue)}
-                  className={`p-2 hover:cursor-pointer text-lg ${
+                  className={`p-2 hover:cursor-pointer text-lg lg:text-sm m-0 ${
                     activeTab === tabValue
                       ? 'text-cyan-300 bg-emerald-900 border-2 border-solid flex items-center justify-center border-cyan-300 font-medium '
                       : 'text-gray-400'
