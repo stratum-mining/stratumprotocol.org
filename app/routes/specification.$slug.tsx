@@ -189,7 +189,7 @@ export default function SpecificationPostPage() {
                   img: ({ ...props }: React.ComponentPropsWithoutRef<"img">) => {
                     const src = props.src?.replace(".", "");
 
-                    return <img {...props} className='w-full h-full object-center object-contain my-8' src={`/app/src/specification${src}`} />;
+                    return <img {...props} className='w-full h-full object-center object-contain my-8' src={`/specification${src}`} />;
                   },
                 }}
                 className='specification-content'
