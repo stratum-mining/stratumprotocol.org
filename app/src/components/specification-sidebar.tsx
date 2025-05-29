@@ -1,4 +1,6 @@
+import { sluggifyTags } from "@/utils";
 import { ArrowLeft } from "lucide-react";
+import ReactMarkdown from "react-markdown";
 import { Link, useLocation } from "react-router";
 
 const specificationSidebarNavItems = [
@@ -15,14 +17,51 @@ const specificationSidebarNavItems = [
   ["/specification/10-Discussion", "10. Discussion"],
 ];
 
-const SpecificationSidebar = () => {
+const SpecificationSidebar = ({ currentSublinks }: { currentSublinks: string[] }) => {
   const pathname = useLocation().pathname;
+  const joinedSublinks = currentSublinks?.length > 1 ? currentSublinks.join(" \n") : null;
+
+  // scroll smoothly to heading position
+  const handleSmoothScroll = (e: React.MouseEvent, id: string) => {
+    e.preventDefault();
+
+    // Manually update the URL hash
+    window.history.pushState(null, "", `#${id}`);
+
+    setTimeout(() => {
+      const element = document.getElementById(id);
+      const scrollContainer =
+        document.querySelector("[data-scroll-container]") || document.querySelector(".overflow-y-auto") || document.documentElement;
+
+      if (element && scrollContainer) {
+        if (scrollContainer === document.documentElement) {
+          const headerOffset = 100;
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth",
+          });
+        } else {
+          const containerRect = scrollContainer.getBoundingClientRect();
+          const elementRect = element.getBoundingClientRect();
+          const relativeTop = elementRect.top - containerRect.top + scrollContainer.scrollTop - 100;
+
+          scrollContainer.scrollTo({
+            top: relativeTop,
+            behavior: "smooth",
+          });
+        }
+      }
+    }, 150);
+  };
 
   // get current active specificationNavItem based on pathname
   const currentActiveSpecificationNavItem = specificationSidebarNavItems.find(([path]) => pathname.includes(path));
 
   return (
-    <div className='sticky top-20 h-full flex-col gap-4 lg:flex hidden max-w-[300px] w-[300px]'>
+    <div className='h-full flex-col gap-4 lg:flex hidden max-w-[320px] w-[320px] overflow-y-auto hide-scrollbar'>
       {pathname !== "/specification" && (
         <button className='group w-fit'>
           <Link to='/specification' className='font-dm-mono cursor-pointer font-medium flex gap-2 items-center relative'>
@@ -33,17 +72,76 @@ const SpecificationSidebar = () => {
         </button>
       )}
 
-      <div className='flex flex-col gap-2'>
+      <div className='flex flex-col gap-6'>
         {specificationSidebarNavItems.map(([path, title]) => (
-          <Link
-            to={`${path}.md`}
-            key={path}
-            className={`relative font-dm-mono text-lg font-medium hover:text-cyan-custom-100 hover:underline underline-offset-4 ${
-              currentActiveSpecificationNavItem?.[0] === path ? "text-cyan-custom-100" : ""
-            }`}
-          >
-            {title}
-          </Link>
+          <div key={path} className='flex flex-col'>
+            <Link
+              to={`${path}/`}
+              key={path}
+              className={`relative font-dm-mono text-lg font-medium hover:text-cyan-custom-100 hover:underline underline-offset-4 ${
+                currentActiveSpecificationNavItem?.[0] === path ? "text-cyan-custom-100 font-semibold" : ""
+              }`}
+              onClick={() => {
+                const element = document.getElementById(sluggifyTags([title]));
+
+                if (element) {
+                  element.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
+            >
+              {title}
+            </Link>
+
+            {currentSublinks?.length > 1 && currentActiveSpecificationNavItem?.[0] === path ? (
+              <div className='flex flex-col gap-4 pt-4'>
+                <ReactMarkdown
+                  components={{
+                    h1: ({ ...props }: React.ComponentPropsWithoutRef<"h1">) => {
+                      return <h1 {...props} className='hidden' />;
+                    },
+
+                    h2: ({ ...props }: React.ComponentPropsWithoutRef<"h2">) => {
+                      return (
+                        <h2
+                          {...props}
+                          className='text-base font-medium sm:font-medium font-dm-mono leading-[120%] tracking-tight pl-3 cursor-pointer hover:text-cyan-custom-100 hover:underline underline-offset-4'
+                          onClick={(e) => handleSmoothScroll(e, sluggifyTags(props?.children))}
+                        >
+                          <a href={`#${sluggifyTags(props?.children)}`}>{props.children}</a>
+                        </h2>
+                      );
+                    },
+
+                    h3: ({ ...props }: React.ComponentPropsWithoutRef<"h3">) => {
+                      return (
+                        <h3
+                          {...props}
+                          className='text-base font-medium sm:font-medium font-dm-mono pl-6 cursor-pointer  hover:text-cyan-custom-100 hover:underline underline-offset-4'
+                          onClick={(e) => handleSmoothScroll(e, sluggifyTags(props?.children))}
+                        >
+                          <a href={`${path}/#${sluggifyTags(props?.children)}`}>{props.children}</a>
+                        </h3>
+                      );
+                    },
+
+                    h4: ({ ...props }: React.ComponentPropsWithoutRef<"h4">) => {
+                      return (
+                        <h4
+                          {...props}
+                          className='text-base font-medium sm:font-medium font-dm-mono pl-8 cursor-pointer hover:text-cyan-custom-100 hover:underline underline-offset-4'
+                          onClick={(e) => handleSmoothScroll(e, sluggifyTags(props?.children))}
+                        >
+                          <a href={`${path}/#${sluggifyTags(props?.children)}`}>{props.children}</a>
+                        </h4>
+                      );
+                    },
+                  }}
+                >
+                  {joinedSublinks ? joinedSublinks : ""}
+                </ReactMarkdown>
+              </div>
+            ) : null}
+          </div>
         ))}
       </div>
     </div>

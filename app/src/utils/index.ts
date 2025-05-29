@@ -39,3 +39,29 @@ export const replaceYouTubeLinks = (source: string) => {
     return `[youtube:${v}:${path}]`;
   });
 };
+
+export function sluggifyTags<T>(children: T) {
+  const getChildrenFromNode: string[] = [];
+
+  if (Array.isArray(children)) {
+    children.forEach((child) => {
+      if (typeof child === "string") {
+        getChildrenFromNode.push(child);
+      } else if (child?.props?.children) {
+        getChildrenFromNode.push(child.props.children[0]);
+      }
+    });
+  } else if (typeof children === "string") {
+    getChildrenFromNode.push(children);
+  }
+
+  const tag = getChildrenFromNode.join(" ");
+
+  const slug = tag
+    .replace(/[^a-zA-Z0-9\s]/g, "")
+    .replace(/\s+/g, "-")
+    .toLowerCase();
+
+  // remove all dots
+  return slug.replace(/\./g, "");
+}

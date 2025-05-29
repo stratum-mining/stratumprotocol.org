@@ -40,7 +40,7 @@ export default function SpecificationsPage() {
           <h1 className='text-5xl sm:text-6xl md:text-7xl font-dm-mono font-medium text-center'>Specification</h1>
 
           <div className='flex gap-10 mx-auto'>
-            <SpecificationSidebar />
+            <SpecificationSidebar currentSublinks={[]} />
             <div>
               <ReactMarkdown
                 components={{
@@ -65,11 +65,15 @@ export default function SpecificationsPage() {
                   a: ({ ...props }) => {
                     const linkTarget = props?.node?.properties?.href || props.children;
 
-                    const formattedLink =
-                      typeof linkTarget === "string" && /^\d/.test(linkTarget) && !linkTarget.startsWith("0") ? `0${linkTarget}` : linkTarget;
+                    // make link have only a single dash between items
+                    const formattedLink = (linkTarget as string).replace(/\.md$/, "/");
+                    const splitlink = formattedLink.split("-");
+                    const sluggifiedlink = splitlink.filter((item) => item !== "").join("-");
+
+                    console.log(sluggifiedlink);
 
                     return (
-                      <a {...props} className='cursor-pointer' href={`/specification/${formattedLink}`}>
+                      <a {...props} className='cursor-pointer' href={`/specification/${sluggifiedlink}`}>
                         {props.children}
                       </a>
                     );
