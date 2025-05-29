@@ -1,7 +1,9 @@
 import { sluggifyTags } from "@/utils";
 import { ArrowLeft } from "lucide-react";
 import ReactMarkdown from "react-markdown";
-import { Link, useLocation } from "react-router";
+import { Link, useLocation, useParams } from "react-router";
+import specificationData from "@/data/specification.json";
+import { useMemo } from "react";
 
 const specificationSidebarNavItems = [
   ["/specification/00-Abstract", "0. Abstract"],
@@ -17,8 +19,18 @@ const specificationSidebarNavItems = [
   ["/specification/10-Discussion", "10. Discussion"],
 ];
 
-const SpecificationSidebar = ({ currentSublinks }: { currentSublinks: string[] }) => {
+const SpecificationSidebar = () => {
+  const { slug } = useParams<{ slug: string }>();
   const pathname = useLocation().pathname;
+
+  const slugWithoutExtension = slug ? slug.replace(".md", "") : "";
+  const currentPost = specificationData[slugWithoutExtension as keyof typeof specificationData] || specificationData["00-Abstract"];
+
+  const currentSublinks = useMemo(() => {
+    // extract all headings from currentMarkdown (h1, h2, h3,h4,h5,h6)
+    return currentPost.content.match(/^#{1,6}\s+(.*)$/gm) ?? [];
+  }, [currentPost]);
+
   const joinedSublinks = currentSublinks?.length > 1 ? currentSublinks.join(" \n") : null;
 
   // scroll smoothly to heading position
@@ -82,11 +94,12 @@ const SpecificationSidebar = ({ currentSublinks }: { currentSublinks: string[] }
                 currentActiveSpecificationNavItem?.[0] === path ? "text-cyan-custom-100 font-semibold" : ""
               }`}
               onClick={() => {
-                const element = document.getElementById(sluggifyTags([title]));
-
-                if (element) {
-                  element.scrollIntoView({ behavior: "smooth" });
-                }
+                setTimeout(() => {
+                  const element = document.getElementById(sluggifyTags([title]));
+                  if (element) {
+                    element.scrollIntoView();
+                  }
+                }, 500);
               }}
             >
               {title}
