@@ -1,17 +1,19 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useEffect } from "react";
 import remarkGfm from "remark-gfm";
 import { sluggifyTags } from "@/utils";
 import ReactMarkdown from "react-markdown";
+import { useEffect, useState } from "react";
 import { Navigation } from "@/components/Navigation";
-import { ArrowLeft, ExternalLink } from "lucide-react";
 import specificationData from "@/data/specification.json";
-import { Link, useLocation, useParams } from "react-router";
+import { useLocation, useParams } from "react-router";
+import { ExternalLink, LayoutList, X } from "lucide-react";
+import MobileSidebarModal from "@/components/mobile-sidebar-modal";
 import SpecificationSidebar from "@/components/specification-sidebar";
 
 export default function SpecificationPostPage() {
   const { slug } = useParams<{ slug: string }>();
   const pathname = useLocation().pathname;
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
   const getHash = typeof window !== "undefined" && window.location.hash ? window.location.hash.replace("#", "") : "";
 
   const slugWithoutExtension = slug ? slug.replace(".md", "") : "";
@@ -53,17 +55,19 @@ export default function SpecificationPostPage() {
               className='w-fit max-w-4xl sm:max-h-[calc(100vh-128px)] overflow-y-auto overflow-x-scroll pb-10 hide-scrollbar'
               data-scroll-container
             >
-              <div className='border border-cyan-custom-100 rounded-[8px] shadow-lg p-3 px-4 w-fit sticky top-0 bg-background block lg:hidden z-50'>
-                {pathname !== "/specification" && (
-                  <button className='group w-fit'>
-                    <Link to='/specification' className='font-dm-mono cursor-pointer font-medium flex gap-2 items-center relative'>
-                      <ArrowLeft className='w-4 h-4' />
-                      <p>Back</p>
-                      <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-custom-100 mt-1 transition-all duration-300 ease-in-out group-hover:w-full'></span>
-                    </Link>
-                  </button>
-                )}
-              </div>
+              {pathname !== "/specification" && (
+                <button
+                  aria-label={isMobileSidebarOpen ? "Close menu" : "Open menu"}
+                  aria-expanded={isMobileSidebarOpen}
+                  aria-controls='sidebar-mobile-menu'
+                  className='block lg:hidden'
+                  onClick={() => setIsMobileSidebarOpen(!isMobileSidebarOpen)}
+                >
+                  <div className='border border-cyan-custom-100 rounded-[8px] shadow-lg p-2 w-fit absolute bottom-6 right-6 bg-background block lg:hidden z-60'>
+                    {isMobileSidebarOpen ? <X className='w-6 h-6' /> : <LayoutList className='w-6 h-6' />}
+                  </div>
+                </button>
+              )}
 
               <div>
                 <ReactMarkdown
@@ -73,7 +77,7 @@ export default function SpecificationPostPage() {
                       return (
                         <h1
                           {...props}
-                          className='text-4xl sm:text-5xl font-medium sm:font-semibold font-dm-mono pt-7 pb-3 leading-[120%] tracking-tight'
+                          className='text-[32px] sm:text-5xl font-medium sm:font-semibold font-dm-mono pt-7 pb-3 leading-[120%] tracking-tight'
                           id={sluggifyTags(props.children)}
                         />
                       );
@@ -202,6 +206,8 @@ export default function SpecificationPostPage() {
           </div>
         </div>
       </section>
+
+      <MobileSidebarModal isMobileSidebarOpen={isMobileSidebarOpen} setIsMobileSidebarOpen={setIsMobileSidebarOpen} />
     </main>
   );
 }
