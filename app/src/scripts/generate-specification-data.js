@@ -11,7 +11,7 @@ const md = new MarkdownIt({
 });
 
 function generateSpecificationData() {
-  const specificationDir = path.join(process.cwd(), "app/src/specification");
+  const specificationDir = path.join(process.cwd(), "public/specification");
   const filenames = fs.readdirSync(specificationDir);
 
   const specificationsObject = {};

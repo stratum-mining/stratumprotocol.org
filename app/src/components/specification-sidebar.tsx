@@ -1,7 +1,9 @@
 import { sluggifyTags } from "@/utils";
 import { ArrowLeft } from "lucide-react";
 import ReactMarkdown from "react-markdown";
-import { Link, useLocation } from "react-router";
+import { Link, useLocation, useParams } from "react-router";
+import specificationData from "@/data/specification.json";
+import { useMemo } from "react";
 
 const specificationSidebarNavItems = [
   ["/specification/00-Abstract", "0. Abstract"],
@@ -17,8 +19,18 @@ const specificationSidebarNavItems = [
   ["/specification/10-Discussion", "10. Discussion"],
 ];
 
-const SpecificationSidebar = ({ currentSublinks }: { currentSublinks: string[] }) => {
+const SpecificationSidebar = ({ setIsMobileSidebarOpen }: { setIsMobileSidebarOpen?: React.Dispatch<React.SetStateAction<boolean>> }) => {
+  const { slug } = useParams<{ slug: string }>();
   const pathname = useLocation().pathname;
+
+  const slugWithoutExtension = slug ? slug.replace(".md", "") : "";
+  const currentPost = specificationData[slugWithoutExtension as keyof typeof specificationData] || specificationData["00-Abstract"];
+
+  const currentSublinks = useMemo(() => {
+    // extract all headings from currentMarkdown (h1, h2, h3,h4,h5,h6)
+    return currentPost.content.match(/^#{1,6}\s+(.*)$/gm) ?? [];
+  }, [currentPost]);
+
   const joinedSublinks = currentSublinks?.length > 1 ? currentSublinks.join(" \n") : null;
 
   // scroll smoothly to heading position
@@ -55,17 +67,19 @@ const SpecificationSidebar = ({ currentSublinks }: { currentSublinks: string[] }
         }
       }
     }, 150);
+
+    setIsMobileSidebarOpen?.(false);
   };
 
   // get current active specificationNavItem based on pathname
   const currentActiveSpecificationNavItem = specificationSidebarNavItems.find(([path]) => pathname.includes(path));
 
   return (
-    <div className='h-full flex-col gap-4 lg:flex hidden max-w-[320px] w-[320px] overflow-y-auto hide-scrollbar'>
+    <div className='h-full flex-col gap-4 flex max-w-[320px] w-[320px] overflow-y-auto hide-scrollbar'>
       {pathname !== "/specification" && (
         <button className='group w-fit'>
           <Link to='/specification' className='font-dm-mono cursor-pointer font-medium flex gap-2 items-center relative'>
-            <ArrowLeft />
+            <ArrowLeft className='w-5 h-5' />
             <p>Back</p>
             <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-custom-100 mt-1 transition-all duration-300 ease-in-out group-hover:w-full'></span>
           </Link>
@@ -78,15 +92,18 @@ const SpecificationSidebar = ({ currentSublinks }: { currentSublinks: string[] }
             <Link
               to={`${path}/`}
               key={path}
-              className={`relative font-dm-mono text-lg font-medium hover:text-cyan-custom-100 hover:underline underline-offset-4 ${
+              className={`relative font-dm-mono text-sm lg:text-lg font-medium hover:text-cyan-custom-100 hover:underline underline-offset-4 ${
                 currentActiveSpecificationNavItem?.[0] === path ? "text-cyan-custom-100 font-semibold" : ""
               }`}
               onClick={() => {
-                const element = document.getElementById(sluggifyTags([title]));
+                setTimeout(() => {
+                  const element = document.getElementById(sluggifyTags([title]));
+                  if (element) {
+                    element.scrollIntoView();
+                  }
+                }, 500);
 
-                if (element) {
-                  element.scrollIntoView({ behavior: "smooth" });
-                }
+                setIsMobileSidebarOpen?.(false);
               }}
             >
               {title}
@@ -104,7 +121,7 @@ const SpecificationSidebar = ({ currentSublinks }: { currentSublinks: string[] }
                       return (
                         <h2
                           {...props}
-                          className='text-base font-medium sm:font-medium font-dm-mono leading-[120%] tracking-tight pl-3 cursor-pointer hover:text-cyan-custom-100 hover:underline underline-offset-4'
+                          className='text-sm lg:text-base font-medium sm:font-medium font-dm-mono leading-[120%] tracking-tight pl-3 cursor-pointer hover:text-cyan-custom-100 hover:underline underline-offset-4'
                           onClick={(e) => handleSmoothScroll(e, sluggifyTags(props?.children))}
                         >
                           <a href={`#${sluggifyTags(props?.children)}`}>{props.children}</a>
@@ -116,7 +133,7 @@ const SpecificationSidebar = ({ currentSublinks }: { currentSublinks: string[] }
                       return (
                         <h3
                           {...props}
-                          className='text-base font-medium sm:font-medium font-dm-mono pl-6 cursor-pointer  hover:text-cyan-custom-100 hover:underline underline-offset-4'
+                          className='text-sm lg:text-base font-medium sm:font-medium font-dm-mono pl-6 cursor-pointer  hover:text-cyan-custom-100 hover:underline underline-offset-4'
                           onClick={(e) => handleSmoothScroll(e, sluggifyTags(props?.children))}
                         >
                           <a href={`${path}/#${sluggifyTags(props?.children)}`}>{props.children}</a>
@@ -128,7 +145,7 @@ const SpecificationSidebar = ({ currentSublinks }: { currentSublinks: string[] }
                       return (
                         <h4
                           {...props}
-                          className='text-base font-medium sm:font-medium font-dm-mono pl-8 cursor-pointer hover:text-cyan-custom-100 hover:underline underline-offset-4'
+                          className='text-sm lg:text-base font-medium sm:font-medium font-dm-mono pl-8 cursor-pointer hover:text-cyan-custom-100 hover:underline underline-offset-4'
                           onClick={(e) => handleSmoothScroll(e, sluggifyTags(props?.children))}
                         >
                           <a href={`${path}/#${sluggifyTags(props?.children)}`}>{props.children}</a>
