@@ -44,7 +44,7 @@ const SolutionCard = memo(({ number, title, description }: { number: number; tit
     {/* <div className="bg-black border border-[#232425] rounded w-8 h-8 md:w-10 md:h-10 flex items-center justify-center text-center mb-4">
       <span className="text-white font-dm-mono">{number}</span>
     </div> */}
-    <div className="font-dm-mono py-4 text-base md:text-lg text-white mb-3">{title}</div>
+    <div className="font-dm-mono py-2 text-base md:text-lg text-white mb-3">{title}</div>
     <div className="font-dm-mono py-2 font-normal text-sm md:text-base leading-5 md:leading-6 text-[#b5b5b5]">{description}</div>
   </div>
 ));
@@ -190,10 +190,10 @@ const ProblemStatement = memo(() => (
     whileInView={{ opacity: 1, x: 0 }}
     viewport={{ once: true }}
   >
-   <p className="font-dm-mono font-normal text-md md:text-base leading-6 text-[#b5b5b5] mb-4">
+   <p className="font-dm-mono p-2 font-normal text-md md:text-base leading-6 text-[#b5b5b5] mb-4">
       A few mining pools now dominate Bitcoin's block space, with some smaller pools <a href="https://b10c.me/blog/015-bitcoin-mining-centralization/" className="text-[#4ecdc4] underline" target="_blank" rel="noopener noreferrer">provenly acting</a> as their proxies. Pools have the ability to selectively include or exclude transactions, creating the risk of a permissioned system where some transactions could be blacklisted, undermining Bitcoin's core properties.
     </p>
-    <p className="font-dm-mono font-normal text-md md:text-base leading-6 text-[#b5b5b5] mb-4">
+    <p className="font-dm-mono p-2 font-normal text-md md:text-base leading-6 text-[#b5b5b5] mb-4">
       Proprietary mining software and hardware vendor lock-ins further worsen the issue, stifling innovation and trapping miners within closed, centralized ecosystems.
     </p>
   </motion.div>

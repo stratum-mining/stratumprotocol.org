@@ -1,13 +1,18 @@
-import { motion, useScroll, AnimatePresence, useTransform } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { PoolSelector } from "@/components/PoolSelector";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// Register ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger);
 
 export function Hero() {
   const [activeText, setActiveText] = useState(0);
-  const [scrollDirection, setScrollDirection] = useState('down');
-  const sectionRef = useRef(null);
-  const textSectionRef = useRef(null);
-  const prevScrollY = useRef(0);
+  const sectionRef = useRef<HTMLElement>(null);
+  const textContainerRef = useRef<HTMLDivElement>(null);
+  const scrollTriggerRef = useRef<gsap.plugins.ScrollTriggerInstance | null>(null);
+  const isAnimatingRef = useRef(false);
   const texts = [
     {
       highlight: "efficient",
@@ -41,119 +46,124 @@ export function Hero() {
     },
   ];
 
-  // Track scroll progress for the text animation section only
-  const { scrollYProgress: textScrollProgress } = useScroll({
-    target: textSectionRef,
-    offset: ["start end", "end start"]
-  });
-
-  // Track scroll progress for the entire section to make it sticky
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end start"]
-  });
-
-  // Create a transform to use for sticky behavior
-  const stickyProgress = useTransform(scrollYProgress, [0.75, 0.85, 0.98, 1], [0, 0, 0, 0]);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      const direction = currentScrollY > prevScrollY.current ? 'down' : 'up';
-      setScrollDirection(direction);
-      prevScrollY.current = currentScrollY;
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+  // Memoize the text update function to prevent unnecessary re-renders
+  const updateActiveText = useCallback((progress: number) => {
+    if (isAnimatingRef.current) return;
+    
+    isAnimatingRef.current = true;
+    if (progress < 0.33) {
+      setActiveText(0);
+    } else if (progress < 0.66) {
+      setActiveText(1);
+    } else {
+      setActiveText(2);
+    }
+    // Reset the flag after a short delay to prevent rapid updates
+    setTimeout(() => {
+      isAnimatingRef.current = false;
+    }, 100);
   }, []);
 
   useEffect(() => {
-    const unsubscribe = textScrollProgress.on('change', (value: number) => {
-      // Change text based on scroll position - using the text section's scroll progress
-      if (value < 0.5) {
-        setActiveText(0); // efficient
-      } else if (value < 0.6) {
-        setActiveText(1); // decentralized
-      } else if (value < 0.85) {
-        setActiveText(2); // profitable
+    if (!sectionRef.current) return;
+
+    // Kill any existing ScrollTrigger instance
+    if (scrollTriggerRef.current) {
+      scrollTriggerRef.current.kill();
+    }
+
+    const ctx = gsap.context(() => {
+      // Create a timeline for the text animations
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: 1,
+          pin: true,
+          pinSpacing: true,
+          onUpdate: (self: gsap.plugins.ScrollTriggerInstance) => {
+            updateActiveText(self.progress);
+          },
+          onEnter: () => {
+            gsap.to(textContainerRef.current, {
+              opacity: 1,
+              duration: 0.5,
+              ease: "easeOut"
+            });
+          },
+          onLeaveBack: () => {
+            gsap.to(textContainerRef.current, {
+              opacity: 0,
+              duration: 0.3,
+              ease: "easeIn"
+            });
+          }
+        }
+      });
+
+      // Store the ScrollTrigger instance for cleanup
+      if (tl.scrollTrigger) {
+        scrollTriggerRef.current = tl.scrollTrigger;
       }
-    });
 
-    return () => unsubscribe();
-  }, [textScrollProgress]);
+      return () => {
+        tl.scrollTrigger?.kill();
+      };
+    }, sectionRef);
 
-  // Animation variants for sequential vertical sliding
+    return () => {
+      ctx.revert();
+      if (scrollTriggerRef.current) {
+        scrollTriggerRef.current.kill();
+        scrollTriggerRef.current = null;
+      }
+    };
+  }, [updateActiveText]);
+
+  // Animation variants for text transitions
   const textVariants = {
-    hidden: (direction: string) => ({
+    hidden: {
       opacity: 0,
-      y: direction === 'down' ? 70 : -70,
-    }),
+      y: 50,
+    },
     visible: {
       opacity: 1,
       y: 0,
       transition: { 
         duration: 0.5, 
-        ease: [0.25, 0.1, 0.25, 1.0] // cubic-bezier for smoother motion
+        ease: [0.25, 0.1, 0.25, 1.0] // cubic-bezier for smooth motion
       }
     },
-    exit: (direction: string) => ({
+    exit: {
       opacity: 0,
-      y: direction === 'down' ? -70 : 70,
+      y: -50,
       transition: { 
         duration: 0.5, 
-        ease: [0.25, 0.1, 0.25, 1.0]
+        ease: [0.25, 0.1, 0.25, 1.0] // cubic-bezier for smooth motion
       }
-    })
-  };
-
-  // Paragraph variants with similar sequential effect
-  const paragraphVariants = {
-    hidden: (direction: string) => ({
-      opacity: 0,
-      y: direction === 'down' ? 30 : -30,
-    }),
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { 
-        duration: 0.5, 
-        ease: [0.25, 0.1, 0.25, 1.0],
-        delay: 0.1 
-      }
-    },
-    exit: (direction: string) => ({
-      opacity: 0,
-      y: direction === 'down' ? -30 : 30,
-      transition: { 
-        duration: 0.5, 
-        ease: [0.25, 0.1, 0.25, 1.0]
-      }
-    })
+    }
   };
 
   return (
     <section 
       ref={sectionRef} 
-      className='relative min-h-screen py-40 bg-background'
+      className='relative min-h-[150vh] bg-background'
     >
-      {/* Background lines - kept outside the sticky container */}
+      {/* Background lines */}
       <div className='absolute top-0 left-0 right-0 bottom-0'>
         <div className='relative h-full w-full'>
           <img src='/assets/svgs/background-lines.svg' alt='background lines' className='object-cover w-full h-full' />
         </div>
       </div>
       
-      {/* Make the content sticky until the animation completes */}
-      <motion.div 
-        className='sticky top-0 min-h-screen flex items-center justify-center overflow-hidden'
-        style={{ translateY: useTransform(stickyProgress, (v) => v * -50 + '%') }}
-      >
-        <div className='container relative px-4 flex flex-col gap-15 md:gap-20'>
-          {/* This is where we track the text animation scroll progress */}
-          <div ref={textSectionRef} className='flex flex-col gap-5 md:gap-10'>
+      {/* Fixed content container */}
+      <div className='fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center py-40'>
+        <div className='container relative px-4 flex flex-col gap-20 md:gap-24'>
+          {/* Text animation container */}
+          <div ref={textContainerRef} className='flex flex-col gap-8 md:gap-12 opacity-0'>
             <motion.h1
-              className='text-4xl md:text-7xl leading-[120%] lg:text-[5.75rem] lg:leading-[104%] font-dm-mono tracking-tight'
+              className='text-5xl md:text-8xl leading-[120%] lg:text-[6.5rem] lg:leading-[104%] font-dm-mono tracking-tight'
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
@@ -166,7 +176,6 @@ export function Hero() {
                   {activeText === 0 && (
                     <motion.span
                       key="efficient"
-                      custom={scrollDirection}
                       variants={textVariants}
                       initial="hidden"
                       animate="visible"
@@ -181,7 +190,6 @@ export function Hero() {
                   {activeText === 1 && (
                     <motion.span
                       key="decentralized"
-                      custom={scrollDirection}
                       variants={textVariants}
                       initial="hidden"
                       animate="visible"
@@ -200,7 +208,6 @@ export function Hero() {
                   {activeText === 2 && (
                     <motion.div
                       key="profitable"
-                      custom={scrollDirection}
                       variants={textVariants}
                       initial="hidden"
                       animate="visible"
@@ -218,7 +225,7 @@ export function Hero() {
                       >
                         profitable
                       </span>
-                      {/* Foreground filled text with increased offset for more pronounced 3D effect */}
+                      {/* Foreground filled text */}
                       <span
                         className="relative text-[#0C5E5C] font-dm-mono tracking-tight"
                         style={{
@@ -236,16 +243,15 @@ export function Hero() {
               mining
             </motion.h1>
 
-            <div className='max-w-[70rem] min-h-[6rem] overflow-hidden'>
+            <div className='max-w-[80rem] min-h-[8rem] overflow-hidden'>
               <AnimatePresence mode="wait" initial={false}>
                 <motion.p
                   key={activeText}
-                  custom={scrollDirection}
-                  variants={paragraphVariants}
+                  variants={textVariants}
                   initial="hidden"
                   animate="visible"
                   exit="exit"
-                  className='text-lg md:text-xl text-muted-foreground'
+                  className='text-xl md:text-2xl text-muted-foreground'
                 >
                   {texts[activeText].paragraph}
                 </motion.p>
@@ -253,13 +259,16 @@ export function Hero() {
             </div>
           </div>
 
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.4 }}>
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="mt-8"
+          >
             <PoolSelector buttonText='Start Mining' />
           </motion.div>
         </div>
-      </motion.div>
-      
-    
+      </div>
     </section>
   );
 }

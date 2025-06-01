@@ -12,10 +12,10 @@ const MessageTransition = () => {
       {/* Labels */}
       <div className="absolute top-4 left-4 flex items-center gap-2">
         <ShieldOff className="w-4 h-4 text-red-500" />
-        <span className="text-sm font-mono text-red-500">Stratum V1</span>
+        <span className="text-base font-mono text-red-500">Stratum V1</span>
       </div>
       <div className="absolute top-4 right-4 flex items-center gap-2">
-        <span className="text-sm font-mono text-cyan-500">Stratum V2</span>
+        <span className="text-base font-mono text-cyan-500">Stratum V2</span>
         <Shield className="w-4 h-4 text-cyan-500" />
       </div>
 
@@ -25,7 +25,7 @@ const MessageTransition = () => {
         initial={{ left: "10%" }}
         animate={{ left: "90%" }}
         transition={{ 
-          duration: 5,
+          duration: 8,
           repeat: Infinity,
           ease: "linear"
         }}
@@ -37,12 +37,12 @@ const MessageTransition = () => {
             opacity: [1, 1, 0, 0],
           }}
           transition={{
-            duration: 5,
+            duration: 12,
             repeat: Infinity,
             times: [0, 0.45, 0.55, 1]
           }}
         >
-          <span className="px-3 py-1.5 rounded bg-red-500/10 border border-red-500/20 font-mono text-xs">
+          <span className="px-3 py-1.5 rounded bg-red-500/10 border border-red-500/20 font-mono text-base">
             ["myWorkerName", "mypwd"]
           </span>
         </motion.div>
@@ -54,12 +54,12 @@ const MessageTransition = () => {
             opacity: [0, 0, 1, 1],
           }}
           transition={{
-            duration: 5,
+            duration: 12,
             repeat: Infinity,
             times: [0, 0.45, 0.55, 1]
           }}
         >
-          <span className="px-3 py-1.5 rounded bg-cyan-500/10 border border-cyan-500/20 font-mono text-xs">
+          <span className="px-3 py-1.5 rounded bg-cyan-500/10 border border-cyan-500/20 font-mono text-base">
             🔒 a7x9•••f3d2
           </span>
         </motion.div>
@@ -67,12 +67,12 @@ const MessageTransition = () => {
 
       {/* Protocol descriptions */}
       <div className="absolute bottom-4 left-4 max-w-[40%]">
-        <p className="text-xs text-muted-foreground">
+        <p className="text-base text-muted-foreground">
           Plaintext - vulnerable to interception & hashrate stealing
         </p>
       </div>
       <div className="absolute bottom-4 right-4 max-w-[40%] text-right">
-        <p className="text-xs text-muted-foreground">
+        <p className="text-base text-muted-foreground">
           End-to-end encryption protects sensitive data & profit
         </p>
       </div>
