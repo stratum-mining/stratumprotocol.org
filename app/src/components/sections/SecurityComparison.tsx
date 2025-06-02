@@ -37,7 +37,7 @@ const MessageTransition = () => {
             opacity: [1, 1, 0, 0],
           }}
           transition={{
-            duration: 12,
+            duration: 8,
             repeat: Infinity,
             times: [0, 0.45, 0.55, 1]
           }}
@@ -54,7 +54,7 @@ const MessageTransition = () => {
             opacity: [0, 0, 1, 1],
           }}
           transition={{
-            duration: 12,
+            duration: 8,
             repeat: Infinity,
             times: [0, 0.45, 0.55, 1]
           }}
