@@ -1,45 +1,27 @@
 import { Card } from '@/components/ui/card';
 import { Network } from 'lucide-react';
 import {
-  LineChart,
-  Line,
+  BarChart,
+  Bar,
   XAxis,
   YAxis,
   Tooltip,
+  Legend,
   ResponsiveContainer,
 } from 'recharts';
 
-// Simple statistics display component
-const StatDisplay = ({
-  label,
-  value,
-  color,
-}: {
-  label: string;
-  value: string;
-  color: string;
-}) => (
-  <div className="space-y-2">
-    <span className="text-sm font-mono text-muted-foreground">{label}</span>
-    <div className={`text-2xl font-mono`} style={{ color }}>
-      {value}
-    </div>
-  </div>
-);
-
-// Custom tooltip for the chart
 const CustomTooltip = ({ active, payload }: any) => {
   if (active && payload && payload.length) {
     return (
       <div className="bg-background/95 border border-border p-2 rounded-sm">
-        <p className="text-xs font-mono mb-1">{`Time: ${payload[0].payload.name}`}</p>
+        <p className="text-xs font-mono mb-1">{payload[0].payload.direction}</p>
         {payload.map((p: any) => (
-          <p
-            key={p.dataKey}
-            className="text-xs font-mono"
-            style={{ color: p.color }}
-          >
-            {`${p.dataKey === 'sv1' ? 'SV1' : 'SV2'}: ${p.value} bytes`}
+          <p key={p.dataKey} className="text-xs font-mono" style={{ color: p.color }}>
+            {p.dataKey === 'sv1'
+              ? 'SV1'
+              : p.dataKey === 'sv2_no_jd'
+              ? 'SV2 (No JD)'
+              : 'SV2 (With JD)'}: {p.value} bytes/sec
           </p>
         ))}
       </div>
@@ -48,13 +30,11 @@ const CustomTooltip = ({ active, payload }: any) => {
   return null;
 };
 
-// Sample bandwidth data
-const bandwidthData = [
-  { name: '0s', sv1: 200, sv2: 50 },
-  { name: '1s', sv1: 195, sv2: 48 },
-  { name: '2s', sv1: 205, sv2: 52 },
-  { name: '3s', sv1: 198, sv2: 49 },
-  { name: '4s', sv1: 202, sv2: 51 },
+const bandwidthBarData = [
+  { direction: 'TX (Miner)', sv1: 101.0, sv2_no_jd: 40.1, sv2_with_jd: 114.0 },
+  { direction: 'RX (Miner)', sv1: 66.6, sv2_no_jd: 26.0, sv2_with_jd: 118.0 },
+  { direction: 'TX (Pool)', sv1: 126.0, sv2_no_jd: 74.0, sv2_with_jd: 99.1 },
+  { direction: 'RX (Pool)', sv1: 170.0, sv2_no_jd: 100.0, sv2_with_jd: 135.0 },
 ];
 
 export function BandwidthComparison() {
@@ -62,52 +42,63 @@ export function BandwidthComparison() {
     <Card className="p-6 bg-black/20">
       <div className="flex items-center gap-3 mb-6">
         <Network className="w-5 h-5 text-cyan-500" />
-        <h3 className="text-xl font-mono">Reduced Bandwidth</h3>
+        <h3 className="text-xl font-mono">Reduced Bandwidth Usage</h3>
       </div>
-
-      <div className="grid grid-cols-2 gap-8 mb-8">
-        <StatDisplay label="Stratum V1" value="~200 bytes" color="#ef4444" />
-        <StatDisplay label="Stratum V2" value="~50 bytes" color="#22d3ee" />
-      </div>
-
-      <div className="h-48 mb-8">
+      <div className="h-64 mb-8">
         <ResponsiveContainer width="100%" height="100%">
-          <LineChart
-            data={bandwidthData}
-            margin={{ top: 10, right: 10, left: 10, bottom: 5 }}
+          <BarChart
+            data={bandwidthBarData}
+            margin={{ top: 10, right: 10, left: 32, bottom: 10 }} // enough margin for 'bytes/sec'
+            barCategoryGap="20%"
           >
             <XAxis
-              dataKey="name"
-              tick={{ fill: '#94a3b8', fontSize: 12 }}
-              stroke="#1e293b"
+              dataKey="direction"
+              tick={{ fill: '#94a3b8', fontSize: 12, fontFamily: 'monospace' }}
+              axisLine={false}
+              tickLine={false}
             />
             <YAxis
-              tick={{ fill: '#94a3b8', fontSize: 12 }}
-              stroke="#1e293b"
+              tick={{ fill: '#94a3b8', fontSize: 12, fontFamily: 'monospace' }}
+              axisLine={false}
+              tickLine={false}
               label={{
-                value: 'bytes',
+                value: 'bytes/sec',
                 angle: -90,
                 position: 'insideLeft',
                 fill: '#94a3b8',
                 fontSize: 12,
+                fontFamily: 'monospace',
+                dx: -12, // shift label to ensure it fits
               }}
             />
             <Tooltip content={<CustomTooltip />} />
-            <Line
-              type="monotone"
-              dataKey="sv1"
-              stroke="#ef4444"
-              strokeWidth={2}
-              dot={{ fill: '#ef4444' }}
+            <Legend
+              verticalAlign="top"
+              align="right"
+              iconType="rect"
+              formatter={(value) => (
+                <span style={{
+                  color:
+                    value === 'sv1'
+                      ? '#ef4444'
+                      : value === 'sv2_no_jd'
+                      ? '#3b82f6'
+                      : '#22c55e',
+                  fontFamily: 'monospace',
+                  fontSize: 13,
+                }}>
+                  {value === 'sv1'
+                    ? 'SV1'
+                    : value === 'sv2_no_jd'
+                    ? 'SV2 (No JD)'
+                    : 'SV2 (With JD)'}
+                </span>
+              )}
             />
-            <Line
-              type="monotone"
-              dataKey="sv2"
-              stroke="#22d3ee"
-              strokeWidth={2}
-              dot={{ fill: '#22d3ee' }}
-            />
-          </LineChart>
+            <Bar dataKey="sv1" fill="#ef4444" radius={[6, 6, 0, 0]} />
+            <Bar dataKey="sv2_no_jd" fill="#3b82f6" radius={[6, 6, 0, 0]} />
+            <Bar dataKey="sv2_with_jd" fill="#22c55e" radius={[6, 6, 0, 0]} />
+          </BarChart>
         </ResponsiveContainer>
       </div>
     </Card>
