@@ -12,16 +12,16 @@ const MessageTransition = () => {
       {/* Labels */}
       <div className="absolute top-4 left-4 flex items-center gap-2">
         <ShieldOff className="w-4 h-4 text-red-500" />
-        <span className="text-base font-mono text-red-500">Stratum V1</span>
+        <span className="text-xs sm:text-base font-mono text-red-500">Stratum V1</span>
       </div>
       <div className="absolute top-4 right-4 flex items-center gap-2">
-        <span className="text-base font-mono text-cyan-500">Stratum V2</span>
+        <span className="text-xs sm:text-base font-mono text-cyan-500">Stratum V2</span>
         <Shield className="w-4 h-4 text-cyan-500" />
       </div>
 
       {/* Message animation */}
       <motion.div
-        className="absolute top-1/2 -translate-y-1/2"
+        className="absolute top-[35%] sm:top-1/2 -translate-y-1/2"
         initial={{ left: "10%" }}
         animate={{ left: "90%" }}
         transition={{ 
@@ -42,7 +42,7 @@ const MessageTransition = () => {
             times: [0, 0.45, 0.55, 1]
           }}
         >
-          <span className="px-3 py-1.5 rounded bg-red-500/10 border border-red-500/20 font-mono text-base">
+          <span className="px-3 py-1.5 rounded bg-red-500/10 border border-red-500/20 font-mono text-xs sm:text-base">
             ["myWorkerName", "mypwd"]
           </span>
         </motion.div>
@@ -59,7 +59,7 @@ const MessageTransition = () => {
             times: [0, 0.45, 0.55, 1]
           }}
         >
-          <span className="px-3 py-1.5 rounded bg-cyan-500/10 border border-cyan-500/20 font-mono text-base">
+          <span className="px-3 py-1.5 rounded bg-cyan-500/10 border border-cyan-500/20 font-mono text-xs sm:text-base">
             🔒 a7x9•••f3d2
           </span>
         </motion.div>
@@ -67,12 +67,12 @@ const MessageTransition = () => {
 
       {/* Protocol descriptions */}
       <div className="absolute bottom-4 left-4 max-w-[40%]">
-        <p className="text-base text-muted-foreground">
+        <p className="text-xs sm:text-base text-muted-foreground">
           Plaintext - vulnerable to interception & hashrate stealing
         </p>
       </div>
       <div className="absolute bottom-4 right-4 max-w-[40%] text-right">
-        <p className="text-base text-muted-foreground">
+        <p className="text-xs sm:text-base text-muted-foreground">
           End-to-end encryption protects sensitive data & profit
         </p>
       </div>
