@@ -18,9 +18,9 @@ export function Hero() {
       highlight: "efficient",
       paragraph: (
         <>
-          <span className='text-primary'> Stratum V2 </span> improves how miners, pools, and the Bitcoin network communicate.{" "}
-          <span className='text-primary'> It strengthens security </span> with encryption and{" "}
-          <span className='text-primary'>makes more efficient</span> by reducing bandwidth use and latency.
+          <span className='text-primary'> Stratum V2 </span> improves how miners, pools, and the Bitcoin network communicate. It secures mining with {" "}
+          <span className='text-primary'> end-to-end encryption</span> and makes it more efficient by reducing{" "}
+          <span className='text-primary'>bandwidth and latency</span> .
         </>
       ),
     },
