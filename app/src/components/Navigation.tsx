@@ -60,8 +60,8 @@ export function Navigation() {
     <header 
       className='fixed top-0 left-0 right-0 z-50 py-4 transition-all duration-200'
       style={{
-        backgroundColor: `rgba(30, 30, 30, ${Math.min(scrollY * 0.002, 0.95)})`,
-        backdropFilter: `blur(${Math.min(scrollY * 0.1, 1)}px)`,
+        backgroundColor: `rgba(30, 30, 30, ${Math.min(scrollY * 0.0001, 1.2)})`,
+        backdropFilter: `blur(${Math.min(scrollY * 0.1, 0.5)}px)`,
       }}
     >
       <nav className='container mx-auto px-4 flex justify-center' role='navigation' aria-label='Main navigation'>
