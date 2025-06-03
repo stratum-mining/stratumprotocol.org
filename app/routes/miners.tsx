@@ -3,6 +3,9 @@ import { Navigation } from '@/components/Navigation';
 import { Badge } from '@/components/ui/badge';
 import { ArrowUpRight, Shield, Zap, DollarSign } from 'lucide-react';
 import { PoolSelector } from '@/components/PoolSelector';
+import { LatencyJobBlockComparison } from '@/components/sections/LatencyJobBlockComparison';
+import { ShareAcceptance } from '@/components/sections/ShareAcceptance';
+import { MinersBandwidth } from '@/components/sections/MinersBandwidth';
 
 export default function MinersPage() {
   return (
@@ -20,8 +23,16 @@ export default function MinersPage() {
             reduced costs, and complete control over your operation
           </p>
         </div>
+        <div className="flex justify-center w-full">
+            <PoolSelector />
+        </div>  
       </section>
-
+      <div className="container mx-auto">
+        <div className="grid md:grid-cols-2 gap-8">
+          <LatencyJobBlockComparison />
+          <ShareAcceptance />
+        </div>
+      </div>
       {/* Benefits Section */}
       <section className="py-24 px-4 bg-muted/5" aria-labelledby="benefits-heading">
         <div className="container mx-auto">
@@ -116,9 +127,6 @@ export default function MinersPage() {
           </div>
         </div>
       </section>
-            <div className="flex justify-center w-full">
-            <PoolSelector />
-          </div>
     </main>
   );
 }
