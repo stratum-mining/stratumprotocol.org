@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { memo, useCallback, useEffect, useMemo, useState } from "react";
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, TooltipProps } from "recharts";
+import { useTranslation } from 'react-i18next';
 import PieChartBgLines from "/public/assets/svgs/PieChartBgLines.svg";
 import PillarSvg from "/public/assets/svgs/Pillar.svg";
 
@@ -51,6 +52,8 @@ const SolutionCard = memo(({ number, title, description }: { number: number; tit
 
 // Custom chart tooltip component
 const CustomTooltip = memo(({ active, payload }: TooltipProps<number, string>) => {
+  const { t } = useTranslation();
+  
   if (!active || !payload || !payload.length) return null;
   
   const data = payload[0].payload as PoolDataType;
@@ -67,7 +70,7 @@ const CustomTooltip = memo(({ active, payload }: TooltipProps<number, string>) =
       <p className="font-medium text-[15px]" style={{ color: data.color }}>
         {data.name}
       </p>
-      <p className="text-white text-[15px]">{`Share: ${data.value.toFixed(2)}%`}</p>
+      <p className="text-white text-[15px]">{t('miningCentralization.tooltip.share')}: {data.value.toFixed(2)}%</p>
     </div>
   );
 });
@@ -183,38 +186,46 @@ const MiningChart = memo(({
 });
 
 // Problem Statement component - extracted for better organization
-const ProblemStatement = memo(() => (
-  <motion.div
-    className="w-full lg:w-2/5 p-6 md:p-8 bg-black border-t lg:border-t-0 lg:border-l border-[#232425]"
-    initial={{ opacity: 0, x: 20 }}
-    whileInView={{ opacity: 1, x: 0 }}
-    viewport={{ once: true }}
-  >
-   <p className="font-dm-mono p-2 font-normal text-md md:text-base leading-6 text-[#b5b5b5] mb-4">
-      A few mining pools now dominate Bitcoin's block space, with some smaller pools <a href="https://b10c.me/blog/015-bitcoin-mining-centralization/" className="text-[#4ecdc4] underline" target="_blank" rel="noopener noreferrer">provenly acting</a> as their proxies. Pools have the ability to selectively include or exclude transactions, creating the risk of a permissioned system where some transactions could be blacklisted, undermining Bitcoin's core properties.
-    </p>
-    <p className="font-dm-mono p-2 font-normal text-md md:text-base leading-6 text-[#b5b5b5] mb-4">
-      Proprietary mining software and hardware vendor lock-ins further worsen the issue, stifling innovation and trapping miners within closed, centralized ecosystems.
-    </p>
-  </motion.div>
-));
+const ProblemStatement = memo(() => {
+  const { t } = useTranslation();
+  
+  return (
+    <motion.div
+      className="w-full lg:w-2/5 p-6 md:p-8 bg-black border-t lg:border-t-0 lg:border-l border-[#232425]"
+      initial={{ opacity: 0, x: 20 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+    >
+     <p className="font-dm-mono p-2 font-normal text-md md:text-base leading-6 text-[#b5b5b5] mb-4">
+        {t('miningCentralization.problemStatement.firstParagraph')} <a href="https://b10c.me/blog/015-bitcoin-mining-centralization/" className="text-[#4ecdc4] underline" target="_blank" rel="noopener noreferrer">{t('miningCentralization.problemStatement.provenlyActing')}</a> {t('miningCentralization.problemStatement.firstParagraphContinued')}
+      </p>
+      <p className="font-dm-mono p-2 font-normal text-md md:text-base leading-6 text-[#b5b5b5] mb-4">
+        {t('miningCentralization.problemStatement.secondParagraph')}
+      </p>
+    </motion.div>
+  );
+});
 
 
 // Solution Section Title component
-const SolutionSectionTitle = memo(() => (
-  <motion.div 
-    className="flex justify-center mb-6 md:mb-0 mt-16 md:mt-20" 
-    initial={{ opacity: 0, y: 20 }} 
-    whileInView={{ opacity: 1, y: 0 }} 
-    viewport={{ once: true }}
-  >
-    <div className="bg-black px-4 md:px-8 py-4 md:py-4 w-full shadow-lg border border-[#232425]">
-      <h2 className="text-2xl md:text-2xl font-dm-mono text-white mb-0 text-center">
-        Accelerating Mining with Stratum V2
-      </h2>
-    </div>
-  </motion.div>
-));
+const SolutionSectionTitle = memo(() => {
+  const { t } = useTranslation();
+  
+  return (
+    <motion.div 
+      className="flex justify-center mb-6 md:mb-0 mt-16 md:mt-20" 
+      initial={{ opacity: 0, y: 20 }} 
+      whileInView={{ opacity: 1, y: 0 }} 
+      viewport={{ once: true }}
+    >
+      <div className="bg-black px-4 md:px-8 py-4 md:py-4 w-full shadow-lg border border-[#232425]">
+        <h2 className="text-2xl md:text-2xl font-dm-mono text-white mb-0 text-center">
+          {t('miningCentralization.solutionTitle')}
+        </h2>
+      </div>
+    </motion.div>
+  );
+});
 
 // PillarImages component - extracted for better organization
 const PillarImages = memo(() => (
@@ -232,31 +243,35 @@ const PillarImages = memo(() => (
 ));
 
 // SolutionCards component – extracted for better organization
-const SolutionCards = memo(() => (
-  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-4 md:mt-0">
-    <SolutionCard 
-      number={1} 
-      title="Miners Select Transaction" 
-      description="Stratum V2 empowers miners to choose which transactions to include, shifting them from passive hashers to active participants in securing the network."
-    />
-    
-    <SolutionCard 
-      number={2} 
-      title="Modular & Developer-Friendly" 
-      description="Stratum V2 offers a free, open-source, modular infrastructure with permissive license, empowering developers to build and innovate."
-    />
-    
-    <SolutionCard 
-      number={3} 
-      title="Interoperable & Neutral" 
-        description="Community-driven governance and clear specifications ensure interoperability, preventing vendor lock-ins and fragmentation."
-
-    />
-  </div>
-));
+const SolutionCards = memo(() => {
+  const { t } = useTranslation();
+  
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-4 md:mt-0">
+      <SolutionCard 
+        number={1} 
+        title={t('miningCentralization.solutions.minersSelect.title')} 
+        description={t('miningCentralization.solutions.minersSelect.description')}
+      />
+      
+      <SolutionCard 
+        number={2} 
+        title={t('miningCentralization.solutions.modular.title')} 
+        description={t('miningCentralization.solutions.modular.description')}
+      />
+      
+      <SolutionCard 
+        number={3} 
+        title={t('miningCentralization.solutions.interoperable.title')} 
+        description={t('miningCentralization.solutions.interoperable.description')}
+      />
+    </div>
+  );
+});
 
 
 export function MiningCentralization() {
+  const { t } = useTranslation();
   const [miningData, setMiningData] = useState<HashRateType[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [width, setWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 0);
@@ -357,13 +372,13 @@ export function MiningCentralization() {
           viewport={{ once: true }}
         >
           <h2 className="text-2xl md:text-4xl font-dm-mono text-white">
-            The Centralization Crisis in Bitcoin Mining
+            {t('miningCentralization.title')}
           </h2>
         </motion.div>
         
         {/* Problem Statement Section - Combined Card with Chart and Explanation */}
         {error ? (
-          <p className="text-red-500 text-center">{error}</p>
+          <p className="text-red-500 text-center">{t('miningCentralization.errorMessage')}: {error}</p>
         ) : (
           <div className="relative w-full mx-auto mb-8 md:mb-0 border border-[#232425] rounded-lg overflow-hidden">
             <div className="flex flex-col lg:flex-row">

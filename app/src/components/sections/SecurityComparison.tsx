@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Shield, ShieldOff } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 // Simple message transition animation
-const MessageTransition = () => {
+const MessageTransition = ({ t }: { t: (key: string) => string }) => {
   return (
     <div className="relative h-48 w-full bg-black/20 rounded-lg border border-border overflow-hidden">
       {/* Split line */}
@@ -12,10 +13,10 @@ const MessageTransition = () => {
       {/* Labels */}
       <div className="absolute top-4 left-4 flex items-center gap-2">
         <ShieldOff className="w-4 h-4 text-red-500" />
-        <span className="text-xs sm:text-base font-mono text-red-500">Stratum V1</span>
+        <span className="text-xs sm:text-base font-mono text-red-500">{t("sections.securityComparison.v1Label")}</span>
       </div>
       <div className="absolute top-4 right-4 flex items-center gap-2">
-        <span className="text-xs sm:text-base font-mono text-cyan-500">Stratum V2</span>
+        <span className="text-xs sm:text-base font-mono text-cyan-500">{t("sections.securityComparison.v2Label")}</span>
         <Shield className="w-4 h-4 text-cyan-500" />
       </div>
 
@@ -68,12 +69,12 @@ const MessageTransition = () => {
       {/* Protocol descriptions */}
       <div className="absolute bottom-4 left-4 max-w-[40%]">
         <p className="text-xs sm:text-base text-muted-foreground">
-          Plaintext - vulnerable to interception & hashrate stealing
+          {t("sections.securityComparison.plaintextDescription")}
         </p>
       </div>
       <div className="absolute bottom-4 right-4 max-w-[40%] text-right">
         <p className="text-xs sm:text-base text-muted-foreground">
-          End-to-end encryption protects sensitive data & profit
+          {t("sections.securityComparison.encryptedDescription")}
         </p>
       </div>
     </div>
@@ -81,6 +82,8 @@ const MessageTransition = () => {
 };
 
 export function SecurityComparison() {
+  const { t } = useTranslation();
+
   return (
     <section className="py-24 px-4 bg-muted/50">
       <div className="container mx-auto">
@@ -90,14 +93,14 @@ export function SecurityComparison() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl font-mono mb-4">Enhanced Security</h2>
+          <h2 className="text-4xl font-mono mb-4">{t("sections.securityComparison.title")}</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto mb-4">
-          Legacy mining protocols, transmit data in plaintext, exposing miners to man-in-the-middle attacks and hashrate hijacking. Stratum V2 uses end-to-end encryption by default, protecting miners from theft and securing their profits.
+            {t("sections.securityComparison.subtitle")}
           </p>
         </motion.div>
 
         <Card className="p-6">
-          <MessageTransition />
+          <MessageTransition t={t} />
         </Card>
       </div>
     </section>

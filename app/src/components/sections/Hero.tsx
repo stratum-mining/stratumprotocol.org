@@ -3,11 +3,13 @@ import { PoolSelector } from "@/components/PoolSelector";
 import { useEffect, useState, useRef, useCallback } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useTranslation } from "react-i18next";
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
 export function Hero() {
+  const { t } = useTranslation();
   const [activeText, setActiveText] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
   const textContainerRef = useRef<HTMLDivElement>(null);
@@ -15,32 +17,26 @@ export function Hero() {
   const isAnimatingRef = useRef(false);
   const texts = [
     {
-      highlight: "efficient",
+      highlight: t("hero.efficient"),
       paragraph: (
         <>
-          <span className='text-primary'> Stratum V2 </span> improves how miners, pools, and the Bitcoin network communicate. It secures mining with {" "}
-          <span className='text-primary'> end-to-end encryption</span> and makes it more efficient by reducing{" "}
-          <span className='text-primary'>bandwidth and latency</span> .
+          <span className='text-primary'> Stratum V2 </span> {t("hero.texts.efficient")}
         </>
       ),
     },
     {
-      highlight: "decentralized",
+      highlight: t("hero.decentralized"),
       paragraph: (
         <>
-          Most importantly,<span className='text-primary'>  Stratum V2</span> empowers miners to choose which transactions are included in blocks,
-          protecting Bitcoin's fundamental properties - <span className='text-primary'>decentralization</span> and{" "}
-          <span className='text-primary'>censorship resistance</span>.
+          {t("hero.texts.decentralized")}
         </>
       ),
     },
     {
-      highlight: "profitable",
+      highlight: t("hero.profitable"),
       paragraph: (
         <>
-          <span className='text-primary'>Stratum V2</span> increases<span className='text-primary'> miner profits</span> by minimizing stale shares, reducing block and job latency, 
-          improving propagation speed, and cutting bandwidth waste. These upgrades directly improve efficiency{" "}
-          <span className='text-primary'>turning savings </span> into <span className='text-primary'>more revenue</span>.
+          {t("hero.texts.profitable")}
         </>
       ),
     },
@@ -49,7 +45,7 @@ export function Hero() {
   // Memoize the text update function to prevent unnecessary re-renders
   const updateActiveText = useCallback((progress: number) => {
     if (isAnimatingRef.current) return;
-    
+
     isAnimatingRef.current = true;
     if (progress < 0.33) {
       setActiveText(0);
@@ -156,7 +152,7 @@ export function Hero() {
           <img src='/assets/svgs/background-lines.svg' alt='background lines' className='object-cover w-full h-full' />
         </div>
       </div>
-      
+
       {/* Fixed content container */}
       <div className='fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center py-40'>
         <div className='container relative px-4 flex flex-col gap-20 md:gap-24'>
@@ -168,9 +164,9 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              One giant leap
+              {t("hero.oneGiantLeap")}
               <br />
-              for{" "}
+              {t("hero.for")}{" "}
               <span className="inline-flex items-center h-[1.2em] overflow-hidden">
                 <AnimatePresence mode="wait" initial={false}>
                   {activeText === 0 && (
@@ -183,10 +179,10 @@ export function Hero() {
                       className="text-primary font-dm-mono tracking-tight"
                       style={{ display: 'inline-block' }}
                     >
-                      efficient
+                      {t("hero.efficient")}
                     </motion.span>
                   )}
-                  
+
                   {activeText === 1 && (
                     <motion.span
                       key="decentralized"
@@ -201,10 +197,10 @@ export function Hero() {
                         display: 'inline-block'
                       }}
                     >
-                      decentralized
+                      {t("hero.decentralized")}
                     </motion.span>
                   )}
-                  
+
                   {activeText === 2 && (
                     <motion.div
                       key="profitable"
@@ -223,7 +219,7 @@ export function Hero() {
                           textShadow: '#000',
                         }}
                       >
-                        profitable
+                        {t("hero.profitable")}
                       </span>
                       {/* Foreground filled text */}
                       <span
@@ -234,13 +230,13 @@ export function Hero() {
                           WebkitTextStroke: '1px #6ADDDF'
                         }}
                       >
-                        profitable
+                        {t("hero.profitable")}
                       </span>
                     </motion.div>
                   )}
                 </AnimatePresence>
               </span>{" "}
-              mining
+              {t("hero.mining")}
             </motion.h1>
 
             <div className='max-w-[80rem] min-h-[8rem] overflow-hidden'>
@@ -265,7 +261,7 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="mt-8"
           >
-            <PoolSelector buttonText='Start Mining' />
+            <PoolSelector buttonText={t("hero.startMining")} />
           </motion.div>
         </div>
       </div>

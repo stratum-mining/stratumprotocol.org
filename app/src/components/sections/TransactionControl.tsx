@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Lock, Unlock } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 type Transaction = {
   id: number;
@@ -15,13 +16,15 @@ const TransactionBlock = ({
   isSelected, 
   isHidden,
   onClick,
-  isInteractive 
+  isInteractive,
+  t
 }: { 
   tx: Transaction;
   isSelected: boolean;
   isHidden: boolean;
   onClick: () => void;
   isInteractive: boolean;
+  t: (key: string) => string;
 }) => {
   return (
     <motion.div
@@ -36,7 +39,7 @@ const TransactionBlock = ({
     >
       <div className="flex flex-col gap-2 font-mono text-xs">
         <div className="flex justify-between items-center">
-          <span className="text-muted-foreground">Fee Rate</span>
+          <span className="text-muted-foreground">{t("transactionControl.feeRate")}</span>
           <span className={isSelected ? 'text-cyan-500' : 'text-muted-foreground'}>
             {tx.feePervB} sat/vB
           </span>
@@ -50,7 +53,7 @@ const TransactionBlock = ({
 
       {!isInteractive && isHidden && (
         <div className="absolute inset-0 bg-black/60 backdrop-blur-[1px] rounded-sm flex items-center justify-center">
-          <span className="text-xs text-red-500 font-mono">Hidden</span>
+          <span className="text-xs text-red-500 font-mono">{t("transactionControl.hidden")}</span>
         </div>
       )}
 
@@ -61,11 +64,11 @@ const TransactionBlock = ({
   );
 };
 
-const FeeDisplay = ({ totalFees, isInteractive }: { totalFees: number; isInteractive: boolean }) => (
+const FeeDisplay = ({ totalFees, isInteractive, t }: { totalFees: number; isInteractive: boolean; t: (key: string) => string }) => (
   <div className={`flex items-center justify-between p-4 rounded-sm border ${
     isInteractive ? 'border-cyan-500/20' : 'border-gray-800'
   }`}>
-    <span className="text-sm font-mono text-muted-foreground">Total Fees</span>
+    <span className="text-sm font-mono text-muted-foreground">{t("transactionControl.totalFees")}</span>
     <span className={`text-sm font-mono ${isInteractive ? 'text-cyan-500' : 'text-muted-foreground'}`}>
       {totalFees.toFixed(8)} BTC
     </span>
@@ -73,6 +76,7 @@ const FeeDisplay = ({ totalFees, isInteractive }: { totalFees: number; isInterac
 );
 
 export function TransactionControl() {
+  const { t } = useTranslation();
   const [selectedTxs, setSelectedTxs] = useState<number[]>([]);
 
   const transactions = [
@@ -105,9 +109,9 @@ export function TransactionControl() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl font-mono mb-4">Control Your Revenue</h2>
+          <h2 className="text-4xl font-mono mb-4">{t("transactionControl.title")}</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Take charge of your mining operation. Don't let pools decide which transactions make it into blocks or trust them to share all fee revenue.
+            {t("transactionControl.subtitle")}
           </p>
         </motion.div>
 
@@ -116,9 +120,9 @@ export function TransactionControl() {
           <Card className="p-6 bg-black/20">
             <div className="flex items-center justify-between mb-6">
               <div>
-                <h3 className="text-xl font-mono mb-2">Current Reality</h3>
+                <h3 className="text-xl font-mono mb-2">{t("transactionControl.currentReality.title")}</h3>
                 <p className="text-sm text-muted-foreground">
-                  Pools control transaction selection, potentially hiding high-fee transactions and making out-of-band deals
+                  {t("transactionControl.currentReality.description")}
                 </p>
               </div>
               <Lock className="w-6 h-6 text-muted-foreground" />
@@ -133,6 +137,7 @@ export function TransactionControl() {
                   isHidden={tx.hidden || false}
                   onClick={() => {}}
                   isInteractive={false}
+                  t={t}
                 />
               ))}
             </div>
@@ -140,6 +145,7 @@ export function TransactionControl() {
             <FeeDisplay 
               totalFees={calculateTotalFees(poolSelectedTxs)}
               isInteractive={false}
+              t={t}
             />
           </Card>
 
@@ -147,9 +153,9 @@ export function TransactionControl() {
           <Card className="p-6 bg-black/20">
             <div className="flex items-center justify-between mb-6">
               <div>
-                <h3 className="text-xl font-mono mb-2">With Stratum V2</h3>
+                <h3 className="text-xl font-mono mb-2">{t("transactionControl.withStratumV2.title")}</h3>
                 <p className="text-sm text-muted-foreground">
-                  Select your transactions, maximize your revenue, and maintain full control
+                  {t("transactionControl.withStratumV2.description")}
                 </p>
               </div>
               <Unlock className="w-6 h-6 text-cyan-500" />
@@ -170,6 +176,7 @@ export function TransactionControl() {
                     );
                   }}
                   isInteractive={true}
+                  t={t}
                 />
               ))}
             </div>
@@ -177,6 +184,7 @@ export function TransactionControl() {
             <FeeDisplay 
               totalFees={calculateTotalFees(selectedTxs)}
               isInteractive={true}
+              t={t}
             />
           </Card>
         </div>

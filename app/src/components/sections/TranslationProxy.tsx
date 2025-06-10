@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Server, Database } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 // Miner component without internal decorations
 const Miner = ({ delay }: { delay: number }) => (
@@ -24,6 +25,8 @@ const ConnectionDots = ({ color, delay }: { color: string; delay: number }) => (
 );
 
 export function TranslationProxy() {
+  const { t } = useTranslation();
+
   return (
     <section className="py-24 px-4 bg-muted/50">
       <div className="container mx-auto flex flex-col items-center overflow-x-auto">
@@ -34,12 +37,10 @@ export function TranslationProxy() {
           viewport={{ once: true }}
         >
           <h2 className="text-4xl font-mono mb-4">
-            Firmware upgrade not necessary
+            {t('translationProxy.title')}
           </h2>
           <p className="text-muted-foreground">
-            Connect your SV1 firmware devices through Translation Proxy which
-            facilitates the conversion of SV1 messages to SV2 for communication
-            with an SV2 pool.
+            {t('translationProxy.description')}
           </p>
         </motion.div>
 
@@ -70,7 +71,7 @@ export function TranslationProxy() {
               <div className="w-28 md:w-54 h-48 md:h-96 border border-cyan-500/20 rounded bg-black/20 flex flex-col items-center justify-center p-4 ml-8">
                 <Server className="w-8 h-8 md:w-12 md:h-12 text-cyan-500 mb-4" />
                 <p className="text-[10px] md:text-sm font-mono text-center text-cyan-500">
-                  SV1→SV2 Translation Proxy
+                  {t('translationProxy.proxyLabel')}
                 </p>
               </div>
 
@@ -96,7 +97,7 @@ export function TranslationProxy() {
             >
               <Database className="w-8 h-8 md:w-12 md:h-12 text-cyan-500 mb-4" />
               <p className="text-[10px] md:text-sm font-mono text-center text-cyan-500">
-                SV2 Mining Pool
+                {t('translationProxy.poolLabel')}
               </p>
             </motion.div>
           </div>

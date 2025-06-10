@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Card } from '@/components/ui/card';
 import { Boxes } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 // Create a single node component for reuse
 const Node = ({ delay, version }: { delay: number; version: 'v1' | 'v2' }) => (
@@ -74,6 +75,8 @@ const NetworkGrid = ({ version }: { version: 'v1' | 'v2' }) => (
 );
 
 export function BlockPropagation() {
+  const { t } = useTranslation();
+
   return (
     <section className="py-24 px-4 bg-muted/50">
       <div className="container mx-auto">
@@ -87,11 +90,10 @@ export function BlockPropagation() {
             id="block-propagation-heading"
             className="text-4xl font-mono mb-4"
           >
-            Faster Block Change & Propagation
+            {t('sections.blockPropagation.title')}
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-          Improves profitability by increasing the likelihood that a miner’s block is accepted first, especially during chain-split races. 
-          SV1 miners lose approximately 308.37 milliseconds per block due to block change latency. Over a year, this adds up to about 4.5 hours of completely unproductive mining time.
+            {t('sections.blockPropagation.description')}
           </p>
         </motion.div>
 
@@ -101,12 +103,12 @@ export function BlockPropagation() {
             <div className="flex items-center gap-3 mb-4">
               <Boxes className="w-5 h-5 text-red-500" aria-hidden="true" />
               <div>
-                <h3 className="text-xl font-mono">Stratum V1</h3>
+                <h3 className="text-xl font-mono">{t('sections.blockPropagation.v1Label')}</h3>
                 <p className="text-sm text-red-500 font-mono">
-                  ~96.3ms propagation
+                  {t('sections.blockPropagation.v1Propagation')}
                 </p>
                 <p className="text-sm text-red-500 font-mono">
-                  ~344ms block change
+                  {t('sections.blockPropagation.v1BlockChange')}
                 </p>
               </div>
             </div>
@@ -118,12 +120,12 @@ export function BlockPropagation() {
             <div className="flex items-center gap-3 mb-4">
               <Boxes className="w-5 h-5 text-cyan-500" aria-hidden="true" />
               <div>
-                <h3 className="text-xl font-mono">Stratum V2</h3>
+                <h3 className="text-xl font-mono">{t('sections.blockPropagation.v2Label')}</h3>
                 <p className="text-sm text-cyan-500 font-mono">
-                  ~3.44ms propagation
+                  {t('sections.blockPropagation.v2Propagation')}
                 </p>
                 <p className="text-sm text-cyan-500 font-mono">
-                  ~2.63ms block change
+                  {t('sections.blockPropagation.v2BlockChange')}
                 </p>
               </div>
             </div>
