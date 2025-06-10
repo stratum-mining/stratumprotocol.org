@@ -261,5 +261,12 @@
       "txPool": "TX (Пул)",
       "rxPool": "RX (Пул)"
     }
+  },
+  "latencyComparison": {
+    "title": "Сверхнизкая задержка заданий",
+    "sv1": "SV1",
+    "sv2NoJd": "SV2 (Без JD)",
+    "sv2WithJd": "SV2 (С JD)",
+    "milliseconds": "миллисекунд"
   }
 }

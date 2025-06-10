@@ -261,5 +261,12 @@
       "txPool": "TX (Pool)",
       "rxPool": "RX (Pool)"
     }
+  },
+  "latencyComparison": {
+    "title": "Ultra-Low Job Latency",
+    "sv1": "SV1",
+    "sv2NoJd": "SV2 (No JD)",
+    "sv2WithJd": "SV2 (With JD)",
+    "milliseconds": "milliseconds"
   }
 }

@@ -261,5 +261,12 @@
       "txPool": "发送（矿池）",
       "rxPool": "接收（矿池）"
     }
+  },
+  "latencyComparison": {
+    "title": "超低作业延迟",
+    "sv1": "SV1",
+    "sv2NoJd": "SV2 (无JD)",
+    "sv2WithJd": "SV2 (带JD)",
+    "milliseconds": "毫秒"
   }
 }
