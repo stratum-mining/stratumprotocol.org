@@ -1,4 +1,3 @@
-
 {
   "navigation": {
     "miners": "矿工",
@@ -247,7 +246,20 @@
   "indexPage": {
     "performance": {
       "title": "更快更轻",
-      "description": "Stratum V2用紧凑的二进制协议替代了Stratum V1使用的冗长JSON消息，带宽使用减少约70%。"
+      "description": "Stratum V2用紧凑的二进制协议取代了Stratum V1使用的冗长JSON消息，使带宽使用量减少约70%。"
+    }
+  },
+  "bandwidthComparison": {
+    "title": "降低带宽使用",
+    "bytesPerSec": "字节/秒",
+    "sv1": "SV1",
+    "sv2NoJd": "SV2（无JD）",
+    "sv2WithJd": "SV2（带JD）",
+    "directions": {
+      "txMiner": "发送（矿工）",
+      "rxMiner": "接收（矿工）",
+      "txPool": "发送（矿池）",
+      "rxPool": "接收（矿池）"
     }
   }
 }
