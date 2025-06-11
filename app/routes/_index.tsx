@@ -1,5 +1,6 @@
 import { Navigation } from '../src/components/Navigation';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { Hero } from '@/components/sections/Hero';
 import { SecurityComparison } from '@/components/sections/SecurityComparison';
 import { MiningCentralization } from '@/components/sections/MiningCentralization';
@@ -16,6 +17,8 @@ export function meta() {
 }
 
 export default function Home() {
+  const { t } = useTranslation();
+  
   return (
     <main className="min-h-screen bg-background text-foreground" role="main">
       <Navigation />
@@ -31,10 +34,10 @@ export default function Home() {
             viewport={{ once: true }}
           >
             <h2 id="performance-heading" className="text-4xl font-mono mb-4">
-              Faster & Lighter
+              {t('indexPage.performance.title')}
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-            Stratum V2 replaces the verbose JSON messages used by Stratum V1 with a compact binary protocol, leading to ~70% reductions in bandwidth usage.
+              {t('indexPage.performance.description')}
             </p>
           </motion.div>
           <div className="grid md:grid-cols-2 gap-8">

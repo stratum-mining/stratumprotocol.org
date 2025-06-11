@@ -44,12 +44,12 @@ export function Navigation() {
   }, []);
 
   const navLinks: NavLink[] = [
-    { to: "/miners", label: "Miners" },
-    { to: "/pools", label: "Pools" },
-    { to: "/developers", label: "Developers" },
-    { to: "/blog", label: "Blog" },
-    { to: "/resources", label: "Resources" },
-    { to: "/specification", label: "Specification" },
+    { to: "/miners", label: t("navigation.miners") },
+    { to: "/pools", label: t("navigation.pools") },
+    { to: "/developers", label: t("navigation.developers") },
+    { to: "/blog", label: t("navigation.blog") },
+    { to: "/resources", label: t("navigation.resources") },
+    { to: "/specification", label: t("navigation.specification") },
   ];
 
   const changeLanguage = (lng: string) => {
@@ -132,7 +132,7 @@ export function Navigation() {
           <button
             className='lg:hidden p-2 text-muted-foreground hover:text-foreground focus:outline-none focus:ring-2 focus:ring-cyan-500 rounded-lg'
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            aria-label={isMenuOpen ? t("navigation.closeMenu") : t("navigation.openMenu")}
             aria-expanded={isMenuOpen}
             aria-controls='mobile-menu'
           >

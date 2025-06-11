@@ -1,0 +1,272 @@
+{
+  "navigation": {
+    "miners": "矿工",
+    "pools": "矿池",
+    "developers": "开发者",
+    "getStarted": "开始使用",
+    "language": "语言",
+    "blog": "博客",
+    "resources": "资源",
+    "specification": "规范",
+    "openMenu": "打开菜单",
+    "closeMenu": "关闭菜单"
+  },
+  "hero": {
+    "title": "下一代比特币挖矿协议",
+    "subtitle": "增强安全性，降低延迟，去中心化挖矿基础设施",
+    "oneGiantLeap": "巨大的飞跃",
+    "for": "为了",
+    "mining": "挖矿",
+    "efficient": "高效",
+    "decentralized": "去中心化",
+    "profitable": "盈利",
+    "startMining": "开始挖矿",
+    "texts": {
+      "efficient": "改善了矿工、矿池和比特币网络的通信方式。它通过端到端加密保护挖矿安全，并通过减少带宽和延迟使其更加高效。",
+      "decentralized": "最重要的是，Stratum V2让矿工能够选择在区块中包含哪些交易，保护比特币的基本属性——去中心化和抗审查性。",
+      "profitable": "Stratum V2通过最小化过期份额、减少区块和作业延迟、提高传播速度和减少带宽浪费来增加矿工利润。这些升级直接提高效率，将节省转化为更多收入。"
+    }
+  },
+  "miners": {
+    "hero": {
+      "title": "升级您的挖矿操作",
+      "subtitle": "加入下一代比特币挖矿，享受增强的安全性、降低的成本和对操作的完全控制"
+    },
+    "profitability": {
+      "title": "可测量的盈利增长",
+      "gain": "估计净利润增长2.7%至4.7%",
+      "noUpgrade": "即使不升级固件也能获得好处"
+    },
+    "efficiency": {
+      "title": "通过减少延迟提高效率",
+      "blockLatency": "区块变更延迟减少118倍",
+      "jobLatency": "作业交付延迟减少232倍",
+      "blockPropagation": "区块传播改善28倍"
+    },
+    "feeCapture": {
+      "title": "改善费用捕获",
+      "moreFees": "每个区块最多增加1.06%的交易费用",
+      "fresherJobs": "更新的作业模板允许最优费用包含"
+    },
+    "bandwidth": {
+      "title": "带宽和基础设施节省",
+      "reduction": "带宽使用减少40%至60%",
+      "lowerCost": "规模化运营成本更低"
+    },
+    "adoption": {
+      "title": "易于采用",
+      "translator": "翻译代理允许使用SV1固件",
+      "noUpgrade": "无需固件升级"
+    },
+    "templateControl": {
+      "title": "完全模板控制",
+      "construction": "矿工端区块模板构建",
+      "autonomy": "更大的自主权和收入策略灵活性"
+    }
+  },
+  "pools": {
+    "hero": {
+      "title": "为您的矿池做好未来准备",
+      "subtitle": "通过增强的安全性、降低的带宽成本、更快的性能和邀请创新的开放架构保持领先地位"
+    },
+    "operationalBenefits": {
+      "title": "运营优势",
+      "security": {
+        "title": "增强安全性",
+        "description": "内置加密和身份验证保护免受未经授权的访问和算力盗取"
+      },
+      "overhead": {
+        "title": "减少开销",
+        "description": "与Stratum V1相比，二进制协议将带宽使用减少多达75%"
+      },
+      "accounting": {
+        "title": "透明份额计算",
+        "description": "通过扩展的透明份额计算确保合规性并提高可审计性"
+      }
+    },
+    "strategicDifferentiators": {
+      "title": "战略差异化",
+      "developerFriendly": {
+        "title": "开发者友好",
+        "description": "使用模块化、开源基础设施更快地启动新矿池，易于扩展和定制"
+      },
+      "futureBuilt": {
+        "title": "为未来而建",
+        "description": "与最新的协议标准保持一致，为矿工提供竞争对手无法匹敌的先进功能"
+      }
+    },
+    "gettingStarted": {
+      "title": "开始使用",
+      "cloneRepo": "# 克隆代码库",
+      "buildPool": "# 构建矿池实现",
+      "configurePool": "# 配置您的矿池",
+      "editConfig": "# 使用您的设置编辑config.toml",
+      "startPool": "# 启动矿池",
+      "viewDocs": "查看完整文档"
+    }
+  },
+  "sections": {
+    "miningCentralization": {
+      "title": "挖矿算力分布",
+      "subtitle": "目前仅5个矿池就控制了比特币83%以上的算力"
+    },
+    "security": {
+      "title": "增强安全性",
+      "subtitle": "Stratum V2加密所有通信，保护您的凭证和挖矿数据免受攻击",
+      "before": "之前：易受攻击",
+      "after": "之后：受保护"
+    },
+    "latency": {
+      "title": "更快更轻",
+      "subtitle": "二进制协议将带宽使用减少75%，将延迟从数百毫秒降低到几毫秒",
+      "v1": "Stratum V1",
+      "v2": "Stratum V2"
+    },
+    "securityComparison": {
+      "title": "增强安全性",
+      "subtitle": "传统挖矿协议以明文传输数据，使矿工面临中间人攻击和算力劫持的风险。Stratum V2默认使用端到端加密，保护矿工免受盗取并确保他们的利润。",
+      "v1Label": "Stratum V1",
+      "v2Label": "Stratum V2",
+      "plaintextDescription": "明文 - 容易被拦截和算力盗取",
+      "encryptedDescription": "端到端加密保护敏感数据和利润"
+    },
+    "blockPropagation": {
+      "title": "更快的区块变更和传播",
+      "description": "通过增加矿工区块被首先接受的可能性来提高盈利能力，特别是在链分裂竞争期间。SV1矿工由于区块变更延迟每个区块损失约308.37毫秒。一年下来，这累计约4.5小时的完全非生产性挖矿时间。",
+      "v1Label": "Stratum V1",
+      "v1Propagation": "~96.3毫秒传播",
+      "v1BlockChange": "~344毫秒区块变更",
+      "v2Label": "Stratum V2",
+      "v2Propagation": "~3.44毫秒传播",
+      "v2BlockChange": "~2.63毫秒区块变更"
+    },
+    "community": {
+      "builtByCommunity": "由社区构建",
+      "openSource": {
+        "title": "开源",
+        "description": "所有代码都是开源的，可在GitHub上获取。为协议开发做出贡献，帮助塑造比特币挖矿的未来。"
+      },
+      "communityDriven": {
+        "title": "社区驱动",
+        "description": "决策由社区集体制定。没有单一实体控制协议的方向。"
+      },
+      "joinOurCommunity": {
+        "title": "加入我们的社区",
+        "description": "与开发者、矿工和矿池运营商联系。获得支持、分享想法，了解最新发展动态。"
+      },
+      "joinDiscordButton": "加入Discord"
+    }
+  },
+  "resources": {
+    "title": "资源",
+    "learn": {
+      "heading": "学习",
+      "title": "学习 SV2",
+      "description": "此资源页面旨在为用户提供与Stratum V2相关的各种媒体访问。目标是通过提供所有必要材料和信息的中心来支持用户使用和推广Stratum V2。"
+    },
+    "read": {
+      "heading": "阅读",
+      "thesis": {
+        "title": "StratumV2硕士论文",
+        "linkText": "查看论文"
+      },
+      "pocketGuide": {
+        "title": "Satsie的StratumV2袖珍指南",
+        "linkText": "查看杂志"
+      },
+      "bullishCase": {
+        "title": "StratumV2的看涨案例",
+        "linkText": "查看文章"
+      }
+    },
+    "watch": {
+      "heading": "观看"
+    }
+  },
+  "transactionControl": {
+    "title": "控制您的收入",
+    "subtitle": "掌控您的挖矿操作。不要让矿池决定哪些交易进入区块，或信任他们分享所有费用收入。",
+    "currentReality": {
+      "title": "当前现实",
+      "description": "矿池控制交易选择，可能隐藏高费用交易并进行场外交易"
+    },
+    "withStratumV2": {
+      "title": "使用 Stratum V2",
+      "description": "选择您的交易，最大化收入，保持完全控制"
+    },
+    "feeRate": "费率",
+    "totalFees": "总费用",
+    "hidden": "隐藏"
+  },
+  "translationProxy": {
+    "title": "无需固件升级",
+    "description": "通过Translation Proxy连接您的SV1固件设备，它促进SV1消息到SV2的转换，以便与SV2矿池通信。",
+    "proxyLabel": "SV1→SV2 翻译代理",
+    "poolLabel": "SV2 矿池"
+  },
+  "sponsorship": {
+    "supportFor": "支持",
+    "joinEffort": "加入集体努力，帮助我们加速比特币挖矿！",
+    "tabs": {
+      "allContributors": "所有贡献者",
+      "implementations": "实现",
+      "adopters": "采用者",
+      "funders": "资助者",
+      "pastFunders": "过去的资助者"
+    }
+  },
+  "miningCentralization": {
+    "title": "比特币挖矿的中心化危机",
+    "errorMessage": "加载挖矿数据时出错",
+    "tooltip": {
+      "share": "份额"
+    },
+    "problemStatement": {
+      "firstParagraph": "少数几个矿池现在主导着比特币的区块空间，一些较小的矿池",
+      "provenlyActing": "被证实充当",
+      "firstParagraphContinued": "它们的代理。矿池有能力选择性地包含或排除交易，造成许可制系统的风险，某些交易可能被列入黑名单，破坏比特币的核心属性。",
+      "secondParagraph": "专有挖矿软件和硬件供应商锁定进一步恶化了这个问题，抑制创新并将矿工困在封闭、中心化的生态系统中。"
+    },
+    "solutionTitle": "用Stratum V2加速挖矿",
+    "solutions": {
+      "minersSelect": {
+        "title": "矿工选择交易",
+        "description": "Stratum V2使矿工能够选择包含哪些交易，将他们从被动的哈希计算者转变为保护网络的积极参与者。"
+      },
+      "modular": {
+        "title": "模块化和开发者友好",
+        "description": "Stratum V2提供免费、开源、模块化的基础设施，采用宽松许可证，使开发者能够构建和创新。"
+      },
+      "interoperable": {
+        "title": "可互操作和中性",
+        "description": "社区驱动的治理和清晰的规范确保互操作性，防止供应商锁定和碎片化。"
+      }
+    }
+  },
+  "indexPage": {
+    "performance": {
+      "title": "更快更轻",
+      "description": "Stratum V2用紧凑的二进制协议取代了Stratum V1使用的冗长JSON消息，使带宽使用量减少约70%。"
+    }
+  },
+  "bandwidthComparison": {
+    "title": "降低带宽使用",
+    "bytesPerSec": "字节/秒",
+    "sv1": "SV1",
+    "sv2NoJd": "SV2（无JD）",
+    "sv2WithJd": "SV2（带JD）",
+    "directions": {
+      "txMiner": "发送（矿工）",
+      "rxMiner": "接收（矿工）",
+      "txPool": "发送（矿池）",
+      "rxPool": "接收（矿池）"
+    }
+  },
+  "latencyComparison": {
+    "title": "超低作业延迟",
+    "sv1": "SV1",
+    "sv2NoJd": "SV2 (无JD)",
+    "sv2WithJd": "SV2 (带JD)",
+    "milliseconds": "毫秒"
+  }
+}

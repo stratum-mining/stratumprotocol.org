@@ -1,0 +1,272 @@
+{
+  "navigation": {
+    "miners": "Miners",
+    "pools": "Pools",
+    "developers": "Developers",
+    "getStarted": "Get started",
+    "language": "Language",
+    "blog": "Blog",
+    "resources": "Resources",
+    "specification": "Specification",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "hero": {
+    "title": "Next Generation Bitcoin Mining Protocol",
+    "subtitle": "Enhanced security, reduced latency, and decentralized mining infrastructure",
+    "oneGiantLeap": "One giant leap",
+    "for": "for",
+    "mining": "mining",
+    "efficient": "efficient",
+    "decentralized": "decentralized", 
+    "profitable": "profitable",
+    "startMining": "Start Mining",
+    "texts": {
+      "efficient": "improves how miners, pools, and the Bitcoin network communicate. It secures mining with end-to-end encryption and makes it more efficient by reducing bandwidth and latency.",
+      "decentralized": "Most importantly, Stratum V2 empowers miners to choose which transactions are included in blocks, protecting Bitcoin's fundamental properties - decentralization and censorship resistance.",
+      "profitable": "Stratum V2 increases miner profits by minimizing stale shares, reducing block and job latency, improving propagation speed, and cutting bandwidth waste. These upgrades directly improve efficiency turning savings into more revenue."
+    }
+  },
+  "miners": {
+    "hero": {
+      "title": "Upgrade Your Mining Operation",
+      "subtitle": "Join the next generation of Bitcoin mining with enhanced security, reduced costs, and complete control over your operation"
+    },
+    "profitability": {
+      "title": "Measured Profitability Gains",
+      "gain": "Estimated 2.7% to 4.7% increase in net profit",
+      "noUpgrade": "Benefits apply even without firmware upgrades"
+    },
+    "efficiency": {
+      "title": "Efficiency Through Latency Reduction",
+      "blockLatency": "Block change latency reduced by 118x",
+      "jobLatency": "Job delivery latency reduced by 232x",
+      "blockPropagation": "Block propagation improved by 28x"
+    },
+    "feeCapture": {
+      "title": "Improved Fee Capture",
+      "moreFees": "Up to 1.06% more transaction fees per block",
+      "fresherJobs": "Fresher job templates allow optimal fee inclusion"
+    },
+    "bandwidth": {
+      "title": "Bandwidth and Infrastructure Savings",
+      "reduction": "40% to 60% reduction in bandwidth usage",
+      "lowerCost": "Lower operational cost at scale"
+    },
+    "adoption": {
+      "title": "Ease of Adoption",
+      "translator": "Translator Proxy allows use with SV1 firmware",
+      "noUpgrade": "No firmware upgrade required"
+    },
+    "templateControl": {
+      "title": "Full Template Control",
+      "construction": "Miner-side block template construction",
+      "autonomy": "Greater autonomy and revenue strategy flexibility"
+    }
+  },
+  "pools": {
+    "hero": {
+      "title": "Future-Proof Your Mining Pool",
+      "subtitle": "Stay ahead of the curve with enhanced security, reduced bandwidth costs, faster performance, and an open architecture that invites innovation"
+    },
+    "operationalBenefits": {
+      "title": "Operational Benefits",
+      "security": {
+        "title": "Enhanced Security",
+        "description": "Built-in encryption and authentication protect against unauthorized access and hashrate theft"
+      },
+      "overhead": {
+        "title": "Reduced Overhead",
+        "description": "Binary protocol reduces bandwidth usage by up to 75% compared to Stratum V1"
+      },
+      "accounting": {
+        "title": "Transparent Share accounting",
+        "description": "Transparent share accounting through extensions ensure compliance and increase auditability"
+      }
+    },
+    "strategicDifferentiators": {
+      "title": "Strategic Differentiators",
+      "developerFriendly": {
+        "title": "Developer Friendly",
+        "description": "Launch new pools faster using modular, open-source infrastructure that's easy to extend and customize"
+      },
+      "futureBuilt": {
+        "title": "Built for the Future",
+        "description": "Align with the latest protocol standards and offer miners advanced features that competitors can't match"
+      }
+    },
+    "gettingStarted": {
+      "title": "Getting Started",
+      "cloneRepo": "# Clone the repository",
+      "buildPool": "# Build the pool implementation",
+      "configurePool": "# Configure your pool",
+      "editConfig": "# Edit config.toml with your settings",
+      "startPool": "# Start the pool",
+      "viewDocs": "View Full Documentation"
+    }
+  },
+  "sections": {
+    "miningCentralization": {
+      "title": "Mining Power Distribution",
+      "subtitle": "Currently, just 5 mining pools control over 83% of Bitcoin's total hashrate"
+    },
+    "security": {
+      "title": "Enhanced Security",
+      "subtitle": "Stratum V2 encrypts all communication, protecting your credentials and mining data from attacks",
+      "before": "Before: Vulnerable",
+      "after": "After: Protected"
+    },
+    "latency": {
+      "title": "Faster & Lighter",
+      "subtitle": "Binary protocol reduces bandwidth usage by 75% and slashes latency from hundreds to just a few milliseconds",
+      "v1": "Stratum V1",
+      "v2": "Stratum V2"
+    },
+    "securityComparison": {
+      "title": "Enhanced Security",
+      "subtitle": "Legacy mining protocols transmit data in plaintext, exposing miners to man-in-the-middle attacks and hashrate hijacking. Stratum V2 uses end-to-end encryption by default, protecting miners from theft and securing their profits.",
+      "v1Label": "Stratum V1",
+      "v2Label": "Stratum V2",
+      "plaintextDescription": "Plaintext - vulnerable to interception & hashrate stealing",
+      "encryptedDescription": "End-to-end encryption protects sensitive data & profit"
+    },
+    "blockPropagation": {
+      "title": "Faster Block Change & Propagation",
+      "description": "Improves profitability by increasing the likelihood that a miner's block is accepted first, especially during chain-split races. SV1 miners lose approximately 308.37 milliseconds per block due to block change latency. Over a year, this adds up to about 4.5 hours of completely unproductive mining time.",
+      "v1Label": "Stratum V1",
+      "v1Propagation": "~96.3ms propagation",
+      "v1BlockChange": "~344ms block change",
+      "v2Label": "Stratum V2",
+      "v2Propagation": "~3.44ms propagation",
+      "v2BlockChange": "~2.63ms block change"
+    },
+    "community": {
+      "builtByCommunity": "Built by the Community",
+      "openSource": {
+        "title": "Open Source",
+        "description": "All code is open source and available on GitHub. Contribute to the protocol's development and help shape the future of Bitcoin mining."
+      },
+      "communityDriven": {
+        "title": "Community Driven",
+        "description": "Decisions are made collectively by the community. No single entity controls the direction of the protocol."
+      },
+      "joinOurCommunity": {
+        "title": "Join Our Community",
+        "description": "Connect with developers, miners, and pool operators. Get support, share ideas, and stay updated on the latest developments."
+      },
+      "joinDiscordButton": "Join Discord"
+    }
+  },
+  "resources": {
+    "title": "Resources",
+    "learn": {
+      "heading": "Learn",
+      "title": "LEARN SV2",
+      "description": "This resource page is designed to provide users with access to various media related to Stratum V2. The goal is to support users in their use and promotion of Stratum V2 by offering a hub for all necessary materials and information."
+    },
+    "read": {
+      "heading": "Read",
+      "thesis": {
+        "title": "Master Thesis on StratumV2",
+        "linkText": "View the thesis"
+      },
+      "pocketGuide": {
+        "title": "Satsie's Pocket Guide to StratumV2",
+        "linkText": "View the magazine"
+      },
+      "bullishCase": {
+        "title": "The Bullish Case for StratumV2",
+        "linkText": "View the article"
+      }
+    },
+    "watch": {
+      "heading": "Watch"
+    }
+  },
+  "transactionControl": {
+    "title": "Control Your Revenue",
+    "subtitle": "Take charge of your mining operation. Don't let pools decide which transactions make it into blocks or trust them to share all fee revenue.",
+    "currentReality": {
+      "title": "Current Reality",
+      "description": "Pools control transaction selection, potentially hiding high-fee transactions and making out-of-band deals"
+    },
+    "withStratumV2": {
+      "title": "With Stratum V2",
+      "description": "Select your transactions, maximize your revenue, and maintain full control"
+    },
+    "feeRate": "Fee Rate",
+    "totalFees": "Total Fees",
+    "hidden": "Hidden"
+  },
+  "translationProxy": {
+    "title": "Firmware upgrade not necessary",
+    "description": "Connect your SV1 firmware devices through Translation Proxy which facilitates the conversion of SV1 messages to SV2 for communication with an SV2 pool.",
+    "proxyLabel": "SV1→SV2 Translation Proxy",
+    "poolLabel": "SV2 Mining Pool"
+  },
+  "sponsorship": {
+    "supportFor": "Support for",
+    "joinEffort": "Join the collective effort and help us accelerate Bitcoin mining!",
+    "tabs": {
+      "allContributors": "All Contributors",
+      "implementations": "Implementations",
+      "adopters": "Adopters",
+      "funders": "Funders",
+      "pastFunders": "Past Funders"
+    }
+  },
+  "miningCentralization": {
+    "title": "The Centralization Crisis in Bitcoin Mining",
+    "errorMessage": "Error loading mining data",
+    "tooltip": {
+      "share": "Share"
+    },
+    "problemStatement": {
+      "firstParagraph": "A few mining pools now dominate Bitcoin's block space, with some smaller pools",
+      "provenlyActing": "provenly acting",
+      "firstParagraphContinued": "as their proxies. Pools have the ability to selectively include or exclude transactions, creating the risk of a permissioned system where some transactions could be blacklisted, undermining Bitcoin's core properties.",
+      "secondParagraph": "Proprietary mining software and hardware vendor lock-ins further worsen the issue, stifling innovation and trapping miners within closed, centralized ecosystems."
+    },
+    "solutionTitle": "Accelerating Mining with Stratum V2",
+    "solutions": {
+      "minersSelect": {
+        "title": "Miners Select Transaction",
+        "description": "Stratum V2 empowers miners to choose which transactions to include, shifting them from passive hashers to active participants in securing the network."
+      },
+      "modular": {
+        "title": "Modular & Developer-Friendly",
+        "description": "Stratum V2 offers a free, open-source, modular infrastructure with permissive license, empowering developers to build and innovate."
+      },
+      "interoperable": {
+        "title": "Interoperable & Neutral",
+        "description": "Community-driven governance and clear specifications ensure interoperability, preventing vendor lock-ins and fragmentation."
+      }
+    }
+  },
+  "indexPage": {
+    "performance": {
+      "title": "Faster & Lighter",
+      "description": "Stratum V2 replaces the verbose JSON messages used by Stratum V1 with a compact binary protocol, leading to ~70% reductions in bandwidth usage."
+    }
+  },
+  "bandwidthComparison": {
+    "title": "Reduced Bandwidth Usage",
+    "bytesPerSec": "bytes/sec",
+    "sv1": "SV1",
+    "sv2NoJd": "SV2 (No JD)",
+    "sv2WithJd": "SV2 (With JD)",
+    "directions": {
+      "txMiner": "TX (Miner)",
+      "rxMiner": "RX (Miner)",
+      "txPool": "TX (Pool)",
+      "rxPool": "RX (Pool)"
+    }
+  },
+  "latencyComparison": {
+    "title": "Ultra-Low Job Latency",
+    "sv1": "SV1",
+    "sv2NoJd": "SV2 (No JD)",
+    "sv2WithJd": "SV2 (With JD)",
+    "milliseconds": "milliseconds"
+  }
+}

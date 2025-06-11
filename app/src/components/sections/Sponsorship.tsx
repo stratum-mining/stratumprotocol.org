@@ -1,8 +1,10 @@
 import { useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { SUPPORTERS, TabType, Supporter } from '@/lib/constants';
 
 export function Sponsorship() {
+  const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState<TabType>('all');
 
   const supporterRows = useMemo(() => {
@@ -38,12 +40,12 @@ export function Sponsorship() {
     <section className="bg-black text-white py-20">
       <div className="container flex-col lg:flex-row mx-auto px-4 min-h-[550px] flex">
         <div className="w-full lg:w-4/12 p-6  mx-auto border">
-          <h2 className="text-2xl mb-4">Support for</h2>
+          <h2 className="text-2xl mb-4">{t('sponsorship.supportFor')}</h2>
           <h1 className="text-5xl font-medium mb-8 text-cyan-300">
             Stratum v2
           </h1>
           <p className="text-lg lg:mb-12 lg:mt-12">
-            Join the collective effort and help us accelerate Bitcoin mining!
+            {t('sponsorship.joinEffort')}
           </p>
         </div>
 
@@ -51,13 +53,13 @@ export function Sponsorship() {
           {/* Tabs */}
           <div className="flex flex-col lg:flex-row p-4 bg-[#0F2126] space-x-8 lg:mb-12 border-b border-gray-800">
             {[
-              'All Contributors',
-              'Implementations',
-              'Adopters',
-              'Funders',
-              'Past Funders',
+              { key: 'allContributors', label: t('sponsorship.tabs.allContributors') },
+              { key: 'implementations', label: t('sponsorship.tabs.implementations') },
+              { key: 'adopters', label: t('sponsorship.tabs.adopters') },
+              { key: 'funders', label: t('sponsorship.tabs.funders') },
+              { key: 'pastFunders', label: t('sponsorship.tabs.pastFunders') },
             ].map((tab, index) => {
-              const tabValue = tab.toLowerCase().split(' ')[0] as TabType;
+              const tabValue = tab.key === 'allContributors' ? 'all' : tab.key.toLowerCase().split(/(?=[A-Z])/).join('').replace('contributors', '').replace('funders', 'funders').replace('pastfunders', 'past') as TabType;
               return (
                 <button
                   key={index}
@@ -68,7 +70,7 @@ export function Sponsorship() {
                       : 'text-gray-400'
                   }`}
                 >
-                  {tab}
+                  {tab.label}
                 </button>
               );
             })}
