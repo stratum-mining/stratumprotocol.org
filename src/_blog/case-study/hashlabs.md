@@ -181,7 +181,3 @@ We evaluated usage across two SV2 configurations and compared them to SV1:
 
 1. **Without Job Declaration (JD):** Uses a Translation Proxy (tProxy) to enable SV1 firmware miners to connect to an SV2 pool without requiring a full node.  
 2. **With Job Declaration (JD):** Deploys the complete SV2 stack (including a local Bitcoin node on the miner side). It grants miners control over block template construction but increases miner-side bandwidth, due to running a local Bitcoin node.
-
-## Appendix B: Profitability tool
-
-Appendix B: [A tool](https://docs.google.com/spreadsheets/d/1NBlDMARKXHb1AwMfDoMxbYEN2p7GeVnqdLGgIHrMCcY/edit?gid=0#gid=0) where miners can insert their own assumptions of opex and capex to see a more realistic approximation of the impact of sv2 on their operations profitability.
