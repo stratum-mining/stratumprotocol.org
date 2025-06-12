@@ -4,14 +4,15 @@ description: "We are thrilled to announce the launch of SRI 1.0.0! This marks an
 date: "2025-06-12"
 permalink: /blog/case-study/hashlabs/
 authors:
+
   - Pavlenex
 tags:
   - Case-study
   - Research
 ---
-# How Stratum V2 Increases Mining Profitability
-
 **This case study compares two Bitcoin mining protocols, Stratum V1 and V2 , and demonstrates how the combined technical improvements of Stratum V2 translate into a substantial profitability increase for miners.**
+
+![](/assets/case-study/hashlabs/featured.jpeg)
 
 In bitcoin mining, a millisecond can determine whether a miner successfully earns the block reward or loses out to a competitor. At the core of this race lies the **mining protocol** that connects miners, pools, and the network, with the goal of ensuring effective communication between participants.
 
