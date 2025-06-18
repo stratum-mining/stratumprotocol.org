@@ -46,7 +46,7 @@ export function Navigation() {
   const navLinks: NavLink[] = [
     { to: "/miners", label: t("navigation.miners") },
     { to: "/pools", label: t("navigation.pools") },
-    { to: "/developers", label: t("navigation.developers") },
+    { to: "/blog/getting-started", label: t("navigation.developers") },
     { to: "/blog", label: t("navigation.blog") },
     { to: "/resources", label: t("navigation.resources") },
     { to: "/specification", label: t("navigation.specification") },
