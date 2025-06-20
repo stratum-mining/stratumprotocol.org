@@ -3,11 +3,13 @@ import "../global.css";
 import React from "react";
 import remarkGfm from "remark-gfm";
 import ReactMarkdown from "react-markdown";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { replaceYouTubeLinks } from "@/utils";
 import { Link, useParams } from "react-router";
 import blogPostsData from "@/data/blog-posts.json";
 import { Navigation } from "@/components/Navigation";
-import { ArrowLeft, ExternalLink } from "lucide-react";
+import { ArrowLeft, ExternalLink, Copy, Check } from "lucide-react";
 
 export default function BlogPostPage() {
   // Extract the slug parameter from the URL and get the blog post data
@@ -49,6 +51,56 @@ export default function BlogPostPage() {
           key={`markdown-${index}`}
           remarkPlugins={[remarkGfm]}
           components={{
+            code: ({ node, inline, className, children, ...props }) => {
+              const match = /language-(\w+)/.exec(className || "");
+              const language = match ? match[1] : "";
+              
+              if (inline) {
+                return (
+                  <code className="bg-gray-800 px-1 py-0.5 rounded text-sm font-mono" {...props}>
+                    {children}
+                  </code>
+                );
+              }
+
+              const [copied, setCopied] = React.useState(false);
+
+              const copyToClipboard = async () => {
+                const text = String(children).replace(/\n$/, "");
+                await navigator.clipboard.writeText(text);
+                setCopied(true);
+                setTimeout(() => setCopied(false), 2000);
+              };
+
+              return (
+                <div className="relative group">
+                  <button
+                    onClick={copyToClipboard}
+                    className="absolute top-2 right-2 p-2 rounded bg-gray-700 hover:bg-gray-600 transition-colors opacity-0 group-hover:opacity-100 z-10"
+                    title="Copy code"
+                  >
+                    {copied ? (
+                      <Check className="w-4 h-4 text-green-400" />
+                    ) : (
+                      <Copy className="w-4 h-4 text-gray-300" />
+                    )}
+                  </button>
+                  <SyntaxHighlighter
+                    style={oneDark}
+                    language={language}
+                    PreTag="div"
+                    className="rounded-lg !mt-0 !mb-4"
+                    customStyle={{
+                      margin: 0,
+                      borderRadius: "0.5rem",
+                    }}
+                    {...props}
+                  >
+                    {String(children).replace(/\n$/, "")}
+                  </SyntaxHighlighter>
+                </div>
+              );
+            },
             a: ({ ...props }) => {
               return (
                 <a {...props} className='text-cyan-custom-100 font-dm-mono underline underline-offset-4 cursor-pointer' target='_blank'>

@@ -61,7 +61,9 @@ Setup the correct CPUMiner for your OS:
 
 On the CPUMiner directory:
  
-`./minerd -a sha256d -o stratum+tcp://localhost:34255 -q -D -P`
+```bash
+./minerd -a sha256d -o stratum+tcp://localhost:34255 -q -D -P
+```
 
 #### Adjust proxy-config (optional)
 
@@ -79,7 +81,7 @@ Depending on mining device you do run, you may have to adjust `tproxy-config-loc
 Download a release from Sjors' fork of Bitcoin Core from https://github.com/Sjors/bitcoin/releases
 
 Edit the `bitcoin.conf` file stored in `~/.bitcoin/` by adding:
-```bash
+```ini
 [testnet4]
 server=1
 rpcuser=username
@@ -159,7 +161,9 @@ Setup the correct CPUMiner for your OS:
 
 On the CPUMiner directory:
  
-`./minerd -a sha256d -o stratum+tcp://localhost:34255 -q -D -P`
+```bash
+./minerd -a sha256d -o stratum+tcp://localhost:34255 -q -D -P
+```
 ## III Final Step: monitoring for blocks
 
 Once set up, monitor the machines and role logs for any valid blocks found.
