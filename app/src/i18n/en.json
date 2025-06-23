@@ -28,40 +28,45 @@
     }
   },
   "miners": {
-    "hero": {
+   "hero": {
       "title": "Upgrade Your Mining Operation",
-      "subtitle": "Join the next generation of Bitcoin mining with enhanced security, reduced costs, and complete control over your operation"
+      "subtitle": "Maximize your Bitcoin mining profitability with enhanced security, reduced operational costs, and complete autonomy"
     },
     "profitability": {
-      "title": "Measured Profitability Gains",
-      "gain": "Estimated 2.7% to 4.7% increase in net profit",
-      "noUpgrade": "Benefits apply even without firmware upgrades"
+      "title": "Measurable Profitability Gains",
+      "gain": "Estimated up to 7.4% net profit increase",
+      "noUpgrade": "Benefits available immediately without firmware upgrades"
     },
     "efficiency": {
       "title": "Efficiency Through Latency Reduction",
-      "blockLatency": "Block change latency reduced by 118x",
-      "jobLatency": "Job delivery latency reduced by 232x",
+      "blockLatency": "Block change latency improved by 228x",
+      "jobLatency": "Job delivery latency improved by 93x",
       "blockPropagation": "Block propagation improved by 28x"
     },
     "feeCapture": {
-      "title": "Improved Fee Capture",
-      "moreFees": "Up to 1.06% more transaction fees per block",
-      "fresherJobs": "Fresher job templates allow optimal fee inclusion"
+      "title": "Optimized Fee Revenue",
+      "moreFees": "Capture up to 1.06% more fees per block",
+      "fresherJobs": "Real-time job updates ensure maximum fee inclusion"
     },
     "bandwidth": {
-      "title": "Bandwidth and Infrastructure Savings",
-      "reduction": "40% to 60% reduction in bandwidth usage",
-      "lowerCost": "Lower operational cost at scale"
+      "title": "Significant Bandwidth Savings",
+      "reduction": "Reduce bandwidth usage by 40% to 60%",
+      "lowerCost": "Lower operational expenses at scale"
     },
     "adoption": {
-      "title": "Ease of Adoption",
-      "translator": "Translator Proxy allows use with SV1 firmware",
-      "noUpgrade": "No firmware upgrade required"
+      "title": "Simple and Low-Risk Adoption",
+      "translator": "Translation Proxy supports SV1 firmware devices",
+      "noUpgrade": "No mandatory firmware upgrades required"
     },
     "templateControl": {
-      "title": "Full Template Control",
+      "title": "Complete Block Template Control",
       "construction": "Miner-side block template construction",
-      "autonomy": "Greater autonomy and revenue strategy flexibility"
+      "autonomy": "Greater autonomy and flexible revenue strategies"
+    },
+    "security": {
+      "title": "Advanced Security Protection",
+      "encryption": "End-to-end encryption eliminates hashrate theft",
+      "profitProtection": "Recover up to 5% net profit by securing hashrate"
     }
   },
   "pools": {
