@@ -40,6 +40,9 @@ export default function ResourcesPage() {
     {
       youtube: "mTXw3UZNT0Y",
     },
+     {
+      youtube: "8Md54DCAxBU?t=1233s",
+    },
     {
       youtube: "videoseries?list=PLZXAi8dsUIn0GmElOcmqUtgA5psfFIZoO",
     },
