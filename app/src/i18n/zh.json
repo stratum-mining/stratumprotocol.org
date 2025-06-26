@@ -13,94 +13,127 @@
   },
   "hero": {
     "title": "下一代比特币挖矿协议",
-    "subtitle": "增强安全性，降低延迟，去中心化挖矿基础设施",
-    "oneGiantLeap": "巨大的飞跃",
-    "for": "为了",
+    "subtitle": "增强安全性，降低延迟，去中心化的挖矿基础设施",
+    "oneGiantLeap": "迈出巨大一步",
+    "for": "为",
     "mining": "挖矿",
     "efficient": "高效",
     "decentralized": "去中心化",
-    "profitable": "盈利",
+    "profitable": "更有利可图",
     "startMining": "开始挖矿",
     "texts": {
-      "efficient": "改善了矿工、矿池和比特币网络的通信方式。它通过端到端加密保护挖矿安全，并通过减少带宽和延迟使其更加高效。",
-      "decentralized": "最重要的是，Stratum V2让矿工能够选择在区块中包含哪些交易，保护比特币的基本属性——去中心化和抗审查性。",
-      "profitable": "Stratum V2通过最小化过期份额、减少区块和作业延迟、提高传播速度和减少带宽浪费来增加矿工利润。这些升级直接提高效率，将节省转化为更多收入。"
+      "efficient": "提升矿工、矿池和比特币网络的通讯效率。端到端加密保障挖矿安全，同时减少带宽和延迟。",
+      "decentralized": "最重要的是，Stratum V2 让矿工能够自主选择区块包含的交易，守护比特币的去中心化与抗审查属性。",
+      "profitable": "Stratum V2 通过最小化过期份额、降低区块和任务延迟、提升传播速度并节省带宽，直接提升效率，将节省转化为更多收益。"
     }
   },
   "miners": {
     "hero": {
-      "title": "升级您的挖矿操作",
-      "subtitle": "加入下一代比特币挖矿，享受增强的安全性、降低的成本和对操作的完全控制"
+      "title": "升级您的挖矿运营",
+      "subtitle": "通过增强安全性、降低运营成本和完全自主权，最大化比特币挖矿的盈利能力。"
     },
     "profitability": {
-      "title": "可测量的盈利增长",
-      "gain": "估计净利润增长2.7%至4.7%",
-      "noUpgrade": "即使不升级固件也能获得好处"
+      "title": "可衡量的盈利提升",
+      "gain": "净利润最高可提升 7.4%。",
+      "noUpgrade": "立即受益—无需强制固件升级。"
     },
     "efficiency": {
-      "title": "通过减少延迟提高效率",
-      "blockLatency": "区块变更延迟减少118倍",
-      "jobLatency": "作业交付延迟减少232倍",
-      "blockPropagation": "区块传播改善28倍"
+      "title": "延迟优化带来更高效率",
+      "blockLatency": "区块切换延迟提升 228 倍。",
+      "jobLatency": "任务分发延迟提升 93 倍。",
+      "blockPropagation": "区块传播速度提升 28 倍。"
     },
     "feeCapture": {
-      "title": "改善费用捕获",
-      "moreFees": "每个区块最多增加1.06%的交易费用",
-      "fresherJobs": "更新的作业模板允许最优费用包含"
-    },
-    "bandwidth": {
-      "title": "带宽和基础设施节省",
-      "reduction": "带宽使用减少40%至60%",
-      "lowerCost": "规模化运营成本更低"
+      "title": "优化手续费收入",
+      "moreFees": "每个区块最多可多获得 1.06% 手续费。",
+      "fresherJobs": "实时任务更新确保手续费最大化。"
     },
     "adoption": {
-      "title": "易于采用",
-      "translator": "翻译代理允许使用SV1固件",
-      "noUpgrade": "无需固件升级"
+      "title": "简单且低风险的部署",
+      "translator": "翻译代理支持 SV1 固件设备。",
+      "noUpgrade": "无需强制固件升级。"
     },
     "templateControl": {
-      "title": "完全模板控制",
-      "construction": "矿工端区块模板构建",
-      "autonomy": "更大的自主权和收入策略灵活性"
+      "title": "完全的区块模板控制",
+      "construction": "矿工端自主构建区块模板，实现完全自主。",
+      "autonomy": "自定义您的收益策略。"
+    },
+    "security": {
+      "title": "高级安全防护",
+      "encryption": "端到端加密杜绝算力劫持。",
+      "profitProtection": "保护算力安全，保障高达 5% 的净利润。"
+    },
+    "bandwidth": {
+      "title": "显著节省带宽",
+      "reduction": "带宽使用量减少 40–60%。",
+      "lowerCost": "大幅降低运营成本。"
     }
   },
   "pools": {
     "hero": {
-      "title": "为您的矿池做好未来准备",
-      "subtitle": "通过增强的安全性、降低的带宽成本、更快的性能和邀请创新的开放架构保持领先地位"
+      "title": "让你的矿池面向未来",
+      "subtitle": "Stratum V2 是为解决 Stratum V1 限制而设计的现代挖矿协议标准。由 Braiins 和 Matt Corallo 研发，并由独立开源社区与行业贡献者维护超过 4 年。"
     },
     "operationalBenefits": {
       "title": "运营优势",
+      "efficiency": {
+        "title": "效率提升",
+        "description": "二进制消息格式减少带宽和延迟，提升运营效率和盈利能力。"
+      },
       "security": {
-        "title": "增强安全性",
-        "description": "内置加密和身份验证保护免受未经授权的访问和算力盗取"
+        "title": "安全升级",
+        "description": "端到端加密与认证保障挖矿安全。"
       },
-      "overhead": {
-        "title": "减少开销",
-        "description": "与Stratum V1相比，二进制协议将带宽使用减少多达75%"
+      "decentralizedTemplate": {
+        "title": "去中心化区块模板构建",
+        "description": "矿工自主构建区块模板，提升自主性和创新能力。"
       },
-      "accounting": {
-        "title": "透明份额计算",
-        "description": "通过扩展的透明份额计算确保合规性并提高可审计性"
+      "payoutMechanism": {
+        "title": "支持任意支付方式",
+        "description": "兼容 FPPS、PPLNS 等主流支付方案。"
+      },
+      "backwardsCompatible": {
+        "title": "向后兼容",
+        "description": "兼容 Stratum V1 固件与设备。"
+      },
+      "profitabilityCaseStudy": {
+        "title": "收益提升实证",
+        "description": "最新案例显示利润提升可达 7.4%，安全性、效率与去中心化均大幅提升。"
       }
     },
     "strategicDifferentiators": {
       "title": "战略差异化",
+      "modular": {
+        "title": "模块化协议",
+        "description": "原生支持 GCC、合并挖矿、自定义支付方案及协议升级。"
+      },
+      "wellSpecified": {
+        "title": "规范清晰",
+        "description": "完整文档，由工作组持续维护。"
+      },
+      "gccMergedMining": {
+        "title": "GCC 与合并挖矿",
+        "description": "已支持合并挖矿应用，协议适应行业新需求。"
+      },
+      "innovationBlocks": {
+        "title": "创新基石",
+        "description": "为矿场管理软件与优化固件创新奠定基础。"
+      },
       "developerFriendly": {
         "title": "开发者友好",
-        "description": "使用模块化、开源基础设施更快地启动新矿池，易于扩展和定制"
+        "description": "模块化开源架构，方便快速定制和部署。"
       },
       "futureBuilt": {
-        "title": "为未来而建",
-        "description": "与最新的协议标准保持一致，为矿工提供竞争对手无法匹敌的先进功能"
+        "title": "面向未来",
+        "description": "符合最新标准，提供同类领先的高级功能。"
       }
     },
     "gettingStarted": {
-      "title": "开始使用",
-      "cloneRepo": "# 克隆代码库",
+      "title": "快速上手",
+      "cloneRepo": "# 克隆仓库",
       "buildPool": "# 构建矿池实现",
-      "configurePool": "# 配置您的矿池",
-      "editConfig": "# 使用您的设置编辑config.toml",
+      "configurePool": "# 配置你的矿池",
+      "editConfig": "# 使用你的设置编辑 config.toml",
       "startPool": "# 启动矿池",
       "viewDocs": "查看完整文档"
     }
