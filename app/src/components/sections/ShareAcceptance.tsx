@@ -8,53 +8,27 @@ import {
   Tooltip,
   ResponsiveContainer,
   Legend,
+  Cell,
 } from 'recharts';
 
+// Data for all three setups, one value per row
 const data = [
-  {
-    setup: 'SV1',
-    sv1: 99.8,
-    sv2_no_jd: null,
-    sv2_with_jd: null,
-  },
-  {
-    setup: 'SV2 (No JD)',
-    sv1: null,
-    sv2_no_jd: 99.9,
-    sv2_with_jd: null,
-  },
-  {
-    setup: 'SV2 (With JD)',
-    sv1: null,
-    sv2_no_jd: null,
-    sv2_with_jd: 100.0,
-  },
+  { setup: 'SV1', value: 99.8 },
+  { setup: 'SV2 (No JD)', value: 99.9 },
+  { setup: 'SV2 (With JD)', value: 100.0 },
 ];
+
+// Color by index (order matters)
+const BAR_COLORS = ['#ef4444', '#3b82f6', '#22c55e'];
 
 const CustomTooltip = ({ active, payload }: any) => {
   if (active && payload && payload.length) {
-    const { payload: item } = payload[0];
-    let label = '';
-    let value = 0;
-    let color = '';
-    if (item.sv1 != null) {
-      label = 'SV1';
-      value = item.sv1;
-      color = '#ef4444';
-    } else if (item.sv2_no_jd != null) {
-      label = 'SV2 (No JD)';
-      value = item.sv2_no_jd;
-      color = '#3b82f6';
-    } else {
-      label = 'SV2 (With JD)';
-      value = item.sv2_with_jd;
-      color = '#22c55e';
-    }
+    const item = payload[0].payload;
     return (
       <div className="bg-background/95 border border-border p-2 rounded-sm">
-        <div className="text-xs font-mono mb-1">{label}</div>
-        <div className="text-xs font-mono" style={{ color }}>
-          Acceptance rate: {value}%
+        <div className="text-xs font-mono mb-1">{item.setup}</div>
+        <div className="text-xs font-mono" style={{ color: payload[0].color }}>
+          Acceptance rate: {item.value}%
         </div>
       </div>
     );
@@ -74,7 +48,7 @@ export function ShareAcceptance() {
           <BarChart
             data={data}
             margin={{ top: 10, right: 10, left: 32, bottom: 10 }}
-            barCategoryGap="40%"
+            barCategoryGap="20%"
           >
             <XAxis
               dataKey="setup"
@@ -103,23 +77,18 @@ export function ShareAcceptance() {
               verticalAlign="top"
               align="right"
               iconType="rect"
-              formatter={(value: string) => {
-                // Hardcode legend label/color order
-                if (value === 'sv1') {
-                  return <span style={{ color: '#ef4444', fontFamily: 'monospace', fontSize: 13 }}>SV1</span>;
-                }
-                if (value === 'sv2_no_jd') {
-                  return <span style={{ color: '#3b82f6', fontFamily: 'monospace', fontSize: 13 }}>SV2 (No JD)</span>;
-                }
-                if (value === 'sv2_with_jd') {
-                  return <span style={{ color: '#22c55e', fontFamily: 'monospace', fontSize: 13 }}>SV2 (With JD)</span>;
-                }
+              formatter={value => {
+                if (value === 'value') return (
+                  <span style={{ color: '#ef4444', fontFamily: 'monospace', fontSize: 13 }}>SV1</span>
+                );
                 return value;
               }}
             />
-            <Bar dataKey="sv1" name="SV1" fill="#ef4444" radius={[6, 6, 0, 0]} />
-            <Bar dataKey="sv2_no_jd" name="SV2 (No JD)" fill="#3b82f6" radius={[6, 6, 0, 0]} />
-            <Bar dataKey="sv2_with_jd" name="SV2 (With JD)" fill="#22c55e" radius={[6, 6, 0, 0]} />
+            <Bar dataKey="value" name="Acceptance Rate" radius={[6, 6, 0, 0]}>
+              {data.map((entry, idx) => (
+                <Cell key={`cell-${idx}`} fill={BAR_COLORS[idx]} />
+              ))}
+            </Bar>
           </BarChart>
         </ResponsiveContainer>
       </div>

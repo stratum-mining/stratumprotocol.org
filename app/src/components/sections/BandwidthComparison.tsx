@@ -34,9 +34,8 @@ const CustomTooltip = ({ active, payload }: CustomTooltipProps) => {
           <p key={p.dataKey} className="text-xs font-mono" style={{ color: p.color }}>
             {p.dataKey === 'sv1'
               ? t('bandwidthComparison.sv1')
-              : p.dataKey === 'sv2_no_jd'
-              ? t('bandwidthComparison.sv2NoJd')
-              : t('bandwidthComparison.sv2WithJd')}: {p.value} {t('bandwidthComparison.bytesPerSec')}
+              : t('bandwidthComparison.sv2NoJd')}
+            : {p.value} {t('bandwidthComparison.bytesPerSec')}
           </p>
         ))}
       </div>
@@ -46,10 +45,10 @@ const CustomTooltip = ({ active, payload }: CustomTooltipProps) => {
 };
 
 const bandwidthBarData = [
-  { direction: 'TX (Miner)', sv1: 101.0, sv2_no_jd: 40.1, sv2_with_jd: 114.0 },
-  { direction: 'RX (Miner)', sv1: 66.6, sv2_no_jd: 26.0, sv2_with_jd: 118.0 },
-  { direction: 'TX (Pool)', sv1: 126.0, sv2_no_jd: 74.0, sv2_with_jd: 99.1 },
-  { direction: 'RX (Pool)', sv1: 170.0, sv2_no_jd: 100.0, sv2_with_jd: 135.0 },
+  { direction: 'TX (Miner)', sv1: 101.0, sv2_no_jd: 40.1 },
+  { direction: 'RX (Miner)', sv1: 66.6, sv2_no_jd: 26.0 },
+  { direction: 'TX (Pool)', sv1: 126.0, sv2_no_jd: 74.0 },
+  { direction: 'RX (Pool)', sv1: 170.0, sv2_no_jd: 100.0 },
 ];
 
 export function BandwidthComparison() {
@@ -98,23 +97,18 @@ export function BandwidthComparison() {
                   color:
                     value === 'sv1'
                       ? '#ef4444'
-                      : value === 'sv2_no_jd'
-                      ? '#3b82f6'
-                      : '#22c55e',
+                      : '#3b82f6',
                   fontFamily: 'monospace',
                   fontSize: 13,
                 }}>
                   {value === 'sv1'
                     ? t('bandwidthComparison.sv1')
-                    : value === 'sv2_no_jd'
-                    ? t('bandwidthComparison.sv2NoJd')
-                    : t('bandwidthComparison.sv2WithJd')}
+                    : t('bandwidthComparison.sv2NoJd')}
                 </span>
               )}
             />
             <Bar dataKey="sv1" fill="#ef4444" radius={[6, 6, 0, 0]} />
             <Bar dataKey="sv2_no_jd" fill="#3b82f6" radius={[6, 6, 0, 0]} />
-            <Bar dataKey="sv2_with_jd" fill="#22c55e" radius={[6, 6, 0, 0]} />
           </BarChart>
         </ResponsiveContainer>
       </div>

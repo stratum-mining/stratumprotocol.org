@@ -6,71 +6,44 @@ import {
   XAxis,
   YAxis,
   Tooltip,
-  Legend,
   ResponsiveContainer,
+  Cell,
 } from 'recharts';
 
-const data = [
+// Data for all three setups
+const chartData = [
   {
     setup: 'SV1',
-    block_sv1: 325,
-    job_sv1: 228,
-    block_sv2_nojd: 0,
-    job_sv2_nojd: 0,
-    block_sv2_jd: 0,
-    job_sv2_jd: 0,
+    block_latency: 325,
+    job_latency: 228,
   },
   {
     setup: 'SV2 (No JD)',
-    block_sv1: 0,
-    job_sv1: 0,
-    block_sv2_nojd: 57.8,
-    job_sv2_nojd: 57.7,
-    block_sv2_jd: 0,
-    job_sv2_jd: 0,
+    block_latency: 57.8,
+    job_latency: 57.7,
   },
   {
     setup: 'SV2 (With JD)',
-    block_sv1: 0,
-    job_sv1: 0,
-    block_sv2_nojd: 0,
-    job_sv2_nojd: 0,
-    block_sv2_jd: 1.42,
-    job_sv2_jd: 2.44,
+    block_latency: 1.42,
+    job_latency: 2.44,
   },
 ];
 
-const CustomTooltip = ({ active, payload, label }: any) => {
+// Color palette per setup
+const BLOCK_COLORS = ['#ef4444', '#3b82f6', '#22c55e'];
+const JOB_COLORS = ['#b91c1c', '#1e40af', '#166534'];
+
+const CustomTooltip = ({ active, payload }: any) => {
   if (active && payload && payload.length) {
     const item = payload[0].payload;
-    let setup, block, job, blockColor, jobColor;
-    if (item.setup === 'SV1') {
-      setup = 'SV1';
-      block = item.block_sv1;
-      job = item.job_sv1;
-      blockColor = '#ef4444';
-      jobColor = '#b91c1c';
-    } else if (item.setup === 'SV2 (No JD)') {
-      setup = 'SV2 (No JD)';
-      block = item.block_sv2_nojd;
-      job = item.job_sv2_nojd;
-      blockColor = '#3b82f6';
-      jobColor = '#1e40af';
-    } else {
-      setup = 'SV2 (With JD)';
-      block = item.block_sv2_jd;
-      job = item.job_sv2_jd;
-      blockColor = '#22c55e';
-      jobColor = '#166534';
-    }
     return (
       <div className="bg-background/95 border border-border p-2 rounded-sm">
-        <div className="text-xs font-mono mb-1">{setup}</div>
-        <div className="text-xs font-mono" style={{ color: blockColor }}>
-          Block latency: {block} ms
+        <div className="text-xs font-mono mb-1">{item.setup}</div>
+        <div className="text-xs font-mono" style={{ color: payload[0].color }}>
+          Block latency: {item.block_latency} ms
         </div>
-        <div className="text-xs font-mono" style={{ color: jobColor }}>
-          Job latency: {job} ms
+        <div className="text-xs font-mono" style={{ color: payload[1].color }}>
+          Job latency: {item.job_latency} ms
         </div>
       </div>
     );
@@ -83,12 +56,14 @@ export function LatencyJobBlockComparison() {
     <Card className="p-6 bg-black/20">
       <div className="flex items-center gap-3 mb-6">
         <Zap className="w-5 h-5 text-cyan-500" />
-        <h3 className="text-xl font-mono">Latency Comparison: Block vs Job Latency</h3>
+        <h3 className="text-xl font-mono">
+          Latency Comparison: Block vs Job Latency
+        </h3>
       </div>
       <div className="h-64 mb-8">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart
-            data={data}
+            data={chartData}
             margin={{ top: 10, right: 10, left: 32, bottom: 10 }}
             barCategoryGap="20%"
           >
@@ -113,34 +88,18 @@ export function LatencyJobBlockComparison() {
               }}
             />
             <Tooltip content={<CustomTooltip />} />
-            <Legend
-              verticalAlign="top"
-              align="right"
-              iconType="rect"
-              formatter={(value) => (
-                <span style={{
-                  color:
-                    value.includes('block_sv1') || value.includes('block_sv2')
-                      ? '#94a3b8'
-                      : '#94a3b8',
-                  fontFamily: 'monospace',
-                  fontSize: 13,
-                }}>
-                  {value === 'block_sv1' || value === 'block_sv2_nojd' || value === 'block_sv2_jd'
-                    ? 'Block latency'
-                    : 'Job latency'}
-                </span>
-              )}
-            />
-            {/* SV1 bars */}
-            <Bar dataKey="block_sv1" name="Block latency" fill="#ef4444" radius={[6, 6, 0, 0]} />
-            <Bar dataKey="job_sv1" name="Job latency" fill="#b91c1c" radius={[6, 6, 0, 0]} />
-            {/* SV2 (No JD) bars */}
-            <Bar dataKey="block_sv2_nojd" name="Block latency" fill="#3b82f6" radius={[6, 6, 0, 0]} />
-            <Bar dataKey="job_sv2_nojd" name="Job latency" fill="#1e40af" radius={[6, 6, 0, 0]} />
-            {/* SV2 (With JD) bars */}
-            <Bar dataKey="block_sv2_jd" name="Block latency" fill="#22c55e" radius={[6, 6, 0, 0]} />
-            <Bar dataKey="job_sv2_jd" name="Job latency" fill="#166534" radius={[6, 6, 0, 0]} />
+            {/* Block latency bars with colors */}
+            <Bar dataKey="block_latency" name="Block latency" radius={[6, 6, 0, 0]}>
+              {chartData.map((entry, idx) => (
+                <Cell key={`block-cell-${idx}`} fill={BLOCK_COLORS[idx]} />
+              ))}
+            </Bar>
+            {/* Job latency bars with colors */}
+            <Bar dataKey="job_latency" name="Job latency" radius={[6, 6, 0, 0]}>
+              {chartData.map((entry, idx) => (
+                <Cell key={`job-cell-${idx}`} fill={JOB_COLORS[idx]} />
+              ))}
+            </Bar>
           </BarChart>
         </ResponsiveContainer>
       </div>
