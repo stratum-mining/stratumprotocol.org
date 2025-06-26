@@ -27,77 +27,100 @@
       "profitable": "Stratum V2 increases miner profits by minimizing stale shares, reducing block and job latency, improving propagation speed, and cutting bandwidth waste. These upgrades directly improve efficiency turning savings into more revenue."
     }
   },
-  "miners": {
-   "hero": {
-      "title": "Upgrade Your Mining Operation",
-      "subtitle": "Maximize your Bitcoin mining profitability with enhanced security, reduced operational costs, and complete autonomy"
-    },
-    "profitability": {
-      "title": "Measurable Profitability Gains",
-      "gain": "Estimated up to 7.4% net profit increase",
-      "noUpgrade": "Benefits available immediately without firmware upgrades"
-    },
-    "efficiency": {
-      "title": "Efficiency Through Latency Reduction",
-      "blockLatency": "Block change latency improved by 228x",
-      "jobLatency": "Job delivery latency improved by 93x",
-      "blockPropagation": "Block propagation improved by 28x"
-    },
-    "feeCapture": {
-      "title": "Optimized Fee Revenue",
-      "moreFees": "Capture up to 1.06% more fees per block",
-      "fresherJobs": "Real-time job updates ensure maximum fee inclusion"
-    },
-    "bandwidth": {
-      "title": "Significant Bandwidth Savings",
-      "reduction": "Reduce bandwidth usage by 40% to 60%",
-      "lowerCost": "Lower operational expenses at scale"
-    },
-    "adoption": {
-      "title": "Simple and Low-Risk Adoption",
-      "translator": "Translation Proxy supports SV1 firmware devices",
-      "noUpgrade": "No mandatory firmware upgrades required"
-    },
-    "templateControl": {
-      "title": "Complete Block Template Control",
-      "construction": "Miner-side block template construction",
-      "autonomy": "Greater autonomy and flexible revenue strategies"
-    },
-    "security": {
-      "title": "Advanced Security Protection",
-      "encryption": "End-to-end encryption eliminates hashrate theft",
-      "profitProtection": "Recover up to 5% net profit by securing hashrate"
-    }
+"miners": {
+  "hero": {
+    "title": "Upgrade Your Mining Operation",
+    "subtitle": "Maximize your Bitcoin mining profitability with enhanced security, reduced operational costs, and complete autonomy."
+  },
+  "profitability": {
+    "title": "Measurable Profitability Gains",
+    "gain": "Boost your net profit by up to 7.4%.",
+    "noUpgrade": "Immediate benefits—no mandatory firmware upgrades required."
+  },
+  "efficiency": {
+    "title": "Efficiency Through Latency Reduction",
+    "blockLatency": "Block change latency improved by 228x.",
+    "jobLatency": "Job delivery latency improved by 93x.",
+    "blockPropagation": "Block propagation improved by 28x."
+  },
+  "feeCapture": {
+    "title": "Optimized Fee Revenue",
+    "moreFees": "Capture up to 1.06% more fees per block.",
+    "fresherJobs": "Real-time job updates maximize fee inclusion."
+  },
+  "adoption": {
+    "title": "Simple and Low-Risk Adoption",
+    "translator": "Translation Proxy supports SV1 firmware devices.",
+    "noUpgrade": "No mandatory firmware upgrades required."
+  },
+  "templateControl": {
+    "title": "Complete Block Template Control",
+    "construction": "Miner-side block template construction for full autonomy.",
+    "autonomy": "Choose your revenue strategy."
+  },
+  "security": {
+    "title": "Advanced Security Protection",
+    "encryption": "End-to-end encryption eliminates hashrate theft.",
+    "profitProtection": "Secure up to 5% of your net profit by protecting your hashrate."
+  }
   },
   "pools": {
     "hero": {
       "title": "Future-Proof Your Mining Pool",
-      "subtitle": "Stay ahead of the curve with enhanced security, reduced bandwidth costs, faster performance, and an open architecture that invites innovation"
+      "subtitle": "Stratum V2 is the modern mining protocol standard designed to address the limitations of Stratum V1. It was developed by Braiins and Matt Corallo and has been maintained by an independent, open-source community and contributors across the industry for over 4 years."
     },
     "operationalBenefits": {
       "title": "Operational Benefits",
+      "efficiency": {
+        "title": "Efficiency Improvements",
+        "description": "Binary message format with less bandwidth and lower latency, enhancing operational efficiency and profitability."
+      },
       "security": {
-        "title": "Enhanced Security",
-        "description": "Built-in encryption and authentication protect against unauthorized access and hashrate theft"
+        "title": "Security Improvements",
+        "description": "End-to-end encryption and authentication to secure mining operations."
       },
-      "overhead": {
-        "title": "Reduced Overhead",
-        "description": "Binary protocol reduces bandwidth usage by up to 75% compared to Stratum V1"
+      "decentralizedTemplate": {
+        "title": "Decentralized Block Template Construction",
+        "description": "Miners build their own block templates, enhancing autonomy, decentralization, and innovation."
       },
-      "accounting": {
-        "title": "Transparent Share accounting",
-        "description": "Transparent share accounting through extensions ensure compliance and increase auditability"
+      "payoutMechanism": {
+        "title": "Supports Any Payout Mechanism",
+        "description": "Compatible with FPPS, PPLNS, and other popular payout systems."
+      },
+      "backwardsCompatible": {
+        "title": "Backwards Compatible",
+        "description": "Interoperable with Stratum V1 firmware devices."
+      },
+      "profitabilityCaseStudy": {
+        "title": "Proven Profitability",
+        "description": "Recent case-study demonstrates profit increases up to 7.4% and significant improvements in security, efficiency, and decentralization."
       }
     },
     "strategicDifferentiators": {
       "title": "Strategic Differentiators",
+      "modular": {
+        "title": "Modular Protocol",
+        "description": "Natively supports GCC, merged mining, custom payout schemes, and future protocol upgrades."
+      },
+      "wellSpecified": {
+        "title": "Well-specified Protocol",
+        "description": "Fully documented and actively maintained by the working group."
+      },
+      "gccMergedMining": {
+        "title": "GCC and Merged Mining",
+        "description": "Supports merged mining use cases, adapting to evolving industry requirements."
+      },
+      "innovationBlocks": {
+        "title": "Foundation for Innovation",
+        "description": "Enables the creation of mining farm software and optimized firmware."
+      },
       "developerFriendly": {
         "title": "Developer Friendly",
-        "description": "Launch new pools faster using modular, open-source infrastructure that's easy to extend and customize"
+        "description": "Modular and open-source infrastructure allows quick customization and deployment."
       },
       "futureBuilt": {
         "title": "Built for the Future",
-        "description": "Align with the latest protocol standards and offer miners advanced features that competitors can't match"
+        "description": "Aligns with latest standards, offering advanced features competitors can't match."
       }
     },
     "gettingStarted": {

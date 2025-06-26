@@ -1,8 +1,10 @@
-
 import { Navigation } from '@/components/Navigation';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { ArrowRight, Shield, Zap, Scale, Code2, Rocket } from 'lucide-react';
+import {
+  ArrowRight, Zap, Shield, Settings, FileText, Coins, Link2, BarChart3,
+  Layers, BookOpen, Merge, Rocket, Code2, SunMoon
+} from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 export default function PoolsPage() {
@@ -31,26 +33,45 @@ export default function PoolsPage() {
             <h2 className="text-3xl font-mono mb-8 text-center">{t('pools.operationalBenefits.title')}</h2>
             <div className="grid md:grid-cols-3 gap-8">
               <Card className="p-6">
+                <Zap className="w-12 h-12 text-cyan-500 mb-4" />
+                <h3 className="text-xl font-mono mb-2">{t('pools.operationalBenefits.efficiency.title')}</h3>
+                <p className="text-muted-foreground">
+                  {t('pools.operationalBenefits.efficiency.description')}
+                </p>
+              </Card>
+              <Card className="p-6">
                 <Shield className="w-12 h-12 text-cyan-500 mb-4" />
                 <h3 className="text-xl font-mono mb-2">{t('pools.operationalBenefits.security.title')}</h3>
                 <p className="text-muted-foreground">
                   {t('pools.operationalBenefits.security.description')}
                 </p>
               </Card>
-
               <Card className="p-6">
-                <Zap className="w-12 h-12 text-cyan-500 mb-4" />
-                <h3 className="text-xl font-mono mb-2">{t('pools.operationalBenefits.overhead.title')}</h3>
+                <Settings className="w-12 h-12 text-cyan-500 mb-4" />
+                <h3 className="text-xl font-mono mb-2">{t('pools.operationalBenefits.decentralizedTemplate.title')}</h3>
                 <p className="text-muted-foreground">
-                  {t('pools.operationalBenefits.overhead.description')}
+                  {t('pools.operationalBenefits.decentralizedTemplate.description')}
                 </p>
               </Card>
-
               <Card className="p-6">
-                <Scale className="w-12 h-12 text-cyan-500 mb-4" />
-                <h3 className="text-xl font-mono mb-2">{t('pools.operationalBenefits.accounting.title')}</h3>
+                <Coins className="w-12 h-12 text-cyan-500 mb-4" />
+                <h3 className="text-xl font-mono mb-2">{t('pools.operationalBenefits.payoutMechanism.title')}</h3>
                 <p className="text-muted-foreground">
-                  {t('pools.operationalBenefits.accounting.description')}
+                  {t('pools.operationalBenefits.payoutMechanism.description')}
+                </p>
+              </Card>
+              <Card className="p-6">
+                <Link2 className="w-12 h-12 text-cyan-500 mb-4" />
+                <h3 className="text-xl font-mono mb-2">{t('pools.operationalBenefits.backwardsCompatible.title')}</h3>
+                <p className="text-muted-foreground">
+                  {t('pools.operationalBenefits.backwardsCompatible.description')}
+                </p>
+              </Card>
+              <Card className="p-6">
+                <BarChart3 className="w-12 h-12 text-cyan-500 mb-4" />
+                <h3 className="text-xl font-mono mb-2">{t('pools.operationalBenefits.profitabilityCaseStudy.title')}</h3>
+                <p className="text-muted-foreground">
+                  {t('pools.operationalBenefits.profitabilityCaseStudy.description')}
                 </p>
               </Card>
             </div>
@@ -61,15 +82,42 @@ export default function PoolsPage() {
             <h2 className="text-3xl font-mono mb-8 text-center">{t('pools.strategicDifferentiators.title')}</h2>
             <div className="grid md:grid-cols-2 gap-8">
               <Card className="p-6">
+                <Layers className="w-12 h-12 text-cyan-500 mb-4" />
+                <h3 className="text-xl font-mono mb-2">{t('pools.strategicDifferentiators.modular.title')}</h3>
+                <p className="text-muted-foreground">
+                  {t('pools.strategicDifferentiators.modular.description')}
+                </p>
+              </Card>
+              <Card className="p-6">
+                <BookOpen className="w-12 h-12 text-cyan-500 mb-4" />
+                <h3 className="text-xl font-mono mb-2">{t('pools.strategicDifferentiators.wellSpecified.title')}</h3>
+                <p className="text-muted-foreground">
+                  {t('pools.strategicDifferentiators.wellSpecified.description')}
+                </p>
+              </Card>
+              <Card className="p-6">
+                <Merge className="w-12 h-12 text-cyan-500 mb-4" />
+                <h3 className="text-xl font-mono mb-2">{t('pools.strategicDifferentiators.gccMergedMining.title')}</h3>
+                <p className="text-muted-foreground">
+                  {t('pools.strategicDifferentiators.gccMergedMining.description')}
+                </p>
+              </Card>
+              <Card className="p-6">
+                <Rocket className="w-12 h-12 text-cyan-500 mb-4" />
+                <h3 className="text-xl font-mono mb-2">{t('pools.strategicDifferentiators.innovationBlocks.title')}</h3>
+                <p className="text-muted-foreground">
+                  {t('pools.strategicDifferentiators.innovationBlocks.description')}
+                </p>
+              </Card>
+              <Card className="p-6">
                 <Code2 className="w-12 h-12 text-cyan-500 mb-4" />
                 <h3 className="text-xl font-mono mb-2">{t('pools.strategicDifferentiators.developerFriendly.title')}</h3>
                 <p className="text-muted-foreground">
                   {t('pools.strategicDifferentiators.developerFriendly.description')}
                 </p>
               </Card>
-
               <Card className="p-6">
-                <Rocket className="w-12 h-12 text-cyan-500 mb-4" />
+                <SunMoon className="w-12 h-12 text-cyan-500 mb-4" />
                 <h3 className="text-xl font-mono mb-2">{t('pools.strategicDifferentiators.futureBuilt.title')}</h3>
                 <p className="text-muted-foreground">
                   {t('pools.strategicDifferentiators.futureBuilt.description')}
