@@ -21,6 +21,7 @@
     "decentralized": "去中心化",
     "profitable": "更有利可图",
     "startMining": "开始挖矿",
+    "scrollToExplore": "滚动探索",
     "texts": {
       "efficient": "提升矿工、矿池和比特币网络的通讯效率。端到端加密保障挖矿安全，同时减少带宽和延迟。",
       "decentralized": "最重要的是，Stratum V2 让矿工能够自主选择区块包含的交易，守护比特币的去中心化与抗审查属性。",

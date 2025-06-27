@@ -10,6 +10,7 @@ import { Link, useParams } from "react-router";
 import blogPostsData from "@/data/blog-posts.json";
 import { Navigation } from "@/components/Navigation";
 import { ArrowLeft, ExternalLink, Copy, Check } from "lucide-react";
+import { ImageZoom } from "@/components/ui/image-zoom";
 
 export default function BlogPostPage() {
   // Extract the slug parameter from the URL and get the blog post data
@@ -130,7 +131,13 @@ export default function BlogPostPage() {
               return <h4 {...props} className='text-2xl font-medium sm:font-medium font-dm-mono pt-7 pb-3' />;
             },
             img: ({ ...props }: React.ComponentPropsWithoutRef<"img">) => {
-              return <img {...props} className='w-full object-center object-contain my-5' />;
+              return (
+                <ImageZoom 
+                  src={props.src || ''} 
+                  alt={props.alt || ''} 
+                  className='w-full object-center object-contain my-5' 
+                />
+              );
             },
             hr: ({ ...props }: React.ComponentPropsWithoutRef<"hr">) => {
               return <hr {...props} className='my-4' />;

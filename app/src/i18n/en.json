@@ -21,6 +21,7 @@
     "decentralized": "decentralized", 
     "profitable": "profitable",
     "startMining": "Start Mining",
+    "scrollToExplore": "Scroll to explore",
     "texts": {
       "efficient": "improves how miners, pools, and the Bitcoin network communicate. It secures mining with end-to-end encryption and makes it more efficient by reducing bandwidth and latency.",
       "decentralized": "Most importantly, Stratum V2 empowers miners to choose which transactions are included in blocks, protecting Bitcoin's fundamental properties - decentralization and censorship resistance.",
