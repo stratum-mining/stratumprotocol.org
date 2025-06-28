@@ -46,7 +46,6 @@ export default function MinersPage() {
             <h3 className="text-2xl font-mono mb-4">{t('miners.profitability.title')}</h3>
             <ul className="space-y-4 text-muted-foreground">
               <li>{t('miners.profitability.gain')}</li>
-              <li>{t('miners.profitability.noUpgrade')}</li>
             </ul>
           </Card>
           <Card className="p-8">
@@ -54,8 +53,6 @@ export default function MinersPage() {
             <h3 className="text-2xl font-mono mb-4">{t('miners.efficiency.title')}</h3>
             <ul className="space-y-4 text-muted-foreground">
               <li>{t('miners.efficiency.blockLatency')}</li>
-              <li>{t('miners.efficiency.jobLatency')}</li>
-              <li>{t('miners.efficiency.blockPropagation')}</li>
             </ul>
           </Card>
           <Card className="p-8">
@@ -63,7 +60,6 @@ export default function MinersPage() {
             <h3 className="text-2xl font-mono mb-4">{t('miners.feeCapture.title')}</h3>
             <ul className="space-y-4 text-muted-foreground">
               <li>{t('miners.feeCapture.moreFees')}</li>
-              <li>{t('miners.feeCapture.fresherJobs')}</li>
             </ul>
           </Card>
           <Card className="p-8">
@@ -71,7 +67,6 @@ export default function MinersPage() {
             <h3 className="text-2xl font-mono mb-4">{t('miners.adoption.title')}</h3>
             <ul className="space-y-4 text-muted-foreground">
               <li>{t('miners.adoption.translator')}</li>
-              <li>{t('miners.adoption.noUpgrade')}</li>
             </ul>
           </Card>
           <Card className="p-8">
@@ -79,7 +74,6 @@ export default function MinersPage() {
             <h3 className="text-2xl font-mono mb-4">{t('miners.templateControl.title')}</h3>
             <ul className="space-y-4 text-muted-foreground">
               <li>{t('miners.templateControl.construction')}</li>
-              <li>{t('miners.templateControl.autonomy')}</li>
             </ul>
           </Card>
           <Card className="p-8">
@@ -87,7 +81,6 @@ export default function MinersPage() {
             <h3 className="text-2xl font-mono mb-4">{t('miners.security.title')}</h3>
             <ul className="space-y-4 text-muted-foreground">
               <li>{t('miners.security.encryption')}</li>
-              <li>{t('miners.security.profitProtection')}</li>
             </ul>
           </Card>
         </div>
