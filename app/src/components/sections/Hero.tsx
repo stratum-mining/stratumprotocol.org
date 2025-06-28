@@ -269,7 +269,7 @@ export function Hero() {
 
       {/* Scroll Indicator */}
       <motion.div 
-        className="fixed bottom-32 left-1/2 transform -translate-x-1/2 z-10"
+        className="fixed bottom-98 left-1/2 transform -translate-x-1/2 z-10"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 1 }}

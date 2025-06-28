@@ -35,27 +35,34 @@
   },
   "profitability": {
     "title": "Measurable Profitability Gains",
-    "gain": "Boost your net profit by up to 7.4%."
+    "gain": "Boost your net profit by up to 7.4%.",
+    "noUpgrade": "Immediate benefits—no mandatory firmware upgrades required."
   },
   "efficiency": {
-    "title": "Efficiency improvements",
-    "blockLatency": "Binary message format cuts bandwidth and latency, improving efficiency and profitability."
+    "title": "Efficiency Through Latency Reduction",
+    "blockLatency": "Block change latency improved by 228x.",
+    "jobLatency": "Job delivery latency improved by 93x.",
+    "blockPropagation": "Block propagation improved by 28x."
   },
   "feeCapture": {
     "title": "Optimized Fee Revenue",
-    "moreFees": "Capture up to 1.06% more fees per block."
+    "moreFees": "Capture up to 1.06% more fees per block.",
+    "fresherJobs": "Real-time job updates maximize fee inclusion."
   },
   "adoption": {
     "title": "Simple and Low-Risk Adoption",
-    "translator": "Translation Proxy supports SV1 firmware devices."
+    "translator": "Translation Proxy supports SV1 firmware devices.",
+    "noUpgrade": "No mandatory firmware upgrades required."
   },
   "templateControl": {
     "title": "Complete Block Template Control",
-    "construction": "Miner-side block template construction for full autonomy."
+    "construction": "Miner-side block template construction for full autonomy.",
+    "autonomy": "Choose your revenue strategy."
   },
   "security": {
     "title": "Advanced Security Protection",
-    "encryption": "End-to-end encryption eliminates hashrate theft."
+    "encryption": "End-to-end encryption eliminates hashrate theft.",
+    "profitProtection": "Secure up to 5% of your net profit by protecting your hashrate."
   }
   },
   "pools": {
@@ -101,7 +108,7 @@
         "description": "Fully documented and actively maintained by the working group."
       },
       "gccMergedMining": {
-        "title": "Merged Mining",
+        "title": "GCC and Merged Mining",
         "description": "Supports merged mining use cases, adapting to evolving industry requirements."
       },
       "innovationBlocks": {
