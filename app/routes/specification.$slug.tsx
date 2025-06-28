@@ -9,6 +9,7 @@ import { useLocation, useParams } from "react-router";
 import { ExternalLink, LayoutList, X } from "lucide-react";
 import MobileSidebarModal from "@/components/mobile-sidebar-modal";
 import SpecificationSidebar from "@/components/specification-sidebar";
+import { ImageZoom } from "@/components/ui/image-zoom";
 
 export default function SpecificationPostPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -194,7 +195,13 @@ export default function SpecificationPostPage() {
                     img: ({ ...props }: React.ComponentPropsWithoutRef<"img">) => {
                       const src = props.src?.replace(".", "");
 
-                      return <img {...props} className='w-full h-full object-center object-contain my-8' src={`/specification${src}`} />;
+                      return (
+                        <ImageZoom 
+                          src={`/specification${src}`} 
+                          alt={props.alt || ''} 
+                          className='w-full h-full object-center object-contain my-8' 
+                        />
+                      );
                     },
                   }}
                   className='specification-content'

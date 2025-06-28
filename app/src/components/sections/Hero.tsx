@@ -4,6 +4,7 @@ import { useEffect, useState, useRef, useCallback } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTranslation } from "react-i18next";
+import { ChevronDown } from "lucide-react";
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -167,7 +168,7 @@ export function Hero() {
               {t("hero.oneGiantLeap")}
               <br />
               {t("hero.for")}{" "}
-              <span className="inline-flex items-center h-[1.2em] overflow-hidden">
+              <span className="inline-flex items-center min-h-[1.2em]">
                 <AnimatePresence mode="wait" initial={false}>
                   {activeText === 0 && (
                     <motion.span
@@ -265,6 +266,28 @@ export function Hero() {
           </motion.div>
         </div>
       </div>
+
+      {/* Scroll Indicator */}
+      <motion.div 
+        className="fixed bottom-98 left-1/2 transform -translate-x-1/2 z-10 hidden md:block"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 1 }}
+      >
+        <div className="flex flex-col items-center gap-2">
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ 
+              duration: 1.5, 
+              repeat: Infinity, 
+              ease: "easeInOut" 
+            }}
+            className="p-2 rounded-full border border-cyan-custom-100/30 bg-black/20 backdrop-blur-sm"
+          >
+            <ChevronDown className="w-5 h-5 text-cyan-custom-100" />
+          </motion.div>
+        </div>
+      </motion.div>
     </section>
   );
 }
