@@ -275,9 +275,6 @@ export function Hero() {
         transition={{ duration: 0.6, delay: 1 }}
       >
         <div className="flex flex-col items-center gap-2">
-          <span className="text-sm text-muted-foreground font-dm-mono">
-            {t("hero.scrollToExplore")}
-          </span>
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ 
