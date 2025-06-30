@@ -33,7 +33,22 @@ There are two primary ways to use all roles:
 
 ```bash
 git clone https://github.com/stratum-mining/stratum.git
+cd stratum
 ```
+
+#### Checkout the latest stable release
+
+```bash
+git tag --sort=version:refname | tail -1 | xargs git checkout
+```
+
+Alternatively, you can list all available tags and checkout a specific one:
+
+```bash
+git tag --sort=version:refname
+git checkout v1.3.0  # Replace with the latest version shown
+```
+
 #### Run Job Declarator Client (JDC)
 ```bash
 cd roles/jd-client/config-examples/
@@ -119,7 +134,22 @@ This way new templates are constructed every 20 seconds (taking the most profita
 
 ```bash
 git clone https://github.com/stratum-mining/stratum.git
+cd stratum
 ```
+
+#### Checkout the latest stable release
+
+```bash
+git tag --sort=version:refname | tail -1 | xargs git checkout
+```
+
+Alternatively, you can list all available tags and checkout a specific one:
+
+```bash
+git tag --sort=version:refname
+git checkout v1.3.0  # Replace with the latest version shown
+```
+
 #### Run the SV2 Pool
 
 ```bash
