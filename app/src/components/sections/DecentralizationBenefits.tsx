@@ -1,8 +1,11 @@
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Network, Settings, Coins } from "lucide-react";
+import { useTranslation } from 'react-i18next';
 
 export function DecentralizationBenefits() {
+  const { t } = useTranslation();
+  
   return (
     <section className="py-24 px-4 bg-muted/50">
       <div className="container mx-auto">
@@ -12,9 +15,9 @@ export function DecentralizationBenefits() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl font-mono mb-4">Decentralization Benefits</h2>
+          <h2 className="text-4xl font-mono mb-4">{t('decentralizationBenefits.title')}</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            How Stratum V2 empowers miners and improves network decentralization
+            {t('decentralizationBenefits.subtitle')}
           </p>
         </motion.div>
 
@@ -28,12 +31,11 @@ export function DecentralizationBenefits() {
             <Card>
               <CardHeader>
                 <Network className="w-10 h-10 text-cyan-500 mb-2" />
-                <CardTitle>Transaction Selection</CardTitle>
+                <CardTitle>{t('decentralizationBenefits.transactionSelection.title')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Miners can now choose which transactions to include in blocks,
-                  reducing pool operator control
+                  {t('decentralizationBenefits.transactionSelection.description')}
                 </p>
               </CardContent>
             </Card>
@@ -48,12 +50,11 @@ export function DecentralizationBenefits() {
             <Card>
               <CardHeader>
                 <Settings className="w-10 h-10 text-cyan-500 mb-2" />
-                <CardTitle>Independent Operation</CardTitle>
+                <CardTitle>{t('decentralizationBenefits.independentOperation.title')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Reduced infrastructure requirements make it easier for smaller
-                  miners to operate independently
+                  {t('decentralizationBenefits.independentOperation.description')}
                 </p>
               </CardContent>
             </Card>
@@ -68,12 +69,11 @@ export function DecentralizationBenefits() {
             <Card>
               <CardHeader>
                 <Coins className="w-10 h-10 text-cyan-500 mb-2" />
-                <CardTitle>Fee Optimization</CardTitle>
+                <CardTitle>{t('decentralizationBenefits.feeOptimization.title')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Better control over transaction selection allows miners to
-                  optimize for higher fees
+                  {t('decentralizationBenefits.feeOptimization.description')}
                 </p>
               </CardContent>
             </Card>

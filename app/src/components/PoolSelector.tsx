@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   Dialog,
   DialogTitle,
@@ -37,12 +38,12 @@ DialogContent.displayName = DialogPrimitive.Content.displayName;
 
 const pools = [
   {
-    name: "DMND Pool",
+    key: "dmnd",
     logo: "/assets/svgs/demand-logo.svg",
     website: "https://www.dmnd.work/",
   },
   {
-    name: "Braiins Pool",
+    key: "braiins",
     logo: "/assets/svgs/braiins-logo.svg",
     website: "https://braiins.com/",
   },
@@ -57,10 +58,11 @@ type PoolSelectorProps = {
 
 export function PoolSelector({ 
   buttonClassName = "", 
-  buttonText = "Start Mining",
+  buttonText,
   open,
   onOpenChange
 }: PoolSelectorProps) {
+  const { t } = useTranslation();
   const [selectedPool, setSelectedPool] = useState<string | null>(null);
   const [internalOpen, setInternalOpen] = useState(false);
   
@@ -81,16 +83,16 @@ export function PoolSelector({
               buttonClassName ||
               "bg-cyan-custom-100 hover:bg-cyan-custom-200 text-background font-dm-mono text-base md:text-lg lg:text-xl leading-[100%] h-14 flex items-center justify-between min-w-[80vw] sm:min-w-[20.125rem] py-[17.5px] px-5"
             }
-            aria-label={buttonText}
+            aria-label={buttonText || t('poolSelector.startMining')}
           >
-            {buttonText}
+            {buttonText || t('poolSelector.startMining')}
             <ArrowRight className='w-6 h-6' />
           </button>
         </DialogTrigger>
       )}
       <DialogContent className="sm:max-w-[490px] bg-black text-white border-gray-800 p-0 rounded-lg overflow-hidden">
         <div className="flex justify-between items-center px-6 pt-5 pb-2">
-          <DialogTitle className="text-white text-xl font-mono">Choose a Mining Pool</DialogTitle>
+          <DialogTitle className="text-white text-xl font-mono">{t('poolSelector.title')}</DialogTitle>
           <DialogClose asChild>
             <button className="text-gray-400 hover:text-gray-200" aria-label="Close">
               <X className="h-5 w-5" />
@@ -99,46 +101,38 @@ export function PoolSelector({
         </div>
         
         <p className="text-gray-400 text-sm px-6 font-normal pb-2">
-          Select a Stratum V2 Compatible Pool to start mining
+          {t('poolSelector.subtitle')}
         </p>
 
         <div className="flex flex-col gap-5 px-6 pb-6 ">
           {pools.map((pool) => (
             <a 
-              key={pool.name}
+              key={pool.key}
               href={pool.website}
               target="_blank"
               rel="noopener noreferrer"
               className="no-underline"
-              onClick={() => setSelectedPool(pool.name)}
+              onClick={() => setSelectedPool(pool.key)}
             >
               <Card 
                 className={`p-5 cursor-pointer transition-colors bg-zinc-900 border-zinc-800 hover:border-zinc-700 rounded-lg ${
-                  selectedPool === pool.name ? 'border-gray-600' : ''
+                  selectedPool === pool.key ? 'border-gray-600' : ''
                 }`}
                 role="button"
-                aria-pressed={selectedPool === pool.name}
+                aria-pressed={selectedPool === pool.key}
                 tabIndex={0}
               >
                 <div className="flex items-start gap-4 px-4 py-3">
                   <div className="flex-shrink-0 h-6 w-6 relative">
-                    {pool.name === "DMND Pool" ? (
-                      <img 
-                        src={pool.logo} 
-                        alt={pool.name} 
-                        className="h-7 w-7 object-contain" 
-                      />
-                    ) : (
-                      <img 
-                        src={pool.logo} 
-                        alt={pool.name} 
-                        className="h-7 w-7 object-contain" 
-                      />
-                    )}
+                    <img 
+                      src={pool.logo} 
+                      alt={t(`poolSelector.pools.${pool.key}.name`)} 
+                      className="h-7 w-7 object-contain" 
+                    />
                   </div>
                   <div className="flex-1">
-                    <h1 className="font-mono text-white text-base mb-1">{pool.name}</h1>
-                    <p className="text-sm text-gray-400 font-light leading-tight">{pool.description}</p>
+                    <h1 className="font-mono text-white text-base mb-1">{t(`poolSelector.pools.${pool.key}.name`)}</h1>
+                    <p className="text-sm text-gray-400 font-light leading-tight">{t(`poolSelector.pools.${pool.key}.description`)}</p>
                   </div>
                 </div>
               </Card>
@@ -150,7 +144,7 @@ export function PoolSelector({
             className="mt-1 w-full text-white border-zinc-800 hover:bg-zinc-800 rounded-lg h-[46px] font-normal"
             onClick={handleBackClick}
           >
-            Back
+            {t('poolSelector.back')}
           </Button>
         </div>
       </DialogContent>

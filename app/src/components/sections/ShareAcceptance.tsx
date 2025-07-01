@@ -1,5 +1,6 @@
 import { Card } from '@/components/ui/card';
 import { DollarSign } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import {
   BarChart,
   Bar,
@@ -21,14 +22,24 @@ const data = [
 // Color by index (order matters)
 const BAR_COLORS = ['#ef4444', '#3b82f6', '#22c55e'];
 
-const CustomTooltip = ({ active, payload }: any) => {
+interface TooltipPayload {
+  color: string;
+  payload: {
+    setup: string;
+    value: number;
+  };
+}
+
+const CustomTooltip = ({ active, payload }: { active?: boolean; payload?: TooltipPayload[] }) => {
+  const { t } = useTranslation();
+  
   if (active && payload && payload.length) {
     const item = payload[0].payload;
     return (
       <div className="bg-background/95 border border-border p-2 rounded-sm">
         <div className="text-xs font-mono mb-1">{item.setup}</div>
         <div className="text-xs font-mono" style={{ color: payload[0].color }}>
-          Acceptance rate: {item.value}%
+          {t('shareAcceptance.acceptanceRate')}: {item.value}%
         </div>
       </div>
     );
@@ -37,11 +48,13 @@ const CustomTooltip = ({ active, payload }: any) => {
 };
 
 export function ShareAcceptance() {
+  const { t } = useTranslation();
+  
   return (
     <Card className="p-6 bg-black/20">
       <div className="flex items-center gap-3 mb-4">
         <DollarSign className="w-5 h-5 text-cyan-500" />
-        <h3 className="text-xl font-mono">Share Acceptance Rate</h3>
+        <h3 className="text-xl font-mono">{t('shareAcceptance.title')}</h3>
       </div>
       <div className="h-64 mb-8">
         <ResponsiveContainer width="100%" height="100%">
@@ -63,7 +76,7 @@ export function ShareAcceptance() {
               axisLine={false}
               tickLine={false}
               label={{
-                value: 'Acceptance rate',
+                value: t('shareAcceptance.acceptanceRate'),
                 angle: -90,
                 position: 'insideLeft',
                 fill: '#94a3b8',
@@ -84,7 +97,7 @@ export function ShareAcceptance() {
                 return value;
               }}
             />
-            <Bar dataKey="value" name="Acceptance Rate" radius={[6, 6, 0, 0]}>
+            <Bar dataKey="value" name={t('shareAcceptance.acceptanceRate')} radius={[6, 6, 0, 0]}>
               {data.map((entry, idx) => (
                 <Cell key={`cell-${idx}`} fill={BAR_COLORS[idx]} />
               ))}

@@ -1,8 +1,11 @@
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Shield, Zap, Network } from "lucide-react";
+import { useTranslation } from 'react-i18next';
 
 export function ProtocolComparison() {
+  const { t } = useTranslation();
+  
   return (
     <section className="py-24 px-4">
       <div className="container mx-auto">
@@ -12,9 +15,9 @@ export function ProtocolComparison() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl font-mono mb-4">Protocol Comparison</h2>
+          <h2 className="text-4xl font-mono mb-4">{t('protocolComparison.title')}</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            See how Stratum V2 improves upon the original protocol across key metrics
+            {t('protocolComparison.subtitle')}
           </p>
         </motion.div>
 
@@ -28,11 +31,11 @@ export function ProtocolComparison() {
             <Card>
               <CardHeader>
                 <Shield className="w-10 h-10 text-cyan-500 mb-2" />
-                <CardTitle>Enhanced Security</CardTitle>
+                <CardTitle>{t('protocolComparison.enhancedSecurity.title')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  End-to-end encryption prevents man-in-the-middle attacks and hashrate hijacking
+                  {t('protocolComparison.enhancedSecurity.description')}
                 </p>
               </CardContent>
             </Card>
@@ -47,11 +50,11 @@ export function ProtocolComparison() {
             <Card>
               <CardHeader>
                 <Zap className="w-10 h-10 text-cyan-500 mb-2" />
-                <CardTitle>Better Performance</CardTitle>
+                <CardTitle>{t('protocolComparison.betterPerformance.title')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  75% reduction in bandwidth usage and 4x faster transaction processing
+                  {t('protocolComparison.betterPerformance.description')}
                 </p>
               </CardContent>
             </Card>
@@ -66,11 +69,11 @@ export function ProtocolComparison() {
             <Card>
               <CardHeader>
                 <Network className="w-10 h-10 text-cyan-500 mb-2" />
-                <CardTitle>Decentralization</CardTitle>
+                <CardTitle>{t('protocolComparison.decentralization.title')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Miners gain more control over block templates and transaction selection
+                  {t('protocolComparison.decentralization.description')}
                 </p>
               </CardContent>
             </Card>

@@ -62,6 +62,11 @@
     "title": "Advanced Security Protection",
     "encryption": "End-to-end encryption eliminates hashrate theft.",
     "profitProtection": "Secure up to 5% of your net profit by protecting your hashrate."
+  },
+  "bandwidth": {
+    "title": "Significant Bandwidth Savings",
+    "reduction": "Reduce bandwidth usage by 40–60%.",
+    "lowerCost": "Dramatically lower operational costs."
   }
   },
   "pools": {
@@ -296,5 +301,73 @@
     "sv2NoJd": "SV2 (No JD)",
     "sv2WithJd": "SV2 (With JD)",
     "milliseconds": "milliseconds"
+  },
+  "poolSelector": {
+    "title": "Choose a Mining Pool",
+    "subtitle": "Select a Stratum V2 Compatible Pool to start mining",
+    "startMining": "Start Mining",
+    "back": "Back",
+    "pools": {
+      "dmnd": {
+        "name": "DMND Pool",
+        "description": "Professional mining pool with Stratum V2 support"
+      },
+      "braiins": {
+        "name": "Braiins Pool",
+        "description": "Leading Bitcoin mining pool with advanced features"
+      }
+    }
+  },
+  "latencyJobBlockComparison": {
+    "title": "Latency Comparison: Block vs Job Latency",
+    "blockLatency": "Block latency",
+    "jobLatency": "Job latency",
+    "milliseconds": "ms"
+  },
+  "shareAcceptance": {
+    "title": "Share Acceptance Rate",
+    "acceptanceRate": "Acceptance rate"
+  },
+  "performanceMetrics": {
+    "title": "Performance Improvements",
+    "subtitle": "Quantifiable improvements in key performance metrics",
+    "bandwidthUsage": "Bandwidth Usage",
+    "transactionSpeed": "Transaction Speed",
+    "infrastructureRequirements": "Infrastructure Requirements",
+    "reduction": "Reduction",
+    "faster": "Faster",
+    "lower": "Lower"
+  },
+  "protocolComparison": {
+    "title": "Protocol Comparison",
+    "subtitle": "See how Stratum V2 improves upon the original protocol across key metrics",
+    "enhancedSecurity": {
+      "title": "Enhanced Security",
+      "description": "End-to-end encryption prevents man-in-the-middle attacks and hashrate hijacking"
+    },
+    "betterPerformance": {
+      "title": "Better Performance",
+      "description": "75% reduction in bandwidth usage and 4x faster transaction processing"
+    },
+    "decentralization": {
+      "title": "Decentralization",
+      "description": "Miners gain more control over block templates and transaction selection"
+    }
+  },
+  "decentralizationBenefits": {
+    "title": "Decentralization Benefits",
+    "subtitle": "How Stratum V2 empowers miners and improves network decentralization",
+    "transactionSelection": {
+      "title": "Transaction Selection",
+      "description": "Miners can now choose which transactions to include in blocks, reducing pool operator control"
+    },
+    "independentOperation": {
+      "title": "Independent Operation",
+      "description": "Reduced infrastructure requirements make it easier for smaller miners to operate independently"
+    },
+    "feeOptimization": {
+      "title": "Fee Optimization",
+      "description": "Better control over transaction selection allows miners to optimize for higher fees"
+    }
   }
 }
