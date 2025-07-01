@@ -145,7 +145,7 @@ export function Hero() {
   return (
     <section 
       ref={sectionRef} 
-      className='relative min-h-[150vh] bg-background'
+      className='relative h-[150vh] bg-background'
     >
       {/* Background lines */}
       <div className='absolute top-0 left-0 right-0 bottom-0'>
@@ -254,40 +254,40 @@ export function Hero() {
                 </motion.p>
               </AnimatePresence>
             </div>
+
+            {/* Scroll Indicator - positioned exactly below subtitle text */}
+            <motion.div 
+              className="flex justify-center hidden md:block"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1 }}
+            >
+              <div className="flex flex-col items-center gap-2">
+                <motion.div
+                  animate={{ y: [0, 8, 0] }}
+                  transition={{ 
+                    duration: 1.5, 
+                    repeat: Infinity, 
+                    ease: "easeInOut" 
+                  }}
+                  className="p-2 rounded-full border border-cyan-custom-100/30 bg-black/20 backdrop-blur-sm"
+                >
+                  <ChevronDown className="w-5 h-5 text-cyan-custom-100" />
+                </motion.div>
+              </div>
+            </motion.div>
           </div>
 
           <motion.div 
             initial={{ opacity: 0, y: 20 }} 
             animate={{ opacity: 1, y: 0 }} 
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="mt-8"
+            className="mt-4"
           >
             <PoolSelector buttonText={t("hero.startMining")} />
           </motion.div>
         </div>
       </div>
-
-      {/* Scroll Indicator */}
-      <motion.div 
-        className="fixed bottom-98 left-1/2 transform -translate-x-1/2 z-10 hidden md:block"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 1 }}
-      >
-        <div className="flex flex-col items-center gap-2">
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ 
-              duration: 1.5, 
-              repeat: Infinity, 
-              ease: "easeInOut" 
-            }}
-            className="p-2 rounded-full border border-cyan-custom-100/30 bg-black/20 backdrop-blur-sm"
-          >
-            <ChevronDown className="w-5 h-5 text-cyan-custom-100" />
-          </motion.div>
-        </div>
-      </motion.div>
     </section>
   );
 }
