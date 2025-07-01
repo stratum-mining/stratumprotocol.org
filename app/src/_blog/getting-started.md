@@ -5,7 +5,7 @@ date: "2024-01-01"
 
 # Getting Started with running SRI - Stratum V2 reference implementation
 
-This document aims to assist users in deploying the SRI software stack efficiently. Stratum V2 as a protocol is flexible, and allows users to run multiple configurations. In the getting started guide, we're focusing on running [roles](https://stratumprotocol.org/docs/#roles) which allow miners to construct their own block templates. 
+This document aims to assist users in deploying the SRI software stack efficiently. Stratum V2 as a protocol is flexible, and allows users to run multiple configurations. In the getting started guide, we’re focusing on running [roles](https://stratumprotocol.org/docs/#roles) which allow miners to construct their own block templates. 
 
 ![SRI ](/assets/Sri-AllRoles.png)
 
@@ -34,7 +34,22 @@ There are two primary ways to use all roles:
 
 ```bash
 git clone https://github.com/stratum-mining/stratum.git
+cd stratum
 ```
+
+#### Checkout the latest stable release
+
+```bash
+git tag --sort=version:refname | tail -1 | xargs git checkout
+```
+
+Alternatively, you can list all available tags and checkout a specific one:
+
+```bash
+git tag --sort=version:refname
+git checkout v1.3.0  # Replace with the latest version shown
+```
+
 #### Run Job Declarator Client (JDC)
 ```bash
 cd roles/jd-client/config-examples/
@@ -61,9 +76,7 @@ Setup the correct CPUMiner for your OS:
 
 On the CPUMiner directory:
  
-```bash
-./minerd -a sha256d -o stratum+tcp://localhost:34255 -q -D -P
-```
+`./minerd -a sha256d -o stratum+tcp://localhost:34255 -q -D -P`
 
 #### Adjust proxy-config (optional)
 
@@ -81,7 +94,7 @@ Depending on mining device you do run, you may have to adjust `tproxy-config-loc
 Download a release from Sjors' fork of Bitcoin Core from https://github.com/Sjors/bitcoin/releases
 
 Edit the `bitcoin.conf` file stored in `~/.bitcoin/` by adding:
-```ini
+```bash
 [testnet4]
 server=1
 rpcuser=username
@@ -122,7 +135,22 @@ This way new templates are constructed every 20 seconds (taking the most profita
 
 ```bash
 git clone https://github.com/stratum-mining/stratum.git
+cd stratum
 ```
+
+#### Checkout the latest stable release
+
+```bash
+git tag --sort=version:refname | tail -1 | xargs git checkout
+```
+
+Alternatively, you can list all available tags and checkout a specific one:
+
+```bash
+git tag --sort=version:refname
+git checkout v1.3.0  # Replace with the latest version shown
+```
+
 #### Run the SV2 Pool
 
 ```bash
@@ -161,9 +189,7 @@ Setup the correct CPUMiner for your OS:
 
 On the CPUMiner directory:
  
-```bash
-./minerd -a sha256d -o stratum+tcp://localhost:34255 -q -D -P
-```
+`./minerd -a sha256d -o stratum+tcp://localhost:34255 -q -D -P`
 ## III Final Step: monitoring for blocks
 
 Once set up, monitor the machines and role logs for any valid blocks found.
@@ -184,7 +210,7 @@ Translation Proxy tProxy logs
 
 ### Monitor for mined blocks on Testnet
 
-If you didn't change anything in the configuration files present in every role subdirectory, the valid block mined will be recognized by the string `Stratum V2 SRI Pool (0x5374726174756d2076322053524920506f6f6c)` inserted into the scriptSig of the coinbase tx input. 
+If you didn’t change anything in the configuration files present in every role subdirectory, the valid block mined will be recognized by the string `Stratum V2 SRI Pool (0x5374726174756d2076322053524920506f6f6c)` inserted into the scriptSig of the coinbase tx input. 
 
 A way to look for it is to check the address `tb1qa0sm0hxzj0x25rh8gw5xlzwlsfvvyz8u96w3p8` since the default coinbase output is configured to be a P2WPKH built with a public key = `036adc3bdf21e6f9a0f0fb0066bf517e5b7909ed1563d6958a10993849a7554075`
 
