@@ -3,9 +3,8 @@ import { Navigation } from '@/components/Navigation';
 import { PoolSelector } from '@/components/PoolSelector';
 import { LatencyJobBlockComparison } from '@/components/sections/LatencyJobBlockComparison';
 import { ShareAcceptance } from '@/components/sections/ShareAcceptance';
-import { MinersBandwidth } from '@/components/sections/MinersBandwidth';
 import {
-  Zap, BarChart3, Link2, Coins, Rocket, Settings, Shield, DollarSign, FileText
+  Zap, BarChart3, Coins, Rocket, Settings, Shield
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 

@@ -301,5 +301,73 @@
     "sv2NoJd": "SV2 (无JD)",
     "sv2WithJd": "SV2 (带JD)",
     "milliseconds": "毫秒"
+  },
+  "poolSelector": {
+    "title": "选择挖矿池",
+    "subtitle": "选择兼容Stratum V2的矿池开始挖矿",
+    "startMining": "开始挖矿",
+    "back": "返回",
+    "pools": {
+      "dmnd": {
+        "name": "DMND 矿池",
+        "description": "支持Stratum V2的专业挖矿池"
+      },
+      "braiins": {
+        "name": "Braiins 矿池",
+        "description": "具有高级功能的领先比特币挖矿池"
+      }
+    }
+  },
+  "latencyJobBlockComparison": {
+    "title": "延迟对比：区块 vs 任务延迟",
+    "blockLatency": "区块延迟",
+    "jobLatency": "任务延迟",
+    "milliseconds": "毫秒"
+  },
+  "shareAcceptance": {
+    "title": "份额接受率",
+    "acceptanceRate": "接受率"
+  },
+  "performanceMetrics": {
+    "title": "性能提升",
+    "subtitle": "关键性能指标的可量化改进",
+    "bandwidthUsage": "带宽使用",
+    "transactionSpeed": "交易速度",
+    "infrastructureRequirements": "基础设施要求",
+    "reduction": "减少",
+    "faster": "更快",
+    "lower": "更低"
+  },
+  "protocolComparison": {
+    "title": "协议对比",
+    "subtitle": "了解Stratum V2如何在关键指标上改进原始协议",
+    "enhancedSecurity": {
+      "title": "增强安全性",
+      "description": "端到端加密防止中间人攻击和算力劫持"
+    },
+    "betterPerformance": {
+      "title": "更好的性能",
+      "description": "带宽使用减少75%，交易处理速度提升4倍"
+    },
+    "decentralization": {
+      "title": "去中心化",
+      "description": "矿工获得更多对区块模板和交易选择的控制权"
+    }
+  },
+  "decentralizationBenefits": {
+    "title": "去中心化优势",
+    "subtitle": "Stratum V2如何赋能矿工并改善网络去中心化",
+    "transactionSelection": {
+      "title": "交易选择",
+      "description": "矿工现在可以选择在区块中包含哪些交易，减少矿池运营商的控制"
+    },
+    "independentOperation": {
+      "title": "独立运营",
+      "description": "降低的基础设施要求使小型矿工更容易独立运营"
+    },
+    "feeOptimization": {
+      "title": "费用优化",
+      "description": "对交易选择的更好控制允许矿工优化更高费用"
+    }
   }
 }
