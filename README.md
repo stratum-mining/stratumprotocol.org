@@ -1,4 +1,4 @@
-# StratumRevolution
+# Stratumprotocol.org
 
 ## Prerequisites
 
