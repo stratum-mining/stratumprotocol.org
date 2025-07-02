@@ -21,7 +21,7 @@ jobs:
       - name: Setup
         uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version: 20
       # Install and build
       - name: Install
         run: yarn install --frozen-lockfile
