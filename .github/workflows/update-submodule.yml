@@ -21,16 +21,15 @@ jobs:
           # Configure Git
           git config --global user.name "GitHub Action"
           git config --global user.email "noreply@github.com"
-          
           # Pull latest changes FIRST - critical step!
           echo "Fetching and pulling latest changes..."
           git fetch
           git pull --rebase
-          
+
           # Update the submodule
           echo "Updating submodule..."
           git submodule update --init --recursive --checkout -f --remote -- "${{github.event.client_payload.module}}"
-          
+
           # Check if there are changes to commit
           if [ -n "$(git status --porcelain)" ]; then
             echo "Changes detected, committing..."
