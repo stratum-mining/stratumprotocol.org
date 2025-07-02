@@ -1,7 +1,10 @@
 # example netlify.toml
 [build]
-  command = "react-router build && npm run submodules:update && npm run build:blog && npm run build:specification"
+  command = "react-router build && yarn submodules:update && yarn build:blog && yarn build:specification"
   publish = "build/client"
+
+[build.environment]
+  NODE_VERSION = "20"
 
   ## Uncomment to use this redirect for Single Page Applications like create-react-app.
   ## Not needed for static site generators.

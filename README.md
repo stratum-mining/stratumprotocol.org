@@ -20,7 +20,7 @@ cd stratumprotocol.org
 2. Install dependencies:
 
 ```bash
-npm install
+yarn install
 ```
 
 ## Development
@@ -30,7 +30,7 @@ To run the application in development mode:
 1. Start the development server:
 
 ```bash
-npm run dev
+yarn run dev
 ```
 
 - Frontend will be available at: http://localhost:5173/
