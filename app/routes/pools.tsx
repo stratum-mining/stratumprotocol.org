@@ -129,37 +129,39 @@ export default function PoolsPage() {
         </div>
       </section>
 
-      <section className="py-16 px-4 bg-muted/50">
-        <div className="container mx-auto">
-          <h2 className="text-4xl font-mono mb-8 text-center">
-            {t('pools.gettingStarted.title')}
-          </h2>
-          <div className="max-w-2xl mx-auto bg-background p-8 rounded-lg">
-            <pre className="bg-muted p-4 rounded mb-4 overflow-x-auto">
-              <code>
-                {`${t('pools.gettingStarted.cloneRepo')}
-git clone https://github.com/stratum-mining/stratum
-cd stratum
+<section className="py-16 px-4 bg-muted/50">
+  <div className="container mx-auto">
+    <h2 className="text-4xl font-mono mb-8 text-center">
+      {t('pools.gettingStarted.title')}
+    </h2>
+    <div className="max-w-2xl mx-auto bg-background p-8 rounded-lg">
+      <pre className="bg-muted p-4 rounded mb-4 overflow-x-auto">
+        <code>
+              {`${t('pools.gettingStarted.cloneRepo')}
+    git clone https://github.com/stratum-mining/stratum
+    cd stratum
 
-${t('pools.gettingStarted.buildPool')}
-cargo build --release
+    ${t('pools.gettingStarted.buildPool')}
+    cd roles/pool/config-examples
 
-${t('pools.gettingStarted.configurePool')}
-cp config.example.toml config.toml
-${t('pools.gettingStarted.editConfig')}
+    ${t('pools.gettingStarted.configurePool')}
+    ${t('pools.gettingStarted.editConfig')}
 
-${t('pools.gettingStarted.startPool')}
-./target/release/sv2-pool
-`}
-              </code>
-            </pre>
-            <Button className="w-full">
-              {t('pools.gettingStarted.viewDocs')}
-              <ArrowRight className="ml-2 w-4 h-4" />
-            </Button>
-          </div>
-        </div>
-      </section>
+    ${t('pools.gettingStarted.startPool')}
+    cargo run -- -c pool-config-local-tp-example.toml
+    `}
+        </code>
+      </pre>
+      <a href="/blog/getting-started#ii-getting-started---running-all-roles" className="w-full block">
+        <Button className="w-full">
+          {t('pools.gettingStarted.viewDocs')}
+          <ArrowRight className="ml-2 w-4 h-4" />
+        </Button>
+      </a>
+    </div>
+  </div>
+</section>
+
     </main>
   );
 }

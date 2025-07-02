@@ -2,6 +2,7 @@
 import "../global.css";
 import React from "react";
 import remarkGfm from "remark-gfm";
+import remarkSlug from "remark-slug";
 import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
@@ -50,12 +51,12 @@ export default function BlogPostPage() {
       return part ? (
         <ReactMarkdown
           key={`markdown-${index}`}
-          remarkPlugins={[remarkGfm]}
+          remarkPlugins={[remarkGfm, remarkSlug]}
           components={{
             code: ({ node, inline, className, children, ...props }) => {
               const match = /language-(\w+)/.exec(className || "");
               const language = match ? match[1] : "";
-              
+
               if (inline) {
                 return (
                   <code className="bg-gray-800 px-1 py-0.5 rounded text-sm font-mono" {...props}>
@@ -121,14 +122,59 @@ export default function BlogPostPage() {
                 className='list-decimal list-inside ml-4 font-dm-mono leading-[1.7] mb-4 sm:tracking-tight flex flex-col gap-2 sm:gap-1'
               />
             ),
-            h2: ({ ...props }: React.ComponentPropsWithoutRef<"h2">) => {
-              return <h2 {...props} className='text-4xl font-medium sm:font-medium font-dm-mono pt-7 pb-3' />;
+            h2: ({ node, ...props }) => {
+              const id = node?.properties?.id || "";
+              return (
+                <h2 {...props} id={id} className='text-4xl font-medium sm:font-medium font-dm-mono pt-7 pb-3 group relative scroll-mt-32'>
+                  {props.children}
+                  {id && (
+                    <a
+                      href={`#${id}`}
+                      className="ml-2 text-gray-400 hover:text-cyan-custom-100 opacity-0 group-hover:opacity-100 transition absolute -left-6 top-1"
+                      aria-label="Link to this section"
+                      tabIndex={-1}
+                    >
+                      #
+                    </a>
+                  )}
+                </h2>
+              );
             },
-            h3: ({ ...props }: React.ComponentPropsWithoutRef<"h3">) => {
-              return <h3 {...props} className='text-3xl font-medium sm:font-medium font-dm-mono pt-7 pb-3' />;
+            h3: ({ node, ...props }) => {
+              const id = node?.properties?.id || "";
+              return (
+                <h3 {...props} id={id} className='text-3xl font-medium sm:font-medium font-dm-mono pt-7 pb-3 group relative scroll-mt-32'>
+                  {props.children}
+                  {id && (
+                    <a
+                      href={`#${id}`}
+                      className="ml-2 text-gray-400 hover:text-cyan-custom-100 opacity-0 group-hover:opacity-100 transition absolute -left-6 top-1"
+                      aria-label="Link to this section"
+                      tabIndex={-1}
+                    >
+                      #
+                    </a>
+                  )}
+                </h3>
+              );
             },
-            h4: ({ ...props }: React.ComponentPropsWithoutRef<"h4">) => {
-              return <h4 {...props} className='text-2xl font-medium sm:font-medium font-dm-mono pt-7 pb-3' />;
+            h4: ({ node, ...props }) => {
+              const id = node?.properties?.id || "";
+              return (
+                <h4 {...props} id={id} className='text-2xl font-medium sm:font-medium font-dm-mono pt-7 pb-3 group relative scroll-mt-32'>
+                  {props.children}
+                  {id && (
+                    <a
+                      href={`#${id}`}
+                      className="ml-2 text-gray-400 hover:text-cyan-custom-100 opacity-0 group-hover:opacity-100 transition absolute -left-6 top-1"
+                      aria-label="Link to this section"
+                      tabIndex={-1}
+                    >
+                      #
+                    </a>
+                  )}
+                </h4>
+              );
             },
             img: ({ ...props }: React.ComponentPropsWithoutRef<"img">) => {
               return (

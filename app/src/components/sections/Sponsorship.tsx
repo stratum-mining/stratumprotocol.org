@@ -42,7 +42,7 @@ export function Sponsorship() {
         <div className="w-full lg:w-4/12 p-6  mx-auto border">
           <h2 className="text-2xl mb-4">{t('sponsorship.supportFor')}</h2>
           <h1 className="text-5xl font-medium mb-8 text-cyan-300">
-            Stratum v2
+            Stratum V2
           </h1>
           <p className="text-lg lg:mb-12 lg:mt-12">
             {t('sponsorship.joinEffort')}
