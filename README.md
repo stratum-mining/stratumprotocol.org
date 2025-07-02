@@ -1,25 +1,36 @@
-# stratumprotocol.org
+# StratumRevolution
 
-## Build the project Locally
+## Prerequisites
 
-In order to build the website locally, you'll need [Node.js](https://nodejs.org/) >= 14.16 (or basically the latest LTS version).
+Before you begin, ensure you have the following installed:
 
-The setup is straight forward:
+- Node.js (v18 or later)
+- npm (v9 or later)
+- Git
+
+## Installation
+
+1. Clone the repository:
 
 ```bash
-# Install dependencies
-yarn install
-
-# Serve locally (by default on port 8080)
-yarn dev
+git clone https://github.com/jeezman/StratumRevolution.git
+cd StratumRevolution
 ```
 
-## Embedding YouTube videos
+2. Install dependencies:
 
-To add a YouTube video with a preview, you can so so by linking to it like this:
-
-```md
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/mqdefault.jpg)](https://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE)
+```bash
+npm install
 ```
 
-Note that the link item need to be a preview image (either from YouTube or a custom one) to result in an embedded video.
+## Development
+
+To run the application in development mode:
+
+1. Start the development server:
+
+```bash
+npm run dev
+```
+
+- Frontend will be available at: http://localhost:5173/
