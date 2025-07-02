@@ -120,7 +120,7 @@ export function Navigation() {
 
             <Button
               size='lg'
-              className='bg-cyan-custom-100 hover:bg-cyan-custom-200 text-background focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-background'
+              className='bg-cyan-custom-100 hover:bg-cyan-custom-200 text-background focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-background min-w-[160px]'
               aria-label={t("navigation.getStarted")}
               onClick={() => setIsPoolSelectorOpen(true)}
             >
@@ -133,8 +133,7 @@ export function Navigation() {
             className='lg:hidden p-2 text-muted-foreground hover:text-foreground focus:outline-none focus:ring-2 focus:ring-cyan-500 rounded-lg'
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label={isMenuOpen ? t("navigation.closeMenu") : t("navigation.openMenu")}
-            aria-expanded={isMenuOpen}
-            aria-controls='mobile-menu'
+
           >
             {isMenuOpen ? <X className='w-6 h-6' /> : <Menu className='w-6 h-6' />}
           </button>
@@ -195,7 +194,7 @@ export function Navigation() {
 
                 <Button
                   size='sm'
-                  className='bg-cyan-500 hover:bg-cyan-600 text-background w-full focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-background'
+                  className='bg-cyan-500 hover:bg-cyan-600 text-background w-full focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-background min-h-[40px]'
                   onClick={() => {
                     setIsMenuOpen(false);
                     setIsPoolSelectorOpen(true);

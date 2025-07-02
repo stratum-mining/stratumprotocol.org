@@ -82,13 +82,19 @@
     /* @apply outline-none ring-2 ring-cyan-500 ring-offset-2 ring-offset-background; */
   }
 
-  /* Improved scrollbar for dark theme */
+  /* Hide scrollbar for all browsers */
   ::-webkit-scrollbar {
-    @apply w-2 h-2 bg-black/20;
+    display: none;
   }
 
-  ::-webkit-scrollbar-thumb {
-    @apply bg-cyan-500/20 rounded-full hover:bg-cyan-500/30;
+  /* Hide scrollbar for Firefox */
+  * {
+    scrollbar-width: none;
+  }
+
+  /* Hide scrollbar for IE and Edge */
+  * {
+    -ms-overflow-style: none;
   }
 }
 
