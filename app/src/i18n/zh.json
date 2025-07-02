@@ -309,12 +309,10 @@
     "back": "返回",
     "pools": {
       "dmnd": {
-        "name": "DMND 矿池",
-        "description": "支持Stratum V2的专业挖矿池"
+        "name": "DMND 矿池"
       },
       "braiins": {
-        "name": "Braiins 矿池",
-        "description": "具有高级功能的领先比特币挖矿池"
+        "name": "Braiins 矿池"
       }
     }
   },

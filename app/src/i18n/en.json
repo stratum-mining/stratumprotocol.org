@@ -309,12 +309,10 @@
     "back": "Back",
     "pools": {
       "dmnd": {
-        "name": "DMND Pool",
-        "description": "Professional mining pool with Stratum V2 support"
+        "name": "DMND Pool"
       },
       "braiins": {
-        "name": "Braiins Pool",
-        "description": "Leading Bitcoin mining pool with advanced features"
+        "name": "Braiins Pool"
       }
     }
   },

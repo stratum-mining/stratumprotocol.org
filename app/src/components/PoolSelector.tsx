@@ -132,7 +132,6 @@ export function PoolSelector({
                   </div>
                   <div className="flex-1">
                     <h1 className="font-mono text-white text-base mb-1">{t(`poolSelector.pools.${pool.key}.name`)}</h1>
-                    <p className="text-sm text-gray-400 font-light leading-tight">{t(`poolSelector.pools.${pool.key}.description`)}</p>
                   </div>
                 </div>
               </Card>

@@ -309,12 +309,10 @@
     "back": "Назад",
     "pools": {
       "dmnd": {
-        "name": "DMND Пул",
-        "description": "Профессиональный майнинг-пул с поддержкой Stratum V2"
+        "name": "DMND Пул"
       },
       "braiins": {
-        "name": "Braiins Пул",
-        "description": "Ведущий майнинг-пул биткойнов с продвинутыми функциями"
+        "name": "Braiins Пул"
       }
     }
   },
