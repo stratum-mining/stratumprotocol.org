@@ -241,3 +241,8 @@
     }
   }
 }
+
+/* Style the direct descendant div of the element with aria-label="nav_menu" */
+[aria-label="nav_menu"] > div {
+  width: 100%;
+}

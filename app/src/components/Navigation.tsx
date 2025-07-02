@@ -74,8 +74,8 @@ export function Navigation() {
           {/* Desktop Navigation - Centered */}
           <div className='hidden lg:block xl:absolute xl:left-1/2 xl:-translate-x-1/2'>
             <div className='bg-[#2F2F2F] backdrop-blur-sm'>
-              <NavigationMenu className='h-10'>
-                <NavigationMenuList className='space-x-0 p-1'>
+              <NavigationMenu aria-label='nav_menu' className='h-10 min-w-xl'>
+                <NavigationMenuList className='space-x-0 p-1 justify-between'>
                   {navLinks.map((link) => (
                     <NavigationMenuItem key={link.to} className='data-[state=open]:bg-[#000]'>
                       <NavigationMenuLink
