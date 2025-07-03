@@ -63,7 +63,7 @@ export default function MinersPage() {
             {/* Faster Latency */}
             <div className="text-center">
               <div className="text-4xl md:text-5xl font-bold text-white mb-2">228x</div>
-              <div className="text-gray-400 text-sm uppercase tracking-wider">Faster Latency</div>
+              <div className="text-gray-400 text-sm uppercase tracking-wider">Faster Block Change</div>
             </div>
             
             {/* Second vertical divider */}
@@ -74,7 +74,7 @@ export default function MinersPage() {
             {/* Security Protection */}
             <div className="text-center">
               <div className="text-4xl md:text-5xl font-bold text-white mb-2">100%</div>
-              <div className="text-gray-400 text-sm uppercase tracking-wider">Security Protection</div>
+              <div className="text-gray-400 text-sm uppercase tracking-wider">Hashrate theft protection</div>
             </div>
           </div>
         </div>
