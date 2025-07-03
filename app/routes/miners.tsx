@@ -1,8 +1,13 @@
+import { Card } from '@/components/ui/card';
 import { Navigation } from '@/components/Navigation';
 import { PoolSelector } from '@/components/PoolSelector';
 import { LatencyJobBlockComparison } from '@/components/sections/LatencyJobBlockComparison';
 import { ShareAcceptance } from '@/components/sections/ShareAcceptance';
 import { useTranslation } from 'react-i18next';
+import {
+  Zap, BarChart3, Coins, Rocket, Settings, Shield
+} from 'lucide-react';
+
 
 export default function MinersPage() {
   const { t } = useTranslation();
@@ -63,7 +68,7 @@ export default function MinersPage() {
             {/* Faster Latency */}
             <div className="text-center">
               <div className="text-4xl md:text-5xl font-bold text-white mb-2">228x</div>
-              <div className="text-gray-400 text-sm uppercase tracking-wider">Faster Block Change</div>
+              <div className="text-gray-400 text-sm uppercase tracking-wider">Faster Latency</div>
             </div>
             
             {/* Second vertical divider */}
@@ -74,63 +79,58 @@ export default function MinersPage() {
             {/* Security Protection */}
             <div className="text-center">
               <div className="text-4xl md:text-5xl font-bold text-white mb-2">100%</div>
-              <div className="text-gray-400 text-sm uppercase tracking-wider">Hashrate theft protection</div>
+              <div className="text-gray-400 text-sm uppercase tracking-wider">Security Protection</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Stratum V2 Benefits Section */}
-      <section className="py-20 bg-black/95">
-        <div className="container mx-auto px-4">
-          {/* Outer rounded container */}
-          <div className="border flex flex-col justify-center items-center max-w-7xl lg:max-w-none lg:mx-8 xl:mx-16 mx-auto rounded-3xl p-6 md:p-8 lg:px-20 lg:py-16 xl:px-24 xl:py-20" style={{ backgroundColor: '#0D0D0D', borderColor: '#4C4848' }}>
-            {/* Header */}
-            <div className="text-center mb-8 lg:mb-12">
-              <p className="text-gray-400 text-sm mb-4">Stratum V2 provides</p>
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white">
-                For mining operations with 10% margins
-              </h2>
-            </div>
-            
-            {/* Benefits Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 w-full max-w-6xl">
-              {/* Up to 7.4% */}
-              <div className="border p-4 md:p-6 text-left rounded-2xl" style={{ backgroundColor: '#09090B', borderColor: '#4C4848' }}>
-                <div className="mb-4">
-                  <img src="/assets/NetworkConfigurationsIcon.svg" alt="Network Configuration" className="w-8 h-8 md:w-10 md:h-10" />
-                </div>
-                <h3 className="text-white font-semibold text-base md:text-lg mb-2">Up to 7.4%</h3>
-                <p className="text-gray-400 text-sm">Net profit increase</p>
-              </div>
-
-              {/* Immediate benefits */}
-              <div className="border p-4 md:p-6 text-left rounded-2xl" style={{ backgroundColor: '#09090B', borderColor: '#4C4848' }}>
-                <div className="mb-4">
-                  <img src="/assets/NetworkConfigurationsIcon.svg" alt="Network Configuration" className="w-8 h-8 md:w-10 md:h-10" />
-                </div>
-                <h3 className="text-white font-semibold text-base md:text-lg mb-2">Immediate benefits</h3>
-                <p className="text-gray-400 text-sm">without hardware upgrades</p>
-              </div>
-
-              {/* Protection against */}
-              <div className="border p-4 md:p-6 text-left rounded-2xl" style={{ backgroundColor: '#09090B', borderColor: '#4C4848' }}>
-                <div className="mb-4">
-                  <img src="/assets/NetworkConfigurationsIcon.svg" alt="Network Configuration" className="w-8 h-8 md:w-10 md:h-10" />
-                </div>
-                <h3 className="text-white font-semibold text-base md:text-lg mb-2">Protection against</h3>
-                <p className="text-gray-400 text-sm">1-2% hashrate theft</p>
-              </div>
-
-              {/* Enhanced efficiency */}
-              <div className="border p-4 md:p-6 text-left rounded-2xl" style={{ backgroundColor: '#09090B', borderColor: '#4C4848' }}>
-                <div className="mb-4">
-                  <img src="/assets/NetworkConfigurationsIcon.svg" alt="Network Configuration" className="w-8 h-8 md:w-10 md:h-10" />
-                </div>
-                <h3 className="text-white font-semibold text-base md:text-lg mb-2">Enhanced efficiency</h3>
-                <p className="text-gray-400 text-sm">Through latency reduction</p>
-              </div>
-            </div>
+      {/* Benefits Section */}
+      <section className="py-24 px-4 bg-muted/5" aria-labelledby="benefits-heading">
+        <div className="container mx-auto">
+          <div className="grid md:grid-cols-3 gap-8">
+            <Card className="p-8">
+              <BarChart3 className="w-12 h-12 text-cyan-500 mb-4" />
+              <h3 className="text-2xl font-mono mb-4">{t('miners.profitability.title')}</h3>
+              <ul className="space-y-4 text-muted-foreground">
+                <li>{t('miners.profitability.gain')}</li>
+              </ul>
+            </Card>
+            <Card className="p-8">
+              <Zap className="w-12 h-12 text-cyan-500 mb-4" />
+              <h3 className="text-2xl font-mono mb-4">{t('miners.efficiency.title')}</h3>
+              <ul className="space-y-4 text-muted-foreground">
+                <li>{t('miners.efficiency.blockLatency')}</li>
+              </ul>
+            </Card>
+            <Card className="p-8">
+              <Coins className="w-12 h-12 text-cyan-500 mb-4" />
+              <h3 className="text-2xl font-mono mb-4">{t('miners.feeCapture.title')}</h3>
+              <ul className="space-y-4 text-muted-foreground">
+                <li>{t('miners.feeCapture.moreFees')}</li>
+              </ul>
+            </Card>
+            <Card className="p-8">
+              <Rocket className="w-12 h-12 text-cyan-500 mb-4" />
+              <h3 className="text-2xl font-mono mb-4">{t('miners.adoption.title')}</h3>
+              <ul className="space-y-4 text-muted-foreground">
+                <li>{t('miners.adoption.translator')}</li>
+              </ul>
+            </Card>
+            <Card className="p-8">
+              <Settings className="w-12 h-12 text-cyan-500 mb-4" />
+              <h3 className="text-2xl font-mono mb-4">{t('miners.templateControl.title')}</h3>
+              <ul className="space-y-4 text-muted-foreground">
+                <li>{t('miners.templateControl.construction')}</li>
+              </ul>
+            </Card>
+            <Card className="p-8">
+              <Shield className="w-12 h-12 text-cyan-500 mb-4" />
+              <h3 className="text-2xl font-mono mb-4">{t('miners.security.title')}</h3>
+              <ul className="space-y-4 text-muted-foreground">
+                <li>{t('miners.security.encryption')}</li>
+              </ul>
+            </Card>
           </div>
         </div>
       </section>
