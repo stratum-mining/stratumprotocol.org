@@ -86,8 +86,8 @@ export default function MinersPage() {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-24 px-4 bg-muted/5" aria-labelledby="benefits-heading">
-        <div className="container mx-auto">
+      <section className="py-12 md:py-20 lg:py-24 px-2 md:px-6 lg:px-8 bg-muted/5" aria-labelledby="benefits-heading">
+        <div className="container mx-auto px-3 md:px-6 lg:px-12">
           <div className="grid md:grid-cols-3 gap-8">
             <Card className="p-8">
               <BarChart3 className="w-12 h-12 text-cyan-500 mb-4" />
@@ -136,8 +136,8 @@ export default function MinersPage() {
       </section>
 
       {/* Maximizing Your Mining Profitability Section */}
-      <section className="py-16 bg-black/95">
-        <div className="container mx-auto px-4">
+      <section className="py-8 md:py-16 lg:py-24 px-3 md:px-6 lg:px-8 bg-black/95">
+        <div className="container mx-auto px-3 md:px-6 lg:px-12">
           {/* Header */}
           <div className="text-center mb-16">
             <p className="text-gray-400 text-sm mb-4">Stratum V2 delivers increase through proven technical improvements by</p>
