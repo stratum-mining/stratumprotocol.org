@@ -67,6 +67,24 @@
       "title": "显著节省带宽",
       "reduction": "带宽使用量减少 40–60%。",
       "lowerCost": "大幅降低运营成本。"
+    },
+    "metrics": {
+      "profitIncrease": {
+        "value": "+7.4%",
+        "label": "利润增长"
+      },
+      "blockChange": {
+        "value": "228x",
+        "label": "更快的区块切换"
+      },
+      "hashrateProtection": {
+        "value": "100%",
+        "label": "算力盗取防护"
+      }
+    },
+    "profitabilitySection": {
+      "subtitle": "Stratum V2 通过经过验证的技术改进提供增长",
+      "title": "最大化您的挖矿盈利能力"
     }
   },
   "pools": {

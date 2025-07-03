@@ -67,6 +67,24 @@
     "title": "Significant Bandwidth Savings",
     "reduction": "Reduce bandwidth usage by 40–60%.",
     "lowerCost": "Dramatically lower operational costs."
+  },
+  "metrics": {
+    "profitIncrease": {
+      "value": "+7.4%",
+      "label": "Profit Increase"
+    },
+    "blockChange": {
+      "value": "228x",
+      "label": "Faster Block Change"
+    },
+    "hashrateProtection": {
+      "value": "100%",
+      "label": "Hashrate Theft Protection"
+    }
+  },
+  "profitabilitySection": {
+    "subtitle": "Stratum V2 delivers increase through proven technical improvements by",
+    "title": "Maximizing Your Mining Profitability"
   }
   },
   "pools": {

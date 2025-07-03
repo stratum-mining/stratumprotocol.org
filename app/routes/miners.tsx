@@ -56,8 +56,8 @@ export default function MinersPage() {
           <div className="grid md:grid-cols-3 gap-8 relative">
             {/* Profit Increase */}
             <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-white mb-2">+7.4%</div>
-              <div className="text-gray-400 text-sm uppercase tracking-wider">Profit Increase</div>
+              <div className="text-4xl md:text-5xl font-bold text-white mb-2">{t('miners.metrics.profitIncrease.value')}</div>
+              <div className="text-gray-400 text-sm uppercase tracking-wider">{t('miners.metrics.profitIncrease.label')}</div>
             </div>
             
             {/* First vertical divider */}
@@ -67,8 +67,8 @@ export default function MinersPage() {
             
             {/* Block Change */}
             <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-white mb-2">228x</div>
-              <div className="text-gray-400 text-sm uppercase tracking-wider">Faster Block Change</div>
+              <div className="text-4xl md:text-5xl font-bold text-white mb-2">{t('miners.metrics.blockChange.value')}</div>
+              <div className="text-gray-400 text-sm uppercase tracking-wider">{t('miners.metrics.blockChange.label')}</div>
             </div>
             
             {/* Second vertical divider */}
@@ -78,8 +78,8 @@ export default function MinersPage() {
             
             {/* Security Protection */}
             <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-white mb-2">100%</div>
-              <div className="text-gray-400 text-sm uppercase tracking-wider">Hashrate Theft Protection</div>
+              <div className="text-4xl md:text-5xl font-bold text-white mb-2">{t('miners.metrics.hashrateProtection.value')}</div>
+              <div className="text-gray-400 text-sm uppercase tracking-wider">{t('miners.metrics.hashrateProtection.label')}</div>
             </div>
           </div>
         </div>
@@ -140,9 +140,9 @@ export default function MinersPage() {
         <div className="container mx-auto px-3 md:px-6 lg:px-12">
           {/* Header */}
           <div className="text-center mb-16">
-            <p className="text-gray-400 text-sm mb-4">Stratum V2 delivers increase through proven technical improvements by</p>
+            <p className="text-gray-400 text-sm mb-4">{t('miners.profitabilitySection.subtitle')}</p>
             <h2 className="text-4xl md:text-5xl font-bold text-white">
-              Maximizing Your Mining Profitability
+              {t('miners.profitabilitySection.title')}
             </h2>
       </div>
       <div className="container mx-auto">
