@@ -65,10 +65,10 @@ export default function MinersPage() {
               background: 'linear-gradient(180deg, rgba(65, 255, 230, 0) 0%, #62EAE7 50%, rgba(65, 255, 230, 0) 100%)'
             }}></div>
             
-            {/* Faster Latency */}
+            {/* Block Change */}
             <div className="text-center">
               <div className="text-4xl md:text-5xl font-bold text-white mb-2">228x</div>
-              <div className="text-gray-400 text-sm uppercase tracking-wider">Faster Latency</div>
+              <div className="text-gray-400 text-sm uppercase tracking-wider">Faster Block Change</div>
             </div>
             
             {/* Second vertical divider */}
@@ -79,7 +79,7 @@ export default function MinersPage() {
             {/* Security Protection */}
             <div className="text-center">
               <div className="text-4xl md:text-5xl font-bold text-white mb-2">100%</div>
-              <div className="text-gray-400 text-sm uppercase tracking-wider">Security Protection</div>
+              <div className="text-gray-400 text-sm uppercase tracking-wider">Hashrate Theft Protection</div>
             </div>
           </div>
         </div>
