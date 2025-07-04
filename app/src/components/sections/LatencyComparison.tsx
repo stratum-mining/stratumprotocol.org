@@ -58,7 +58,7 @@ export function LatencyComparison() {
         <h3 className="text-xl font-mono">{t('latencyComparison.title')}</h3>
       </div>
 
-      <div className="grid grid-cols-3 gap-8 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-8">
         <div className="space-y-2 text-center">
           <div className="text-base font-mono text-muted-foreground">{t('latencyComparison.sv1')}</div>
           <div className="text-2xl font-mono font-bold" style={{ color: '#ef4444' }}>228&nbsp;ms</div>
