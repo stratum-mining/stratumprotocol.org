@@ -40,7 +40,7 @@ export default function Home() {
               {t('indexPage.performance.description')}
             </p>
           </motion.div>
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid xl:grid-cols-2 gap-8">
             <LatencyComparison />
             <BandwidthComparison />
           </div>
