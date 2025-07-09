@@ -9,14 +9,14 @@ export default function SpecificationsPage() {
 
   useEffect(() => {
     // Use import.meta.glob with the updated syntax
-    const markdownFiles = import.meta.glob("../../public/specification/*.md", {
+    const markdownFiles = import.meta.glob("../../src/specification/*.md", {
       query: "?raw",
       import: "default",
     });
 
     async function fetchMarkdown() {
       try {
-        const filePath = `../../public/specification/README.md`;
+        const filePath = `../../src/specification/README.md`;
 
         if (markdownFiles[filePath]) {
           const content = await markdownFiles[filePath]();

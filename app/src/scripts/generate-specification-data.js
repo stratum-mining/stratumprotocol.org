@@ -11,11 +11,13 @@ const md = new MarkdownIt({
 });
 
 function generateSpecificationData() {
-  const specificationDir = path.join(process.cwd(), "public/specification");
+  const specificationDir = path.join(process.cwd(), "src/specification");
   const filenames = fs.readdirSync(specificationDir);
 
   const specificationsObject = {};
-  const posts = filenames.filter((filename) => filename.endsWith(".md") && filename !== "README.md");
+  const posts = filenames.filter(
+    (filename) => filename.endsWith(".md") && filename !== "README.md"
+  );
 
   for (const filename of posts) {
     const slug = filename.replace(/\.md$/, "");
@@ -42,6 +44,13 @@ if (!fs.existsSync(outputDir)) {
   fs.mkdirSync(outputDir, { recursive: true });
 }
 
-fs.writeFileSync(path.join(outputDir, "specification.json"), JSON.stringify(specificationData, null, 2));
+fs.writeFileSync(
+  path.join(outputDir, "specification.json"),
+  JSON.stringify(specificationData, null, 2)
+);
 
-console.log(`✅ Generated specification data with ${Object.keys(specificationData).length} posts`);
+console.log(
+  `✅ Generated specification data with ${
+    Object.keys(specificationData).length
+  } posts`
+);
