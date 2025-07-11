@@ -40,7 +40,7 @@ cd stratum
 #### Checkout the latest stable release
 
 ```bash
-git tag --sort=version:refname | tail -1 | xargs git checkout
+git fetch origin && git checkout -b $(git tag --sort=version:refname | tail -1)
 ```
 
 Alternatively, you can list all available tags and checkout a specific one:
