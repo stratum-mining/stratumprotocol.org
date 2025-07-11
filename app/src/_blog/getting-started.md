@@ -47,7 +47,7 @@ Alternatively, you can list all available tags and checkout a specific one:
 
 ```bash
 git tag --sort=version:refname
-git checkout v1.3.0  # Replace with the latest version shown
+git checkout v1.4.0  # Replace with the latest version shown
 ```
 
 #### Run Job Declarator Client (JDC)
