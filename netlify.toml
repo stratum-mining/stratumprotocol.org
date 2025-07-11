@@ -6,6 +6,22 @@
 [build.environment]
   NODE_VERSION = "20"
 
+# Preview build configuration (for pull requests, etc.)
+[context.deploy-preview]
+  command = "react-router build && yarn submodules:update && yarn build:blog && yarn build:specification"
+  publish = "build/client"
+
+[context.deploy-preview.environment]
+  NODE_VERSION = "20"
+
+# Branch deploy configuration (for feature branches)
+[context.branch-deploy]
+  command = "react-router build && yarn submodules:update && yarn build:blog && yarn build:specification"
+  publish = "build/client"
+
+[context.branch-deploy.environment]
+  NODE_VERSION = "20"
+
   ## Uncomment to use this redirect for Single Page Applications like create-react-app.
   ## Not needed for static site generators.
   #[[redirects]]
