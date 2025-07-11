@@ -40,14 +40,14 @@ cd stratum
 #### Checkout the latest stable release
 
 ```bash
-git fetch origin && git checkout -b $(git tag --sort=version:refname | tail -1)
+git checkout -b $(git tag --sort=version:refname | tail -1) origin/$(git tag --sort=version:refname | tail -1)
 ```
 
-Alternatively, you can list all available tags and checkout a specific one:
+Alternatively, you can view all available versions and checkout a specific release:
 
 ```bash
 git tag --sort=version:refname
-git checkout v1.3.0  # Replace with the latest version shown
+git checkout -b v1.4.0 origin/v1.4.0  # Replace with the latest version shown
 ```
 
 #### Run Job Declarator Client (JDC)
@@ -141,14 +141,14 @@ cd stratum
 #### Checkout the latest stable release
 
 ```bash
-git tag --sort=version:refname | tail -1 | xargs git checkout
+git checkout -b $(git tag --sort=version:refname | tail -1) origin/$(git tag --sort=version:refname | tail -1)
 ```
 
-Alternatively, you can list all available tags and checkout a specific one:
+Alternatively, you can view all available versions and checkout a specific release:
 
 ```bash
 git tag --sort=version:refname
-git checkout v1.3.0  # Replace with the latest version shown
+git checkout -b v1.4.0 origin/v1.4.0  # Replace with the latest version shown
 ```
 
 #### Run the SV2 Pool
