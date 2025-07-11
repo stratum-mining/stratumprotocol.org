@@ -234,12 +234,14 @@ export default function BlogPostPage() {
             <p>By {post.authors.join(", ")} on </p>
             <p className=' text-gray-400'>{post.formattedDate}</p>
           </section>
-          <div className='flex gap-2'>
-            <p>Tags:</p>
-            <section className='flex gap-2 flex-wrap'>
-              <p className='font-dm-mono font-medium'>{post.tags.join(", ")}</p>
-            </section>
-          </div>
+          {post.tags.length > 0 && (
+            <div className='flex gap-2'>
+              <p>Tags:</p>
+              <section className='flex gap-2 flex-wrap'>
+                <p className='font-dm-mono font-medium'>{post.tags.join(", ")}</p>
+              </section>
+            </div>
+          )} 
         </section>
         <article>{renderContent()}</article>
       </div>
