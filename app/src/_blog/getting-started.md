@@ -1,9 +1,9 @@
 ---
-pageHeading: Getting Started
+title: Getting Started with running SRI - Stratum V2 reference implementation
+description: This document provides an easy to understand guide to assit users setup the SRI software efficiently
 date: "2024-01-01"
 ---
 
-# Getting Started with running SRI - Stratum V2 reference implementation
 
 This document aims to assist users in deploying the SRI software stack efficiently. Stratum V2 as a protocol is flexible, and allows users to run multiple configurations. In the getting started guide, we’re focusing on running [roles](https://stratumprotocol.org/docs/#roles) which allow miners to construct their own block templates. 
 
