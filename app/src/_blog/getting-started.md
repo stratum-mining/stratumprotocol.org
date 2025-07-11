@@ -101,10 +101,10 @@ rpcuser=username
 rpcpassword=password
 ```
 
-Unpack the Template Provider. For example, assuming you downloaded `bitcoin-sv2-tp-0.1.15-x86_64-linux-gnu.tar.gz`:
+Unpack the Template Provider. For example, assuming you downloaded `bitcoin-sv2-tp-0.1.19-x86_64-linux-gnu.tar.gz`:
 
 ```bash
-tar xvf bitcoin-sv2-tp-0.1.15-x86_64-linux-gnu.tar.gz
+tar xvf bitcoin-sv2-tp-0.1.19-x86_64-linux-gnu.tar.gz
 ```
 
 ⚠️ Note: macOS binaries are not code signed. Read release notes for instructions on how to proceed.
@@ -112,10 +112,10 @@ tar xvf bitcoin-sv2-tp-0.1.15-x86_64-linux-gnu.tar.gz
 Start the Template Provider.
 
 ```bash
-./bitcoin-sv2-tp-0.1.15/bin/bitcoind -testnet4 -sv2 -sv2port=8442 -debug=sv2 
+./bitcoin-sv2-tp-0.1.19/bin/bitcoind -testnet4 -sv2 -sv2port=8442 -debug=sv2 
 ```
 
-⚠️ Note: you need to wait until `bitcoind` is fully synced with the testnet before you proceed.
+⚠️ Note: you need to wait until `bitcoind` is fully synced with the testnet4 before you proceed.
 
 Optional parameters:
 
@@ -127,7 +127,7 @@ There are optional parameters which can be used to better manage the Template Pr
 For example: 
 
 ```bash
-./bitcoin-sv2-tp-0.1.15/bin/bitcoind -testnet4 -sv2 -sv2port=8442 -sv2interval=20 -sv2feedelta=1000 -debug=sv2 -loglevel=sv2:trace
+./bitcoin-sv2-tp-0.1.19/bin/bitcoind -testnet4 -sv2 -sv2port=8442 -sv2interval=20 -sv2feedelta=1000 -debug=sv2 -loglevel=sv2:trace
 ```
 This way new templates are constructed every 20 seconds (taking the most profitable txs from the mempool) and they are sent downstream if new fees collected are more than 1000 sats. 
 
@@ -221,9 +221,16 @@ You can perform a search on one of the following block explorers:
 ## IV Customizing configuration
 
 ### Customize the “pool_signature” string
-To customize the string which is inserted into the `scriptSig` of the coinbase tx input, you need to run every role locally. To make changes, edit the `pool_signature` field present in:
-- roles/pool/config-examples/pool-config-local-tp-example.toml
-- roles/jd-client/config-examples/jdc-config-local-example.toml
+
+To customize the string inserted into the `scriptSig` of the coinbase transaction input, you need to run every role locally.
+
+For the **Pool** role, modify the `pool_signature` field in:
+
+* `roles/pool/config-examples/pool-config-local-tp-example.toml`
+
+For the **JD Client (JDC)** role, the equivalent field is named `jdc_signature`, and should be updated in:
+
+* `roles/jd-client/config-examples/jdc-config-local-example.toml`
 
 Double check that the strings are equal and that you save your changes in both configuration files!
 
