@@ -101,10 +101,10 @@ rpcuser=username
 rpcpassword=password
 ```
 
-Unpack the Template Provider. For example, assuming you downloaded `bitcoin-sv2-tp-0.1.15-x86_64-linux-gnu.tar.gz`:
+Unpack the Template Provider. For example, assuming you downloaded `bitcoin-sv2-tp-0.1.19-x86_64-linux-gnu.tar.gz`:
 
 ```bash
-tar xvf bitcoin-sv2-tp-0.1.15-x86_64-linux-gnu.tar.gz
+tar xvf bitcoin-sv2-tp-0.1.19-x86_64-linux-gnu.tar.gz
 ```
 
 ⚠️ Note: macOS binaries are not code signed. Read release notes for instructions on how to proceed.
@@ -112,10 +112,10 @@ tar xvf bitcoin-sv2-tp-0.1.15-x86_64-linux-gnu.tar.gz
 Start the Template Provider.
 
 ```bash
-./bitcoin-sv2-tp-0.1.15/bin/bitcoind -testnet4 -sv2 -sv2port=8442 -debug=sv2 
+./bitcoin-sv2-tp-0.1.19/bin/bitcoind -testnet4 -sv2 -sv2port=8442 -debug=sv2 
 ```
 
-⚠️ Note: you need to wait until `bitcoind` is fully synced with the testnet before you proceed.
+⚠️ Note: you need to wait until `bitcoind` is fully synced with the testnet4 before you proceed.
 
 Optional parameters:
 
@@ -127,7 +127,7 @@ There are optional parameters which can be used to better manage the Template Pr
 For example: 
 
 ```bash
-./bitcoin-sv2-tp-0.1.15/bin/bitcoind -testnet4 -sv2 -sv2port=8442 -sv2interval=20 -sv2feedelta=1000 -debug=sv2 -loglevel=sv2:trace
+./bitcoin-sv2-tp-0.1.19/bin/bitcoind -testnet4 -sv2 -sv2port=8442 -sv2interval=20 -sv2feedelta=1000 -debug=sv2 -loglevel=sv2:trace
 ```
 This way new templates are constructed every 20 seconds (taking the most profitable txs from the mempool) and they are sent downstream if new fees collected are more than 1000 sats. 
 
@@ -220,20 +220,32 @@ You can perform a search on one of the following block explorers:
 
 ## IV Customizing configuration
 
-### Customize the “pool_signature” string
-To customize the string which is inserted into the `scriptSig` of the coinbase tx input, you need to run every role locally. To make changes, edit the `pool_signature` field present in:
-- roles/pool/config-examples/pool-config-local-tp-example.toml
-- roles/jd-client/config-examples/jdc-config-local-example.toml
+### Customize the coinbase signature string
 
-Double check that the strings are equal and that you save your changes in both configuration files!
+To customize the string inserted into the `scriptSig` of the coinbase transaction input, you need to run every role locally.
+
+In the **Pool** role, modify the `pool_signature` field in:
+
+* `roles/pool/config-examples/pool-config-local-tp-example.toml`
 
 ### Customize the coinbase tx output script
-To customize the coinbase tx output script, you need to run every role locally. To make changes, edit the `coinbase_output` field present in:
-- roles/jd-client/config-examples/jdc-config-local-example.toml
-- roles/jd-server/config-examples/jd-server-config-local-example.toml
 
-You can use any of the following script types:  P2PK,P2PKH, P2WPKH, P2SH, P2WSH, P2TR. 
-In case a public key is required, as explained in the config files, you can start by creating a testnet wallet on mobile, using Green wallet, or a desktop one, using Electrum wallet, and extract the extended public key they provide. At this point, you can derive the child public key to use in the configuration files, [using this script](https://github.com/stratum-mining/stratum/tree/dev/utils/bip32-key-derivation).
+To customize the coinbase transaction output script, you will need to run each role locally. Specifically, you should edit the `coinbase_output` field in the following configuration files:
+
+* `roles/jd-client/config-examples/jdc-config-local-example.toml`
+* `roles/jd-server/config-examples/jd-server-config-local-example.toml`
+
+Coinbase outputs are defined by descriptors outlined in [BIP-0380](https://github.com/bitcoin/bips/blob/master/bip-0380.mediawiki#appendix-b-index-of-script-expressions), with the exception of `musig` and `combo`. These descriptors allow you to specify various types of Bitcoin addresses for your coinbase transaction outputs, such as P2PK, P2PKH, P2WPKH, and others.
+
+#### Example Configuration:
+
+If you want to specify a SegWit address on the Bitcoin testnet, you could configure the `coinbase_output` field like this:
+
+```toml
+coinbase_output = "addr(tb1qa0sm0hxzj0x25rh8gw5xlzwlsfvvyz8u96w3p8)"
+```
+
+In this example, the `coinbase_output` is set to a SegWit testnet address (`tb1qa0sm0hxzj0x25rh8gw5xlzwlsfvvyz8u96w3p8`), but you can replace it with any valid address type supported by Bitcoin.
 
 ## Community support
 
