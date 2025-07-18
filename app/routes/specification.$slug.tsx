@@ -2,6 +2,8 @@
 import remarkGfm from "remark-gfm";
 import { sluggifyTags } from "@/utils";
 import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
+import { PluggableList } from "react-markdown/lib/react-markdown";
 import { useEffect, useState } from "react";
 import { Navigation } from "@/components/Navigation";
 import specificationData from "@/data/specification.json";
@@ -73,6 +75,7 @@ export default function SpecificationPostPage() {
               <div>
                 <ReactMarkdown
                   remarkPlugins={[remarkGfm]}
+                  rehypePlugins={[rehypeRaw as any] as PluggableList}
                   components={{
                     h1: ({ ...props }: React.ComponentPropsWithoutRef<"h1">) => {
                       return (
