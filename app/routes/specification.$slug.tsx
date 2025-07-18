@@ -209,6 +209,16 @@ export default function SpecificationPostPage() {
                   {currentPost.content}
                 </ReactMarkdown>
               </div>
+              <div className='mt-8'>
+                <a href={`https://github.com/stratum-mining/sv2-spec/edit/main/${slug}.md`} target='_blank' className='text-cyan-custom-100 font-dm-mono underline underline-offset-4 cursor-pointer inline-flex items-center gap-2'>
+                  Edit on GitHub
+                  <ExternalLink className='w-4 h-4' />
+                </a>
+                <a href='https://github.com/stratum-mining/sv2-spec/issues' target='_blank' className='ml-4 text-cyan-custom-100 font-dm-mono underline underline-offset-4 cursor-pointer inline-flex items-center gap-2'>
+                  Ask a Question
+                  <ExternalLink className='w-4 h-4' />
+                </a>
+              </div>
             </div>
           </div>
         </div>
