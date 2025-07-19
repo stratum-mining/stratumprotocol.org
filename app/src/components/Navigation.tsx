@@ -8,7 +8,7 @@ import { NavLink, useLocation, useNavigate } from "react-router";
 import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList } from "@/components/ui/navigation-menu";
 import { PoolSelector } from "./PoolSelector";
 import SearchResultsDropdown from "./SearchResultsDropdown"; 
-import { usePathname } from 'next/navigation';
+
 
 const languages = [
   { code: "en", name: "English" },
