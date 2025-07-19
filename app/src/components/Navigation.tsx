@@ -7,6 +7,8 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { NavLink, useLocation } from "react-router";
 import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList } from "@/components/ui/navigation-menu";
 import { PoolSelector } from "./PoolSelector";
+import SearchResultsDropdown from "./SearchResultsDropdown"; 
+import { usePathname } from 'next/navigation';
 
 const languages = [
   { code: "en", name: "English" },
@@ -73,7 +75,32 @@ export function Navigation() {
 
           {/* Desktop Navigation - Centered */}
           <div className='hidden lg:block xl:absolute xl:left-1/2 xl:-translate-x-1/2'>
-            <div className='bg-[#2F2F2F] backdrop-blur-sm'>
+           <div className="flex">
+            {showSearchBar && (
+              /* cyber start */
+               <input
+              type="text"
+              placeholder="Search..."
+              className="bg-black mr-3 text-white placeholder-gray-400 border border-gray-600 rounded px-4 py-2 focus:outline-none focus:bg-[#0A2831] focus:ring-2 focus:ring-[#42B4C8]"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onFocus={() => setShowResults(true)}
+              onBlur={() => setTimeout(() => setShowResults(false), 200)}
+            />
+            )}
+            {showResults && (
+              <SearchResultsDropdown
+                query={searchQuery}
+                onNavigate={(url) => {
+                  navigate(url);
+                  setSearchQuery('');
+                  setShowResults(false);
+                }}
+              />
+            )}
+             {/* cyber end */}
+
+              <div className='bg-[#2F2F2F] backdrop-blur-sm'>
               <NavigationMenu aria-label='nav_menu' className='h-10 min-w-xl'>
                 <NavigationMenuList className='space-x-0 p-1 justify-between'>
                   {navLinks.map((link) => (
@@ -92,6 +119,8 @@ export function Navigation() {
                 </NavigationMenuList>
               </NavigationMenu>
             </div>
+           </div>
+            
           </div>
 
           {/* Right side buttons */}
