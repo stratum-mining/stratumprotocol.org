@@ -27,7 +27,7 @@ export const Layout = ({ children }: { children: ReactNode }) => {
           content="Explore Stratum V2: The next generation Bitcoin mining protocol. Learn about enhanced security, reduced latency, and decentralized mining infrastructure."
         />
         <meta property="og:type" content="website" />
-        <link rel="icon" type="image/svg+xml" href="/assets/sv2-icon.svg" />
+        <link rel="icon" type="image/svg+xml" href="/assets/stratum-v2-favicon.svg" />
         <title>Stratum V2 - Next Generation Bitcoin Mining Protocol</title>
         <Meta />
         <Links />
