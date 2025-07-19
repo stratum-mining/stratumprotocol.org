@@ -216,7 +216,8 @@
   ol li a {
     color: #2dd4bf;
     overflow-wrap: break-word;
-    display: none;
+    display: inline;
+    text-decoration: underline;
   }
 
   pre code {

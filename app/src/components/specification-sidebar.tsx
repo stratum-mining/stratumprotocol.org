@@ -1,6 +1,8 @@
 import { sluggifyTags } from "@/utils";
 import { ArrowLeft } from "lucide-react";
 import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
+import { PluggableList } from "react-markdown/lib/react-markdown";
 import { Link, useLocation, useParams } from "react-router";
 import specificationData from "@/data/specification.json";
 import { useMemo } from "react";
@@ -112,6 +114,7 @@ const SpecificationSidebar = ({ setIsMobileSidebarOpen }: { setIsMobileSidebarOp
             {currentSublinks?.length > 1 && currentActiveSpecificationNavItem?.[0] === path ? (
               <div className='flex flex-col gap-4 pt-4'>
                 <ReactMarkdown
+                  rehypePlugins={[rehypeRaw as any] as PluggableList}
                   components={{
                     h1: ({ ...props }: React.ComponentPropsWithoutRef<"h1">) => {
                       return <h1 {...props} className='hidden' />;
