@@ -9,7 +9,10 @@
     "resources": "Resources",
     "specification": "Specification",
     "openMenu": "Open menu",
-    "closeMenu": "Close menu"
+    "closeMenu": "Close menu",
+    "search": "Search",
+    "searchNoResults": "No results found"
+    
   },
   "hero": {
     "title": "Next Generation Bitcoin Mining Protocol",
