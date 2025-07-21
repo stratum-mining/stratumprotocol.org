@@ -1,11 +1,11 @@
-// app/components/SearchResultsDropdown.tsx
 'use client';
 
 import { useEffect, useState } from 'react';
 import unifiedData from '../data/unified-data';
+import { t } from 'i18next';
 
 interface SearchResult {
-  type: 'blog' | 'spec';
+  type: 'blog';
   title: string;
   description: string;
   slug: string;
@@ -28,16 +28,18 @@ export default function SearchResultsDropdown({ query, onNavigate }: SearchResul
     }
 
     const filtered = unifiedData.filter((item) =>
-      item.title.toLowerCase().includes(query.toLowerCase()) ||
-      item.description?.toLowerCase().includes(query.toLowerCase()) ||
-      item.content?.toLowerCase().includes(query.toLowerCase())
+      item.type === 'spec' &&
+      (
+        item.title.toLowerCase().includes(query.toLowerCase()) ||
+        item.description?.toLowerCase().includes(query.toLowerCase()) ||
+        item.content?.toLowerCase().includes(query.toLowerCase())
+      )
     );
 
     setResults(filtered as SearchResult[]);
     setShowDropdown(true);
   }, [query]);
 
-  // If no query or no results and query exists, show nothing or "No results"
   if (!query.trim() || !showDropdown) {
     return null;
   }
@@ -50,22 +52,16 @@ export default function SearchResultsDropdown({ query, onNavigate }: SearchResul
             key={index}
             className="px-4 py-2 hover:bg-gray-800 cursor-pointer"
             onClick={() =>
-              onNavigate(
-                item.type === 'blog'
-                  ? `/blog/${item.slug}?query=${encodeURIComponent(query)}`
-                  : `/specification/${item.slug}?query=${encodeURIComponent(query)}`
-              )
+              onNavigate(`/specification/${item.slug}?query=${encodeURIComponent(query)}`)
             }
           >
-            <div className="text-sm uppercase text-gray-500">
-              {item.type === 'blog' ? 'Blog Post' : 'Specification'}
-            </div>
+            <div className="text-sm uppercase text-gray-500">Specification</div>
             <h3 className="text-lg font-semibold">{item.title}</h3>
             <p className="text-sm text-gray-400">{item.description}</p>
           </li>
         ))
       ) : (
-        <li className="px-4 py-2 text-gray-400">No results found</li>
+        <li className="px-4 py-2 text-gray-400">{t("navigation.searchNoResults")}</li>
       )}
     </ul>
   );
