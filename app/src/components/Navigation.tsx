@@ -4,10 +4,9 @@ import { Menu, X, Globe } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { motion, AnimatePresence } from "framer-motion";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-import { NavLink, useLocation, useNavigate } from "react-router";
+import { NavLink, useLocation } from "react-router";
 import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList } from "@/components/ui/navigation-menu";
 import { PoolSelector } from "./PoolSelector";
-import SearchResultsDropdown from "./SearchResultsDropdown"; 
 
 
 const languages = [
@@ -58,12 +57,6 @@ export function Navigation() {
     i18n.changeLanguage(lng);
   };
 
-  const [searchQuery, setSearchQuery] = useState('');
-  const [showResults, setShowResults] = useState(false);
-  const navigate = useNavigate();
-
-const showSearchBar = location.pathname.startsWith("/specification");
-
   return (
     <header 
       className='fixed top-0 left-0 right-0 z-50 py-4 transition-all duration-200'
@@ -79,57 +72,9 @@ const showSearchBar = location.pathname.startsWith("/specification");
             <img src='/assets/sv2-logo.png' alt='Stratum V2 Logo' className='h-10 w-auto brightness-200' width={32} height={32} />
           </NavLink>
 
-          {/*mobile search*/}
-          {showSearchBar && (
-            <div className="block md:hidden relative w-64">
-              <input
-                type="text"
-                placeholder="Search..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                onFocus={() => setShowResults(true)}
-                onBlur={() => setTimeout(() => setShowResults(false), 200)}
-                className="bg-black text-white placeholder-gray-400 border border-gray-600 rounded px-4 py-2 w-full focus:outline-none focus:bg-[#0A2831] focus:ring-2 focus:ring-[#42B4C8]"
-              />
-              {showResults && (
-                <SearchResultsDropdown
-                  query={searchQuery}
-                  onNavigate={(url) => {
-                    window.location.href = url;
-                    setSearchQuery('');
-                    setShowResults(false);
-                  }}
-                />
-              )}
-            </div>
-          )}
-
           {/* Desktop Navigation - Centered */}
           <div className='hidden lg:block xl:absolute xl:left-1/2 xl:-translate-x-1/2'>
-           <div className="flex">
-            {showSearchBar && (
-               <input
-              type="text"
-              placeholder="Search..."
-              className="bg-black mr-3 text-white placeholder-gray-400 border border-gray-600 rounded px-4 py-2 focus:outline-none focus:bg-[#0A2831] focus:ring-2 focus:ring-[#42B4C8]"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              onFocus={() => setShowResults(true)}
-              onBlur={() => setTimeout(() => setShowResults(false), 200)}
-            />
-            )}
-            {showResults && (
-              <SearchResultsDropdown
-                query={searchQuery}
-                onNavigate={(url) => {
-                  navigate(url);
-                  setSearchQuery('');
-                  setShowResults(false);
-                }}
-              />
-            )}
-          
-
+      
               <div className='bg-[#2F2F2F] backdrop-blur-sm'>
               <NavigationMenu aria-label='nav_menu' className='h-10 min-w-xl'>
                 <NavigationMenuList className='space-x-0 p-1 justify-between'>
@@ -150,8 +95,6 @@ const showSearchBar = location.pathname.startsWith("/specification");
               </NavigationMenu>
             </div>
            </div>
-            
-          </div>
 
           {/* Right side buttons */}
           <div className='hidden lg:flex items-center gap-4'>

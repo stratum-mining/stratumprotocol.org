@@ -1,9 +1,11 @@
 import { sluggifyTags } from "@/utils";
 import { ArrowLeft } from "lucide-react";
 import ReactMarkdown from "react-markdown";
-import { Link, useLocation, useParams } from "react-router";
+import { Link, useLocation, useParams, useNavigate } from "react-router";
 import specificationData from "@/data/specification.json";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
+import SearchResultsDropdown from "./SearchResultsDropdown";
 
 const specificationSidebarNavItems = [
   ["/specification/00-Abstract", "0. Abstract"],
@@ -19,7 +21,7 @@ const specificationSidebarNavItems = [
   ["/specification/10-Discussion", "10. Discussion"],
 ];
 
-const SpecificationSidebar = ({ setIsMobileSidebarOpen }: { setIsMobileSidebarOpen?: React.Dispatch<React.SetStateAction<boolean>> }) => {
+  const SpecificationSidebar = ({ setIsMobileSidebarOpen }: { setIsMobileSidebarOpen?: React.Dispatch<React.SetStateAction<boolean>> }) => {
   const { slug } = useParams<{ slug: string }>();
   const pathname = useLocation().pathname;
 
@@ -32,6 +34,11 @@ const SpecificationSidebar = ({ setIsMobileSidebarOpen }: { setIsMobileSidebarOp
   }, [currentPost]);
 
   const joinedSublinks = currentSublinks?.length > 1 ? currentSublinks.join(" \n") : null;
+
+  const [searchQuery, setSearchQuery] = useState('');
+  const [showResults, setShowResults] = useState(false);
+  const { t } = useTranslation();
+  const navigate = useNavigate();
 
   // scroll smoothly to heading position
   const handleSmoothScroll = (e: React.MouseEvent, id: string) => {
@@ -76,6 +83,25 @@ const SpecificationSidebar = ({ setIsMobileSidebarOpen }: { setIsMobileSidebarOp
 
   return (
     <div className='h-full flex-col gap-4 flex max-w-[320px] w-[320px] overflow-y-auto hide-scrollbar'>
+       <input
+              type="text"
+              placeholder={t("navigation.search")}
+              className="bg-black mr-3 text-white placeholder-gray-400 border border-gray-600 rounded px-4 py-2 focus:outline-none focus:bg-[#0A2831] focus:ring-2 focus:ring-[#42B4C8]"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onFocus={() => setShowResults(true)}
+              onBlur={() => setTimeout(() => setShowResults(false), 200)}
+            />
+            {showResults && (
+                          <SearchResultsDropdown
+                            query={searchQuery}
+                            onNavigate={(url) => {
+                              navigate(url);
+                              setSearchQuery('');
+                              setShowResults(false);
+                            }}
+                          />
+                        )}
       {pathname !== "/specification" && (
         <button className='group w-fit'>
           <Link to='/specification' className='font-dm-mono cursor-pointer font-medium flex gap-2 items-center relative'>
