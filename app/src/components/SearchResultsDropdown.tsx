@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import unifiedData from '../data/unified-data';
-import { t } from 'i18next';
+import { useTranslation } from "react-i18next";
 
 interface SearchResult {
   type: 'blog';
@@ -19,6 +19,7 @@ interface SearchResultsDropdownProps {
 export default function SearchResultsDropdown({ query, onNavigate }: SearchResultsDropdownProps) {
   const [results, setResults] = useState<SearchResult[]>([]);
   const [showDropdown, setShowDropdown] = useState(true);
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (!query.trim()) {
@@ -45,7 +46,7 @@ export default function SearchResultsDropdown({ query, onNavigate }: SearchResul
   }
 
   return (
-    <ul className="absolute left-0 mt-3 md:mt-15 w-full bg-black border border-gray-600 rounded max-h-80 overflow-y-auto z-50 shadow-lg">
+    <ul className="absolute left-0 md:left-[35%] mt-3 md:mt-0 w-full bg-black border border-gray-600 rounded max-h-80 overflow-y-auto z-50 shadow-lg">
       {results.length > 0 ? (
         results.map((item, index) => (
           <li
