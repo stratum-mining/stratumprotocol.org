@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
+import { PluggableList } from "react-markdown/lib/react-markdown";
 import { useEffect, useState } from "react";
 import { Navigation } from "@/components/Navigation";
 import SpecificationSidebar from "@/components/specification-sidebar";
@@ -50,6 +52,7 @@ export default function SpecificationsPage() {
             </div>
                 <div>
                   <ReactMarkdown
+                    rehypePlugins={[rehypeRaw as any] as PluggableList}
                     components={{
                       h1: ({ ...props }: React.ComponentPropsWithoutRef<"h1">) => {
                         return (
