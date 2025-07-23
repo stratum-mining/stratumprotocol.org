@@ -4,6 +4,8 @@ import React from "react";
 import remarkGfm from "remark-gfm";
 import remarkSlug from "remark-slug";
 import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
+import { PluggableList } from "react-markdown/lib/react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { replaceYouTubeLinks } from "@/utils";
@@ -50,8 +52,9 @@ export default function BlogPostPage() {
       // Render regular markdown content
       return part ? (
         <ReactMarkdown
-          key={`markdown-${index}`}
-          remarkPlugins={[remarkGfm, remarkSlug]}
+        key={`markdown-${index}`}
+        remarkPlugins={[remarkGfm, remarkSlug]}
+        rehypePlugins={[rehypeRaw as any] as PluggableList}
           components={{
             code: ({ node, inline, className, children, ...props }) => {
               const match = /language-(\w+)/.exec(className || "");
