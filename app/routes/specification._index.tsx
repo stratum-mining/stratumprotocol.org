@@ -45,6 +45,9 @@ export default function SpecificationsPage() {
             <div className='w-fit max-w-4xl max-h-[calc(100vh-128px)] overflow-y-auto pb-10 hide-scrollbar'>
               <div className='flex flex-col gap-10'>
                 <h1 className='text-4xl sm:text-6xl md:text-7xl font-dm-mono font-medium text-center sm:text-left'>Specification</h1>
+                <div className='w-full max-w-[320px] max-h-[calc(100vh-128px)] h-full overflow-y-auto pb-10 hide-scrollbar lg:hidden'>
+              <SpecificationSidebar />
+            </div>
                 <div>
                   <ReactMarkdown
                     components={{

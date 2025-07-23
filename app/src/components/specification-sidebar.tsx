@@ -75,7 +75,7 @@ const specificationSidebarNavItems = [
       }
     }, 150);
 
-    setIsMobileSidebarOpen?.(false);
+    setIsMobileSidebarOpen?.(true);
   };
 
   // get current active specificationNavItem based on pathname
