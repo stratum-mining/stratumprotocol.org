@@ -6,12 +6,13 @@
   "scripts": {
     "dev": "react-router dev",
     "lint": "eslint .",
-    "build": "react-router build && yarn submodules:update && yarn build:blog && yarn build:specification",
+    "build": "react-router build && yarn submodules:update && yarn build:blog && yarn build:specification && yarn build:developers",
     "start": "react-router-serve ./build/server/index.js",
     "preview": "serve -s build/client",
     "typecheck": "react-router typegen && tsc",
     "build:blog": "ts-node app/src/scripts/generate-blog-data.js",
     "build:specification": "ts-node app/src/scripts/generate-specification-data.js",
+    "build:developers": "ts-node app/src/scripts/generate-developers-data.js",
     "submodules:update": "git submodule update --init --recursive --force --remote"
   },
   "dependencies": {
