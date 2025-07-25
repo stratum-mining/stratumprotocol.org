@@ -9,7 +9,9 @@
     "resources": "资源",
     "specification": "规范",
     "openMenu": "打开菜单",
-    "closeMenu": "关闭菜单"
+    "closeMenu": "关闭菜单",
+    "search": "搜索",
+    "searchNoResults": "未找到结果"
   },
   "hero": {
     "title": "下一代比特币挖矿协议",
