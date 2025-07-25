@@ -152,7 +152,7 @@ export default function PoolsPage() {
     `}
         </code>
       </pre>
-      <a href="/blog/getting-started#ii-getting-started---running-all-roles" className="w-full block">
+      <a href="/developers#ii-getting-started---running-all-roles" className="w-full block">
         <Button className="w-full">
           {t('pools.gettingStarted.viewDocs')}
           <ArrowRight className="ml-2 w-4 h-4" />
