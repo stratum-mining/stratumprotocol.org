@@ -23,21 +23,26 @@ export const colors = [
 ];
 
 export const replaceYouTubeLinks = (source: string) => {
-  return source.replace(/\[(!.*)\]\((.*(youtube\.com\/watch|youtu\.be).*?)(?:\s"(.*?)")?\)/gi, (all, preview, url) => {
-    const [, query] = url.match(/\?(.*)/) || url.match(/.*youtu\.be\/(.*)/);
-    const params = query.split("&").reduce((res: Record<string, string>, param: string) => {
-      let [key, val] = param.split("=");
-      if (param === key) {
-        key = "v";
-        val = param;
-      }
-      return Object.assign(res, { [key]: val });
-    }, {});
-    const { v, t } = params;
-    const path = t ? `${v}?start=${t}` : `${v}?`;
+  return source.replace(
+    /\[(!.*)\]\((.*(youtube\.com\/watch|youtu\.be).*?)(?:\s"(.*?)")?\)/gi,
+    (all, preview, url) => {
+      const [, query] = url.match(/\?(.*)/) || url.match(/.*youtu\.be\/(.*)/);
+      const params = query
+        .split("&")
+        .reduce((res: Record<string, string>, param: string) => {
+          let [key, val] = param.split("=");
+          if (param === key) {
+            key = "v";
+            val = param;
+          }
+          return Object.assign(res, { [key]: val });
+        }, {});
+      const { v, t } = params;
+      const path = t ? `${v}?start=${t}` : `${v}?`;
 
-    return `[youtube:${v}:${path}]`;
-  });
+      return `[youtube:${v}:${path}]`;
+    }
+  );
 };
 
 export function sluggifyTags<T>(children: T) {
@@ -65,3 +70,14 @@ export function sluggifyTags<T>(children: T) {
   // remove all dots
   return slug.replace(/\./g, "");
 }
+
+export const formatDateString = (date: string, year: boolean) => {
+  const dateObj = new Date(date);
+  const formattedDate = new Intl.DateTimeFormat("en-US", {
+    year: year ? "numeric" : undefined,
+    month: "short",
+    day: "numeric",
+  }).format(dateObj);
+
+  return formattedDate;
+};
