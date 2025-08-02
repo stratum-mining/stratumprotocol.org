@@ -6,10 +6,10 @@
   "scripts": {
     "dev": "react-router dev",
     "lint": "eslint .",
-    "build": "react-router build && yarn submodules:update && yarn build:blog && yarn build:specification",
+    "build": "react-router build && yarn submodules:update && yarn build:specification",
     "start": "react-router-serve ./build/server/index.js",
+    "preview": "serve -s build/client",
     "typecheck": "react-router typegen && tsc",
-    "build:blog": "ts-node app/src/scripts/generate-blog-data.js",
     "build:specification": "ts-node app/src/scripts/generate-specification-data.js",
     "submodules:update": "git submodule update --init --recursive --force --remote"
   },
@@ -43,6 +43,7 @@
     "react-syntax-highlighter": "^15.6.1",
     "recharts": "^2.15.1",
     "rehype-autolink-headings": "^7.1.0",
+    "rehype-raw": "^7.0.0",
     "remark-gfm": "^3.0.1",
     "remark-slug": "^7.0.1",
     "tailwind-merge": "^3.0.2"
@@ -50,6 +51,7 @@
   "devDependencies": {
     "@eslint/js": "^9.21.0",
     "@react-router/dev": "^7.4.0",
+    "@react-router/serve": "^7.7.0",
     "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "^4.0.15",
     "@types/markdown-it": "^14.1.2",
@@ -61,11 +63,13 @@
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^15.15.0",
+    "serve": "^14.2.4",
     "tailwindcss": "^4.0.15",
     "ts-node": "^10.9.2",
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.24.1",
     "vite": "^6.2.0",
+    "vite-plugin-node-polyfills": "^0.24.0",
     "vite-tsconfig-paths": "^5.1.4"
   }
 }

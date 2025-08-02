@@ -8,6 +8,7 @@ import { NavLink, useLocation } from "react-router";
 import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList } from "@/components/ui/navigation-menu";
 import { PoolSelector } from "./PoolSelector";
 
+
 const languages = [
   { code: "en", name: "English" },
   { code: "ru", name: "Русский" },
@@ -46,7 +47,7 @@ export function Navigation() {
   const navLinks: NavLink[] = [
     { to: "/miners", label: t("navigation.miners") },
     { to: "/pools", label: t("navigation.pools") },
-    { to: "/blog/getting-started", label: t("navigation.developers") },
+    { to: "/developers", label: t("navigation.developers") },
     { to: "/blog", label: t("navigation.blog") },
     { to: "/resources", label: t("navigation.resources") },
     { to: "/specification", label: t("navigation.specification") },
@@ -73,7 +74,8 @@ export function Navigation() {
 
           {/* Desktop Navigation - Centered */}
           <div className='hidden lg:block xl:absolute xl:left-1/2 xl:-translate-x-1/2'>
-            <div className='bg-[#2F2F2F] backdrop-blur-sm'>
+      
+              <div className='bg-[#2F2F2F] backdrop-blur-sm'>
               <NavigationMenu aria-label='nav_menu' className='h-10 min-w-xl'>
                 <NavigationMenuList className='space-x-0 p-1 justify-between'>
                   {navLinks.map((link) => (
@@ -92,7 +94,7 @@ export function Navigation() {
                 </NavigationMenuList>
               </NavigationMenu>
             </div>
-          </div>
+           </div>
 
           {/* Right side buttons */}
           <div className='hidden lg:flex items-center gap-4'>
