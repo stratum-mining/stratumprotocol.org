@@ -16,10 +16,11 @@ Rust installed on your machine. If it's not:
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
-There are two primary ways to use all roles:  
+There are three primary ways to use all roles:  
 
 - Run certain roles and connecting to our community-hosted roles. (The easiest way to test SRI)
-- Run all roles (Recommended way)
+- Run all roles without Job Declaration.
+- Run all roles with Job Declaration (Recommended way)
 
 ## I Getting Started - The easiest way
 
@@ -47,7 +48,7 @@ Alternatively, you can view all available versions and checkout a specific relea
 
 ```bash
 git tag --sort=version:refname
-git checkout -b v1.4.0 origin/v1.4.0  # Replace with the latest version shown
+git checkout -b v1.5.0 origin/v1.5.0  # Replace with the latest version shown
 ```
 
 #### Run Job Declarator Client (JDC)
@@ -78,12 +79,134 @@ On the CPUMiner directory:
  
 `./minerd -a sha256d -o stratum+tcp://localhost:34255 -q -D -P`
 
-#### Adjust proxy-config (optional)
+#### Translator Proxy and Job Declarator configurations (optional)
 
-Depending on mining device you do run, you may have to adjust `tproxy-config-local-jdc-example.toml` file in order to adjust the `min_individual_miner_hashrate` and `channel_nominal_hashrate` parameters accordingly
+##### - User Identity
+
+You may also want to adjust the `user_identity` parameter in `tproxy-config-local-jdc-example.toml` and `jdc-config-hosted-example.toml`.
+
+##### - Difficulty Parameters
+
+Another parameter you can tune is `min_individual_miner_hashrate` in `tproxy-config-local-jdc-example.toml`. This value represents the hashrate (in hashes/s) of the weakest miner expected to connect to the Translator Proxy.
 
 
-## II Getting Started - Running all roles 
+## II Getting Started - Running all roles without Job Declaration (JD)
+
+### Step 1: Setup and Configuration
+
+#### Run Template Provider
+
+Download a release from Sjors' fork of Bitcoin Core from https://github.com/Sjors/bitcoin/releases
+
+Edit the `bitcoin.conf` file stored in `~/.bitcoin/` by adding:
+```bash
+[testnet4]
+server=1
+rpcuser=username
+rpcpassword=password
+```
+
+Unpack the Template Provider. For example, assuming you downloaded `bitcoin-sv2-tp-0.1.19-x86_64-linux-gnu.tar.gz`:
+
+```bash
+tar xvf bitcoin-sv2-tp-0.1.19-x86_64-linux-gnu.tar.gz
+```
+
+⚠️ Note: macOS binaries are not code signed. Read release notes for instructions on how to proceed.
+
+Start the Template Provider.
+
+```bash
+./bitcoin-sv2-tp-0.1.19/bin/bitcoind -testnet4 -sv2 -sv2port=8442 -debug=sv2 
+```
+
+⚠️ Note: you need to wait until `bitcoind` is fully synced with the testnet4 before you proceed.
+
+Optional parameters:
+
+There are optional parameters which can be used to better manage the Template Provider:
+- `sv2interval` - sets how often a new template is built (default is 30s)
+- `sv2feedelta` - defines the delta fees to reach before sending new templates to downstreams (default is 1000 sats)
+- `loglevel=sv2:trace` to get more detailed debugging
+
+For example: 
+
+```bash
+./bitcoin-sv2-tp-0.1.19/bin/bitcoind -testnet4 -sv2 -sv2port=8442 -sv2interval=20 -sv2feedelta=1000 -debug=sv2 -loglevel=sv2:trace
+```
+This way new templates are constructed every 20 seconds (taking the most profitable txs from the mempool) and they are sent downstream if new fees collected are more than 1000 sats. 
+
+#### Clone the repository
+
+```bash
+git clone https://github.com/stratum-mining/stratum.git
+cd stratum
+```
+
+#### Checkout the latest stable release
+
+```bash
+git checkout -b $(git tag --sort=version:refname | tail -1) origin/$(git tag --sort=version:refname | tail -1)
+```
+
+Alternatively, you can view all available versions and checkout a specific release:
+
+```bash
+git tag --sort=version:refname
+git checkout -b v1.5.0 origin/v1.5.0  # Replace with the latest version shown
+```
+
+#### Run the SV2 Pool
+
+```bash
+cd roles/pool/config-examples
+cargo run -- -c pool-config-local-tp-example.toml
+```
+
+#### Run Translator Proxy
+
+```bash
+cd roles/translator/config-examples/
+cargo run -- -c tproxy-config-local-pool-example.toml
+```
+#### Connect Mining Devices
+
+Connect mining device - Translator Proxy will be running on port `34255`, so you will need just to edit your mining device(s) configuration, adding the line:
+
+`stratum+tcp://<tProxy ip>:34255`
+#### CPU Miner
+If you don't have a physical miner, you can do tests with CPUMiner.
+
+Setup the correct CPUMiner for your OS:
+- You can download the binary directly from [here](https://sourceforge.net/projects/cpuminer/files/);
+- Or compile it from [https://github.com/pooler/cpuminer](https://github.com/pooler/cpuminer)
+
+On the CPUMiner directory:
+ 
+`./minerd -a sha256d -o stratum+tcp://localhost:34255 -q -D -P`
+
+#### Translator Proxy configurations (optional)
+
+##### - Aggregated vs. Non-Aggregated mode
+
+In Stratum V2, a **channel** represents a dedicated mining session between a downstream mining device and an upstream node (such as a pool, job declarator, or proxy). Each channel has its own mining target, accepts work submissions, and is uniquely identified by a `channel_id`.
+
+You can configure whether the Translator Proxy (TProxy) manages channels in **aggregated** or **non-aggregated** mode using the `aggregate_channels` parameter in `tproxy-config-local-pool-example.toml`.
+
+* **Non-Aggregated (aggregate_channels: `false`)** – Each mining device connected to the Translator Proxy opens its own upstream channel. This provides isolation per device and let the Pool to have monitoring capabilities on individual mining devices.
+* **Aggregated (aggregate_channels: `true`)** – All miners connected to the Translator Proxy share a single upstream channel. This mode reduces significantly the bandwidth usage, but doesn't let the Pool to have monitoring capabilities on individual mining devices.
+
+For a detailed explanation of channels, see the [Stratum V2 specification, Section 5.2](https://stratumprotocol.org/specification/05-Mining-Protocol/#52-channel).
+
+##### - User Identity
+
+You may also want to adjust the `user_identity` parameter in `tproxy-config-local-pool-example.toml`. This parameter defines an identifier that will be visible to the pool. A counter is automatically appended for each connected client (e.g., `username.miner1`, `username.miner2`).
+
+##### - Difficulty Parameters
+
+Another parameter you can tune is `min_individual_miner_hashrate` in `tproxy-config-local-pool-example.toml`. This value represents the hashrate (in hashes/s) of the weakest miner expected to connect to the Translator Proxy.
+
+## III Getting Started - Running all roles with Job Declaration (JD)
 
 **Objective**: Establish a complete, self-hosted Stratum V2 environment for comprehensive testing and deeper understanding of all components.
 
@@ -148,7 +271,7 @@ Alternatively, you can view all available versions and checkout a specific relea
 
 ```bash
 git tag --sort=version:refname
-git checkout -b v1.4.0 origin/v1.4.0  # Replace with the latest version shown
+git checkout -b v1.5.0 origin/v1.5.0  # Replace with the latest version shown
 ```
 
 #### Run the SV2 Pool
@@ -190,7 +313,18 @@ Setup the correct CPUMiner for your OS:
 On the CPUMiner directory:
  
 `./minerd -a sha256d -o stratum+tcp://localhost:34255 -q -D -P`
-## III Final Step: monitoring for blocks
+
+#### Translator Proxy and Job Declarator configurations (optional)
+
+##### - User Identity
+
+You may also want to adjust the `user_identity` parameter in `tproxy-config-local-jdc-example.toml` and `jdc-config-local-example.toml`.
+
+##### - Difficulty Parameters
+
+Another parameter you can tune is `min_individual_miner_hashrate` in `tproxy-config-local-jdc-example.toml`. This value represents the hashrate (in hashes/s) of the weakest miner expected to connect to the Translator Proxy.
+
+## IV Final Step: monitoring for blocks
 
 Once set up, monitor the machines and role logs for any valid blocks found.
 
@@ -214,11 +348,10 @@ If you didn’t change anything in the configuration files present in every role
 
 A way to look for it is to check the address `tb1qa0sm0hxzj0x25rh8gw5xlzwlsfvvyz8u96w3p8` since the default coinbase output is configured to be a P2WPKH built with a public key = `036adc3bdf21e6f9a0f0fb0066bf517e5b7909ed1563d6958a10993849a7554075`
 
-You can perform a search on one of the following block explorers:
-- [mempool.space/testnet](https://mempool.space/testnet)
-- [blockstream.info/testnet](https://blockstream.info/testnet/)
+You can perform a search on a block explorer:
+- [mempool.space/testnet4](https://mempool.space/testnet4)
 
-## IV Customizing configuration
+## V Customizing configuration
 
 ### Customize the coinbase signature string
 
