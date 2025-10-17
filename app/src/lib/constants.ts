@@ -39,7 +39,7 @@ export const SUPPORTERS: Supporter[] = [
   {
     name: 'Stratum V2',
     logo: '/assets/svgs/sv2-icon.svg',
-    link: 'https://stratum.org',
+    link: 'https://github.com/stratum-mining/stratum',
     categories: ['implementations'],
   },
   {
