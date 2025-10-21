@@ -336,9 +336,14 @@ export default function SpecificationPostPage() {
                     }: React.ComponentPropsWithoutRef<"img">) => {
                       const src = props.src?.replace(".", "");
 
+                      /**
+                       * This should always match the path of the submodule specification
+                       * @path -> `path = src/specification` in the .gitmodules file
+                       **/
+
                       return (
                         <ImageZoom
-                          src={`/specification${src}`}
+                          src={`/src/specification${src}`}
                           alt={props.alt || ""}
                           className="w-full h-full object-center object-contain my-8"
                         />
