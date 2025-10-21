@@ -6,12 +6,13 @@
   "scripts": {
     "dev": "react-router dev",
     "lint": "eslint .",
-    "build": "react-router build && yarn submodules:update && yarn build:specification",
+    "build": "yarn submodules:update && yarn build:specification && yarn copy:submodule-assets && react-router build",
     "start": "react-router-serve ./build/server/index.js",
     "preview": "serve -s build/client",
     "typecheck": "react-router typegen && tsc",
     "build:specification": "ts-node app/src/scripts/generate-specification-data.js",
-    "submodules:update": "git submodule update --init --recursive --force --remote"
+    "submodules:update": "git submodule update --init --recursive --force --remote",
+    "copy:submodule-assets": "mkdir -p public/src/specification && cp -r src/specification/img public/src/specification/"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.6",

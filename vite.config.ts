@@ -12,4 +12,6 @@ export default defineConfig({
     tsconfigPaths(),
     nodePolyfills({ include: ["buffer"], globals: { Buffer: true } }),
   ],
+  assetsInclude: ["**/*.md", "**/*.png", "**/*.jpg", "**/*.jpeg", "**/*.svg"],
+  publicDir: "public",
 });
