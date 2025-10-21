@@ -27,6 +27,7 @@ dist-ssr
 /.react-router/
 /build/
 
+/public/src/
 
 # Local Netlify folder
 .netlify
