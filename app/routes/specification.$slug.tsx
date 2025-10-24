@@ -24,20 +24,25 @@ export default function SpecificationPostPage() {
       : "";
 
   useLayoutEffect(() => {
-    const markdownFiles = import.meta.glob("../../src/specification/*.md", {
-      query: "?raw",
-      import: "default",
-    });
+    const markdownFiles = {
+	...import.meta.glob("../../src/specification/*.md", { query: "?raw", import: "default"}),
+	...import.meta.glob("../../src/specification/extensions/*.md", { query: "?raw", import: "default"}),
+	};
 
     async function fetchMarkdown() {
       try {
-        const filePath = `../../src/specification/${slug}.md`;
+        const specPath = `../../src/specification/${slug}.md`;
+        const extPath = `../../src/specification/extensions/${slug}.md`;
 
-        if (markdownFiles[filePath]) {
-          const content = await markdownFiles[filePath]();
+	let content = `Unable to find: ${slug}`;
+
+        if (markdownFiles[specPath]) 
+          content = await markdownFiles[specPath]();
+
+	if (markdownFiles[extPath])
+	  content = await markdownFiles[extPath]();
 
           setCurrentMarkdown(content as string);
-        }
       } catch (error) {
         console.error("Failed to load markdown:", error);
         setCurrentMarkdown("## Error\n\nFailed to load the specification.");
@@ -316,20 +321,30 @@ export default function SpecificationPostPage() {
                       );
                     },
 
-                    a: ({ ...props }) => {
-                      return (
-                        <a
-                          {...props}
-                          className="text-cyan-custom-100 font-dm-mono underline underline-offset-4 cursor-pointer"
-                          target="_blank"
-                        >
-                          <span className="gap-1 items-center w-fit inline-flex">
-                            {props.children}{" "}
-                            <ExternalLink className="w-4 h-4" />
-                          </span>
-                        </a>
-                      );
-                    },
+                    a: ({ href, children, ...props }) => {
+			const isExternal = href?.startsWith("http");
+			const linkHref = isExternal
+			? href
+			: `/specification/${href
+            		?.split("/")          // split by slashes
+            		.pop()                // take last part (filename)
+           		?.replace(/\.md$/, "") // remove .md
+          	    }`;
+
+			return (
+        			<a
+          				{...props}
+          				href={linkHref}
+          				className="text-cyan-custom-100 font-dm-mono underline underline-offset-4 cursor-pointer"
+          				target={isExternal ? "_blank" : undefined}
+        			>
+          				<span className="gap-1 items-center w-fit inline-flex">
+            					{children}
+            					{isExternal && <ExternalLink className="w-4 h-4" />}
+          				</span>
+        			</a>
+      			);
+    		   },
 
                     img: ({
                       ...props
