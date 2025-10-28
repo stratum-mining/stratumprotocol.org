@@ -25,6 +25,8 @@ Another key step towards better UX is using the new **IPC interface** from **Bit
 
 At the same time, we'll work on improving **test coverage** for both protocol crates and applications, using a combination of unit tests and integration tests to ensure stability and reliability.
 
+You can track our progress in detail on the [Q4 2025 project board](https://github.com/orgs/stratum-mining/projects/15/), where all milestones and tasks across both the `stratum` and `sv2-apps` repositories are tracked in public.
+
 ## **2025 - Quarter 4**
 
 ![2025-Q4](/assets/sri-roadmap-2025-Q4.png)
