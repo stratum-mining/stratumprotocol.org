@@ -12,7 +12,7 @@ tags:
 
 Over the past year, the Stratum V2 Reference Implementation (SRI) has matured rapidly. We shipped four major releases, rebuilt key applications (Translator Proxy (tProxy), Job Declarator Client (JDC), and Pool) and tested them in production with real ASICs and firmware. We’ve also created our first bindings in [Python](https://github.com/stratum-mining/sv2-uniffi), expanding access for developers integrating SV2 into existing infrastructure. 
 
-As maintainers of the specifications, we’ve worked closely with other builders including [Braiins](https://braiins.com/), [Demand](https://dmnd.work/), and others  to refine the Stratum V2 spec. Its evolution remains driven by collaboration and continues to be developed in public as an independent, free good, for the entire mining ecosystem.
+As maintainers of the specifications, we’ve worked closely with other builders including [Braiins](https://braiins.com/), [Demand](https://dmnd.work/), and others  to refine the Stratum V2 [spec](https://stratumprotocol.org/specification). Its evolution remains driven by collaboration and continues to be developed in public as an independent, free good, for the entire mining ecosystem.
 
 ## **What's Next: Better UX and Wider Adoption**
 In the next few months, our focus will be on improving the SV2 Applications, particularly the Job Declarator Client (JDC) and Translator Proxy (tProxy) within the [sv2-apps repository](https://github.com/stratum-mining/sv2-apps), guided by adopter feedback and feature requests. In parallel, we’ll refine the core protocol libraries in the [stratum repository](https://github.com/stratum-mining/stratum), focusing on enhancements that address real-world needs and improve SRI integrations across different stacks and external software.
@@ -68,10 +68,12 @@ The ***sv2-apps*** repository will see substantial development this quarter, foc
 
 
 ## **Conclusion**
-Stratum V2 makes Bitcoin mining more **efficient**, **secure**, and **decentralized** by giving miners control over their own block templates. This roadmap shows our plan for **Q4 2025** and **Q1 2026** to make that vision real for everyone.
+Adoption of Stratum V2 has taken longer than many expected, and we’re fully aware of that. Building independent infrastructure takes time, especially when the goal is to make it a public good for the entire mining ecosystem.
 
-We're building SRI to be ready for production, easy to set up, and powerful enough for any mining operation. With pre-built binaries, Docker images, simple UIs, and Bitcoin Core v30 integration, we're removing the barriers for miners to use Stratum V2.
+We’re already working with a dozen early adopters, ASIC manufacturers, pools, and miners who are helping us test, integrate, and deploy Stratum V2. 
 
-But we can't do this alone. We need miners to test and adopt these tools in **production**. We need developers to **integrate** SRI into their software and help improve it. We need pool operators to **support** the protocol and offer Stratum V2 to their users. Every adoption, every piece of feedback, every contribution gets us closer to making Stratum V2 the standard.
+Earning trust in a competitive and traditionally closed industry has been one of our biggest challenges. Still, our team remains focused on creating open-source mining infrastructure that protects Bitcoin’s core values. 
 
-If you run mining operations, try SRI. If you build mining software, integrate it. If you see ways to make it better, contribute. The future of Bitcoin mining is being built right now, and we need your help.
+Progress may feel gradual, but the direction is clear. We’re confident in our code, proud of our contributors, and excited for what the next few months will bring.
+
+We thank our community, open-source developers, and funding partners [OpenSats](https://opensats.org), [Spiral](https://spiral.xyz), [HRF](http://hrf.org), and [Vinteum](https://vinteum.org) for helping make this work sustainable. If you’re a miner, pool operator, or developer interested in SV2, [join our Discord](https://discord.gg/fsEW23wFYs), we'd love to chat!
