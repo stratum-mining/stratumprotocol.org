@@ -78,4 +78,8 @@ Earning trust in a competitive and traditionally closed industry has been one of
 
 Progress may feel gradual, but the direction is clear. We’re confident in our code, proud of our contributors, and excited for what the next few months will bring.
 
-We thank our community, open-source developers, and funding partners [OpenSats](https://opensats.org), [Spiral](https://spiral.xyz), [HRF](http://hrf.org), and [Vinteum](https://vinteum.org) for helping make this work sustainable. If you’re a miner, pool operator, or developer interested in SV2, [join our Discord](https://discord.gg/fsEW23wFYs), we'd love to chat!
+We thank our community, open-source developers, and funding partners [OpenSats](https://opensats.org), [Spiral](https://spiral.xyz), [HRF](http://hrf.org), and [Vinteum](https://vinteum.org) for helping make this work sustainable. 
+
+We’re also looking for skilled developers who want to contribute as well as companies interested in supporting their work through grants.
+
+If you’re a miner, pool operator, or developer interested in SV2, [join our Discord](https://discord.gg/fsEW23wFYs), we'd love to chat!
