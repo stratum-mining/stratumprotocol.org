@@ -5,7 +5,7 @@ date: "2024-01-01"
 
 # Getting Started with running SRI - Stratum V2 reference implementation
 
-This document aims to assist users in deploying the SRI software stack efficiently. Stratum V2 as a protocol is flexible, and allows users to run multiple configurations. In the getting started guide, we’re focusing on running [roles](https://stratumprotocol.org/docs/#roles) which allow miners to construct their own block templates. 
+This document aims to assist users in deploying the SRI software stack efficiently. Stratum V2 as a protocol is flexible, and allows users to run multiple configurations. In the getting started guide, we’re focusing on running [roles](https://stratumprotocol.org/docs/#roles) which allow miners to construct their own block templates.
 
 ![SRI ](/assets/Sri-AllRoles.png)
 
@@ -16,7 +16,7 @@ Rust installed on your machine. If it's not:
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
-There are three primary ways to use all roles:  
+There are three primary ways to use all roles:
 
 - Run certain roles and connecting to our community-hosted roles. (The easiest way to test SRI)
 - Run all roles without Job Declaration.
@@ -76,7 +76,7 @@ Setup the correct CPUMiner for your OS:
 - Or compile it from [https://github.com/pooler/cpuminer](https://github.com/pooler/cpuminer)
 
 On the CPUMiner directory:
- 
+
 `./minerd -a sha256d -o stratum+tcp://localhost:34255 -q -D -P`
 
 #### Translator Proxy and Job Declarator configurations (optional)
@@ -182,7 +182,7 @@ Setup the correct CPUMiner for your OS:
 - Or compile it from [https://github.com/pooler/cpuminer](https://github.com/pooler/cpuminer)
 
 On the CPUMiner directory:
- 
+
 `./minerd -a sha256d -o stratum+tcp://localhost:34255 -q -D -P`
 
 #### Translator Proxy configurations (optional)
@@ -235,7 +235,7 @@ tar xvf bitcoin-sv2-tp-0.1.19-x86_64-linux-gnu.tar.gz
 Start the Template Provider.
 
 ```bash
-./bitcoin-sv2-tp-0.1.19/bin/bitcoind -testnet4 -sv2 -sv2port=8442 -debug=sv2 
+./bitcoin-sv2-tp-0.1.19/bin/bitcoind -testnet4 -sv2 -sv2port=8442 -debug=sv2
 ```
 
 ⚠️ Note: you need to wait until `bitcoind` is fully synced with the testnet4 before you proceed.
@@ -247,12 +247,12 @@ There are optional parameters which can be used to better manage the Template Pr
 - `sv2feedelta` - defines the delta fees to reach before sending new templates to downstreams (default is 1000 sats)
 - `loglevel=sv2:trace` to get more detailed debugging
 
-For example: 
+For example:
 
 ```bash
 ./bitcoin-sv2-tp-0.1.19/bin/bitcoind -testnet4 -sv2 -sv2port=8442 -sv2interval=20 -sv2feedelta=1000 -debug=sv2 -loglevel=sv2:trace
 ```
-This way new templates are constructed every 20 seconds (taking the most profitable txs from the mempool) and they are sent downstream if new fees collected are more than 1000 sats. 
+This way new templates are constructed every 20 seconds (taking the most profitable txs from the mempool) and they are sent downstream if new fees collected are more than 1000 sats.
 
 #### Clone the repository
 
@@ -311,7 +311,7 @@ Setup the correct CPUMiner for your OS:
 - Or compile it from [https://github.com/pooler/cpuminer](https://github.com/pooler/cpuminer)
 
 On the CPUMiner directory:
- 
+
 `./minerd -a sha256d -o stratum+tcp://localhost:34255 -q -D -P`
 
 #### Translator Proxy and Job Declarator configurations (optional)
@@ -340,11 +340,11 @@ Job Declarator Client (JDC) logs
 
 Translation Proxy tProxy logs
 
-![SRI tProxy](/assets/TranslationProxy-tProxy-logs.png) 
+![SRI tProxy](/assets/TranslationProxy-tProxy-logs.png)
 
 ### Monitor for mined blocks on Testnet
 
-If you didn’t change anything in the configuration files present in every role subdirectory, the valid block mined will be recognized by the string `Stratum V2 SRI Pool (0x5374726174756d2076322053524920506f6f6c)` inserted into the scriptSig of the coinbase tx input. 
+If you didn’t change anything in the configuration files present in every role subdirectory, the valid block mined will be recognized by the string `Stratum V2 SRI Pool (0x5374726174756d2076322053524920506f6f6c)` inserted into the scriptSig of the coinbase tx input.
 
 A way to look for it is to check the address `tb1qa0sm0hxzj0x25rh8gw5xlzwlsfvvyz8u96w3p8` since the default coinbase output is configured to be a P2WPKH built with a public key = `036adc3bdf21e6f9a0f0fb0066bf517e5b7909ed1563d6958a10993849a7554075`
 
