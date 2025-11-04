@@ -31,7 +31,7 @@ There are three primary ways to use all roles:
 
 ### Step 1: Setup and Configuration
 
-#### Clone the repository
+#### Clone the SRI repository
 
 ```bash
 git clone https://github.com/stratum-mining/stratum.git
@@ -98,7 +98,7 @@ Another parameter you can tune is `min_individual_miner_hashrate` in `tproxy-con
 
 {{< include "_shared/run-template-provider.md" >}}
 
-#### Clone the repository
+#### Clone the SRI repository
 
 ```bash
 git clone https://github.com/stratum-mining/stratum.git
@@ -178,7 +178,7 @@ Another parameter you can tune is `min_individual_miner_hashrate` in `tproxy-con
 
 {{< include "_shared/run-template-provider.md" >}}
 
-#### Clone the repository
+#### Clone the SRI repository
 
 ```bash
 git clone https://github.com/stratum-mining/stratum.git
