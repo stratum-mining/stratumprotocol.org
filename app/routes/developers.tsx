@@ -6,7 +6,7 @@ import remarkSlug from "remark-slug";
 import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
-import { replaceYouTubeLinks } from "@/utils";
+import { expandMarkdownIncludes, replaceYouTubeLinks } from "@/utils";
 import { Navigation } from "@/components/Navigation";
 import { Copy, Check, ExternalLink } from "lucide-react";
 import { ImageZoom } from "@/components/ui/image-zoom";
@@ -24,12 +24,20 @@ export default function DevelopersPage() {
         query: "?raw",
         import: "default",
       });
+      const includeFiles = import.meta.glob("../src/_shared/**/*.md", {
+        query: "?raw",
+        import: "default",
+      });
 
       try {
         const filePath = "../src/_developers/getting-started.md";
         if (markdownFiles[filePath]) {
           const fileContents = await markdownFiles[filePath]();
-          const { data, content } = matter(fileContents as string);
+          const expanded = await expandMarkdownIncludes(
+            String(fileContents),
+            includeFiles
+          );
+          const { data, content } = matter(expanded);
           setGettingStarted({
             title: data.title || "Getting Started",
             content,

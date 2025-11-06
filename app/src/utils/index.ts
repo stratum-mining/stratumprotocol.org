@@ -45,6 +45,54 @@ export const replaceYouTubeLinks = (source: string) => {
   );
 };
 
+const INCLUDE_DIRECTIVE = /{{<\s*include\s+"([^"]+)"\s*>}}/g;
+
+export async function expandMarkdownIncludes(
+  source: string,
+  includeLoaders: Record<string, () => Promise<unknown>>,
+  seen: Set<string> = new Set()
+): Promise<string> {
+  const matches = [...source.matchAll(INCLUDE_DIRECTIVE)];
+
+  if (!matches.length) {
+    return source;
+  }
+
+  let result = source;
+
+  for (const match of matches) {
+    const [directive, includeSpecifier] = match;
+    const normalized = includeSpecifier
+      .replace(/^\.\//, "")
+      .replace(/^\/+/, "");
+    const globKey = normalized.startsWith("../src/")
+      ? normalized
+      : `../src/${normalized}`;
+    const loader = includeLoaders[globKey];
+
+    if (!loader) {
+      console.warn(`Include not found for ${includeSpecifier}`);
+      continue;
+    }
+
+    if (seen.has(globKey)) {
+      console.warn(`Circular include detected for ${includeSpecifier}`);
+      continue;
+    }
+
+    const loaded = await loader();
+    const expanded = await expandMarkdownIncludes(
+      String(loaded),
+      includeLoaders,
+      new Set(seen).add(globKey)
+    );
+
+    result = result.replace(directive, expanded);
+  }
+
+  return result;
+}
+
 export function sluggifyTags<T>(children: T) {
   const getChildrenFromNode: string[] = [];
 
