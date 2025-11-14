@@ -1,10 +1,4 @@
-import {
-  useMemo,
-  useState,
-  useEffect,
-  useRef,
-  forwardRef,
-} from 'react';
+import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { SUPPORTERS, TabType, Supporter } from '@/lib/constants';
@@ -15,33 +9,22 @@ export function Sponsorship() {
 
   const supporterRows = useMemo(() => {
     if (activeTab === 'all') {
-      // Always 3 rows
-      const rowsCount = 3;
-      const total = SUPPORTERS.length;
+      // Distribute supporters into up to 3 rows instead of fixed chunks of 4
+      const rows: { items: Supporter[]; direction: 'left' | 'right' }[] = [];
+      const rowCount = 3;
+      const perRow = Math.ceil(SUPPORTERS.length / rowCount);
 
-      const baseSize = Math.floor(total / rowsCount);
-      const remainder = total % rowsCount;
+      for (let rowIndex = 0; rowIndex < rowCount; rowIndex++) {
+        const start = rowIndex * perRow;
+        const end = start + perRow;
+        const items = SUPPORTERS.slice(start, end);
 
-      const rows: {
-        items: Supporter[];
-        direction: 'left' | 'right';
-      }[] = [];
+        if (!items.length) break;
 
-      let start = 0;
+        const direction: 'left' | 'right' =
+          rowIndex % 2 === 0 ? 'left' : 'right';
 
-      for (let rowIndex = 0; rowIndex < rowsCount; rowIndex++) {
-        const extra = rowIndex < remainder ? 1 : 0;
-        const size = baseSize + extra;
-
-        const end = start + size;
-        const rowItems = SUPPORTERS.slice(start, end);
-
-        rows.push({
-          items: rowItems,
-          direction: rowIndex % 2 === 0 ? 'left' : 'right',
-        });
-
-        start = end;
+        rows.push({ items, direction });
       }
 
       return rows;
@@ -54,7 +37,7 @@ export function Sponsorship() {
     return [
       {
         items: filteredSupporters,
-        direction: 'left' as const,
+        direction: 'left' as 'left' | 'right',
       },
     ];
   }, [activeTab]);
@@ -62,7 +45,7 @@ export function Sponsorship() {
   return (
     <section className="bg-black text-white py-20">
       <div className="container flex-col lg:flex-row mx-auto px-4 min-h-[550px] flex">
-        <div className="w-full lg:w-4/12 p-6 mx-auto border">
+        <div className="w-full lg:w-4/12 p-6  mx-auto border">
           <h2 className="text-2xl mb-4">{t('sponsorship.supportFor')}</h2>
           <h1 className="text-5xl font-medium mb-8 text-cyan-300">
             Stratum V2
@@ -114,7 +97,7 @@ export function Sponsorship() {
                   onClick={() => setActiveTab(tabValue)}
                   className={`p-2 hover:cursor-pointer text-lg lg:text-sm m-0 ${
                     activeTab === tabValue
-                      ? 'text-cyan-300 bg-emerald-900 border-2 border-solid flex items-center justify-center border-cyan-300 font-medium'
+                      ? 'text-cyan-300 bg-emerald-900 border-2 border-solid flex items-center justify-center border-cyan-300 font-medium '
                       : 'text-gray-400'
                   }`}
                 >
@@ -138,113 +121,88 @@ export function Sponsorship() {
   );
 }
 
-
-function useMarqueeFiller(
-  itemCount: number,
-  firstItemRef: React.RefObject<HTMLAnchorElement | null>,
-  containerRef: React.RefObject<HTMLDivElement | null>
-) {
-  const [duplicatesNeeded, setDuplicatesNeeded] = useState(2);
-
-  useEffect(() => {
-    const measure = () => {
-      const container = containerRef.current;
-      const firstItem = firstItemRef.current;
-
-      if (!container || !firstItem) return;
-
-      const containerWidth = container.clientWidth;
-      const itemWidth = firstItem.clientWidth;
-
-      if (!itemWidth) return;
-
-      const widthNeeded = containerWidth + itemWidth * 2;
-      const baseWidth = itemWidth * itemCount;
-
-      const factor = Math.ceil(widthNeeded / baseWidth);
-      setDuplicatesNeeded(Math.max(2, factor));
-    };
-
-    measure();
-
-    let ro1: ResizeObserver | null = null;
-    let ro2: ResizeObserver | null = null;
-
-    if (typeof ResizeObserver !== 'undefined') {
-      ro1 = new ResizeObserver(measure);
-      ro2 = new ResizeObserver(measure);
-
-      if (containerRef.current) ro1.observe(containerRef.current);
-      if (firstItemRef.current) ro2.observe(firstItemRef.current);
-    } else {
-      window.addEventListener('resize', measure);
-    }
-
-    return () => {
-      if (ro1) ro1.disconnect();
-      if (ro2) ro2.disconnect();
-      else window.removeEventListener('resize', measure);
-    };
-  }, [itemCount]);
-
-  return duplicatesNeeded;
+interface SupporterGridProps {
+  supporters: Supporter[];
+  direction: 'left' | 'right';
+  filter: TabType;
 }
 
 const SupporterGrid = ({
   supporters,
   direction,
   filter,
-}: {
-  supporters: Supporter[];
-  direction: 'left' | 'right';
-  filter: TabType;
-}) => {
-  const firstItemRef = useRef<HTMLAnchorElement | null>(null);
-  const containerRef = useRef<HTMLDivElement | null>(null);
+}: SupporterGridProps) => {
+  const filteredSupporters =
+    filter === 'all'
+      ? supporters
+      : supporters.filter((supporter) =>
+          supporter.categories.includes(filter)
+        );
 
-  const duplicates = useMarqueeFiller(
-    supporters.length,
-    firstItemRef,
-    containerRef
-  );
+  if (filteredSupporters.length === 0) {
+    return null;
+  }
+
+  const isAnimated = filter === 'all';
 
   return (
     <div
-      ref={containerRef}
-      className="overflow-hidden border-l border-t border-border mx-auto"
+      className={`overflow-hidden border-l border-t border-border mx-auto ${
+        isAnimated ? '' : 'flex flex-wrap'
+      }`}
     >
-      <div
-        className={`flex ${
-          direction === 'left' ? 'marquee-left' : 'marquee-right'
-        }`}
-      >
-        {/* First set */}
-        {supporters.map((supporter, index) => (
-          <LogoCard
-            key={`${supporter.name}-p-${index}`}
-            {...supporter}
-            ref={index === 0 ? firstItemRef : undefined}
-          />
-        ))}
-
-        {/* Auto-filled duplicates */}
-        {Array.from({ length: duplicates }).map((_, dupIndex) =>
-          supporters.map((supporter, sIndex) => (
+      {isAnimated ? (
+        <div
+          className={`flex ${
+            direction === 'left' ? 'marquee-left' : 'marquee-right'
+          }`}
+          style={{ gap: 0 }}
+        >
+          {/* First set of items */}
+          {filteredSupporters.map((supporter, index) => (
             <LogoCard
-              key={`${supporter.name}-d-${dupIndex}-${sIndex}`}
-              {...supporter}
+              key={`${supporter.name}-primary-${index}`}
+              name={supporter.name}
+              link={supporter.link}
+              logo={supporter.logo}
             />
-          ))
-        )}
-      </div>
+          ))}
+          {/* Duplicate items for seamless animation */}
+          {filteredSupporters.map((supporter, index) => (
+            <LogoCard
+              key={`${supporter.name}-duplicate-1-${index}`}
+              name={supporter.name}
+              link={supporter.link}
+              logo={supporter.logo}
+            />
+          ))}
+          {filteredSupporters.map((supporter, index) => (
+            <LogoCard
+              key={`${supporter.name}-duplicate-2-${index}`}
+              name={supporter.name}
+              link={supporter.link}
+              logo={supporter.logo}
+            />
+          ))}
+        </div>
+      ) : (
+        <div className="flex flex-wrap">
+          {filteredSupporters.map((supporter, index) => (
+            <LogoCard key={index} {...supporter} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
 
-const LogoCard = forwardRef<HTMLAnchorElement, Supporter>(
-  ({ name, link, logo }, ref) => (
+const LogoCard: React.FC<{
+  name: string;
+  link: string;
+  logo: string;
+}> = ({ name, link, logo }) => {
+  return (
     <a
-      ref={ref}
       href={link}
       target="_blank"
       rel="noopener noreferrer"
@@ -257,7 +215,5 @@ const LogoCard = forwardRef<HTMLAnchorElement, Supporter>(
     >
       <img src={logo} alt={name} className="w-36 h-12 object-contain" />
     </a>
-  )
-);
-
-LogoCard.displayName = 'LogoCard';
+  );
+};
