@@ -6,6 +6,12 @@ export interface Supporter {
 }
 
 export const SUPPORTERS: Supporter[] = [
+    {
+    name: 'Auradine',
+    logo: '/assets/svgs/auradine.svg',
+    link: 'https://www.auradine.com',
+    categories: ['implementations'],
+  },
   {
     name: 'Demand',
     logo: '/assets/svgs/demand-logo.svg',
