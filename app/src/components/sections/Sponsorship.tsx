@@ -9,31 +9,37 @@ export function Sponsorship() {
 
   const supporterRows = useMemo(() => {
     if (activeTab === 'all') {
-      const rows = [];
-      const chunkSize = 4;
+      // Distribute supporters into up to 3 rows instead of fixed chunks of 4
+      const rows: { items: Supporter[]; direction: 'left' | 'right' }[] = [];
+      const rowCount = 3;
+      const perRow = Math.ceil(SUPPORTERS.length / rowCount);
 
-      // Create chunks of contributors, each with 4 items
-      for (let i = 0; i < SUPPORTERS.length; i += chunkSize) {
-        const rowItems = SUPPORTERS.slice(i, i + chunkSize);
-        // Alternate direction based on row index
+      for (let rowIndex = 0; rowIndex < rowCount; rowIndex++) {
+        const start = rowIndex * perRow;
+        const end = start + perRow;
+        const items = SUPPORTERS.slice(start, end);
+
+        if (!items.length) break;
+
         const direction: 'left' | 'right' =
-          (i / chunkSize) % 2 === 0 ? 'left' : 'right';
-        rows.push({ items: rowItems, direction });
+          rowIndex % 2 === 0 ? 'left' : 'right';
+
+        rows.push({ items, direction });
       }
 
       return rows;
-    } else {
-      const filteredSupporters = SUPPORTERS.filter((supporter) =>
-        supporter.categories.includes(activeTab)
-      );
-
-      return [
-        {
-          items: filteredSupporters,
-          direction: 'left' as 'left' | 'right',
-        },
-      ];
     }
+
+    const filteredSupporters = SUPPORTERS.filter((supporter) =>
+      supporter.categories.includes(activeTab)
+    );
+
+    return [
+      {
+        items: filteredSupporters,
+        direction: 'left' as 'left' | 'right',
+      },
+    ];
   }, [activeTab]);
 
   return (
@@ -53,13 +59,38 @@ export function Sponsorship() {
           {/* Tabs */}
           <div className="flex flex-col lg:flex-row p-4 bg-[#0F2126] space-x-8 lg:mb-12 border-b border-gray-800">
             {[
-              { key: 'allContributors', label: t('sponsorship.tabs.allContributors') },
-              { key: 'implementations', label: t('sponsorship.tabs.implementations') },
-              { key: 'adopters', label: t('sponsorship.tabs.adopters') },
-              { key: 'funders', label: t('sponsorship.tabs.funders') },
-              { key: 'pastFunders', label: t('sponsorship.tabs.pastFunders') },
+              {
+                key: 'allContributors',
+                label: t('sponsorship.tabs.allContributors'),
+              },
+              {
+                key: 'implementations',
+                label: t('sponsorship.tabs.implementations'),
+              },
+              {
+                key: 'adopters',
+                label: t('sponsorship.tabs.adopters'),
+              },
+              {
+                key: 'funders',
+                label: t('sponsorship.tabs.funders'),
+              },
+              {
+                key: 'pastFunders',
+                label: t('sponsorship.tabs.pastFunders'),
+              },
             ].map((tab, index) => {
-              const tabValue = tab.key === 'allContributors' ? 'all' : tab.key.toLowerCase().split(/(?=[A-Z])/).join('').replace('contributors', '').replace('funders', 'funders').replace('pastfunders', 'past') as TabType;
+              const tabValue =
+                tab.key === 'allContributors'
+                  ? 'all'
+                  : (tab.key
+                      .toLowerCase()
+                      .split(/(?=[A-Z])/)
+                      .join('')
+                      .replace('contributors', '')
+                      .replace('funders', 'funders')
+                      .replace('pastfunders', 'past') as TabType);
+
               return (
                 <button
                   key={index}
@@ -104,7 +135,9 @@ const SupporterGrid = ({
   const filteredSupporters =
     filter === 'all'
       ? supporters
-      : supporters.filter((supporter) => supporter.categories.includes(filter));
+      : supporters.filter((supporter) =>
+          supporter.categories.includes(filter)
+        );
 
   if (filteredSupporters.length === 0) {
     return null;
@@ -114,7 +147,7 @@ const SupporterGrid = ({
 
   return (
     <div
-      className={`overflow-hidden border-l border-t border-border mx-auto  ${
+      className={`overflow-hidden border-l border-t border-border mx-auto ${
         isAnimated ? '' : 'flex flex-wrap'
       }`}
     >
@@ -134,29 +167,23 @@ const SupporterGrid = ({
               logo={supporter.logo}
             />
           ))}
-          {/* Only include duplicate items when animation is active */}
-          {isAnimated && (
-            <>
-              {/* Second set of items (duplicate) */}
-              {filteredSupporters.map((supporter, index) => (
-                <LogoCard
-                  key={`${supporter.name}-duplicate-1-${index}`}
-                  name={supporter.name}
-                  link={supporter.link}
-                  logo={supporter.logo}
-                />
-              ))}
-              {/* Third set of items (duplicate) - ensures no gap even during animation */}
-              {filteredSupporters.map((supporter, index) => (
-                <LogoCard
-                  key={`${supporter.name}-duplicate-2-${index}`}
-                  name={supporter.name}
-                  link={supporter.link}
-                  logo={supporter.logo}
-                />
-              ))}
-            </>
-          )}
+          {/* Duplicate items for seamless animation */}
+          {filteredSupporters.map((supporter, index) => (
+            <LogoCard
+              key={`${supporter.name}-duplicate-1-${index}`}
+              name={supporter.name}
+              link={supporter.link}
+              logo={supporter.logo}
+            />
+          ))}
+          {filteredSupporters.map((supporter, index) => (
+            <LogoCard
+              key={`${supporter.name}-duplicate-2-${index}`}
+              name={supporter.name}
+              link={supporter.link}
+              logo={supporter.logo}
+            />
+          ))}
         </div>
       ) : (
         <div className="flex flex-wrap">
@@ -184,8 +211,6 @@ const LogoCard: React.FC<{
         margin: 0,
         padding: '24px',
         boxSizing: 'border-box',
-        // width: '250px',
-        // height: '160px',
       }}
     >
       <img src={logo} alt={name} className="w-36 h-12 object-contain" />
