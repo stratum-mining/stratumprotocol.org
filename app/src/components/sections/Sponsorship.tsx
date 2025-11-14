@@ -1,4 +1,10 @@
-import { useMemo, useState } from 'react';
+import {
+  useMemo,
+  useState,
+  useEffect,
+  useRef,
+  forwardRef,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { SUPPORTERS, TabType, Supporter } from '@/lib/constants';
@@ -9,37 +15,54 @@ export function Sponsorship() {
 
   const supporterRows = useMemo(() => {
     if (activeTab === 'all') {
-      const rows = [];
-      const chunkSize = 4;
+      // Always 3 rows
+      const rowsCount = 3;
+      const total = SUPPORTERS.length;
 
-      // Create chunks of contributors, each with 4 items
-      for (let i = 0; i < SUPPORTERS.length; i += chunkSize) {
-        const rowItems = SUPPORTERS.slice(i, i + chunkSize);
-        // Alternate direction based on row index
-        const direction: 'left' | 'right' =
-          (i / chunkSize) % 2 === 0 ? 'left' : 'right';
-        rows.push({ items: rowItems, direction });
+      const baseSize = Math.floor(total / rowsCount);
+      const remainder = total % rowsCount;
+
+      const rows: {
+        items: Supporter[];
+        direction: 'left' | 'right';
+      }[] = [];
+
+      let start = 0;
+
+      for (let rowIndex = 0; rowIndex < rowsCount; rowIndex++) {
+        const extra = rowIndex < remainder ? 1 : 0;
+        const size = baseSize + extra;
+
+        const end = start + size;
+        const rowItems = SUPPORTERS.slice(start, end);
+
+        rows.push({
+          items: rowItems,
+          direction: rowIndex % 2 === 0 ? 'left' : 'right',
+        });
+
+        start = end;
       }
 
       return rows;
-    } else {
-      const filteredSupporters = SUPPORTERS.filter((supporter) =>
-        supporter.categories.includes(activeTab)
-      );
-
-      return [
-        {
-          items: filteredSupporters,
-          direction: 'left' as 'left' | 'right',
-        },
-      ];
     }
+
+    const filteredSupporters = SUPPORTERS.filter((supporter) =>
+      supporter.categories.includes(activeTab)
+    );
+
+    return [
+      {
+        items: filteredSupporters,
+        direction: 'left' as const,
+      },
+    ];
   }, [activeTab]);
 
   return (
     <section className="bg-black text-white py-20">
       <div className="container flex-col lg:flex-row mx-auto px-4 min-h-[550px] flex">
-        <div className="w-full lg:w-4/12 p-6  mx-auto border">
+        <div className="w-full lg:w-4/12 p-6 mx-auto border">
           <h2 className="text-2xl mb-4">{t('sponsorship.supportFor')}</h2>
           <h1 className="text-5xl font-medium mb-8 text-cyan-300">
             Stratum V2
@@ -53,20 +76,45 @@ export function Sponsorship() {
           {/* Tabs */}
           <div className="flex flex-col lg:flex-row p-4 bg-[#0F2126] space-x-8 lg:mb-12 border-b border-gray-800">
             {[
-              { key: 'allContributors', label: t('sponsorship.tabs.allContributors') },
-              { key: 'implementations', label: t('sponsorship.tabs.implementations') },
-              { key: 'adopters', label: t('sponsorship.tabs.adopters') },
-              { key: 'funders', label: t('sponsorship.tabs.funders') },
-              { key: 'pastFunders', label: t('sponsorship.tabs.pastFunders') },
+              {
+                key: 'allContributors',
+                label: t('sponsorship.tabs.allContributors'),
+              },
+              {
+                key: 'implementations',
+                label: t('sponsorship.tabs.implementations'),
+              },
+              {
+                key: 'adopters',
+                label: t('sponsorship.tabs.adopters'),
+              },
+              {
+                key: 'funders',
+                label: t('sponsorship.tabs.funders'),
+              },
+              {
+                key: 'pastFunders',
+                label: t('sponsorship.tabs.pastFunders'),
+              },
             ].map((tab, index) => {
-              const tabValue = tab.key === 'allContributors' ? 'all' : tab.key.toLowerCase().split(/(?=[A-Z])/).join('').replace('contributors', '').replace('funders', 'funders').replace('pastfunders', 'past') as TabType;
+              const tabValue =
+                tab.key === 'allContributors'
+                  ? 'all'
+                  : (tab.key
+                      .toLowerCase()
+                      .split(/(?=[A-Z])/)
+                      .join('')
+                      .replace('contributors', '')
+                      .replace('funders', 'funders')
+                      .replace('pastfunders', 'past') as TabType);
+
               return (
                 <button
                   key={index}
                   onClick={() => setActiveTab(tabValue)}
                   className={`p-2 hover:cursor-pointer text-lg lg:text-sm m-0 ${
                     activeTab === tabValue
-                      ? 'text-cyan-300 bg-emerald-900 border-2 border-solid flex items-center justify-center border-cyan-300 font-medium '
+                      ? 'text-cyan-300 bg-emerald-900 border-2 border-solid flex items-center justify-center border-cyan-300 font-medium'
                       : 'text-gray-400'
                   }`}
                 >
@@ -90,92 +138,113 @@ export function Sponsorship() {
   );
 }
 
-interface SupporterGridProps {
-  supporters: Supporter[];
-  direction: 'left' | 'right';
-  filter: TabType;
+
+function useMarqueeFiller(
+  itemCount: number,
+  firstItemRef: React.RefObject<HTMLAnchorElement | null>,
+  containerRef: React.RefObject<HTMLDivElement | null>
+) {
+  const [duplicatesNeeded, setDuplicatesNeeded] = useState(2);
+
+  useEffect(() => {
+    const measure = () => {
+      const container = containerRef.current;
+      const firstItem = firstItemRef.current;
+
+      if (!container || !firstItem) return;
+
+      const containerWidth = container.clientWidth;
+      const itemWidth = firstItem.clientWidth;
+
+      if (!itemWidth) return;
+
+      const widthNeeded = containerWidth + itemWidth * 2;
+      const baseWidth = itemWidth * itemCount;
+
+      const factor = Math.ceil(widthNeeded / baseWidth);
+      setDuplicatesNeeded(Math.max(2, factor));
+    };
+
+    measure();
+
+    let ro1: ResizeObserver | null = null;
+    let ro2: ResizeObserver | null = null;
+
+    if (typeof ResizeObserver !== 'undefined') {
+      ro1 = new ResizeObserver(measure);
+      ro2 = new ResizeObserver(measure);
+
+      if (containerRef.current) ro1.observe(containerRef.current);
+      if (firstItemRef.current) ro2.observe(firstItemRef.current);
+    } else {
+      window.addEventListener('resize', measure);
+    }
+
+    return () => {
+      if (ro1) ro1.disconnect();
+      if (ro2) ro2.disconnect();
+      else window.removeEventListener('resize', measure);
+    };
+  }, [itemCount]);
+
+  return duplicatesNeeded;
 }
 
 const SupporterGrid = ({
   supporters,
   direction,
   filter,
-}: SupporterGridProps) => {
-  const filteredSupporters =
-    filter === 'all'
-      ? supporters
-      : supporters.filter((supporter) => supporter.categories.includes(filter));
+}: {
+  supporters: Supporter[];
+  direction: 'left' | 'right';
+  filter: TabType;
+}) => {
+  const firstItemRef = useRef<HTMLAnchorElement | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
-  if (filteredSupporters.length === 0) {
-    return null;
-  }
-
-  const isAnimated = filter === 'all';
+  const duplicates = useMarqueeFiller(
+    supporters.length,
+    firstItemRef,
+    containerRef
+  );
 
   return (
     <div
-      className={`overflow-hidden border-l border-t border-border mx-auto  ${
-        isAnimated ? '' : 'flex flex-wrap'
-      }`}
+      ref={containerRef}
+      className="overflow-hidden border-l border-t border-border mx-auto"
     >
-      {isAnimated ? (
-        <div
-          className={`flex ${
-            direction === 'left' ? 'marquee-left' : 'marquee-right'
-          }`}
-          style={{ gap: 0 }}
-        >
-          {/* First set of items */}
-          {filteredSupporters.map((supporter, index) => (
+      <div
+        className={`flex ${
+          direction === 'left' ? 'marquee-left' : 'marquee-right'
+        }`}
+      >
+        {/* First set */}
+        {supporters.map((supporter, index) => (
+          <LogoCard
+            key={`${supporter.name}-p-${index}`}
+            {...supporter}
+            ref={index === 0 ? firstItemRef : undefined}
+          />
+        ))}
+
+        {/* Auto-filled duplicates */}
+        {Array.from({ length: duplicates }).map((_, dupIndex) =>
+          supporters.map((supporter, sIndex) => (
             <LogoCard
-              key={`${supporter.name}-primary-${index}`}
-              name={supporter.name}
-              link={supporter.link}
-              logo={supporter.logo}
+              key={`${supporter.name}-d-${dupIndex}-${sIndex}`}
+              {...supporter}
             />
-          ))}
-          {/* Only include duplicate items when animation is active */}
-          {isAnimated && (
-            <>
-              {/* Second set of items (duplicate) */}
-              {filteredSupporters.map((supporter, index) => (
-                <LogoCard
-                  key={`${supporter.name}-duplicate-1-${index}`}
-                  name={supporter.name}
-                  link={supporter.link}
-                  logo={supporter.logo}
-                />
-              ))}
-              {/* Third set of items (duplicate) - ensures no gap even during animation */}
-              {filteredSupporters.map((supporter, index) => (
-                <LogoCard
-                  key={`${supporter.name}-duplicate-2-${index}`}
-                  name={supporter.name}
-                  link={supporter.link}
-                  logo={supporter.logo}
-                />
-              ))}
-            </>
-          )}
-        </div>
-      ) : (
-        <div className="flex flex-wrap">
-          {filteredSupporters.map((supporter, index) => (
-            <LogoCard key={index} {...supporter} />
-          ))}
-        </div>
-      )}
+          ))
+        )}
+      </div>
     </div>
   );
 };
 
-const LogoCard: React.FC<{
-  name: string;
-  link: string;
-  logo: string;
-}> = ({ name, link, logo }) => {
-  return (
+const LogoCard = forwardRef<HTMLAnchorElement, Supporter>(
+  ({ name, link, logo }, ref) => (
     <a
+      ref={ref}
       href={link}
       target="_blank"
       rel="noopener noreferrer"
@@ -184,11 +253,11 @@ const LogoCard: React.FC<{
         margin: 0,
         padding: '24px',
         boxSizing: 'border-box',
-        // width: '250px',
-        // height: '160px',
       }}
     >
       <img src={logo} alt={name} className="w-36 h-12 object-contain" />
     </a>
-  );
-};
+  )
+);
+
+LogoCard.displayName = 'LogoCard';
