@@ -1,8 +1,8 @@
 import "../global.css";
 import { Navigation } from "@/components/Navigation";
-import { FullStackWizard } from "sv2-wizard";
+import { PoolConnectionWizard } from "sv2-wizard";
 
-export default function DevelopersPage() {
+export default function GetStartedRoute() {
   return (
     <main className='min-h-screen bg-background text-foreground'>
       <Navigation />
@@ -16,13 +16,10 @@ export default function DevelopersPage() {
         }}
       >
         <div className="max-w-7xl mx-auto">
-          <FullStackWizard 
-            onComplete={(finalStepId: string) => {
-              console.log("Wizard completed at step:", finalStepId);
-            }}
-          />
+          <PoolConnectionWizard />
         </div>
       </div>
     </main>
   );
 }
+

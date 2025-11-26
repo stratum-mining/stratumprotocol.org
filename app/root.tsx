@@ -33,6 +33,9 @@ export const Layout = ({ children }: { children: ReactNode }) => {
         <link rel="icon" type="image/svg+xml" href="/assets/favicon/favicon.svg"/>
         <link rel="apple-touch-icon" href="/assets/favicon/apple-touch-icon.png"/>
         <link rel="manifest" href="/assets/favicon/site.webmanifest"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous"/>
+        <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 
 
         <title>Stratum V2 - Next Generation Bitcoin Mining Protocol</title>

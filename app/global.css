@@ -247,3 +247,153 @@
 [aria-label="nav_menu"] > div {
   width: 100%;
 }
+
+/* Wizard container styles - matching demo styling exactly */
+[data-wizard-container] {
+  /* Demo colors converted to HSL format (matching demo's visual appearance) */
+  --primary: 188 78% 53%;
+  --primary-foreground: 222 84% 5%;
+  /* Muted colors - using base colors, opacity handled by Tailwind */
+  --muted: 0 0% 100%;
+  --muted-foreground: 210 20% 65%;
+  --card: 222 47% 11%;
+  --card-foreground: 210 40% 98%;
+  --border: 210 20% 65%;
+  --background: 222 47% 4%;
+  /* Match demo font exactly */
+  font-family: "Space Grotesk", "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: hsl(210 40% 98%);
+
+  /* Reset typography to let wizard use its own sizes */
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Reset typography elements within wizard to use default sizes */
+[data-wizard-container] h1,
+[data-wizard-container] h2,
+[data-wizard-container] h3,
+[data-wizard-container] h4,
+[data-wizard-container] h5,
+[data-wizard-container] h6 {
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: inherit;
+  margin: 0;
+}
+
+/* Ensure Tailwind text size classes work properly in wizard */
+[data-wizard-container] .text-xs {
+  font-size: 0.75rem !important;
+  line-height: 1rem !important;
+}
+
+[data-wizard-container] .text-sm {
+  font-size: 0.875rem !important;
+  line-height: 1.25rem !important;
+}
+
+[data-wizard-container] .text-base {
+  font-size: 1rem !important;
+  line-height: 1.5rem !important;
+}
+
+[data-wizard-container] .text-lg {
+  font-size: 1.125rem !important;
+  line-height: 1.75rem !important;
+}
+
+[data-wizard-container] .text-xl {
+  font-size: 1.25rem !important;
+  line-height: 1.75rem !important;
+}
+
+[data-wizard-container] .text-2xl {
+  font-size: 1.5rem !important;
+  line-height: 2rem !important;
+}
+
+[data-wizard-container] .text-3xl {
+  font-size: 1.875rem !important;
+  line-height: 2.25rem !important;
+}
+
+[data-wizard-container] .text-4xl {
+  font-size: 2.25rem !important;
+  line-height: 2.5rem !important;
+}
+
+[data-wizard-container] .text-5xl {
+  font-size: 3rem !important;
+  line-height: 1;
+}
+
+/* Ensure wizard title and subtitle match demo sizes */
+[data-wizard-container] h1.text-4xl {
+  font-size: 2.25rem !important;
+  line-height: 2.5rem !important;
+}
+
+[data-wizard-container] h1.text-5xl {
+  font-size: 3rem !important;
+  line-height: 1 !important;
+}
+
+[data-wizard-container] p.text-lg {
+  font-size: 1.125rem !important;
+  line-height: 1.75rem !important;
+}
+
+/* Ensure hover states work correctly in wizard */
+/* Don't interfere with Tailwind's hover classes - let them work naturally */
+[data-wizard-container] button:not(:disabled),
+[data-wizard-container] [role="button"]:not([aria-disabled="true"]),
+[data-wizard-container] a:not([aria-disabled="true"]) {
+  cursor: pointer;
+}
+
+/* Ensure icons and labels render correctly */
+[data-wizard-container] svg {
+  /* Ensure SVG icons are visible and properly sized */
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+[data-wizard-container] [class*="w-8"][class*="h-8"] {
+  /* Ensure icon sizing works */
+  width: 2rem;
+  height: 2rem;
+}
+
+
+/* Ensure icon colors work properly */
+[data-wizard-container] svg[class*="text-"] {
+  /* Let Tailwind text color classes work on SVGs */
+  color: inherit;
+}
+
+
+[data-wizard-container] .bg-muted\/50,
+[data-wizard-container] .bg-muted\/30 {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Fix code block visibility - ensure commands are readable */
+[data-wizard-container] pre,
+[data-wizard-container] code,
+[data-wizard-container] pre code {
+  color: hsl(210 40% 98%) !important;
+}
+
+/* Override Tailwind text color classes in code blocks */
+[data-wizard-container] pre[class*="text-"],
+[data-wizard-container] code[class*="text-"] {
+  color: hsl(210 40% 98%) !important;
+}
+
+/* CodeBlock component styling - ensure all code is visible */
+[data-wizard-container] .bg-black\/50 pre,
+[data-wizard-container] .bg-black\/50 code,
+[data-wizard-container] .bg-black\/50 pre code {
+  color: hsl(210 40% 98%) !important;
+}
