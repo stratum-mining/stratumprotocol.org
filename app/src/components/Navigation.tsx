@@ -203,7 +203,7 @@ export function Navigation() {
                   onClick={() => setIsMenuOpen(false)}
                   aria-label={t("navigation.getStarted")}
                 >
-                  <NavLink to="/wizard">
+                  <NavLink to="/get-started">
                     {t("navigation.getStarted")}
                   </NavLink>
                 </Button>
