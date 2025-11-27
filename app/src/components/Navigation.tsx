@@ -124,9 +124,11 @@ export function Navigation() {
               size='lg'
               className='bg-cyan-custom-100 hover:bg-cyan-custom-200 text-background focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-background min-w-[160px]'
               aria-label={t("navigation.getStarted")}
-              onClick={() => setIsPoolSelectorOpen(true)}
+              asChild
             >
-              {t("navigation.getStarted")}
+              <NavLink to="/get-started">
+                {t("navigation.getStarted")}
+              </NavLink>
             </Button>
           </div>
 
@@ -197,13 +199,13 @@ export function Navigation() {
                 <Button
                   size='sm'
                   className='bg-cyan-500 hover:bg-cyan-600 text-background w-full focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-background min-h-[40px]'
-                  onClick={() => {
-                    setIsMenuOpen(false);
-                    setIsPoolSelectorOpen(true);
-                  }}
+                  asChild
+                  onClick={() => setIsMenuOpen(false)}
                   aria-label={t("navigation.getStarted")}
                 >
-                  {t("navigation.getStarted")}
+                  <NavLink to="/wizard">
+                    {t("navigation.getStarted")}
+                  </NavLink>
                 </Button>
               </div>
             </motion.div>

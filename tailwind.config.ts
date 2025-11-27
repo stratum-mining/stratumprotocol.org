@@ -7,6 +7,8 @@ export default {
     // './app/src/**/*.{js,jsx,ts,tsx}',
     // './app/index.html',
     './app/**/*.{js,jsx,ts,tsx}',
+    // Include wizard package files so Tailwind processes its classes
+    './node_modules/sv2-wizard/dist/**/*.{js,jsx,ts,tsx}',
   ],
   theme: {
     extend: {
