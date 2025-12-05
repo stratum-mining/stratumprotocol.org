@@ -103,13 +103,11 @@ In both cases, reducing job latency increases profitability by ensuring miners a
 
 ![](/assets/case-study/hashlabs/job-latency-table.png)
 
-**Switching to SV2 with Job Declaration potentially unlocks up to 74 BTC in additional transaction fee revenue per year** across the entire Bitcoin network, simply by reducing job latency.
-
-This figure comes from multiplying the average opportunity cost per block (0.00141 BTC) by the number of blocks mined annually (52,560), which gives:
+**Miners using SV2 with Job Declaration gain a competitive timing advantage** worth approximately 0.00141 BTC per block by capturing transaction fees before competing miners using less efficient protocols. This represents up to **74 BTC per year** (52,560 blocks × 0.00141 BTC) that early SV2 adopters can claim ahead of their competition.
 
 ![](/assets/case-study/hashlabs/job-latency-2.png)
 
-At a BTC price of $110,000, this translates to more than **8.17 million USD in extra revenue** that miners could collectively capture by switching to SV2 with JD. 
+At a BTC price of $110,000, this timing advantage is worth more than **8.17 million USD annually** for miners who adopt SV2 with JD while others continue using SV1. This is a **zero-sum competitive advantage** over existing transaction fees, not new revenue creation. As more miners adopt SV2, this advantage diminishes, making early adoption strategically valuable.
 
 As transaction fees are expected to become a larger portion of miner income over time, **reducing fee-related inefficiencies** will become increasingly **critical** **for long-term profitability**. 
 
