@@ -5975,10 +5975,10 @@ supports-preserve-symlinks-flag@^1.0.0:
   resolved "https://registry.yarnpkg.com/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz#6eda4bd344a3c94aea376d4cc31bc77311039e09"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
 
-sv2-wizard@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/sv2-wizard/-/sv2-wizard-0.1.0.tgz#807e075ede10363b57381298ef1bbb49757bc201"
-  integrity sha512-IOfvIX7AOZkMBfOLq+oXSb6G905SrS0p9mNygqpBglB9ZLwB16R5Z11+9lCtjHEJmgEdi1Iz/Cn4FAFegaVKEg==
+sv2-wizard@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/sv2-wizard/-/sv2-wizard-0.1.1.tgz#7471aad2aace5740318fa8d78de7bc344560f29f"
+  integrity sha512-4eTGOtB3ME3xAvtM9bD5G7v5vlmEuZt9MQK5BseAal4sZGB2P0z+gurkDPkmK/DpqBfahdiOjlsg3Kotux72cA==
   dependencies:
     "@radix-ui/react-label" "^2.1.8"
     "@radix-ui/react-select" "^2.2.6"
