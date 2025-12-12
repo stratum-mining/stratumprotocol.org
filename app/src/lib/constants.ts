@@ -12,8 +12,14 @@ export const SUPPORTERS: Supporter[] = [
     link: 'https://www.auradine.com',
     categories: ['implementations'],
   },
+    {
+    name: 'Btrust',
+    logo: '/assets/svgs/btrust.svg',
+    link: 'http://btrust.tech',
+    categories: ['funders'],
+  },
   {
-    name: 'Demand',
+    name: 'DMND',
     logo: '/assets/svgs/demand-logo.svg',
     link: 'https://www.dmnd.work',
     categories: ['adopters'],
