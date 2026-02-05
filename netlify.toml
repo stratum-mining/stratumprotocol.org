@@ -1,7 +1,7 @@
 # example netlify.toml
 [build]
   command = "yarn build"
-  publish = "build/client"
+  publish = "dist"
 
 [build.environment]
   NODE_VERSION = "20"
