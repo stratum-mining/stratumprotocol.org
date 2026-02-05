@@ -162,7 +162,7 @@ img {
   color: hsl(var(--muted-foreground));
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .navbar-links {
     display: flex;
   }
@@ -313,9 +313,24 @@ img {
 }
 
 /* Hide mobile menu toggle on desktop */
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .mobile-menu-toggle {
     display: none;
+  }
+}
+
+@media (max-width: 1200px) {
+  .navbar-container {
+    padding: 0.65rem 1rem;
+  }
+
+  .navbar-links {
+    gap: 1.25rem;
+    font-size: 0.8125rem;
+  }
+
+  .navbar-actions {
+    gap: 0.5rem;
   }
 }
 
