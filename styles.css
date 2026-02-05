@@ -2429,6 +2429,12 @@ img {
   overflow: hidden;
 }
 
+@media (max-width: 768px) {
+  .modularity {
+    padding: 5rem 1.25rem;
+  }
+}
+
 .modularity-bg {
   position: absolute;
   inset: 0;
@@ -2822,7 +2828,7 @@ img {
 
 @media (max-width: 768px) {
   .supporters {
-    padding: 5rem 1.25rem;
+    padding: 4.5rem 1.25rem;
   }
 }
 
