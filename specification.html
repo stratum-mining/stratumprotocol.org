@@ -27,7 +27,13 @@
     <link rel="manifest" href="/assets/images/favicon/site.webmanifest" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      onload="this.onload=null;this.rel='stylesheet'"
+    >
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"></noscript>
     <link rel="stylesheet" href="/styles.css">
   </head>
   <body data-spec-repo="https://github.com/stratum-mining/sv2-spec">
@@ -35,7 +41,14 @@
     <nav class="navbar" role="navigation" aria-label="Main navigation">
       <div class="navbar-container">
         <a href="/" class="navbar-logo" aria-label="Stratum V2 Home">
-          <img src="/assets/images/sv2-logo.png" alt="Stratum V2" width="612" height="102" decoding="async" />
+          <img
+            src="/assets/images/sv2-logo-240x40.png"
+            srcset="/assets/images/sv2-logo-240x40.png 1x, /assets/images/sv2-logo-480x80.png 2x"
+            alt="Stratum V2"
+            width="240"
+            height="40"
+            decoding="async"
+          />
         </a>
 
         <div class="navbar-links">

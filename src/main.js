@@ -676,18 +676,29 @@ function initGlobalKeyboardHandler() {
 // ====================================
 // INITIALIZE ALL
 // ====================================
+function runWhenIdle(callback, timeout = 2000) {
+  if ('requestIdleCallback' in window) {
+    window.requestIdleCallback(() => callback(), { timeout });
+  } else {
+    setTimeout(callback, 200);
+  }
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
   await initDevTranslations();
   initLanguageSwitcher();
   initThemeToggle();
   initMobileMenu();
-  initFeatureTabs();
-  initCarousel('.profit-carousel');
-  initCarousel('.autonomy-carousel');
-  initComparisonSliders();
-  initSupporterTabs();
-  initCurrentYear();
-  initImageLightbox();
   initGlobalClickHandler();
   initGlobalKeyboardHandler();
+
+  runWhenIdle(() => {
+    initFeatureTabs();
+    initCarousel('.profit-carousel');
+    initCarousel('.autonomy-carousel');
+    initComparisonSliders();
+    initSupporterTabs();
+    initCurrentYear();
+    initImageLightbox();
+  });
 });

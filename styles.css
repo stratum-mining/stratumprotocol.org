@@ -92,6 +92,17 @@ img {
   padding: 0 1.5rem;
 }
 
+@supports (content-visibility: auto) {
+  .features,
+  .modularity,
+  .sv2-adoption,
+  .supporters,
+  .community {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 1000px;
+  }
+}
+
 /* ====================================
    NAVBAR
    ==================================== */
