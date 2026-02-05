@@ -685,6 +685,7 @@ img {
   align-items: center;
   justify-content: center;
   gap: 1rem;
+  padding: 0.5rem;
   transition: all 0.3s;
   border: 1px solid hsl(var(--border));
   background: hsl(var(--card));
@@ -715,6 +716,11 @@ img {
   transition: color 0.2s;
   text-align: center;
   line-height: 1.2;
+  max-width: 100%;
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  hyphens: auto;
 }
 
 @media (min-width: 768px) {
