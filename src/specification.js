@@ -494,7 +494,7 @@ async function initSpecPage() {
     return;
   }
 
-  if (path === '/specification' || path === '/specification/') {
+  if (path === '/specification' || path === '/specification/' || path === '/specification.html') {
     window.location.replace(`/specification/${DEFAULT_SPEC_SLUG}/`);
     return;
   }

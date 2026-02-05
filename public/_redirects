@@ -1,0 +1,9 @@
+# Blog routes
+/blog            /blog.html            200
+/blog/           /blog.html            200
+/blog/*          /blog-post.html       200
+
+# Specification routes
+/specification   /specification.html   200
+/specification/  /specification.html   200
+/specification/* /specification.html   200

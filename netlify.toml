@@ -1,37 +1,7 @@
 [build]
-  command = "yarn build"
+  command = "npm run build"
   publish = "dist"
 
 [build.environment]
   NODE_VERSION = "20"
   GIT_LFS_ENABLED = "1"
-
-[[redirects]]
-  from = "/blog"
-  to = "/blog.html"
-  status = 200
-
-[[redirects]]
-  from = "/blog/"
-  to = "/blog.html"
-  status = 200
-
-[[redirects]]
-  from = "/blog/*"
-  to = "/blog-post.html"
-  status = 200
-
-[[redirects]]
-  from = "/specification"
-  to = "/specification.html"
-  status = 200
-
-[[redirects]]
-  from = "/specification/"
-  to = "/specification.html"
-  status = 200
-
-[[redirects]]
-  from = "/specification/*"
-  to = "/specification.html"
-  status = 200
