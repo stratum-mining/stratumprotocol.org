@@ -1,7 +1,9 @@
 import { defineConfig } from 'vite';
-import { copyFileSync, cpSync, mkdirSync, readdirSync, existsSync } from 'fs';
+import { copyFileSync, cpSync, mkdirSync, readdirSync, existsSync, readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
 import i18nPlugin from './vite-plugin-i18n.js';
+import { marked } from 'marked';
+import { escapeHtml, createSlugger, renderHeadingWithAnchor } from './src/markdown.js';
 
 export default defineConfig({
   root: '.',
@@ -146,6 +148,611 @@ export default defineConfig({
           }
         }
       }
+    },
+    {
+      name: 'static-content-pages',
+      closeBundle() {
+        const distDir = join('.', 'dist');
+
+        const templatePaths = {
+          blogList: join(distDir, 'blog.html'),
+          blogPost: join(distDir, 'blog-post.html'),
+          specification: join(distDir, 'specification.html')
+        };
+
+        for (const [key, filePath] of Object.entries(templatePaths)) {
+          if (!existsSync(filePath)) {
+            throw new Error(`Static page generation failed: missing template ${key} (${filePath})`);
+          }
+        }
+
+        const blogListTemplate = readFileSync(templatePaths.blogList, 'utf-8');
+        const blogPostTemplate = readFileSync(templatePaths.blogPost, 'utf-8');
+        const specTemplate = readFileSync(templatePaths.specification, 'utf-8');
+
+        generateBlogPages({
+          distDir,
+          blogListTemplate,
+          blogPostTemplate,
+          contentDir: join('.', 'content', 'blog')
+        });
+
+        generateSpecPages({
+          distDir,
+          specTemplate,
+          contentDir: join('.', 'content', 'specification'),
+          specRepoUrl: 'https://github.com/stratum-mining/sv2-spec'
+        });
+      }
     }
   ]
 });
+
+function stripAssetScripts(html, prefixes) {
+  const safePrefixes = prefixes.map(prefix => prefix.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&'));
+  const prefixPattern = safePrefixes.join('|');
+
+  // Remove <script ... src="/assets/<prefix>..."></script>
+  html = html.replace(
+    new RegExp(`\\s*<script[^>]+src="\\/assets\\/(?:${prefixPattern})[^"]+"[^>]*>\\s*<\\/script>`, 'g'),
+    ''
+  );
+
+  // Remove modulepreload links for stripped scripts or their chunks.
+  html = html.replace(
+    new RegExp(`\\s*<link[^>]+rel="modulepreload"[^>]+href="\\/assets\\/(?:${prefixPattern})[^"]+"[^>]*>`, 'g'),
+    ''
+  );
+
+  return html;
+}
+
+function ensureMainScriptTag(html) {
+  if (html.includes('/assets/main-') && html.includes('<script') && /<script[^>]+src="\/assets\/main-[^"]+"/.test(html)) {
+    return html;
+  }
+
+  const match = html.match(/<link[^>]+rel="modulepreload"[^>]+href="(\/assets\/main-[^"]+\.js)"[^>]*>/);
+  if (!match) return html;
+
+  const mainHref = match[1];
+  html = html.replace(match[0], `<script type="module" crossorigin src="${mainHref}"></script>`);
+  return html;
+}
+
+function replaceElementInnerHtmlById(html, elementId, innerHtml) {
+  const idIndex = html.indexOf(`id="${elementId}"`);
+  if (idIndex === -1) throw new Error(`Failed to find element id="${elementId}" in template.`);
+
+  const openStart = html.lastIndexOf('<', idIndex);
+  if (openStart === -1) throw new Error(`Failed to locate opening tag for id="${elementId}".`);
+
+  const tagNameMatch = html.slice(openStart + 1).match(/^([a-zA-Z0-9-]+)/);
+  if (!tagNameMatch) throw new Error(`Failed to parse tag name for id="${elementId}".`);
+  const tagName = tagNameMatch[1];
+
+  const openEnd = html.indexOf('>', idIndex);
+  if (openEnd === -1) throw new Error(`Failed to locate end of opening tag for id="${elementId}".`);
+
+  const closeStart = findMatchingCloseTagStart(html, tagName, openEnd + 1);
+  const baseIndent = getLineIndent(html, openStart);
+  const contentIndent = baseIndent + '  ';
+  const indented = indentHtml(innerHtml, contentIndent);
+
+  return `${html.slice(0, openEnd + 1)}\n${indented}\n${baseIndent}${html.slice(closeStart)}`;
+}
+
+function findMatchingCloseTagStart(html, tagName, fromIndex) {
+  const openToken = `<${tagName}`;
+  const closeToken = `</${tagName}`;
+  let depth = 1;
+  let i = fromIndex;
+
+  while (i < html.length) {
+    const nextOpen = html.indexOf(openToken, i);
+    const nextClose = html.indexOf(closeToken, i);
+
+    if (nextClose === -1) break;
+
+    if (nextOpen !== -1 && nextOpen < nextClose) {
+      const after = html[nextOpen + openToken.length];
+      if (after && !/[\s>\/]/.test(after)) {
+        i = nextOpen + openToken.length;
+        continue;
+      }
+
+      const openTagEnd = html.indexOf('>', nextOpen);
+      if (openTagEnd === -1) throw new Error(`Unterminated <${tagName}> tag while parsing HTML.`);
+
+      const selfClosing = html.slice(nextOpen, openTagEnd + 1).endsWith('/>');
+      if (!selfClosing) depth += 1;
+      i = openTagEnd + 1;
+      continue;
+    }
+
+    const closeTagEnd = html.indexOf('>', nextClose);
+    if (closeTagEnd === -1) throw new Error(`Unterminated </${tagName}> tag while parsing HTML.`);
+
+    depth -= 1;
+    if (depth === 0) return nextClose;
+    i = closeTagEnd + 1;
+  }
+
+  throw new Error(`Failed to find matching </${tagName}> tag.`);
+}
+
+function getLineIndent(text, index) {
+  const lineStart = text.lastIndexOf('\n', index) + 1;
+  const line = text.slice(lineStart, index);
+  const match = line.match(/^\s*/);
+  return match ? match[0] : '';
+}
+
+function indentHtml(html, indent) {
+  return String(html)
+    .split('\n')
+    .map(line => (line.trim().length === 0 ? '' : indent + line))
+    .join('\n');
+}
+
+function parseFrontmatter(markdown) {
+  const frontmatterRegex = /^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/;
+  const match = String(markdown).match(frontmatterRegex);
+
+  if (!match) {
+    return { frontmatter: {}, content: String(markdown) };
+  }
+
+  const frontmatterText = match[1];
+  const content = match[2];
+
+  const frontmatter = {};
+  const lines = frontmatterText.split('\n');
+  let currentArray = null;
+
+  lines.forEach(line => {
+    const trimmed = line.trim();
+    if (!trimmed) return;
+
+    if (trimmed.startsWith('- ')) {
+      if (currentArray) currentArray.push(trimmed.substring(2).trim());
+      return;
+    }
+
+    const colonIndex = trimmed.indexOf(':');
+    if (colonIndex <= 0) return;
+
+    const key = trimmed.substring(0, colonIndex).trim();
+    const value = trimmed.substring(colonIndex + 1).trim();
+
+    if (value) {
+      frontmatter[key] = value.replace(/^["']|["']$/g, '');
+      currentArray = null;
+      return;
+    }
+
+    currentArray = [];
+    frontmatter[key] = currentArray;
+  });
+
+  return { frontmatter, content };
+}
+
+function formatDate(dateString) {
+  const date = new Date(dateString);
+  if (Number.isNaN(date.getTime())) return escapeHtml(dateString);
+  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+
+function normalizePathToDir(urlPath) {
+  const trimmed = String(urlPath || '').trim();
+  if (!trimmed) return '';
+  const withLeading = trimmed.startsWith('/') ? trimmed : `/${trimmed}`;
+  const normalized = withLeading.replace(/\/{2,}/g, '/');
+  const withoutTrailing = normalized.endsWith('/') ? normalized.slice(0, -1) : normalized;
+  return withoutTrailing.replace(/^\//, '');
+}
+
+function updateHtmlHeadMeta(html, { title, description } = {}) {
+  if (title) {
+    html = html.replace(/<title>[^<]*<\/title>/, `<title>${escapeHtml(title)}</title>`);
+    html = html.replace(
+      /<meta\s+property="og:title"\s+content="[^"]*"\s*\/?>/,
+      `<meta property="og:title" content="${escapeHtml(title)}" />`
+    );
+  }
+
+  if (description) {
+    html = html.replace(
+      /<meta\s+property="og:description"\s+content="[^"]*"\s*\/?>/,
+      `<meta property="og:description" content="${escapeHtml(description)}" />`
+    );
+  }
+
+  return html;
+}
+
+function generateBlogPages({ distDir, blogListTemplate, blogPostTemplate, contentDir }) {
+  if (!existsSync(contentDir)) return;
+
+  const markdownFiles = readdirSync(contentDir)
+    .filter(name => name.toLowerCase().endsWith('.md'))
+    .sort();
+
+  const posts = markdownFiles.map(fileName => {
+    const raw = readFileSync(join(contentDir, fileName), 'utf-8');
+    const slug = fileName.replace(/\.md$/i, '');
+    const { frontmatter, content } = parseFrontmatter(raw);
+
+    const authors = Array.isArray(frontmatter.authors)
+      ? frontmatter.authors
+      : [frontmatter.authors].filter(Boolean);
+    const tags = Array.isArray(frontmatter.tags) ? frontmatter.tags : [frontmatter.tags].filter(Boolean);
+
+    return {
+      slug,
+      filename: fileName,
+      title: frontmatter.title || slug,
+      description: frontmatter.description || '',
+      date: frontmatter.date || '',
+      authors,
+      tags,
+      permalink: frontmatter.permalink || '',
+      markdown: content
+    };
+  }).filter(post => post.title && post.date);
+
+  posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  const cardsHtml = posts.map(post => {
+    const url = (post.permalink || `/blog/${post.slug}/`).toString();
+    const safeUrl = escapeHtml(url);
+    const formattedDate = formatDate(post.date);
+    const authorsText = post.authors.length > 0 ? `By ${post.authors.join(', ')}` : '';
+
+    return `
+<a href="${safeUrl}" class="blog-card">
+  <h3 class="blog-card-title">${escapeHtml(post.title)}</h3>
+  <p class="blog-card-description">${escapeHtml(post.description)}</p>
+  <p class="blog-card-meta">${escapeHtml(authorsText)}${authorsText && formattedDate ? ' • ' : ''}${escapeHtml(formattedDate)}</p>
+  ${post.tags.length > 0 ? `
+    <div class="blog-tags">
+      ${post.tags.map(tag => `<span class="blog-tag">${escapeHtml(tag)}</span>`).join('')}
+    </div>
+  ` : ''}
+</a>`.trim();
+  }).join('\n');
+
+  let blogIndexHtml = blogListTemplate;
+  blogIndexHtml = updateHtmlHeadMeta(blogIndexHtml, {
+    title: 'Blog - Stratum V2',
+    description: 'Latest updates and insights from the Stratum V2 community.'
+  });
+  blogIndexHtml = replaceElementInnerHtmlById(blogIndexHtml, 'blog-grid', cardsHtml || '<p>No blog posts available.</p>');
+  blogIndexHtml = stripAssetScripts(blogIndexHtml, ['blog-', 'highlighting-']);
+
+  const blogIndexPath = join(distDir, 'blog', 'index.html');
+  mkdirSync(join(distDir, 'blog'), { recursive: true });
+  writeFileSync(blogIndexPath, blogIndexHtml);
+
+  // Generate each blog post page.
+  marked.setOptions({ gfm: true, breaks: false });
+
+  for (const post of posts) {
+    const titleSlugger = createSlugger();
+    const safeTitle = escapeHtml(post.title || '');
+    const titleHeading = renderHeadingWithAnchor({
+      depth: 1,
+      id: titleSlugger.slug(post.title || ''),
+      html: safeTitle,
+      text: post.title || '',
+      className: 'blog-post-title'
+    });
+
+    const formattedDate = formatDate(post.date);
+    const authorsText = post.authors.length > 0 ? `By ${post.authors.join(', ')}` : '';
+    const tagsHtml = post.tags.length > 0
+      ? `
+<div class="blog-tags">
+  ${post.tags.map(tag => `<span class="blog-tag">${escapeHtml(tag)}</span>`).join('')}
+</div>`.trim()
+      : '';
+
+    const headerHtml = `
+${titleHeading}
+<p class="blog-post-meta">${escapeHtml(authorsText)}${authorsText && formattedDate ? ' • ' : ''}${escapeHtml(formattedDate)}</p>
+${tagsHtml}`.trim();
+
+    const slugger = createSlugger();
+    const renderer = new marked.Renderer();
+
+    renderer.heading = function(token) {
+      const id = slugger.slug(token.text);
+      const headingHtml = this.parser.parseInline(token.tokens);
+      return renderHeadingWithAnchor({ depth: token.depth, id, html: headingHtml, text: token.text });
+    };
+
+    renderer.image = function(token) {
+      const altText = token.tokens
+        ? this.parser.parseInline(token.tokens, this.parser.textRenderer)
+        : (token.text || '');
+
+      let html = `<img src="${escapeHtml(token.href)}" alt="${escapeHtml(altText)}" loading="lazy" decoding="async"`;
+      if (token.title) html += ` title="${escapeHtml(token.title)}"`;
+      html += '>';
+      return html;
+    };
+
+    let contentHtml = marked.parse(post.markdown, { renderer });
+    contentHtml = processYouTubeEmbeds(contentHtml);
+
+    const fullDescription = post.description || `Blog post: ${post.title}`;
+
+    const pageHtmlVariants = new Set([
+      post.permalink || `/blog/${post.slug}/`,
+      `/blog/${post.slug}/`
+    ]);
+
+    for (const url of pageHtmlVariants) {
+      if (!url) continue;
+      const dirPath = normalizePathToDir(url);
+      if (!dirPath) continue;
+
+      let postHtml = blogPostTemplate;
+      postHtml = updateHtmlHeadMeta(postHtml, { title: `${post.title} - Stratum V2`, description: fullDescription });
+      postHtml = replaceElementInnerHtmlById(postHtml, 'blog-post-header', headerHtml);
+      postHtml = replaceElementInnerHtmlById(postHtml, 'blog-content', contentHtml);
+      postHtml = stripAssetScripts(postHtml, ['blog-', 'highlighting-']);
+
+      const outDir = join(distDir, dirPath);
+      mkdirSync(outDir, { recursive: true });
+      writeFileSync(join(outDir, 'index.html'), postHtml);
+    }
+  }
+}
+
+function processYouTubeEmbeds(html) {
+  const youtubeRegex = /<a href="https?:\/\/(?:www\.)?youtube\.com\/watch\?v=([a-zA-Z0-9_-]+)"[^>]*>.*?<\/a>/g;
+  return String(html).replace(youtubeRegex, (match, videoId) => {
+    return `
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin: 2rem 0;">
+  <iframe
+    src="https://www.youtube-nocookie.com/embed/${escapeHtml(videoId)}"
+    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
+  ></iframe>
+</div>`.trim();
+  });
+}
+
+function rewriteImageHref(href) {
+  if (!href || typeof href !== 'string') return null;
+  if (/^[a-zA-Z][a-zA-Z+.-]*:/.test(href)) return href;
+  if (href.startsWith('/')) return href;
+  const clean = href.replace(/^\.\//, '');
+  return `/content/specification/${clean}`;
+}
+
+function rewriteSpecLinkHref(href, specRepoUrl, filenameToSlug) {
+  if (!href || typeof href !== 'string') return null;
+  if (/^javascript:/i.test(href)) return null;
+
+  if (href.startsWith('#')) return { href, external: false };
+  if (href.startsWith('/')) return { href, external: false };
+
+  if (/^[a-zA-Z][a-zA-Z+.-]*:/.test(href)) {
+    const external = /^https?:/i.test(href);
+    return { href, external };
+  }
+
+  const hashIndex = href.indexOf('#');
+  const pathPart = hashIndex === -1 ? href : href.slice(0, hashIndex);
+  const hash = hashIndex === -1 ? '' : href.slice(hashIndex);
+  const cleanPath = pathPart.replace(/^\.\//, '');
+
+  if (cleanPath.toLowerCase().endsWith('.md')) {
+    const filename = (cleanPath.split('/').pop() || cleanPath).toLowerCase();
+    const slug = filenameToSlug.get(filename);
+    if (slug) return { href: `/specification/${slug}/${hash}`, external: false };
+  }
+
+  return { href: `${specRepoUrl.replace(/\/+$/, '')}/blob/main/${cleanPath}${hash}`, external: true };
+}
+
+function extractToc(markdown) {
+  const toc = [];
+  const tokens = marked.lexer(markdown);
+  const slugger = createSlugger();
+
+  for (const token of tokens) {
+    if (token.type !== 'heading') continue;
+    const id = slugger.slug(token.text);
+    if (token.depth >= 2 && token.depth <= 4) toc.push({ level: token.depth, text: token.text, id });
+  }
+
+  return toc;
+}
+
+function buildSpecNavHtml(pages, toc, currentSlug) {
+  return pages.map(page => {
+    const isActive = page.slug === currentSlug;
+    let html = `
+<div class="spec-nav-item">
+  <a href="/specification/${page.slug}/"
+     class="spec-page-link ${isActive ? 'active' : ''}">
+    ${escapeHtml(page.title)}
+  </a>
+`.trim();
+
+    if (isActive && toc.length > 0) {
+      html += '\n  <div class="spec-toc-container">';
+      html += toc.map(item => `
+    <a href="#${escapeHtml(item.id)}" class="spec-toc-link spec-toc-level-${item.level}">
+      ${escapeHtml(item.text)}
+    </a>
+`.trimEnd()).join('\n');
+      html += '\n  </div>';
+    }
+
+    html += '\n</div>';
+    return html;
+  }).join('\n');
+}
+
+function updateSpecToolbarLinks(html, page, specRepoUrl) {
+  const repo = specRepoUrl.replace(/\/+$/, '');
+  const githubBlobUrl = `${repo}/blob/main/${page.filename}`;
+
+  html = html.replace(
+    /(<a[^>]+id="spec-view-github"[^>]+href=")[^"]*(")/,
+    `$1${escapeHtml(githubBlobUrl)}$2`
+  );
+
+  const discussionUrl = new URL(`${repo}/discussions/new`);
+  discussionUrl.searchParams.set('category', 'q-a');
+  discussionUrl.searchParams.set('title', `Question: ${page.title}`);
+  discussionUrl.searchParams.set('body', `Question about the specification:\n\n${githubBlobUrl}\n\n---\n\n`);
+
+  html = html.replace(
+    /(<a[^>]+id="spec-ask-question"[^>]+href=")[^"]*(")/,
+    `$1${escapeHtml(discussionUrl.toString())}$2`
+  );
+
+  return html;
+}
+
+function generateSpecPages({ distDir, specTemplate, contentDir, specRepoUrl }) {
+  const SPEC_PAGES = [
+    { slug: '00-abstract', title: 'Abstract', filename: '00-Abstract.md' },
+    { slug: '01-motivation', title: 'Motivation', filename: '01-Motivation.md' },
+    { slug: '02-design-goals', title: 'Design Goals', filename: '02-Design-Goals.md' },
+    { slug: '03-protocol-overview', title: 'Protocol Overview', filename: '03-Protocol-Overview.md' },
+    { slug: '04-protocol-security', title: 'Protocol Security', filename: '04-Protocol-Security.md' },
+    { slug: '05-mining-protocol', title: 'Mining Protocol', filename: '05-Mining-Protocol.md' },
+    { slug: '06-job-declaration-protocol', title: 'Job Declaration Protocol', filename: '06-Job-Declaration-Protocol.md' },
+    { slug: '07-template-distribution-protocol', title: 'Template Distribution Protocol', filename: '07-Template-Distribution-Protocol.md' },
+    { slug: '08-message-types', title: 'Message Types', filename: '08-Message-Types.md' },
+    { slug: '09-extensions', title: 'Extensions', filename: '09-Extensions.md' },
+    { slug: '10-discussion', title: 'Discussion', filename: '10-Discussion.md' }
+  ];
+
+  if (!existsSync(contentDir)) return;
+
+  const filenameToSlug = new Map(SPEC_PAGES.map(page => [page.filename.toLowerCase(), page.slug]));
+
+  marked.setOptions({ gfm: true, breaks: false });
+
+  const defaultPage = SPEC_PAGES[0];
+
+  for (const page of SPEC_PAGES) {
+    const filePath = join(contentDir, page.filename);
+    if (!existsSync(filePath)) continue;
+
+    const markdown = readFileSync(filePath, 'utf-8');
+    const toc = extractToc(markdown);
+
+    const headingSlugger = createSlugger();
+    const renderer = new marked.Renderer();
+
+    renderer.heading = function(token) {
+      const id = headingSlugger.slug(token.text);
+      const content = this.parser.parseInline(token.tokens);
+      return renderHeadingWithAnchor({ depth: token.depth, id, html: content, text: token.text });
+    };
+
+    renderer.image = function(token) {
+      const resolved = rewriteImageHref(token.href);
+      if (!resolved) return '';
+
+      const altText = token.tokens
+        ? this.parser.parseInline(token.tokens, this.parser.textRenderer)
+        : (token.text || '');
+
+      let html = `<img src="${escapeHtml(resolved)}" alt="${escapeHtml(altText)}" loading="lazy" decoding="async"`;
+      if (token.title) html += ` title="${escapeHtml(token.title)}"`;
+      html += '>';
+      return html;
+    };
+
+    renderer.link = function(token) {
+      const label = this.parser.parseInline(token.tokens);
+      const rewritten = rewriteSpecLinkHref(token.href, specRepoUrl, filenameToSlug);
+      if (!rewritten) return label;
+
+      let html = `<a href="${escapeHtml(rewritten.href)}"`;
+      if (token.title) html += ` title="${escapeHtml(token.title)}"`;
+      if (rewritten.external) html += ' target="_blank" rel="noopener"';
+      html += `>${label}</a>`;
+      return html;
+    };
+
+    const contentHtml = marked.parse(markdown, { renderer });
+    const navHtml = buildSpecNavHtml(SPEC_PAGES, toc, page.slug);
+
+    let pageHtml = specTemplate;
+    pageHtml = ensureMainScriptTag(pageHtml);
+    pageHtml = updateHtmlHeadMeta(pageHtml, {
+      title: `${page.title} - Specification - Stratum V2`,
+      description: 'Technical specification for the Stratum V2 mining protocol.'
+    });
+
+    pageHtml = updateSpecToolbarLinks(pageHtml, page, specRepoUrl);
+    pageHtml = replaceElementInnerHtmlById(pageHtml, 'spec-nav', navHtml);
+    pageHtml = replaceElementInnerHtmlById(pageHtml, 'spec-content', contentHtml);
+
+    // Static pages don't need client-side rendering/search scripts.
+    pageHtml = stripAssetScripts(pageHtml, ['specification-', 'highlighting-', 'marked', 'core-', 'c-']);
+    pageHtml = injectSpecTitleFilterScript(pageHtml);
+
+    const outDir = join(distDir, 'specification', page.slug);
+    mkdirSync(outDir, { recursive: true });
+    writeFileSync(join(outDir, 'index.html'), pageHtml);
+
+    if (page.slug === defaultPage.slug) {
+      const indexDir = join(distDir, 'specification');
+      mkdirSync(indexDir, { recursive: true });
+      writeFileSync(join(indexDir, 'index.html'), pageHtml);
+    }
+  }
+}
+
+function injectSpecTitleFilterScript(html) {
+  const script = `
+<script>
+  (function () {
+    const input = document.getElementById('spec-search');
+    const nav = document.getElementById('spec-nav');
+    if (!input || !nav) return;
+
+    const items = Array.from(nav.querySelectorAll('.spec-nav-item'));
+    const entries = items.map(item => ({
+      item,
+      text: (item.querySelector('.spec-page-link')?.textContent || '').toLowerCase()
+    }));
+
+    function applyFilter() {
+      const q = input.value.trim().toLowerCase();
+      let visible = 0;
+
+      for (const entry of entries) {
+        const show = !q || entry.text.includes(q);
+        entry.item.style.display = show ? '' : 'none';
+        if (show) visible += 1;
+      }
+
+      nav.dataset.empty = visible === 0 ? '1' : '';
+    }
+
+    input.addEventListener('input', applyFilter, { passive: true });
+    input.addEventListener('search', applyFilter, { passive: true });
+  })();
+</script>
+`.trim();
+
+  if (!html.includes('id="spec-search"') || !html.includes('id="spec-nav"')) return html;
+  if (html.includes('nav.dataset.empty')) return html;
+
+  return html.replace(/<\/body>/i, `\n\n  ${script}\n  </body>`);
+}

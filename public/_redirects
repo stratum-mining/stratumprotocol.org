@@ -1,9 +1,8 @@
-# Blog routes
-/blog            /blog.html            200
-/blog/           /blog.html            200
-/blog/*          /blog-post.html       200
+# Canonical routes (static pages live at /blog/ and /specification/)
+/blog.html          /blog/          301!
+/blog-post.html     /blog/          301!
+/specification.html /specification/ 301!
 
-# Specification routes
-/specification   /specification.html   200
-/specification/  /specification.html   200
-/specification/* /specification.html   200
+# Normalize missing trailing slashes
+/blog              /blog/          301
+/specification     /specification/ 301
