@@ -1,0 +1,11 @@
+# Cache hashed build assets aggressively
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Markdown/content changes occasionally; cache briefly
+/content/*
+  Cache-Control: public, max-age=3600
+
+# HTML should revalidate so deploys update immediately
+/*
+  Cache-Control: public, max-age=0, must-revalidate

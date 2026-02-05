@@ -1,6 +1,6 @@
 import { marked } from 'marked';
-import hljs from 'highlight.js';
 import { escapeHtml, createSlugger, renderHeadingWithAnchor } from './markdown.js';
+import { highlightCodeBlocks } from './highlighting.js';
 
 marked.setOptions({
   gfm: true,
@@ -529,10 +529,7 @@ async function initSpecPage() {
     if (contentElement) {
       contentElement.innerHTML = html;
 
-      // Highlight code blocks
-      contentElement.querySelectorAll('pre code').forEach(block => {
-        hljs.highlightElement(block);
-      });
+      await highlightCodeBlocks(contentElement);
 
       // Smooth-scroll same-page hash links (keeps URL in sync and respects sticky header)
       contentElement.querySelectorAll('a[href^=\"#\"]').forEach(link => {

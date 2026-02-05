@@ -1,16 +1,10 @@
-import { marked } from 'marked';
-import hljs from 'highlight.js';
 import { createSlugger, escapeHtml, renderHeadingWithAnchor } from './markdown.js';
+import { highlightCodeBlocks } from './highlighting.js';
 
 // Permalink mapping for custom URLs
 const PERMALINK_MAP = {
   '/blog/case-study/hashlabs/': 'hashlabs'
 };
-
-marked.setOptions({
-  gfm: true,
-  breaks: false
-});
 
 // Parse YAML frontmatter from markdown
 function parseFrontmatter(markdown) {
@@ -195,6 +189,12 @@ async function initBlogList() {
 // Render single blog post
 async function initBlogPost() {
   try {
+    const { marked } = await import('marked');
+    marked.setOptions({
+      gfm: true,
+      breaks: false
+    });
+
     const slug = getSlugFromURL();
 
     if (!slug) {
@@ -262,14 +262,12 @@ async function initBlogPost() {
     if (contentContainer) {
       contentContainer.innerHTML = html;
 
-      // Apply syntax highlighting
-      contentContainer.querySelectorAll('pre code').forEach(block => {
-        hljs.highlightElement(block);
-      });
+      await highlightCodeBlocks(contentContainer);
 
       // Add lazy loading to images
       contentContainer.querySelectorAll('img').forEach(img => {
         img.setAttribute('loading', 'lazy');
+        img.setAttribute('decoding', 'async');
       });
     }
   } catch (err) {
