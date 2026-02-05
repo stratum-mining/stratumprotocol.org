@@ -1,0 +1,217 @@
+# Stratum V2 网站 - 中文翻译
+# 格式: key = value
+# 以 # 开头的行是注释
+
+# ===================
+# 导航
+# ===================
+nav.features = 特性
+nav.adoption = 采用情况
+nav.supporters = 支持者
+nav.community = 社区
+nav.specification = 技术规范
+nav.blog = 博客
+
+# ===================
+# 首页横幅
+# ===================
+hero.title.prefix = 开放的比特币
+hero.title.highlight = 挖矿
+hero.title.suffix = 标准
+hero.subtitle = Stratum V2 是新一代挖矿协议，让挖矿运营更高效、更盈利、更安全、更私密、更去中心化。
+hero.cta = 开始挖矿
+
+# ===================
+# 统计数据
+# ===================
+stat.bandwidth.value = 70%
+stat.bandwidth.label = 带宽减少
+stat.latency.value = 228x
+stat.latency.label = 延迟降低
+stat.profit.value = 7.4%
+stat.profit.label = 利润增加
+stat.stale.value = ~0%
+stat.stale.label = 过期份额
+stat.encrypted.value = 100%
+stat.encrypted.label = 加密传输
+
+# ===================
+# 功能特性区域
+# ===================
+features.title = 为什么选择 Stratum V2？
+features.intro = Stratum V2 (SV2) 升级了 2012 年推出的 Stratum 挖矿协议 (SV1)，当时挖矿主要是爱好者的活动。SV2 专为现代挖矿设计，消除了 SV1 的低效问题。由 Jan Čapek、Pavel Moravec 和 Matt Corallo 共同设计，现由独立的开源社区维护。
+
+# 功能标签名称
+features.tab.efficiency = 效率
+features.tab.security = 安全
+features.tab.profitability = 盈利能力
+features.tab.privacy = 隐私
+features.tab.autonomy = 自主权
+features.tab.flexibility = 灵活性
+features.tab.compatibility = 兼容性
+features.tab.interoperability = 互操作性
+
+# 效率功能
+features.efficiency.title = 带宽减少约 70%
+features.efficiency.subtitle = 矿池和矿工均可受益
+features.efficiency.body = SV1 的 JSON 消息占用大量带宽，而 SV2 使用精简的二进制格式，降低 CPU 负载，将矿池带宽使用减少约 60%，矿工带宽减少约 70%，降低矿池运营成本，帮助带宽受限的矿工更稳定地运行。
+
+# 安全功能
+features.security.title = 安全性
+features.security.subtitle = 保护收益
+features.security.body = Stratum V2 通过加密与认证保护矿工与矿池之间的通信，抵御中间人攻击（例如替换矿池凭证以劫持算力并重定向工作）。加密传输也让 ISP 或实施大规模路由攻击的对手更难窃听或篡改流量。SV2 还允许矿工自行构建区块模板，提高透明度并减少带外支付。
+
+# 盈利能力功能
+features.profitability.title = 利润增加高达 7.4%
+features.profitability.subtitle = 在实际部署中得到验证
+features.profitability.body = Stratum V2 的技术升级带来可量化的收益提升：更快的模板下发与更低的延迟减少无效工作、让每个区块捕获更多交易费；再结合端到端加密与更快的区块传播等改进，利润最高可提升 7.4%。
+features.profitability.link = 阅读案例研究 →
+
+# 隐私功能
+features.privacy.title = 隐私改进
+features.privacy.subtitle = 防止 ISP 监控
+features.privacy.body = Stratum V2 对挖矿流量进行加密，避免互联网服务提供商（ISP）等网络中介看到明文份额与消息。在 Stratum V1 中，这些数据可能被用来推算矿工算力，并据此估算收益。
+
+# 自主权功能
+features.autonomy.title = 交易选择权
+features.autonomy.subtitle = 矿工选择区块内容
+features.autonomy.body = 当前少数矿池主导着比特币区块空间，有的甚至充当其他矿池的代理。矿池可以选择性地包含或排除交易，带来潜在的审查风险。Stratum V2 使矿工能够自行构建区块模板，将其从被动算力提供者转变为维护比特币抗审查性的积极参与者。
+
+# 灵活性功能
+features.flexibility.title = 灵活性
+features.flexibility.subtitle = 模块化架构
+features.flexibility.body = 一套自由、开源、模块化的基础设施，采用宽松许可证，便于开发者构建与创新。可组合的架构让你只部署所需组件，并能在不扰动现有系统的情况下逐步集成，按需求扩展能力。
+
+# 兼容性功能
+features.compatibility.title = 兼容性
+features.compatibility.subtitle = 无需升级固件
+features.compatibility.body = 协议转换代理使 SV2 矿池能够接入传统 SV1 固件设备。在保持完全向后兼容的前提下，你可以循序渐进地升级基础设施。
+
+# 互操作性功能
+features.interoperability.title = 互操作与中立
+features.interoperability.subtitle = 社区驱动的治理
+features.interoperability.body = 社区治理与清晰的规范确保互操作性，避免供应商锁定与生态碎片化。规范由独立的工作组维护，任何人都可以加入，共同推进挖矿开放标准。
+features.interoperability.wg = 工作组成员
+features.interoperability.viewspec = 查看规范 →
+
+# 可视化标签
+viz.miner = 矿工
+viz.pool = 矿池
+viz.block = 区块
+viz.stratum.v2 = STRATUM V2
+viz.legacy.v1 = 传统 V1
+viz.sv1 = SV1
+viz.sv2 = SV2
+viz.sv2.jd = SV2 + JD
+viz.proxy = 代理
+viz.isp = ISP
+viz.stratum.v2.label = Stratum V2
+viz.legacy.v1.label = 传统 V1
+viz.translation.proxy = 协议转换代理
+
+# 轮播幻灯片 - 盈利能力
+carousel.share.acceptance = 份额接受率
+carousel.share.caption = 借助作业声明，陈旧份额几乎为零
+carousel.latency = 作业延迟
+carousel.latency.caption = 快 93 倍，捕获更多区块交易费
+carousel.propagation = 区块传播时间
+carousel.propagation.caption = 区块传播快 28 倍
+
+# 轮播幻灯片 - 自主权
+carousel.autonomy.sv2.caption = 矿工选择交易并构建区块
+carousel.autonomy.sv1.caption = 矿池控制交易选择和区块构建
+
+# 灵活性模块名称
+module.job.declaration = 作业声明
+module.template.distribution = 模板分发
+module.mining.protocol = 挖矿协议
+
+# ===================
+# 模块化区域
+# ===================
+modularity.title.part1 = 创新所需的
+modularity.title.part2 = 基础模块
+modularity.description = 借助我们开放且文档完备的协议与参考实现（含库与应用），降低复杂度、实现纵向整合，并更高效地构建应用。你可以构建代理、挖矿监控软件、矿池或高效固件。
+
+# 模块名称
+module.stratum.v2 = Stratum V2
+module.rust.libraries = Rust 库
+module.reference.implementation = 参考实现
+module.reference.applications = 参考应用
+module.language.bindings = 语言绑定
+module.docker.support = Docker 支持
+module.clear.specification = 清晰规范
+
+# ===================
+# 应用案例区域
+# ===================
+adoption.title.part1 = SV2
+adoption.title.part2 = 采用情况
+adoption.subtitle = 已被硬件、固件与矿池基础设施领域的行业领先团队测试并投入部署。
+
+# 应用类别
+adoption.category.hardware = 硬件与固件
+adoption.category.pools = 矿池
+adoption.category.testing = 采用与测试
+
+# 应用者
+adopter.auradine.desc = 通过 FluxOS 在所有 ASIC 上原生支持 SV2
+adopter.braiinsos.desc = 原生 Stratum V2 固件支持
+adopter.proto.desc = 已宣布推进 SV2 兼容性工作
+adopter.braiinspool.desc = 生产环境矿池
+adopter.dmnd.desc = 生产环境矿池，支持矿工选择模板
+adopter.hashlabs.desc = V1 与 V2 对比测试现场
+adopter.starkware.desc = 基于 Stratum V2 的零知识证明原型
+adopter.pluto.desc = 正在开发支持 SV2 的挖矿管理软件
+
+# 应用 CTA
+adoption.cta.text = 正在运行 SV2？
+adoption.cta.link = 在 Discord 告诉我们 →
+
+# ===================
+# 支持者区域
+# ===================
+supporters.title.part1 = 支持
+supporters.title.part2 = Stratum V2
+supporters.tab.all = 所有支持者
+supporters.tab.funders = 资助者
+supporters.tab.workinggroup = 工作组
+
+# 工作组信息
+workinggroup.title = 关于工作组
+workinggroup.description = Stratum V2 工作组由社区治理，独立于任何单一机构。我们推动生态协作，加速比特币挖矿领域的无许可创新。
+workinggroup.viewspec = 查看规范
+workinggroup.joinsignal = 加入 Signal 群组
+
+# ===================
+# 社区区域
+# ===================
+community.title = 社区
+community.subtitle = 社区治理与规范确保互操作性，让团队把精力用在创新上，而不是修补兼容性问题。
+
+# GitHub 卡片
+community.github.title = GitHub
+community.github.description = 由行业贡献者以公共产品方式开发的免费开源 Stratum V2 实现。基于 Rust 构建，提供多语言绑定，并包含可供二次开发的库与应用。
+community.github.cta = 探索代码库
+
+# Discord 卡片
+community.discord.title = Discord 社区
+community.discord.description = 我们讨论的中心。加入开发者和矿工，讨论提案、获取支持并进行协作。
+
+# Twitter 卡片
+community.twitter.title = 关注更新
+community.twitter.description = 最新新闻、主题讨论和生态系统公告。
+
+# ===================
+# 语言切换器
+# ===================
+lang.select = 选择语言
+lang.en = English
+lang.zh = 中文
+lang.ru = Русский
+
+# ===================
+# 元数据 / SEO
+# ===================
+meta.title = Stratum V2
+meta.description = 下一代挖矿协议。

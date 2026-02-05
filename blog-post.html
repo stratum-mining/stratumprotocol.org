@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <script>
+      // Immediately set theme to prevent flash - runs before CSS loads
+      (function() {
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+
+    <title>Blog Post - Stratum V2</title>
+    <meta property="og:title" content="Blog Post - Stratum V2" />
+    <meta property="og:description" content="Latest updates from the Stratum V2 community." />
+    <meta property="og:type" content="article" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon/favicon.svg" />
+    <link rel="icon" type="image/png" href="/assets/images/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" href="/assets/images/favicon/favicon.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/assets/images/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="/assets/images/favicon/site.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+      <div class="navbar-container">
+        <a href="/" class="navbar-logo" aria-label="Stratum V2 Home">
+          <img src="/assets/images/sv2-logo.png" alt="Stratum V2" />
+        </a>
+
+        <div class="navbar-links">
+          <a href="/#features">Features</a>
+          <a href="/#sv2-adoption">Adoption</a>
+          <a href="/#supporters">Supporters</a>
+          <a href="/#community">Community</a>
+          <a href="/specification/00-abstract/">Specification</a>
+          <a href="/blog/" class="active">Blog</a>
+        </div>
+
+        <div class="navbar-actions">
+          <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2"></path>
+              <path d="M12 20v2"></path>
+              <path d="m4.93 4.93 1.41 1.41"></path>
+              <path d="m17.66 17.66 1.41 1.41"></path>
+              <path d="M2 12h2"></path>
+              <path d="M20 12h2"></path>
+              <path d="m6.34 17.66-1.41 1.41"></path>
+              <path d="m19.07 4.93-1.41 1.41"></path>
+            </svg>
+            <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+            </svg>
+          </button>
+
+          <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+            <svg class="hamburger-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+            <svg class="close-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div class="mobile-menu" id="mobile-menu">
+        <nav class="mobile-menu-nav">
+          <a href="/#features">Features</a>
+          <a href="/#sv2-adoption">Adoption</a>
+          <a href="/#supporters">Supporters</a>
+          <a href="/#community">Community</a>
+          <a href="/specification/00-abstract/">Specification</a>
+          <a href="/blog/" class="active">Blog</a>
+        </nav>
+      </div>
+    </nav>
+
+    <!-- Blog Post Container -->
+    <article class="blog-post-container">
+      <!-- Post Header -->
+      <header class="blog-post-header" id="blog-post-header">
+        <!-- Content will be populated by JavaScript -->
+      </header>
+
+      <!-- Post Content -->
+      <div class="blog-content" id="blog-content">
+        <p>Loading post...</p>
+      </div>
+
+      <!-- Back Link -->
+      <a href="/blog/" class="blog-back-link">← Back to Blog</a>
+    </article>
+
+    <script type="module" src="/src/blog.js"></script>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+# 8. Message Types
+
+| Message Type (8-bit)           | channel_msg bit | Message Name                       |
+| ------------------------------ | --------------- | ---------------------------------- |
+| 0x00                           | 0               | SetupConnection                    |
+| 0x01                           | 0               | SetupConnection.Success            |
+| 0x02                           | 0               | SetupConnection.Error              |
+| 0x03                           | 1               | ChannelEndpointChanged             |
+| 0x04                           | 0               | Reconnect                          |
+| Mining Protocol                |                 |                                    |
+| 0x10                           | 0               | OpenStandardMiningChannel          |
+| 0x11                           | 0               | OpenStandardMiningChannel.Success  |
+| 0x12                           | 0               | OpenMiningChannel.Error            |
+| 0x13                           | 0               | OpenExtendedMiningChannel          |
+| 0x14                           | 0               | OpenExtendedMiningChannel.Success  |
+| 0x15                           | 0               | NewMiningJob                       |
+| 0x16                           | 1               | UpdateChannel                      |
+| 0x17                           | 1               | UpdateChannel.Error                |
+| 0x18                           | 1               | CloseChannel                       |
+| 0x19                           | 1               | SetExtranoncePrefix                |
+| 0x1a                           | 1               | SubmitSharesStandard               |
+| 0x1b                           | 1               | SubmitSharesExtended               |
+| 0x1c                           | 1               | SubmitShares.Success               |
+| 0x1d                           | 1               | SubmitShares.Error                 |
+| 0x1e                           | 1               | Reserved                           |
+| 0x1f                           | 1               | NewExtendedMiningJob               |
+| 0x20                           | 1               | SetNewPrevHash                     |
+| 0x21                           | 1               | SetTarget                          |
+| 0x22                           | 0               | SetCustomMiningJob                 |
+| 0x23                           | 0               | SetCustomMiningJob.Success         |
+| 0x24                           | 0               | SetCustomMiningJob.Error           |
+| 0x25                           | 0               | SetGroupChannel                    |
+| Job Declaration Protocol       |                 |                                    |
+| 0x50                           | 0               | AllocateMiningJobToken             |
+| 0x51                           | 0               | AllocateMiningJobToken.Success     |
+| 0x55                           | 0               | ProvideMissingTransactions         |
+| 0x56                           | 0               | ProvideMissingTransactions.Success |
+| 0x57                           | 0               | DeclareMiningJob                   |
+| 0x58                           | 0               | DeclareMiningJob.Success           |
+| 0x59                           | 0               | DeclareMiningJob.Error             |
+| 0x60                           | 1               | PushSolution                       |
+| Template Distribution Protocol |                 |                                    |
+| 0x70                           | 0               | CoinbaseOutputConstraints          |
+| 0x71                           | 0               | NewTemplate                        |
+| 0x72                           | 0               | SetNewPrevHash                     |
+| 0x73                           | 0               | RequestTransactionData             |
+| 0x74                           | 0               | RequestTransactionData.Success     |
+| 0x75                           | 0               | RequestTransactionData.Error       |
+| 0x76                           | 0               | SubmitSolution                     |
