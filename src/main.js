@@ -120,8 +120,8 @@ function initLanguageSwitcher() {
 // THEME TOGGLE
 // ====================================
 function initThemeToggle() {
-  const toggle = document.getElementById('theme-toggle');
-  if (!toggle) return;
+  const toggles = document.querySelectorAll('.theme-toggle');
+  if (toggles.length === 0) return;
 
   const html = document.documentElement;
 
@@ -135,10 +135,12 @@ function initThemeToggle() {
     }
   });
 
-  toggle.addEventListener('click', () => {
-    html.classList.toggle('dark');
-    const isDark = html.classList.contains('dark');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  toggles.forEach((toggle) => {
+    toggle.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      const isDark = html.classList.contains('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
   });
 }
 

@@ -188,6 +188,13 @@ img {
   gap: 1rem;
 }
 
+@media (max-width: 1023px) {
+  .navbar-actions .lang-switcher,
+  .navbar-actions .theme-toggle {
+    display: none;
+  }
+}
+
 /* Language Switcher */
 .lang-switcher {
   position: relative;
@@ -361,6 +368,20 @@ img {
   flex-direction: column;
   padding: 2rem 1.5rem;
   gap: 0.5rem;
+}
+
+.mobile-menu-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0 1.5rem 1.5rem;
+}
+
+.mobile-menu-controls .theme-toggle {
+  padding: 0.65rem;
+  border-radius: 9999px;
+  border: 1px solid hsl(var(--border));
+  background: hsl(var(--background));
 }
 
 .mobile-menu-nav a {
@@ -2640,6 +2661,18 @@ img {
   white-space: nowrap;
 }
 
+@media (max-width: 480px) {
+  .building-blocks {
+    max-width: 320px;
+  }
+
+  .block-label {
+    white-space: normal;
+    max-width: 90px;
+    line-height: 1.2;
+  }
+}
+
 @media (min-width: 768px) {
   .block-label {
     font-size: 0.75rem;
@@ -2777,6 +2810,12 @@ img {
   border-top: 1px solid hsl(var(--border));
 }
 
+@media (max-width: 768px) {
+  .supporters {
+    padding: 5rem 1.25rem;
+  }
+}
+
 .supporters h2 {
   font-size: 3rem;
   font-weight: 600;
@@ -2798,6 +2837,21 @@ img {
   justify-content: center;
   gap: 0.5rem;
   margin-bottom: 4rem;
+}
+
+@media (max-width: 600px) {
+  .supporter-tabs {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .supporter-tab {
+    width: 100%;
+    justify-content: center;
+    padding: 0.75rem 1rem;
+  }
 }
 
 .supporter-tab {
@@ -3188,6 +3242,16 @@ img {
   overflow: hidden;
 }
 
+@media (max-width: 768px) {
+  .community {
+    padding: 5rem 1.25rem;
+  }
+
+  .community-header {
+    margin-bottom: 3.5rem;
+  }
+}
+
 .community-bg {
   position: absolute;
   top: 50%;
@@ -3270,6 +3334,22 @@ img {
 .community-card.github {
   background: rgba(113, 113, 122, 0.05);
   border: 1px solid rgba(113, 113, 122, 0.2);
+}
+
+@media (max-width: 600px) {
+  .community-card.github .community-card-content {
+    gap: 1rem;
+  }
+
+  .community-card.github .community-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .community-card.github .community-info p {
+    margin-top: 0.75rem;
+  }
 }
 
 .community-card.github:hover {
