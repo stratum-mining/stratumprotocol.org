@@ -87,32 +87,36 @@ async function initDevTranslations() {
 // LANGUAGE SWITCHER
 // ====================================
 function initLanguageSwitcher() {
-  const toggle = document.getElementById('lang-toggle');
-  const dropdown = document.getElementById('lang-dropdown');
+  const switchers = document.querySelectorAll('.lang-switcher');
+  if (switchers.length === 0) return;
 
-  if (!toggle || !dropdown) return;
+  switchers.forEach((switcher) => {
+    const toggle = switcher.querySelector('.lang-toggle');
+    const dropdown = switcher.querySelector('.lang-dropdown');
+    if (!toggle || !dropdown) return;
 
-  toggle.addEventListener('click', (e) => {
-    e.stopPropagation();
-    const isOpen = dropdown.classList.contains('active');
-    dropdown.classList.toggle('active');
-    toggle.setAttribute('aria-expanded', !isOpen);
-  });
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = dropdown.classList.contains('active');
+      dropdown.classList.toggle('active');
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+    });
 
-  // Close dropdown when clicking outside
-  document.addEventListener('click', (e) => {
-    if (!toggle.contains(e.target) && !dropdown.contains(e.target)) {
-      dropdown.classList.remove('active');
-      toggle.setAttribute('aria-expanded', 'false');
-    }
-  });
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!switcher.contains(e.target)) {
+        dropdown.classList.remove('active');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
 
-  // Close dropdown on Escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && dropdown.classList.contains('active')) {
-      dropdown.classList.remove('active');
-      toggle.setAttribute('aria-expanded', 'false');
-    }
+    // Close dropdown on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && dropdown.classList.contains('active')) {
+        dropdown.classList.remove('active');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
   });
 }
 
@@ -494,11 +498,23 @@ function initGlobalClickHandler() {
       if (anchor.classList.contains('heading-anchor')) return;
 
       const href = anchor.getAttribute('href');
-      if (!href || href === '#' || !href.startsWith('#')) return;
+      if (!href || href === '#') return;
+
+      let hash = null;
+      if (href.startsWith('#')) {
+        hash = href;
+      } else if (href.startsWith('/#')) {
+        const targetUrl = new URL(href, window.location.origin);
+        if (targetUrl.pathname === window.location.pathname) {
+          hash = targetUrl.hash;
+        }
+      }
+
+      if (!hash) return;
 
       let targetElement = null;
       try {
-        targetElement = document.querySelector(href);
+        targetElement = document.querySelector(hash);
       } catch {
         // Invalid selector
         return;
@@ -676,6 +692,46 @@ function initGlobalKeyboardHandler() {
 }
 
 // ====================================
+// ACTIVE NAV LINK
+// ====================================
+function initActiveNavLink() {
+  const path = window.location.pathname;
+  let targetHref = null;
+
+  if (path.startsWith('/blog')) {
+    targetHref = '/blog/';
+  } else if (path.startsWith('/specification')) {
+    targetHref = '/specification/00-abstract/';
+  }
+
+  if (!targetHref) return;
+
+  document.querySelectorAll('.navbar-links a, .mobile-menu-nav a').forEach((link) => {
+    if (link.getAttribute('href') === targetHref) {
+      link.classList.add('active');
+    } else {
+      link.classList.remove('active');
+    }
+  });
+}
+
+// ====================================
+// NAV ANCHOR NORMALIZATION
+// ====================================
+function initNavAnchors() {
+  const path = window.location.pathname;
+  const isContentPage = path.startsWith('/blog') || path.startsWith('/specification');
+
+  if (isContentPage) return;
+
+  document.querySelectorAll('.navbar-links a[href^="/#"], .mobile-menu-nav a[href^="/#"]').forEach((link) => {
+    const href = link.getAttribute('href');
+    if (!href) return;
+    link.setAttribute('href', href.replace('/#', '#'));
+  });
+}
+
+// ====================================
 // INITIALIZE ALL
 // ====================================
 function runWhenIdle(callback, timeout = 2000) {
@@ -691,6 +747,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   initLanguageSwitcher();
   initThemeToggle();
   initMobileMenu();
+  initNavAnchors();
+  initActiveNavLink();
   initGlobalClickHandler();
   initGlobalKeyboardHandler();
 

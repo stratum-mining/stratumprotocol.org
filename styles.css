@@ -377,11 +377,21 @@ img {
   padding: 0 1.5rem 1.5rem;
 }
 
+.mobile-menu-controls .lang-toggle,
 .mobile-menu-controls .theme-toggle {
   padding: 0.65rem;
   border-radius: 9999px;
   border: 1px solid hsl(var(--border));
   background: hsl(var(--background));
+}
+
+.mobile-menu-controls .lang-switcher {
+  position: relative;
+}
+
+.mobile-menu-controls .lang-dropdown {
+  right: auto;
+  left: 0;
 }
 
 .mobile-menu-nav a {
@@ -3338,13 +3348,36 @@ img {
 
 @media (max-width: 600px) {
   .community-card.github .community-card-content {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      "icon info"
+      "cta cta";
+    column-gap: 0.75rem;
+    row-gap: 1rem;
+    align-items: start;
+  }
+
+  .community-card.github .community-icon {
+    grid-area: icon;
+    margin-bottom: 0;
+  }
+
+  .community-card.github .community-info {
+    grid-area: info;
+  }
+
+  .community-card.github .community-cta {
+    grid-area: cta;
+    margin-top: 0;
+  }
+
+  .community-card.github .community-card-content {
     gap: 1rem;
   }
 
   .community-card.github .community-info {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
+    display: block;
   }
 
   .community-card.github .community-info p {

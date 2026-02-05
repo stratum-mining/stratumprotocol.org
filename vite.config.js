@@ -39,6 +39,13 @@ export default defineConfig({
       inputFiles: ['index.html']
     }),
     {
+      name: 'nav-partial',
+      transformIndexHtml(html) {
+        const nav = loadPartial('nav');
+        return html.replace('<!-- NAV_PARTIAL -->', nav);
+      }
+    },
+    {
       name: 'blog-routing',
       configureServer(server) {
         server.middlewares.use((req, res, next) => {
@@ -187,6 +194,14 @@ export default defineConfig({
     }
   ]
 });
+
+function loadPartial(name) {
+  const partialPath = join('.', 'src', 'partials', `${name}.html`);
+  if (!existsSync(partialPath)) {
+    throw new Error(`Missing partial: ${partialPath}`);
+  }
+  return readFileSync(partialPath, 'utf-8');
+}
 
 function stripAssetScripts(html, prefixes) {
   const safePrefixes = prefixes.map(prefix => prefix.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&'));
