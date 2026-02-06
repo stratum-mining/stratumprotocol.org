@@ -657,6 +657,83 @@ function initMobileMenu() {
 }
 
 // ====================================
+// WIZARD MODAL
+// ====================================
+let wizardOverlay = null;
+let wizardUnmount = null;
+let previousWizardOverflow = null;
+
+function openWizardModal() {
+  if (!wizardOverlay) {
+    wizardOverlay = document.createElement('div');
+    wizardOverlay.className = 'wizard-overlay';
+    wizardOverlay.setAttribute('role', 'dialog');
+    wizardOverlay.setAttribute('aria-modal', 'true');
+    wizardOverlay.setAttribute('aria-label', 'Start Mining Wizard');
+    wizardOverlay.innerHTML = `
+      <div class="wizard-modal">
+        <div class="wizard-modal-header">
+          <span class="wizard-modal-title">Start Mining with Stratum V2</span>
+          <button class="wizard-modal-close" aria-label="Close wizard">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+        <div data-wizard-container></div>
+      </div>
+    `;
+    document.body.appendChild(wizardOverlay);
+
+    wizardOverlay.addEventListener('click', (e) => {
+      if (e.target === wizardOverlay) closeWizardModal();
+    });
+
+    wizardOverlay.querySelector('.wizard-modal-close')
+      .addEventListener('click', closeWizardModal);
+  }
+
+  previousWizardOverflow = document.body.style.overflow;
+  document.body.style.overflow = 'hidden';
+  wizardOverlay.classList.add('active');
+
+  const container = wizardOverlay.querySelector('[data-wizard-container]');
+  import('./wizard-island.jsx')
+    .then(({ mountWizard, unmountWizard }) => {
+      wizardUnmount = unmountWizard;
+      mountWizard(container);
+    })
+    .catch((err) => {
+      console.error('Failed to load wizard:', err);
+      container.textContent = 'Failed to load the wizard. Please try again.';
+    });
+}
+
+function closeWizardModal() {
+  if (!wizardOverlay) return;
+
+  wizardOverlay.classList.remove('active');
+  document.body.style.overflow = previousWizardOverflow ?? '';
+  previousWizardOverflow = null;
+
+  setTimeout(() => {
+    if (wizardUnmount && wizardOverlay && !wizardOverlay.classList.contains('active')) {
+      wizardUnmount();
+    }
+  }, 300);
+}
+
+function initWizardModal() {
+  const btn = document.getElementById('start-mining-btn');
+  if (!btn) return;
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    openWizardModal();
+  });
+}
+
+// ====================================
 // UNIFIED KEYBOARD HANDLER
 // ====================================
 function initGlobalKeyboardHandler() {
@@ -665,6 +742,12 @@ function initGlobalKeyboardHandler() {
 
   document.addEventListener('keydown', (e) => {
     if (e.key !== 'Escape') return;
+
+    // Close wizard modal (highest priority)
+    if (wizardOverlay?.classList.contains('active')) {
+      closeWizardModal();
+      return;
+    }
 
     // Close lightbox
     if (lightboxOverlay?.classList.contains('active')) {
@@ -742,6 +825,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   initActiveNavLink();
   initGlobalClickHandler();
   initGlobalKeyboardHandler();
+  initWizardModal();
 
   runWhenIdle(() => {
     initFeatureTabs();
