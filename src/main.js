@@ -338,7 +338,7 @@ function initSupporterTabs() {
   // Categories: "funder" = financial supporters, "workingGroup" = WG members
   // Supporters without these categories still appear in "All"
   const supporters = [
-    { name: "Auradine", logo: "/assets/logos/auradine.svg", website: "https://auradine.com/", categories: ["workingGroup"] },
+    { name: "Auradine", logo: "/assets/logos/auradine.png", website: "https://auradine.com/", categories: ["workingGroup"] },
     { name: "Bitmex", logo: "/assets/logos/bitmex-logo.svg", website: "https://www.bitmex.com/", categories: [] },
     { name: "Braiins", logo: "/assets/logos/braiins-logo.svg", website: "https://braiins.com/", categories: ["workingGroup"] },
     { name: "Btrust", logo: "/assets/logos/btrust.svg", website: "https://www.btrust.tech/", categories: ["funder"] },
@@ -358,15 +358,6 @@ function initSupporterTabs() {
       return supporters;
     }
     return supporters.filter(s => s.categories.includes(tabId));
-  }
-
-  function escapeHtml(str) {
-    return String(str)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#39;');
   }
 
   function handleImageError(img, supporterName) {

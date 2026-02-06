@@ -1,70 +1,11 @@
 import { createSlugger, escapeHtml, renderHeadingWithAnchor } from './markdown.js';
 import { highlightCodeBlocks } from './highlighting.js';
+import { parseFrontmatter, formatDate } from './utils.js';
 
 // Permalink mapping for custom URLs
 const PERMALINK_MAP = {
   '/blog/case-study/hashlabs/': 'hashlabs'
 };
-
-// Parse YAML frontmatter from markdown
-function parseFrontmatter(markdown) {
-  const frontmatterRegex = /^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/;
-  const match = markdown.match(frontmatterRegex);
-
-  if (!match) {
-    return { frontmatter: {}, content: markdown };
-  }
-
-  const frontmatterText = match[1];
-  const content = match[2];
-
-  // Simple YAML parser (handles our specific format)
-  const frontmatter = {};
-  const lines = frontmatterText.split('\n');
-  let currentKey = null;
-  let currentArray = null;
-
-  lines.forEach(line => {
-    const trimmed = line.trim();
-    if (!trimmed) return;
-
-    // Handle array items
-    if (trimmed.startsWith('- ')) {
-      if (currentArray) {
-        currentArray.push(trimmed.substring(2).trim());
-      }
-      return;
-    }
-
-    // Handle key-value pairs
-    const colonIndex = trimmed.indexOf(':');
-    if (colonIndex > -1) {
-      const key = trimmed.substring(0, colonIndex).trim();
-      const value = trimmed.substring(colonIndex + 1).trim();
-
-      if (value) {
-        // Simple value (remove quotes if present)
-        frontmatter[key] = value.replace(/^["']|["']$/g, '');
-        currentKey = null;
-        currentArray = null;
-      } else {
-        // Start of array
-        currentKey = key;
-        currentArray = [];
-        frontmatter[key] = currentArray;
-      }
-    }
-  });
-
-  return { frontmatter, content };
-}
-
-// Format date string
-function formatDate(dateString) {
-  const date = new Date(dateString);
-  const options = { year: 'numeric', month: 'long', day: 'numeric' };
-  return date.toLocaleDateString('en-US', options);
-}
 
 // Get slug from URL
 function getSlugFromURL() {

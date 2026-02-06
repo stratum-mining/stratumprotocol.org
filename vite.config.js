@@ -4,6 +4,7 @@ import { join } from 'path';
 import i18nPlugin from './vite-plugin-i18n.js';
 import { marked } from 'marked';
 import { escapeHtml, createSlugger, renderHeadingWithAnchor } from './src/markdown.js';
+import { parseFrontmatter, formatDate } from './src/utils.js';
 
 export default defineConfig({
   root: '.',
@@ -308,55 +309,6 @@ function indentHtml(html, indent) {
     .split('\n')
     .map(line => (line.trim().length === 0 ? '' : indent + line))
     .join('\n');
-}
-
-function parseFrontmatter(markdown) {
-  const frontmatterRegex = /^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/;
-  const match = String(markdown).match(frontmatterRegex);
-
-  if (!match) {
-    return { frontmatter: {}, content: String(markdown) };
-  }
-
-  const frontmatterText = match[1];
-  const content = match[2];
-
-  const frontmatter = {};
-  const lines = frontmatterText.split('\n');
-  let currentArray = null;
-
-  lines.forEach(line => {
-    const trimmed = line.trim();
-    if (!trimmed) return;
-
-    if (trimmed.startsWith('- ')) {
-      if (currentArray) currentArray.push(trimmed.substring(2).trim());
-      return;
-    }
-
-    const colonIndex = trimmed.indexOf(':');
-    if (colonIndex <= 0) return;
-
-    const key = trimmed.substring(0, colonIndex).trim();
-    const value = trimmed.substring(colonIndex + 1).trim();
-
-    if (value) {
-      frontmatter[key] = value.replace(/^["']|["']$/g, '');
-      currentArray = null;
-      return;
-    }
-
-    currentArray = [];
-    frontmatter[key] = currentArray;
-  });
-
-  return { frontmatter, content };
-}
-
-function formatDate(dateString) {
-  const date = new Date(dateString);
-  if (Number.isNaN(date.getTime())) return escapeHtml(dateString);
-  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 }
 
 function normalizePathToDir(urlPath) {
