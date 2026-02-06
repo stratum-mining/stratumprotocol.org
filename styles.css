@@ -4579,10 +4579,11 @@ img {
   width: 100%;
   max-width: 72rem;
   margin: 2rem auto;
-  background: #020617;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 0.5rem;
+  background: hsl(var(--background));
+  border: 1px solid hsl(var(--border));
+  border-radius: 0.75rem;
   overflow: hidden;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.35);
 }
 
 .wizard-modal-header {
@@ -4590,15 +4591,15 @@ img {
   justify-content: space-between;
   align-items: center;
   padding: 1.25rem 1.5rem 0.5rem;
-  background: #020617;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: hsl(var(--background));
+  border-bottom: 1px solid hsl(var(--border));
   position: sticky;
   top: 0;
   z-index: 10;
 }
 
 .wizard-modal-title {
-  color: #f8fafc;
+  color: hsl(var(--foreground));
   font-size: 1.25rem;
   font-family: 'JetBrains Mono', 'Inter', monospace;
   font-weight: 500;
@@ -4607,7 +4608,7 @@ img {
 .wizard-modal-close {
   background: none;
   border: none;
-  color: #9ca3af;
+  color: hsl(var(--muted-foreground));
   cursor: pointer;
   padding: 0.25rem;
   display: flex;
@@ -4618,55 +4619,39 @@ img {
 }
 
 .wizard-modal-close:hover {
-  color: #e5e7eb;
+  color: hsl(var(--foreground));
 }
 
-/* Wizard container — CSS variables and typography overrides for sv2-wizard */
+/* Wizard container — scoped design tokens for sv2-wizard */
 [data-wizard-container] {
-  --primary: #22d3ee;
-  --primary-foreground: #020617;
-  --muted: rgba(255, 255, 255, 0.08);
-  --muted-foreground: #94a3b8;
-  --card: rgba(15, 23, 42, 0.75);
-  --card-foreground: #f8fafc;
-  --border: rgba(148, 163, 184, 0.2);
-  --background: #020617;
+  --card-foreground: var(--foreground);
+  --primary-foreground: 0 0% 100%;
+  --input: var(--border);
+  --ring: var(--primary);
+  --success: 142 76% 36%;
+  --success-foreground: 142 76% 20%;
+  --info: 217 91% 60%;
+  --info-foreground: 217 91% 30%;
+  --warning: 38 92% 50%;
+  --warning-foreground: 38 92% 25%;
 
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  color: #f8fafc;
+  color: hsl(var(--foreground));
   font-size: 1rem;
   line-height: 1.5;
   padding: 1.5rem;
-
-  background:
-    radial-gradient(circle at top, rgba(15, 118, 110, 0.35), transparent 55%),
-    radial-gradient(circle at bottom, rgba(30, 64, 175, 0.35), transparent 50%),
-    #020617;
+  background: hsl(var(--background));
 }
 
-/* Reset typography within wizard so Tailwind classes take effect */
-[data-wizard-container] h1,
-[data-wizard-container] h2,
-[data-wizard-container] h3,
-[data-wizard-container] h4,
-[data-wizard-container] h5,
-[data-wizard-container] h6 {
-  font-size: inherit;
-  line-height: inherit;
-  font-weight: inherit;
-  margin: 0;
+.dark [data-wizard-container] {
+  --primary-foreground: 0 0% 0%;
+  --success: 142 76% 46%;
+  --success-foreground: 142 76% 85%;
+  --info: 217 91% 65%;
+  --info-foreground: 217 91% 85%;
+  --warning: 38 92% 55%;
+  --warning-foreground: 38 92% 85%;
 }
-
-/* Tailwind text size overrides */
-[data-wizard-container] .text-xs { font-size: 0.75rem !important; line-height: 1rem !important; }
-[data-wizard-container] .text-sm { font-size: 0.875rem !important; line-height: 1.25rem !important; }
-[data-wizard-container] .text-base { font-size: 1rem !important; line-height: 1.5rem !important; }
-[data-wizard-container] .text-lg { font-size: 1.125rem !important; line-height: 1.75rem !important; }
-[data-wizard-container] .text-xl { font-size: 1.25rem !important; line-height: 1.75rem !important; }
-[data-wizard-container] .text-2xl { font-size: 1.5rem !important; line-height: 2rem !important; }
-[data-wizard-container] .text-3xl { font-size: 1.875rem !important; line-height: 2.25rem !important; }
-[data-wizard-container] .text-4xl { font-size: 2.25rem !important; line-height: 2.5rem !important; }
-[data-wizard-container] .text-5xl { font-size: 3rem !important; line-height: 1 !important; }
 
 /* Interactive elements */
 [data-wizard-container] button:not(:disabled),
@@ -4679,30 +4664,6 @@ img {
 [data-wizard-container] svg {
   display: inline-block;
   flex-shrink: 0;
-}
-
-/* Muted background variants */
-[data-wizard-container] .bg-muted\/50,
-[data-wizard-container] .bg-muted\/30 {
-  background-color: rgba(255, 255, 255, 0.08) !important;
-}
-
-/* Code block visibility */
-[data-wizard-container] pre,
-[data-wizard-container] code,
-[data-wizard-container] pre code {
-  color: #f8fafc !important;
-}
-
-[data-wizard-container] pre[class*="text-"],
-[data-wizard-container] code[class*="text-"] {
-  color: #f8fafc !important;
-}
-
-[data-wizard-container] .bg-black\/50 pre,
-[data-wizard-container] .bg-black\/50 code,
-[data-wizard-container] .bg-black\/50 pre code {
-  color: #f8fafc !important;
 }
 
 /* Wizard modal responsive */
