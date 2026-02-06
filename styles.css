@@ -696,13 +696,19 @@ img {
    FEATURES SECTION
    ==================================== */
 .features {
-  padding: 8rem 1.5rem;
+  padding: 7rem 1.5rem;
   background: hsl(var(--background));
   border-top: 1px solid hsl(var(--border));
 }
 
+@media (max-width: 768px) {
+  .features {
+    padding: 4.5rem 1.25rem;
+  }
+}
+
 .features-header {
-  margin-bottom: 6rem;
+  margin-bottom: 4rem;
   text-align: center;
 }
 
@@ -2423,7 +2429,7 @@ img {
    ==================================== */
 .modularity {
   position: relative;
-  padding: 8rem 1.5rem;
+  padding: 7rem 1.5rem;
   background: hsl(var(--background));
   border-top: 1px solid hsl(var(--border));
   overflow: hidden;
@@ -2431,7 +2437,7 @@ img {
 
 @media (max-width: 768px) {
   .modularity {
-    padding: 5rem 1.25rem;
+    padding: 4.5rem 1.25rem;
   }
 }
 
@@ -2821,7 +2827,7 @@ img {
    SUPPORTERS SECTION
    ==================================== */
 .supporters {
-  padding: 8rem 1.5rem;
+  padding: 7rem 1.5rem;
   background: hsl(var(--background));
   border-top: 1px solid hsl(var(--border));
 }
@@ -3055,15 +3061,21 @@ img {
    SV2 ADOPTION SECTION
    ==================================== */
 .sv2-adoption {
-  padding: 8rem 1.5rem;
+  padding: 7rem 1.5rem;
   background: hsl(var(--background));
   border-top: 1px solid hsl(var(--border));
+}
+
+@media (max-width: 768px) {
+  .sv2-adoption {
+    padding: 4.5rem 1.25rem;
+  }
 }
 
 /* Header */
 .sv2-adoption-header {
   text-align: center;
-  margin-bottom: 5rem;
+  margin-bottom: 4rem;
 }
 
 .sv2-adoption-header h2 {
@@ -3253,18 +3265,19 @@ img {
    ==================================== */
 .community {
   position: relative;
-  padding: 8rem 1.5rem;
+  padding: 7rem 1.5rem;
   background: hsl(var(--background));
+  border-top: 1px solid hsl(var(--border));
   overflow: hidden;
 }
 
 @media (max-width: 768px) {
   .community {
-    padding: 5rem 1.25rem;
+    padding: 4.5rem 1.25rem;
   }
 
   .community-header {
-    margin-bottom: 3.5rem;
+    margin-bottom: 2.5rem;
   }
 }
 
@@ -3283,7 +3296,7 @@ img {
 
 .community-header {
   text-align: center;
-  margin-bottom: 6rem;
+  margin-bottom: 4rem;
   position: relative;
   z-index: 10;
 }
