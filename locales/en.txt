@@ -114,7 +114,7 @@ viz.translation.proxy = TRANSLATION PROXY
 carousel.share.acceptance = Share Acceptance Rate
 carousel.share.caption = Near-zero stale shares with Job Declaration
 carousel.latency = Job Latency
-carousel.latency.caption = 93× faster capture more transaction fees
+carousel.latency.caption = Job latency impacts how fast the new job is received from the Pool
 carousel.propagation = Block Propagation Time
 carousel.propagation.caption = 28× faster block propagation
 

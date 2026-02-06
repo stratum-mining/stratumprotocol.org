@@ -113,7 +113,7 @@ viz.translation.proxy = 协议转换代理
 carousel.share.acceptance = 份额接受率
 carousel.share.caption = 借助作业声明，陈旧份额几乎为零
 carousel.latency = 作业延迟
-carousel.latency.caption = 快 93 倍，捕获更多区块交易费
+carousel.latency.caption = 作业延迟会影响矿工从矿池接收新作业的速度。
 carousel.propagation = 区块传播时间
 carousel.propagation.caption = 区块传播快 28 倍
 

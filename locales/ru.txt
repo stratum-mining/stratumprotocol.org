@@ -113,7 +113,7 @@ viz.translation.proxy = ПРОКСИ-ПЕРЕВОДЧИК
 carousel.share.acceptance = Доля принятых шаров
 carousel.share.caption = Почти нулевой уровень устаревших шаров с Job Declaration
 carousel.latency = Задержка заданий
-carousel.latency.caption = В 93 раза быстрее больше комиссий в блоке
+carousel.latency.caption = Задержка задания влияет на то, как быстро майнер получает новое задание от пула.
 carousel.propagation = Время распространения блока
 carousel.propagation.caption = В 28 раз быстрее распространение блока
 
