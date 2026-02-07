@@ -7,6 +7,11 @@ import { marked } from 'marked';
 import { escapeHtml, createSlugger, renderHeadingWithAnchor } from './src/markdown.js';
 import { parseFrontmatter, formatDate } from './src/utils.js';
 
+const SPEC_SUBMODULE_PATH = join('src', 'specification');
+const SPEC_SUBMODULE_LABEL = 'src/specification';
+const SPEC_DIST_CONTENT_PATH = join('dist', 'content', 'specification');
+const SPEC_PUBLIC_BASE_PATH = '/content/specification';
+
 export default defineConfig({
   root: '.',
   publicDir: 'public',
@@ -110,10 +115,10 @@ export default defineConfig({
         }
 
         // Specification markdown + assets (avoid copying repo metadata like .git/.github/scripts)
-        const specSrc = join('content', 'specification');
+        const specSrc = SPEC_SUBMODULE_PATH;
         if (existsSync(specSrc)) {
           try {
-            const specDest = join('dist', 'content', 'specification');
+            const specDest = SPEC_DIST_CONTENT_PATH;
             mkdirSync(specDest, { recursive: true });
 
             let mdFileCount = 0;
@@ -126,7 +131,7 @@ export default defineConfig({
             }
 
             if (mdFileCount === 0) {
-              errors.push('No specification markdown files found in content/specification');
+              errors.push(`No specification markdown files found in ${SPEC_SUBMODULE_LABEL}`);
             }
 
             // Copy asset directories
@@ -140,7 +145,7 @@ export default defineConfig({
             errors.push(`Specification content: ${err.message}`);
           }
         } else {
-          errors.push('Specification content directory not found: content/specification');
+          errors.push(`Specification content directory not found: ${SPEC_SUBMODULE_LABEL}`);
         }
 
         // Report errors
@@ -191,7 +196,7 @@ export default defineConfig({
         generateSpecPages({
           distDir,
           specTemplate,
-          contentDir: join('.', 'content', 'specification'),
+          contentDir: join('.', SPEC_SUBMODULE_PATH),
           specRepoUrl: 'https://github.com/stratum-mining/sv2-spec'
         });
       }
@@ -502,7 +507,7 @@ function rewriteImageHref(href) {
   if (/^[a-zA-Z][a-zA-Z+.-]*:/.test(href)) return href;
   if (href.startsWith('/')) return href;
   const clean = href.replace(/^\.\//, '');
-  return `/content/specification/${clean}`;
+  return `${SPEC_PUBLIC_BASE_PATH}/${clean}`;
 }
 
 function rewriteSpecLinkHref(href, specRepoUrl, filenameToSlug) {

@@ -31,6 +31,27 @@ const DEFAULT_SPEC_SLUG = SPEC_PAGES[0]?.slug ?? '00-abstract';
 const SPEC_PAGE_BY_FILENAME = new Map(
   SPEC_PAGES.map(page => [page.filename.toLowerCase(), page])
 );
+const SPEC_PATHS = Object.freeze({
+  public: '/content/specification',
+  source: '/src/specification'
+});
+
+function joinSpecPath(base, file = '') {
+  const cleanFile = String(file).replace(/^\/+/, '');
+  return cleanFile ? `${base}/${cleanFile}` : base;
+}
+
+function getSpecAssetBasePath() {
+  return import.meta.env.DEV ? SPEC_PATHS.source : SPEC_PATHS.public;
+}
+
+function getSpecFetchPaths(fileName) {
+  const orderedBases = import.meta.env.DEV
+    ? [SPEC_PATHS.source, SPEC_PATHS.public]
+    : [SPEC_PATHS.public, SPEC_PATHS.source];
+
+  return orderedBases.map(base => joinSpecPath(base, fileName));
+}
 
 // Get slug from URL
 function getSlugFromURL() {
@@ -127,7 +148,7 @@ function rewriteImageHref(href) {
   if (href.startsWith('/')) return href;
 
   const clean = href.replace(/^\.\//, '');
-  return `/content/specification/${clean}`;
+  return joinSpecPath(getSpecAssetBasePath(), clean);
 }
 
 function rewriteLinkHref(href, specRepoUrl) {
@@ -289,11 +310,23 @@ let searchIndexError = false;
 
 async function loadMarkdown(page) {
   if (markdownCache.has(page.filename)) return markdownCache.get(page.filename);
-  const response = await fetch(`/content/specification/${page.filename}`);
-  if (!response.ok) throw new Error('Page not found');
-  const markdown = await response.text();
-  markdownCache.set(page.filename, markdown);
-  return markdown;
+  const paths = getSpecFetchPaths(page.filename);
+
+  let lastError = new Error('Page not found');
+
+  for (const path of paths) {
+    try {
+      const response = await fetch(path);
+      if (!response.ok) continue;
+      const markdown = await response.text();
+      markdownCache.set(page.filename, markdown);
+      return markdown;
+    } catch (err) {
+      lastError = err instanceof Error ? err : new Error(String(err));
+    }
+  }
+
+  throw lastError;
 }
 
 function normalizeQuery(value) {
