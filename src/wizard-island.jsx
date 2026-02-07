@@ -16,7 +16,7 @@ export function mountWizard(container) {
   root = createRoot(container);
   root.render(
     React.createElement(StrictMode, null,
-      React.createElement(PoolConnectionWizard)
+      React.createElement(PoolConnectionWizard, { className: 'site-wizard-flow' })
     )
   );
 }

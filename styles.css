@@ -4556,33 +4556,33 @@ img {
 .wizard-overlay {
   display: none;
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.8);
+  inset: 0;
+  padding: 0;
+  background: color-mix(in oklab, black 76%, hsl(var(--primary)) 8%);
+  backdrop-filter: blur(6px);
   z-index: 10000;
   opacity: 0;
   transition: opacity 0.3s ease;
-  overflow-y: auto;
+  overflow: auto;
 }
 
 .wizard-overlay.active {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
+  display: grid;
+  place-items: center;
   opacity: 1;
 }
 
 .wizard-modal {
   position: relative;
   width: 100%;
-  max-width: 72rem;
-  margin: 2rem auto;
+  height: 100dvh;
+  max-width: 100%;
   background: hsl(var(--background));
-  border: 1px solid hsl(var(--border));
-  border-radius: 0.75rem;
+  border: 0;
+  border-radius: 0;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
   box-shadow: 0 24px 48px rgba(0, 0, 0, 0.35);
 }
 
@@ -4590,8 +4590,9 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.25rem 1.5rem 0.5rem;
-  background: hsl(var(--background));
+  gap: 1rem;
+  padding: max(0.85rem, env(safe-area-inset-top)) 0.95rem 0.85rem;
+  background: color-mix(in hsl, hsl(var(--background)) 94%, hsl(var(--card)));
   border-bottom: 1px solid hsl(var(--border));
   position: sticky;
   top: 0;
@@ -4600,26 +4601,38 @@ img {
 
 .wizard-modal-title {
   color: hsl(var(--foreground));
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-family: 'JetBrains Mono', 'Inter', monospace;
   font-weight: 500;
+  line-height: 1.25;
 }
 
 .wizard-modal-close {
-  background: none;
-  border: none;
+  background: hsl(var(--muted));
+  border: 1px solid hsl(var(--border));
   color: hsl(var(--muted-foreground));
   cursor: pointer;
-  padding: 0.25rem;
+  width: 2rem;
+  height: 2rem;
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 0.25rem;
-  transition: color 0.2s;
+  border-radius: 9999px;
+  transition: color 0.2s, border-color 0.2s, background-color 0.2s;
 }
 
 .wizard-modal-close:hover {
   color: hsl(var(--foreground));
+  border-color: hsl(var(--primary) / 0.5);
+  background: hsl(var(--primary) / 0.12);
+}
+
+.wizard-modal-body {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
 }
 
 /* Wizard container — scoped design tokens for sv2-wizard */
@@ -4639,7 +4652,7 @@ img {
   color: hsl(var(--foreground));
   font-size: 1rem;
   line-height: 1.5;
-  padding: 1.5rem;
+  padding: 0.75rem 0.75rem max(1rem, env(safe-area-inset-bottom));
   background: hsl(var(--background));
 }
 
@@ -4666,21 +4679,75 @@ img {
   flex-shrink: 0;
 }
 
-/* Wizard modal responsive */
-@media (max-width: 768px) {
+[data-wizard-container] .site-wizard-flow {
+  width: 100%;
+  max-width: 62rem;
+  padding-top: 0.5rem;
+}
+
+[data-wizard-container] .site-wizard-flow > .text-center {
+  margin-bottom: 1rem;
+}
+
+[data-wizard-container] .site-wizard-flow > .text-center h1 {
+  font-size: clamp(1.35rem, 5.6vw, 2.2rem);
+  line-height: 1.15;
+}
+
+[data-wizard-container] .site-wizard-flow > .text-center p {
+  font-size: clamp(0.92rem, 3.6vw, 1rem);
+}
+
+[data-wizard-container] .site-wizard-flow form {
+  max-width: 100% !important;
+}
+
+@media (max-width: 640px) {
+  .wizard-modal-title {
+    max-width: 17ch;
+  }
+
+  [data-wizard-container] .site-wizard-flow > div:nth-child(2) > div:nth-child(2) {
+    padding: 0.95rem;
+  }
+
+  [data-wizard-container] .site-wizard-flow > div:nth-child(2) > div:nth-child(3) {
+    padding: 1rem;
+  }
+
+  [data-wizard-container] .site-wizard-flow .grid.grid-cols-2 {
+    grid-template-columns: 1fr;
+  }
+
+  [data-wizard-container] .site-wizard-flow .mt-12,
+  [data-wizard-container] .site-wizard-flow .mb-12 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .wizard-overlay {
+    padding: 1rem;
+  }
+
   .wizard-modal {
-    margin: 0;
-    min-height: 100vh;
-    border-radius: 0;
-    border: none;
+    width: min(100%, 74rem);
+    height: auto;
+    max-height: calc(100dvh - 2rem);
+    border: 1px solid hsl(var(--border));
+    border-radius: 1rem;
   }
 
   .wizard-modal-header {
-    position: sticky;
-    top: 0;
+    padding: 1rem 1.25rem;
+  }
+
+  .wizard-modal-title {
+    font-size: 1.2rem;
   }
 
   [data-wizard-container] {
-    padding: 1rem;
+    padding: 1rem 1.25rem 1.35rem;
   }
 }
