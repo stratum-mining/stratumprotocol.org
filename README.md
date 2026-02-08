@@ -10,7 +10,7 @@ Static site built with Vite. Content is authored in Markdown and rendered client
 ## Build
 
 - `npm run build` produces `dist/`
-- `vite.config.js` copies `content/blog/` and the required parts of `src/specification/` into `dist/content/`
+- `vite.config.js` copies `content/blog/` and the required parts of `content/specification/` into `dist/content/`
 - `dist/assets/*` filenames are hashed by Vite for caching; edit source in `src/`
 
 ## Content
@@ -25,5 +25,5 @@ Static site built with Vite. Content is authored in Markdown and rendered client
 
 ### Specification
 
-- Source: `src/specification/` (git submodule)
+- Source: `content/specification/` (git submodule)
 - Rendered by: `src/specification.js`

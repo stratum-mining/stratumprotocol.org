@@ -31,26 +31,11 @@ const DEFAULT_SPEC_SLUG = SPEC_PAGES[0]?.slug ?? '00-abstract';
 const SPEC_PAGE_BY_FILENAME = new Map(
   SPEC_PAGES.map(page => [page.filename.toLowerCase(), page])
 );
-const SPEC_PATHS = Object.freeze({
-  public: '/content/specification',
-  source: '/src/specification'
-});
+const SPEC_CONTENT_BASE_PATH = '/content/specification';
 
-function joinSpecPath(base, file = '') {
+function joinSpecPath(file = '') {
   const cleanFile = String(file).replace(/^\/+/, '');
-  return cleanFile ? `${base}/${cleanFile}` : base;
-}
-
-function getSpecAssetBasePath() {
-  return import.meta.env.DEV ? SPEC_PATHS.source : SPEC_PATHS.public;
-}
-
-function getSpecFetchPaths(fileName) {
-  const orderedBases = import.meta.env.DEV
-    ? [SPEC_PATHS.source, SPEC_PATHS.public]
-    : [SPEC_PATHS.public, SPEC_PATHS.source];
-
-  return orderedBases.map(base => joinSpecPath(base, fileName));
+  return cleanFile ? `${SPEC_CONTENT_BASE_PATH}/${cleanFile}` : SPEC_CONTENT_BASE_PATH;
 }
 
 // Get slug from URL
@@ -148,7 +133,7 @@ function rewriteImageHref(href) {
   if (href.startsWith('/')) return href;
 
   const clean = href.replace(/^\.\//, '');
-  return joinSpecPath(getSpecAssetBasePath(), clean);
+  return joinSpecPath(clean);
 }
 
 function rewriteLinkHref(href, specRepoUrl) {
@@ -310,23 +295,14 @@ let searchIndexError = false;
 
 async function loadMarkdown(page) {
   if (markdownCache.has(page.filename)) return markdownCache.get(page.filename);
-  const paths = getSpecFetchPaths(page.filename);
+  const path = joinSpecPath(page.filename);
 
-  let lastError = new Error('Page not found');
+  const response = await fetch(path);
+  if (!response.ok) throw new Error('Page not found');
 
-  for (const path of paths) {
-    try {
-      const response = await fetch(path);
-      if (!response.ok) continue;
-      const markdown = await response.text();
-      markdownCache.set(page.filename, markdown);
-      return markdown;
-    } catch (err) {
-      lastError = err instanceof Error ? err : new Error(String(err));
-    }
-  }
-
-  throw lastError;
+  const markdown = await response.text();
+  markdownCache.set(page.filename, markdown);
+  return markdown;
 }
 
 function normalizeQuery(value) {

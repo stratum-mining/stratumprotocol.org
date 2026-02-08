@@ -7,8 +7,8 @@ import { marked } from 'marked';
 import { escapeHtml, createSlugger, renderHeadingWithAnchor } from './src/markdown.js';
 import { parseFrontmatter, formatDate } from './src/utils.js';
 
-const SPEC_SUBMODULE_PATH = join('src', 'specification');
-const SPEC_SUBMODULE_LABEL = 'src/specification';
+const SPEC_CONTENT_PATH = join('content', 'specification');
+const SPEC_CONTENT_LABEL = 'content/specification';
 const SPEC_DIST_CONTENT_PATH = join('dist', 'content', 'specification');
 const SPEC_PUBLIC_BASE_PATH = '/content/specification';
 
@@ -115,7 +115,7 @@ export default defineConfig({
         }
 
         // Specification markdown + assets (avoid copying repo metadata like .git/.github/scripts)
-        const specSrc = SPEC_SUBMODULE_PATH;
+        const specSrc = SPEC_CONTENT_PATH;
         if (existsSync(specSrc)) {
           try {
             const specDest = SPEC_DIST_CONTENT_PATH;
@@ -131,7 +131,7 @@ export default defineConfig({
             }
 
             if (mdFileCount === 0) {
-              errors.push(`No specification markdown files found in ${SPEC_SUBMODULE_LABEL}`);
+              errors.push(`No specification markdown files found in ${SPEC_CONTENT_LABEL}`);
             }
 
             // Copy asset directories
@@ -145,7 +145,7 @@ export default defineConfig({
             errors.push(`Specification content: ${err.message}`);
           }
         } else {
-          errors.push(`Specification content directory not found: ${SPEC_SUBMODULE_LABEL}`);
+          errors.push(`Specification content directory not found: ${SPEC_CONTENT_LABEL}`);
         }
 
         // Report errors
@@ -196,7 +196,7 @@ export default defineConfig({
         generateSpecPages({
           distDir,
           specTemplate,
-          contentDir: join('.', SPEC_SUBMODULE_PATH),
+          contentDir: join('.', SPEC_CONTENT_PATH),
           specRepoUrl: 'https://github.com/stratum-mining/sv2-spec'
         });
       }
