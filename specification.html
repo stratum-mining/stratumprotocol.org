@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="/assets/js/theme-init.js"></script>
+
+    <title>Specification - Stratum V2</title>
+    <meta property="og:title" content="Specification - Stratum V2" />
+    <meta property="og:description" content="Technical specification for the Stratum V2 mining protocol." />
+    <meta property="og:type" content="article" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon/favicon.svg" />
+    <link rel="icon" type="image/png" href="/assets/images/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" href="/assets/images/favicon/favicon.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/assets/images/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="/assets/images/favicon/site.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body data-spec-repo="https://github.com/stratum-mining/sv2-spec">
+    <!-- Navbar -->
+    <!-- NAV_PARTIAL -->
+
+    <!-- Specification Layout -->
+    <div class="spec-layout">
+      <!-- Sidebar Navigation -->
+      <aside class="spec-sidebar" id="spec-sidebar">
+        <h2>Specification</h2>
+        <div class="spec-search">
+          <input
+            type="search"
+            id="spec-search"
+            class="spec-search-input"
+            placeholder="Search…"
+            autocomplete="off"
+            spellcheck="false"
+            aria-label="Search specification"
+          />
+        </div>
+        <nav class="spec-nav" id="spec-nav">
+          <!-- Populated by specification.js -->
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="spec-main">
+        <div class="spec-mobile-controls">
+          <label class="spec-mobile-label" for="spec-mobile-search">Search pages and sections</label>
+          <input
+            type="search"
+            id="spec-mobile-search"
+            class="spec-search-input spec-mobile-search-input"
+            placeholder="Search…"
+            autocomplete="off"
+            spellcheck="false"
+            aria-label="Search pages and sections"
+          />
+          <label class="spec-mobile-label" for="spec-page-select">Jump to page or section</label>
+          <select id="spec-page-select" class="spec-page-select" aria-label="Jump to page or section">
+            <option value="">Loading sections…</option>
+          </select>
+        </div>
+        <div class="spec-page-toolbar" id="spec-page-toolbar">
+          <a
+            class="spec-toolbar-link"
+            id="spec-view-github"
+            href="https://github.com/stratum-mining/sv2-spec"
+            target="_blank"
+            rel="noopener noreferrer"
+          >View on GitHub</a>
+          <a
+            class="spec-toolbar-link"
+            id="spec-ask-question"
+            href="https://github.com/stratum-mining/sv2-spec/discussions/new?category=q-a"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Ask a question</a>
+        </div>
+        <article class="spec-content" id="spec-content">
+          <p>Loading specification...</p>
+        </article>
+        <nav class="spec-pagination" id="spec-pagination" aria-label="Specification pagination"></nav>
+      </main>
+    </div>
+
+    <script type="module" src="/src/specification.js"></script>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

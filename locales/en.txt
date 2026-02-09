@@ -1,0 +1,218 @@
+# Stratum V2 Website - English Translations
+# Format: key = value
+# Lines starting with # are comments
+# To translate: copy this file, translate values (right of =), keep keys unchanged
+
+# ===================
+# Navigation
+# ===================
+nav.features = Features
+nav.adoption = Adoption
+nav.supporters = Supporters
+nav.community = Community
+nav.specification = Specification
+nav.blog = Blog
+
+# ===================
+# Hero Section
+# ===================
+hero.title.prefix = Open ₿itcoin
+hero.title.highlight = mining
+hero.title.suffix = standard
+hero.subtitle = Stratum V2 is a mining protocol that makes mining operations more efficient, profitable, secure, private and decentralized.
+hero.cta = Start Mining
+
+# ===================
+# Stats
+# ===================
+stat.bandwidth.value = 70%
+stat.bandwidth.label = Bandwidth reduction
+stat.latency.value = 228x
+stat.latency.label = Latency reduction
+stat.profit.value = 7.4%
+stat.profit.label = Profit Increase
+stat.stale.value = ~0%
+stat.stale.label = Stale shares
+stat.encrypted.value = 100%
+stat.encrypted.label = Encrypted
+
+# ===================
+# Features Section
+# ===================
+features.title = Why Stratum V2?
+features.intro = Stratum V2 (SV2) upgrades the Stratum mining protocol (SV1), which was introduced in 2012, back when mining was largely for hobbyists. SV2 is engineered for modern mining, eliminating SV1's inefficiencies. Designed by Jan Čapek and Pavel Moravec, together with Matt Corallo, SV2 is now maintained by an independent open source community.
+
+# Feature Tab Names
+features.tab.efficiency = Efficiency
+features.tab.security = Security
+features.tab.profitability = Profitability
+features.tab.privacy = Privacy
+features.tab.autonomy = Autonomy
+features.tab.flexibility = Flexibility
+features.tab.compatibility = Compatibility
+features.tab.interoperability = Interoperability
+
+# Efficiency Feature
+features.efficiency.title = ~70% less bandwidth
+features.efficiency.subtitle = Reduction for pools and miners
+features.efficiency.body = SV1's JSON messages are bandwidth heavy, while SV2 uses a lean binary format, lowering CPU load and cutting bandwidth use by about 60% for pools and 70% for miners, reducing operating costs for the pool, and helping bandwidth-constrained miners run more reliably.
+
+# Security Feature
+features.security.title = Security
+features.security.subtitle = Protecting profit
+features.security.body = Stratum V2 secures miner to pool traffic with encryption and authentication. This prevents man in the middle attack that hijacks hashrate by swapping pool credentials and redirects work. Encrypted transport also makes traffic far harder to inspect or tamper with by ISPs, or attackers carrying out large scale routing attacks. SV2 increases transparency and eliminates out of band payments by allowing miners themselves to construct block templates.
+
+# Profitability Feature
+features.profitability.title = Up to 7.4% profit increase
+features.profitability.subtitle = Proven in real-world deployments
+features.profitability.body = Stratum V2's technical upgrades translate into measurable profitability gains. Faster template delivery and lower latency reduce wasted work and capture more transaction fees per block, and combined with improvements like end-to-end encryption and faster block propagation can increase profits by up to 7.4%.
+features.profitability.link = Read the case study →
+
+# Privacy Feature
+features.privacy.title = Privacy Improvements
+features.privacy.subtitle = Prevent ISP surveillance
+features.privacy.body = Stratum V2 encrypts mining traffic, preventing Internet Service Provider (ISP) and other network intermediaries from observing plaintext shares and messages. In Stratum V1, this data can be used to infer a miner's hashrate and roughly estimate earnings based on that hashrate.
+
+# Autonomy Feature
+features.autonomy.title = Transaction Selection
+features.autonomy.subtitle = Miners choose what goes in blocks
+features.autonomy.body = A few mining pools now dominate Bitcoin's block space, with some acting as proxies for others. Pools can selectively include or exclude transactions, creating censorship risk. Stratum V2 empowers miners to build their own block templates, shifting them from passive hashers to active participants in securing Bitcoin's censorship resistance.
+
+# Flexibility Feature
+features.flexibility.title = Flexibility
+features.flexibility.subtitle = Modular architecture
+features.flexibility.body = A free, open-source, modular infrastructure with permissive license, empowering developers to build and innovate. A composable design lets you adopt only the components you need. Integrate gradually without disrupting existing infrastructure, and extend functionality as requirements evolve.
+
+# Compatibility Feature
+features.compatibility.title = Compatibility
+features.compatibility.subtitle = No need to upgrade firmware
+features.compatibility.body = Translation proxies allow SV2 pools to accept connections from legacy SV1 firmware. Upgrade your infrastructure incrementally while maintaining full backward compatibility.
+
+# Interoperability Feature
+features.interoperability.title = Interoperable & Neutral
+features.interoperability.subtitle = Community-driven governance
+features.interoperability.body = Community-driven governance and clear specifications ensure interoperability, preventing vendor lock-ins and fragmentation. Specifications are maintained by an independent working group anyone can join to help accelerate an open-standard for mining.
+features.interoperability.wg = Working Group Members
+features.interoperability.viewspec = View Specifications →
+
+# Visualization Labels
+viz.miner = Miner
+viz.pool = Pool
+viz.block = Block
+viz.stratum.v2 = STRATUM V2
+viz.legacy.v1 = LEGACY V1
+viz.sv1 = SV1
+viz.sv2 = SV2
+viz.sv2.jd = SV2 + JD
+viz.proxy = Proxy
+viz.isp = ISP
+viz.stratum.v2.label = Stratum V2
+viz.legacy.v1.label = Legacy V1
+viz.translation.proxy = TRANSLATION PROXY
+
+# Carousel Slides - Profitability
+carousel.share.acceptance = Share Acceptance Rate
+carousel.share.caption = Near-zero stale shares with Job Declaration
+carousel.latency = Job Latency
+carousel.latency.caption = Job latency impacts how fast the new job is received from the Pool
+carousel.propagation = Block Propagation Time
+carousel.propagation.caption = 28× faster block propagation
+
+# Carousel Slides - Autonomy
+carousel.autonomy.sv2.caption = Miner selects transactions and builds the block
+carousel.autonomy.sv1.caption = Pool controls transaction selection and block construction
+
+# Flexibility Module Names
+module.job.declaration = Job Declaration
+module.template.distribution = Template Distribution
+module.mining.protocol = Mining Protocol
+
+# ===================
+# Modularity Section
+# ===================
+modularity.title.part1 = Building blocks for
+modularity.title.part2 = innovation
+modularity.description = Reduce complexity, vertically integrate, and build applications more efficiently with our open, thoroughly documented protocol and reference implementation, libraries and even applications. Build a proxy, mining monitoring software, a pool or efficient firmware.
+
+# Module Names
+module.stratum.v2 = Stratum V2
+module.rust.libraries = Rust Libraries
+module.reference.implementation = Reference Implementation
+module.reference.applications = Reference Applications
+module.language.bindings = Language Bindings
+module.docker.support = Docker Support
+module.clear.specification = Clear Specification
+
+# ===================
+# Adoption Section
+# ===================
+adoption.title.part1 = SV2
+adoption.title.part2 = Adoption
+adoption.subtitle = Tested and deployed by industry leaders across hardware, firmware, and pool infrastructure.
+
+# Adoption Categories
+adoption.category.hardware = Hardware & Firmware
+adoption.category.pools = Pools
+adoption.category.testing = Adoption & Testing
+
+# Adopters
+adopter.auradine.desc = SV2 native support across all ASICs via FluxOS
+adopter.braiinsos.desc = Native Stratum V2 firmware support
+adopter.proto.desc = Announced work towards SV2 compatibility
+adopter.braiinspool.desc = In production pool
+adopter.dmnd.desc = In production pool, enabling miner selected templates
+adopter.hashlabs.desc = Site of the head-to-head V1 vs V2 test
+adopter.starkware.desc = Developed a zero-knowledge-proof prototype built on Stratum V2
+adopter.pluto.desc = Working on mining management software implementing SV2 compatibility
+
+# Adoption CTA
+adoption.cta.text = Running SV2?
+adoption.cta.link = Tell us on Discord →
+
+# ===================
+# Supporters Section
+# ===================
+supporters.title.part1 = Support for
+supporters.title.part2 = Stratum V2
+supporters.tab.all = All Supporters
+supporters.tab.funders = Funders
+supporters.tab.workinggroup = Working Group
+
+# Working Group Info
+workinggroup.title = About the Working Group
+workinggroup.description = The Stratum V2 Working Group is community-governed and independent of any single entity. We foster ecosystem collaboration to drive permissionless innovation in Bitcoin mining.
+workinggroup.viewspec = View Specifications
+workinggroup.joinsignal = Join Signal Group
+
+# ===================
+# Community Section
+# ===================
+community.title = Community
+community.subtitle = Community-driven governance and specifications ensure interoperability, so teams can focus on innovating instead of patching incompatibilities.
+
+# GitHub Card
+community.github.title = GitHub
+community.github.description = Free and open-source Stratum V2 implementation developed as a public good by industry contributors. Built in Rust with bindings for other languages, plus libraries and applications you can build on.
+community.github.cta = EXPLORE CODEBASE
+
+# Discord Card
+community.discord.title = Discord Community
+community.discord.description = The heart of our discussion. Join developers and miners to discuss proposals, get support, and collaborate.
+
+# Twitter Card
+community.twitter.title = Follow Updates
+community.twitter.description = Latest news, threads, and ecosystem announcements.
+
+# ===================
+# Language Switcher
+# ===================
+lang.select = Select language
+lang.en = English
+lang.zh = 中文
+lang.ru = Русский
+
+# ===================
+# Meta / SEO
+# ===================
+meta.title = Stratum V2
+meta.description = The next generation mining protocol.

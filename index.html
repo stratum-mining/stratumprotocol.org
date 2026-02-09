@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="/assets/js/theme-init.js"></script>
+
+    <title>Stratum V2</title>
+    <meta property="og:title" content="Stratum V2" />
+    <meta property="og:description" content="The next generation mining protocol." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon/favicon.svg" />
+    <link rel="icon" type="image/png" href="/assets/images/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" href="/assets/images/favicon/favicon.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/assets/images/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="/assets/images/favicon/site.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <!-- Navbar -->
+    <!-- NAV_PARTIAL -->
+
+    <!-- Hero Section -->
+    <section class="hero" role="banner" aria-label="Hero section">
+      <!-- Background Gradients -->
+      <div class="hero-bg" aria-hidden="true">
+        <div class="hero-gradient hero-gradient-1"></div>
+        <div class="hero-gradient hero-gradient-2"></div>
+        <div class="hero-gradient hero-gradient-3"></div>
+      </div>
+
+	      <div class="hero-content">
+	        <h1><span data-i18n="hero.title.prefix">Open ₿itcoin</span> <span class="cyan" data-i18n="hero.title.highlight">mining</span> <span data-i18n="hero.title.suffix">standard</span></h1>
+	        <p data-i18n="hero.subtitle">Stratum V2 is a mining protocol that makes mining operations more efficient, profitable, secure, private and decentralized.</p>
+	        <button type="button" class="cta-button" id="start-mining-btn">
+	          <span data-i18n="hero.cta">Start Mining</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14"></path>
+            <path d="m12 5 7 7-7 7"></path>
+          </svg>
+        </button>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-value">70%</div>
+          <div class="stat-label" data-i18n="stat.bandwidth.label">Bandwidth reduction</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">228x</div>
+          <div class="stat-label" data-i18n="stat.latency.label">Latency reduction</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">7.4%</div>
+          <div class="stat-label" data-i18n="stat.profit.label">Profit Increase</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">~0%</div>
+          <div class="stat-label" data-i18n="stat.stale.label">Stale shares</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">100%</div>
+          <div class="stat-label" data-i18n="stat.encrypted.label">Encrypted</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features" aria-labelledby="features-title">
+      <div class="section-container">
+        <!-- Header -->
+        <div class="features-header">
+          <h2 id="features-title" data-i18n="features.title">Why Stratum V2?</h2>
+          <p data-i18n="features.intro">Stratum V2 (SV2) upgrades the Stratum mining protocol (SV1), which was introduced in 2012, back when mining was largely for hobbyists. SV2 is engineered for modern mining, eliminating SV1's inefficiencies. Designed by Jan Čapek and Pavel Moravec, together with Matt Corallo, SV2 is now maintained by an independent open source community.</p>
+                  </div>
+        <!-- Feature Tabs -->
+        <div class="feature-tabs">
+          <button class="feature-tab active" data-feature="0">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"></path>
+            </svg>
+            <span data-i18n="features.tab.efficiency">Efficiency</span>
+          </button>
+          <button class="feature-tab" data-feature="1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            <span data-i18n="features.tab.security">Security</span>
+          </button>
+          <button class="feature-tab" data-feature="2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+            </svg>
+            <span data-i18n="features.tab.profitability">Profitability</span>
+          </button>
+          <button class="feature-tab" data-feature="3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path>
+            </svg>
+            <span data-i18n="features.tab.privacy">Privacy</span>
+          </button>
+          <button class="feature-tab" data-feature="4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="16" height="16" x="4" y="4" rx="2"></rect>
+              <rect width="6" height="6" x="9" y="9" rx="1"></rect>
+              <path d="M15 2v2"></path>
+              <path d="M15 20v2"></path>
+              <path d="M2 15h2"></path>
+              <path d="M2 9h2"></path>
+              <path d="M20 15h2"></path>
+              <path d="M20 9h2"></path>
+              <path d="M9 2v2"></path>
+              <path d="M9 20v2"></path>
+            </svg>
+            <span data-i18n="features.tab.autonomy">Autonomy</span>
+          </button>
+          <button class="feature-tab" data-feature="5">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+              <path d="M2 17l10 5 10-5"></path>
+              <path d="M2 12l10 5 10-5"></path>
+            </svg>
+            <span data-i18n="features.tab.flexibility">Flexibility</span>
+          </button>
+          <button class="feature-tab" data-feature="6">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+              <path d="M2 12h20"></path>
+            </svg>
+            <span data-i18n="features.tab.compatibility">Compatibility</span>
+          </button>
+          <button class="feature-tab" data-feature="7">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+            <span data-i18n="features.tab.interoperability">Interoperability</span>
+          </button>
+        </div>
+
+        <!-- Feature Content -->
+        <div class="feature-content">
+          <!-- Description Side -->
+          <div class="feature-description">
+            <div class="feature-text" data-feature-content="0">
+              <h3 data-i18n="features.efficiency.title">~70% less bandwidth</h3>
+              <p class="feature-subtitle" data-i18n="features.efficiency.subtitle">Reduction for pools and miners</p>
+              <p class="feature-body" data-i18n="features.efficiency.body">SV1's JSON messages are bandwidth heavy, while SV2 uses a lean binary format, lowering CPU load and cutting bandwidth use by about 60% for pools and 70% for miners, reducing operating costs for the pool, and helping bandwidth-constrained miners run more reliably.</p>
+            </div>
+            <div class="feature-text hidden" data-feature-content="1">
+              <h3 data-i18n="features.security.title">Security</h3>
+              <p class="feature-subtitle" data-i18n="features.security.subtitle">Protecting profit</p>
+              <p class="feature-body" data-i18n="features.security.body">Stratum V2 secures miner to pool traffic with encryption and authentication. This prevents man in the middle attack that hijacks hashrate by swapping pool credentials and redirects work. Encrypted transport also makes traffic far harder to inspect or tamper with by ISPs, or attackers carrying out large scale routing attacks. SV2 increases transparency and eliminates out of band payments by allowing miners themselves to construct block templates.</p>
+            </div>
+            <div class="feature-text hidden" data-feature-content="2">
+              <h3 data-i18n="features.profitability.title">Up to 7.4% profit increase</h3>
+              <p class="feature-subtitle" data-i18n="features.profitability.subtitle">Proven in real-world deployments</p>
+              <p class="feature-body"><span data-i18n="features.profitability.body">Stratum V2's technical upgrades translate into measurable profitability gains. Faster template delivery and lower latency reduce wasted work and capture more transaction fees per block, and combined with improvements like end-to-end encryption and faster block propagation can increase profits by up to 7.4%.</span> <a href="https://stratumprotocol.org/blog/hashlabs" target="_blank" rel="noopener noreferrer" class="feature-link" data-i18n="features.profitability.link">Read the case study →</a></p>
+            </div>
+            <div class="feature-text hidden" data-feature-content="3">
+              <h3 data-i18n="features.privacy.title">Privacy Improvements</h3>
+              <p class="feature-subtitle" data-i18n="features.privacy.subtitle">Prevent ISP surveillance</p>
+              <p class="feature-body" data-i18n="features.privacy.body">Stratum V2 encrypts mining traffic, preventing Internet Service Provider (ISP) and other network intermediaries from observing plaintext shares and messages. In Stratum V1, this data can be used to infer a miner's hashrate and roughly estimate earnings based on that hashrate.</p>
+            </div>
+            <div class="feature-text hidden" data-feature-content="4">
+              <h3 data-i18n="features.autonomy.title">Transaction Selection</h3>
+              <p class="feature-subtitle" data-i18n="features.autonomy.subtitle">Miners choose what goes in blocks</p>
+              <p class="feature-body" data-i18n="features.autonomy.body">A few mining pools now dominate Bitcoin's block space, with some acting as proxies for others. Pools can selectively include or exclude transactions, creating censorship risk. Stratum V2 empowers miners to build their own block templates, shifting them from passive hashers to active participants in securing Bitcoin's censorship resistance.</p>
+            </div>
+            <div class="feature-text hidden" data-feature-content="5">
+              <h3 data-i18n="features.flexibility.title">Flexibility</h3>
+              <p class="feature-subtitle" data-i18n="features.flexibility.subtitle">Modular architecture</p>
+              <p class="feature-body" data-i18n="features.flexibility.body">A free, open-source, modular infrastructure with permissive license, empowering developers to build and innovate. A composable design lets you adopt only the components you need. Integrate gradually without disrupting existing infrastructure, and extend functionality as requirements evolve.</p>
+            </div>
+            <div class="feature-text hidden" data-feature-content="6">
+              <h3 data-i18n="features.compatibility.title">Compatibility</h3>
+              <p class="feature-subtitle" data-i18n="features.compatibility.subtitle">No need to upgrade firmware</p>
+              <p class="feature-body" data-i18n="features.compatibility.body">Translation proxies allow SV2 pools to accept connections from legacy SV1 firmware. Upgrade your infrastructure incrementally while maintaining full backward compatibility.</p>
+            </div>
+            <div class="feature-text hidden" data-feature-content="7">
+              <h3 data-i18n="features.interoperability.title">Interoperable & Neutral</h3>
+              <p class="feature-subtitle" data-i18n="features.interoperability.subtitle">Community-driven governance</p>
+              <p class="feature-body" data-i18n="features.interoperability.body">Community-driven governance and clear specifications ensure interoperability, preventing vendor lock-ins and fragmentation. Specifications are maintained by an independent working group anyone can join to help accelerate an open-standard for mining.</p>
+            </div>
+          </div>
+
+          <!-- Visualization Side -->
+          <div class="feature-visualization">
+            <!-- Efficiency Visualization (Comparison Slider) -->
+            <div class="visualization-panel" data-viz="0">
+              <div class="comparison-slider" id="efficiency-slider">
+                <!-- V2 Layer (Right - Cyan) -->
+                <div class="comparison-layer comparison-v2">
+                  <div class="comparison-gradient v2-gradient"></div>
+                  <div class="comparison-content">
+                    <div class="miner-unit cyan">
+                      <svg viewBox="0 0 100 100">
+                        <path d="M10 30 L60 30 L90 15 L40 15 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M10 30 L60 30 L60 70 L10 70 Z" fill="currentColor" fill-opacity="0.05" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M60 30 L90 15 L90 55 L60 70 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <circle cx="35" cy="50" r="16" fill="none" stroke="currentColor" stroke-width="1.5" />
+                        <g transform="translate(35, 50)">
+                          <path d="M-14 0 L14 0 M0 -14 L0 14" stroke="currentColor" stroke-width="1.5" />
+                          <path d="M-10 -10 L10 10 M10 -10 L-10 10" stroke="currentColor" stroke-width="1.5" />
+                        </g>
+                        <circle cx="80" cy="25" r="2" fill="currentColor" />
+                      </svg>
+                      <span data-i18n="viz.miner">Miner</span>
+                    </div>
+
+                    <div class="data-viz binary-viz">
+                      <div class="connection-line cyan"></div>
+                      <div class="binary-packets">
+                        <div class="binary-packet"><span class="dot"></span><span class="bits">10110101</span></div>
+                        <div class="binary-packet hidden-mobile"><span class="dot"></span><span class="bits">00110011</span></div>
+                        <div class="binary-packet hidden-mobile"><span class="dot"></span><span class="bits">11100101</span></div>
+                      </div>
+                    </div>
+
+                    <div class="pool-endpoint cyan">
+                      <div class="pool-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <rect width="20" height="8" x="2" y="2" rx="2" ry="2"></rect>
+                          <rect width="20" height="8" x="2" y="14" rx="2" ry="2"></rect>
+                          <line x1="6" x2="6.01" y1="6" y2="6"></line>
+                          <line x1="6" x2="6.01" y1="18" y2="18"></line>
+                        </svg>
+                      </div>
+                      <span data-i18n="viz.pool">Pool</span>
+                    </div>
+
+                    <div class="comparison-label v2-label" data-i18n="viz.stratum.v2">STRATUM V2</div>
+                  </div>
+                </div>
+
+                <!-- V1 Layer (Left - Red) -->
+                <div class="comparison-layer comparison-v1">
+                  <div class="comparison-gradient v1-gradient"></div>
+                  <div class="comparison-content">
+                    <div class="miner-unit red">
+                      <svg viewBox="0 0 100 100">
+                        <path d="M10 30 L60 30 L90 15 L40 15 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M10 30 L60 30 L60 70 L10 70 Z" fill="currentColor" fill-opacity="0.05" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M60 30 L90 15 L90 55 L60 70 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <circle cx="35" cy="50" r="16" fill="none" stroke="currentColor" stroke-width="1.5" />
+                        <g transform="translate(35, 50)">
+                          <path d="M-14 0 L14 0 M0 -14 L0 14" stroke="currentColor" stroke-width="1.5" />
+                          <path d="M-10 -10 L10 10 M10 -10 L-10 10" stroke="currentColor" stroke-width="1.5" />
+                        </g>
+                        <circle cx="80" cy="25" r="2" fill="currentColor" />
+                      </svg>
+                      <span data-i18n="viz.miner">Miner</span>
+                    </div>
+
+                    <div class="data-viz json-viz">
+                      <div class="connection-line red"></div>
+                      <div class="json-packets">
+                        <div class="json-packet" style="top: 15%; left: 5%;">{"method":"mining.submit"}</div>
+                        <div class="json-packet" style="top: 40%; left: 25%;">{"id":42, "params":[...]}</div>
+                        <div class="json-packet" style="top: 65%; left: 10%;">{"error":null}</div>
+                        <div class="json-packet hidden-mobile" style="top: 25%; left: 45%;">{"jsonrpc": "2.0"}</div>
+                        <div class="json-packet hidden-mobile" style="top: 55%; left: 35%;">{"difficulty": 1024}</div>
+                        <div class="json-packet hidden-mobile" style="top: 80%; left: 40%;">{"worker":"full_node_1"}</div>
+                        <div class="json-packet hidden-mobile" style="top: 10%; left: 30%;">{"job_id":"0x83a..."}</div>
+                      </div>
+                    </div>
+
+                    <div class="pool-endpoint red">
+                      <div class="pool-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <rect width="20" height="8" x="2" y="2" rx="2" ry="2"></rect>
+                          <rect width="20" height="8" x="2" y="14" rx="2" ry="2"></rect>
+                          <line x1="6" x2="6.01" y1="6" y2="6"></line>
+                          <line x1="6" x2="6.01" y1="18" y2="18"></line>
+                        </svg>
+                      </div>
+                      <span data-i18n="viz.pool">Pool</span>
+                    </div>
+
+                    <div class="comparison-label v1-label" data-i18n="viz.legacy.v1">LEGACY V1</div>
+                  </div>
+                </div>
+
+                <!-- Slider Handle -->
+                <div class="slider-handle">
+                  <div class="slider-line"></div>
+                  <div class="slider-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="m18 8 4 4-4 4"></path>
+                      <path d="m6 8-4 4 4 4"></path>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Security Visualization (Comparison Slider) -->
+            <div class="visualization-panel hidden" data-viz="1">
+              <div class="comparison-slider" id="security-slider">
+                <!-- V2 Layer (Right - Cyan) -->
+                <div class="comparison-layer comparison-v2">
+                  <div class="comparison-gradient v2-gradient"></div>
+                  <div class="comparison-content">
+                    <div class="miner-unit cyan">
+                      <svg viewBox="0 0 100 100">
+                        <path d="M10 30 L60 30 L90 15 L40 15 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M10 30 L60 30 L60 70 L10 70 Z" fill="currentColor" fill-opacity="0.05" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M60 30 L90 15 L90 55 L60 70 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <circle cx="35" cy="50" r="16" fill="none" stroke="currentColor" stroke-width="1.5" />
+                        <g transform="translate(35, 50)">
+                          <path d="M-14 0 L14 0 M0 -14 L0 14" stroke="currentColor" stroke-width="1.5" />
+                          <path d="M-10 -10 L10 10 M10 -10 L-10 10" stroke="currentColor" stroke-width="1.5" />
+                        </g>
+                        <circle cx="80" cy="25" r="2" fill="currentColor" />
+                    </svg>
+                      <span data-i18n="viz.miner">Miner</span>
+                    </div>
+
+                    <div class="data-viz encrypted-viz">
+                      <div class="connection-line cyan"></div>
+                      <div class="encrypted-packets">
+                        <div class="encrypted-packet">
+                          <svg class="lock-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                          </svg>
+                          <div class="dot-pattern">
+                            <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                          </div>
+                        </div>
+                        <div class="encrypted-packet hidden-mobile">
+                          <svg class="lock-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                          </svg>
+                          <div class="dot-pattern">
+                            <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                          </div>
+                        </div>
+                        <div class="encrypted-packet hidden-mobile">
+                          <svg class="lock-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                          </svg>
+                          <div class="dot-pattern">
+                            <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="pool-endpoint cyan">
+                      <div class="pool-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <rect width="20" height="8" x="2" y="2" rx="2" ry="2"></rect>
+                          <rect width="20" height="8" x="2" y="14" rx="2" ry="2"></rect>
+                          <line x1="6" x2="6.01" y1="6" y2="6"></line>
+                          <line x1="6" x2="6.01" y1="18" y2="18"></line>
+                        </svg>
+                      </div>
+                      <span data-i18n="viz.pool">Pool</span>
+                    </div>
+
+                    <div class="comparison-label v2-label" data-i18n="viz.stratum.v2">STRATUM V2</div>
+                  </div>
+                </div>
+
+                <!-- V1 Layer (Left - Red) -->
+                <div class="comparison-layer comparison-v1">
+                  <div class="comparison-gradient v1-gradient"></div>
+                  <div class="comparison-content">
+                    <div class="miner-unit red">
+                      <svg viewBox="0 0 100 100">
+                        <path d="M10 30 L60 30 L90 15 L40 15 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M10 30 L60 30 L60 70 L10 70 Z" fill="currentColor" fill-opacity="0.05" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M60 30 L90 15 L90 55 L60 70 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <circle cx="35" cy="50" r="16" fill="none" stroke="currentColor" stroke-width="1.5" />
+                        <g transform="translate(35, 50)">
+                          <path d="M-14 0 L14 0 M0 -14 L0 14" stroke="currentColor" stroke-width="1.5" />
+                          <path d="M-10 -10 L10 10 M10 -10 L-10 10" stroke="currentColor" stroke-width="1.5" />
+                        </g>
+                        <circle cx="80" cy="25" r="2" fill="currentColor" />
+                    </svg>
+                      <span data-i18n="viz.miner">Miner</span>
+                    </div>
+
+                    <div class="data-viz plaintext-viz">
+                      <div class="connection-line red"></div>
+                      <div class="json-packets">
+                        <div class="json-packet" style="top: 15%; left: 5%;">{"method":"mining.authorize"}</div>
+                        <div class="json-packet sensitive" style="top: 40%; left: 25%;">
+                          <svg class="unlock-icon" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect>
+                            <path d="M7 11V7a5 5 0 0 1 9.9-1"></path>
+                          </svg>
+                          {"params":["user","pass"]}
+                        </div>
+                        <div class="json-packet" style="top: 65%; left: 10%;">{"id":1}</div>
+                        <div class="json-packet hidden-mobile" style="top: 25%; left: 45%;">{"jsonrpc": "2.0"}</div>
+                        <div class="json-packet hidden-mobile" style="top: 55%; left: 35%;">{"result":true}</div>
+                        <div class="json-packet hidden-mobile" style="top: 80%; left: 40%;">{"worker":"worker1"}</div>
+                        <div class="json-packet hidden-mobile" style="top: 10%; left: 30%;">{"job_id":"0x83a..."}</div>
+                      </div>
+                    </div>
+
+                    <div class="pool-endpoint red">
+                      <div class="pool-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <rect width="20" height="8" x="2" y="2" rx="2" ry="2"></rect>
+                          <rect width="20" height="8" x="2" y="14" rx="2" ry="2"></rect>
+                          <line x1="6" x2="6.01" y1="6" y2="6"></line>
+                          <line x1="6" x2="6.01" y1="18" y2="18"></line>
+                        </svg>
+                      </div>
+                      <span data-i18n="viz.pool">Pool</span>
+                    </div>
+
+                    <div class="comparison-label v1-label" data-i18n="viz.legacy.v1">LEGACY V1</div>
+                  </div>
+                </div>
+
+                <!-- Slider Handle -->
+                <div class="slider-handle">
+                  <div class="slider-line"></div>
+                  <div class="slider-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="m18 8 4 4-4 4"></path>
+                      <path d="m6 8-4 4 4 4"></path>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Profitability Visualization (Carousel) -->
+            <div class="visualization-panel hidden" data-viz="2">
+              <div class="profit-carousel" role="region" aria-roledescription="carousel" aria-label="Profitability metrics">
+                <!-- Arrow Navigation -->
+                <button class="carousel-arrow carousel-prev" aria-label="Previous slide">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m15 18-6-6 6-6"></path>
+                  </svg>
+                </button>
+                <button class="carousel-arrow carousel-next" aria-label="Next slide">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m9 18 6-6-6-6"></path>
+                  </svg>
+                </button>
+
+                <!-- Carousel Slides -->
+                <div class="carousel-track">
+                  <!-- Slide 1: Share Acceptance Rate -->
+                  <div class="carousel-slide active" data-slide="0" role="tabpanel" aria-label="Slide 1 of 3">
+                    <div class="slide-header">
+                      <span class="slide-label" data-i18n="carousel.share.acceptance">Share Acceptance Rate</span>
+                    </div>
+                    <div class="slide-content">
+                      <div class="bar-chart vertical">
+                        <div class="chart-bar-group">
+                          <div class="chart-col">
+                            <div class="bar-value-top">99.8%</div>
+                            <div class="bar-container">
+                              <div class="bar sv1" style="height: 80%"></div>
+                            </div>
+                            <div class="bar-label" data-i18n="viz.sv1">SV1</div>
+                          </div>
+                          <div class="chart-col">
+                            <div class="bar-value-top">99.91%</div>
+                            <div class="bar-container">
+                              <div class="bar sv2-light" style="height: 91%"></div>
+                            </div>
+                            <div class="bar-label" data-i18n="viz.sv2">SV2</div>
+                          </div>
+                          <div class="chart-col">
+                            <div class="bar-value-top">100%</div>
+                            <div class="bar-container">
+                              <div class="bar sv2" style="height: 100%"></div>
+                            </div>
+                            <div class="bar-label" data-i18n="viz.sv2.jd">SV2 + JD</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="slide-caption" data-i18n="carousel.share.caption">Near-zero stale shares with Job Declaration</div>
+                  </div>
+
+                  <!-- Slide 2: Job Latency -->
+                  <div class="carousel-slide" data-slide="1" role="tabpanel" aria-label="Slide 2 of 3">
+                    <div class="slide-header">
+                      <span class="slide-label" data-i18n="carousel.latency">Job Latency</span>
+                    </div>
+                    <div class="slide-content">
+                      <div class="bar-chart vertical">
+                        <div class="chart-bar-group">
+                          <div class="chart-col">
+                            <div class="bar-value-top">228ms</div>
+                            <div class="bar-container">
+                              <div class="bar sv1" style="height: 100%"></div>
+                            </div>
+                            <div class="bar-label" data-i18n="viz.sv1">SV1</div>
+                          </div>
+                          <div class="chart-col">
+                            <div class="bar-value-top">57.7ms</div>
+                            <div class="bar-container">
+                              <div class="bar sv2-light" style="height: 25.3%"></div>
+                            </div>
+                            <div class="bar-label" data-i18n="viz.sv2">SV2</div>
+                          </div>
+                          <div class="chart-col">
+                            <div class="bar-value-top">2.44ms</div>
+                            <div class="bar-container">
+                              <div class="bar sv2" style="height: 1.07%"></div>
+                            </div>
+                            <div class="bar-label" data-i18n="viz.sv2.jd">SV2 + JD</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="slide-caption" data-i18n="carousel.latency.caption">Job latency impacts how fast the new job is received from the Pool</div>
+                  </div>
+
+                  <!-- Slide 3: Block Propagation -->
+                  <div class="carousel-slide" data-slide="2" role="tabpanel" aria-label="Slide 3 of 3">
+                    <div class="slide-header">
+                      <span class="slide-label" data-i18n="carousel.propagation">Block Propagation Time</span>
+                    </div>
+                    <div class="slide-content">
+                      <div class="bar-chart vertical">
+                        <div class="chart-bar-group two-bars">
+                          <div class="chart-col">
+                            <div class="bar-value-top">96.3ms</div>
+                            <div class="bar-container">
+                              <div class="bar sv1" style="height: 100%"></div>
+                            </div>
+                            <div class="bar-label" data-i18n="viz.sv1">SV1</div>
+                          </div>
+                          <div class="chart-col">
+                            <div class="bar-value-top">3.44ms</div>
+                            <div class="bar-container">
+                              <div class="bar sv2" style="height: 3.57%"></div>
+                            </div>
+                            <div class="bar-label" data-i18n="viz.sv2.jd">SV2 + JD</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="slide-caption" data-i18n="carousel.propagation.caption">28× faster block propagation</div>
+                  </div>
+                </div>
+
+                <!-- Dot Navigation -->
+                <div class="carousel-nav" role="tablist" aria-label="Slide navigation">
+                  <button class="carousel-dot active" data-slide="0" role="tab" aria-selected="true" aria-label="Go to slide 1: Share Acceptance Rate"></button>
+                  <button class="carousel-dot" data-slide="1" role="tab" aria-selected="false" aria-label="Go to slide 2: Job Latency"></button>
+                  <button class="carousel-dot" data-slide="2" role="tab" aria-selected="false" aria-label="Go to slide 3: Block Propagation"></button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Privacy Visualization -->
+            <div class="visualization-panel hidden" data-viz="3">
+              <div class="visual-panel">
+                <div class="privacy-visual">
+                  <!-- ISP Spy Box Above -->
+                  <div class="isp-container">
+                    <div class="isp-box">
+                      <div class="isp-icon">
+                        <!-- Animated eye that follows data then closes -->
+                        <svg class="spy-eye" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <!-- Eye outline (always visible) -->
+                          <path class="eye-outline" d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+                          <!-- Pupil (moves and fades) -->
+                          <circle class="eye-pupil" cx="12" cy="12" r="3"></circle>
+                          <!-- Closed eye line (fades in when eye closes) -->
+                          <line class="eye-closed" x1="4" y1="12" x2="20" y2="12" stroke-width="2" opacity="0"></line>
+                        </svg>
+                      </div>
+                      <span data-i18n="viz.isp">ISP</span>
+                    </div>
+                  </div>
+
+                  <!-- Main Connection Row -->
+                  <div class="privacy-connection-row">
+                    <!-- Miner Left -->
+                    <div class="privacy-endpoint">
+                      <div class="miner-unit cyan">
+                        <svg viewBox="0 0 100 100">
+                          <path d="M10 30 L60 30 L90 15 L40 15 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                          <path d="M10 30 L60 30 L60 70 L10 70 Z" fill="currentColor" fill-opacity="0.05" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                          <path d="M60 30 L90 15 L90 55 L60 70 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                          <circle cx="35" cy="50" r="16" fill="none" stroke="currentColor" stroke-width="1.5" />
+                          <g transform="translate(35, 50)">
+                            <path d="M-14 0 L14 0 M0 -14 L0 14" stroke="currentColor" stroke-width="1.5" />
+                            <path d="M-10 -10 L10 10 M10 -10 L-10 10" stroke="currentColor" stroke-width="1.5" />
+                          </g>
+                          <circle cx="80" cy="25" r="2" fill="currentColor" />
+                        </svg>
+                      </div>
+                      <span class="endpoint-label" data-i18n="viz.miner">Miner</span>
+                    </div>
+
+                    <!-- Connection Line with Encrypted Packets -->
+                    <div class="privacy-connection-line">
+                      <div class="connection-path"></div>
+                      <!-- Encrypted packet bubbles -->
+                      <div class="encrypted-bubble bubble-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect>
+                          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                        </svg>
+                      </div>
+                      <div class="encrypted-bubble bubble-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect>
+                          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                        </svg>
+                      </div>
+                      <div class="encrypted-bubble bubble-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect>
+                          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                        </svg>
+                      </div>
+                    </div>
+
+                    <!-- Pool Right -->
+                    <div class="privacy-endpoint">
+                      <div class="pool-endpoint cyan">
+                        <div class="pool-icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="20" height="8" x="2" y="2" rx="2" ry="2"></rect>
+                            <rect width="20" height="8" x="2" y="14" rx="2" ry="2"></rect>
+                            <line x1="6" x2="6.01" y1="6" y2="6"></line>
+                            <line x1="6" x2="6.01" y1="18" y2="18"></line>
+                          </svg>
+                        </div>
+                      </div>
+                      <span class="endpoint-label" data-i18n="viz.pool">Pool</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Miner Control Visualization (Carousel) -->
+            <div class="visualization-panel hidden" data-viz="4">
+              <div class="autonomy-carousel" role="region" aria-roledescription="carousel" aria-label="Miner autonomy comparison">
+                <!-- Arrow Navigation -->
+                <button class="carousel-arrow carousel-prev" aria-label="Previous slide">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m15 18-6-6 6-6"></path>
+                  </svg>
+                </button>
+                <button class="carousel-arrow carousel-next" aria-label="Next slide">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m9 18 6-6-6-6"></path>
+                  </svg>
+                </button>
+
+                <!-- Carousel Track -->
+                <div class="carousel-track">
+                  <!-- Slide 1: SV2 - Miner constructs blocks -->
+                  <div class="carousel-slide active" data-slide="0" role="tabpanel" aria-label="Slide 1 of 2: Stratum V2">
+                    <div class="slide-header">
+                      <span class="slide-label sv2-label-text" data-i18n="viz.stratum.v2.label">Stratum V2</span>
+                    </div>
+                    <div class="slide-content">
+                      <div class="autonomy-diagram sv2">
+                        <!-- Left: Miner with Block -->
+                        <div class="autonomy-column">
+                          <div class="miner-unit cyan">
+                            <svg viewBox="0 0 100 100">
+                              <path d="M10 30 L60 30 L90 15 L40 15 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                              <path d="M10 30 L60 30 L60 70 L10 70 Z" fill="currentColor" fill-opacity="0.05" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                              <path d="M60 30 L90 15 L90 55 L60 70 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                              <circle cx="35" cy="50" r="16" fill="none" stroke="currentColor" stroke-width="1.5" />
+                              <g transform="translate(35, 50)">
+                                <path d="M-14 0 L14 0 M0 -14 L0 14" stroke="currentColor" stroke-width="1.5" />
+                                <path d="M-10 -10 L10 10 M10 -10 L-10 10" stroke="currentColor" stroke-width="1.5" />
+                              </g>
+                              <circle cx="80" cy="25" r="2" fill="currentColor" />
+                            </svg>
+                            <span data-i18n="viz.miner">Miner</span>
+                          </div>
+                          <!-- Block below Miner (SV2: Miner builds) -->
+                          <div class="block-unit cyan">
+                            <div class="block-icon">
+                              <svg class="block-visual-svg" viewBox="0 0 24 24">
+                                <rect x="2" y="2" width="8" height="6" rx="1" fill="currentColor" opacity="0.8"/>
+                                <rect x="11" y="2" width="5" height="4" rx="1" fill="currentColor" opacity="0.6"/>
+                                <rect x="17" y="2" width="5" height="5" rx="1" fill="currentColor" opacity="0.7"/>
+                                <rect x="2" y="9" width="6" height="4" rx="1" fill="currentColor" opacity="0.5"/>
+                                <rect x="9" y="8" width="7" height="6" rx="1" fill="currentColor" opacity="0.9"/>
+                                <rect x="17" y="8" width="5" height="6" rx="1" fill="currentColor" opacity="0.6"/>
+                                <rect x="2" y="15" width="10" height="5" rx="1" fill="currentColor" opacity="0.7"/>
+                                <rect x="13" y="15" width="4" height="3" rx="1" fill="currentColor" opacity="0.5"/>
+                                <rect x="18" y="15" width="4" height="7" rx="1" fill="currentColor" opacity="0.8"/>
+                              </svg>
+                            </div>
+                            <span data-i18n="viz.block">Block</span>
+                          </div>
+                        </div>
+
+                        <!-- Right: Pool with placeholder -->
+                        <div class="autonomy-column">
+                          <div class="pool-endpoint cyan">
+                            <div class="pool-icon">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect width="20" height="8" x="2" y="2" rx="2" ry="2"></rect>
+                                <rect width="20" height="8" x="2" y="14" rx="2" ry="2"></rect>
+                                <line x1="6" x2="6.01" y1="6" y2="6"></line>
+                                <line x1="6" x2="6.01" y1="18" y2="18"></line>
+                              </svg>
+                            </div>
+                            <span data-i18n="viz.pool">Pool</span>
+                          </div>
+                          <!-- Invisible placeholder to maintain layout -->
+                          <div class="block-unit placeholder">
+                            <div class="block-icon"></div>
+                            <span data-i18n="viz.block">Block</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="slide-caption" data-i18n="carousel.autonomy.sv2.caption">Miner selects transactions and builds the block</div>
+                  </div>
+
+                  <!-- Slide 2: SV1 - Pool constructs blocks -->
+                  <div class="carousel-slide" data-slide="1" role="tabpanel" aria-label="Slide 2 of 2: Legacy V1">
+                    <div class="slide-header">
+                      <span class="slide-label sv1-label-text" data-i18n="viz.legacy.v1.label">Legacy V1</span>
+                    </div>
+                    <div class="slide-content">
+                      <div class="autonomy-diagram sv1">
+                        <!-- Left: Miner with placeholder -->
+                        <div class="autonomy-column">
+                          <div class="miner-unit red">
+                            <svg viewBox="0 0 100 100">
+                              <path d="M10 30 L60 30 L90 15 L40 15 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                              <path d="M10 30 L60 30 L60 70 L10 70 Z" fill="currentColor" fill-opacity="0.05" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                              <path d="M60 30 L90 15 L90 55 L60 70 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                              <circle cx="35" cy="50" r="16" fill="none" stroke="currentColor" stroke-width="1.5" />
+                              <g transform="translate(35, 50)">
+                                <path d="M-14 0 L14 0 M0 -14 L0 14" stroke="currentColor" stroke-width="1.5" />
+                                <path d="M-10 -10 L10 10 M10 -10 L-10 10" stroke="currentColor" stroke-width="1.5" />
+                              </g>
+                              <circle cx="80" cy="25" r="2" fill="currentColor" />
+                            </svg>
+                            <span data-i18n="viz.miner">Miner</span>
+                          </div>
+                          <!-- Invisible placeholder to maintain layout -->
+                          <div class="block-unit placeholder">
+                            <div class="block-icon"></div>
+                            <span data-i18n="viz.block">Block</span>
+                          </div>
+                        </div>
+
+                        <!-- Right: Pool with Block -->
+                        <div class="autonomy-column">
+                          <div class="pool-endpoint red">
+                            <div class="pool-icon">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect width="20" height="8" x="2" y="2" rx="2" ry="2"></rect>
+                                <rect width="20" height="8" x="2" y="14" rx="2" ry="2"></rect>
+                                <line x1="6" x2="6.01" y1="6" y2="6"></line>
+                                <line x1="6" x2="6.01" y1="18" y2="18"></line>
+                              </svg>
+                            </div>
+                            <span data-i18n="viz.pool">Pool</span>
+                          </div>
+                          <!-- Block below Pool (SV1: Pool builds) -->
+                          <div class="block-unit red">
+                            <div class="block-icon">
+                              <svg class="block-visual-svg" viewBox="0 0 24 24">
+                                <rect x="2" y="2" width="8" height="6" rx="1" fill="currentColor" opacity="0.8"/>
+                                <rect x="11" y="2" width="5" height="4" rx="1" fill="currentColor" opacity="0.6"/>
+                                <rect x="17" y="2" width="5" height="5" rx="1" fill="currentColor" opacity="0.7"/>
+                                <rect x="2" y="9" width="6" height="4" rx="1" fill="currentColor" opacity="0.5"/>
+                                <rect x="9" y="8" width="7" height="6" rx="1" fill="currentColor" opacity="0.9"/>
+                                <rect x="17" y="8" width="5" height="6" rx="1" fill="currentColor" opacity="0.6"/>
+                                <rect x="2" y="15" width="10" height="5" rx="1" fill="currentColor" opacity="0.7"/>
+                                <rect x="13" y="15" width="4" height="3" rx="1" fill="currentColor" opacity="0.5"/>
+                                <rect x="18" y="15" width="4" height="7" rx="1" fill="currentColor" opacity="0.8"/>
+                              </svg>
+                            </div>
+                            <span data-i18n="viz.block">Block</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="slide-caption" data-i18n="carousel.autonomy.sv1.caption">Pool controls transaction selection and block construction</div>
+                  </div>
+                </div>
+
+                <!-- Dot Navigation -->
+                <div class="carousel-nav" role="tablist" aria-label="Slide navigation">
+                  <button class="carousel-dot active" data-slide="0" role="tab" aria-selected="true" aria-label="Go to slide 1: Stratum V2"></button>
+                  <button class="carousel-dot" data-slide="1" role="tab" aria-selected="false" aria-label="Go to slide 2: Legacy V1"></button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Flexibility Visualization -->
+            <div class="visualization-panel hidden" data-viz="5">
+              <div class="visual-panel">
+                <div class="flexibility-visual">
+	                  <div class="module-stack">
+	                    <div class="module-item">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                      </svg>
+	                      <span data-i18n="module.job.declaration">Job Declaration</span>
+	                    </div>
+	                    <div class="module-item">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                        <path d="M2 12l10 5 10-5"></path>
+                      </svg>
+	                      <span data-i18n="module.template.distribution">Template Distribution</span>
+	                    </div>
+	                    <div class="module-item">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                        <path d="M2 17l10 5 10-5"></path>
+                        <path d="M2 12l10 5 10-5"></path>
+                      </svg>
+	                      <span data-i18n="module.mining.protocol">Mining Protocol</span>
+	                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Compatibility Visualization -->
+            <div class="visualization-panel hidden" data-viz="6">
+              <div class="visual-panel">
+                <div class="compatibility-visual">
+	                  <div class="compat-flow">
+	                    <div class="compat-box sv1">
+	                      <span data-i18n="viz.sv1">SV1</span>
+	                    </div>
+                    <div class="compat-arrow">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14"></path>
+                        <path d="m12 5 7 7-7 7"></path>
+                      </svg>
+                    </div>
+	                    <div class="compat-box proxy">
+	                      <span data-i18n="viz.proxy">Proxy</span>
+	                    </div>
+                    <div class="compat-arrow">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14"></path>
+                        <path d="m12 5 7 7-7 7"></path>
+                      </svg>
+                    </div>
+	                    <div class="compat-box sv2">
+	                      <span data-i18n="viz.sv2">SV2</span>
+	                    </div>
+	                  </div>
+	                  <div class="compat-label" data-i18n="viz.translation.proxy">TRANSLATION PROXY</div>
+	                </div>
+              </div>
+            </div>
+
+            <!-- Interoperability Visualization -->
+            <div class="visualization-panel hidden" data-viz="7">
+              <div class="visual-panel">
+	                <div class="interoperability-visual">
+	                  <div class="interoperability-header">
+	                    <h4 data-i18n="features.interoperability.wg">Working Group Members</h4>
+	                  </div>
+                  <div class="interoperability-logos">
+                    <a href="https://auradine.com/" target="_blank" rel="noopener noreferrer" class="supporter-logo" aria-label="Visit Auradine website">
+                      <img src="/assets/logos/auradine.png" alt="Auradine" width="256" height="92" loading="lazy" decoding="async" />
+                    </a>
+                    <a href="https://braiins.com/" target="_blank" rel="noopener noreferrer" class="supporter-logo" aria-label="Visit Braiins website">
+                      <img src="/assets/logos/braiins-logo.svg" alt="Braiins" width="240" height="87" loading="lazy" decoding="async" />
+                    </a>
+                    <a href="https://www.dmnd.work/" target="_blank" rel="noopener noreferrer" class="supporter-logo" aria-label="Visit DMND website">
+                      <img src="/assets/logos/demand-logo.svg" alt="DMND" width="612" height="258" loading="lazy" decoding="async" />
+                    </a>
+                    <a href="https://foundrydigital.com/" target="_blank" rel="noopener noreferrer" class="supporter-logo" aria-label="Visit Foundry website">
+                      <img src="/assets/logos/foundry-logo.svg" alt="Foundry" width="231" height="74" loading="lazy" decoding="async" />
+                    </a>
+                    <a href="https://spiral.xyz/" target="_blank" rel="noopener noreferrer" class="supporter-logo" aria-label="Visit Spiral website">
+                      <img src="/assets/logos/spiral-logo.svg" alt="Spiral" width="122" height="120" loading="lazy" decoding="async" />
+                    </a>
+                  </div>
+	                  <a href="https://stratumprotocol.org/specification/" target="_blank" rel="noopener noreferrer" class="interoperability-link" data-i18n="features.interoperability.viewspec">View Specifications →</a>
+	                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modularity Section -->
+    <section id="modularity" class="modularity" aria-labelledby="modularity-title">
+      <!-- Background Gradients -->
+      <div class="modularity-bg" aria-hidden="true">
+        <div class="modularity-gradient modularity-gradient-1"></div>
+        <div class="modularity-gradient modularity-gradient-2"></div>
+      </div>
+
+      <div class="section-container">
+        <div class="modularity-grid">
+          <!-- Text Column -->
+	          <div class="modularity-text">
+	            <h2 id="modularity-title"><span data-i18n="modularity.title.part1">Building blocks for</span> <span class="cyan" data-i18n="modularity.title.part2">innovation</span></h2>
+	            <p data-i18n="modularity.description">Reduce complexity, vertically integrate, and build applications more efficiently with our open, thoroughly documented protocol and reference implementation, libraries and even applications. Build a proxy, mining monitoring software, a pool or efficient firmware.</p>
+	          </div>
+
+          <!-- Building Blocks Visualization -->
+          <div class="building-blocks">
+            <!-- Connection Lines SVG - Curved paths connecting center to modules -->
+            <svg class="connection-lines" viewBox="0 0 400 400" aria-hidden="true">
+              <!-- Top: Center to Rust Libraries - gentle S curve -->
+              <path class="connection-line" d="M200,152 C200,130 200,110 200,85" fill="none" />
+              <!-- Top-Right: Center to Reference Implementation - curved outward -->
+              <path class="connection-line" d="M248,168 C270,160 300,145 330,125" fill="none" />
+              <!-- Bottom-Right: Center to Reference Applications - curved outward -->
+              <path class="connection-line" d="M248,232 C270,240 300,255 330,275" fill="none" />
+              <!-- Bottom: Center to Language Bindings - gentle S curve -->
+              <path class="connection-line" d="M200,248 C200,270 200,290 200,315" fill="none" />
+              <!-- Bottom-Left: Center to Docker Support - curved outward -->
+              <path class="connection-line" d="M152,232 C130,240 100,255 70,275" fill="none" />
+              <!-- Top-Left: Center to Clear Specification - curved outward -->
+              <path class="connection-line" d="M152,168 C130,160 100,145 70,125" fill="none" />
+            </svg>
+
+            <!-- Center Hub - Stratum V2 -->
+            <div class="block-center">
+              <div class="block-icon block-icon-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                  <path d="M2 17l10 5 10-5"/>
+                  <path d="M2 12l10 5 10-5"/>
+                </svg>
+              </div>
+	              <span class="block-label" data-i18n="module.stratum.v2">Stratum V2</span>
+	            </div>
+
+            <!-- Module: Rust Libraries (Top) -->
+            <a class="block-module block-pos-top block-module-link" href="https://github.com/stratum-mining/stratum" target="_blank" rel="noopener noreferrer" aria-label="Rust Libraries on GitHub">
+              <div class="block-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="16 18 22 12 16 6"/>
+                  <polyline points="8 6 2 12 8 18"/>
+                </svg>
+              </div>
+	              <span class="block-label" data-i18n="module.rust.libraries">Rust Libraries</span>
+	            </a>
+
+            <!-- Module: Reference Implementation (Top Right) -->
+            <a class="block-module block-pos-top-right block-module-link" href="https://github.com/stratum-mining" target="_blank" rel="noopener noreferrer" aria-label="Reference Implementation on GitHub">
+              <div class="block-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                  <polyline points="22 4 12 14.01 9 11.01"/>
+                </svg>
+              </div>
+	              <span class="block-label" data-i18n="module.reference.implementation">Reference Implementation</span>
+	            </a>
+
+            <!-- Module: Reference Applications (Bottom Right) -->
+            <a class="block-module block-pos-bottom-right block-module-link" href="https://github.com/stratum-mining/sv2-apps" target="_blank" rel="noopener noreferrer" aria-label="Reference Applications on GitHub">
+              <div class="block-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                  <path d="M2 17l10 5 10-5"/>
+                  <path d="M2 12l10 5 10-5"/>
+                </svg>
+              </div>
+	              <span class="block-label" data-i18n="module.reference.applications">Reference Applications</span>
+	            </a>
+
+            <!-- Module: Language Bindings (Bottom) -->
+            <a class="block-module block-pos-bottom block-module-link" href="https://github.com/stratum-mining/sv2-uniffi" target="_blank" rel="noopener noreferrer" aria-label="Language Bindings on GitHub">
+              <div class="block-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/>
+                  <line x1="2" y1="12" x2="22" y2="12"/>
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                </svg>
+              </div>
+	              <span class="block-label" data-i18n="module.language.bindings">Language Bindings</span>
+	            </a>
+
+            <!-- Module: Docker Support (Bottom Left) -->
+            <a class="block-module block-pos-bottom-left block-module-link" href="https://github.com/stratum-mining/sv2-apps/tree/main/docker" target="_blank" rel="noopener noreferrer" aria-label="Docker Support in sv2-apps repository">
+              <div class="block-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                  <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                  <line x1="12" y1="22.08" x2="12" y2="12"/>
+                </svg>
+              </div>
+	              <span class="block-label" data-i18n="module.docker.support">Docker Support</span>
+	            </a>
+
+            <!-- Module: Clear Specification (Top Left) -->
+            <a class="block-module block-pos-top-left block-module-link" href="/specification/" aria-label="Clear Specification page">
+              <div class="block-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                  <path d="M14 2v6h6"/>
+                  <path d="M16 13H8"/>
+                  <path d="M16 17H8"/>
+                  <path d="M10 9H8"/>
+                </svg>
+              </div>
+	              <span class="block-label" data-i18n="module.clear.specification">Clear Specification</span>
+	            </a>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SV2 Adoption Section -->
+    <section id="sv2-adoption" class="sv2-adoption" aria-labelledby="sv2-adoption-title">
+      <div class="section-container">
+        <!-- Header -->
+        <div class="sv2-adoption-header">
+          <h2 id="sv2-adoption-title"><span data-i18n="adoption.title.part1">SV2</span> <span class="cyan" data-i18n="adoption.title.part2">Adoption</span></h2>
+          <p data-i18n="adoption.subtitle">Tested and deployed by industry leaders across hardware, firmware, and pool infrastructure.</p>
+        </div>
+
+        <!-- Adoption Categories -->
+        <div class="adoption-categories">
+
+          <!-- Hardware & Firmware -->
+          <div class="adoption-category">
+            <div class="category-header">
+              <div class="category-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="16" height="16" x="4" y="4" rx="2"></rect>
+                  <rect width="6" height="6" x="9" y="9" rx="1"></rect>
+                  <path d="M15 2v2"></path>
+                  <path d="M15 20v2"></path>
+                  <path d="M2 15h2"></path>
+                  <path d="M2 9h2"></path>
+                  <path d="M20 15h2"></path>
+                  <path d="M20 9h2"></path>
+                  <path d="M9 2v2"></path>
+                  <path d="M9 20v2"></path>
+                </svg>
+              </div>
+              <h3 data-i18n="adoption.category.hardware">Hardware & Firmware</h3>
+            </div>
+            <div class="adopters-list">
+              <div class="adopter-item">
+                <div class="adopter-logo">
+                  <img src="/assets/logos/auradine.png" alt="Auradine" width="256" height="92" loading="lazy" decoding="async" />
+                </div>
+                <div class="adopter-info">
+                  <span class="adopter-name">Auradine</span>
+                  <span class="adopter-desc" data-i18n="adopter.auradine.desc">SV2 native support across all ASICs via FluxOS</span>
+                </div>
+              </div>
+              <div class="adopter-item">
+                <div class="adopter-logo">
+                  <img src="/assets/logos/braiins-logo.svg" alt="BraiinsOS" width="240" height="87" loading="lazy" decoding="async" />
+                </div>
+                <div class="adopter-info">
+                  <span class="adopter-name">BraiinsOS</span>
+                  <span class="adopter-desc" data-i18n="adopter.braiinsos.desc">Native Stratum V2 firmware support</span>
+                </div>
+              </div>
+              <div class="adopter-item">
+                <div class="adopter-logo">
+                  <!-- Placeholder for Proto/Block Inc. -->
+                  <div class="logo-placeholder">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="18" height="18" x="3" y="3" rx="2"></rect>
+                      <path d="M12 8v8"></path>
+                      <path d="M8 12h8"></path>
+                    </svg>
+                  </div>
+                </div>
+                <div class="adopter-info">
+                  <span class="adopter-name">Proto, Block Inc.</span>
+                  <span class="adopter-desc" data-i18n="adopter.proto.desc">Announced work towards SV2 compatibility</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pools -->
+          <div class="adoption-category">
+            <div class="category-header">
+              <div class="category-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+                  <path d="M2 12h20"></path>
+                </svg>
+              </div>
+              <h3 data-i18n="adoption.category.pools">Pools</h3>
+            </div>
+            <div class="adopters-list">
+              <div class="adopter-item">
+                <div class="adopter-logo">
+                  <img src="/assets/logos/braiins-logo.svg" alt="Braiins Pool" width="240" height="87" loading="lazy" decoding="async" />
+                </div>
+                <div class="adopter-info">
+                  <span class="adopter-name">Braiins Pool</span>
+                  <span class="adopter-desc" data-i18n="adopter.braiinspool.desc">In production pool</span>
+                </div>
+              </div>
+              <div class="adopter-item">
+                <div class="adopter-logo">
+                  <img src="/assets/logos/demand-logo.svg" alt="DMND" width="612" height="258" loading="lazy" decoding="async" />
+                </div>
+                <div class="adopter-info">
+                  <span class="adopter-name">DMND</span>
+                  <span class="adopter-desc" data-i18n="adopter.dmnd.desc">In production pool, enabling miner selected templates</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Adoption & Testing -->
+          <div class="adoption-category">
+            <div class="category-header">
+              <div class="category-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path>
+                  <path d="m9 12 2 2 4-4"></path>
+                </svg>
+              </div>
+              <h3 data-i18n="adoption.category.testing">Adoption & Testing</h3>
+            </div>
+              <div class="adopter-item">
+                <div class="adopter-logo">
+                  <!-- Placeholder for Hashlabs -->
+                  <div class="logo-placeholder">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="18" height="18" x="3" y="3" rx="2"></rect>
+                      <path d="M12 8v8"></path>
+                      <path d="M8 12h8"></path>
+                    </svg>
+                  </div>
+                </div>
+                <div class="adopter-info">
+                  <span class="adopter-name">Hashlabs</span>
+                  <span class="adopter-desc" data-i18n="adopter.hashlabs.desc">Site of the head-to-head V1 vs V2 test</span>
+                </div>
+              </div>
+              <div class="adopter-item">
+                <div class="adopter-logo">
+                  <!-- Placeholder for StarkWare -->
+                  <div class="logo-placeholder">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="18" height="18" x="3" y="3" rx="2"></rect>
+                      <path d="M12 8v8"></path>
+                      <path d="M8 12h8"></path>
+                    </svg>
+                  </div>
+                </div>
+                <div class="adopter-info">
+                  <span class="adopter-name">StarkWare</span>
+                  <span class="adopter-desc" data-i18n="adopter.starkware.desc">Developed a zero-knowledge-proof prototype built on Stratum V2</span>
+                </div>
+              </div>
+              <div class="adopter-item">
+                <div class="adopter-logo">
+                  <!-- Placeholder for Pluto Mining -->
+                  <div class="logo-placeholder">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="18" height="18" x="3" y="3" rx="2"></rect>
+                      <path d="M12 8v8"></path>
+                      <path d="M8 12h8"></path>
+                    </svg>
+                  </div>
+                </div>
+                <div class="adopter-info">
+                  <span class="adopter-name">Pluto Mining</span>
+                  <span class="adopter-desc" data-i18n="adopter.pluto.desc">Working on mining management software implementing SV2 compatibility</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- CTA -->
+        <div class="adoption-cta">
+          <span data-i18n="adoption.cta.text">Running SV2?</span>
+          <a href="https://discord.gg/fsEW23wFYs" target="_blank" rel="noopener noreferrer" data-i18n="adoption.cta.link">Tell us on Discord →</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Supporters Section -->
+    <section id="supporters" class="supporters" aria-labelledby="supporters-title">
+      <div class="section-container">
+        <h2 id="supporters-title"><span data-i18n="supporters.title.part1">Support for</span> <span class="cyan" data-i18n="supporters.title.part2">Stratum V2</span></h2>
+
+        <!-- Supporter Tabs -->
+        <div class="supporter-tabs" role="tablist">
+          <button class="supporter-tab active" data-supporter-tab="all" role="tab" aria-selected="true" data-i18n="supporters.tab.all">All Supporters</button>
+          <button class="supporter-tab" data-supporter-tab="funder" role="tab" aria-selected="false" data-i18n="supporters.tab.funders">Funders</button>
+          <button class="supporter-tab" data-supporter-tab="workingGroup" role="tab" aria-selected="false" data-i18n="supporters.tab.workinggroup">Working Group</button>
+        </div>
+     <!-- Supporters Grid -->
+        <div class="supporters-grid" id="supporters-grid">
+          <!-- Logos will be populated by JavaScript -->
+        </div>
+
+      </div>
+        <!-- Working Group Info -->
+        <div class="working-group-info hidden" id="working-group-info">
+          <h3 data-i18n="workinggroup.title">About the Working Group</h3>
+          <p data-i18n="workinggroup.description">The Stratum V2 Working Group is community-governed and independent of any single entity. We foster ecosystem collaboration to drive permissionless innovation in Bitcoin mining.</p>
+          <div class="working-group-links">
+            <a href="https://stratumprotocol.org/specification" class="wg-link outline" target="_blank" rel="noopener noreferrer">
+              <span data-i18n="workinggroup.viewspec">View Specifications</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6"></path>
+                <path d="m21 3-9 9"></path>
+                <path d="M15 3h6v6"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section id="community" class="community" aria-labelledby="community-title">
+      <!-- Background Decoration -->
+      <div class="community-bg" aria-hidden="true"></div>
+
+      <div class="section-container">
+        <div class="community-header">
+          <h2 id="community-title" data-i18n="community.title">Community</h2>
+          <p data-i18n="community.subtitle">Community-driven governance and specifications ensure interoperability, so teams can focus on innovating instead of patching incompatibilities.</p>
+        </div>
+
+        <div class="community-grid">
+          <!-- GitHub (Primary) -->
+          <a href="https://github.com/stratum-mining/" class="community-card github" target="_blank" rel="noopener noreferrer" aria-label="View our GitHub repositories">
+            <div class="community-card-content">
+              <div class="community-icon github-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+                  <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                </svg>
+              </div>
+              <div class="community-info">
+                <h3 data-i18n="community.github.title">GitHub</h3>
+                <p data-i18n="community.github.description">Free and open-source Stratum V2 implementation developed as a public good by industry contributors. Built in Rust with bindings for other languages, plus libraries and applications you can build on.</p>
+              </div>
+              <div class="community-cta">
+                <span data-i18n="community.github.cta">EXPLORE CODEBASE</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14"></path>
+                  <path d="m12 5 7 7-7 7"></path>
+                </svg>
+              </div>
+            </div>
+            <div class="github-decoration" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+                <path d="M9 18c-4.51 2-5-2-7-2"></path>
+              </svg>
+            </div>
+          </a>
+
+          <!-- Secondary Column (Socials) -->
+          <div class="community-secondary">
+            <!-- Discord -->
+            <a href="https://discord.gg/fsEW23wFYs" class="community-card discord" target="_blank" rel="noopener noreferrer" aria-label="Join our Discord server to chat with the community">
+              <div class="community-card-row">
+                <div class="community-info">
+                  <div class="community-icon discord-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 data-i18n="community.discord.title">Discord Community</h3>
+                    <p data-i18n="community.discord.description">The heart of our discussion. Join developers and miners to discuss proposals, get support, and collaborate.</p>
+                  </div>
+                </div>
+                <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M7 7h10v10"></path>
+                  <path d="M7 17 17 7"></path>
+                </svg>
+              </div>
+            </a>
+
+            <!-- Twitter/X -->
+            <a href="https://x.com/StratumV2" class="community-card twitter" target="_blank" rel="noopener noreferrer" aria-label="Follow us on X (Twitter)">
+              <div class="community-card-row">
+                <div class="community-info">
+                  <div class="community-icon twitter-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 data-i18n="community.twitter.title">Follow Updates</h3>
+                    <p data-i18n="community.twitter.description">Latest news, threads, and ecosystem announcements.</p>
+                  </div>
+                </div>
+                <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M7 7h10v10"></path>
+                  <path d="M7 17 17 7"></path>
+                </svg>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

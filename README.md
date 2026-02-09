@@ -1,36 +1,29 @@
-# Stratumprotocol.org
+# Stratum V2 Website
 
-## Prerequisites
+Static site built with Vite. Content is authored in Markdown and rendered as static HTML during build, with client-side enhancements for search/interactions.
 
-Before you begin, ensure you have the following installed:
+## Develop
 
-- Node.js (v18 or later)
-- npm (v9 or later)
-- Git
+1. `npm install`
+2. `npm run dev` (Vite dev server)
 
-## Installation
+## Build
 
-1. Clone the repository:
+- `npm run build` produces `dist/`
+- `vite.config.js` copies `content/blog/` and the required parts of `content/specification/` into `dist/content/`
+- `dist/assets/*` filenames are hashed by Vite for caching; edit source in `src/`
 
-```bash
-git clone https://github.com/stratum-mining/stratumprotocol.org
-cd stratumprotocol.org
-```
+## Content
 
-2. Install dependencies:
+### Blog posts
 
-```bash
-yarn install
-```
+- Source: `content/blog/*.md`
+- Rendered by: `vite.config.js` static generation (fallback runtime logic lives in `src/blog.js`)
+- Routing:
+  - `/blog/` → list (`blog.html`)
+  - `/blog/<slug>/` → post (`blog-post.html`)
 
-## Development
+### Specification
 
-To run the application in development mode:
-
-1. Start the development server:
-
-```bash
-yarn run dev
-```
-
-- Frontend will be available at: http://localhost:5173/
+- Source: `content/specification/` (git submodule)
+- Rendered by: `vite.config.js` static generation (fallback runtime logic lives in `src/specification.js`)

@@ -1,4 +1,8 @@
-/blog/getting-started /developers 301
-/getting-started /developers 301
+# Canonical routes (static pages live at /blog/ and /specification/)
+/blog.html          /blog/          301!
+/blog-post.html     /blog/          301!
+/specification.html /specification/ 301!
 
-/* /index.html 200 
+# Normalize missing trailing slashes
+/blog              /blog/          301
+/specification     /specification/ 301
