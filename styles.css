@@ -152,11 +152,16 @@ img {
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
     background: hsl(var(--background) / 0.92);
+    padding: 0.55rem 0.75rem;
   }
 
   .navbar-logo img {
-    width: clamp(9rem, 46vw, 11.25rem);
+    width: clamp(7.25rem, 38vw, 9.5rem);
     height: auto;
+  }
+
+  .navbar-actions {
+    gap: 0.25rem;
   }
 }
 
@@ -369,6 +374,28 @@ img {
   .mobile-menu-toggle {
     width: 2.75rem;
     height: 2.75rem;
+  }
+}
+
+/* Narrow-phone override (must come after <=1199px block) */
+@media (max-width: 768px) {
+  .navbar-container {
+    padding: 0.5rem 0.65rem;
+  }
+
+  .navbar-actions {
+    gap: 0.2rem;
+  }
+
+  .navbar-actions .lang-toggle,
+  .navbar-actions .theme-toggle,
+  .mobile-menu-toggle {
+    width: 2.35rem;
+    height: 2.35rem;
+  }
+
+  .navbar-logo img {
+    width: clamp(6.5rem, 34vw, 8.75rem);
   }
 }
 
