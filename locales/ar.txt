@@ -1,0 +1,219 @@
+# Stratum V2 Website - Arabic Translations
+# Format: key = value
+# Lines starting with # are comments
+
+# ===================
+# Navigation
+# ===================
+nav.features = الميزات
+nav.adoption = التبنّي
+nav.supporters = الداعمون
+nav.community = المجتمع
+nav.specification = المواصفات
+nav.blog = المدونة
+
+# ===================
+# Hero Section
+# ===================
+hero.title.prefix = المعيار المفتوح
+hero.title.highlight = للتعدين
+hero.title.suffix = في ₿itcoin
+hero.subtitle = Stratum V2 هو بروتوكول تعدين يجعل عمليات التعدين أكثر كفاءة وربحية وأمانا وخصوصية ولامركزية.
+hero.cta = ابدأ التعدين
+
+# ===================
+# Stats
+# ===================
+stat.bandwidth.value = 70%
+stat.bandwidth.label = خفض استهلاك النطاق الترددي
+stat.latency.value = 228x
+stat.latency.label = خفض زمن الاستجابة
+stat.profit.value = 7.4%
+stat.profit.label = زيادة الأرباح
+stat.stale.value = ~0%
+stat.stale.label = الحصص المتأخرة
+stat.encrypted.value = 100%
+stat.encrypted.label = مشفّر
+
+# ===================
+# Features Section
+# ===================
+features.title = لماذا Stratum V2؟
+features.intro = يقوم Stratum V2 ‏(SV2) بترقية بروتوكول التعدين Stratum ‏(SV1)، الذي طُرح في عام 2012 عندما كان التعدين نشاطا يغلب عليه الهواة. صُمم SV2 للتعدين الحديث ويعالج أوجه القصور في SV1. صممه Jan Čapek وPavel Moravec مع Matt Corallo، ويُدار اليوم من قبل مجتمع مستقل مفتوح المصدر.
+
+# Feature Tab Names
+features.tab.efficiency = الكفاءة
+features.tab.security = الأمان
+features.tab.profitability = الربحية
+features.tab.privacy = الخصوصية
+features.tab.autonomy = الاستقلالية
+features.tab.flexibility = المرونة
+features.tab.compatibility = التوافق
+features.tab.interoperability = قابلية التشغيل البيني
+
+# Efficiency Feature
+features.efficiency.title = تقليل النطاق الترددي بنحو ~70%
+features.efficiency.subtitle = تقليل للمجمّعات والمعدّنين
+features.efficiency.body = رسائل JSON في SV1 كثيفة استهلاك النطاق الترددي، بينما يستخدم SV2 صيغة ثنائية أخف، ما يخفّض حمل المعالج ويقلّل استهلاك النطاق الترددي بنحو 60% للمجمّعات و70% للمعدّنين. هذا يقلّل تكاليف التشغيل للمجمّع ويساعد المعدّنين محدودي النطاق الترددي على العمل باستقرار أكبر.
+
+# Security Feature
+features.security.title = الأمان
+features.security.subtitle = حماية الربحية
+features.security.body = يؤمّن Stratum V2 حركة البيانات بين المعدّن والمجمّع عبر التشفير والمصادقة. يمنع ذلك هجمات الرجل في الوسط التي تختطف معدل الهاش عبر تبديل بيانات اعتماد المجمّع وإعادة توجيه العمل. كما يجعل النقل المشفر فحص الحركة أو العبث بها أصعب بكثير على مزودي الخدمة أو المهاجمين الذين ينفذون هجمات توجيه واسعة النطاق. ويزيد SV2 الشفافية ويلغي المدفوعات خارج البروتوكول عبر تمكين المعدّنين من بناء قوالب الكتل بأنفسهم.
+
+# Profitability Feature
+features.profitability.title = زيادة الأرباح حتى 7.4%
+features.profitability.subtitle = مثبت في تطبيقات واقعية
+features.profitability.body = تتحول التحسينات التقنية في Stratum V2 إلى مكاسب ربحية قابلة للقياس. فالتسليم الأسرع للقوالب وزمن الاستجابة الأقل يقللان العمل المهدور ويزيدان رسوم المعاملات المحصّلة لكل كتلة. ومع تحسينات مثل التشفير من طرف إلى طرف وتسريع نشر الكتل، يمكن أن ترتفع الأرباح حتى 7.4%.
+features.profitability.link = اقرأ دراسة الحالة →
+
+# Privacy Feature
+features.privacy.title = تحسينات الخصوصية
+features.privacy.subtitle = منع مراقبة مزود الخدمة
+features.privacy.body = يشفّر Stratum V2 حركة تعدين البيانات، ما يمنع مزود خدمة الإنترنت (ISP) ووسطاء الشبكة الآخرين من مشاهدة الحصص والرسائل كنص صريح. في Stratum V1 يمكن استخدام هذه البيانات لاستنتاج معدل الهاش لدى المعدّن وتقدير الأرباح بشكل تقريبي.
+
+# Autonomy Feature
+features.autonomy.title = اختيار المعاملات
+features.autonomy.subtitle = المعدّنون يحددون ما يدخل في الكتل
+features.autonomy.body = يهيمن اليوم عدد قليل من مجمّعات التعدين على مساحة كتل Bitcoin، وبعضها يعمل كوكلاء لجهات أخرى. ويمكن للمجمّعات تضمين المعاملات أو استبعادها بشكل انتقائي، ما يخلق خطر الرقابة. يمكّن Stratum V2 المعدّنين من بناء قوالب الكتل الخاصة بهم، وينقلهم من مساهمين سلبيين في الهاش إلى مشاركين فاعلين في تعزيز مقاومة Bitcoin للرقابة.
+
+# Flexibility Feature
+features.flexibility.title = المرونة
+features.flexibility.subtitle = بنية معيارية
+features.flexibility.body = بنية تحتية مجانية ومفتوحة المصدر ومكوّنة من وحدات مع رخصة متساهلة، تمكّن المطورين من البناء والابتكار. ويتيح التصميم القابل للتركيب اعتماد المكونات التي تحتاجها فقط. ادمجها تدريجيا دون تعطيل البنية الحالية، ووسّع الوظائف مع تطور المتطلبات.
+
+# Compatibility Feature
+features.compatibility.title = التوافق
+features.compatibility.subtitle = لا حاجة لتحديث البرنامج الثابت
+features.compatibility.body = تتيح وكلاء الترجمة لمجمّعات SV2 قبول اتصالات من برمجيات SV1 القديمة. حدّث بنيتك التحتية تدريجيا مع الحفاظ على توافق كامل مع الإصدارات السابقة.
+
+# Interoperability Feature
+features.interoperability.title = قابلية تشغيل بيني وحياد
+features.interoperability.subtitle = حوكمة يقودها المجتمع
+features.interoperability.body = تضمن الحوكمة المجتمعية والمواصفات الواضحة قابلية التشغيل البيني وتمنع الارتهان لمورد واحد والتشظي. تُدار المواصفات من قبل مجموعة عمل مستقلة يمكن لأي شخص الانضمام إليها للمساعدة في تسريع معيار تعدين مفتوح.
+features.interoperability.wg = أعضاء مجموعة العمل
+features.interoperability.viewspec = عرض المواصفات →
+
+# Visualization Labels
+viz.miner = المعدّن
+viz.pool = المجمّع
+viz.block = الكتلة
+viz.stratum.v2 = STRATUM V2
+viz.legacy.v1 = V1 القديم
+viz.sv1 = SV1
+viz.sv2 = SV2
+viz.sv2.jd = SV2 + JD
+viz.proxy = وكيل
+viz.isp = ISP
+viz.stratum.v2.label = Stratum V2
+viz.legacy.v1.label = Legacy V1
+viz.translation.proxy = وكيل الترجمة
+
+# Carousel Slides - Profitability
+carousel.share.acceptance = معدل قبول الحصص
+carousel.share.caption = حصص متأخرة شبه معدومة مع Job Declaration
+carousel.latency = زمن job
+carousel.latency.caption = يؤثر زمن job على سرعة استلام job الجديد من المجمّع
+carousel.propagation = زمن انتشار الكتلة
+carousel.propagation.caption = انتشار الكتلة أسرع بمقدار 28×
+
+# Carousel Slides - Autonomy
+carousel.autonomy.sv2.caption = يختار المعدّن المعاملات ويبني الكتلة
+carousel.autonomy.sv1.caption = يتحكم المجمّع في اختيار المعاملات وبناء الكتلة
+
+# Flexibility Module Names
+module.job.declaration = Job Declaration
+module.template.distribution = توزيع القوالب
+module.mining.protocol = بروتوكول التعدين
+
+# ===================
+# Modularity Section
+# ===================
+modularity.title.part1 = لبنات بناء من أجل
+modularity.title.part2 = الابتكار
+modularity.description = قلّل التعقيد، وحقق التكامل الرأسي، وابنِ التطبيقات بكفاءة أعلى عبر بروتوكولنا المفتوح والموثق بعناية وتنفيذنا المرجعي والمكتبات وحتى التطبيقات. ابنِ وكيلا، أو برنامج مراقبة للتعدين، أو مجمّعا، أو برنامجا ثابتا عالي الكفاءة.
+
+# Module Names
+module.stratum.v2 = Stratum V2
+module.rust.libraries = مكتبات Rust
+module.reference.implementation = التنفيذ المرجعي
+module.reference.applications = التطبيقات المرجعية
+module.language.bindings = واجهات ربط اللغات
+module.docker.support = دعم Docker
+module.clear.specification = مواصفات واضحة
+
+# ===================
+# Adoption Section
+# ===================
+adoption.title.part1 = SV2
+adoption.title.part2 = التبنّي
+adoption.subtitle = جرى اختباره ونشره من قبل قادة الصناعة عبر العتاد والبرامج الثابتة وبنية مجمّعات التعدين.
+
+# Adoption Categories
+adoption.category.hardware = العتاد والبرامج الثابتة
+adoption.category.pools = المجمّعات
+adoption.category.testing = التبنّي والاختبار
+
+# Adopters
+adopter.auradine.desc = دعم SV2 الأصلي عبر جميع أجهزة ASIC من خلال FluxOS
+adopter.braiinsos.desc = دعم أصلي لبرنامج Stratum V2 الثابت
+adopter.proto.desc = تم الإعلان عن العمل نحو التوافق مع SV2
+adopter.braiinspool.desc = مجمّع يعمل في الإنتاج
+adopter.dmnd.desc = مجمّع يعمل في الإنتاج مع تمكين قوالب يختارها المعدّنون
+adopter.hashlabs.desc = موقع اختبار مباشر بين V1 وV2
+adopter.starkware.desc = تم تطوير نموذج إثبات معرفة صفرية مبني على Stratum V2
+adopter.pluto.desc = العمل جارٍ على برنامج إدارة تعدين يحقق التوافق مع SV2
+
+# Adoption CTA
+adoption.cta.text = هل تشغّل SV2؟
+adoption.cta.link = أخبرنا عبر Discord →
+
+# ===================
+# Supporters Section
+# ===================
+supporters.title.part1 = دعم
+supporters.title.part2 = Stratum V2
+supporters.tab.all = جميع الداعمين
+supporters.tab.funders = الممولون
+supporters.tab.workinggroup = مجموعة العمل
+
+# Working Group Info
+workinggroup.title = حول مجموعة العمل
+workinggroup.description = تُدار مجموعة عمل Stratum V2 مجتمعيا وهي مستقلة عن أي جهة واحدة. نعزز التعاون داخل المنظومة لدفع الابتكار دون إذن في تعدين Bitcoin.
+workinggroup.viewspec = عرض المواصفات
+workinggroup.joinsignal = الانضمام إلى مجموعة Signal
+
+# ===================
+# Community Section
+# ===================
+community.title = المجتمع
+community.subtitle = تضمن الحوكمة والمواصفات المدفوعة من المجتمع قابلية التشغيل البيني، كي تتمكن الفرق من التركيز على الابتكار بدل ترقيع حالات عدم التوافق.
+
+# GitHub Card
+community.github.title = GitHub
+community.github.description = تنفيذ مجاني ومفتوح المصدر لـ Stratum V2 طوّره مساهمون من القطاع كمنفعة عامة. بُني بلغة Rust مع واجهات ربط للغات أخرى، بالإضافة إلى مكتبات وتطبيقات يمكنك البناء عليها.
+community.github.cta = استكشف قاعدة الشيفرة
+
+# Discord Card
+community.discord.title = مجتمع Discord
+community.discord.description = قلب نقاشاتنا. انضم إلى المطورين والمعدّنين لمناقشة المقترحات والحصول على الدعم والتعاون.
+
+# Twitter Card
+community.twitter.title = تابع التحديثات
+community.twitter.description = آخر الأخبار وسلاسل النقاش وإعلانات المنظومة.
+
+# ===================
+# Language Switcher
+# ===================
+lang.select = اختر اللغة
+lang.en = English
+lang.es = Español
+lang.zh = 中文
+lang.ru = Русский
+lang.ar = العربية
+
+# ===================
+# Meta / SEO
+# ===================
+meta.title = Stratum V2
+meta.description = بروتوكول التعدين للجيل القادم.

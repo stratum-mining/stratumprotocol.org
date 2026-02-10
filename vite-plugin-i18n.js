@@ -46,9 +46,11 @@ function loadLocale(locale, localesDir) {
 /**
  * Replace data-i18n attributes with translated content
  */
-function translateHtml(html, translations, locale) {
-  // Update the lang attribute on <html>
-  html = html.replace(/<html\s+lang="[^"]*"/, `<html lang="${locale}"`);
+function translateHtml(html, translations, locale, rtlLocales = new Set()) {
+  const dir = rtlLocales.has(locale) ? 'rtl' : 'ltr';
+
+  // Update lang/dir attributes on <html>
+  html = html.replace(/<html\b[^>]*>/, `<html lang="${locale}" dir="${dir}">`);
 
   // Replace content of elements with data-i18n attribute
   // Pattern: <tag data-i18n="key">content</tag>
@@ -116,7 +118,8 @@ function addHreflangLinks(html, locales) {
  */
 export default function i18nPlugin(options = {}) {
   const {
-    locales = ['en', 'es', 'zh', 'ru'],
+    locales = ['en', 'es', 'zh', 'ru', 'ar'],
+    rtlLocales = ['ar'],
     defaultLocale = 'en',
     localesDir = 'locales',
     inputFiles = ['index.html'] // Only translate these files
@@ -124,6 +127,7 @@ export default function i18nPlugin(options = {}) {
 
   let projectRoot = '';
   const translationsCache = new Map();
+  const rtlLocaleSet = new Set(rtlLocales.map(locale => String(locale).toLowerCase()));
 
   return {
     name: 'vite-plugin-i18n',
@@ -181,7 +185,7 @@ export default function i18nPlugin(options = {}) {
           let html = readFileSync(sourcePath, 'utf-8');
 
           // Translate the HTML
-          html = translateHtml(html, translations, locale);
+          html = translateHtml(html, translations, locale, rtlLocaleSet);
 
           // Add hreflang links
           html = addHreflangLinks(html, locales);

@@ -2154,6 +2154,8 @@ body.mobile-menu-open .navbar-container {
 .comparison-v1 {
   z-index: 10;
   width: 50%;
+  left: 0;
+  right: auto;
   overflow: hidden;
   border-right: 2px solid rgba(255, 255, 255, 0.2);
   box-shadow: 5px 0 30px rgba(0, 0, 0, 0.1);
@@ -5021,5 +5023,66 @@ body.mobile-menu-open .navbar-container {
 
   [data-wizard-container] {
     padding: 1rem 1.25rem 1.35rem;
+  }
+}
+
+/* ====================================
+   RTL SUPPORT (ARABIC)
+   ==================================== */
+html[dir="rtl"] body {
+  direction: rtl;
+}
+
+html[lang="ar"] body,
+html[dir="rtl"] body {
+  font-family: 'Noto Sans Arabic', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+html[dir="rtl"] .navbar-container {
+  flex-direction: row-reverse;
+}
+
+@media (min-width: 1200px) {
+  html[dir="rtl"] .navbar-actions {
+    margin-left: 0;
+    margin-right: clamp(0.75rem, 1.6vw, 1.5rem);
+  }
+}
+
+html[dir="rtl"] .lang-dropdown {
+  right: auto;
+  left: 0;
+}
+
+html[dir="rtl"] .lang-dropdown a,
+html[dir="rtl"] .mobile-menu-nav a {
+  text-align: right;
+}
+
+html[dir="rtl"] .feature-text,
+html[dir="rtl"] .modularity-text,
+html[dir="rtl"] .adopter-info,
+html[dir="rtl"] .community-info,
+html[dir="rtl"] .community-card-row {
+  text-align: right;
+}
+
+html[dir="rtl"] .community-card-row {
+  flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .community-card-row .community-info {
+  flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .community-card:hover .community-cta {
+  transform: translateX(-4px);
+}
+
+@media (max-width: 600px) {
+  html[dir="rtl"] .community-card.github .community-card-content {
+    grid-template-areas:
+      "info icon"
+      "cta cta";
   }
 }

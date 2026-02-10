@@ -50,7 +50,8 @@ export default defineConfig({
     react({ include: ['**/wizard-island.jsx'] }),
     // i18n plugin - generates localized versions of index.html
     i18nPlugin({
-      locales: ['en', 'es', 'zh', 'ru'],
+      locales: ['en', 'es', 'zh', 'ru', 'ar'],
+      rtlLocales: ['ar'],
       defaultLocale: 'en',
       localesDir: 'locales',
       inputFiles: ['index.html']

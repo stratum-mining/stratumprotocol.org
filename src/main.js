@@ -5,7 +5,8 @@
 // ====================================
 // DEV I18N (VITE)
 // ====================================
-const I18N_SUPPORTED_LOCALES = new Set(['en', 'es', 'zh', 'ru']);
+const I18N_SUPPORTED_LOCALES = new Set(['en', 'es', 'zh', 'ru', 'ar']);
+const I18N_RTL_LOCALES = new Set(['ar']);
 const I18N_LOCALE_ALIASES = {
   cn: 'zh'
 };
@@ -47,6 +48,7 @@ async function initDevTranslations() {
 
   const locale = getLocaleFromPathname(window.location.pathname);
   document.documentElement.lang = locale;
+  document.documentElement.dir = I18N_RTL_LOCALES.has(locale) ? 'rtl' : 'ltr';
   if (locale === 'en') return;
 
   try {
