@@ -129,17 +129,17 @@ module.mining.protocol = بروتوكول التعدين
 # ===================
 # Modularity Section
 # ===================
-modularity.title.part1 = لبنات بناء من أجل
+modularity.title.part1 = الوحدات الأساسية من أجل
 modularity.title.part2 = الابتكار
 modularity.description = قلّل التعقيد، وحقق التكامل الرأسي، وابنِ التطبيقات بكفاءة أعلى عبر بروتوكولنا المفتوح والموثق بعناية وتنفيذنا المرجعي والمكتبات وحتى التطبيقات. ابنِ وكيلا، أو برنامج مراقبة للتعدين، أو مجمّعا، أو برنامجا ثابتا عالي الكفاءة.
 
 # Module Names
 module.stratum.v2 = Stratum V2
-module.rust.libraries = مكتبات Rust
+module.rust.libraries = مكتبات بلغة راست
 module.reference.implementation = التنفيذ المرجعي
 module.reference.applications = التطبيقات المرجعية
 module.language.bindings = واجهات ربط اللغات
-module.docker.support = دعم Docker
+module.docker.support = دعم دوكَر
 module.clear.specification = مواصفات واضحة
 
 # ===================
@@ -166,7 +166,7 @@ adopter.pluto.desc = العمل جارٍ على برنامج إدارة تعدي
 
 # Adoption CTA
 adoption.cta.text = هل تشغّل SV2؟
-adoption.cta.link = أخبرنا عبر Discord →
+adoption.cta.link = أخبرنا عبر Discord ←
 
 # ===================
 # Supporters Section
@@ -181,7 +181,7 @@ supporters.tab.workinggroup = مجموعة العمل
 workinggroup.title = حول مجموعة العمل
 workinggroup.description = تُدار مجموعة عمل Stratum V2 مجتمعيا وهي مستقلة عن أي جهة واحدة. نعزز التعاون داخل المنظومة لدفع الابتكار دون إذن في تعدين Bitcoin.
 workinggroup.viewspec = عرض المواصفات
-workinggroup.joinsignal = الانضمام إلى مجموعة Signal
+workinggroup.joinsignal = انضم إلى مجموعتنا على منصة سيجنال
 
 # ===================
 # Community Section
@@ -195,7 +195,7 @@ community.github.description = تنفيذ مجاني ومفتوح المصدر �
 community.github.cta = استكشف قاعدة الشيفرة
 
 # Discord Card
-community.discord.title = مجتمع Discord
+community.discord.title = مجتمع ديسكورد
 community.discord.description = قلب نقاشاتنا. انضم إلى المطورين والمعدّنين لمناقشة المقترحات والحصول على الدعم والتعاون.
 
 # Twitter Card
