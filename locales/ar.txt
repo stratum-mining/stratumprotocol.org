@@ -17,7 +17,7 @@ nav.blog = المدونة
 # ===================
 hero.title.prefix = المعيار المفتوح
 hero.title.highlight = للتعدين
-hero.title.suffix = في ₿itcoin
+hero.title.suffix = في البـتكوين
 hero.subtitle = Stratum V2 هو بروتوكول تعدين يجعل عمليات التعدين أكثر كفاءة وربحية وأمانا وخصوصية ولامركزية.
 hero.cta = ابدأ التعدين
 
