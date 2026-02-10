@@ -26,6 +26,13 @@
   --zinc-800: #27272a;
   --zinc-900: #18181b;
   --zinc-950: #09090b;
+  --header-offset: 70px;
+}
+
+@media (min-width: 769px) {
+  :root {
+    --header-offset: 110px;
+  }
 }
 
 .dark {
@@ -124,6 +131,16 @@ img {
   right: 0;
   z-index: 50;
   padding: 1.5rem;
+}
+
+/* Docs pages: provide a subtle header backdrop so content doesn't peek above/through the floating navbar pill while scrolling. */
+body[data-spec-repo] .navbar {
+  background: linear-gradient(
+    to bottom,
+    hsl(var(--background) / 0.98) 0%,
+    hsl(var(--background) / 0.88) 70%,
+    hsl(var(--background) / 0) 100%
+  );
 }
 
 .navbar-container {
@@ -4347,16 +4364,16 @@ body.mobile-menu-open .navbar-container {
 .spec-layout {
   display: grid;
   grid-template-columns: 280px 1fr;
-  min-height: calc(100vh - 70px);
-  padding-top: 70px;
+  min-height: calc(100vh - var(--header-offset));
+  padding-top: var(--header-offset);
   gap: 3rem;
 }
 
 /* Sidebar */
 .spec-sidebar {
   position: sticky;
-  top: 90px;
-  height: calc(100vh - 110px);
+  top: calc(var(--header-offset) + 1.25rem);
+  height: calc(100vh - var(--header-offset) - 2.5rem);
   overflow-y: auto;
   padding: 2rem 1.5rem;
   border-right: 1px solid hsl(var(--border));
@@ -4485,7 +4502,9 @@ body.mobile-menu-open .navbar-container {
 
 /* Main content */
 .spec-main {
-  max-width: 896px;
+  --spec-content-max: 75ch;
+  width: 100%;
+  max-width: 100%;
   padding: 2rem 3rem 4rem 0;
 }
 
@@ -4536,6 +4555,8 @@ body.mobile-menu-open .navbar-container {
 
 .spec-page-toolbar {
   display: flex;
+  width: 100%;
+  max-width: var(--spec-content-max);
   justify-content: flex-end;
   gap: 0.75rem;
   margin-bottom: 1.5rem;
@@ -4567,6 +4588,8 @@ body.mobile-menu-open .navbar-container {
 
 .spec-pagination {
   display: grid;
+  width: 100%;
+  max-width: var(--spec-content-max);
   grid-template-columns: 1fr 1fr;
   gap: 0.75rem;
   margin-top: 2.5rem;
@@ -4611,9 +4634,15 @@ body.mobile-menu-open .navbar-container {
 }
 
 .spec-content {
+  width: 100%;
+  max-width: var(--spec-content-max);
   font-size: 1.125rem;
   line-height: 1.8;
   color: hsl(var(--foreground));
+}
+
+.spec-content :is(h1, h2, h3, h4, h5) {
+  scroll-margin-top: calc(var(--header-offset) + 0.75rem);
 }
 
 /* Typography (mirror blog-content styles) */
@@ -4622,7 +4651,6 @@ body.mobile-menu-open .navbar-container {
   font-weight: 700;
   margin-bottom: 1.5rem;
   color: hsl(var(--foreground));
-  scroll-margin-top: 110px;
 }
 
 .spec-content h2 {
@@ -4633,7 +4661,6 @@ body.mobile-menu-open .navbar-container {
   padding-top: 1rem;
   border-top: 1px solid hsl(var(--border));
   color: hsl(var(--foreground));
-  scroll-margin-top: 110px;
 }
 
 .spec-content h3 {
@@ -4642,7 +4669,6 @@ body.mobile-menu-open .navbar-container {
   margin-top: 2rem;
   margin-bottom: 1rem;
   color: hsl(var(--foreground));
-  scroll-margin-top: 110px;
 }
 
 .spec-content h4 {
@@ -4651,7 +4677,6 @@ body.mobile-menu-open .navbar-container {
   margin-top: 1.5rem;
   margin-bottom: 0.75rem;
   color: hsl(var(--foreground));
-  scroll-margin-top: 110px;
 }
 
 .spec-content h5 {
@@ -4660,7 +4685,6 @@ body.mobile-menu-open .navbar-container {
   margin-top: 1.25rem;
   margin-bottom: 0.5rem;
   color: hsl(var(--foreground));
-  scroll-margin-top: 110px;
 }
 
 .spec-content p {

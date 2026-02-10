@@ -781,7 +781,7 @@ function generateSpecPages({ distDir, specTemplate, contentDir, specRepoUrl }) {
     pageHtml = replaceElementInnerHtmlById(pageHtml, 'spec-pagination', paginationHtml);
 
     // Static pages don't need client-side rendering/search scripts.
-    pageHtml = stripAssetScripts(pageHtml, ['specification-', 'highlighting-', 'marked', 'core-', 'c-']);
+    pageHtml = stripAssetScripts(pageHtml, ['specification-', 'highlighting-', 'marked', 'core-', 'c-', 'url-safety-']);
     pageHtml = injectSpecTitleFilterScript(pageHtml);
 
     const outDir = join(distDir, 'specification', page.slug);

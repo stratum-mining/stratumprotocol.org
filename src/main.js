@@ -799,6 +799,7 @@ function initMobileMenu() {
     if (!navbar) return;
     const top = Math.round(navbar.getBoundingClientRect().bottom);
     menu.style.setProperty('--mobile-menu-top', `${top}px`);
+    document.documentElement.style.setProperty('--header-offset', `${top}px`);
   }
 
   function closeMenu() {
