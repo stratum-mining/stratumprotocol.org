@@ -48,9 +48,9 @@ export default defineConfig({
   plugins: [
     // React plugin — scoped to wizard-island.jsx only (React island for sv2-wizard)
     react({ include: ['**/wizard-island.jsx'] }),
-    // i18n plugin - generates /zh/ and /ru/ translated versions of index.html
+    // i18n plugin - generates localized versions of index.html
     i18nPlugin({
-      locales: ['en', 'zh', 'ru'],
+      locales: ['en', 'es', 'zh', 'ru'],
       defaultLocale: 'en',
       localesDir: 'locales',
       inputFiles: ['index.html']

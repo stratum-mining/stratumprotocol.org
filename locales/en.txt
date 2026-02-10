@@ -208,6 +208,7 @@ community.twitter.description = Latest news, threads, and ecosystem announcement
 # ===================
 lang.select = Select language
 lang.en = English
+lang.es = Español
 lang.zh = 中文
 lang.ru = Русский
 

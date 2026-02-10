@@ -5,7 +5,7 @@
 // ====================================
 // DEV I18N (VITE)
 // ====================================
-const I18N_SUPPORTED_LOCALES = new Set(['en', 'zh', 'ru']);
+const I18N_SUPPORTED_LOCALES = new Set(['en', 'es', 'zh', 'ru']);
 const I18N_LOCALE_ALIASES = {
   cn: 'zh'
 };

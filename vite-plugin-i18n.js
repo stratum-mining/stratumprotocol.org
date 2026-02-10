@@ -116,7 +116,7 @@ function addHreflangLinks(html, locales) {
  */
 export default function i18nPlugin(options = {}) {
   const {
-    locales = ['en', 'zh', 'ru'],
+    locales = ['en', 'es', 'zh', 'ru'],
     defaultLocale = 'en',
     localesDir = 'locales',
     inputFiles = ['index.html'] // Only translate these files
