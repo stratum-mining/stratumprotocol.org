@@ -431,23 +431,26 @@ function initSupporterTabs() {
   // Supporters without these categories still appear in "All"
   const supporters = [
     { name: "Auradine", logo: "/assets/logos/auradine.png", width: 256, height: 92, website: "https://auradine.com/", categories: ["workingGroup"] },
-    { name: "Bitmex", logo: "/assets/logos/bitmex-logo.svg", width: 231, height: 98, website: "https://www.bitmex.com/", categories: [] },
+    { name: "Bitmex", logo: "/assets/logos/bitmex-logo.svg", width: 231, height: 98, website: "https://www.bitmex.com/", categories: ["pastFunder"] },
     { name: "Braiins", logo: "/assets/logos/braiins-logo.svg", width: 240, height: 87, website: "https://braiins.com/", categories: ["workingGroup"] },
     { name: "Btrust", logo: "/assets/logos/btrust.svg", width: 753, height: 319, website: "https://www.btrust.tech/", categories: ["funder"] },
     { name: "DMND", logo: "/assets/logos/demand-logo.svg", width: 612, height: 258, website: "https://www.dmnd.work/", categories: ["workingGroup"] },
-    { name: "Foundry", logo: "/assets/logos/foundry-logo.svg", width: 231, height: 74, website: "https://foundrydigital.com/", categories: ["workingGroup"] },
-    { name: "Galaxy", logo: "/assets/logos/galaxy-logo.svg", width: 231, height: 111, website: "https://www.galaxy.com/", categories: [] },
+    { name: "Foundry", logo: "/assets/logos/foundry-logo.svg", width: 231, height: 74, website: "https://foundrydigital.com/", categories: ["workingGroup", "pastFunder"] },
+    { name: "Galaxy", logo: "/assets/logos/galaxy-logo.svg", width: 231, height: 111, website: "https://www.galaxy.com/", categories: ["pastFunder"] },
     { name: "HRF", logo: "/assets/logos/hrf-logo.svg", width: 269, height: 75, website: "https://hrf.org/", categories: ["funder"] },
-    { name: "Hut8", logo: "/assets/logos/hut-logo.svg", width: 208, height: 94, website: "https://www.hut8.com/", categories: [] },
+    { name: "Hut8", logo: "/assets/logos/hut-logo.svg", width: 208, height: 94, website: "https://www.hut8.com/", categories: ["pastFunder"] },
     { name: "OpenSats", logo: "/assets/logos/opensats-logo.svg", width: 269, height: 39, website: "https://opensats.org/", categories: ["funder"] },
     { name: "Spiral", logo: "/assets/logos/spiral-logo.svg", width: 122, height: 120, website: "https://spiral.xyz/", categories: ["funder", "workingGroup"] },
-    { name: "Summer of Bitcoin", logo: "/assets/logos/summer-of-bitcoin.svg", width: 231, height: 74, website: "https://www.summerofbitcoin.org/", categories: [] },
+    { name: "Summer of Bitcoin", logo: "/assets/logos/summer-of-bitcoin.svg", width: 231, height: 74, website: "https://www.summerofbitcoin.org/", categories: ["pastFunder"] },
     { name: "Vinteum", logo: "/assets/logos/vinteum-logo.png", width: 629, height: 171, website: "https://vinteum.org/", categories: ["funder"] },
   ].sort((a, b) => a.name.localeCompare(b.name));
 
   function getFilteredSupporters(tabId) {
     if (tabId === 'all') {
       return supporters;
+    }
+    if (tabId === 'funder') {
+      return supporters.filter(s => s.categories.includes('funder') || s.categories.includes('pastFunder'));
     }
     return supporters.filter(s => s.categories.includes(tabId));
   }
@@ -460,42 +463,74 @@ function initSupporterTabs() {
     img.parentElement.appendChild(span);
   }
 
+  function createSupporterLink(supporter) {
+    const link = document.createElement('a');
+    link.href = supporter.website;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    link.className = 'supporter-logo';
+    link.setAttribute('aria-label', `Visit ${supporter.name} website`);
+
+    if (supporter.logo) {
+      const img = document.createElement('img');
+      img.src = supporter.logo;
+      img.alt = supporter.name;
+      img.loading = 'lazy';
+      if (supporter.width) img.width = supporter.width;
+      if (supporter.height) img.height = supporter.height;
+      img.addEventListener('error', () => handleImageError(img, supporter.name));
+      link.appendChild(img);
+    } else {
+      const span = document.createElement('span');
+      span.className = 'text-logo';
+      span.textContent = supporter.name;
+      link.appendChild(span);
+    }
+
+    return link;
+  }
+
   function renderSupporters(tabId) {
     const filtered = getFilteredSupporters(tabId);
     const isWorkingGroup = tabId === 'workingGroup';
+    const isFunder = tabId === 'funder';
 
-    // Clear existing content
     grid.innerHTML = '';
 
-    // Create elements using DOM API instead of innerHTML with inline handlers
-    filtered.forEach(supporter => {
-      const link = document.createElement('a');
-      link.href = supporter.website;
-      link.target = '_blank';
-      link.rel = 'noopener noreferrer';
-      link.className = 'supporter-logo';
-      link.setAttribute('aria-label', `Visit ${supporter.name} website`);
+    if (isFunder) {
+      const current = filtered.filter(s => s.categories.includes('funder'));
+      const past = filtered.filter(s => s.categories.includes('pastFunder') && !s.categories.includes('funder'));
 
-      if (supporter.logo) {
-        const img = document.createElement('img');
-        img.src = supporter.logo;
-        img.alt = supporter.name;
-        img.loading = 'lazy';
-        if (supporter.width) img.width = supporter.width;
-        if (supporter.height) img.height = supporter.height;
-        img.addEventListener('error', () => handleImageError(img, supporter.name));
-        link.appendChild(img);
-      } else {
-        const span = document.createElement('span');
-        span.className = 'text-logo';
-        span.textContent = supporter.name;
-        link.appendChild(span);
+      const currentHeading = document.createElement('h4');
+      currentHeading.className = 'funders-section-heading';
+      currentHeading.textContent = 'Current Funders';
+      grid.appendChild(currentHeading);
+
+      const currentGrid = document.createElement('div');
+      currentGrid.className = 'supporters-grid';
+      current.forEach(s => currentGrid.appendChild(createSupporterLink(s)));
+      grid.appendChild(currentGrid);
+
+      if (past.length > 0) {
+        const section = document.createElement('div');
+        section.className = 'past-funders-section';
+
+        const heading = document.createElement('h4');
+        heading.className = 'past-funders-heading';
+        heading.textContent = 'Past Funders';
+        section.appendChild(heading);
+
+        const pastGrid = document.createElement('div');
+        pastGrid.className = 'supporters-grid past-funders';
+        past.forEach(s => pastGrid.appendChild(createSupporterLink(s)));
+        section.appendChild(pastGrid);
+
+        grid.appendChild(section);
       }
+    } else {
+      filtered.forEach(s => grid.appendChild(createSupporterLink(s)));
+    }
 
-      grid.appendChild(link);
-    });
-
-    // Show/hide working group info
     workingGroupInfo.classList.toggle('hidden', !isWorkingGroup);
   }
 
