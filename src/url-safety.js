@@ -65,3 +65,11 @@ export function sanitizeMarkdownImageSrc(href) {
 export function isExternalHttpHref(href) {
   return /^https?:\/\//i.test(String(href || ''));
 }
+
+export function isLikelyHtmlResponse(response, body) {
+  const contentType = (response.headers.get('content-type') || '').toLowerCase();
+  if (contentType.includes('text/html')) return true;
+  if (/^\s*<!doctype html[\s>]/i.test(body)) return true;
+  if (/^\s*<html[\s>]/i.test(body)) return true;
+  return false;
+}

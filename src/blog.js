@@ -5,7 +5,8 @@ import {
   normalizeBlogPermalink,
   sanitizeMarkdownLinkHref,
   sanitizeMarkdownImageSrc,
-  isExternalHttpHref
+  isExternalHttpHref,
+  isLikelyHtmlResponse
 } from './url-safety.js';
 
 // Permalink mapping for custom URLs
@@ -37,14 +38,6 @@ const BLOG_POSTS = [
   'sri-1.0.0',
   'stratumv2-jn-announcement'
 ];
-
-function isLikelyHtmlResponse(response, body) {
-  const contentType = (response.headers.get('content-type') || '').toLowerCase();
-  if (contentType.includes('text/html')) return true;
-  if (/^\s*<!doctype html[\s>]/i.test(body)) return true;
-  if (/^\s*<html[\s>]/i.test(body)) return true;
-  return false;
-}
 
 async function fetchMarkdownText(path) {
   const response = await fetch(path);
@@ -250,12 +243,6 @@ async function initBlogPost() {
       contentContainer.innerHTML = html;
 
       await highlightCodeBlocks(contentContainer);
-
-      // Add lazy loading to images
-      contentContainer.querySelectorAll('img').forEach(img => {
-        img.setAttribute('loading', 'lazy');
-        img.setAttribute('decoding', 'async');
-      });
     }
   } catch (err) {
     console.error('Error loading blog post:', err);

@@ -374,6 +374,17 @@ function initComparisonSliders() {
       updateSliderPosition(percent);
     }
 
+    // Throttle high-frequency move handlers to animation frames
+    let rafPending = false;
+    function throttledMove(clientX) {
+      if (rafPending) return;
+      rafPending = true;
+      requestAnimationFrame(() => {
+        handleMove(clientX);
+        rafPending = false;
+      });
+    }
+
     // Mouse events
     slider.addEventListener('mousedown', (e) => {
       activeSlider = slider;
@@ -382,7 +393,7 @@ function initComparisonSliders() {
 
     slider.addEventListener('mousemove', (e) => {
       if (activeSlider === slider) {
-        handleMove(e.clientX);
+        throttledMove(e.clientX);
       }
     });
 
@@ -394,7 +405,7 @@ function initComparisonSliders() {
 
     slider.addEventListener('touchmove', (e) => {
       if (activeSlider === slider) {
-        handleMove(e.touches[0].clientX);
+        throttledMove(e.touches[0].clientX);
       }
     });
 
@@ -793,12 +804,16 @@ function initMobileMenu() {
 
   backdrop?.addEventListener('click', closeMenu);
 
-  // Close menu when resizing to desktop
+  // Close menu when resizing to desktop (debounced to avoid layout thrashing)
+  let resizeTimer;
   window.addEventListener('resize', () => {
-    syncMenuOffset();
-    if (window.innerWidth >= 1200 && menu.classList.contains('active')) {
-      closeMenu();
-    }
+    if (resizeTimer) cancelAnimationFrame(resizeTimer);
+    resizeTimer = requestAnimationFrame(() => {
+      syncMenuOffset();
+      if (window.innerWidth >= 1200 && menu.classList.contains('active')) {
+        closeMenu();
+      }
+    });
   });
 }
 

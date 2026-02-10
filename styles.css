@@ -110,7 +110,7 @@ img {
   .supporters,
   .community {
     content-visibility: auto;
-    contain-intrinsic-size: 1px 1000px;
+    contain-intrinsic-size: auto 1000px;
   }
 }
 
@@ -675,7 +675,7 @@ body.mobile-menu-open .navbar-container {
 @supports (content-visibility: auto) {
   body > section:not(.hero) {
     content-visibility: auto;
-    contain-intrinsic-size: 1px 1000px;
+    contain-intrinsic-size: auto 1000px;
   }
 }
 

@@ -1,7 +1,7 @@
 import { marked } from 'marked';
 import { escapeHtml, createSlugger, renderHeadingWithAnchor } from './markdown.js';
 import { highlightCodeBlocks } from './highlighting.js';
-import { SAFE_LINK_PROTOCOLS, hasUnsafePathSegments } from './url-safety.js';
+import { SAFE_LINK_PROTOCOLS, hasUnsafePathSegments, isLikelyHtmlResponse } from './url-safety.js';
 
 marked.setOptions({
   gfm: true,
@@ -23,12 +23,7 @@ const SPEC_PAGES = [
   { slug: '10-discussion', title: 'Discussion', filename: '10-Discussion.md' }
 ];
 
-// Validate SPEC_PAGES at startup
-if (SPEC_PAGES.length === 0) {
-  console.error('SPEC_PAGES is empty - specification navigation will not work');
-}
-
-const DEFAULT_SPEC_SLUG = SPEC_PAGES[0]?.slug ?? '00-abstract';
+const DEFAULT_SPEC_SLUG = SPEC_PAGES[0].slug;
 const SPEC_PAGE_BY_FILENAME = new Map(
   SPEC_PAGES.map(page => [page.filename.toLowerCase(), page])
 );
@@ -335,7 +330,9 @@ function initMobileSectionNavigator(toc, currentSlug, onScrolled) {
       return;
     }
 
-    window.location.assign(value);
+    if (value.startsWith('/')) {
+      window.location.assign(value);
+    }
   });
 
   return {
@@ -415,22 +412,28 @@ function renderToc(toc, currentSlug, { mode = 'default', query = '', onScrolled 
   wireTocScrollLinks(nav, onScrolled || (() => {}));
 }
 
+let tocScrollHandler = null;
+
 function wireTocScrollLinks(container, onScrolled) {
-  container.querySelectorAll('a.spec-toc-link[href^="#"]').forEach(link => {
-    link.addEventListener('click', (e) => {
-      // Preserve open-in-new-tab and other modified clicks
-      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+  // Use event delegation: single listener on container instead of per-link
+  if (tocScrollHandler) {
+    container.removeEventListener('click', tocScrollHandler);
+  }
+  tocScrollHandler = (e) => {
+    const link = e.target.closest('a.spec-toc-link[href^="#"]');
+    if (!link) return;
+    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
 
-      const targetId = link.getAttribute('href')?.slice(1);
-      if (!targetId) return;
+    const targetId = link.getAttribute('href')?.slice(1);
+    if (!targetId) return;
 
-      e.preventDefault();
-      if (scrollToId(targetId)) {
-        history.pushState(null, '', `#${targetId}`);
-        onScrolled?.(targetId);
-      }
-    });
-  });
+    e.preventDefault();
+    if (scrollToId(targetId)) {
+      history.pushState(null, '', `#${targetId}`);
+      onScrolled?.(targetId);
+    }
+  };
+  container.addEventListener('click', tocScrollHandler);
 }
 
 const markdownCache = new Map();
@@ -444,15 +447,10 @@ async function loadMarkdown(page) {
   const response = await fetch(path);
   if (!response.ok) throw new Error('Page not found');
 
-  const contentType = (response.headers.get('content-type') || '').toLowerCase();
   const markdown = await response.text();
 
   // If a host returns HTML fallback for missing markdown, do not render it as markdown.
-  if (
-    contentType.includes('text/html') ||
-    /^\s*<!doctype html[\s>]/i.test(markdown) ||
-    /^\s*<html[\s>]/i.test(markdown)
-  ) {
+  if (isLikelyHtmlResponse(response, markdown)) {
     throw new Error('Invalid specification source response');
   }
 
@@ -530,22 +528,27 @@ async function ensureSearchIndex() {
   if (searchIndexPromise) return searchIndexPromise;
 
   searchIndexPromise = (async () => {
-    const index = [];
-    let hasError = false;
-
-    for (const page of SPEC_PAGES) {
-      try {
+    const results = await Promise.allSettled(
+      SPEC_PAGES.map(async (page) => {
         const markdown = await loadMarkdown(page);
         const { toc, sections, searchText } = buildPageSearchIndex(markdown);
-        index.push({
+        return {
           ...page,
           titleLower: toSearchText(page.title),
           toc,
           sections,
           searchText
-        });
-      } catch (err) {
-        console.warn('Failed to index spec page:', page.slug, err);
+        };
+      })
+    );
+
+    const index = [];
+    let hasError = false;
+    for (const result of results) {
+      if (result.status === 'fulfilled') {
+        index.push(result.value);
+      } else {
+        console.warn('Failed to index spec page:', result.reason);
         hasError = true;
       }
     }
@@ -701,22 +704,22 @@ async function initSpecPage() {
 
       await highlightCodeBlocks(contentElement);
 
-      // Smooth-scroll same-page hash links (keeps URL in sync and respects sticky header)
-      contentElement.querySelectorAll('a[href^=\"#\"]').forEach(link => {
-        link.addEventListener('click', (e) => {
-          if (link.classList.contains('heading-anchor')) return;
-          if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-          const href = link.getAttribute('href');
-          if (!href) return;
-          const targetId = href.slice(1);
-          if (!targetId) return;
+      // Smooth-scroll same-page hash links via event delegation
+      contentElement.addEventListener('click', (e) => {
+        const link = e.target.closest('a[href^="#"]');
+        if (!link) return;
+        if (link.classList.contains('heading-anchor')) return;
+        if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+        const href = link.getAttribute('href');
+        if (!href) return;
+        const targetId = href.slice(1);
+        if (!targetId) return;
 
-          e.preventDefault();
-          if (scrollToId(targetId)) {
-            history.pushState(null, '', `#${targetId}`);
-            syncAfterNavigation();
-          }
-        });
+        e.preventDefault();
+        if (scrollToId(targetId)) {
+          history.pushState(null, '', `#${targetId}`);
+          syncAfterNavigation();
+        }
       });
     }
 
