@@ -100,14 +100,14 @@ viz.miner = Miner
 viz.pool = Pool
 viz.block = Block
 viz.stratum.v2 = STRATUM V2
-viz.legacy.v1 = LEGACY V1
+viz.legacy.v1 = STRATUM V1
 viz.sv1 = SV1
 viz.sv2 = SV2
 viz.sv2.jd = SV2 + JD
 viz.proxy = Proxy
 viz.isp = ISP
 viz.stratum.v2.label = Stratum V2
-viz.legacy.v1.label = Legacy V1
+viz.legacy.v1.label = STRATUM V1
 viz.translation.proxy = TRANSLATION PROXY
 
 # Carousel Slides - Profitability
