@@ -5,32 +5,21 @@ on:
     types:
       - update-submodule
 
-permissions:
-  contents: write
-
 jobs:
   update:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
+          token: ${{ secrets.PAT }}
           submodules: recursive
       - name: Update module
         run: |
-          expected_url="https://github.com/stratum-mining/sv2-spec"
-          actual_url="$(git config --file .gitmodules --get submodule.content/specification.url || true)"
-          if [ "$actual_url" != "$expected_url" ]; then
-            echo "Unexpected specification submodule URL: $actual_url"
-            exit 1
-          fi
-
           git submodule update --init --recursive --checkout -f --remote -- content/specification
           git config --global user.name "GitHub Action"
           git config --global user.email "noreply@github.com"
           git add content/specification
-          if git diff --cached --quiet; then
-            echo "No submodule update to commit"
-            exit 0
+          if ! git diff --cached --quiet; then
+            git commit -m "deploy: content/specification - ${{github.event.client_payload.sha}}"
+            git push
           fi
-          git commit -m "deploy: content/specification - ${{github.event.client_payload.sha}}"
-          git push
