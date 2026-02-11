@@ -1,35 +1,65 @@
 name: CI
 
 on:
-  # Run the build for pushes and pull requests targeting main
   push:
     branches:
       - main
   pull_request:
     branches:
       - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
-      # Checkout and setup
       - name: Checkout
         uses: actions/checkout@v4
         with:
+          persist-credentials: false
           submodules: recursive
-      - name: Setup
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
-      # Install and build
+          cache: npm
       - name: Install
-        run: yarn install --frozen-lockfile
+        run: npm ci
+      - name: Audit Dependencies
+        run: npm audit --audit-level=high
       - name: Build
-        run: yarn build
-      # Run linkcheck, propagate linkcheck failure through grep pipe
-      #- name: Linkcheck
-      #  run: |
-      #    set -o pipefail
-      #    yarn linkcheck | grep -v "https://twitter.com" | grep "Getting links from\|BROKEN"
-      #  continue-on-error: false
+        run: npm run build
+      - name: Enforce Bundle Budgets
+        run: npm run check:bundle
+      - name: Setup Pages
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+  deploy:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

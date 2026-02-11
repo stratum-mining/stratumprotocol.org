@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="/assets/js/theme-init.js"></script>
+
+    <title>Blog - Stratum V2</title>
+    <meta property="og:title" content="Blog - Stratum V2" />
+    <meta property="og:description" content="Latest updates and insights from the Stratum V2 community." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon/favicon.svg" />
+    <link rel="icon" type="image/png" href="/assets/images/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" href="/assets/images/favicon/favicon.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/assets/images/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="/assets/images/favicon/site.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <!-- Navbar -->
+    <!-- NAV_PARTIAL -->
+
+    <!-- Blog Hero -->
+    <section class="blog-hero">
+      <div class="section-container">
+        <h1>Blog</h1>
+        <p style="font-size: 1.125rem; color: hsl(var(--muted-foreground)); margin-top: 1rem;">Latest updates and insights from the Stratum V2 community</p>
+      </div>
+    </section>
+
+    <!-- Blog Grid -->
+    <section class="section-container">
+      <div class="blog-grid" id="blog-grid">
+        <!-- Posts will be populated by JavaScript -->
+        <div style="text-align: center; padding: 2rem; grid-column: 1 / -1;">
+          <p>Loading posts...</p>
+        </div>
+      </div>
+    </section>
+
+    <script type="module" src="/src/blog.js"></script>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

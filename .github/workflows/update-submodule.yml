@@ -4,6 +4,7 @@ on:
   repository_dispatch:
     types:
       - update-submodule
+
 jobs:
   update:
     runs-on: ubuntu-latest
@@ -14,8 +15,11 @@ jobs:
           submodules: recursive
       - name: Update module
         run: |
-          git submodule update --init --recursive --checkout -f --remote -- "${{github.event.client_payload.module}}"
+          git submodule update --init --recursive --checkout -f --remote -- content/specification
           git config --global user.name "GitHub Action"
           git config --global user.email "noreply@github.com"
-          git commit -am "deploy: ${{github.event.client_payload.module}} - ${{github.event.client_payload.sha}}"
-          git push
+          git add content/specification
+          if ! git diff --cached --quiet; then
+            git commit -m "deploy: content/specification - ${{github.event.client_payload.sha}}"
+            git push
+          fi
