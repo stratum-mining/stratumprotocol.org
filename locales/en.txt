@@ -107,7 +107,7 @@ viz.sv2.jd = SV2 + JD
 viz.proxy = Proxy
 viz.isp = ISP
 viz.stratum.v2.label = Stratum V2
-viz.legacy.v1.label = STRATUM V1
+viz.legacy.v1.label = Stratum V1
 viz.translation.proxy = TRANSLATION PROXY
 
 # Carousel Slides - Profitability
