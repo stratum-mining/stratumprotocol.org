@@ -13,6 +13,25 @@ Static site built with Vite. Content is authored in Markdown and rendered as sta
 - `vite.config.js` copies `content/blog/` and the required parts of `content/specification/` into `dist/content/`
 - `dist/assets/*` filenames are hashed by Vite for caching; edit source in `src/`
 
+## Localization
+
+- Translation files live in `locales/*.txt`
+- File format is `key = value` (lines starting with `#` are comments)
+- Reference file (source of truth for keys): `locales/en.txt`
+
+### Add a new language
+
+1. Copy `locales/en.txt` to a new file named `locales/<locale>.txt` (example: `locales/fr.txt`).
+2. Translate only the values (right side of `=`), and keep all keys identical to `locales/en.txt`.
+3. Register the locale in `vite.config.js` inside `i18nPlugin({ locales: [...] })`.
+4. Register the locale in `src/main.js`:
+   - Add it to `I18N_SUPPORTED_LOCALES`
+   - If the language is RTL, add it to `I18N_RTL_LOCALES`
+   - Add an alias in `I18N_LOCALE_ALIASES` only if needed
+5. Add the locale to the language switcher dropdown in `src/partials/nav.html`.
+6. Run `npm run build` and confirm `dist/<locale>/index.html` is generated.
+7. Run `npm run dev` and verify `/<locale>/` loads translated content.
+
 ## Content
 
 ### Blog posts
