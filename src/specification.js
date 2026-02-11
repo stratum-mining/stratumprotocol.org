@@ -218,7 +218,7 @@ function createSpecRenderer(specRepoUrl) {
     html += `>${label}</a>`;
     return html;
   };
-  renderer.html = function() { return ''; };
+  renderer.html = function(token) { return token.raw || ''; };
 
   return renderer;
 }
@@ -689,7 +689,15 @@ async function initSpecPage() {
     // Extract ToC and parse markdown to HTML with stable heading IDs + link/image rewriting
     const toc = extractToc(markdown);
     const renderer = createSpecRenderer(specRepoUrl);
-    const html = marked.parse(markdown, { renderer });
+
+    // Upstream spec references use <a id="..."> URL </a> without href.
+    // Rewrite them to proper markdown links while keeping the id anchor.
+    const fixedMarkdown = markdown.replaceAll(
+      /<a id="(reference-\d+)">\s*(https?:\/\/\S+?)\s*<\/a>/g,
+      (_, id, url) => `<a id="${id}"></a>[${url}](${url})`
+    );
+
+    const html = marked.parse(fixedMarkdown, { renderer });
     let mobileSectionNavigator = null;
     const syncAfterNavigation = () => {
       updatePageActions(page, specRepoUrl);
