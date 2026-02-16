@@ -1,0 +1,44 @@
+* ====================================
+   STRATUM V2 - STYLES
+   ==================================== */
+
+/* CSS Custom Properties (Design Tokens) */
+:root {
+  /* LIGHT MODE - Swiss Style */
+  --background: 0 0% 100%;
+  --foreground: 0 0% 9%;
+  --card: 0 0% 100%;
+  --primary: 190 100% 45%; /* Cyan */
+  --muted: 240 4.8% 95.9%;
+  --muted-foreground: 240 3.8% 46.1%;
+  --accent: 240 4.8% 95.9%;
+  --border: 240 5.9% 90%;
+
+  /* Colors */
+  --cyan-400: #22d3ee;
+  --cyan-500: #06b6d4;
+  --cyan-600: #0891b2;
+  --red-500: #ef4444;
+  --red-600: #dc2626;
+  --discord-color: #5865F2;
+  --zinc-50: #fafafa;
+  --zinc-500: #71717a;
+  --zinc-800: #27272a;
+  --zinc-900: #18181b;
+  --zinc-950: #09090b;
+  --header-offset: 70px;
+}
+
+.dark {
+  /* DARK MODE - Stratum Aesthetic */
+  --background: 0 0% 0%; /* Pure Black */
+  --foreground: 0 0% 98%;
+  --card: 0 0% 4%;
+  --primary: 190 100% 50%; /* Electric Cyan */
+  --muted: 0 0% 10%;
+  --muted-foreground: 0 0% 60%;
+  --accent: 0 0% 15%;
+  --border: 0 0% 15%;
+}
+
+
