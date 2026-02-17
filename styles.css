@@ -4826,6 +4826,27 @@ body.mobile-menu-open .navbar-container {
   border-bottom-color: hsl(var(--primary));
 }
 
+/* Footnote reference superscripts */
+.spec-content sup {
+  font-size: 0.75em;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+  top: -0.4em;
+}
+
+.spec-content sup a {
+  color: hsl(var(--primary));
+  font-weight: 600;
+  border-bottom: none;
+  padding: 0 0.1em;
+}
+
+.spec-content sup a:hover {
+  text-decoration: underline;
+  border-bottom: none;
+}
+
 /* Mobile responsive */
 @media (max-width: 1024px) {
   .spec-layout {

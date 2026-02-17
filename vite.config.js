@@ -4,7 +4,7 @@ import { join } from 'path';
 import react from '@vitejs/plugin-react';
 import i18nPlugin from './vite-plugin-i18n.js';
 import { marked } from 'marked';
-import { escapeHtml, createSlugger, renderHeadingWithAnchor } from './src/markdown.js';
+import { escapeHtml, createSlugger, renderHeadingWithAnchor, sanitizeSpecHtml } from './src/markdown.js';
 import { parseFrontmatter, formatDate } from './src/utils.js';
 import {
   SAFE_LINK_PROTOCOLS as SAFE_MARKDOWN_LINK_PROTOCOLS,
@@ -758,7 +758,7 @@ function generateSpecPages({ distDir, specTemplate, contentDir, specRepoUrl }) {
       html += `>${label}</a>`;
       return html;
     };
-    renderer.html = function() { return ''; };
+    renderer.html = function(token) { return sanitizeSpecHtml(token.raw || token.text || ''); };
 
     const contentHtml = marked.parse(markdown, { renderer });
     const navHtml = buildSpecNavHtml(SPEC_PAGES, toc, page.slug);

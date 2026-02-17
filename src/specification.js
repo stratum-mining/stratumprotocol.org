@@ -1,5 +1,5 @@
 import { marked } from 'marked';
-import { escapeHtml, createSlugger, renderHeadingWithAnchor } from './markdown.js';
+import { escapeHtml, createSlugger, renderHeadingWithAnchor, sanitizeSpecHtml } from './markdown.js';
 import { highlightCodeBlocks } from './highlighting.js';
 import { SAFE_LINK_PROTOCOLS, hasUnsafePathSegments, isLikelyHtmlResponse } from './url-safety.js';
 
@@ -218,7 +218,7 @@ function createSpecRenderer(specRepoUrl) {
     html += `>${label}</a>`;
     return html;
   };
-  renderer.html = function(token) { return token.raw || ''; };
+  renderer.html = function(token) { return sanitizeSpecHtml(token.raw || token.text || ''); };
 
   return renderer;
 }
