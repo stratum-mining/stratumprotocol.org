@@ -35,6 +35,46 @@ export function createSlugger() {
   };
 }
 
+/**
+ * Sanitize raw HTML from markdown, allowing only safe tags used in spec
+ * footnotes and references (e.g. <sup>, <a id="..." href="...">).
+ * Everything else is stripped.
+ */
+export function sanitizeSpecHtml(raw) {
+  if (!raw || typeof raw !== 'string') return '';
+
+  // Allow <sup> and </sup>
+  // Allow <a> with only id and href attributes (for reference anchors)
+  // Strip everything else
+  return raw.replace(/<\/?[^>]*>/g, (tag) => {
+    // Allow </sup>, </a>
+    if (/^<\/(?:sup|a)>$/i.test(tag)) return tag;
+    // Allow <sup>
+    if (/^<sup>$/i.test(tag)) return tag;
+    // Allow <a> with safe attributes (id, href) only
+    const aMatch = tag.match(/^<a(\s[^>]*)>$/i);
+    if (aMatch) {
+      const attrs = aMatch[1];
+      const parts = [];
+      // Extract id attribute
+      const idMatch = attrs.match(/\bid\s*=\s*"([^"]+)"/i);
+      if (idMatch) parts.push(`id="${escapeHtml(idMatch[1])}"`);
+      // Extract href attribute - only allow safe protocols and anchors
+      const hrefMatch = attrs.match(/\bhref\s*=\s*"([^"]+)"/i);
+      if (hrefMatch) {
+        const href = hrefMatch[1];
+        if (href.startsWith('#') || href.startsWith('https://') || href.startsWith('http://')) {
+          parts.push(`href="${escapeHtml(href)}"`);
+        }
+      }
+      if (parts.length > 0) return `<a ${parts.join(' ')}>`;
+      return '';
+    }
+    // Strip all other tags
+    return '';
+  });
+}
+
 export function renderHeadingWithAnchor({ depth, id, html, text, className = '' }) {
   const safeId = escapeHtml(id);
   const label = text ? `Copy link to "${text}"` : 'Copy link to this section';
