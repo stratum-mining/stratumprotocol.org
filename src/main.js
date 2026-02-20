@@ -419,7 +419,8 @@ function initComparisonSliders() {
 // SUPPORTER TABS & LOGOS
 // ====================================
 function initSupporterTabs() {
-  const tabs = document.querySelectorAll('.supporter-tab');
+  const section = document.getElementById('supporters');
+  const tabs = section?.querySelectorAll('.supporter-tab') || [];
   const grid = document.getElementById('supporters-grid');
   const workingGroupInfo = document.getElementById('working-group-info');
 
@@ -606,6 +607,33 @@ function initGlobalClickHandler() {
   document.addEventListener('click', async (e) => {
     // Skip if already handled
     if (e.defaultPrevented) return;
+
+    // Handle generic copy triggers
+    const copyTrigger = e.target?.closest?.('[data-copy-text]');
+    if (copyTrigger) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const textToCopy = copyTrigger.getAttribute('data-copy-text');
+      if (!textToCopy) return;
+
+      const labelNode = copyTrigger.querySelector('.copy-label');
+      const defaultLabel = copyTrigger.getAttribute('data-copy-label') || 'Copy';
+      const successLabel = copyTrigger.getAttribute('data-copy-success') || 'Copied';
+
+      try {
+        await copyToClipboard(textToCopy);
+        if (labelNode) labelNode.textContent = successLabel;
+        copyTrigger.classList.add('copied');
+        setTimeout(() => {
+          if (labelNode) labelNode.textContent = defaultLabel;
+          copyTrigger.classList.remove('copied');
+        }, 1400);
+      } catch (err) {
+        console.warn('Failed to copy text:', err);
+      }
+      return;
+    }
 
     // Handle heading anchor copy
     const headingAnchor = e.target?.closest?.('a.heading-anchor[href^="#"]');
@@ -854,106 +882,6 @@ function initMobileMenu() {
 }
 
 // ====================================
-// WIZARD MODAL
-// ====================================
-let wizardOverlay = null;
-let wizardUnmount = null;
-let previousWizardOverflow = null;
-let wizardModulePromise = null;
-
-function loadWizardModule() {
-  if (wizardModulePromise) return wizardModulePromise;
-
-  wizardModulePromise = import('./wizard-island.jsx')
-    .catch((firstErr) => {
-      console.warn('Wizard module initial load failed, retrying once...', firstErr);
-      return new Promise((resolve) => {
-        setTimeout(() => resolve(import('./wizard-island.jsx')), 250);
-      });
-    });
-
-  return wizardModulePromise;
-}
-
-function openWizardModal() {
-  if (!wizardOverlay) {
-    wizardOverlay = document.createElement('div');
-    wizardOverlay.className = 'wizard-overlay';
-    wizardOverlay.setAttribute('role', 'dialog');
-    wizardOverlay.setAttribute('aria-modal', 'true');
-    wizardOverlay.setAttribute('aria-label', 'Start Mining Wizard');
-    wizardOverlay.innerHTML = `
-      <div class="wizard-modal">
-        <div class="wizard-modal-header">
-          <button class="wizard-modal-close" aria-label="Close wizard">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="18" y1="6" x2="6" y2="18"></line>
-              <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-          </button>
-        </div>
-        <div class="wizard-modal-body">
-          <div data-wizard-container></div>
-        </div>
-      </div>
-    `;
-    document.body.appendChild(wizardOverlay);
-
-    wizardOverlay.addEventListener('click', (e) => {
-      if (e.target === wizardOverlay) closeWizardModal();
-    });
-
-    wizardOverlay.querySelector('.wizard-modal-close')
-      .addEventListener('click', closeWizardModal);
-  }
-
-  previousWizardOverflow = document.body.style.overflow;
-  document.body.style.overflow = 'hidden';
-  wizardOverlay.classList.add('active');
-
-  const container = wizardOverlay.querySelector('[data-wizard-container]');
-  loadWizardModule()
-    .then(({ mountWizard, unmountWizard }) => {
-      wizardUnmount = unmountWizard;
-      mountWizard(container);
-    })
-    .catch((err) => {
-      console.error('Failed to load wizard:', err);
-      container.textContent = 'Failed to load the wizard. Please try again.';
-    });
-}
-
-function closeWizardModal() {
-  if (!wizardOverlay) return;
-
-  wizardOverlay.classList.remove('active');
-  document.body.style.overflow = previousWizardOverflow ?? '';
-  previousWizardOverflow = null;
-
-  setTimeout(() => {
-    if (wizardUnmount && wizardOverlay && !wizardOverlay.classList.contains('active')) {
-      wizardUnmount();
-    }
-  }, 300);
-}
-
-function initWizardModal() {
-  const btn = document.getElementById('start-mining-btn');
-  if (!btn) return;
-  const warmWizard = () => {
-    loadWizardModule().catch(() => {
-      // Ignore; openWizardModal handles error display.
-    });
-  };
-  btn.addEventListener('pointerenter', warmWizard, { once: true, passive: true });
-  btn.addEventListener('focus', warmWizard, { once: true });
-  btn.addEventListener('click', (e) => {
-    e.preventDefault();
-    openWizardModal();
-  });
-}
-
-// ====================================
 // UNIFIED KEYBOARD HANDLER
 // ====================================
 function initGlobalKeyboardHandler() {
@@ -962,12 +890,6 @@ function initGlobalKeyboardHandler() {
 
   document.addEventListener('keydown', (e) => {
     if (e.key !== 'Escape') return;
-
-    // Close wizard modal (highest priority)
-    if (wizardOverlay?.classList.contains('active')) {
-      closeWizardModal();
-      return;
-    }
 
     // Close lightbox
     if (lightboxOverlay?.classList.contains('active')) {
@@ -1052,7 +974,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavAnchors();
   initActiveNavLink();
   initMobileMenu();
-  initWizardModal();
 
   runAfterLoad(() => {
     runWhenIdle(() => {

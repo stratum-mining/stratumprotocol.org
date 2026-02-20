@@ -44,13 +44,13 @@
 	      <div class="hero-content">
 	        <h1><span data-i18n="hero.title.prefix">Open ₿itcoin</span> <span class="cyan" data-i18n="hero.title.highlight">mining</span> <span data-i18n="hero.title.suffix">standard</span></h1>
 	        <p data-i18n="hero.subtitle">Stratum V2 is a mining protocol that makes mining operations more efficient, profitable, secure, private and decentralized.</p>
-	        <button type="button" class="cta-button" id="start-mining-btn">
+	        <a href="#start-mining-image" class="cta-button" id="start-mining-btn">
 	          <span data-i18n="hero.cta">Start Mining</span>
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M5 12h14"></path>
             <path d="m12 5 7 7-7 7"></path>
           </svg>
-        </button>
+        </a>
       </div>
 
       <div class="stats-grid">
@@ -907,6 +907,56 @@
 	                </div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Start Mining Section -->
+    <section id="start-mining" class="start-mining" aria-labelledby="start-mining-title">
+      <div class="section-container">
+        <div class="start-mining-header">
+          <h2 id="start-mining-title">Start mining <span class="cyan">today</span></h2>
+        </div>
+
+        <figure id="start-mining-image" class="start-mining-preview" aria-label="SV2 UI preview">
+          <img
+            src="/assets/images/start-mining-ui.png"
+            alt="SV2 dashboard interface showing stratum endpoint, hashrate metrics, chart, and worker table"
+            width="2310"
+            height="1416"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+
+        <div class="supporter-tabs start-mining-tabs" role="tablist" aria-label="Start mining methods">
+          <button class="supporter-tab active" type="button" role="tab" aria-selected="true">Docker</button>
+          <button class="supporter-tab start-mining-disabled" type="button" role="tab" aria-selected="false" aria-disabled="true" disabled>
+            Umbrel <span class="start-mining-soon">Coming soon</span>
+          </button>
+          <button class="supporter-tab start-mining-disabled" type="button" role="tab" aria-selected="false" aria-disabled="true" disabled>
+            Start9 <span class="start-mining-soon">Coming soon</span>
+          </button>
+        </div>
+
+        <div class="start-mining-flow">
+          <div class="start-mining-command-wrap" id="start-mining-command">
+            <code class="start-mining-command">docker run -p 3000:3000 -v /var/run/docker.sock:/var/run/docker.sock sv2-ui</code>
+            <button
+              type="button"
+              class="cta-button start-mining-copy"
+              data-copy-text="docker run -p 3000:3000 -v /var/run/docker.sock:/var/run/docker.sock sv2-ui"
+              data-copy-label="Copy"
+              data-copy-success="Copied"
+              aria-label="Copy Docker command"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              <span class="copy-label">Copy</span>
+            </button>
           </div>
         </div>
       </div>
