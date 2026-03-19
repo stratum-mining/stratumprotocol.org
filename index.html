@@ -930,33 +930,123 @@
           />
         </figure>
 
-        <div class="supporter-tabs start-mining-tabs" role="tablist" aria-label="Start mining methods">
-          <button class="supporter-tab active" type="button" role="tab" aria-selected="true">Docker</button>
-          <button class="supporter-tab start-mining-disabled" type="button" role="tab" aria-selected="false" aria-disabled="true" disabled>
-            Umbrel <span class="start-mining-soon">Coming soon</span>
-          </button>
-          <button class="supporter-tab start-mining-disabled" type="button" role="tab" aria-selected="false" aria-disabled="true" disabled>
-            Start9 <span class="start-mining-soon">Coming soon</span>
-          </button>
-        </div>
-
         <div class="start-mining-flow">
-          <div class="start-mining-command-wrap" id="start-mining-command">
-            <code class="start-mining-command">docker run -p 3000:3000 -v /var/run/docker.sock:/var/run/docker.sock sv2-ui</code>
-            <button
-              type="button"
-              class="cta-button start-mining-copy"
-              data-copy-text="docker run -p 3000:3000 -v /var/run/docker.sock:/var/run/docker.sock sv2-ui"
-              data-copy-label="Copy"
-              data-copy-success="Copied"
-              aria-label="Copy Docker command"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="9" y="9" width="13" height="13" rx="2"></rect>
-                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+
+          <!-- OS Selector -->
+          <div class="os-selector" role="group" aria-label="Select operating system">
+            <button type="button" class="os-tab active" data-os="linux" aria-pressed="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="4 17 10 11 4 5"></polyline>
+                <line x1="12" y1="19" x2="20" y2="19"></line>
               </svg>
-              <span class="copy-label">Copy</span>
+              <span>Linux</span>
             </button>
+            <button type="button" class="os-tab" data-os="macos" aria-pressed="false">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 814 1000" fill="currentColor" aria-hidden="true">
+                <path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76 0-103.7 40.8-165.9 40.8s-105-57.8-155.5-127.4C46 790.7 0 663 0 541.8c0-207.5 135.4-317.3 269-317.3 70.1 0 128.4 46.4 172.5 46.4 42.8 0 109.3-49 188.3-49 30.5 0 110.9 2.6 168.6 79zM554.1 131.5c24.7-30.5 43.5-73.6 43.5-116.7 0-5.8-.6-11.6-1.3-17.4-41.5 1.6-90.9 27.8-120.7 59.8-22.7 25.4-43.9 68.6-43.9 112.3 0 6.4.6 13.5 1.3 15.5 2.6.6 6.5 1.3 10.4 1.3 37.5 0 82.6-24.7 110.7-54.8z"/>
+              </svg>
+              <span>macOS</span>
+            </button>
+          </div>
+
+          <!-- Steps -->
+          <div class="mining-steps">
+
+            <!-- Step 1: Install Docker Desktop -->
+            <div class="mining-step mining-step--inline">
+              <div class="mining-step-header">
+                <span class="mining-step-number">1</span>
+                <span class="mining-step-title">Download &amp; Install Docker</span>
+                <a
+                  href="https://www.docker.com/products/docker-desktop/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="docker-download-link"
+                  aria-label="Download Docker Desktop (opens in new tab)"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                  Download
+                </a>
+              </div>
+            </div>
+
+            <!-- Step 2: Run the command -->
+            <div class="mining-step">
+              <div class="mining-step-header">
+                <span class="mining-step-number">2</span>
+                <span class="mining-step-title">Run the container</span>
+                <button
+                  type="button"
+                  class="step-action-btn start-mining-copy"
+                  data-copy-text="docker run -d \
+  --name sv2-ui \
+  -p 8080:8080 \
+  -e HOST_HOME=$HOME \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v sv2-config:/app/data/config \
+  stratumv2/sv2_ui:main"
+                  data-copy-label="Copy"
+                  data-copy-success="Copied"
+                  aria-label="Copy Docker command"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                  </svg>
+                  <span class="copy-label">Copy</span>
+                </button>
+              </div>
+              <div class="mining-step-body">
+
+                <!-- macOS runtime sub-tabs (hidden on Linux) -->
+                <div class="runtime-tabs" role="group" aria-label="Select Docker runtime">
+                  <button type="button" class="runtime-tab active" data-runtime="docker" aria-pressed="true">Docker Desktop</button>
+                  <button type="button" class="runtime-tab" data-runtime="colima" aria-pressed="false">Colima</button>
+                  <button type="button" class="runtime-tab" data-runtime="orbstack" aria-pressed="false">OrbStack</button>
+                </div>
+
+                <!-- Command display -->
+                <div class="start-mining-command-wrap" id="start-mining-command">
+                  <code
+                    class="start-mining-command"
+                    data-linux="docker run -d \
+  --name sv2-ui \
+  -p 8080:8080 \
+  -e HOST_HOME=$HOME \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v sv2-config:/app/data/config \
+  stratumv2/sv2_ui:main"
+                    data-macos-docker="docker run -d --name sv2-ui -p 8080:8080 \
+  -e HOST_HOME=$HOME \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v sv2-config:/app/data/config \
+  stratumv2/sv2_ui:main"
+                    data-macos-colima="docker run -d --name sv2-ui -p 8080:8080 \
+  -e HOST_HOME=$HOME \
+  -v $HOME/.colima/default/docker.sock:/var/run/docker.sock \
+  -v sv2-config:/app/data/config \
+  stratumv2/sv2_ui:main"
+                    data-macos-orbstack="docker run -d --name sv2-ui -p 8080:8080 \
+  -e HOST_HOME=$HOME \
+  -v $HOME/.orbstack/run/docker.sock:/var/run/docker.sock \
+  -v sv2-config:/app/data/config \
+  stratumv2/sv2_ui:main"
+                  >docker run -d \
+  --name sv2-ui \
+  -p 8080:8080 \
+  -e HOST_HOME=$HOME \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v sv2-config:/app/data/config \
+  stratumv2/sv2_ui:main</code>
+                </div>
+
+              </div>
+            </div>
+
           </div>
         </div>
       </div>

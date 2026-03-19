@@ -2640,7 +2640,7 @@ body.mobile-menu-open .navbar-container {
 }
 
 .start-mining-preview {
-  width: var(--start-mining-content-width);
+  width: min(100%, 56rem);
   margin: 0 auto 1rem;
   scroll-margin-top: calc(var(--header-offset) + 0.75rem);
   border-radius: 0;
@@ -2718,9 +2718,9 @@ body.mobile-menu-open .navbar-container {
   line-height: 1.4;
   color: hsl(var(--foreground));
   padding: 0.38rem 0.5rem;
-  white-space: nowrap;
+  white-space: pre;
   overflow-x: auto;
-  text-align: center;
+  text-align: left;
 }
 
 .start-mining-copy {
@@ -2730,9 +2730,11 @@ body.mobile-menu-open .navbar-container {
   gap: 0.35rem;
 }
 
-.start-mining-copy.copied {
-  background: color-mix(in oklab, var(--cyan-500) 28%, hsl(var(--foreground)));
-  color: hsl(var(--background));
+.start-mining-copy.copied,
+.step-action-btn.start-mining-copy.copied {
+  border-color: var(--cyan-400);
+  background: rgba(34, 211, 238, 0.07);
+  color: var(--cyan-400);
 }
 
 @media (max-width: 960px) {
@@ -2768,6 +2770,204 @@ body.mobile-menu-open .navbar-container {
     padding-inline: 1.25rem;
   }
 
+}
+
+/* OS Selector */
+.os-selector {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.os-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  border-radius: 0.875rem;
+  border: 1.5px solid hsl(var(--border));
+  background: transparent;
+  color: hsl(var(--muted-foreground));
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.18s, background 0.18s, color 0.18s;
+  min-width: 7rem;
+}
+
+.os-tab svg {
+  transition: color 0.18s;
+}
+
+.os-tab:hover {
+  border-color: color-mix(in oklab, var(--cyan-400) 55%, hsl(var(--border)));
+  color: hsl(var(--foreground));
+}
+
+.os-tab.active {
+  border-color: var(--cyan-400);
+  background: rgba(34, 211, 238, 0.07);
+  color: var(--cyan-400);
+}
+
+.dark .os-tab.active {
+  background: rgba(34, 211, 238, 0.09);
+}
+
+/* Mining Steps */
+.mining-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: min(100%, 48rem);
+  margin: 0 auto;
+}
+
+.mining-step {
+  border: 1px solid hsl(var(--border));
+  border-radius: 0.875rem;
+  background: hsl(var(--card));
+  overflow: hidden;
+}
+
+.mining-step-header {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid hsl(var(--border));
+}
+
+.mining-step--inline .mining-step-header {
+  border-bottom: none;
+}
+
+.mining-step-header .docker-download-link,
+.mining-step-header .step-action-btn {
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.mining-step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 9999px;
+  background: rgba(34, 211, 238, 0.15);
+  color: var(--cyan-400);
+  font-size: 0.75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.mining-step-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: hsl(var(--foreground));
+}
+
+.mining-step-body {
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Docker Download Link */
+.docker-download-link,
+.step-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 9999px;
+  border: 1.5px solid hsl(var(--border));
+  background: transparent;
+  color: hsl(var(--muted-foreground));
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color 0.18s, background 0.18s, color 0.18s;
+}
+
+.docker-download-link:hover,
+.step-action-btn:hover {
+  border-color: color-mix(in oklab, var(--cyan-400) 55%, hsl(var(--border)));
+  background: rgba(34, 211, 238, 0.05);
+  color: hsl(var(--foreground));
+}
+
+.step-action-btn.copied {
+  border-color: var(--cyan-400);
+  background: rgba(34, 211, 238, 0.07);
+  color: var(--cyan-400);
+}
+
+/* Runtime Sub-tabs (macOS only) */
+.runtime-tabs {
+  display: none;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.start-mining-flow.macos-active .runtime-tabs {
+  display: flex;
+}
+
+.runtime-tab {
+  padding: 0.3rem 0.85rem;
+  border-radius: 9999px;
+  border: 1.5px solid hsl(var(--border));
+  background: transparent;
+  color: hsl(var(--muted-foreground));
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
+}
+
+.runtime-tab:hover {
+  border-color: color-mix(in oklab, var(--cyan-400) 55%, hsl(var(--border)));
+  color: hsl(var(--foreground));
+}
+
+.runtime-tab.active {
+  border-color: var(--cyan-400);
+  background: rgba(34, 211, 238, 0.07);
+  color: var(--cyan-400);
+}
+
+/* Override command-wrap inside step body */
+.mining-step-body .start-mining-command-wrap {
+  width: 100%;
+  margin: 0;
+  display: block;
+  padding: 0.75rem 0.875rem;
+}
+
+.mining-step-body .start-mining-command {
+  padding: 0;
+  font-size: 0.8rem;
+  display: block;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .os-selector {
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+
+  .os-tab {
+    flex: 1;
+    padding: 0.85rem 0.5rem;
+    min-width: 0;
+  }
 }
 
 /* ====================================

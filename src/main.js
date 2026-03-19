@@ -960,6 +960,47 @@ function runWhenIdle(callback, timeout = 2000) {
   }
 }
 
+function initStartMiningOSSwitcher() {
+  const flow = document.querySelector('.start-mining-flow');
+  if (!flow) return;
+
+  const osTabs = flow.querySelectorAll('.os-tab');
+  const runtimeTabs = flow.querySelectorAll('.runtime-tab');
+  const commandCode = flow.querySelector('.start-mining-command');
+  const copyBtn = flow.querySelector('.start-mining-copy');
+
+  function updateCommand() {
+    const activeOs = flow.querySelector('.os-tab.active')?.dataset.os;
+    const activeRuntime = flow.querySelector('.runtime-tab.active')?.dataset.runtime ?? 'docker';
+    const dataKey = activeOs === 'linux' ? 'linux' : `macos-${activeRuntime}`;
+    // dataset uses camelCase: data-macos-docker → macosDocker
+    const camelKey = dataKey.replace(/-([a-z])/g, (_, c) => c.toUpperCase());
+    const cmd = commandCode.dataset[camelKey];
+    if (!cmd) return;
+    commandCode.textContent = cmd;
+    copyBtn.dataset.copyText = cmd;
+  }
+
+  osTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      osTabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-pressed', 'false'); });
+      tab.classList.add('active');
+      tab.setAttribute('aria-pressed', 'true');
+      flow.classList.toggle('macos-active', tab.dataset.os === 'macos');
+      updateCommand();
+    });
+  });
+
+  runtimeTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      runtimeTabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-pressed', 'false'); });
+      tab.classList.add('active');
+      tab.setAttribute('aria-pressed', 'true');
+      updateCommand();
+    });
+  });
+}
+
 function runAfterLoad(callback) {
   if (document.readyState === 'complete') {
     callback();
@@ -985,6 +1026,7 @@ document.addEventListener('DOMContentLoaded', () => {
       initCarousel('.autonomy-carousel');
       initComparisonSliders();
       initSupporterTabsWhenVisible();
+      initStartMiningOSSwitcher();
       initCurrentYear();
       initImageLightbox();
     }, 4000);
