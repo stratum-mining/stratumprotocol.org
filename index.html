@@ -988,7 +988,7 @@
                 <button
                   type="button"
                   class="step-action-btn start-mining-copy"
-                  data-copy-text="docker run -d \
+                  data-copy-text="docker run \
   --name sv2-ui \
   -p 8080:8080 \
   -e HOST_HOME=$HOME \
@@ -1019,36 +1019,36 @@
                 <div class="start-mining-command-wrap" id="start-mining-command">
                   <code
                     class="start-mining-command"
-                    data-linux="docker run -d \
+                    data-linux="docker run \
   --name sv2-ui \
   -p 8080:8080 \
   -e HOST_HOME=$HOME \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v sv2-config:/app/data/config \
   stratumv2/sv2-ui:main"
-                    data-macos-docker="docker run -d --name sv2-ui -p 8080:8080 \
+                    data-macos-docker="docker run --name sv2-ui -p 8080:8080 \
   -e HOST_HOME=$HOME \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v sv2-config:/app/data/config \
   stratumv2/sv2-ui:main"
-                    data-macos-colima="docker run -d --name sv2-ui -p 8080:8080 \
+                    data-macos-colima="docker run --name sv2-ui -p 8080:8080 \
   -e HOST_HOME=$HOME \
   -v $HOME/.colima/default/docker.sock:/var/run/docker.sock \
   -v sv2-config:/app/data/config \
   stratumv2/sv2-ui:main"
-                    data-macos-orbstack="docker run -d --name sv2-ui -p 8080:8080 \
+                    data-macos-orbstack="docker run --name sv2-ui -p 8080:8080 \
   -e HOST_HOME=$HOME \
   -v $HOME/.orbstack/run/docker.sock:/var/run/docker.sock \
   -v sv2-config:/app/data/config \
   stratumv2/sv2-ui:main"
-                    data-windows="docker run -d ^
+                    data-windows="docker run ^
   --name sv2-ui ^
   -p 8080:8080 ^
   -e HOST_HOME=%USERPROFILE% ^
   -v /var/run/docker.sock:/var/run/docker.sock ^
   -v sv2-config:/app/data/config ^
   stratumv2/sv2-ui:main"
-                  >docker run -d \
+                  >docker run \
   --name sv2-ui \
   -p 8080:8080 \
   -e HOST_HOME=$HOME \
