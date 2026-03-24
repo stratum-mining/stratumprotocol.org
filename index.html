@@ -1029,19 +1029,19 @@
   -e HOST_HOME=$HOME \
   -v $HOME/.colima/default/docker.sock:/var/run/docker.sock \
   -v sv2-config:/app/data/config \
-  stratumv2/sv2_ui:main"
+  stratumv2/sv2-ui:main"
                     data-macos-orbstack="docker run -d --name sv2-ui -p 8080:8080 \
   -e HOST_HOME=$HOME \
   -v $HOME/.orbstack/run/docker.sock:/var/run/docker.sock \
   -v sv2-config:/app/data/config \
-  stratumv2/sv2_ui:main"
+  stratumv2/sv2-ui:main"
                   >docker run -d \
   --name sv2-ui \
   -p 8080:8080 \
   -e HOST_HOME=$HOME \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v sv2-config:/app/data/config \
-  stratumv2/sv2_ui:main</code>
+  stratumv2/sv2-ui:main</code>
                 </div>
 
               </div>
