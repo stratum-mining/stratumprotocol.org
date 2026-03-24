@@ -947,6 +947,12 @@
               </svg>
               <span>macOS</span>
             </button>
+            <button type="button" class="os-tab" data-os="windows" aria-pressed="false">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/>
+              </svg>
+              <span>Windows</span>
+            </button>
           </div>
 
           <!-- Steps -->
@@ -1034,6 +1040,13 @@
   -e HOST_HOME=$HOME \
   -v $HOME/.orbstack/run/docker.sock:/var/run/docker.sock \
   -v sv2-config:/app/data/config \
+  stratumv2/sv2-ui:main"
+                    data-windows="docker run -d ^
+  --name sv2-ui ^
+  -p 8080:8080 ^
+  -e HOST_HOME=%USERPROFILE% ^
+  -v /var/run/docker.sock:/var/run/docker.sock ^
+  -v sv2-config:/app/data/config ^
   stratumv2/sv2-ui:main"
                   >docker run -d \
   --name sv2-ui \

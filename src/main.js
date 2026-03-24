@@ -972,7 +972,9 @@ function initStartMiningOSSwitcher() {
   function updateCommand() {
     const activeOs = flow.querySelector('.os-tab.active')?.dataset.os;
     const activeRuntime = flow.querySelector('.runtime-tab.active')?.dataset.runtime ?? 'docker';
-    const dataKey = activeOs === 'linux' ? 'linux' : `macos-${activeRuntime}`;
+    const dataKey = activeOs === 'linux' ? 'linux'
+      : activeOs === 'windows' ? 'windows'
+      : `macos-${activeRuntime}`;
     // dataset uses camelCase: data-macos-docker → macosDocker
     const camelKey = dataKey.replace(/-([a-z])/g, (_, c) => c.toUpperCase());
     const cmd = commandCode.dataset[camelKey];
