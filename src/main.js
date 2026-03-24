@@ -989,6 +989,7 @@ function initStartMiningOSSwitcher() {
       tab.classList.add('active');
       tab.setAttribute('aria-pressed', 'true');
       flow.classList.toggle('macos-active', tab.dataset.os === 'macos');
+      flow.classList.toggle('windows-active', tab.dataset.os === 'windows');
       updateCommand();
     });
   });

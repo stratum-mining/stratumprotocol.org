@@ -2919,6 +2919,49 @@ body.mobile-menu-open .navbar-container {
   display: flex;
 }
 
+/* Windows-only step 3 */
+.windows-step {
+  display: none;
+}
+
+.start-mining-flow.windows-active .windows-step {
+  display: flex;
+  flex-direction: column;
+}
+
+.windows-coming-soon-badge {
+  margin-left: auto;
+  flex-shrink: 0;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--cyan-400);
+  border: 1px solid color-mix(in oklab, var(--cyan-400) 40%, transparent);
+  border-radius: 9999px;
+  padding: 0.2rem 0.6rem;
+}
+
+.windows-step-note {
+  font-size: 0.825rem;
+  color: hsl(var(--muted-foreground));
+  line-height: 1.55;
+}
+
+.windows-step-note p {
+  margin: 0;
+}
+
+.windows-step-link {
+  color: var(--cyan-400);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.windows-step-link:hover {
+  text-decoration: underline;
+}
+
 .runtime-tab {
   padding: 0.3rem 0.85rem;
   border-radius: 9999px;
