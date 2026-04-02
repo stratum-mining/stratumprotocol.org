@@ -988,13 +988,13 @@
                 <button
                   type="button"
                   class="step-action-btn start-mining-copy"
-                  data-copy-text="docker run \
+                  data-copy-text="docker run --rm \
   --name sv2-ui \
   -p 8080:8080 \
   -e HOST_HOME=$HOME \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v sv2-config:/app/data/config \
-  stratumv2/sv2-ui:v0.1.0"
+  stratumv2/sv2-ui:v0.1.1"
                   data-copy-label="Copy"
                   data-copy-success="Copied"
                   aria-label="Copy Docker command"
@@ -1019,42 +1019,42 @@
                 <div class="start-mining-command-wrap" id="start-mining-command">
                   <code
                     class="start-mining-command"
-                    data-linux="docker run \
+                    data-linux="docker run --rm \
   --name sv2-ui \
   -p 8080:8080 \
   -e HOST_HOME=$HOME \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v sv2-config:/app/data/config \
-  stratumv2/sv2-ui:v0.1.0"
-                    data-macos-docker="docker run --name sv2-ui -p 8080:8080 \
+  stratumv2/sv2-ui:v0.1.1"
+                    data-macos-docker="docker run --rm --name sv2-ui -p 8080:8080 \
   -e HOST_HOME=$HOME \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v sv2-config:/app/data/config \
-  stratumv2/sv2-ui:v0.1.0"
-                    data-macos-colima="docker run --name sv2-ui -p 8080:8080 \
+  stratumv2/sv2-ui:v0.1.1"
+                    data-macos-colima="docker run --rm --name sv2-ui -p 8080:8080 \
   -e HOST_HOME=$HOME \
   -v $HOME/.colima/default/docker.sock:/var/run/docker.sock \
   -v sv2-config:/app/data/config \
-  stratumv2/sv2-ui:v0.1.0"
-                    data-macos-orbstack="docker run --name sv2-ui -p 8080:8080 \
+  stratumv2/sv2-ui:v0.1.1"
+                    data-macos-orbstack="docker run --rm --name sv2-ui -p 8080:8080 \
   -e HOST_HOME=$HOME \
   -v $HOME/.orbstack/run/docker.sock:/var/run/docker.sock \
   -v sv2-config:/app/data/config \
-  stratumv2/sv2-ui:v0.1.0"
-                    data-windows="docker run ^
+  stratumv2/sv2-ui:v0.1.1"
+                    data-windows="docker run --rm ^
   --name sv2-ui ^
   -p 8080:8080 ^
   -e HOST_HOME=%USERPROFILE% ^
   -v /var/run/docker.sock:/var/run/docker.sock ^
   -v sv2-config:/app/data/config ^
-  stratumv2/sv2-ui:v0.1.0"
-                  >docker run \
+  stratumv2/sv2-ui:v0.1.1"
+                  >docker run --rm \
   --name sv2-ui \
   -p 8080:8080 \
   -e HOST_HOME=$HOME \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v sv2-config:/app/data/config \
-  stratumv2/sv2-ui:v0.1.0</code>
+  stratumv2/sv2-ui:v0.1.1</code>
                 </div>
 
               </div>
