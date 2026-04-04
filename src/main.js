@@ -3,13 +3,28 @@
    ==================================== */
 
 // ====================================
-// DEV I18N (VITE)
+// DEV I18N
 // ====================================
 const I18N_SUPPORTED_LOCALES = new Set(['en', 'es', 'zh', 'ru', 'ar']);
 const I18N_RTL_LOCALES = new Set(['ar']);
 const I18N_LOCALE_ALIASES = {
   cn: 'zh'
 };
+const I18N_ATTRIBUTE_TRANSLATIONS = [
+  ['data-i18n-placeholder', 'placeholder'],
+  ['data-i18n-aria-label', 'aria-label'],
+  ['data-i18n-aria-roledescription', 'aria-roledescription'],
+  ['data-i18n-alt', 'alt'],
+  ['data-i18n-title', 'title'],
+  ['data-i18n-content', 'content'],
+  ['data-i18n-data-copy-label', 'data-copy-label'],
+  ['data-i18n-data-copy-success', 'data-copy-success'],
+  ['data-i18n-data-open-label', 'data-open-label'],
+  ['data-i18n-data-close-label', 'data-close-label'],
+  ['data-i18n-data-current-funders-label', 'data-current-funders-label'],
+  ['data-i18n-data-past-funders-label', 'data-past-funders-label'],
+  ['data-i18n-data-visit-website-template', 'data-visit-website-template']
+];
 
 function getLocaleFromPathname(pathname) {
   const firstSegment = String(pathname || '/')
@@ -43,6 +58,31 @@ function parseTranslationText(text) {
   return translations;
 }
 
+function applyTranslations(translations) {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (!key) return;
+    const translated = translations[key];
+    if (translated !== undefined) el.textContent = translated;
+  });
+
+  I18N_ATTRIBUTE_TRANSLATIONS.forEach(([sourceAttr, targetAttr]) => {
+    document.querySelectorAll(`[${sourceAttr}]`).forEach(el => {
+      const key = el.getAttribute(sourceAttr);
+      if (!key) return;
+      const translated = translations[key];
+      if (translated !== undefined) el.setAttribute(targetAttr, translated);
+    });
+  });
+}
+
+function formatTemplate(template, params = {}) {
+  return String(template).replace(/\{(\w+)\}/g, (match, token) => {
+    if (params[token] === undefined || params[token] === null) return match;
+    return String(params[token]);
+  });
+}
+
 async function initDevTranslations() {
   if (!import.meta.env?.DEV) return;
 
@@ -58,28 +98,7 @@ async function initDevTranslations() {
       return;
     }
 
-    const translations = parseTranslationText(await res.text());
-
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-      const key = el.getAttribute('data-i18n');
-      if (!key) return;
-      const translated = translations[key];
-      if (translated !== undefined) el.textContent = translated;
-    });
-
-    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-      const key = el.getAttribute('data-i18n-placeholder');
-      if (!key) return;
-      const translated = translations[key];
-      if (translated !== undefined) el.setAttribute('placeholder', translated);
-    });
-
-    document.querySelectorAll('[data-i18n-aria-label]').forEach(el => {
-      const key = el.getAttribute('data-i18n-aria-label');
-      if (!key) return;
-      const translated = translations[key];
-      if (translated !== undefined) el.setAttribute('aria-label', translated);
-    });
+    applyTranslations(parseTranslationText(await res.text()));
   } catch (err) {
     console.warn('i18n: failed to apply translations', err);
   }
@@ -419,7 +438,8 @@ function initComparisonSliders() {
 // SUPPORTER TABS & LOGOS
 // ====================================
 function initSupporterTabs() {
-  const tabs = document.querySelectorAll('.supporter-tab');
+  const section = document.getElementById('supporters');
+  const tabs = section?.querySelectorAll('.supporter-tab') || [];
   const grid = document.getElementById('supporters-grid');
   const workingGroupInfo = document.getElementById('working-group-info');
 
@@ -469,7 +489,8 @@ function initSupporterTabs() {
     link.target = '_blank';
     link.rel = 'noopener noreferrer';
     link.className = 'supporter-logo';
-    link.setAttribute('aria-label', `Visit ${supporter.name} website`);
+    const visitWebsiteTemplate = section.getAttribute('data-visit-website-template') || 'Visit {name} website';
+    link.setAttribute('aria-label', formatTemplate(visitWebsiteTemplate, { name: supporter.name }));
 
     if (supporter.logo) {
       const img = document.createElement('img');
@@ -503,7 +524,7 @@ function initSupporterTabs() {
 
       const currentHeading = document.createElement('h4');
       currentHeading.className = 'funders-section-heading';
-      currentHeading.textContent = 'Current Funders';
+      currentHeading.textContent = section.getAttribute('data-current-funders-label') || 'Current Funders';
       grid.appendChild(currentHeading);
 
       const currentGrid = document.createElement('div');
@@ -517,7 +538,7 @@ function initSupporterTabs() {
 
         const heading = document.createElement('h4');
         heading.className = 'past-funders-heading';
-        heading.textContent = 'Past Funders';
+        heading.textContent = section.getAttribute('data-past-funders-label') || 'Past Funders';
         section.appendChild(heading);
 
         const pastGrid = document.createElement('div');
@@ -606,6 +627,33 @@ function initGlobalClickHandler() {
   document.addEventListener('click', async (e) => {
     // Skip if already handled
     if (e.defaultPrevented) return;
+
+    // Handle generic copy triggers
+    const copyTrigger = e.target?.closest?.('[data-copy-text]');
+    if (copyTrigger) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const textToCopy = copyTrigger.getAttribute('data-copy-text');
+      if (!textToCopy) return;
+
+      const labelNode = copyTrigger.querySelector('.copy-label');
+      const defaultLabel = copyTrigger.getAttribute('data-copy-label') || 'Copy';
+      const successLabel = copyTrigger.getAttribute('data-copy-success') || 'Copied';
+
+      try {
+        await copyToClipboard(textToCopy);
+        if (labelNode) labelNode.textContent = successLabel;
+        copyTrigger.classList.add('copied');
+        setTimeout(() => {
+          if (labelNode) labelNode.textContent = defaultLabel;
+          copyTrigger.classList.remove('copied');
+        }, 1400);
+      } catch (err) {
+        console.warn('Failed to copy text:', err);
+      }
+      return;
+    }
 
     // Handle heading anchor copy
     const headingAnchor = e.target?.closest?.('a.heading-anchor[href^="#"]');
@@ -745,7 +793,7 @@ function initImageLightbox() {
     lightboxOverlay.setAttribute('aria-label', 'Image preview');
     lightboxOverlay.tabIndex = -1;
     lightboxOverlay.innerHTML = `
-      <button type="button" class="lightbox-close" aria-label="Close lightbox"></button>
+      <button type="button" class="lightbox-close" aria-label="Close image preview"></button>
       <div class="lightbox-content">
         <img class="lightbox-image" src="" alt="" />
         <div class="lightbox-caption" aria-live="polite"></div>
@@ -806,7 +854,7 @@ function initMobileMenu() {
     menu.classList.remove('active');
     toggle.classList.remove('active');
     toggle.setAttribute('aria-expanded', 'false');
-    toggle.setAttribute('aria-label', 'Open navigation menu');
+    toggle.setAttribute('aria-label', toggle.getAttribute('data-open-label') || 'Open navigation menu');
     document.body.classList.remove('mobile-menu-open');
     document.body.style.overflow = '';
   }
@@ -816,7 +864,7 @@ function initMobileMenu() {
     menu.classList.add('active');
     toggle.classList.add('active');
     toggle.setAttribute('aria-expanded', 'true');
-    toggle.setAttribute('aria-label', 'Close navigation menu');
+    toggle.setAttribute('aria-label', toggle.getAttribute('data-close-label') || 'Close navigation menu');
     document.body.classList.add('mobile-menu-open');
     document.body.style.overflow = 'hidden';
   }
@@ -854,106 +902,6 @@ function initMobileMenu() {
 }
 
 // ====================================
-// WIZARD MODAL
-// ====================================
-let wizardOverlay = null;
-let wizardUnmount = null;
-let previousWizardOverflow = null;
-let wizardModulePromise = null;
-
-function loadWizardModule() {
-  if (wizardModulePromise) return wizardModulePromise;
-
-  wizardModulePromise = import('./wizard-island.jsx')
-    .catch((firstErr) => {
-      console.warn('Wizard module initial load failed, retrying once...', firstErr);
-      return new Promise((resolve) => {
-        setTimeout(() => resolve(import('./wizard-island.jsx')), 250);
-      });
-    });
-
-  return wizardModulePromise;
-}
-
-function openWizardModal() {
-  if (!wizardOverlay) {
-    wizardOverlay = document.createElement('div');
-    wizardOverlay.className = 'wizard-overlay';
-    wizardOverlay.setAttribute('role', 'dialog');
-    wizardOverlay.setAttribute('aria-modal', 'true');
-    wizardOverlay.setAttribute('aria-label', 'Start Mining Wizard');
-    wizardOverlay.innerHTML = `
-      <div class="wizard-modal">
-        <div class="wizard-modal-header">
-          <button class="wizard-modal-close" aria-label="Close wizard">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="18" y1="6" x2="6" y2="18"></line>
-              <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-          </button>
-        </div>
-        <div class="wizard-modal-body">
-          <div data-wizard-container></div>
-        </div>
-      </div>
-    `;
-    document.body.appendChild(wizardOverlay);
-
-    wizardOverlay.addEventListener('click', (e) => {
-      if (e.target === wizardOverlay) closeWizardModal();
-    });
-
-    wizardOverlay.querySelector('.wizard-modal-close')
-      .addEventListener('click', closeWizardModal);
-  }
-
-  previousWizardOverflow = document.body.style.overflow;
-  document.body.style.overflow = 'hidden';
-  wizardOverlay.classList.add('active');
-
-  const container = wizardOverlay.querySelector('[data-wizard-container]');
-  loadWizardModule()
-    .then(({ mountWizard, unmountWizard }) => {
-      wizardUnmount = unmountWizard;
-      mountWizard(container);
-    })
-    .catch((err) => {
-      console.error('Failed to load wizard:', err);
-      container.textContent = 'Failed to load the wizard. Please try again.';
-    });
-}
-
-function closeWizardModal() {
-  if (!wizardOverlay) return;
-
-  wizardOverlay.classList.remove('active');
-  document.body.style.overflow = previousWizardOverflow ?? '';
-  previousWizardOverflow = null;
-
-  setTimeout(() => {
-    if (wizardUnmount && wizardOverlay && !wizardOverlay.classList.contains('active')) {
-      wizardUnmount();
-    }
-  }, 300);
-}
-
-function initWizardModal() {
-  const btn = document.getElementById('start-mining-btn');
-  if (!btn) return;
-  const warmWizard = () => {
-    loadWizardModule().catch(() => {
-      // Ignore; openWizardModal handles error display.
-    });
-  };
-  btn.addEventListener('pointerenter', warmWizard, { once: true, passive: true });
-  btn.addEventListener('focus', warmWizard, { once: true });
-  btn.addEventListener('click', (e) => {
-    e.preventDefault();
-    openWizardModal();
-  });
-}
-
-// ====================================
 // UNIFIED KEYBOARD HANDLER
 // ====================================
 function initGlobalKeyboardHandler() {
@@ -962,12 +910,6 @@ function initGlobalKeyboardHandler() {
 
   document.addEventListener('keydown', (e) => {
     if (e.key !== 'Escape') return;
-
-    // Close wizard modal (highest priority)
-    if (wizardOverlay?.classList.contains('active')) {
-      closeWizardModal();
-      return;
-    }
 
     // Close lightbox
     if (lightboxOverlay?.classList.contains('active')) {
@@ -980,7 +922,7 @@ function initGlobalKeyboardHandler() {
       menu.classList.remove('active');
       toggle?.classList.remove('active');
       toggle?.setAttribute('aria-expanded', 'false');
-      toggle?.setAttribute('aria-label', 'Open navigation menu');
+      toggle?.setAttribute('aria-label', toggle.getAttribute('data-open-label') || 'Open navigation menu');
       document.body.classList.remove('mobile-menu-open');
       document.body.style.overflow = '';
     }
@@ -1038,6 +980,50 @@ function runWhenIdle(callback, timeout = 2000) {
   }
 }
 
+function initStartMiningOSSwitcher() {
+  const flow = document.querySelector('.start-mining-flow');
+  if (!flow) return;
+
+  const osTabs = flow.querySelectorAll('.os-tab');
+  const runtimeTabs = flow.querySelectorAll('.runtime-tab');
+  const commandCode = flow.querySelector('.start-mining-command');
+  const copyBtn = flow.querySelector('.start-mining-copy');
+
+  function updateCommand() {
+    const activeOs = flow.querySelector('.os-tab.active')?.dataset.os;
+    const activeRuntime = flow.querySelector('.runtime-tab.active')?.dataset.runtime ?? 'docker';
+    const dataKey = activeOs === 'linux' ? 'linux'
+      : activeOs === 'windows' ? 'windows'
+      : `macos-${activeRuntime}`;
+    // dataset uses camelCase: data-macos-docker → macosDocker
+    const camelKey = dataKey.replace(/-([a-z])/g, (_, c) => c.toUpperCase());
+    const cmd = commandCode.dataset[camelKey];
+    if (!cmd) return;
+    commandCode.textContent = cmd;
+    copyBtn.dataset.copyText = cmd;
+  }
+
+  osTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      osTabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-pressed', 'false'); });
+      tab.classList.add('active');
+      tab.setAttribute('aria-pressed', 'true');
+      flow.classList.toggle('macos-active', tab.dataset.os === 'macos');
+      flow.classList.toggle('windows-active', tab.dataset.os === 'windows');
+      updateCommand();
+    });
+  });
+
+  runtimeTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      runtimeTabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-pressed', 'false'); });
+      tab.classList.add('active');
+      tab.setAttribute('aria-pressed', 'true');
+      updateCommand();
+    });
+  });
+}
+
 function runAfterLoad(callback) {
   if (document.readyState === 'complete') {
     callback();
@@ -1052,7 +1038,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavAnchors();
   initActiveNavLink();
   initMobileMenu();
-  initWizardModal();
 
   runAfterLoad(() => {
     runWhenIdle(() => {
@@ -1064,6 +1049,7 @@ document.addEventListener('DOMContentLoaded', () => {
       initCarousel('.autonomy-carousel');
       initComparisonSliders();
       initSupporterTabsWhenVisible();
+      initStartMiningOSSwitcher();
       initCurrentYear();
       initImageLightbox();
     }, 4000);

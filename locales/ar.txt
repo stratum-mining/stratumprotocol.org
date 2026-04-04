@@ -11,6 +11,9 @@ nav.supporters = الداعمون
 nav.community = المجتمع
 nav.specification = المواصفات
 nav.blog = المدونة
+nav.main = التنقل الرئيسي
+nav.home = الصفحة الرئيسية لـ Stratum V2
+nav.startMining = ابدأ التعدين
 
 # ===================
 # Hero Section
@@ -20,6 +23,7 @@ hero.title.highlight = للتعدين
 hero.title.suffix = في البـتكوين
 hero.subtitle = Stratum V2 هو بروتوكول تعدين يجعل عمليات التعدين أكثر كفاءة وربحية وأمانا وخصوصية ولامركزية.
 hero.cta = ابدأ التعدين
+hero.aria = قسم المقدمة
 
 # ===================
 # Stats
@@ -116,6 +120,22 @@ carousel.latency = زمن job
 carousel.latency.caption = يؤثر زمن job على سرعة استلام job الجديد من المجمّع
 carousel.propagation = زمن انتشار الكتلة
 carousel.propagation.caption = انتشار الكتلة أسرع بمقدار 28×
+carousel.role = عرض دوّار
+carousel.prev = الشريحة السابقة
+carousel.next = الشريحة التالية
+carousel.nav = تنقل الشرائح
+carousel.profit.region = مؤشرات الربحية
+carousel.profit.slide1.aria = الشريحة 1 من 3
+carousel.profit.slide2.aria = الشريحة 2 من 3
+carousel.profit.slide3.aria = الشريحة 3 من 3
+carousel.profit.dot1.aria = انتقل إلى الشريحة 1: معدل قبول الحصص
+carousel.profit.dot2.aria = انتقل إلى الشريحة 2: زمن job
+carousel.profit.dot3.aria = انتقل إلى الشريحة 3: زمن انتشار الكتلة
+carousel.autonomy.region = مقارنة استقلالية المعدّن
+carousel.autonomy.slide1.aria = الشريحة 1 من 2: Stratum V2
+carousel.autonomy.slide2.aria = الشريحة 2 من 2: Stratum V1
+carousel.autonomy.dot1.aria = انتقل إلى الشريحة 1: Stratum V2
+carousel.autonomy.dot2.aria = انتقل إلى الشريحة 2: Stratum V1
 
 # Carousel Slides - Autonomy
 carousel.autonomy.sv2.caption = يختار المعدّن المعاملات ويبني الكتلة
@@ -127,11 +147,43 @@ module.template.distribution = توزيع القوالب
 module.mining.protocol = بروتوكول التعدين
 
 # ===================
+# Start Mining Section
+# ===================
+startMining.title.part1 = ابدأ التعدين
+startMining.title.part2 = اليوم
+startMining.preview.aria = معاينة واجهة SV2
+startMining.preview.alt = لوحة تحكم SV2 تعرض نقطة اتصال Stratum ومقاييس معدل الهاش ومخططا وجدولا للعمّال
+startMining.os.select = اختر نظام التشغيل
+startMining.os.linux = Linux
+startMining.os.macos = macOS
+startMining.os.windows = Windows
+startMining.step1.title = نزّل Docker وثبّته
+startMining.step1.download = تنزيل
+startMining.step1.downloadAria = نزّل Docker Desktop (يفتح في علامة تبويب جديدة)
+startMining.step2.title = شغّل الحاوية
+startMining.copy = انسخ
+startMining.copied = تم النسخ
+startMining.copyAria = انسخ أمر Docker
+startMining.runtime.select = اختر بيئة تشغيل Docker
+startMining.runtime.docker = Docker Desktop
+startMining.runtime.colima = Colima
+startMining.runtime.orbstack = OrbStack
+startMining.step3.title = إنشاء القوالب المخصصة
+startMining.step3.badge = قريبا
+startMining.step3.note.prefix = إنشاء القوالب المخصصة على Windows غير مدعوم بعد. يمكن متابعة التقدم في
+
+# ===================
 # Modularity Section
 # ===================
 modularity.title.part1 = الوحدات الأساسية من أجل
 modularity.title.part2 = الابتكار
 modularity.description = قلّل التعقيد، وحقق التكامل الرأسي، وابنِ التطبيقات بكفاءة أعلى عبر بروتوكولنا المفتوح والموثق بعناية وتنفيذنا المرجعي والمكتبات وحتى التطبيقات. ابنِ وكيلا، أو برنامج مراقبة للتعدين، أو مجمّعا، أو برنامجا ثابتا عالي الكفاءة.
+modularity.link.rust = استعرض مكتبات Rust على GitHub
+modularity.link.referenceImplementation = استعرض التنفيذ المرجعي على GitHub
+modularity.link.referenceApplications = استعرض التطبيقات المرجعية على GitHub
+modularity.link.languageBindings = استعرض واجهات ربط اللغات على GitHub
+modularity.link.docker = استعرض صور Docker على Docker Hub
+modularity.link.spec = افتح المواصفات
 
 # Module Names
 module.stratum.v2 = Stratum V2
@@ -176,6 +228,14 @@ supporters.title.part2 = Stratum V2
 supporters.tab.all = جميع الداعمين
 supporters.tab.funders = الممولون
 supporters.tab.workinggroup = مجموعة العمل
+supporters.currentFunders = الممولون الحاليون
+supporters.pastFunders = الممولون السابقون
+supporters.visitWebsite = اذهب إلى موقع {name}
+supporters.logo.auradine = اذهب إلى موقع Auradine
+supporters.logo.braiins = اذهب إلى موقع Braiins
+supporters.logo.dmnd = اذهب إلى موقع DMND
+supporters.logo.foundry = اذهب إلى موقع Foundry
+supporters.logo.spiral = اذهب إلى موقع Spiral
 
 # Working Group Info
 workinggroup.title = حول مجموعة العمل
@@ -193,14 +253,26 @@ community.subtitle = تضمن الحوكمة والمواصفات المدفوع
 community.github.title = GitHub
 community.github.description = تنفيذ مجاني ومفتوح المصدر لـ Stratum V2 طوّره مساهمون من القطاع كمنفعة عامة. بُني بلغة Rust مع واجهات ربط للغات أخرى، بالإضافة إلى مكتبات وتطبيقات يمكنك البناء عليها.
 community.github.cta = استكشف قاعدة الشيفرة
+community.github.aria = استعرض مستودعاتنا على GitHub
 
 # Discord Card
 community.discord.title = مجتمع ديسكورد
 community.discord.description = قلب نقاشاتنا. انضم إلى المطورين والمعدّنين لمناقشة المقترحات والحصول على الدعم والتعاون.
+community.discord.aria = انضم إلى خادم Discord الخاص بنا للتحدث مع المجتمع
 
 # Twitter Card
 community.twitter.title = تابع التحديثات
 community.twitter.description = آخر الأخبار وسلاسل النقاش وإعلانات المنظومة.
+community.twitter.aria = تابعنا على X (Twitter)
+
+# ===================
+# Interface
+# ===================
+theme.toggle = تبديل المظهر
+menu.open = افتح قائمة التنقل
+menu.close = أغلق قائمة التنقل
+lightbox.preview = معاينة الصورة
+lightbox.close = إغلاق معاينة الصورة
 
 # ===================
 # Language Switcher
@@ -216,4 +288,4 @@ lang.ar = العربية
 # Meta / SEO
 # ===================
 meta.title = Stratum V2
-meta.description = بروتوكول التعدين للجيل القادم.
+meta.description = Stratum V2 هو بروتوكول تعدين Bitcoin من الجيل الجديد، يركز على الكفاءة والأمان والخصوصية واللامركزية.

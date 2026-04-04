@@ -1,7 +1,6 @@
 import { defineConfig } from 'vite';
 import { copyFileSync, cpSync, mkdirSync, readdirSync, existsSync, readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
-import react from '@vitejs/plugin-react';
 import i18nPlugin from './vite-plugin-i18n.js';
 import { marked } from 'marked';
 import { escapeHtml, createSlugger, renderHeadingWithAnchor, sanitizeSpecHtml } from './src/markdown.js';
@@ -46,8 +45,6 @@ export default defineConfig({
     }
   },
   plugins: [
-    // React plugin — scoped to wizard-island.jsx only (React island for sv2-wizard)
-    react({ include: ['**/wizard-island.jsx'] }),
     // i18n plugin - generates localized versions of index.html
     i18nPlugin({
       locales: ['en', 'es', 'zh', 'ru', 'ar'],

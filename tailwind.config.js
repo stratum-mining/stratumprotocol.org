@@ -2,11 +2,9 @@
 export default {
   darkMode: 'class',
   content: [
-    './src/wizard-island.jsx',
-    './node_modules/sv2-wizard/src/**/*.{js,jsx,ts,tsx}',
-    './node_modules/sv2-wizard/dist/**/*.{js,jsx,ts,tsx}',
+    './index.html',
+    './src/**/*.{js,ts,jsx,tsx}',
   ],
-  important: '[data-wizard-container]',
   theme: {
     extend: {
       fontFamily: {

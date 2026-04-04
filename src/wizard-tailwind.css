@@ -1,5 +1,0 @@
-/* Scoped Tailwind CSS for sv2-wizard components.
-   Only components + utilities — no base layer to avoid
-   conflicting with the site's existing styles. */
-@tailwind components;
-@tailwind utilities;

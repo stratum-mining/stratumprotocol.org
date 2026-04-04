@@ -12,8 +12,7 @@ function findAsset(prefix, suffix) {
 
 const limits = [
   { label: 'main js', path: findAsset('main-', '.js'), maxGzipBytes: 7000 },
-  { label: 'main css', path: findAsset('main-', '.css'), maxGzipBytes: 15000 },
-  { label: 'wizard island js', path: findAsset('wizard-island-', '.js'), maxGzipBytes: 140000 }
+  { label: 'main css', path: findAsset('main-', '.css'), maxGzipBytes: 15000 }
 ];
 
 let failed = false;

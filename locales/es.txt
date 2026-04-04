@@ -11,6 +11,9 @@ nav.supporters = Colaboradores
 nav.community = Comunidad
 nav.specification = Especificación
 nav.blog = Blog
+nav.main = Navegación principal
+nav.home = Inicio de Stratum V2
+nav.startMining = Comenzar a minar
 
 # ===================
 # Hero Section
@@ -20,6 +23,7 @@ hero.title.highlight = minería
 hero.title.suffix = de ₿itcoin
 hero.subtitle = Stratum V2 es un protocolo de minería que hace las operaciones de minería más eficientes, rentables, seguras, privadas y descentralizadas.
 hero.cta = Comenzar a minar
+hero.aria = Sección principal
 
 # ===================
 # Stats
@@ -116,6 +120,22 @@ carousel.latency = Latencia de job
 carousel.latency.caption = La latencia del job afecta qué tan rápido se recibe el nuevo job desde el Pool
 carousel.propagation = Tiempo de propagación de bloques
 carousel.propagation.caption = Propagación de bloques 28× más rápida
+carousel.role = carrusel
+carousel.prev = Diapositiva anterior
+carousel.next = Siguiente diapositiva
+carousel.nav = Navegación de diapositivas
+carousel.profit.region = Métricas de rentabilidad
+carousel.profit.slide1.aria = Diapositiva 1 de 3
+carousel.profit.slide2.aria = Diapositiva 2 de 3
+carousel.profit.slide3.aria = Diapositiva 3 de 3
+carousel.profit.dot1.aria = Ir a la diapositiva 1: Tasa de aceptación de shares
+carousel.profit.dot2.aria = Ir a la diapositiva 2: Latencia de job
+carousel.profit.dot3.aria = Ir a la diapositiva 3: Tiempo de propagación de bloques
+carousel.autonomy.region = Comparación de autonomía del minero
+carousel.autonomy.slide1.aria = Diapositiva 1 de 2: Stratum V2
+carousel.autonomy.slide2.aria = Diapositiva 2 de 2: Stratum V1
+carousel.autonomy.dot1.aria = Ir a la diapositiva 1: Stratum V2
+carousel.autonomy.dot2.aria = Ir a la diapositiva 2: Stratum V1
 
 # Carousel Slides - Autonomy
 carousel.autonomy.sv2.caption = El minero selecciona transacciones y construye el bloque
@@ -127,11 +147,43 @@ module.template.distribution = Distribución de plantillas
 module.mining.protocol = Protocolo de minería
 
 # ===================
+# Start Mining Section
+# ===================
+startMining.title.part1 = Comienza a minar
+startMining.title.part2 = hoy
+startMining.preview.aria = Vista previa de la interfaz de SV2
+startMining.preview.alt = Panel de SV2 con endpoint de Stratum, métricas de hashrate, gráfico y tabla de workers
+startMining.os.select = Seleccionar sistema operativo
+startMining.os.linux = Linux
+startMining.os.macos = macOS
+startMining.os.windows = Windows
+startMining.step1.title = Descarga e instala Docker
+startMining.step1.download = Descargar
+startMining.step1.downloadAria = Descargar Docker Desktop (se abre en una pestaña nueva)
+startMining.step2.title = Ejecuta el contenedor
+startMining.copy = Copiar
+startMining.copied = Copiado
+startMining.copyAria = Copiar comando de Docker
+startMining.runtime.select = Seleccionar runtime de Docker
+startMining.runtime.docker = Docker Desktop
+startMining.runtime.colima = Colima
+startMining.runtime.orbstack = OrbStack
+startMining.step3.title = Creación de plantillas personalizadas
+startMining.step3.badge = Próximamente
+startMining.step3.note.prefix = La creación de plantillas personalizadas en Windows aún no es compatible. Puedes seguir el progreso en
+
+# ===================
 # Modularity Section
 # ===================
 modularity.title.part1 = Piezas clave para
 modularity.title.part2 = innovar
 modularity.description = Reduce complejidad, integra verticalmente y crea aplicaciones con mayor eficiencia con nuestro protocolo abierto y minuciosamente documentado, implementación de referencia, bibliotecas e incluso aplicaciones. Construye un proxy, software de monitoreo de minería, un pool o firmware eficiente.
+modularity.link.rust = Explorar bibliotecas Rust en GitHub
+modularity.link.referenceImplementation = Explorar la implementación de referencia en GitHub
+modularity.link.referenceApplications = Explorar las aplicaciones de referencia en GitHub
+modularity.link.languageBindings = Explorar los bindings de lenguaje en GitHub
+modularity.link.docker = Explorar las imágenes de Docker en Docker Hub
+modularity.link.spec = Abrir la especificación
 
 # Module Names
 module.stratum.v2 = Stratum V2
@@ -176,6 +228,14 @@ supporters.title.part2 = Stratum V2
 supporters.tab.all = Todos los colaboradores
 supporters.tab.funders = Financiadores
 supporters.tab.workinggroup = Grupo de trabajo
+supporters.currentFunders = Financiadores actuales
+supporters.pastFunders = Financiadores anteriores
+supporters.visitWebsite = Visitar el sitio web de {name}
+supporters.logo.auradine = Visitar el sitio web de Auradine
+supporters.logo.braiins = Visitar el sitio web de Braiins
+supporters.logo.dmnd = Visitar el sitio web de DMND
+supporters.logo.foundry = Visitar el sitio web de Foundry
+supporters.logo.spiral = Visitar el sitio web de Spiral
 
 # Working Group Info
 workinggroup.title = Sobre el grupo de trabajo
@@ -193,14 +253,26 @@ community.subtitle = La gobernanza comunitaria y las especificaciones garantizan
 community.github.title = GitHub
 community.github.description = Implementación gratuita y de código abierto de Stratum V2 desarrollada como bien público por colaboradores de la industria. Construida en Rust con bindings para otros lenguajes, además de bibliotecas y aplicaciones sobre las que puedes construir.
 community.github.cta = EXPLORAR CÓDIGO
+community.github.aria = Ver nuestros repositorios de GitHub
 
 # Discord Card
 community.discord.title = Comunidad de Discord
 community.discord.description = El centro de nuestra conversación. Únete a desarrolladores y mineros para discutir propuestas, obtener soporte y colaborar.
+community.discord.aria = Únete a nuestro servidor de Discord para hablar con la comunidad
 
 # Twitter Card
 community.twitter.title = Sigue las novedades
 community.twitter.description = Últimas noticias, hilos y anuncios del ecosistema.
+community.twitter.aria = Síguenos en X (Twitter)
+
+# ===================
+# Interface
+# ===================
+theme.toggle = Cambiar tema
+menu.open = Abrir menú de navegación
+menu.close = Cerrar menú de navegación
+lightbox.preview = Vista previa de imagen
+lightbox.close = Cerrar vista previa de imagen
 
 # ===================
 # Language Switcher
@@ -216,4 +288,4 @@ lang.ar = العربية
 # Meta / SEO
 # ===================
 meta.title = Stratum V2
-meta.description = El protocolo de minería de nueva generación.
+meta.description = Stratum V2 es el protocolo de minería de Bitcoin de nueva generación, centrado en eficiencia, seguridad, privacidad y descentralización.
