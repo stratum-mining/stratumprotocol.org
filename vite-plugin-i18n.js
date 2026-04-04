@@ -43,6 +43,23 @@ function loadLocale(locale, localesDir) {
   return parseTranslationFile(filePath);
 }
 
+function translateAttribute(html, translations, markerAttr, targetAttr) {
+  const markerPattern = new RegExp(`${markerAttr}="([^"]+)"`);
+  const targetPattern = new RegExp(`${targetAttr}="[^"]*"`);
+  const tagPattern = new RegExp(`<[^>]+${markerAttr}="[^"]+"[^>]*>`, 'g');
+
+  return html.replace(tagPattern, (match) => {
+    const keyMatch = match.match(markerPattern);
+    const key = keyMatch?.[1];
+    if (!key) return match;
+
+    const translated = translations[key];
+    if (translated === undefined || !targetPattern.test(match)) return match;
+
+    return match.replace(targetPattern, `${targetAttr}="${escapeHtml(translated)}"`);
+  });
+}
+
 /**
  * Replace data-i18n attributes with translated content
  */
@@ -65,29 +82,18 @@ function translateHtml(html, translations, locale, rtlLocales = new Set()) {
     }
   );
 
-  // Also handle self-closing tags with data-i18n-placeholder for inputs
-  html = html.replace(
-    /(<input[^>]+)data-i18n-placeholder="([^"]+)"([^>]*placeholder=")([^"]*)("[^>]*>)/g,
-    (match, before, key, mid, placeholder, after) => {
-      const translated = translations[key];
-      if (translated !== undefined) {
-        return before + `data-i18n-placeholder="${key}"` + mid + escapeHtml(translated) + after;
-      }
-      return match;
-    }
-  );
-
-  // Handle data-i18n-aria-label
-  html = html.replace(
-    /(<[^>]+)data-i18n-aria-label="([^"]+)"([^>]*aria-label=")([^"]*)("[^>]*>)/g,
-    (match, before, key, mid, label, after) => {
-      const translated = translations[key];
-      if (translated !== undefined) {
-        return before + `data-i18n-aria-label="${key}"` + mid + escapeHtml(translated) + after;
-      }
-      return match;
-    }
-  );
+  [
+    ['data-i18n-placeholder', 'placeholder'],
+    ['data-i18n-aria-label', 'aria-label'],
+    ['data-i18n-aria-roledescription', 'aria-roledescription'],
+    ['data-i18n-alt', 'alt'],
+    ['data-i18n-title', 'title'],
+    ['data-i18n-content', 'content'],
+    ['data-i18n-data-copy-label', 'data-copy-label'],
+    ['data-i18n-data-copy-success', 'data-copy-success']
+  ].forEach(([markerAttr, targetAttr]) => {
+    html = translateAttribute(html, translations, markerAttr, targetAttr);
+  });
 
   return html;
 }

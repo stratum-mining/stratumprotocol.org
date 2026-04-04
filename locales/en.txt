@@ -12,6 +12,9 @@ nav.supporters = Supporters
 nav.community = Community
 nav.specification = Specification
 nav.blog = Blog
+nav.main = Main navigation
+nav.home = Stratum V2 home
+nav.startMining = Start mining
 
 # ===================
 # Hero Section
@@ -21,6 +24,7 @@ hero.title.highlight = mining
 hero.title.suffix = standard
 hero.subtitle = Stratum V2 is a mining protocol that makes mining operations more efficient, profitable, secure, private and decentralized.
 hero.cta = Start Mining
+hero.aria = Hero section
 
 # ===================
 # Stats
@@ -117,6 +121,22 @@ carousel.latency = Job Latency
 carousel.latency.caption = Job latency impacts how fast the new job is received from the Pool
 carousel.propagation = Block Propagation Time
 carousel.propagation.caption = 28× faster block propagation
+carousel.role = carousel
+carousel.prev = Previous slide
+carousel.next = Next slide
+carousel.nav = Slide navigation
+carousel.profit.region = Profitability metrics
+carousel.profit.slide1.aria = Slide 1 of 3
+carousel.profit.slide2.aria = Slide 2 of 3
+carousel.profit.slide3.aria = Slide 3 of 3
+carousel.profit.dot1.aria = Go to slide 1: Share Acceptance Rate
+carousel.profit.dot2.aria = Go to slide 2: Job Latency
+carousel.profit.dot3.aria = Go to slide 3: Block Propagation Time
+carousel.autonomy.region = Miner autonomy comparison
+carousel.autonomy.slide1.aria = Slide 1 of 2: Stratum V2
+carousel.autonomy.slide2.aria = Slide 2 of 2: Stratum V1
+carousel.autonomy.dot1.aria = Go to slide 1: Stratum V2
+carousel.autonomy.dot2.aria = Go to slide 2: Stratum V1
 
 # Carousel Slides - Autonomy
 carousel.autonomy.sv2.caption = Miner selects transactions and builds the block
@@ -128,11 +148,43 @@ module.template.distribution = Template Distribution
 module.mining.protocol = Mining Protocol
 
 # ===================
+# Start Mining Section
+# ===================
+startMining.title.part1 = Start mining
+startMining.title.part2 = today
+startMining.preview.aria = SV2 UI preview
+startMining.preview.alt = SV2 dashboard showing the stratum endpoint, hashrate metrics, chart, and worker table
+startMining.os.select = Select operating system
+startMining.os.linux = Linux
+startMining.os.macos = macOS
+startMining.os.windows = Windows
+startMining.step1.title = Download & Install Docker
+startMining.step1.download = Download
+startMining.step1.downloadAria = Download Docker Desktop (opens in new tab)
+startMining.step2.title = Run the container
+startMining.copy = Copy
+startMining.copied = Copied
+startMining.copyAria = Copy Docker command
+startMining.runtime.select = Select Docker runtime
+startMining.runtime.docker = Docker Desktop
+startMining.runtime.colima = Colima
+startMining.runtime.orbstack = OrbStack
+startMining.step3.title = Custom Template Creation
+startMining.step3.badge = Coming Soon
+startMining.step3.note.prefix = Custom template creation on Windows is not yet supported. Progress is tracked in
+
+# ===================
 # Modularity Section
 # ===================
 modularity.title.part1 = Building blocks for
 modularity.title.part2 = innovation
 modularity.description = Reduce complexity, vertically integrate, and build applications more efficiently with our open, thoroughly documented protocol and reference implementation, libraries and even applications. Build a proxy, mining monitoring software, a pool or efficient firmware.
+modularity.link.rust = Explore Rust libraries on GitHub
+modularity.link.referenceImplementation = Explore the reference implementation on GitHub
+modularity.link.referenceApplications = Explore reference applications on GitHub
+modularity.link.languageBindings = Explore language bindings on GitHub
+modularity.link.docker = Explore Docker images on Docker Hub
+modularity.link.spec = Open the specification
 
 # Module Names
 module.stratum.v2 = Stratum V2
@@ -177,6 +229,14 @@ supporters.title.part2 = Stratum V2
 supporters.tab.all = All Supporters
 supporters.tab.funders = Funders
 supporters.tab.workinggroup = Working Group
+supporters.currentFunders = Current Funders
+supporters.pastFunders = Past Funders
+supporters.visitWebsite = Visit {name} website
+supporters.logo.auradine = Visit Auradine website
+supporters.logo.braiins = Visit Braiins website
+supporters.logo.dmnd = Visit DMND website
+supporters.logo.foundry = Visit Foundry website
+supporters.logo.spiral = Visit Spiral website
 
 # Working Group Info
 workinggroup.title = About the Working Group
@@ -194,14 +254,26 @@ community.subtitle = Community-driven governance and specifications ensure inter
 community.github.title = GitHub
 community.github.description = Free and open-source Stratum V2 implementation developed as a public good by industry contributors. Built in Rust with bindings for other languages, plus libraries and applications you can build on.
 community.github.cta = EXPLORE CODEBASE
+community.github.aria = View our GitHub repositories
 
 # Discord Card
 community.discord.title = Discord Community
 community.discord.description = The heart of our discussion. Join developers and miners to discuss proposals, get support, and collaborate.
+community.discord.aria = Join our Discord server to chat with the community
 
 # Twitter Card
 community.twitter.title = Follow Updates
 community.twitter.description = Latest news, threads, and ecosystem announcements.
+community.twitter.aria = Follow us on X (Twitter)
+
+# ===================
+# Interface
+# ===================
+theme.toggle = Toggle theme
+menu.open = Open navigation menu
+menu.close = Close navigation menu
+lightbox.preview = Image preview
+lightbox.close = Close image preview
 
 # ===================
 # Language Switcher
@@ -217,4 +289,4 @@ lang.ar = العربية
 # Meta / SEO
 # ===================
 meta.title = Stratum V2
-meta.description = The next generation mining protocol.
+meta.description = Stratum V2 is the next-generation Bitcoin mining protocol focused on efficiency, security, privacy, and decentralization.

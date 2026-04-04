@@ -5,10 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="/assets/js/theme-init.js"></script>
 
-    <title>Stratum V2</title>
-    <meta property="og:title" content="Stratum V2" />
-    <meta property="og:description" content="The next generation mining protocol." />
-    <meta name="description" content="Stratum V2 is the next-generation Bitcoin mining protocol focused on efficiency, security, privacy, and decentralization." />
+    <title data-i18n="meta.title">Stratum V2</title>
+    <meta property="og:title" content="Stratum V2" data-i18n-content="meta.title" />
+    <meta
+      property="og:description"
+      content="Stratum V2 is the next-generation Bitcoin mining protocol focused on efficiency, security, privacy, and decentralization."
+      data-i18n-content="meta.description"
+    />
+    <meta
+      name="description"
+      content="Stratum V2 is the next-generation Bitcoin mining protocol focused on efficiency, security, privacy, and decentralization."
+      data-i18n-content="meta.description"
+    />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
 
@@ -33,7 +41,7 @@
     <!-- NAV_PARTIAL -->
 
     <!-- Hero Section -->
-    <section class="hero" role="banner" aria-label="Hero section">
+    <section class="hero" role="banner" aria-label="Hero section" data-i18n-aria-label="hero.aria">
       <!-- Background Gradients -->
       <div class="hero-bg" aria-hidden="true">
         <div class="hero-gradient hero-gradient-1"></div>
@@ -450,14 +458,14 @@
 
             <!-- Profitability Visualization (Carousel) -->
             <div class="visualization-panel hidden" data-viz="2">
-              <div class="profit-carousel" role="region" aria-roledescription="carousel" aria-label="Profitability metrics">
+              <div class="profit-carousel" role="region" aria-roledescription="carousel" data-i18n-aria-roledescription="carousel.role" aria-label="Profitability metrics" data-i18n-aria-label="carousel.profit.region">
                 <!-- Arrow Navigation -->
-                <button class="carousel-arrow carousel-prev" aria-label="Previous slide">
+                <button class="carousel-arrow carousel-prev" aria-label="Previous slide" data-i18n-aria-label="carousel.prev">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="m15 18-6-6 6-6"></path>
                   </svg>
                 </button>
-                <button class="carousel-arrow carousel-next" aria-label="Next slide">
+                <button class="carousel-arrow carousel-next" aria-label="Next slide" data-i18n-aria-label="carousel.next">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="m9 18 6-6-6-6"></path>
                   </svg>
@@ -466,7 +474,7 @@
                 <!-- Carousel Slides -->
                 <div class="carousel-track">
                   <!-- Slide 1: Share Acceptance Rate -->
-                  <div class="carousel-slide active" data-slide="0" role="tabpanel" aria-label="Slide 1 of 3">
+                  <div class="carousel-slide active" data-slide="0" role="tabpanel" aria-label="Slide 1 of 3" data-i18n-aria-label="carousel.profit.slide1.aria">
                     <div class="slide-header">
                       <span class="slide-label" data-i18n="carousel.share.acceptance">Share Acceptance Rate</span>
                     </div>
@@ -501,7 +509,7 @@
                   </div>
 
                   <!-- Slide 2: Job Latency -->
-                  <div class="carousel-slide" data-slide="1" role="tabpanel" aria-label="Slide 2 of 3">
+                  <div class="carousel-slide" data-slide="1" role="tabpanel" aria-label="Slide 2 of 3" data-i18n-aria-label="carousel.profit.slide2.aria">
                     <div class="slide-header">
                       <span class="slide-label" data-i18n="carousel.latency">Job Latency</span>
                     </div>
@@ -536,7 +544,7 @@
                   </div>
 
                   <!-- Slide 3: Block Propagation -->
-                  <div class="carousel-slide" data-slide="2" role="tabpanel" aria-label="Slide 3 of 3">
+                  <div class="carousel-slide" data-slide="2" role="tabpanel" aria-label="Slide 3 of 3" data-i18n-aria-label="carousel.profit.slide3.aria">
                     <div class="slide-header">
                       <span class="slide-label" data-i18n="carousel.propagation">Block Propagation Time</span>
                     </div>
@@ -565,10 +573,10 @@
                 </div>
 
                 <!-- Dot Navigation -->
-                <div class="carousel-nav" role="tablist" aria-label="Slide navigation">
-                  <button class="carousel-dot active" data-slide="0" role="tab" aria-selected="true" aria-label="Go to slide 1: Share Acceptance Rate"></button>
-                  <button class="carousel-dot" data-slide="1" role="tab" aria-selected="false" aria-label="Go to slide 2: Job Latency"></button>
-                  <button class="carousel-dot" data-slide="2" role="tab" aria-selected="false" aria-label="Go to slide 3: Block Propagation"></button>
+                <div class="carousel-nav" role="tablist" aria-label="Slide navigation" data-i18n-aria-label="carousel.nav">
+                  <button class="carousel-dot active" data-slide="0" role="tab" aria-selected="true" aria-label="Go to slide 1: Share Acceptance Rate" data-i18n-aria-label="carousel.profit.dot1.aria"></button>
+                  <button class="carousel-dot" data-slide="1" role="tab" aria-selected="false" aria-label="Go to slide 2: Job Latency" data-i18n-aria-label="carousel.profit.dot2.aria"></button>
+                  <button class="carousel-dot" data-slide="2" role="tab" aria-selected="false" aria-label="Go to slide 3: Block Propagation Time" data-i18n-aria-label="carousel.profit.dot3.aria"></button>
                 </div>
               </div>
             </div>
@@ -660,14 +668,14 @@
 
             <!-- Miner Control Visualization (Carousel) -->
             <div class="visualization-panel hidden" data-viz="4">
-              <div class="autonomy-carousel" role="region" aria-roledescription="carousel" aria-label="Miner autonomy comparison">
+              <div class="autonomy-carousel" role="region" aria-roledescription="carousel" data-i18n-aria-roledescription="carousel.role" aria-label="Miner autonomy comparison" data-i18n-aria-label="carousel.autonomy.region">
                 <!-- Arrow Navigation -->
-                <button class="carousel-arrow carousel-prev" aria-label="Previous slide">
+                <button class="carousel-arrow carousel-prev" aria-label="Previous slide" data-i18n-aria-label="carousel.prev">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="m15 18-6-6 6-6"></path>
                   </svg>
                 </button>
-                <button class="carousel-arrow carousel-next" aria-label="Next slide">
+                <button class="carousel-arrow carousel-next" aria-label="Next slide" data-i18n-aria-label="carousel.next">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="m9 18 6-6-6-6"></path>
                   </svg>
@@ -676,7 +684,7 @@
                 <!-- Carousel Track -->
                 <div class="carousel-track">
                   <!-- Slide 1: SV2 - Miner constructs blocks -->
-                  <div class="carousel-slide active" data-slide="0" role="tabpanel" aria-label="Slide 1 of 2: Stratum V2">
+                  <div class="carousel-slide active" data-slide="0" role="tabpanel" aria-label="Slide 1 of 2: Stratum V2" data-i18n-aria-label="carousel.autonomy.slide1.aria">
                     <div class="slide-header">
                       <span class="slide-label sv2-label-text" data-i18n="viz.stratum.v2.label">Stratum V2</span>
                     </div>
@@ -742,7 +750,7 @@
                   </div>
 
                   <!-- Slide 2: SV1 - Pool constructs blocks -->
-                  <div class="carousel-slide" data-slide="1" role="tabpanel" aria-label="Slide 2 of 2: Stratum V1">
+                  <div class="carousel-slide" data-slide="1" role="tabpanel" aria-label="Slide 2 of 2: Stratum V1" data-i18n-aria-label="carousel.autonomy.slide2.aria">
                     <div class="slide-header">
                       <span class="slide-label sv1-label-text" data-i18n="viz.legacy.v1.label">Stratum V1</span>
                     </div>
@@ -809,9 +817,9 @@
                 </div>
 
                 <!-- Dot Navigation -->
-                <div class="carousel-nav" role="tablist" aria-label="Slide navigation">
-                  <button class="carousel-dot active" data-slide="0" role="tab" aria-selected="true" aria-label="Go to slide 1: Stratum V2"></button>
-                  <button class="carousel-dot" data-slide="1" role="tab" aria-selected="false" aria-label="Go to slide 2: Stratum V1"></button>
+                <div class="carousel-nav" role="tablist" aria-label="Slide navigation" data-i18n-aria-label="carousel.nav">
+                  <button class="carousel-dot active" data-slide="0" role="tab" aria-selected="true" aria-label="Go to slide 1: Stratum V2" data-i18n-aria-label="carousel.autonomy.dot1.aria"></button>
+                  <button class="carousel-dot" data-slide="1" role="tab" aria-selected="false" aria-label="Go to slide 2: Stratum V1" data-i18n-aria-label="carousel.autonomy.dot2.aria"></button>
                 </div>
               </div>
             </div>
@@ -887,19 +895,19 @@
 	                    <h4 data-i18n="features.interoperability.wg">Working Group Members</h4>
 	                  </div>
                   <div class="interoperability-logos">
-                    <a href="https://auradine.com/" target="_blank" rel="noopener noreferrer" class="supporter-logo" aria-label="Visit Auradine website">
+                    <a href="https://auradine.com/" target="_blank" rel="noopener noreferrer" class="supporter-logo" aria-label="Visit Auradine website" data-i18n-aria-label="supporters.logo.auradine">
                       <img src="/assets/logos/auradine.png" alt="Auradine" width="256" height="92" loading="lazy" decoding="async" />
                     </a>
-                    <a href="https://braiins.com/" target="_blank" rel="noopener noreferrer" class="supporter-logo" aria-label="Visit Braiins website">
+                    <a href="https://braiins.com/" target="_blank" rel="noopener noreferrer" class="supporter-logo" aria-label="Visit Braiins website" data-i18n-aria-label="supporters.logo.braiins">
                       <img src="/assets/logos/braiins-logo.svg" alt="Braiins" width="240" height="87" loading="lazy" decoding="async" />
                     </a>
-                    <a href="https://www.dmnd.work/" target="_blank" rel="noopener noreferrer" class="supporter-logo" aria-label="Visit DMND website">
+                    <a href="https://www.dmnd.work/" target="_blank" rel="noopener noreferrer" class="supporter-logo" aria-label="Visit DMND website" data-i18n-aria-label="supporters.logo.dmnd">
                       <img src="/assets/logos/demand-logo.svg" alt="DMND" width="612" height="258" loading="lazy" decoding="async" />
                     </a>
-                    <a href="https://foundrydigital.com/" target="_blank" rel="noopener noreferrer" class="supporter-logo" aria-label="Visit Foundry website">
+                    <a href="https://foundrydigital.com/" target="_blank" rel="noopener noreferrer" class="supporter-logo" aria-label="Visit Foundry website" data-i18n-aria-label="supporters.logo.foundry">
                       <img src="/assets/logos/foundry-logo.svg" alt="Foundry" width="231" height="74" loading="lazy" decoding="async" />
                     </a>
-                    <a href="https://spiral.xyz/" target="_blank" rel="noopener noreferrer" class="supporter-logo" aria-label="Visit Spiral website">
+                    <a href="https://spiral.xyz/" target="_blank" rel="noopener noreferrer" class="supporter-logo" aria-label="Visit Spiral website" data-i18n-aria-label="supporters.logo.spiral">
                       <img src="/assets/logos/spiral-logo.svg" alt="Spiral" width="122" height="120" loading="lazy" decoding="async" />
                     </a>
                   </div>
@@ -916,13 +924,14 @@
     <section id="start-mining" class="start-mining" aria-labelledby="start-mining-title">
       <div class="section-container">
         <div class="start-mining-header">
-          <h2 id="start-mining-title">Start mining <span class="cyan">today</span></h2>
+          <h2 id="start-mining-title"><span data-i18n="startMining.title.part1">Start mining</span> <span class="cyan" data-i18n="startMining.title.part2">today</span></h2>
         </div>
 
-        <figure id="start-mining-image" class="start-mining-preview" aria-label="SV2 UI preview">
+        <figure id="start-mining-image" class="start-mining-preview" aria-label="SV2 UI preview" data-i18n-aria-label="startMining.preview.aria">
           <img
             src="/assets/images/start-mining-ui.png"
             alt="SV2 dashboard interface showing stratum endpoint, hashrate metrics, chart, and worker table"
+            data-i18n-alt="startMining.preview.alt"
             width="2310"
             height="1416"
             loading="lazy"
@@ -933,25 +942,25 @@
         <div class="start-mining-flow">
 
           <!-- OS Selector -->
-          <div class="os-selector" role="group" aria-label="Select operating system">
+          <div class="os-selector" role="group" aria-label="Select operating system" data-i18n-aria-label="startMining.os.select">
             <button type="button" class="os-tab active" data-os="linux" aria-pressed="true">
               <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <polyline points="4 17 10 11 4 5"></polyline>
                 <line x1="12" y1="19" x2="20" y2="19"></line>
               </svg>
-              <span>Linux</span>
+              <span data-i18n="startMining.os.linux">Linux</span>
             </button>
             <button type="button" class="os-tab" data-os="macos" aria-pressed="false">
               <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 814 1000" fill="currentColor" aria-hidden="true">
                 <path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76 0-103.7 40.8-165.9 40.8s-105-57.8-155.5-127.4C46 790.7 0 663 0 541.8c0-207.5 135.4-317.3 269-317.3 70.1 0 128.4 46.4 172.5 46.4 42.8 0 109.3-49 188.3-49 30.5 0 110.9 2.6 168.6 79zM554.1 131.5c24.7-30.5 43.5-73.6 43.5-116.7 0-5.8-.6-11.6-1.3-17.4-41.5 1.6-90.9 27.8-120.7 59.8-22.7 25.4-43.9 68.6-43.9 112.3 0 6.4.6 13.5 1.3 15.5 2.6.6 6.5 1.3 10.4 1.3 37.5 0 82.6-24.7 110.7-54.8z"/>
               </svg>
-              <span>macOS</span>
+              <span data-i18n="startMining.os.macos">macOS</span>
             </button>
             <button type="button" class="os-tab" data-os="windows" aria-pressed="false">
               <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/>
               </svg>
-              <span>Windows</span>
+              <span data-i18n="startMining.os.windows">Windows</span>
             </button>
           </div>
 
@@ -962,20 +971,21 @@
             <div class="mining-step mining-step--inline">
               <div class="mining-step-header">
                 <span class="mining-step-number">1</span>
-                <span class="mining-step-title">Download &amp; Install Docker</span>
+                <span class="mining-step-title" data-i18n="startMining.step1.title">Download &amp; Install Docker</span>
                 <a
                   href="https://www.docker.com/products/docker-desktop/"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="docker-download-link"
                   aria-label="Download Docker Desktop (opens in new tab)"
+                  data-i18n-aria-label="startMining.step1.downloadAria"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                     <polyline points="7 10 12 15 17 10"></polyline>
                     <line x1="12" y1="15" x2="12" y2="3"></line>
                   </svg>
-                  Download
+                  <span data-i18n="startMining.step1.download">Download</span>
                 </a>
               </div>
             </div>
@@ -984,7 +994,7 @@
             <div class="mining-step">
               <div class="mining-step-header">
                 <span class="mining-step-number">2</span>
-                <span class="mining-step-title">Run the container</span>
+                <span class="mining-step-title" data-i18n="startMining.step2.title">Run the container</span>
                 <button
                   type="button"
                   class="step-action-btn start-mining-copy"
@@ -996,23 +1006,26 @@
   -v sv2-config:/app/data/config \
   stratumv2/sv2-ui:v0.1.1"
                   data-copy-label="Copy"
+                  data-i18n-data-copy-label="startMining.copy"
                   data-copy-success="Copied"
+                  data-i18n-data-copy-success="startMining.copied"
                   aria-label="Copy Docker command"
+                  data-i18n-aria-label="startMining.copyAria"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <rect x="9" y="9" width="13" height="13" rx="2"></rect>
                     <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                   </svg>
-                  <span class="copy-label">Copy</span>
+                  <span class="copy-label" data-i18n="startMining.copy">Copy</span>
                 </button>
               </div>
               <div class="mining-step-body">
 
                 <!-- macOS runtime sub-tabs (hidden on Linux) -->
-                <div class="runtime-tabs" role="group" aria-label="Select Docker runtime">
-                  <button type="button" class="runtime-tab active" data-runtime="docker" aria-pressed="true">Docker Desktop</button>
-                  <button type="button" class="runtime-tab" data-runtime="colima" aria-pressed="false">Colima</button>
-                  <button type="button" class="runtime-tab" data-runtime="orbstack" aria-pressed="false">OrbStack</button>
+                <div class="runtime-tabs" role="group" aria-label="Select Docker runtime" data-i18n-aria-label="startMining.runtime.select">
+                  <button type="button" class="runtime-tab active" data-runtime="docker" aria-pressed="true" data-i18n="startMining.runtime.docker">Docker Desktop</button>
+                  <button type="button" class="runtime-tab" data-runtime="colima" aria-pressed="false" data-i18n="startMining.runtime.colima">Colima</button>
+                  <button type="button" class="runtime-tab" data-runtime="orbstack" aria-pressed="false" data-i18n="startMining.runtime.orbstack">OrbStack</button>
                 </div>
 
                 <!-- Command display -->
@@ -1064,11 +1077,11 @@
             <div class="mining-step mining-step--inline windows-step">
               <div class="mining-step-header">
                 <span class="mining-step-number">3</span>
-                <span class="mining-step-title">Custom Template Creation</span>
-                <span class="windows-coming-soon-badge">Coming Soon</span>
+                <span class="mining-step-title" data-i18n="startMining.step3.title">Custom Template Creation</span>
+                <span class="windows-coming-soon-badge" data-i18n="startMining.step3.badge">Coming Soon</span>
               </div>
               <div class="mining-step-body windows-step-note">
-                <p>Custom template creation on Windows is not yet supported. Progress is tracked in <a href="https://github.com/bitcoin-core/libmultiprocess/pull/231" target="_blank" rel="noopener noreferrer" class="windows-step-link">bitcoin-core/libmultiprocess#231</a>.</p>
+                <p><span data-i18n="startMining.step3.note.prefix">Custom template creation on Windows is not yet supported. Progress is tracked in</span> <a href="https://github.com/bitcoin-core/libmultiprocess/pull/231" target="_blank" rel="noopener noreferrer" class="windows-step-link">bitcoin-core/libmultiprocess#231</a>.</p>
               </div>
             </div>
 
@@ -1125,7 +1138,7 @@
 	            </div>
 
             <!-- Module: Rust Libraries (Top) -->
-            <a class="block-module block-pos-top block-module-link" href="https://github.com/stratum-mining/stratum" target="_blank" rel="noopener noreferrer" aria-label="Rust Libraries on GitHub">
+            <a class="block-module block-pos-top block-module-link" href="https://github.com/stratum-mining/stratum" target="_blank" rel="noopener noreferrer" aria-label="Explore Rust libraries on GitHub" data-i18n-aria-label="modularity.link.rust">
               <div class="block-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                   <polyline points="16 18 22 12 16 6"/>
@@ -1136,7 +1149,7 @@
 	            </a>
 
             <!-- Module: Reference Implementation (Top Right) -->
-            <a class="block-module block-pos-top-right block-module-link" href="https://github.com/stratum-mining" target="_blank" rel="noopener noreferrer" aria-label="Reference Implementation on GitHub">
+            <a class="block-module block-pos-top-right block-module-link" href="https://github.com/stratum-mining" target="_blank" rel="noopener noreferrer" aria-label="Explore the reference implementation on GitHub" data-i18n-aria-label="modularity.link.referenceImplementation">
               <div class="block-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
@@ -1147,7 +1160,7 @@
 	            </a>
 
             <!-- Module: Reference Applications (Bottom Right) -->
-            <a class="block-module block-pos-bottom-right block-module-link" href="https://github.com/stratum-mining/sv2-apps" target="_blank" rel="noopener noreferrer" aria-label="Reference Applications on GitHub">
+            <a class="block-module block-pos-bottom-right block-module-link" href="https://github.com/stratum-mining/sv2-apps" target="_blank" rel="noopener noreferrer" aria-label="Explore reference applications on GitHub" data-i18n-aria-label="modularity.link.referenceApplications">
               <div class="block-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M12 2L2 7l10 5 10-5-10-5z"/>
@@ -1159,7 +1172,7 @@
 	            </a>
 
             <!-- Module: Language Bindings (Bottom) -->
-            <a class="block-module block-pos-bottom block-module-link" href="https://github.com/stratum-mining/sv2-uniffi" target="_blank" rel="noopener noreferrer" aria-label="Language Bindings on GitHub">
+            <a class="block-module block-pos-bottom block-module-link" href="https://github.com/stratum-mining/sv2-uniffi" target="_blank" rel="noopener noreferrer" aria-label="Explore language bindings on GitHub" data-i18n-aria-label="modularity.link.languageBindings">
               <div class="block-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                   <circle cx="12" cy="12" r="10"/>
@@ -1171,7 +1184,7 @@
 	            </a>
 
             <!-- Module: Docker Support (Bottom Left) -->
-            <a class="block-module block-pos-bottom-left block-module-link" href="https://hub.docker.com/u/stratumv2" target="_blank" rel="noopener noreferrer" aria-label="Docker Support in sv2-apps repository">
+            <a class="block-module block-pos-bottom-left block-module-link" href="https://hub.docker.com/u/stratumv2" target="_blank" rel="noopener noreferrer" aria-label="Explore Docker images on Docker Hub" data-i18n-aria-label="modularity.link.docker">
               <div class="block-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
@@ -1183,7 +1196,7 @@
 	            </a>
 
             <!-- Module: Clear Specification (Top Left) -->
-            <a class="block-module block-pos-top-left block-module-link" href="/specification/" aria-label="Clear Specification page">
+            <a class="block-module block-pos-top-left block-module-link" href="/specification/" aria-label="Open the specification" data-i18n-aria-label="modularity.link.spec">
               <div class="block-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
@@ -1424,7 +1437,7 @@
 
         <div class="community-grid">
           <!-- GitHub (Primary) -->
-          <a href="https://github.com/stratum-mining/" class="community-card github" target="_blank" rel="noopener noreferrer" aria-label="View our GitHub repositories">
+          <a href="https://github.com/stratum-mining/" class="community-card github" target="_blank" rel="noopener noreferrer" aria-label="View our GitHub repositories" data-i18n-aria-label="community.github.aria">
             <div class="community-card-content">
               <div class="community-icon github-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1455,7 +1468,7 @@
           <!-- Secondary Column (Socials) -->
           <div class="community-secondary">
             <!-- Discord -->
-            <a href="https://discord.gg/fsEW23wFYs" class="community-card discord" target="_blank" rel="noopener noreferrer" aria-label="Join our Discord server to chat with the community">
+            <a href="https://discord.gg/fsEW23wFYs" class="community-card discord" target="_blank" rel="noopener noreferrer" aria-label="Join our Discord server to chat with the community" data-i18n-aria-label="community.discord.aria">
               <div class="community-card-row">
                 <div class="community-info">
                   <div class="community-icon discord-icon">
@@ -1476,7 +1489,7 @@
             </a>
 
             <!-- Twitter/X -->
-            <a href="https://x.com/StratumV2" class="community-card twitter" target="_blank" rel="noopener noreferrer" aria-label="Follow us on X (Twitter)">
+            <a href="https://x.com/StratumV2" class="community-card twitter" target="_blank" rel="noopener noreferrer" aria-label="Follow us on X (Twitter)" data-i18n-aria-label="community.twitter.aria">
               <div class="community-card-row">
                 <div class="community-info">
                   <div class="community-icon twitter-icon">
