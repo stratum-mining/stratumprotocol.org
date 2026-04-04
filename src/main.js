@@ -1,27 +1,14 @@
-import arTranslationText from '../locales/ar.txt?raw';
-import enTranslationText from '../locales/en.txt?raw';
-import esTranslationText from '../locales/es.txt?raw';
-import ruTranslationText from '../locales/ru.txt?raw';
-import zhTranslationText from '../locales/zh.txt?raw';
-
 /* ====================================
    STRATUM V2 - SITE JAVASCRIPT
    ==================================== */
 
 // ====================================
-// I18N
+// DEV I18N
 // ====================================
 const I18N_SUPPORTED_LOCALES = new Set(['en', 'es', 'zh', 'ru', 'ar']);
 const I18N_RTL_LOCALES = new Set(['ar']);
 const I18N_LOCALE_ALIASES = {
   cn: 'zh'
-};
-const I18N_TRANSLATION_TEXTS = {
-  ar: arTranslationText,
-  en: enTranslationText,
-  es: esTranslationText,
-  ru: ruTranslationText,
-  zh: zhTranslationText
 };
 const I18N_ATTRIBUTE_TRANSLATIONS = [
   ['data-i18n-placeholder', 'placeholder'],
@@ -31,11 +18,13 @@ const I18N_ATTRIBUTE_TRANSLATIONS = [
   ['data-i18n-title', 'title'],
   ['data-i18n-content', 'content'],
   ['data-i18n-data-copy-label', 'data-copy-label'],
-  ['data-i18n-data-copy-success', 'data-copy-success']
+  ['data-i18n-data-copy-success', 'data-copy-success'],
+  ['data-i18n-data-open-label', 'data-open-label'],
+  ['data-i18n-data-close-label', 'data-close-label'],
+  ['data-i18n-data-current-funders-label', 'data-current-funders-label'],
+  ['data-i18n-data-past-funders-label', 'data-past-funders-label'],
+  ['data-i18n-data-visit-website-template', 'data-visit-website-template']
 ];
-
-let i18nLocale = 'en';
-let i18nTranslations = {};
 
 function getLocaleFromPathname(pathname) {
   const firstSegment = String(pathname || '/')
@@ -69,51 +58,50 @@ function parseTranslationText(text) {
   return translations;
 }
 
-const I18N_TRANSLATIONS = Object.fromEntries(
-  Object.entries(I18N_TRANSLATION_TEXTS).map(([locale, text]) => [locale, parseTranslationText(text)])
-);
-
-function formatTranslation(template, params = {}) {
-  return String(template).replace(/\{(\w+)\}/g, (match, token) => {
-    if (params[token] === undefined || params[token] === null) return match;
-    return String(params[token]);
-  });
-}
-
-function translate(key, fallback = '', params = undefined) {
-  const template = i18nTranslations[key]
-    ?? I18N_TRANSLATIONS.en?.[key]
-    ?? fallback;
-
-  return params ? formatTranslation(template, params) : template;
-}
-
-function applyTranslations() {
+function applyTranslations(translations) {
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     if (!key) return;
-    const translated = translate(key);
-    if (translated !== '') el.textContent = translated;
+    const translated = translations[key];
+    if (translated !== undefined) el.textContent = translated;
   });
 
   I18N_ATTRIBUTE_TRANSLATIONS.forEach(([sourceAttr, targetAttr]) => {
     document.querySelectorAll(`[${sourceAttr}]`).forEach(el => {
       const key = el.getAttribute(sourceAttr);
       if (!key) return;
-      const translated = translate(key);
-      if (translated !== '') el.setAttribute(targetAttr, translated);
+      const translated = translations[key];
+      if (translated !== undefined) el.setAttribute(targetAttr, translated);
     });
   });
 }
 
-function initTranslations() {
-  i18nLocale = getLocaleFromPathname(window.location.pathname);
-  i18nTranslations = I18N_TRANSLATIONS[i18nLocale] ?? I18N_TRANSLATIONS.en ?? {};
+function formatTemplate(template, params = {}) {
+  return String(template).replace(/\{(\w+)\}/g, (match, token) => {
+    if (params[token] === undefined || params[token] === null) return match;
+    return String(params[token]);
+  });
+}
 
-  document.documentElement.lang = i18nLocale;
-  document.documentElement.dir = I18N_RTL_LOCALES.has(i18nLocale) ? 'rtl' : 'ltr';
+async function initDevTranslations() {
+  if (!import.meta.env?.DEV) return;
 
-  applyTranslations();
+  const locale = getLocaleFromPathname(window.location.pathname);
+  document.documentElement.lang = locale;
+  document.documentElement.dir = I18N_RTL_LOCALES.has(locale) ? 'rtl' : 'ltr';
+  if (locale === 'en') return;
+
+  try {
+    const res = await fetch(`/locales/${locale}.txt`, { cache: 'no-store' });
+    if (!res.ok) {
+      console.warn(`i18n: failed to load /locales/${locale}.txt (${res.status})`);
+      return;
+    }
+
+    applyTranslations(parseTranslationText(await res.text()));
+  } catch (err) {
+    console.warn('i18n: failed to apply translations', err);
+  }
 }
 
 // ====================================
@@ -501,10 +489,8 @@ function initSupporterTabs() {
     link.target = '_blank';
     link.rel = 'noopener noreferrer';
     link.className = 'supporter-logo';
-    link.setAttribute(
-      'aria-label',
-      translate('supporters.visitWebsite', `Visit ${supporter.name} website`, { name: supporter.name })
-    );
+    const visitWebsiteTemplate = section.getAttribute('data-visit-website-template') || 'Visit {name} website';
+    link.setAttribute('aria-label', formatTemplate(visitWebsiteTemplate, { name: supporter.name }));
 
     if (supporter.logo) {
       const img = document.createElement('img');
@@ -538,7 +524,7 @@ function initSupporterTabs() {
 
       const currentHeading = document.createElement('h4');
       currentHeading.className = 'funders-section-heading';
-      currentHeading.textContent = translate('supporters.currentFunders', 'Current Funders');
+      currentHeading.textContent = section.getAttribute('data-current-funders-label') || 'Current Funders';
       grid.appendChild(currentHeading);
 
       const currentGrid = document.createElement('div');
@@ -552,7 +538,7 @@ function initSupporterTabs() {
 
         const heading = document.createElement('h4');
         heading.className = 'past-funders-heading';
-        heading.textContent = translate('supporters.pastFunders', 'Past Funders');
+        heading.textContent = section.getAttribute('data-past-funders-label') || 'Past Funders';
         section.appendChild(heading);
 
         const pastGrid = document.createElement('div');
@@ -652,10 +638,8 @@ function initGlobalClickHandler() {
       if (!textToCopy) return;
 
       const labelNode = copyTrigger.querySelector('.copy-label');
-      const defaultLabel = copyTrigger.getAttribute('data-copy-label')
-        || translate('startMining.copy', 'Copy');
-      const successLabel = copyTrigger.getAttribute('data-copy-success')
-        || translate('startMining.copied', 'Copied');
+      const defaultLabel = copyTrigger.getAttribute('data-copy-label') || 'Copy';
+      const successLabel = copyTrigger.getAttribute('data-copy-success') || 'Copied';
 
       try {
         await copyToClipboard(textToCopy);
@@ -806,10 +790,10 @@ function initImageLightbox() {
     lightboxOverlay.className = 'lightbox-overlay';
     lightboxOverlay.setAttribute('role', 'dialog');
     lightboxOverlay.setAttribute('aria-modal', 'true');
-    lightboxOverlay.setAttribute('aria-label', translate('lightbox.preview', 'Image preview'));
+    lightboxOverlay.setAttribute('aria-label', 'Image preview');
     lightboxOverlay.tabIndex = -1;
     lightboxOverlay.innerHTML = `
-      <button type="button" class="lightbox-close" aria-label="${translate('lightbox.close', 'Close image preview')}"></button>
+      <button type="button" class="lightbox-close" aria-label="Close image preview"></button>
       <div class="lightbox-content">
         <img class="lightbox-image" src="" alt="" />
         <div class="lightbox-caption" aria-live="polite"></div>
@@ -870,7 +854,7 @@ function initMobileMenu() {
     menu.classList.remove('active');
     toggle.classList.remove('active');
     toggle.setAttribute('aria-expanded', 'false');
-    toggle.setAttribute('aria-label', translate('menu.open', 'Open navigation menu'));
+    toggle.setAttribute('aria-label', toggle.getAttribute('data-open-label') || 'Open navigation menu');
     document.body.classList.remove('mobile-menu-open');
     document.body.style.overflow = '';
   }
@@ -880,7 +864,7 @@ function initMobileMenu() {
     menu.classList.add('active');
     toggle.classList.add('active');
     toggle.setAttribute('aria-expanded', 'true');
-    toggle.setAttribute('aria-label', translate('menu.close', 'Close navigation menu'));
+    toggle.setAttribute('aria-label', toggle.getAttribute('data-close-label') || 'Close navigation menu');
     document.body.classList.add('mobile-menu-open');
     document.body.style.overflow = 'hidden';
   }
@@ -938,7 +922,7 @@ function initGlobalKeyboardHandler() {
       menu.classList.remove('active');
       toggle?.classList.remove('active');
       toggle?.setAttribute('aria-expanded', 'false');
-      toggle?.setAttribute('aria-label', translate('menu.open', 'Open navigation menu'));
+      toggle?.setAttribute('aria-label', toggle.getAttribute('data-open-label') || 'Open navigation menu');
       document.body.classList.remove('mobile-menu-open');
       document.body.style.overflow = '';
     }
@@ -1049,7 +1033,7 @@ function runAfterLoad(callback) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  initTranslations();
+  initDevTranslations();
   initLanguageSwitcher();
   initNavAnchors();
   initActiveNavLink();

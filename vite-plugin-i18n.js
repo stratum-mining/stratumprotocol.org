@@ -90,7 +90,12 @@ function translateHtml(html, translations, locale, rtlLocales = new Set()) {
     ['data-i18n-title', 'title'],
     ['data-i18n-content', 'content'],
     ['data-i18n-data-copy-label', 'data-copy-label'],
-    ['data-i18n-data-copy-success', 'data-copy-success']
+    ['data-i18n-data-copy-success', 'data-copy-success'],
+    ['data-i18n-data-open-label', 'data-open-label'],
+    ['data-i18n-data-close-label', 'data-close-label'],
+    ['data-i18n-data-current-funders-label', 'data-current-funders-label'],
+    ['data-i18n-data-past-funders-label', 'data-past-funders-label'],
+    ['data-i18n-data-visit-website-template', 'data-visit-website-template']
   ].forEach(([markerAttr, targetAttr]) => {
     html = translateAttribute(html, translations, markerAttr, targetAttr);
   });
