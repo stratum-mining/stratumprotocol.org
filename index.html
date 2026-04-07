@@ -929,11 +929,22 @@
 
         <figure id="start-mining-image" class="start-mining-preview" aria-label="SV2 UI preview" data-i18n-aria-label="startMining.preview.aria">
           <img
-            src="/assets/images/start-mining-ui.png"
+            src="/assets/images/sv2-ui-dark.png"
+            class="start-mining-img-dark"
             alt="SV2 dashboard interface showing stratum endpoint, hashrate metrics, chart, and worker table"
             data-i18n-alt="startMining.preview.alt"
-            width="2310"
-            height="1416"
+            width="1265"
+            height="1001"
+            loading="lazy"
+            decoding="async"
+          />
+          <img
+            src="/assets/images/sv2-ui-light.png"
+            class="start-mining-img-light"
+            alt="SV2 dashboard interface showing stratum endpoint, hashrate metrics, chart, and worker table"
+            data-i18n-alt="startMining.preview.alt"
+            width="1251"
+            height="1013"
             loading="lazy"
             decoding="async"
           />
@@ -1004,7 +1015,7 @@
   -e HOST_HOME=$HOME \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v sv2-config:/app/data/config \
-  stratumv2/sv2-ui:v0.1.1"
+  stratumv2/sv2-ui:v0.1.2"
                   data-copy-label="Copy"
                   data-i18n-data-copy-label="startMining.copy"
                   data-copy-success="Copied"
@@ -1038,45 +1049,73 @@
   -e HOST_HOME=$HOME \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v sv2-config:/app/data/config \
-  stratumv2/sv2-ui:v0.1.1"
+  stratumv2/sv2-ui:v0.1.2"
                     data-macos-docker="docker run --rm --name sv2-ui -p 8080:8080 \
   -e HOST_HOME=$HOME \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v sv2-config:/app/data/config \
-  stratumv2/sv2-ui:v0.1.1"
+  stratumv2/sv2-ui:v0.1.2"
                     data-macos-colima="docker run --rm --name sv2-ui -p 8080:8080 \
   -e HOST_HOME=$HOME \
   -v $HOME/.colima/default/docker.sock:/var/run/docker.sock \
   -v sv2-config:/app/data/config \
-  stratumv2/sv2-ui:v0.1.1"
+  stratumv2/sv2-ui:v0.1.2"
                     data-macos-orbstack="docker run --rm --name sv2-ui -p 8080:8080 \
   -e HOST_HOME=$HOME \
   -v $HOME/.orbstack/run/docker.sock:/var/run/docker.sock \
   -v sv2-config:/app/data/config \
-  stratumv2/sv2-ui:v0.1.1"
+  stratumv2/sv2-ui:v0.1.2"
                     data-windows="docker run --rm ^
   --name sv2-ui ^
   -p 8080:8080 ^
   -e HOST_HOME=%USERPROFILE% ^
   -v /var/run/docker.sock:/var/run/docker.sock ^
   -v sv2-config:/app/data/config ^
-  stratumv2/sv2-ui:v0.1.1"
+  stratumv2/sv2-ui:v0.1.2"
                   >docker run --rm \
   --name sv2-ui \
   -p 8080:8080 \
   -e HOST_HOME=$HOME \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v sv2-config:/app/data/config \
-  stratumv2/sv2-ui:v0.1.1</code>
+  stratumv2/sv2-ui:v0.1.2</code>
                 </div>
 
               </div>
             </div>
 
-            <!-- Step 3: Custom Template Creation (Windows only) -->
-            <div class="mining-step mining-step--inline windows-step">
+            <!-- Step 3: Open the UI (all OSes) -->
+            <div class="mining-step">
               <div class="mining-step-header">
                 <span class="mining-step-number">3</span>
+                <span class="mining-step-title" data-i18n="startMining.step3.openUI.title">Open the UI</span>
+                <a
+                  href="http://localhost:8080/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="docker-download-link"
+                  aria-label="Open Stratum V2 UI at localhost:8080"
+                  data-i18n-aria-label="startMining.step3.openUI.aria"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                  <span data-i18n="startMining.step3.openUI.cta">Open</span>
+                </a>
+              </div>
+              <div class="mining-step-body windows-step-note">
+                <p data-i18n="startMining.step3.openUI.note">Open locally at <a href="http://localhost:8080/" target="_blank" rel="noopener noreferrer" class="windows-step-link">http://localhost:8080/</a></p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Windows note: Custom Template Creation -->
+          <div class="mining-steps windows-step" style="margin-top: 0.5rem;">
+            <div class="mining-step mining-step--inline">
+              <div class="mining-step-header">
                 <span class="mining-step-title" data-i18n="startMining.step3.title">Custom Template Creation</span>
                 <span class="windows-coming-soon-badge" data-i18n="startMining.step3.badge">Coming Soon</span>
               </div>
@@ -1084,10 +1123,10 @@
                 <p><span data-i18n="startMining.step3.note.prefix">Custom template creation on Windows is not yet supported. Progress is tracked in</span> <a href="https://github.com/bitcoin-core/libmultiprocess/pull/231" target="_blank" rel="noopener noreferrer" class="windows-step-link">bitcoin-core/libmultiprocess#231</a>.</p>
               </div>
             </div>
-
           </div>
 
         </div>
+
       </div>
     </section>
 
