@@ -2640,8 +2640,8 @@ body.mobile-menu-open .navbar-container {
 }
 
 .start-mining-preview {
-  width: min(100%, 56rem);
-  margin: 0 auto 1rem;
+  width: min(100%, 48rem);
+  margin: 2rem auto 1rem;
   scroll-margin-top: calc(var(--header-offset) + 0.75rem);
   border-radius: 0;
   border: 0;
@@ -2657,6 +2657,22 @@ body.mobile-menu-open .navbar-container {
   max-width: 100%;
   height: auto;
   border-radius: 0.75rem;
+}
+
+.start-mining-preview img.start-mining-img-dark {
+  display: block;
+}
+
+.start-mining-preview img.start-mining-img-light {
+  display: none;
+}
+
+html:not(.dark) .start-mining-preview img.start-mining-img-dark {
+  display: none;
+}
+
+html:not(.dark) .start-mining-preview img.start-mining-img-light {
+  display: block;
 }
 
 .start-mining .supporter-tabs {
