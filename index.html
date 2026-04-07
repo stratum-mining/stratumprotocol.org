@@ -1084,10 +1084,38 @@
               </div>
             </div>
 
-            <!-- Step 3: Custom Template Creation (Windows only) -->
-            <div class="mining-step mining-step--inline windows-step">
+            <!-- Step 3: Open the UI (all OSes) -->
+            <div class="mining-step">
               <div class="mining-step-header">
                 <span class="mining-step-number">3</span>
+                <span class="mining-step-title" data-i18n="startMining.step3.openUI.title">Open the UI</span>
+                <a
+                  href="http://localhost:8080/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="docker-download-link"
+                  aria-label="Open Stratum V2 UI at localhost:8080"
+                  data-i18n-aria-label="startMining.step3.openUI.aria"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                  <span data-i18n="startMining.step3.openUI.cta">Open</span>
+                </a>
+              </div>
+              <div class="mining-step-body windows-step-note">
+                <p data-i18n="startMining.step3.openUI.note">Open locally at <a href="http://localhost:8080/" target="_blank" rel="noopener noreferrer" class="windows-step-link">http://localhost:8080/</a></p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Windows note: Custom Template Creation -->
+          <div class="mining-steps windows-step" style="margin-top: 0.5rem;">
+            <div class="mining-step mining-step--inline">
+              <div class="mining-step-header">
                 <span class="mining-step-title" data-i18n="startMining.step3.title">Custom Template Creation</span>
                 <span class="windows-coming-soon-badge" data-i18n="startMining.step3.badge">Coming Soon</span>
               </div>
@@ -1095,7 +1123,6 @@
                 <p><span data-i18n="startMining.step3.note.prefix">Custom template creation on Windows is not yet supported. Progress is tracked in</span> <a href="https://github.com/bitcoin-core/libmultiprocess/pull/231" target="_blank" rel="noopener noreferrer" class="windows-step-link">bitcoin-core/libmultiprocess#231</a>.</p>
               </div>
             </div>
-
           </div>
 
         </div>
