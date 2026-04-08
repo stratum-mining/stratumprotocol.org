@@ -1032,11 +1032,17 @@
               </div>
               <div class="mining-step-body">
 
-                <!-- macOS runtime sub-tabs (hidden on Linux) -->
+                <!-- macOS runtime sub-tabs (hidden on Linux/Windows) -->
                 <div class="runtime-tabs" role="group" aria-label="Select Docker runtime" data-i18n-aria-label="startMining.runtime.select">
                   <button type="button" class="runtime-tab active" data-runtime="docker" aria-pressed="true" data-i18n="startMining.runtime.docker">Docker Desktop</button>
                   <button type="button" class="runtime-tab" data-runtime="colima" aria-pressed="false" data-i18n="startMining.runtime.colima">Colima</button>
                   <button type="button" class="runtime-tab" data-runtime="orbstack" aria-pressed="false" data-i18n="startMining.runtime.orbstack">OrbStack</button>
+                </div>
+
+                <!-- Windows shell sub-tabs (hidden on Linux/macOS) -->
+                <div class="shell-tabs" role="group" aria-label="Select Windows shell" data-i18n-aria-label="startMining.shell.select">
+                  <button type="button" class="shell-tab active" data-shell="cmd" aria-pressed="true" data-i18n="startMining.shell.cmd">Command Prompt</button>
+                  <button type="button" class="shell-tab" data-shell="powershell" aria-pressed="false" data-i18n="startMining.shell.powershell">PowerShell</button>
                 </div>
 
                 <!-- Command display -->
@@ -1065,12 +1071,19 @@
   -v $HOME/.orbstack/run/docker.sock:/var/run/docker.sock \
   -v sv2-config:/app/data/config \
   stratumv2/sv2-ui:v0.1.2"
-                    data-windows="docker run --rm ^
+                    data-windows-cmd="docker run --rm ^
   --name sv2-ui ^
   -p 8080:8080 ^
   -e HOST_HOME=%USERPROFILE% ^
   -v /var/run/docker.sock:/var/run/docker.sock ^
   -v sv2-config:/app/data/config ^
+  stratumv2/sv2-ui:v0.1.2"
+                    data-windows-powershell="docker run --rm `
+  --name sv2-ui `
+  -p 8080:8080 `
+  -e HOST_HOME=$env:USERPROFILE `
+  -v /var/run/docker.sock:/var/run/docker.sock `
+  -v sv2-config:/app/data/config `
   stratumv2/sv2-ui:v0.1.2"
                   >docker run --rm \
   --name sv2-ui \
