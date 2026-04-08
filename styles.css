@@ -2953,6 +2953,40 @@ html:not(.dark) .start-mining-preview img.start-mining-img-light {
   display: flex;
 }
 
+/* Shell Sub-tabs (Windows only) */
+.shell-tabs {
+  display: none;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.start-mining-flow.windows-active .shell-tabs {
+  display: flex;
+}
+
+.shell-tab {
+  padding: 0.3rem 0.85rem;
+  border-radius: 9999px;
+  border: 1.5px solid hsl(var(--border));
+  background: transparent;
+  color: hsl(var(--muted-foreground));
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
+}
+
+.shell-tab:hover {
+  border-color: color-mix(in oklab, var(--cyan-400) 55%, hsl(var(--border)));
+  color: hsl(var(--foreground));
+}
+
+.shell-tab.active {
+  border-color: var(--cyan-400);
+  background: rgba(34, 211, 238, 0.07);
+  color: var(--cyan-400);
+}
+
 /* Windows-only step 3 */
 .windows-step {
   display: none;
