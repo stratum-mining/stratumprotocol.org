@@ -3910,6 +3910,12 @@ html:not(.dark) .start-mining-preview img.start-mining-img-light {
   gap: 1rem;
 }
 
+a.adopter-item {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
 .adopter-item {
   display: flex;
   align-items: flex-start;
@@ -3950,6 +3956,29 @@ html:not(.dark) .start-mining-preview img.start-mining-img-light {
 .dark .adopter-logo img {
   filter: none;
 }
+
+/* Bitaxe & Proto: dark logos — invert in dark mode, cancel global invert in light mode */
+.dark .adopter-logo .bitaxe-logo,
+.dark .adopter-logo .proto-logo {
+  filter: invert(1);
+}
+:root:not(.dark) .adopter-logo .bitaxe-logo,
+:root:not(.dark) .adopter-logo .proto-logo {
+  filter: none;
+}
+
+/* Pluto & SV2 icon: cancel global invert in both modes */
+.adopter-logo .pluto-logo,
+.adopter-logo .sv2-icon {
+  filter: none !important;
+}
+
+/* NerdAxe: manual dark/light swap, bypass global invert filter */
+.nerdaxe-for-dark  { display: block; }
+.nerdaxe-for-light { display: none;  }
+:root:not(.dark) .adopter-logo .nerdaxe-for-dark  { display: none;  filter: none; }
+:root:not(.dark) .adopter-logo .nerdaxe-for-light { display: block; filter: none; }
+.dark .adopter-logo .nerdaxe-for-light             { display: none; }
 
 .logo-placeholder {
   width: 100%;

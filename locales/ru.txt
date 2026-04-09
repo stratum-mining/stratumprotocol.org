@@ -168,9 +168,15 @@ startMining.runtime.select = Выберите среду выполнения Do
 startMining.runtime.docker = Docker Desktop
 startMining.runtime.colima = Colima
 startMining.runtime.orbstack = OrbStack
+startMining.step3.openUI.title = Открыть интерфейс
+startMining.step3.openUI.cta = Открыть
+startMining.step3.openUI.aria = Открыть интерфейс Stratum V2 по адресу localhost:8080
+startMining.step3.openUI.note = Откройте http://localhost:8080/ в браузере. Если настройка выполняется на другом устройстве, замените localhost на IP-адрес этого устройства.
 startMining.step3.title = Создание пользовательских шаблонов
 startMining.step3.badge = Скоро
 startMining.step3.note.prefix = Создание пользовательских шаблонов в Windows пока не поддерживается. Ход работы отслеживается в
+startMining.shell.cmd = Командная строка
+startMining.shell.powershell = PowerShell
 
 # ===================
 # Раздел модульности
@@ -204,13 +210,18 @@ adoption.subtitle = Проверено и внедрено лидерами от
 # Категории внедрения
 adoption.category.hardware = Оборудование и прошивки
 adoption.category.pools = Пулы
-adoption.category.testing = Внедрение и тестирование
+adoption.category.testing = Программное обеспечение и исследования
 
 # Внедряющие компании
 adopter.auradine.desc = Нативная поддержка SV2 на всех ASIC через FluxOS
 adopter.braiinsos.desc = Нативная поддержка Stratum V2 в прошивке
 adopter.proto.desc = Объявлено о работе над совместимостью с SV2
+adopter.mujina.desc = Ведётся работа по поддержке SV2
+adopter.nerdaxe.desc = Ведётся работа по поддержке SV2
+adopter.bitaxe.desc = Работа ведётся, релиз-кандидат доступен для тестирования
 adopter.braiinspool.desc = Пул в продакшене
+adopter.blitzpool.desc = Соло-пул в продакшене
+adopter.sripool.desc = Сольный и пуловый майнинг с пользовательскими шаблонами, только для тестирования
 adopter.dmnd.desc = Пул в продакшене с поддержкой шаблонов, выбираемых майнерами
 adopter.hashlabs.desc = Площадка для прямого сравнения V1 и V2
 adopter.starkware.desc = Разработан прототип на базе Stratum V2 с доказательствами с нулевым разглашением

@@ -168,9 +168,15 @@ startMining.runtime.select = 选择 Docker 运行环境
 startMining.runtime.docker = Docker Desktop
 startMining.runtime.colima = Colima
 startMining.runtime.orbstack = OrbStack
+startMining.step3.openUI.title = 打开界面
+startMining.step3.openUI.cta = 打开
+startMining.step3.openUI.aria = 在 localhost:8080 打开 Stratum V2 界面
+startMining.step3.openUI.note = 在浏览器中访问 http://localhost:8080/。如果在其他设备上配置，请将 localhost 替换为该设备的 IP 地址。
 startMining.step3.title = 自定义模板创建
 startMining.step3.badge = 即将推出
 startMining.step3.note.prefix = Windows 暂不支持自定义模板创建。相关进展见
+startMining.shell.cmd = 命令提示符
+startMining.shell.powershell = PowerShell
 
 # ===================
 # 模块化区域
@@ -204,13 +210,18 @@ adoption.subtitle = 已被硬件、固件与矿池基础设施领域的行业领
 # 应用类别
 adoption.category.hardware = 硬件与固件
 adoption.category.pools = 矿池
-adoption.category.testing = 采用与测试
+adoption.category.testing = 软件与研究
 
 # 应用者
 adopter.auradine.desc = 通过 FluxOS 在所有 ASIC 上原生支持 SV2
 adopter.braiinsos.desc = 原生 Stratum V2 固件支持
 adopter.proto.desc = 已宣布推进 SV2 兼容性工作
+adopter.mujina.desc = 正在推进 SV2 支持工作
+adopter.nerdaxe.desc = 正在推进 SV2 支持工作
+adopter.bitaxe.desc = 工作进行中，发布候选版本已可供测试
 adopter.braiinspool.desc = 生产环境矿池
+adopter.blitzpool.desc = 生产环境单人矿池
+adopter.sripool.desc = 支持独立与矿池挖矿及自定义模板，仅限测试
 adopter.dmnd.desc = 生产环境矿池，支持矿工选择模板
 adopter.hashlabs.desc = V1 与 V2 正面对比测试站点
 adopter.starkware.desc = 基于 Stratum V2 的零知识证明原型
