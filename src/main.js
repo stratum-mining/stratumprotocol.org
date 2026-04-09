@@ -66,6 +66,13 @@ function applyTranslations(translations) {
     if (translated !== undefined) el.textContent = translated;
   });
 
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.getAttribute('data-i18n-html');
+    if (!key) return;
+    const translated = translations[key];
+    if (translated !== undefined) el.innerHTML = translated;
+  });
+
   I18N_ATTRIBUTE_TRANSLATIONS.forEach(([sourceAttr, targetAttr]) => {
     document.querySelectorAll(`[${sourceAttr}]`).forEach(el => {
       const key = el.getAttribute(sourceAttr);

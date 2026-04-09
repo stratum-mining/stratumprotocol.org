@@ -168,9 +168,15 @@ startMining.runtime.select = اختر بيئة تشغيل Docker
 startMining.runtime.docker = Docker Desktop
 startMining.runtime.colima = Colima
 startMining.runtime.orbstack = OrbStack
+startMining.step3.openUI.title = فتح الواجهة
+startMining.step3.openUI.cta = فتح
+startMining.step3.openUI.aria = فتح واجهة Stratum V2 على localhost:8080
+startMining.step3.openUI.note = قم بزيارة http://localhost:8080/ في متصفحك. إذا كنت تقوم بالإعداد على جهاز آخر، استبدل localhost بعنوان IP ذلك الجهاز.
 startMining.step3.title = إنشاء القوالب المخصصة
 startMining.step3.badge = قريبا
 startMining.step3.note.prefix = إنشاء القوالب المخصصة على Windows غير مدعوم بعد. يمكن متابعة التقدم في
+startMining.shell.cmd = موجه الأوامر
+startMining.shell.powershell = PowerShell
 
 # ===================
 # Modularity Section
@@ -204,13 +210,18 @@ adoption.subtitle = جرى اختباره ونشره من قبل قادة الص
 # Adoption Categories
 adoption.category.hardware = العتاد والبرامج الثابتة
 adoption.category.pools = المجمّعات
-adoption.category.testing = التبنّي والاختبار
+adoption.category.testing = البرمجيات والبحث
 
 # Adopters
 adopter.auradine.desc = دعم SV2 الأصلي عبر جميع أجهزة ASIC من خلال FluxOS
 adopter.braiinsos.desc = دعم أصلي لبرنامج Stratum V2 الثابت
 adopter.proto.desc = تم الإعلان عن العمل نحو التوافق مع SV2
+adopter.mujina.desc = العمل جارٍ نحو دعم SV2
+adopter.nerdaxe.desc = العمل جارٍ نحو دعم SV2
+adopter.bitaxe.desc = العمل جارٍ، مرشح الإصدار متاح للاختبار
 adopter.braiinspool.desc = مجمّع يعمل في الإنتاج
+adopter.blitzpool.desc = مجمّع منفرد يعمل في الإنتاج
+adopter.sripool.desc = تعدين منفرد وجماعي مع قوالب مخصصة، للاختبار فقط
 adopter.dmnd.desc = مجمّع يعمل في الإنتاج مع تمكين قوالب يختارها المعدّنون
 adopter.hashlabs.desc = موقع اختبار مباشر بين V1 وV2
 adopter.starkware.desc = تم تطوير نموذج إثبات معرفة صفرية مبني على Stratum V2

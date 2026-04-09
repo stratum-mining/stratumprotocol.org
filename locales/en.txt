@@ -178,6 +178,8 @@ startMining.step3.openUI.note = Visit http://localhost:8080/ in your browser. If
 startMining.step3.title = Custom Template Creation
 startMining.step3.badge = Coming Soon
 startMining.step3.note.prefix = Custom template creation on Windows is not yet supported. Progress is tracked in
+startMining.shell.cmd = Command Prompt
+startMining.shell.powershell = PowerShell
 
 # ===================
 # Modularity Section
@@ -211,13 +213,18 @@ adoption.subtitle = Tested and deployed by industry leaders across hardware, fir
 # Adoption Categories
 adoption.category.hardware = Hardware & Firmware
 adoption.category.pools = Pools
-adoption.category.testing = Adoption & Testing
+adoption.category.testing = Software & Research
 
 # Adopters
 adopter.auradine.desc = SV2 native support across all ASICs via FluxOS
 adopter.braiinsos.desc = Native Stratum V2 firmware support
 adopter.proto.desc = Announced work towards SV2 compatibility
+adopter.mujina.desc = Work in progress towards SV2 support
+adopter.nerdaxe.desc = Work in progress towards SV2 support
+adopter.bitaxe.desc = Work in progress, release candidate available for testing
 adopter.braiinspool.desc = In production pool
+adopter.blitzpool.desc = In production solo pool
+adopter.sripool.desc = Solo & pool mining with custom templates, testing only
 adopter.dmnd.desc = In production pool, enabling miner selected templates
 adopter.hashlabs.desc = Site of the head-to-head V1 vs V2 test
 adopter.starkware.desc = Developed a zero-knowledge-proof prototype built on Stratum V2

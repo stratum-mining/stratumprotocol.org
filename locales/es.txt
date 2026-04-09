@@ -168,9 +168,15 @@ startMining.runtime.select = Seleccionar runtime de Docker
 startMining.runtime.docker = Docker Desktop
 startMining.runtime.colima = Colima
 startMining.runtime.orbstack = OrbStack
+startMining.step3.openUI.title = Abrir la interfaz
+startMining.step3.openUI.cta = Abrir
+startMining.step3.openUI.aria = Abrir la interfaz de Stratum V2 en localhost:8080
+startMining.step3.openUI.note = Visita http://localhost:8080/ en tu navegador. Si estás configurando en otra máquina, reemplaza localhost con la IP de esa máquina.
 startMining.step3.title = Creación de plantillas personalizadas
 startMining.step3.badge = Próximamente
 startMining.step3.note.prefix = La creación de plantillas personalizadas en Windows aún no es compatible. Puedes seguir el progreso en
+startMining.shell.cmd = Símbolo del sistema
+startMining.shell.powershell = PowerShell
 
 # ===================
 # Modularity Section
@@ -204,13 +210,18 @@ adoption.subtitle = Probado y desplegado por líderes de la industria en hardwar
 # Adoption Categories
 adoption.category.hardware = Hardware y firmware
 adoption.category.pools = Pools
-adoption.category.testing = Adopción y pruebas
+adoption.category.testing = Software e investigación
 
 # Adopters
 adopter.auradine.desc = Soporte nativo de SV2 en todos los ASIC mediante FluxOS
 adopter.braiinsos.desc = Soporte nativo de firmware Stratum V2
 adopter.proto.desc = Trabajo anunciado para compatibilidad con SV2
+adopter.mujina.desc = Trabajo en curso hacia el soporte de SV2
+adopter.nerdaxe.desc = Trabajo en curso hacia el soporte de SV2
+adopter.bitaxe.desc = Trabajo en curso, candidato de lanzamiento disponible para pruebas
 adopter.braiinspool.desc = Pool en producción
+adopter.blitzpool.desc = Pool solo en producción
+adopter.sripool.desc = Minería en solitario y en grupo con plantillas personalizadas, solo para pruebas
 adopter.dmnd.desc = Pool en producción con plantillas seleccionadas por mineros
 adopter.hashlabs.desc = Sitio de la prueba cara a cara entre V1 y V2
 adopter.starkware.desc = Desarrolló un prototipo de prueba de conocimiento cero basado en Stratum V2
