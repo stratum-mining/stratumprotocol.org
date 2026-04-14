@@ -462,6 +462,7 @@ function initSupporterTabs() {
     { name: "Braiins", logo: "/assets/logos/braiins-logo.svg", width: 240, height: 87, website: "https://braiins.com/", categories: ["workingGroup"] },
     { name: "Btrust", logo: "/assets/logos/btrust.svg", width: 753, height: 319, website: "https://www.btrust.tech/", categories: ["funder"] },
     { name: "DMND", logo: "/assets/logos/demand-logo.svg", width: 612, height: 258, website: "https://www.dmnd.work/", categories: ["workingGroup"] },
+    { name: "F2Pool", logoVariants: { dark: "/assets/logos/f2pool-logo-dark.svg", light: "/assets/logos/f2pool-logo-light.svg" }, width: 150, height: 45, website: "https://www.f2pool.com/", categories: ["workingGroup"] },
     { name: "Foundry", logo: "/assets/logos/foundry-logo.svg", width: 231, height: 74, website: "https://foundrydigital.com/", categories: ["workingGroup", "pastFunder"] },
     { name: "Galaxy", logo: "/assets/logos/galaxy-logo.svg", width: 231, height: 111, website: "https://www.galaxy.com/", categories: ["pastFunder"] },
     { name: "HRF", logo: "/assets/logos/hrf-logo.svg", width: 269, height: 75, website: "https://hrf.org/", categories: ["funder"] },
@@ -499,7 +500,27 @@ function initSupporterTabs() {
     const visitWebsiteTemplate = section.getAttribute('data-visit-website-template') || 'Visit {name} website';
     link.setAttribute('aria-label', formatTemplate(visitWebsiteTemplate, { name: supporter.name }));
 
-    if (supporter.logo) {
+    if (supporter.logoVariants) {
+      const classBase = supporter.name.toLowerCase().replace(/[^a-z0-9]/g, '');
+      const imgDark = document.createElement('img');
+      imgDark.src = supporter.logoVariants.dark;
+      imgDark.alt = supporter.name;
+      imgDark.loading = 'lazy';
+      imgDark.className = `${classBase}-for-dark`;
+      if (supporter.width) imgDark.width = supporter.width;
+      if (supporter.height) imgDark.height = supporter.height;
+      imgDark.addEventListener('error', () => handleImageError(imgDark, supporter.name));
+      link.appendChild(imgDark);
+      const imgLight = document.createElement('img');
+      imgLight.src = supporter.logoVariants.light;
+      imgLight.alt = supporter.name;
+      imgLight.loading = 'lazy';
+      imgLight.className = `${classBase}-for-light`;
+      if (supporter.width) imgLight.width = supporter.width;
+      if (supporter.height) imgLight.height = supporter.height;
+      imgLight.addEventListener('error', () => handleImageError(imgLight, supporter.name));
+      link.appendChild(imgLight);
+    } else if (supporter.logo) {
       const img = document.createElement('img');
       img.src = supporter.logo;
       img.alt = supporter.name;
@@ -559,6 +580,7 @@ function initSupporterTabs() {
       filtered.forEach(s => grid.appendChild(createSupporterLink(s)));
     }
 
+    grid.classList.toggle('working-group', isWorkingGroup);
     workingGroupInfo.classList.toggle('hidden', !isWorkingGroup);
   }
 

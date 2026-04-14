@@ -2129,10 +2129,9 @@ body.mobile-menu-open .navbar-container {
 }
 
 .interoperability-logos {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
-  justify-content: center;
   align-items: center;
   max-width: 500px;
 }
@@ -3682,6 +3681,12 @@ html:not(.dark) .start-mining-preview img.start-mining-img-light {
   animation: fadeIn 0.3s ease-out;
 }
 
+.supporters-grid.working-group {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  justify-content: center;
+}
+
 /* Respect reduced-motion and avoid CPU/GPU-heavy transitions/animations. */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -3736,6 +3741,19 @@ html:not(.dark) .start-mining-preview img.start-mining-img-light {
 :root:not(.dark) .supporter-logo img {
   filter: invert(1) hue-rotate(180deg);
 }
+
+/* Colored logos — skip the invert */
+:root:not(.dark) .supporter-logo img[src*="foundry"] {
+  filter: none;
+}
+
+/* F2Pool: manual dark/light swap, bypass global invert filter */
+.f2pool-for-dark  { display: block; }
+.f2pool-for-light { display: none;  }
+:root:not(.dark) .supporter-logo .f2pool-for-dark  { display: none;  filter: none; }
+:root:not(.dark) .supporter-logo .f2pool-for-light { display: block; filter: none; }
+.dark .supporter-logo .f2pool-for-light             { display: none; }
+.dark .supporter-logo .f2pool-for-dark              { filter: none; }
 
 .dark .supporter-logo img {
   filter: none;
@@ -3979,6 +3997,7 @@ a.adopter-item {
 :root:not(.dark) .adopter-logo .nerdaxe-for-dark  { display: none;  filter: none; }
 :root:not(.dark) .adopter-logo .nerdaxe-for-light { display: block; filter: none; }
 .dark .adopter-logo .nerdaxe-for-light             { display: none; }
+
 
 .logo-placeholder {
   width: 100%;
