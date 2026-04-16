@@ -149,8 +149,12 @@ module.mining.protocol = Протокол майнинга
 # ===================
 # Start Mining Section
 # ===================
-startMining.title.part1 = Начните майнить
-startMining.title.part2 = сегодня
+startMining.title.part1 = Майните с
+startMining.title.part2 = SV2 UI
+startMining.subtitle.line1 = Управляйте всем парком майнеров в одном месте.
+startMining.subtitle.line2 = Добывайте соло через собственный узел или пул.
+startMining.subtitle.line3 = Подключайтесь к любому пулу с поддержкой SV2.
+startMining.subtitle.line4 = Работает с существующей прошивкой SV1. Обновление не требуется.
 startMining.preview.aria = Предпросмотр интерфейса SV2
 startMining.preview.alt = Панель SV2 с адресом Stratum, метриками хешрейта, графиком и таблицей воркеров
 startMining.os.select = Выберите операционную систему

@@ -149,8 +149,12 @@ module.mining.protocol = بروتوكول التعدين
 # ===================
 # Start Mining Section
 # ===================
-startMining.title.part1 = ابدأ التعدين
-startMining.title.part2 = اليوم
+startMining.title.part1 = عدّن مع
+startMining.title.part2 = SV2 UI
+startMining.subtitle.line1 = راقب أسطول التعدين بالكامل من مكان واحد.
+startMining.subtitle.line2 = عدّن بشكل منفرد عبر عقدتك أو من خلال pool.
+startMining.subtitle.line3 = عدّن مع أي pool متوافق مع SV2.
+startMining.subtitle.line4 = يعمل مع firmware SV1 الحالي. لا حاجة للترقية.
 startMining.preview.aria = معاينة واجهة SV2
 startMining.preview.alt = لوحة تحكم SV2 تعرض نقطة اتصال Stratum ومقاييس معدل الهاش ومخططا وجدولا للعمّال
 startMining.os.select = اختر نظام التشغيل

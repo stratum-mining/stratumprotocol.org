@@ -2638,6 +2638,20 @@ body.mobile-menu-open .navbar-container {
   }
 }
 
+.start-mining-subtitle {
+  margin-top: 0.875rem;
+  font-size: 1.0625rem;
+  color: hsl(var(--muted-foreground));
+  line-height: 1.6;
+  max-width: 36rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.start-mining-subtitle span {
+  display: block;
+}
+
+
 .start-mining-preview {
   width: min(100%, 48rem);
   margin: 2rem auto 1rem;
