@@ -149,8 +149,12 @@ module.mining.protocol = 挖矿协议
 # ===================
 # Start Mining Section
 # ===================
-startMining.title.part1 = 立即开始
-startMining.title.part2 = 挖矿
+startMining.title.part1 = 使用
+startMining.title.part2 = SV2 UI 挖矿
+startMining.subtitle.line1 = 在一处监控您的挖矿集群。
+startMining.subtitle.line2 = 通过您的节点或矿池进行单独挖矿。
+startMining.subtitle.line3 = 使用任意兼容 SV2 的矿池进行联合挖矿。
+startMining.subtitle.line4 = 兼容现有 SV1 固件，无需升级。
 startMining.preview.aria = SV2 界面预览
 startMining.preview.alt = SV2 控制台界面，显示 Stratum 端点、算力指标、图表和 worker 表格
 startMining.os.select = 选择操作系统

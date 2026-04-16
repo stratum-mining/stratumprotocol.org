@@ -149,8 +149,12 @@ module.mining.protocol = Protocolo de minería
 # ===================
 # Start Mining Section
 # ===================
-startMining.title.part1 = Comienza a minar
-startMining.title.part2 = hoy
+startMining.title.part1 = Mina con
+startMining.title.part2 = SV2 UI
+startMining.subtitle.line1 = Monitorea tu flota de minería en un solo lugar.
+startMining.subtitle.line2 = Mina en solitario con tu nodo o a través de un pool.
+startMining.subtitle.line3 = Mina en pool con cualquier pool compatible con SV2.
+startMining.subtitle.line4 = Funciona con firmware SV1 existente. No se requiere actualización.
 startMining.preview.aria = Vista previa de la interfaz de SV2
 startMining.preview.alt = Panel de SV2 con endpoint de Stratum, métricas de hashrate, gráfico y tabla de workers
 startMining.os.select = Seleccionar sistema operativo

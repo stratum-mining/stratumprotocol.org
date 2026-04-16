@@ -150,12 +150,14 @@ module.mining.protocol = Mining Protocol
 # ===================
 # Start Mining Section
 # ===================
-startMining.title.part1 = Start mining
-startMining.title.part2 = today
+startMining.title.part1 = Mine with
+startMining.title.part2 = SV2 UI
+startMining.subtitle.line1 = Monitor your mining fleet in one place.
+startMining.subtitle.line2 = Solo mine with your node or via a pool.
+startMining.subtitle.line3 = Pool mine with any SV2-compatible pool.
+startMining.subtitle.line4 = Works with existing SV1 firmware. No upgrade required.
 startMining.preview.aria = SV2 UI preview
 startMining.preview.alt = SV2 dashboard showing the stratum endpoint, hashrate metrics, chart, and worker table
-startMining.preview.caption = Your dashboard after setup
-startMining.bridge = Set it up in minutes
 startMining.os.select = Select operating system
 startMining.os.linux = Linux
 startMining.os.macos = macOS
