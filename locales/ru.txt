@@ -250,6 +250,7 @@ supporters.logo.auradine = Перейти на сайт Auradine
 supporters.logo.braiins = Перейти на сайт Braiins
 supporters.logo.dmnd = Перейти на сайт DMND
 supporters.logo.foundry = Перейти на сайт Foundry
+supporters.logo.spiderpool = Перейти на сайт Spiderpool
 supporters.logo.spiral = Перейти на сайт Spiral
 
 # Информация о рабочей группе

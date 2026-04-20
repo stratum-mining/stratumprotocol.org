@@ -250,6 +250,7 @@ supporters.logo.auradine = 访问 Auradine 官网
 supporters.logo.braiins = 访问 Braiins 官网
 supporters.logo.dmnd = 访问 DMND 官网
 supporters.logo.foundry = 访问 Foundry 官网
+supporters.logo.spiderpool = 访问 Spiderpool 官网
 supporters.logo.spiral = 访问 Spiral 官网
 
 # 工作组信息

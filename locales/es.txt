@@ -250,6 +250,7 @@ supporters.logo.auradine = Visitar el sitio web de Auradine
 supporters.logo.braiins = Visitar el sitio web de Braiins
 supporters.logo.dmnd = Visitar el sitio web de DMND
 supporters.logo.foundry = Visitar el sitio web de Foundry
+supporters.logo.spiderpool = Visitar el sitio web de Spiderpool
 supporters.logo.spiral = Visitar el sitio web de Spiral
 
 # Working Group Info
