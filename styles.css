@@ -574,6 +574,7 @@ body.mobile-menu-open .navbar-container {
 .hero {
   position: relative;
   min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -586,20 +587,6 @@ body.mobile-menu-open .navbar-container {
 @media (max-width: 600px) {
   .hero {
     padding: calc(clamp(6.5rem, 14vh, 9rem) + env(safe-area-inset-top)) 1.5rem 1.5rem;
-  }
-
-  .hero h1 {
-    font-size: 2.6rem;
-    line-height: 1.15;
-  }
-
-  .hero p {
-    font-size: 1.0625rem;
-    margin-bottom: 2rem;
-  }
-
-  .hero-content {
-    margin-bottom: 3.5rem;
   }
 }
 
@@ -676,10 +663,105 @@ body.mobile-menu-open .navbar-container {
 .hero-content {
   position: relative;
   z-index: 10;
-  max-width: 56rem;
-  margin: 0 auto clamp(3.25rem, 6vh, 5rem);
+  width: 100%;
+  max-width: 58rem;
+  margin: 0 auto;
+  text-align: center;
   /* Keep LCP text immediately paintable; avoid entry animation delaying render timing. */
   animation: none;
+}
+
+.hero-layout {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 80rem;
+  margin: 0 auto;
+  display: grid;
+  justify-items: center;
+  gap: clamp(0.75rem, 2.2vh, 1.5rem);
+}
+
+.hero-miner {
+  position: relative;
+  z-index: 1;
+  width: clamp(8.75rem, 11vw, 11.5rem);
+  aspect-ratio: 108 / 126;
+  flex-shrink: 0;
+  line-height: 0;
+  contain: layout paint;
+}
+
+.hero-miner-svg {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+  fill: none;
+  stroke: hsl(var(--primary));
+  filter: drop-shadow(0 0 10px hsl(var(--primary) / 0.22));
+  shape-rendering: geometricPrecision;
+}
+
+.hero-miner-face {
+  fill: hsl(var(--primary) / 0.018);
+  stroke: hsl(var(--primary) / 0.55);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.hero-miner-fan-ring {
+  fill: none;
+  stroke: hsl(var(--primary));
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.hero-miner-fan-ring.is-inner {
+  stroke-width: 0.4;
+  stroke-opacity: 0.32;
+}
+
+.hero-miner-blades {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: hero-miner-fan-spin 3s linear infinite;
+}
+
+.hero-miner-blades path {
+  fill: hsl(var(--primary) / 0.1);
+  stroke: hsl(var(--primary));
+  stroke-width: 0.4;
+  vector-effect: non-scaling-stroke;
+}
+
+.hero-miner-hub {
+  fill: hsl(var(--primary) / 0.22);
+  stroke: hsl(var(--primary));
+  stroke-width: 0.9;
+  vector-effect: non-scaling-stroke;
+}
+
+.hero-miner-hub.is-inner {
+  fill: hsl(var(--primary) / 0.14);
+  stroke-width: 0.6;
+}
+
+.hero-miner-hub.is-core {
+  fill: hsl(var(--primary) / 0.45);
+  stroke-width: 0.7;
+}
+
+.hero-miner-screws circle {
+  fill: hsl(var(--primary) / 0.06);
+  stroke: hsl(var(--primary));
+  stroke-width: 0.55;
+  stroke-opacity: 0.45;
+  vector-effect: non-scaling-stroke;
+}
+
+@keyframes hero-miner-fan-spin {
+  to { transform: rotate(360deg); }
 }
 
 @keyframes fadeInUp {
@@ -694,6 +776,8 @@ body.mobile-menu-open .navbar-container {
 }
 
 .hero h1 {
+  position: relative;
+  z-index: 1;
   font-size: 3rem;
   font-weight: 500;
   letter-spacing: -0.025em;
@@ -708,13 +792,86 @@ body.mobile-menu-open .navbar-container {
 }
 
 .hero p {
+  position: relative;
+  z-index: 1;
   font-size: 1.25rem;
   color: hsl(var(--muted-foreground));
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
   max-width: 42rem;
   margin-left: auto;
   margin-right: auto;
   font-weight: 300;
+}
+
+@media (max-width: 600px) {
+  .hero-layout {
+    gap: 0.65rem;
+  }
+
+  .hero-miner {
+    width: clamp(7.25rem, 30vw, 8.5rem);
+  }
+
+  .hero h1 {
+    font-size: 2.6rem;
+    line-height: 1.15;
+  }
+
+  .hero p {
+    font-size: 1.0625rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-height: 820px) and (min-width: 700px) {
+  .hero {
+    padding-top: clamp(4.5rem, 8vh, 5.75rem);
+  }
+
+  .hero-miner {
+    width: clamp(7.5rem, 9vw, 9rem);
+  }
+
+  .hero h1 {
+    font-size: clamp(3rem, 5vw, 4rem);
+    margin-bottom: 1rem;
+  }
+
+  .hero p {
+    margin-bottom: 1.35rem;
+  }
+}
+
+@media (max-width: 600px) and (max-height: 740px) {
+  .hero {
+    padding: calc(5.5rem + env(safe-area-inset-top)) 1.25rem 1rem;
+  }
+
+  .hero-miner {
+    width: clamp(6.25rem, 25vw, 7rem);
+  }
+
+  .hero h1 {
+    font-size: 2.25rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+    line-height: 1.45;
+    margin-bottom: 1rem;
+  }
+
+  .cta-button {
+    padding: 0.65rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-miner-blades {
+    animation: none;
+  }
 }
 
 /* Defer layout/paint work for below-the-fold sections to improve first render. */
@@ -726,102 +883,36 @@ body.mobile-menu-open .navbar-container {
 }
 
 .cta-button {
+  position: relative;
+  z-index: 2;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-  padding: 0.75rem 2rem;
+  min-width: 13.25rem;
+  padding: 0.85rem 2.25rem;
   background: hsl(var(--foreground));
   color: hsl(var(--background));
   border: none;
   border-radius: 9999px;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 1.125rem;
   font-family: inherit;
   cursor: pointer;
   text-decoration: none;
-  transition: all 0.2s;
+  box-shadow: 0 14px 34px hsl(var(--primary) / 0.16);
+  transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
 }
 
 .cta-button:hover {
   background: hsl(var(--foreground) / 0.8);
+  box-shadow: 0 18px 42px hsl(var(--primary) / 0.22);
+  transform: translateY(-1px);
 }
 
 .cta-button:focus {
   outline: none;
   box-shadow: 0 0 0 2px var(--cyan-400), 0 0 0 4px hsl(var(--background));
-}
-
-/* Stats Grid */
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1px;
-  background: hsl(var(--border) / 0.5);
-  border: 1px solid hsl(var(--border) / 0.5);
-  backdrop-filter: blur(4px);
-  width: 100%;
-  max-width: 80rem;
-  margin: 0 auto;
-  overflow: hidden;
-}
-
-@media (max-width: 768px) {
-  .stats-grid {
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-  }
-}
-
-@media (min-width: 768px) {
-  .stats-grid {
-    grid-template-columns: repeat(5, 1fr);
-  }
-}
-
-.stat-item {
-  background: hsl(var(--background) / 0.8);
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  transition: background-color 0.2s;
-}
-
-@media (min-width: 768px) {
-  .stat-item {
-    padding: 2rem;
-  }
-}
-
-.stat-item:hover {
-  background: hsl(var(--background) / 0.9);
-}
-
-.stat-item:hover .stat-value {
-  color: var(--cyan-400);
-}
-
-.stat-value {
-  font-size: 1.5rem;
-  font-weight: 500;
-  color: hsl(var(--foreground));
-  margin-bottom: 0.25rem;
-  transition: color 0.2s;
-}
-
-@media (min-width: 768px) {
-  .stat-value {
-    font-size: 1.875rem;
-  }
-}
-
-.stat-label {
-  font-size: 0.75rem;
-  color: hsl(var(--muted-foreground));
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
 }
 
 /* ====================================
@@ -3710,6 +3801,11 @@ html:not(.dark) .start-mining-preview img.start-mining-img-light {
   display: grid;
   grid-template-columns: repeat(3, auto);
   justify-content: center;
+}
+
+/* Center an orphan logo on the last row (when item count is 3n + 1). */
+.supporters-grid.working-group .supporter-logo:last-child:nth-child(3n + 1) {
+  grid-column: 2;
 }
 
 /* Respect reduced-motion and avoid CPU/GPU-heavy transitions/animations. */

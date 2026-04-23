@@ -26,20 +26,6 @@ hero.cta = Начать майнинг
 hero.aria = Главный экран
 
 # ===================
-# Статистика
-# ===================
-stat.bandwidth.value = 70%
-stat.bandwidth.label = Снижение трафика
-stat.latency.value = 228x
-stat.latency.label = Снижение задержки
-stat.profit.value = 7.4%
-stat.profit.label = Рост прибыли
-stat.stale.value = ~0%
-stat.stale.label = Устаревшие шары
-stat.encrypted.value = 100%
-stat.encrypted.label = Шифрование
-
-# ===================
 # Раздел возможностей
 # ===================
 features.title = Почему Stratum V2?

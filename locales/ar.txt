@@ -26,20 +26,6 @@ hero.cta = ابدأ التعدين
 hero.aria = قسم المقدمة
 
 # ===================
-# Stats
-# ===================
-stat.bandwidth.value = 70%
-stat.bandwidth.label = خفض استهلاك النطاق الترددي
-stat.latency.value = 228x
-stat.latency.label = خفض زمن الاستجابة
-stat.profit.value = 7.4%
-stat.profit.label = زيادة الأرباح
-stat.stale.value = ~0%
-stat.stale.label = الحصص المتأخرة
-stat.encrypted.value = 100%
-stat.encrypted.label = مشفّر
-
-# ===================
 # Features Section
 # ===================
 features.title = لماذا Stratum V2؟
