@@ -459,6 +459,7 @@ function initSupporterTabs() {
   const supporters = [
     { name: "Auradine", logo: "/assets/logos/auradine.png", width: 256, height: 92, website: "https://auradine.com/", categories: ["workingGroup"] },
     { name: "Bitmex", logo: "/assets/logos/bitmex-logo.svg", width: 231, height: 98, website: "https://www.bitmex.com/", categories: ["pastFunder"] },
+    { name: "Block", logoVariants: { dark: "/assets/logos/block-logo-dark.svg", light: "/assets/logos/block-logo-light.svg" }, width: 240, height: 52, website: "https://block.xyz/", categories: ["workingGroup"] },
     { name: "Braiins", logo: "/assets/logos/braiins-logo.svg", width: 240, height: 87, website: "https://braiins.com/", categories: ["workingGroup"] },
     { name: "Btrust", logo: "/assets/logos/btrust.svg", width: 753, height: 319, website: "https://www.btrust.tech/", categories: ["funder"] },
     { name: "DMND", logo: "/assets/logos/demand-logo.svg", width: 612, height: 258, website: "https://www.dmnd.work/", categories: ["workingGroup"] },

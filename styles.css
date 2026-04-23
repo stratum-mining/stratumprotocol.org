@@ -3881,6 +3881,14 @@ html:not(.dark) .start-mining-preview img.start-mining-img-light {
 .dark .supporter-logo .f2pool-for-light             { display: none; }
 .dark .supporter-logo .f2pool-for-dark              { filter: none; }
 
+/* Block: manual dark/light swap, bypass global invert filter */
+.block-for-dark  { display: block; }
+.block-for-light { display: none;  }
+:root:not(.dark) .supporter-logo .block-for-dark  { display: none;  filter: none; }
+:root:not(.dark) .supporter-logo .block-for-light { display: block; filter: none; }
+.dark .supporter-logo .block-for-light             { display: none; }
+.dark .supporter-logo .block-for-dark              { filter: none; }
+
 /* Spiderpool: manual dark/light swap, bypass global invert filter */
 .spiderpool-for-dark  { display: block; }
 .spiderpool-for-light { display: none;  }

@@ -205,9 +205,9 @@ adoption.category.testing = 软件与研究
 # 应用者
 adopter.auradine.desc = 通过 FluxOS 在所有 ASIC 上原生支持 SV2
 adopter.braiinsos.desc = 原生 Stratum V2 固件支持
-adopter.proto.desc = 已宣布推进 SV2 兼容性工作
+adopter.proto.desc = 正在推进 SV2 支持工作
 adopter.mujina.desc = 正在推进 SV2 支持工作
-adopter.nerdaxe.desc = 正在推进 SV2 支持工作
+adopter.nerdaxe.desc = 工作进行中，发布候选版本已可供测试
 adopter.bitaxe.desc = 工作进行中，发布候选版本已可供测试
 adopter.braiinspool.desc = 生产环境矿池
 adopter.blitzpool.desc = 生产环境单人矿池
