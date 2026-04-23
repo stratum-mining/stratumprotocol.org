@@ -3756,10 +3756,12 @@ html:not(.dark) .start-mining-preview img.start-mining-img-light {
 }
 
 .supporter-logo img {
+  width: 100%;
+  height: 100%;
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-  transition: all 0.3s;
+  transition: filter 0.3s, opacity 0.3s;
 }
 
 /* Invert logos for light mode */
@@ -3768,7 +3770,9 @@ html:not(.dark) .start-mining-preview img.start-mining-img-light {
 }
 
 /* Colored logos — skip the invert */
-:root:not(.dark) .supporter-logo img[src*="foundry"] {
+:root:not(.dark) .supporter-logo img[src*="foundry"],
+:root:not(.dark) .supporter-logo img[src*="spiral"],
+:root:not(.dark) .supporter-logo img[src*="spiderpool"] {
   filter: none;
 }
 
@@ -3779,6 +3783,14 @@ html:not(.dark) .start-mining-preview img.start-mining-img-light {
 :root:not(.dark) .supporter-logo .f2pool-for-light { display: block; filter: none; }
 .dark .supporter-logo .f2pool-for-light             { display: none; }
 .dark .supporter-logo .f2pool-for-dark              { filter: none; }
+
+/* Spiderpool: manual dark/light swap, bypass global invert filter */
+.spiderpool-for-dark  { display: block; }
+.spiderpool-for-light { display: none;  }
+:root:not(.dark) .supporter-logo .spiderpool-for-dark  { display: none;  filter: none; }
+:root:not(.dark) .supporter-logo .spiderpool-for-light { display: block; filter: none; }
+.dark .supporter-logo .spiderpool-for-light            { display: none; }
+.dark .supporter-logo .spiderpool-for-dark             { filter: none; }
 
 .dark .supporter-logo img {
   filter: none;
