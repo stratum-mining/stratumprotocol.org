@@ -27,20 +27,6 @@ hero.cta = Start Mining
 hero.aria = Hero section
 
 # ===================
-# Stats
-# ===================
-stat.bandwidth.value = 70%
-stat.bandwidth.label = Bandwidth reduction
-stat.latency.value = 228x
-stat.latency.label = Latency reduction
-stat.profit.value = 7.4%
-stat.profit.label = Profit Increase
-stat.stale.value = ~0%
-stat.stale.label = Stale shares
-stat.encrypted.value = 100%
-stat.encrypted.label = Encrypted
-
-# ===================
 # Features Section
 # ===================
 features.title = Why Stratum V2?

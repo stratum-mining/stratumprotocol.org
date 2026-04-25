@@ -26,20 +26,6 @@ hero.cta = 开始挖矿
 hero.aria = 首屏区域
 
 # ===================
-# 统计数据
-# ===================
-stat.bandwidth.value = 70%
-stat.bandwidth.label = 带宽减少
-stat.latency.value = 228x
-stat.latency.label = 延迟降低
-stat.profit.value = 7.4%
-stat.profit.label = 利润增加
-stat.stale.value = ~0%
-stat.stale.label = 陈旧份额
-stat.encrypted.value = 100%
-stat.encrypted.label = 加密传输
-
-# ===================
 # 功能特性区域
 # ===================
 features.title = 为什么选择 Stratum V2？
