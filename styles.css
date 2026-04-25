@@ -2832,6 +2832,7 @@ html:not(.dark) .start-mining-preview img.start-mining-img-light {
   background: transparent;
   padding: 0;
   box-shadow: none;
+  scroll-margin-top: calc(var(--header-offset) + 1.5rem);
 }
 
 .start-mining-command-wrap {
