@@ -233,6 +233,7 @@ supporters.currentFunders = Текущие спонсоры
 supporters.pastFunders = Бывшие спонсоры
 supporters.visitWebsite = Перейти на сайт {name}
 supporters.logo.auradine = Перейти на сайт Auradine
+supporters.logo.block = Перейти на сайт Block
 supporters.logo.braiins = Перейти на сайт Braiins
 supporters.logo.dmnd = Перейти на сайт DMND
 supporters.logo.foundry = Перейти на сайт Foundry

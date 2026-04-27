@@ -233,6 +233,7 @@ supporters.currentFunders = الممولون الحاليون
 supporters.pastFunders = الممولون السابقون
 supporters.visitWebsite = اذهب إلى موقع {name}
 supporters.logo.auradine = اذهب إلى موقع Auradine
+supporters.logo.block = اذهب إلى موقع Block
 supporters.logo.braiins = اذهب إلى موقع Braiins
 supporters.logo.dmnd = اذهب إلى موقع DMND
 supporters.logo.foundry = اذهب إلى موقع Foundry

@@ -234,6 +234,7 @@ supporters.currentFunders = Current Funders
 supporters.pastFunders = Past Funders
 supporters.visitWebsite = Visit {name} website
 supporters.logo.auradine = Visit Auradine website
+supporters.logo.block = Visit Block website
 supporters.logo.braiins = Visit Braiins website
 supporters.logo.dmnd = Visit DMND website
 supporters.logo.foundry = Visit Foundry website
