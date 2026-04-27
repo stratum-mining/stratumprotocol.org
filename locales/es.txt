@@ -205,9 +205,9 @@ adoption.category.testing = Software e investigación
 # Adopters
 adopter.auradine.desc = Soporte nativo de SV2 en todos los ASIC mediante FluxOS
 adopter.braiinsos.desc = Soporte nativo de firmware Stratum V2
-adopter.proto.desc = Trabajo anunciado para compatibilidad con SV2
+adopter.proto.desc = Trabajo en curso hacia el soporte de SV2
 adopter.mujina.desc = Trabajo en curso hacia el soporte de SV2
-adopter.nerdaxe.desc = Trabajo en curso hacia el soporte de SV2
+adopter.nerdaxe.desc = Trabajo en curso, candidato de lanzamiento disponible para pruebas
 adopter.bitaxe.desc = Trabajo en curso, candidato de lanzamiento disponible para pruebas
 adopter.braiinspool.desc = Pool en producción
 adopter.blitzpool.desc = Pool solo en producción

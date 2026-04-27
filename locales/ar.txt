@@ -205,9 +205,9 @@ adoption.category.testing = البرمجيات والبحث
 # Adopters
 adopter.auradine.desc = دعم SV2 الأصلي عبر جميع أجهزة ASIC من خلال FluxOS
 adopter.braiinsos.desc = دعم أصلي لبرنامج Stratum V2 الثابت
-adopter.proto.desc = تم الإعلان عن العمل نحو التوافق مع SV2
+adopter.proto.desc = العمل جارٍ نحو دعم SV2
 adopter.mujina.desc = العمل جارٍ نحو دعم SV2
-adopter.nerdaxe.desc = العمل جارٍ نحو دعم SV2
+adopter.nerdaxe.desc = العمل جارٍ، مرشح الإصدار متاح للاختبار
 adopter.bitaxe.desc = العمل جارٍ، مرشح الإصدار متاح للاختبار
 adopter.braiinspool.desc = مجمّع يعمل في الإنتاج
 adopter.blitzpool.desc = مجمّع منفرد يعمل في الإنتاج
