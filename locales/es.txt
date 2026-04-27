@@ -233,6 +233,7 @@ supporters.currentFunders = Financiadores actuales
 supporters.pastFunders = Financiadores anteriores
 supporters.visitWebsite = Visitar el sitio web de {name}
 supporters.logo.auradine = Visitar el sitio web de Auradine
+supporters.logo.block = Visitar el sitio web de Block
 supporters.logo.braiins = Visitar el sitio web de Braiins
 supporters.logo.dmnd = Visitar el sitio web de DMND
 supporters.logo.foundry = Visitar el sitio web de Foundry

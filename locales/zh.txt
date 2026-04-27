@@ -233,6 +233,7 @@ supporters.currentFunders = 当前资助者
 supporters.pastFunders = 过往资助者
 supporters.visitWebsite = 访问 {name} 官网
 supporters.logo.auradine = 访问 Auradine 官网
+supporters.logo.block = 访问 Block 官网
 supporters.logo.braiins = 访问 Braiins 官网
 supporters.logo.dmnd = 访问 DMND 官网
 supporters.logo.foundry = 访问 Foundry 官网
