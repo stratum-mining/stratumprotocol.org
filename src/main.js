@@ -5,7 +5,7 @@
 // ====================================
 // DEV I18N
 // ====================================
-const I18N_SUPPORTED_LOCALES = new Set(['en', 'es', 'zh', 'ru', 'ar']);
+const I18N_SUPPORTED_LOCALES = new Set(['en', 'es', 'it', 'zh', 'ru', 'ar']);
 const I18N_RTL_LOCALES = new Set(['ar']);
 const I18N_LOCALE_ALIASES = {
   cn: 'zh'

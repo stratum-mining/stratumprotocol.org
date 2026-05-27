@@ -47,7 +47,7 @@ export default defineConfig({
   plugins: [
     // i18n plugin - generates localized versions of index.html
     i18nPlugin({
-      locales: ['en', 'es', 'zh', 'ru', 'ar'],
+      locales: ['en', 'es', 'it', 'zh', 'ru', 'ar'],
       rtlLocales: ['ar'],
       defaultLocale: 'en',
       localesDir: 'locales',
