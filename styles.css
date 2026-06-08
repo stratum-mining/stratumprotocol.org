@@ -4175,7 +4175,9 @@ a.adopter-item {
   filter: none;
 }
 
-/* Pluto & SV2 icon: cancel global invert in both modes */
+/* Pluto, MKPool, Public Pool & SV2 icon: cancel global invert in both modes */
+.adopter-logo .mkpool-logo,
+.adopter-logo .public-pool-logo,
 .adopter-logo .pluto-logo,
 .adopter-logo .sv2-icon {
   filter: none !important;
