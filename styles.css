@@ -2698,7 +2698,7 @@ body.mobile-menu-open .navbar-container {
    START MINING SECTION
    ==================================== */
 .start-mining {
-  --start-mining-content-width: min(100%, 72rem);
+  --start-mining-content-width: min(100%, 64rem);
   padding: 4.5rem 1.5rem 4.75rem;
   background: hsl(var(--background));
   border-top: 1px solid hsl(var(--border));
@@ -2826,13 +2826,21 @@ html:not(.dark) .start-mining-preview img.start-mining-img-light {
 
 .start-mining-flow {
   width: var(--start-mining-content-width);
-  margin: 0 auto;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  padding: 0;
-  box-shadow: none;
+  margin: 2.25rem auto 0;
+  border: 1px solid hsl(var(--border));
+  border-radius: 1.25rem;
+  background: hsl(var(--card));
+  padding: 1.25rem;
+  box-shadow: 0 18px 60px hsl(var(--foreground) / 0.035);
   scroll-margin-top: calc(var(--header-offset) + 1.5rem);
+}
+
+@media (max-width: 768px) {
+  .start-mining-flow {
+    margin-top: 1.75rem;
+    padding: 0.75rem;
+    border-radius: 1rem;
+  }
 }
 
 .start-mining-command-wrap {
@@ -2915,39 +2923,54 @@ html:not(.dark) .start-mining-preview img.start-mining-img-light {
 .os-selector {
   display: flex;
   justify-content: center;
-  gap: 0.75rem;
-  margin-bottom: 2rem;
+  gap: 0.25rem;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto 1.75rem;
+  padding: 0.25rem;
+  border: 1px solid hsl(var(--border));
+  border-radius: 0.875rem;
+  background: hsl(var(--background));
 }
 
 .os-tab {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  gap: 0.5rem;
-  padding: 1rem 2rem;
-  border-radius: 0.875rem;
-  border: 1.5px solid hsl(var(--border));
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.55rem 0.85rem;
+  border-radius: 0.625rem;
+  border: 1px solid transparent;
   background: transparent;
   color: hsl(var(--muted-foreground));
-  font-size: 0.875rem;
-  font-weight: 500;
+  font-size: 0.85rem;
+  font-weight: 600;
   cursor: pointer;
   transition: border-color 0.18s, background 0.18s, color 0.18s;
-  min-width: 7rem;
+  min-width: 0;
+  min-height: 2.5rem;
 }
 
 .os-tab svg {
   transition: color 0.18s;
+  width: 1rem;
+  height: 1rem;
+}
+
+.os-tab .umbrel-os-logo {
+  width: 1rem;
+  height: 1rem;
 }
 
 .os-tab:hover {
-  border-color: color-mix(in oklab, var(--cyan-400) 55%, hsl(var(--border)));
+  background: hsl(var(--muted) / 0.32);
   color: hsl(var(--foreground));
 }
 
 .os-tab.active {
-  border-color: var(--cyan-400);
-  background: rgba(34, 211, 238, 0.07);
+  border-color: color-mix(in oklab, var(--cyan-400) 55%, transparent);
+  background: rgba(34, 211, 238, 0.1);
   color: var(--cyan-400);
 }
 
@@ -2960,12 +2983,128 @@ html:not(.dark) .start-mining-preview img.start-mining-img-light {
   display: flex;
   flex-direction: column;
   gap: 0;
-  width: min(100%, 48rem);
+  width: 100%;
   margin: 0 auto;
-  border: 1px solid hsl(var(--border));
-  border-radius: 0.875rem;
-  background: hsl(var(--card));
-  overflow: hidden;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  overflow: visible;
+}
+
+.docker-steps {
+  display: none;
+}
+
+.start-mining-flow:not(.umbrel-active) .docker-steps {
+  display: flex;
+}
+
+.umbrel-steps {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.start-mining-flow:not(.umbrel-active) .umbrel-steps {
+  display: none;
+}
+
+.umbrel-install-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 1.5rem;
+  min-height: 10rem;
+  padding: 1.25rem 0.5rem 1.5rem;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.umbrel-install-copy {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  min-width: 0;
+}
+
+.umbrel-install-logo {
+  width: 4rem;
+  height: 4rem;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid color-mix(in oklab, #5351fb 32%, hsl(var(--border)));
+  border-radius: 1rem;
+  background: color-mix(in oklab, #5351fb 13%, transparent);
+}
+
+.umbrel-install-logo img {
+  width: 2.1rem;
+  height: 2.1rem;
+  filter: none;
+}
+
+.umbrel-install-copy h3 {
+  margin: 0 0 0.375rem;
+  font-size: 1.25rem;
+  font-weight: 650;
+  line-height: 1.25;
+  color: hsl(var(--foreground));
+}
+
+.umbrel-install-copy p {
+  margin: 0;
+  max-width: 36rem;
+  font-size: 1.02rem;
+  line-height: 1.5;
+  color: hsl(var(--muted-foreground));
+}
+
+.umbrel-primary-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-width: 15rem;
+  min-height: 3.25rem;
+  padding: 0.95rem 1.4rem;
+  border: none;
+  border-radius: 9999px;
+  background: hsl(var(--foreground));
+  color: hsl(var(--background));
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1;
+  font-family: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  box-shadow: 0 14px 34px hsl(var(--primary) / 0.16);
+  transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+}
+
+.umbrel-primary-cta:hover {
+  background: hsl(var(--foreground) / 0.8);
+  box-shadow: 0 18px 42px hsl(var(--primary) / 0.22);
+  transform: translateY(-1px);
+}
+
+.umbrel-primary-cta:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--cyan-400), 0 0 0 4px hsl(var(--background));
+}
+
+@media (max-width: 640px) {
+  .umbrel-install-card {
+    grid-template-columns: 1fr;
+    align-items: stretch;
+    padding: 1.25rem;
+  }
+
+  .umbrel-primary-cta {
+    width: 100%;
+  }
 }
 
 .mining-step {
@@ -3203,14 +3342,13 @@ html:not(.dark) .start-mining-preview img.start-mining-img-light {
 /* Responsive */
 @media (max-width: 480px) {
   .os-selector {
-    flex-direction: row;
-    gap: 0.5rem;
+    width: 100%;
+    flex-wrap: wrap;
   }
 
   .os-tab {
-    flex: 1;
-    padding: 0.85rem 0.5rem;
-    min-width: 0;
+    flex: 1 1 calc(50% - 0.25rem);
+    padding: 0.6rem 0.5rem;
   }
 }
 
@@ -4179,6 +4317,7 @@ a.adopter-item {
 .adopter-logo .mkpool-logo,
 .adopter-logo .public-pool-logo,
 .adopter-logo .pluto-logo,
+.adopter-logo .umbrel-logo,
 .adopter-logo .sv2-icon {
   filter: none !important;
 }

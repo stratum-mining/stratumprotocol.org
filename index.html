@@ -982,11 +982,17 @@
           />
         </figure>
 
-        <div class="start-mining-flow" id="start-mining-steps">
+        <div class="start-mining-flow umbrel-active" id="start-mining-steps">
 
           <!-- OS Selector -->
           <div class="os-selector" role="group" aria-label="Select operating system" data-i18n-aria-label="startMining.os.select">
-            <button type="button" class="os-tab active" data-os="linux" aria-pressed="true">
+            <button type="button" class="os-tab active" data-os="umbrel" aria-pressed="true">
+              <svg class="umbrel-os-logo" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M11.853 8.302c2.628-.05 4.698.656 6.303 2.05 1.166 1.01 2.14 2.43 2.895 4.305a7.6 7.6 0 0 0-1.818-.21c-1.345 0-2.552.31-3.558.987-1.127-.687-2.339-1.049-3.623-1.049-1.313 0-2.573.378-3.77 1.087-1.154-.726-2.456-1.087-3.875-1.087q-.77 0-1.466.147c.678-1.724 1.575-3.054 2.664-4.028 1.557-1.393 3.607-2.15 6.248-2.202M1.842 17.616q.06-.055.112-.119c.48-.557 1.233-.91 2.453-.91 1.151 0 2.139.32 3.002.952l.035.025c.469.35 1.108.364 1.592.036 1.032-.698 2.032-1.014 3.017-1.014.967 0 1.906.304 2.836.965l.02.014a1.376 1.376 0 0 0 1.699-.078c.614-.53 1.455-.84 2.625-.84 1.232 0 2.186.344 2.94.98a1.1 1.1 0 0 0 .435.235 1.1 1.1 0 0 0 .806-.087 1.1 1.1 0 0 0 .547-1.267c-.873-3.383-2.3-6.03-4.363-7.82-2.084-1.808-4.712-2.646-7.787-2.588-3.063.06-5.653.955-7.673 2.762-2.003 1.793-3.344 4.39-4.104 7.67a1.1 1.1 0 0 0 1.807 1.083z"></path>
+              </svg>
+              <span data-i18n="startMining.os.umbrel">umbrelOS</span>
+            </button>
+            <button type="button" class="os-tab" data-os="linux" aria-pressed="false">
               <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <polyline points="4 17 10 11 4 5"></polyline>
                 <line x1="12" y1="19" x2="20" y2="19"></line>
@@ -1007,8 +1013,38 @@
             </button>
           </div>
 
-          <!-- Steps -->
-          <div class="mining-steps">
+          <!-- Umbrel Install -->
+          <div class="umbrel-steps">
+            <div class="umbrel-install-card">
+              <div class="umbrel-install-copy">
+                <span class="umbrel-install-logo" aria-hidden="true">
+                  <img src="/assets/logos/umbrel-logo.svg" alt="" width="24" height="24" loading="lazy" decoding="async" />
+                </span>
+                <div>
+                  <h3 data-i18n="startMining.umbrel.step1.title">Install SV2 UI App</h3>
+                  <p data-i18n="startMining.umbrel.step1.note">If you own an Umbrel node or run umbrelOS, install the SV2 UI App from the Umbrel App Store.</p>
+                </div>
+              </div>
+              <a
+                href="https://apps.umbrel.com/app/sv2-ui"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="umbrel-primary-cta"
+                aria-label="Open the SV2 UI app in the Umbrel App Store"
+                data-i18n-aria-label="startMining.umbrel.step1.openAria"
+              >
+                <span data-i18n="startMining.umbrel.step1.open">Install from App Store</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Docker Steps -->
+          <div class="mining-steps docker-steps">
 
             <!-- Step 1: Install Docker Desktop -->
             <div class="mining-step mining-step--inline">
@@ -1469,6 +1505,7 @@
               </div>
               <h3 data-i18n="adoption.category.testing">Software & Research</h3>
             </div>
+            <div class="adopters-list">
               <a class="adopter-item" href="https://www.hashlabs.io/" target="_blank" rel="noopener">
                 <div class="adopter-logo">
                   <img src="/assets/logos/hashlabs-logo.svg" alt="Hashlabs" width="240" height="87" loading="lazy" decoding="async" />
@@ -1494,6 +1531,15 @@
                 <div class="adopter-info">
                   <span class="adopter-name">StarkWare</span>
                   <span class="adopter-desc" data-i18n="adopter.starkware.desc">Developed a zero-knowledge-proof prototype built on Stratum V2</span>
+                </div>
+              </a>
+              <a class="adopter-item" href="https://apps.umbrel.com/app/sv2-ui" target="_blank" rel="noopener">
+                <div class="adopter-logo">
+                  <img src="/assets/logos/umbrel-logo.svg" alt="Umbrel" width="96" height="96" loading="lazy" decoding="async" class="umbrel-logo" />
+                </div>
+                <div class="adopter-info">
+                  <span class="adopter-name">Umbrel</span>
+                  <span class="adopter-desc" data-i18n="adopter.umbrel.desc">Stratum V2 UI app supported</span>
                 </div>
               </a>
             </div>

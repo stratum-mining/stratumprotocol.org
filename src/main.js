@@ -1032,8 +1032,16 @@ function initStartMiningOSSwitcher() {
   const commandCode = flow.querySelector('.start-mining-command');
   const copyBtn = flow.querySelector('.start-mining-copy');
 
+  function updateFlowState(activeOs) {
+    flow.classList.toggle('umbrel-active', activeOs === 'umbrel');
+    flow.classList.toggle('macos-active', activeOs === 'macos');
+    flow.classList.toggle('windows-active', activeOs === 'windows');
+  }
+
   function updateCommand() {
     const activeOs = flow.querySelector('.os-tab.active')?.dataset.os;
+    if (activeOs === 'umbrel' || !commandCode || !copyBtn) return;
+
     const activeRuntime = flow.querySelector('.runtime-tab.active')?.dataset.runtime ?? 'docker';
     const activeShell = flow.querySelector('.shell-tab.active')?.dataset.shell ?? 'cmd';
     const dataKey = activeOs === 'linux' ? 'linux'
@@ -1052,8 +1060,7 @@ function initStartMiningOSSwitcher() {
       osTabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-pressed', 'false'); });
       tab.classList.add('active');
       tab.setAttribute('aria-pressed', 'true');
-      flow.classList.toggle('macos-active', tab.dataset.os === 'macos');
-      flow.classList.toggle('windows-active', tab.dataset.os === 'windows');
+      updateFlowState(tab.dataset.os);
       updateCommand();
     });
   });
@@ -1075,6 +1082,9 @@ function initStartMiningOSSwitcher() {
       updateCommand();
     });
   });
+
+  updateFlowState(flow.querySelector('.os-tab.active')?.dataset.os);
+  updateCommand();
 }
 
 function runAfterLoad(callback) {

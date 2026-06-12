@@ -145,9 +145,14 @@ startMining.subtitle.line4 = Funziona con il firmware SV1 esistente. Nessun aggi
 startMining.preview.aria = Anteprima dell'interfaccia utente (UI) di SV2
 startMining.preview.alt = Dashboard di SV2 che mostra l'endpoint stratum, le metriche dell'hashrate, il grafico e la tabella dei worker
 startMining.os.select = Seleziona il sistema operativo
+startMining.os.umbrel = umbrelOS
 startMining.os.linux = Linux
 startMining.os.macos = macOS
 startMining.os.windows = Windows
+startMining.umbrel.step1.title = Installa l'app SV2 UI
+startMining.umbrel.step1.open = Installa da App Store
+startMining.umbrel.step1.openAria = Apri l'app SV2 UI nell'App Store di Umbrel
+startMining.umbrel.step1.note = Se possiedi un nodo Umbrel o esegui umbrelOS, installa l'app SV2 UI dall'App Store di Umbrel.
 startMining.step1.title = Scarica e installa Docker
 startMining.step1.download = Scarica
 startMining.step1.downloadAria = Scarica Docker Desktop (si apre in una nuova scheda)
@@ -219,6 +224,7 @@ adopter.publicpool.desc = Solo pool in produzione
 adopter.hashlabs.desc = Sito del confronto diretto tra V1 e V2
 adopter.starkware.desc = Sviluppato un prototipo zero-knowledge-proof basato su Stratum V2
 adopter.pluto.desc = Lavoro sullo sviluppo di un software di gestione del mining che implementa la compatibilità con SV2
+adopter.umbrel.desc = App Stratum V2 UI supportata
 
 # Adoption CTA
 adoption.cta.text = Utilizzi SV2?

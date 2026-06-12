@@ -144,9 +144,14 @@ startMining.subtitle.line4 = Работает с существующей про
 startMining.preview.aria = Предпросмотр интерфейса SV2
 startMining.preview.alt = Панель SV2 с адресом Stratum, метриками хешрейта, графиком и таблицей воркеров
 startMining.os.select = Выберите операционную систему
+startMining.os.umbrel = umbrelOS
 startMining.os.linux = Linux
 startMining.os.macos = macOS
 startMining.os.windows = Windows
+startMining.umbrel.step1.title = Установите приложение SV2 UI
+startMining.umbrel.step1.open = Установить из магазина
+startMining.umbrel.step1.openAria = Открыть приложение SV2 UI в магазине приложений Umbrel
+startMining.umbrel.step1.note = Если у вас есть узел Umbrel или вы используете umbrelOS, установите приложение SV2 UI из магазина приложений Umbrel.
 startMining.step1.title = Скачайте и установите Docker
 startMining.step1.download = Скачать
 startMining.step1.downloadAria = Скачать Docker Desktop (откроется в новой вкладке)
@@ -218,6 +223,7 @@ adopter.publicpool.desc = Соло-пул в продакшене
 adopter.hashlabs.desc = Площадка для прямого сравнения V1 и V2
 adopter.starkware.desc = Разработан прототип на базе Stratum V2 с доказательствами с нулевым разглашением
 adopter.pluto.desc = ПО для управления майнингом с поддержкой SV2 (в разработке)
+adopter.umbrel.desc = Поддерживается приложение Stratum V2 UI
 
 # CTA внедрения
 adoption.cta.text = Используете SV2?
