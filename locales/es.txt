@@ -220,6 +220,7 @@ adopter.sripool.desc = Minería en solitario y en grupo con plantillas personali
 adopter.dmnd.desc = Pool en producción con plantillas seleccionadas por mineros
 adopter.mkpool.desc = Pool solo en producción
 adopter.publicpool.desc = Pool solo en producción
+adopter.pyblock.desc = Pool solo en producción
 adopter.hashlabs.desc = Sitio de la prueba cara a cara entre V1 y V2
 adopter.starkware.desc = Desarrolló un prototipo de prueba de conocimiento cero basado en Stratum V2
 adopter.pluto.desc = Trabajando en software de gestión minera con compatibilidad SV2
