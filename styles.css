@@ -4316,6 +4316,7 @@ a.adopter-item {
 /* Pluto, MKPool, Public Pool & SV2 icon: cancel global invert in both modes */
 .adopter-logo .mkpool-logo,
 .adopter-logo .public-pool-logo,
+.adopter-logo .pyblock-pool-logo,
 .adopter-logo .pluto-logo,
 .adopter-logo .umbrel-logo,
 .adopter-logo .sv2-icon {
