@@ -2224,7 +2224,7 @@ body.mobile-menu-open .navbar-container {
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
   align-items: center;
-  max-width: 620px;
+  max-width: 500px;
 }
 
 /* Interoperability logos display in full color */
@@ -3980,19 +3980,11 @@ html:not(.dark) .start-mining-preview img.start-mining-img-light {
   }
 }
 
-.supporter-logo-wide {
-  width: 10.5rem;
-}
-
 .supporter-logo-medium {
   width: 9rem;
 }
 
 @media (min-width: 768px) {
-  .supporter-logo-wide {
-    width: 12rem;
-  }
-
   .supporter-logo-medium {
     width: 9.5rem;
   }
