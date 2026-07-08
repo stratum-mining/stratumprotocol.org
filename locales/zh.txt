@@ -248,6 +248,7 @@ supporters.logo.braiins = 访问 Braiins 官网
 supporters.logo.dmnd = 访问 DMND 官网
 supporters.logo.foundry = 访问 Foundry 官网
 supporters.logo.mara = 访问 MARA Foundation 官网
+supporters.logo.mempool = 访问 mempool.space 官网
 supporters.logo.spiderpool = 访问 Spiderpool 官网
 supporters.logo.spiral = 访问 Spiral 官网
 

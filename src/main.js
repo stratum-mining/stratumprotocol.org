@@ -470,9 +470,10 @@ function initSupporterTabs() {
     { name: "HRF", logo: "/assets/logos/hrf-logo.svg", width: 269, height: 75, website: "https://hrf.org/", categories: ["funder"] },
     { name: "Hut8", logo: "/assets/logos/hut-logo.svg", width: 208, height: 94, website: "https://www.hut8.com/", categories: ["pastFunder"] },
     { name: "MARA Foundation", logoVariants: { dark: "/assets/logos/mara-foundation-logo-dark.svg", light: "/assets/logos/mara-foundation-logo-light.svg" }, width: 240, height: 71, website: "https://foundation.mara.com/", categories: ["workingGroup"] },
+    { name: "mempool.space", logoVariants: { dark: "/assets/logos/mempool-logo-light.png", light: "/assets/logos/mempool-logo-dark.png" }, width: 240, height: 41, website: "https://mempool.space/", categories: ["workingGroup"], logoClass: "supporter-logo-wide" },
     { name: "OpenSats", logo: "/assets/logos/opensats-logo.svg", width: 269, height: 39, website: "https://opensats.org/", categories: ["funder"] },
     { name: "Spiderpool", logoVariants: { dark: "/assets/logos/spiderpool-logo-dark.svg", light: "/assets/logos/spiderpool-logo-light.svg" }, width: 540, height: 135, website: "https://www.spiderpool.com/", categories: ["workingGroup"] },
-    { name: "Spiral", logo: "/assets/logos/spiral-logo.svg", width: 122, height: 120, website: "https://spiral.xyz/", categories: ["funder", "workingGroup"], logoText: "Spiral" },
+    { name: "Spiral", logoVariants: { dark: "/assets/logos/spiral-lockup-white-gradient.svg", light: "/assets/logos/spiral-lockup-black-gradient.svg" }, width: 206, height: 55, website: "https://spiral.xyz/", categories: ["funder", "workingGroup"], logoClass: "supporter-logo-medium" },
     { name: "Summer of Bitcoin", logo: "/assets/logos/summer-of-bitcoin.svg", width: 231, height: 74, website: "https://www.summerofbitcoin.org/", categories: ["pastFunder"] },
     { name: "Vinteum", logo: "/assets/logos/vinteum-logo.png", width: 629, height: 171, website: "https://vinteum.org/", categories: ["funder"] },
   ].sort((a, b) => a.name.localeCompare(b.name));
@@ -503,6 +504,9 @@ function initSupporterTabs() {
     link.className = 'supporter-logo';
     if (supporter.logoText) {
       link.classList.add('supporter-logo-lockup');
+    }
+    if (supporter.logoClass) {
+      link.classList.add(supporter.logoClass);
     }
     const visitWebsiteTemplate = section.getAttribute('data-visit-website-template') || 'Visit {name} website';
     link.setAttribute('aria-label', formatTemplate(visitWebsiteTemplate, { name: supporter.name }));

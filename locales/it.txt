@@ -249,6 +249,7 @@ supporters.logo.braiins = Visita il sito web di Braiins
 supporters.logo.dmnd = Visita il sito web di DMND
 supporters.logo.foundry = Visita il sito web di Foundry
 supporters.logo.mara = Visita il sito web di MARA Foundation
+supporters.logo.mempool = Visita il sito web di mempool.space
 supporters.logo.spiderpool = Visita il sito web di Spiderpool
 supporters.logo.spiral = Visita il sito web di Spiral
 

@@ -248,6 +248,7 @@ supporters.logo.braiins = اذهب إلى موقع Braiins
 supporters.logo.dmnd = اذهب إلى موقع DMND
 supporters.logo.foundry = اذهب إلى موقع Foundry
 supporters.logo.mara = اذهب إلى موقع MARA Foundation
+supporters.logo.mempool = اذهب إلى موقع mempool.space
 supporters.logo.spiderpool = اذهب إلى موقع Spiderpool
 supporters.logo.spiral = اذهب إلى موقع Spiral
 
