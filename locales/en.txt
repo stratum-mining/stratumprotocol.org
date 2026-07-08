@@ -249,6 +249,7 @@ supporters.logo.braiins = Visit Braiins website
 supporters.logo.dmnd = Visit DMND website
 supporters.logo.foundry = Visit Foundry website
 supporters.logo.mara = Visit MARA Foundation website
+supporters.logo.mempool = Visit mempool.space website
 supporters.logo.spiderpool = Visit Spiderpool website
 supporters.logo.spiral = Visit Spiral website
 
