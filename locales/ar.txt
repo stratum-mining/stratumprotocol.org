@@ -216,6 +216,7 @@ adopter.nerdaxe.desc = دعم أصلي لبرنامج Stratum V2 الثابت
 adopter.bitaxe.desc = دعم أصلي لبرنامج Stratum V2 الثابت
 adopter.braiinspool.desc = مجمّع يعمل في الإنتاج
 adopter.blitzpool.desc = مجمّع منفرد يعمل في الإنتاج
+adopter.ckpool.desc = مجمّع منفرد يعمل في الإنتاج
 adopter.sripool.desc = تعدين منفرد وجماعي مع قوالب مخصصة، للاختبار فقط
 adopter.dmnd.desc = مجمّع يعمل في الإنتاج مع تمكين قوالب يختارها المعدّنون
 adopter.mkpool.desc = مجمّع منفرد يعمل في الإنتاج

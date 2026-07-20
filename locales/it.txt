@@ -217,6 +217,7 @@ adopter.nerdaxe.desc = Supporto firmware nativo Stratum V2
 adopter.bitaxe.desc = Supporto firmware nativo Stratum V2
 adopter.braiinspool.desc = Pool in produzione
 adopter.blitzpool.desc = Solo pool in produzione
+adopter.ckpool.desc = Solo pool in produzione
 adopter.sripool.desc = Mining in solo e in pool con template personalizzati, solo per test
 adopter.dmnd.desc = Pool in produzione, abilita i template selezionati dai miner
 adopter.mkpool.desc = Solo pool in produzione

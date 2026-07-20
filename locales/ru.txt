@@ -216,6 +216,7 @@ adopter.nerdaxe.desc = Нативная поддержка Stratum V2 в про�
 adopter.bitaxe.desc = Нативная поддержка Stratum V2 в прошивке
 adopter.braiinspool.desc = Пул в продакшене
 adopter.blitzpool.desc = Соло-пул в продакшене
+adopter.ckpool.desc = Соло-пул в продакшене
 adopter.sripool.desc = Сольный и пуловый майнинг с пользовательскими шаблонами, только для тестирования
 adopter.dmnd.desc = Пул в продакшене с поддержкой шаблонов, выбираемых майнерами
 adopter.mkpool.desc = Соло-пул в продакшене
