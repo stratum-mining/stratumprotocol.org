@@ -4319,6 +4319,18 @@ a.adopter-item {
   padding: 0.375rem;
 }
 
+.adopter-logo .ckpool-logo {
+  color: #000;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.025em;
+}
+
+.dark .adopter-logo .ckpool-logo {
+  color: #fff;
+}
+
 /* Invert logos for light mode */
 :root:not(.dark) .adopter-logo img {
   filter: invert(1) hue-rotate(180deg);

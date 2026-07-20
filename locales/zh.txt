@@ -216,6 +216,7 @@ adopter.nerdaxe.desc = 原生 Stratum V2 固件支持
 adopter.bitaxe.desc = 原生 Stratum V2 固件支持
 adopter.braiinspool.desc = 生产环境矿池
 adopter.blitzpool.desc = 生产环境单人矿池
+adopter.ckpool.desc = 生产环境单人矿池
 adopter.sripool.desc = 支持独立与矿池挖矿及自定义模板，仅限测试
 adopter.dmnd.desc = 生产环境矿池，支持矿工选择模板
 adopter.mkpool.desc = 生产环境单人矿池
