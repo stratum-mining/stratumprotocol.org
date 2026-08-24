@@ -476,7 +476,17 @@ function initSupporterTabs() {
     { name: "Spiral", logoVariants: { dark: "/assets/logos/spiral-lockup-white-gradient.svg", light: "/assets/logos/spiral-lockup-black-gradient.svg" }, width: 206, height: 55, website: "https://spiral.xyz/", categories: ["funder", "workingGroup"], logoClass: "supporter-logo-medium" },
     { name: "Summer of Bitcoin", logo: "/assets/logos/summer-of-bitcoin.svg", width: 231, height: 74, website: "https://www.summerofbitcoin.org/", categories: ["pastFunder"] },
     { name: "Vinteum", logo: "/assets/logos/vinteum-logo.png", width: 629, height: 171, website: "https://vinteum.org/", categories: ["funder"] },
-  ].sort((a, b) => a.name.localeCompare(b.name));
+    { name: "256 Foundation", logo: "/assets/logos/256-foundation-logo.png", width: 1200, height: 630, website: "https://www.256foundation.org/", categories: ["workingGroup"], logoClass: "supporter-logo-medium" },
+  ].sort((a, b) => {
+    const aStartsWithNumber = /^\d/.test(a.name);
+    const bStartsWithNumber = /^\d/.test(b.name);
+
+    if (aStartsWithNumber !== bStartsWithNumber) {
+      return aStartsWithNumber ? 1 : -1;
+    }
+
+    return a.name.localeCompare(b.name);
+  });
 
   function getFilteredSupporters(tabId) {
     if (tabId === 'all') {
