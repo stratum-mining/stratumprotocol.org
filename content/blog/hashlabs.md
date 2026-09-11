@@ -43,7 +43,9 @@ However, not all stale shares are caused by inefficiencies. On average, about 2%
 
 ![](/assets/images/blog/case-study/hashlabs/share-acceptance.png)
 
-Our benchmark data shows that miners using **Stratum V1** waste between **0.1% and 0.2%** of their hashing power submitting shares that do not result in payouts. Switching to **Stratum V2 without Job Declaration** reduces this inefficiency to around 0.08%, while using **Stratum V2 with Job Declaration** eliminates it nearly entirely, assuming miner and pool node have the same level of connectivity.
+Our benchmark data shows that miners using **Stratum V1** waste between **0.1% and 0.2%** of their hashing power submitting shares that do not result in payouts. Switching to **Stratum V2 without Job Declaration** reduces this inefficiency to around 0.08%, while using **Stratum V2 with Job Declaration** eliminates it nearly entirely.
+
+This last result depends on a core assumption: **the miner's node sees and validates new blocks as quickly as the pool's node does**. In this benchmark that was true by construction (see Appendix A); in a real deployment it depends on the miner's node, and a miner who runs one has a direct financial incentive to put it on capable hardware and keep it well connected, since the stale work quantified here is the cost of not doing so.
 
 For miners operating on thin profit margins of around **10%**, this translates to a potential **net profit increase of up to 2% when fully adopting Stratum V2 with Job Declaration**.
 
@@ -57,6 +59,8 @@ Our tests used only a single SV1 connected to the tProxy. We anticipate that Str
 
 Our benchmarks demonstrate **substantial latency improvements** using Stratum V2 compared to Stratum V1. These improvements are again attributed to the Job Declaration Client (JDC). The JDC, connected to the Bitcoin node positioned within the mining farm’s local network, drastically reduces latency by delivering fresh mining jobs directly to ASICs. In comparison, Stratum V1 relies on remote pools to distribute jobs, introducing higher latency due to network distance and potential congestion.
 
+Note that with JD the miner's node, rather than the pool's, becomes the source of new-block information, so the gains below assume that node is at least as well connected to the Bitcoin network as the pool's node.
+
 To further contextualize these results, we measured the network latency to various production pool endpoints during the benchmark sessions. The average round-trip time (RTT) observed across four reports was approximately 110ms. This value was used internally within the tool infrastructure to simulate realistic network conditions during the benchmarks.
 
 ![](/assets/images/blog/case-study/hashlabs/latency-all.png)
@@ -68,6 +72,8 @@ To further contextualize these results, we measured the network latency to vario
 ![](/assets/images/blog/case-study/hashlabs/block-change-latency.png)
 
 According to our benchmarking data, **Stratum V2 with Job Declaration (JD)** reduces block change latency from **325 ms (SV1)** to just **1.42 ms**, a difference of **323.58 ms**, making it over **228 times faster**. Even without JD, **SV2 still improves latency**, reducing it to **57.8 ms**, about **5.6 times faster** than SV1.
+
+In both cases the clock starts when the Bitcoin node feeding the protocol stack (the pool's node for SV1, the miner's node for SV2 with JD) has validated the new block. The time for the block to reach and be validated by that node is not included. In our environment all nodes ran on the same host and saw new blocks at the same time; a miner whose node learns about blocks later than the pool's node, or validates them more slowly, will see the SV2 advantage reduced by that difference. Unlike the pool's infrastructure, this part is under the miner's control.
 
 SV1 miners lose approximately **323.58 milliseconds per block** due to block change latency compared to SV2 with JD. Over a year, this adds up to around **4.9 hours** of completely wasted hashing time. To quantify the efficiency gain of switching to SV2 with JD, we compare this latency difference to the total block interval of **600,000 milliseconds** (10 minutes):
 
@@ -173,6 +179,10 @@ To simulate real-world latency conditions, **artificial network delays** were in
 The SV1 pool was implemented using the open-source [public-pool software](https://github.com/benjamin-wilson/public-pool), while SV2 leveraged the complete suite of applications (Pool, Proxy, JDC, JDS) developed and maintained by [SRI](https://github.com/stratum-mining/stratum/tree/main/roles). The SV2 applications deployed are reference implementations and are not considered production ready. However, the protocol layer of the reference implementation is solid, and developers are encouraged to build production-grade applications on top of it. 
 
 Each SV1 and SV2 pool instance operated with **its own dedicated Bitcoin node**, ensuring isolation and proper protocol-specific behavior. In the **SV2 Configuration with Job Declaration**, the miner also ran **a local Bitcoin node** to enable block template construction.
+
+Because every node ran on the same VPS, the miner's node and the pools' nodes received and validated new blocks at effectively the same time. Differences in block propagation between a miner's node and a pool's node, which exist in real deployments, were therefore outside the scope of this benchmark.
+
+Node connectivity is thus a **controlled variable** in this study: the results quantify the protocol-level gains for a miner whose node is as well connected as the pool's, and do not model the case where it is not.
 
 We evaluated usage across two SV2 configurations and compared them to SV1:
 
