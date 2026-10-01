@@ -219,7 +219,6 @@ adopter.blitzpool.desc = Соло-пул в продакшене
 adopter.ckpool.desc = Соло-пул в продакшене
 adopter.sripool.desc = Сольный и пуловый майнинг с пользовательскими шаблонами, только для тестирования
 adopter.dmnd.desc = Пул в продакшене с поддержкой шаблонов, выбираемых майнерами
-adopter.mkpool.desc = Соло-пул в продакшене
 adopter.nexuspool.desc = Соло-пул в продакшене
 adopter.publicpool.desc = Соло-пул в продакшене
 adopter.pyblock.desc = Соло-пул в продакшене

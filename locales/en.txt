@@ -220,7 +220,6 @@ adopter.blitzpool.desc = In production solo pool
 adopter.ckpool.desc = In production solo pool
 adopter.sripool.desc = Solo & pool mining with custom templates, testing only
 adopter.dmnd.desc = In production pool, enabling miner selected templates
-adopter.mkpool.desc = In production solo pool
 adopter.nexuspool.desc = In production solo pool
 adopter.publicpool.desc = In production solo pool
 adopter.pyblock.desc = In production solo pool

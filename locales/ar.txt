@@ -219,7 +219,6 @@ adopter.blitzpool.desc = مجمّع منفرد يعمل في الإنتاج
 adopter.ckpool.desc = مجمّع منفرد يعمل في الإنتاج
 adopter.sripool.desc = تعدين منفرد وجماعي مع قوالب مخصصة، للاختبار فقط
 adopter.dmnd.desc = مجمّع يعمل في الإنتاج مع تمكين قوالب يختارها المعدّنون
-adopter.mkpool.desc = مجمّع منفرد يعمل في الإنتاج
 adopter.nexuspool.desc = مجمّع منفرد يعمل في الإنتاج
 adopter.publicpool.desc = مجمّع منفرد يعمل في الإنتاج
 adopter.pyblock.desc = مجمّع منفرد يعمل في الإنتاج
