@@ -219,7 +219,6 @@ adopter.blitzpool.desc = 生产环境单人矿池
 adopter.ckpool.desc = 生产环境单人矿池
 adopter.sripool.desc = 支持独立与矿池挖矿及自定义模板，仅限测试
 adopter.dmnd.desc = 生产环境矿池，支持矿工选择模板
-adopter.mkpool.desc = 生产环境单人矿池
 adopter.nexuspool.desc = 生产环境单人矿池
 adopter.publicpool.desc = 生产环境单人矿池
 adopter.pyblock.desc = 生产环境单人矿池
