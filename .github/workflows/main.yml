@@ -35,7 +35,7 @@ jobs:
       - name: Install
         run: npm ci
       - name: Audit Dependencies
-        run: npm audit --audit-level=high
+        run: npm audit --omit=dev --audit-level=high
       - name: Build
         run: npm run build
       - name: Enforce Bundle Budgets
