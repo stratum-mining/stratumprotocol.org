@@ -4368,6 +4368,19 @@ a.adopter-item {
 :root:not(.dark) .adopter-logo .nerdaxe-for-light { display: block; filter: none; }
 .dark .adopter-logo .nerdaxe-for-light             { display: none; }
 
+/* Luxor, Foundry, MARA Foundation: manual dark/light swap in adopters, bypass global invert filter */
+.luxor-for-dark  { display: block; }
+.luxor-for-light { display: none;  }
+:root:not(.dark) .adopter-logo .luxor-for-dark,
+:root:not(.dark) .adopter-logo .foundry-for-dark,
+:root:not(.dark) .adopter-logo .marafoundation-for-dark  { display: none;  filter: none; }
+:root:not(.dark) .adopter-logo .luxor-for-light,
+:root:not(.dark) .adopter-logo .foundry-for-light,
+:root:not(.dark) .adopter-logo .marafoundation-for-light { display: block; filter: none; }
+.dark .adopter-logo .luxor-for-light,
+.dark .adopter-logo .foundry-for-light,
+.dark .adopter-logo .marafoundation-for-light            { display: none; }
+
 
 .logo-placeholder {
   width: 100%;
