@@ -220,6 +220,7 @@ adopter.ckpool.desc = مجمّع منفرد يعمل في الإنتاج
 adopter.sripool.desc = تعدين منفرد وجماعي مع قوالب مخصصة، للاختبار فقط
 adopter.dmnd.desc = مجمّع يعمل في الإنتاج مع تمكين قوالب يختارها المعدّنون
 adopter.nexuspool.desc = مجمّع منفرد يعمل في الإنتاج
+adopter.pogolo.desc = مجمّع منفرد يعمل في الإنتاج
 adopter.publicpool.desc = مجمّع منفرد يعمل في الإنتاج
 adopter.pyblock.desc = مجمّع منفرد يعمل في الإنتاج
 adopter.luxor.desc = العمل جارٍ نحو دعم SV2

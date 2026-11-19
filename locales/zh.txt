@@ -220,6 +220,7 @@ adopter.ckpool.desc = 生产环境单人矿池
 adopter.sripool.desc = 支持独立与矿池挖矿及自定义模板，仅限测试
 adopter.dmnd.desc = 生产环境矿池，支持矿工选择模板
 adopter.nexuspool.desc = 生产环境单人矿池
+adopter.pogolo.desc = 生产环境单人矿池
 adopter.publicpool.desc = 生产环境单人矿池
 adopter.pyblock.desc = 生产环境单人矿池
 adopter.luxor.desc = 正在推进 SV2 支持工作
