@@ -1347,6 +1347,28 @@
           <p data-i18n="adoption.subtitle">Tested and deployed by industry leaders across hardware, firmware, and pool infrastructure.</p>
         </div>
 
+        <!-- Live block stats: two small pages served by sv2blocks.com (addresses are set in src/main.js) -->
+        <div class="adoption-live" data-sv2blocks>
+          <iframe
+            class="adoption-live-frame adoption-live-chart"
+            data-widget="blocks"
+            title="Blocks mined with Stratum V2"
+            data-i18n-title="adoption.live.blocks"
+            loading="lazy"
+            referrerpolicy="no-referrer"
+            sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
+          ></iframe>
+          <iframe
+            class="adoption-live-frame adoption-live-board"
+            data-widget="leaderboard"
+            title="Pools ranked by Stratum V2 blocks"
+            data-i18n-title="adoption.live.leaderboard"
+            loading="lazy"
+            referrerpolicy="no-referrer"
+            sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
+          ></iframe>
+        </div>
+
         <!-- Adoption Categories -->
         <div class="adoption-categories">
 

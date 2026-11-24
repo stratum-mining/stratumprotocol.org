@@ -195,6 +195,50 @@ function initThemeToggle() {
 }
 
 // ====================================
+// SV2BLOCKS WIDGETS
+// ====================================
+// The live block stats in the Adoption section are small pages served by sv2blocks.com and shown
+// in iframes. This gives each frame its address, keeps it on the site's light or dark theme, and
+// lets the leaderboard be as tall as its content. To test against a local sv2blocks dev server:
+//   VITE_SV2BLOCKS_EMBED=http://127.0.0.1:5173/embed.html npm run dev
+const SV2BLOCKS_EMBED_URL = import.meta.env?.VITE_SV2BLOCKS_EMBED || 'https://sv2blocks.com/embed.html';
+
+function initSv2BlocksWidgets() {
+  const frames = Array.from(document.querySelectorAll('[data-sv2blocks] iframe[data-widget]'));
+  if (!frames.length) return;
+
+  let embedUrl;
+  try {
+    embedUrl = new URL(SV2BLOCKS_EMBED_URL, window.location.href);
+  } catch (error) {
+    return;
+  }
+
+  const html = document.documentElement;
+  const applyTheme = () => {
+    const theme = html.classList.contains('dark') ? 'dark' : 'light';
+    frames.forEach((frame) => {
+      const url = new URL(embedUrl.href);
+      url.searchParams.set('widget', frame.dataset.widget);
+      url.searchParams.set('theme', theme);
+      if (frame.getAttribute('src') !== url.href) frame.setAttribute('src', url.href);
+    });
+  };
+
+  applyTheme();
+  new MutationObserver(applyTheme).observe(html, { attributes: true, attributeFilter: ['class'] });
+
+  // A widget reports the height it would like; only a number from the widget's own address is used.
+  window.addEventListener('message', (event) => {
+    if (event.origin !== embedUrl.origin || !event.data || event.data.type !== 'sv2blocks:height') return;
+    const height = Number(event.data.height);
+    if (!Number.isFinite(height) || height < 80 || height > 1200) return;
+    const frame = frames.find((candidate) => candidate.contentWindow === event.source);
+    if (frame) frame.style.setProperty('--sv2blocks-fit', `${Math.ceil(height)}px`);
+  });
+}
+
+// ====================================
 // FEATURE TABS
 // ====================================
 function initFeatureTabs() {
@@ -1119,6 +1163,7 @@ document.addEventListener('DOMContentLoaded', () => {
   runAfterLoad(() => {
     runWhenIdle(() => {
       initThemeToggle();
+      initSv2BlocksWidgets();
       initGlobalClickHandler();
       initGlobalKeyboardHandler();
       initFeatureTabs();
