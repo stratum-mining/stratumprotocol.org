@@ -4219,7 +4219,6 @@ html:not(.dark) .start-mining-preview img.start-mining-img-light {
   }
 }
 
-/* Adoption Categories Grid */
 /* Live block stats: iframes served by sv2blocks.com */
 .adoption-live {
   display: grid;
@@ -4227,6 +4226,11 @@ html:not(.dark) .start-mining-preview img.start-mining-img-light {
   gap: 2rem;
   max-width: 80rem;
   margin: 0 auto 2rem;
+}
+
+/* Shown by src/main.js once the frames have their addresses. */
+.adoption-live[hidden] {
+  display: none;
 }
 
 .adoption-live-frame {
@@ -4238,16 +4242,22 @@ html:not(.dark) .start-mining-preview img.start-mining-img-light {
   background: hsl(var(--card));
 }
 
-/* Stacked on small screens, the leaderboard is as tall as its content (reported by the widget). */
+/* Stacked, the leaderboard is as tall as its content (reported by the widget). */
 .adoption-live-board {
   height: var(--sv2blocks-fit, 260px);
 }
 
 @media (min-width: 768px) {
   .adoption-live {
-    grid-template-columns: 2fr 1fr;
     gap: 1.5rem;
     margin-bottom: 1.5rem;
+  }
+}
+
+/* Side by side only where the leaderboard keeps the 330px it needs to show block counts. */
+@media (min-width: 1024px) {
+  .adoption-live {
+    grid-template-columns: minmax(0, 2fr) minmax(330px, 1fr);
   }
 
   .adoption-live-board {
@@ -4255,6 +4265,7 @@ html:not(.dark) .start-mining-preview img.start-mining-img-light {
   }
 }
 
+/* Adoption Categories Grid */
 .adoption-categories {
   display: grid;
   grid-template-columns: 1fr;

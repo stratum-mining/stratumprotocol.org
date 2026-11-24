@@ -202,6 +202,8 @@ module.clear.specification = Specifiche chiare
 adoption.title.part1 = SV2
 adoption.title.part2 = Adozione
 adoption.subtitle = Testato e implementato dai leader del settore tra hardware, firmware e infrastruttura di pool.
+adoption.live.blocks = Blocchi minati con Stratum V2
+adoption.live.leaderboard = Pool classificate per blocchi Stratum V2
 
 # Adoption Categories
 adoption.category.hardware = Hardware e Firmware

@@ -201,6 +201,8 @@ module.clear.specification = Чёткая спецификация
 adoption.title.part1 = SV2
 adoption.title.part2 = Внедрение
 adoption.subtitle = Проверено и внедрено лидерами отрасли в оборудовании, прошивках и инфраструктуре пулов.
+adoption.live.blocks = Блоки, добытые с помощью Stratum V2
+adoption.live.leaderboard = Рейтинг пулов по блокам Stratum V2
 
 # Категории внедрения
 adoption.category.hardware = Оборудование и прошивки

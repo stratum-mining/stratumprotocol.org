@@ -1347,8 +1347,8 @@
           <p data-i18n="adoption.subtitle">Tested and deployed by industry leaders across hardware, firmware, and pool infrastructure.</p>
         </div>
 
-        <!-- Live block stats: two small pages served by sv2blocks.com (addresses are set in src/main.js) -->
-        <div class="adoption-live" data-sv2blocks>
+        <!-- Live block stats: two small pages served by sv2blocks.com. Hidden until src/main.js sets their addresses, so nothing empty shows without JavaScript. -->
+        <div class="adoption-live" data-sv2blocks hidden>
           <iframe
             class="adoption-live-frame adoption-live-chart"
             data-widget="blocks"
