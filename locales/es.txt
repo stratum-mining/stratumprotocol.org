@@ -222,6 +222,7 @@ adopter.ckpool.desc = Pool solo en producción
 adopter.sripool.desc = Minería en solitario y en grupo con plantillas personalizadas, solo para pruebas
 adopter.dmnd.desc = Pool en producción con plantillas seleccionadas por mineros
 adopter.nexuspool.desc = Pool solo en producción
+adopter.pogolo.desc = Pool solo en producción
 adopter.publicpool.desc = Pool solo en producción
 adopter.pyblock.desc = Pool solo en producción
 adopter.luxor.desc = Trabajo en curso hacia el soporte de SV2

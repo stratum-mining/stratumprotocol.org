@@ -223,6 +223,7 @@ adopter.ckpool.desc = In production solo pool
 adopter.sripool.desc = Solo & pool mining with custom templates, testing only
 adopter.dmnd.desc = In production pool, enabling miner selected templates
 adopter.nexuspool.desc = In production solo pool
+adopter.pogolo.desc = In production solo pool
 adopter.publicpool.desc = In production solo pool
 adopter.pyblock.desc = In production solo pool
 adopter.luxor.desc = Work in progress towards SV2 support
