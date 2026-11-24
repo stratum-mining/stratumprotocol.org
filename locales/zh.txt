@@ -201,6 +201,8 @@ module.clear.specification = 清晰规范
 adoption.title.part1 = SV2
 adoption.title.part2 = 采用进展
 adoption.subtitle = 已被硬件、固件与矿池基础设施领域的行业领先团队测试并投入部署。
+adoption.live.blocks = 使用 Stratum V2 挖出的区块
+adoption.live.leaderboard = 按 Stratum V2 区块数排名的矿池
 
 # 应用类别
 adoption.category.hardware = 硬件与固件

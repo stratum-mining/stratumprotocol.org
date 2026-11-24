@@ -201,6 +201,8 @@ module.clear.specification = مواصفات واضحة
 adoption.title.part1 = SV2
 adoption.title.part2 = التبنّي
 adoption.subtitle = جرى اختباره ونشره من قبل قادة الصناعة عبر العتاد والبرامج الثابتة وبنية مجمّعات التعدين.
+adoption.live.blocks = الكتل المعدَّنة باستخدام Stratum V2
+adoption.live.leaderboard = ترتيب مجمّعات التعدين حسب كتل Stratum V2
 
 # Adoption Categories
 adoption.category.hardware = العتاد والبرامج الثابتة
